@@ -83,3 +83,10 @@
 | Every Week 6 game verified, none promoted by time | `scripts/apply-oct10-saturday-finals.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-saturday-finals.json` | ESPN summary + NCAA.com score/winner per game; line-score sums; `tests/refresh.test.ts` (58/58 finals) |
 | Records reconcile, none stale or withheld | derived Oct 10 + result = ESPN summary = ESPN standings = existing site records | builder fails on any disagreement; `tests/week7.test.ts` |
 | Archive marquee and GameDay badge stay correct | `broadcastEventForGame` reads played games; marquee shows FINAL score | rendered `/?week=6` assertions |
+
+## October 11 Week 7 kickoff and network recheck
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| No official TBA filled without a primary source | `scripts/apply-week7-kickoff-updates.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json` | school time converted in its own zone = ESPN instant; network = school network and ESPN lists no other; `tests/week7.test.ts` |
+| Every Week 7 game shows one published kickoff and network | all 59 rows `confirmed` with a single `tv` | apply assertions; rendered `/?week=7` board assertions |

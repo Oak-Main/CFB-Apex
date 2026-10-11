@@ -1,0 +1,270 @@
+{
+ "schema_version": 1,
+ "scope": "Week 7 (Oct 13-17, 2026) recheck of the open kickoffs and networks left by the reviewed release: three official TBA kickoffs, two unpublished networks and two ABC-or-ESPN alternatives.",
+ "checked_at": "2026-10-11T14:38:53Z",
+ "rule": "A kickoff is adopted when a participating school's official schedule publishes it and ESPN lists the same instant. A network is adopted when a participating school publishes it and no reviewed source lists a different one. The other school still listing TBA/TBD is recorded, not treated as a conflict (the release's Ohio State-Indiana precedent). A conflicting time or network from any primary source blocks adoption.",
+ "renderer": "Cloudflare Browser Rendering (markdown), school pages; ESPN site API summaries saved and hashed.",
+ "conference_pages": {
+  "note": "Conference football schedule pages did not render (404 or error page) on 2026-10-11 and were not used.",
+  "urls": [
+   "https://bigten.org/schedule.aspx?path=football",
+   "https://sunbeltsports.org/schedule.aspx?path=football",
+   "https://theamerican.org/schedule.aspx?path=football"
+  ]
+ },
+ "updates": [
+  {
+   "provider_id": "401862803",
+   "game_id": "2026-10-17-charlotte-at-temple",
+   "away": "charlotte",
+   "home": "temple",
+   "before": {
+    "kickoff_utc": null,
+    "time_et": null,
+    "kickoff_status": "official_tbd",
+    "status": "official_tbd",
+    "tv": "ESPN+"
+   },
+   "after": {
+    "kickoff_utc": "2026-10-17T17:00Z",
+    "time_et": "13:00",
+    "kickoff_status": "confirmed",
+    "status": "announced"
+   },
+   "primary": {
+    "team_slug": "charlotte",
+    "url": "https://charlotte49ers.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:34Z",
+    "quote": "Upcoming Event: Football at Temple on Oct 17, 2026 at 1:00 p.m. … Temple | Philadelphia, Pa. | [ESPN+ logo] | Oct 17 (Sat) | 1:00 p.m. | Watch: espn.com/watch/player/_/id/49ee8de8-9995-44f7-a444-cb99881788cf",
+    "local_time": "1:00 PM",
+    "time_zone": "America/New_York",
+    "network": "ESPN+"
+   },
+   "other": {
+    "team_slug": "temple",
+    "url": "https://owlsports.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:37Z",
+    "quote": "Charlotte | Lincoln Financial Field | Kids Day | Oct 17 (Sat) | TBD"
+   },
+   "timing_note": "Charlotte schedule lists 1:00 PM ET on ESPN+; Temple schedule still listed TBD at review.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401862803",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862803",
+    "checked_at": "2026-10-11T14:36:24Z",
+    "kickoff_utc": "2026-10-17T17:00Z",
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sha256": "fa550c51f787fcf97368dda68ad21fb93e84dcd764192da57ba5340a76a30a37"
+   }
+  },
+  {
+   "provider_id": "401871091",
+   "game_id": "2026-10-17-louisiana-tech-at-ulm",
+   "away": "louisiana-tech",
+   "home": "ulm",
+   "before": {
+    "kickoff_utc": null,
+    "time_et": null,
+    "kickoff_status": "official_tbd",
+    "status": "official_tbd",
+    "tv": "ESPN+"
+   },
+   "after": {
+    "kickoff_utc": "2026-10-18T00:00Z",
+    "time_et": "20:00",
+    "kickoff_status": "confirmed",
+    "status": "announced"
+   },
+   "primary": {
+    "team_slug": "louisiana-tech",
+    "url": "https://latechsports.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:37Z",
+    "quote": "Upcoming Event: Football at ULM on Oct 17, 2026 at 7 PM … ULM | Malone Stadium, Monroe, La. | Radiance Technologies I-20 Showdown | Oct 17 (Sat) | 7 PM | ESPN+: espn.com/watch/player/_/id/01c2e938-3498-4088-b7c1-76395dc9862b",
+    "note": "Times on this page are Central; tentative times carry an asterisk (e.g. \"Oct 24 (Sat) 4 PM*\"). The ULM entry has none.",
+    "local_time": "7:00 PM",
+    "time_zone": "America/Chicago",
+    "network": "ESPN+"
+   },
+   "other": {
+    "team_slug": "ulm",
+    "url": "https://ulmwarhawks.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:34Z",
+    "quote": "Oct 17 (Sat) TBA vs Louisiana Tech · Fans Wear Gold"
+   },
+   "timing_note": "Louisiana Tech schedule lists 7 PM CT (8 PM ET) on ESPN+; ULM schedule still listed TBA at review.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401871091",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401871091",
+    "checked_at": "2026-10-11T14:36:24Z",
+    "kickoff_utc": "2026-10-18T00:00Z",
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sha256": "63cbc886bb3f190fe70d76309e950e9e3630a906133de738bc7adfb18bb210e0"
+   }
+  },
+  {
+   "provider_id": "401858492",
+   "game_id": "2026-10-17-nebraska-at-oregon",
+   "away": "nebraska",
+   "home": "oregon",
+   "before": {
+    "kickoff_utc": null,
+    "time_et": null,
+    "kickoff_status": "official_tbd",
+    "status": "official_tbd",
+    "tv": null,
+    "tv_status": "not_published_in_reviewed_sources"
+   },
+   "after": {
+    "kickoff_utc": "2026-10-18T03:00Z",
+    "time_et": "23:00",
+    "kickoff_status": "confirmed",
+    "status": "announced",
+    "tv": "FOX",
+    "tv_status": "published"
+   },
+   "primary": {
+    "team_slug": "nebraska",
+    "url": "https://huskers.com/sports/football/schedule",
+    "rendered_at": "2026-10-11T14:37Z",
+    "quote": "Away | Saturday Oct 17 | 10:00 PM CDT | at Oregon | Eugene, Ore. | [FOX_small_black logo]",
+    "local_time": "10:00 PM",
+    "time_zone": "America/Chicago",
+    "network": "FOX"
+   },
+   "other": {
+    "team_slug": "oregon",
+    "url": "https://goducks.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:37Z",
+    "quote": "Nebraska | Autzen Stadium, Eugene, OR | WEAR GREEN | Oct 17 (Sat) | TBD"
+   },
+   "timing_note": "Nebraska schedule lists 10 PM CT (11 PM ET, 8 PM PT) on FOX; Oregon schedule still listed TBD at review.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401858492",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858492",
+    "checked_at": "2026-10-11T14:36:24Z",
+    "kickoff_utc": "2026-10-18T03:00Z",
+    "broadcasts": [
+     "Fox"
+    ],
+    "sha256": "2866a8c39158adf2a00ec7b1dd49966474323b2666e5b64594626374c4bb3cd1"
+   }
+  },
+  {
+   "provider_id": "401858490",
+   "game_id": "2026-10-17-penn-state-at-michigan",
+   "away": "penn-state",
+   "home": "michigan",
+   "before": {
+    "kickoff_utc": "2026-10-17T19:30Z",
+    "tv": null,
+    "tv_status": "not_published_in_reviewed_sources"
+   },
+   "after": {
+    "tv": "CBS",
+    "tv_status": "published"
+   },
+   "primary": {
+    "team_slug": "michigan",
+    "url": "https://mgoblue.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:33Z",
+    "quote": "Penn State | Ann Arbor, Mich. | TV: CBS | Radio: Learfield Michigan Sports Network | Homecoming | Oct 17 (Sat) | 3:30 PM | Watch: paramountplus.com/shows/college-football-on-cbs/",
+    "local_time": "3:30 PM",
+    "time_zone": "America/New_York",
+    "network": "CBS"
+   },
+   "other": {
+    "team_slug": "penn-state",
+    "url": "https://gopsusports.com/sports/football/schedule",
+    "rendered_at": "2026-10-11T14:33Z",
+    "quote": "Saturday Oct 17 | at Michigan | Ann Arbor, Mich. / Michigan Stadium | 3:30 PM EDT (no network shown)"
+   },
+   "timing_note": "Michigan schedule lists 3:30 PM ET on CBS; ESPN listed no network at review.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401858490",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858490",
+    "checked_at": "2026-10-11T14:36:24Z",
+    "kickoff_utc": "2026-10-17T19:30Z",
+    "broadcasts": [],
+    "sha256": "bab91b9ecd76397d3371392704be1bdafd20fc80dcab0f21e1e8f900a1eb63a4"
+   }
+  },
+  {
+   "provider_id": "401856724",
+   "game_id": "2026-10-17-florida-at-texas",
+   "away": "florida",
+   "home": "texas",
+   "before": {
+    "kickoff_utc": "2026-10-17T16:00Z",
+    "tv": "ABC or ESPN"
+   },
+   "after": {
+    "tv": "ABC",
+    "tv_status": "published"
+   },
+   "primary": {
+    "team_slug": "florida",
+    "url": "https://floridagators.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:38Z",
+    "quote": "Oct 17 / 12 p.m. | at Texas | Austin, Texas | 12 p.m. | [ABC logo] … Related News: \"Florida-Texas Game Set for 12 p.m. Kick on ABC\" (Saturday, October 10) floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc",
+    "local_time": "12:00 PM",
+    "time_zone": "America/New_York",
+    "network": "ABC"
+   },
+   "other": {
+    "team_slug": "texas",
+    "url": "https://texaslonghorns.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:38Z",
+    "quote": "Florida | DKR-Texas Memorial Stadium, Austin, Texas | TV: ABC or ESPN | Oct 17 (Sat) | 11 a.m. CT"
+   },
+   "timing_note": "Florida announced noon ET on ABC (October 10 release and schedule); Texas schedule still listed ABC or ESPN at review.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401856724",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856724",
+    "checked_at": "2026-10-11T14:38:53Z",
+    "kickoff_utc": "2026-10-17T16:00Z",
+    "broadcasts": [
+     "ABC"
+    ],
+    "sha256": "f317cbf3fc0c2c31f197ce3b07de0bc8bbe9a5fc629d5b767ff9ffbee181ef8b"
+   }
+  },
+  {
+   "provider_id": "401856723",
+   "game_id": "2026-10-17-alabama-at-tennessee",
+   "away": "alabama",
+   "home": "tennessee",
+   "before": {
+    "kickoff_utc": "2026-10-17T19:30Z",
+    "tv": "ABC or ESPN"
+   },
+   "after": {
+    "tv": "ABC",
+    "tv_status": "published"
+   },
+   "primary": {
+    "team_slug": "tennessee",
+    "url": "https://utsports.com/sports/football/schedule/2026",
+    "rendered_at": "2026-10-11T14:38Z",
+    "quote": "Oct 17 / 3:30 p.m. ET | vs Alabama | Knoxville, Tenn. | 3:30 p.m. ET | ABC",
+    "local_time": "3:30 PM",
+    "time_zone": "America/New_York",
+    "network": "ABC"
+   },
+   "other": null,
+   "timing_note": "Tennessee schedule lists 3:30 PM ET on ABC.",
+   "espn": {
+    "url": "https://www.espn.com/college-football/game/_/gameId/401856723",
+    "summary_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856723",
+    "checked_at": "2026-10-11T14:38:53Z",
+    "kickoff_utc": "2026-10-17T19:30Z",
+    "broadcasts": [
+     "ABC"
+    ],
+    "sha256": "7846c5b6be869b2cee166cb9333fca41204acce919462035367d39e033a2a865"
+   }
+  }
+ ]
+}

@@ -57,27 +57,36 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
   assert.equal(verifiedRefresh?.reference_date, "2026-10-12");
 });
 
-test("official TBD kickoffs stay unannounced, never a midnight placeholder", () => {
-  const tbd = week7().filter((row) => /^\d{4}-\d{2}-\d{2}$/.test(row.date));
-  assert.deepEqual(tbd.map((row) => row.id).sort(), [
-    "2026-10-17-charlotte-at-temple",
-    "2026-10-17-louisiana-tech-at-ulm",
-    "2026-10-17-nebraska-at-oregon",
-  ]);
-  for (const row of tbd) {
-    assert.match(row.kickoffLabel, /Kickoff TBA$/);
-    assert.equal(kickoffTime(row), "Kickoff TBA");
-    assert.equal(kickoffTimeLabel(row), "Kickoff TBA");
-    assert.equal(easternDate(row.date), "2026-10-17", "a date-only TBD stays on its Eastern date");
+test("the October 11 recheck publishes every Week 7 kickoff without moving a game off its Eastern date", () => {
+  assert.deepEqual(week7().filter((row) => /^\d{4}-\d{2}-\d{2}$/.test(row.date)).map((row) => row.id), []);
+  for (const [id, utc, et] of [
+    ["2026-10-17-charlotte-at-temple", "2026-10-17T17:00Z", "1:00 PM ET"],
+    ["2026-10-17-louisiana-tech-at-ulm", "2026-10-18T00:00Z", "8:00 PM ET"],
+    ["2026-10-17-nebraska-at-oregon", "2026-10-18T03:00Z", "11:00 PM ET"],
+  ] as const) {
+    const row = game(id);
+    assert.equal(row.date, utc);
+    assert.equal(kickoffTime(row), et);
+    assert.equal(kickoffTimeLabel(row), et);
+    assert.equal(easternDate(row.date), "2026-10-17", `${id} stays a Saturday game`);
   }
-  for (const row of week7()) assert.doesNotMatch(row.kickoffLabel, /12:00 AM|midnight/i, row.id);
+  for (const row of week7()) assert.doesNotMatch(row.kickoffLabel, /12:00 AM|midnight|Kickoff TBA/i, row.id);
   for (const row of verifiedRefresh?.scheduledGames ?? []) {
     assert.equal(row.kickoff_utc == null, row.kickoff_status === "official_tbd", row.provider_id);
     assert.equal(row.time_et == null, row.kickoff_utc == null, row.provider_id);
   }
+  assert.ok(!(verifiedRefresh?.scheduledGames ?? []).some((row) => row.week === 7 && row.kickoff_status === "official_tbd"));
 });
 
-test("primary-source corrections and unpublished networks are kept as reviewed", () => {
+test("an official TBD kickoff still renders as Kickoff TBA, never a midnight placeholder", () => {
+  const announced = game("2026-10-17-charlotte-at-temple");
+  const tbd = { ...announced, date: "2026-10-17", kickoffLabel: "Sat · 2026-10-17 · Kickoff TBA" };
+  assert.equal(kickoffTime(tbd), "Kickoff TBA");
+  assert.equal(kickoffTimeLabel(tbd), "Kickoff TBA");
+  assert.equal(easternDate(tbd.date), "2026-10-17", "a date-only TBD stays on its Eastern date");
+});
+
+test("primary-source corrections and networks are kept as reviewed", () => {
   const wisconsin = game("2026-10-17-wisconsin-at-ucla");
   assert.equal(wisconsin?.date, "2026-10-17T23:30Z");
   assert.equal(kickoffTime(wisconsin), "7:30 PM ET");
@@ -85,10 +94,12 @@ test("primary-source corrections and unpublished networks are kept as reviewed",
   const purdue = game("2026-10-16-washington-at-purdue");
   assert.equal(easternDate(purdue.date), "2026-10-16", "Washington–Purdue is Friday");
   assert.ok(!games.some((row) => row.week === 7 && row.awayTeamId === "washington" && easternDate(row.date) === "2026-10-17"));
-  assert.equal(game("2026-10-17-penn-state-at-michigan")?.broadcast, null);
-  assert.equal(game("2026-10-17-nebraska-at-oregon")?.broadcast, null);
-  assert.equal(game("2026-10-17-florida-at-texas")?.broadcast, "ABC or ESPN");
-  assert.equal(game("2026-10-17-alabama-at-tennessee")?.broadcast, "ABC or ESPN");
+  // October 11 recheck: each network comes from a participating school's schedule.
+  assert.equal(game("2026-10-17-penn-state-at-michigan")?.broadcast, "CBS");
+  assert.equal(game("2026-10-17-nebraska-at-oregon")?.broadcast, "FOX");
+  assert.equal(game("2026-10-17-florida-at-texas")?.broadcast, "ABC");
+  assert.equal(game("2026-10-17-alabama-at-tennessee")?.broadcast, "ABC");
+  for (const row of week7()) assert.ok(row.broadcast && !/ or /.test(row.broadcast), `${row.id} has one published network`);
 });
 
 test("Ohio State at Indiana is the Week 7 marquee with verified records", () => {
