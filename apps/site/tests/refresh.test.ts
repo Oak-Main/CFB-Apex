@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   easternDate,
@@ -393,4 +394,20 @@ test("weather-related kickoff changes propagate to games, team schedules and bro
   assert.match(verifiedRefresh?.availability_review?.note ?? "", /not complete Saturday coverage/);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(verifiedRefresh?.polls?.[0].release_date, "2026-10-04");
+});
+
+test("every Saturday October 10 final also cites an official school page that agrees", () => {
+  const { hosts } = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/official-school-hosts.json", import.meta.url), "utf8")) as { hosts: Record<string, string> };
+  type Played = { game_id: string; provider_id?: string; date: string; week?: number; teams: Array<{ slug: string; points: number }>; meta?: { sources?: string[]; school_sources?: Array<{ slug: string; url: string; result_text: string | null }> } };
+  const finals = ((verifiedRefresh?.playedGames ?? []) as Played[]).filter((g) => g.week === 6 && g.date === "2026-10-10" && g.meta?.school_sources);
+  assert.equal(finals.length, 44);
+  for (const g of finals) {
+    const schools = g.meta?.school_sources ?? [];
+    assert.ok(schools.some((s) => s.result_text), `${g.game_id} has a school-published result`);
+    for (const s of schools) {
+      assert.ok(g.teams.some((t) => t.slug === s.slug), `${g.game_id} source is one of the two schools`);
+      assert.equal(new URL(s.url).hostname, hosts[s.slug], `${g.game_id} cites ${s.slug}'s official site`);
+      assert.ok(g.meta?.sources?.includes(s.url), `${g.game_id} lists ${s.url}`);
+    }
+  }
 });

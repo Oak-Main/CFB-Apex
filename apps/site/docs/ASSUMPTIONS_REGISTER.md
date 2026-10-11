@@ -59,3 +59,8 @@
 
 - NCAA.com's server-rendered FBS week 6 scoreboard (58 games, all final, NCAA ORG-SPORTS feed) is the independent official check beside ESPN's completed-game summaries. School pages were largely bot-protected from this environment.
 - ESPN standings after Saturday are the record authority only where they agree with the derivation from verified results; a disagreement would block the refresh.
+
+## October 11 school-source and Week 7 recheck
+
+- A school page rendered through Cloudflare Browser Rendering is the school's own published page; the rendering service only gets past bot protection and changes no content.
+- A school schedule that lists a specific time while the host still lists TBA counts for a kickoff only when ESPN shows the same time as valid; a network shown only as a visiting school's logo is not adopted.
