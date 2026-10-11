@@ -104,8 +104,12 @@ jobs:
           assert.ok(!/\b0\s+others receiving votes/i.test(rankingsHtml), 'rankings page prints zero others receiving votes');
 
           // One game page must carry the same verified retrieval time.
-          const game = snapshot.scheduledGames.find((row) => row.home === 'alabama' && row.away === 'georgia');
-          const gameId = `${game.date}-${game.away}-at-${game.home}`;
+          // The game may be upcoming or already a verified final.
+          const scheduled = snapshot.scheduledGames.find((row) => row.home === 'alabama' && row.away === 'georgia');
+          const played = snapshot.playedGames.find((row) => row.home_slug === 'alabama' && row.away_slug === 'georgia' && row.date === '2026-10-10');
+          const game = scheduled ?? played;
+          assert.ok(game, 'Georgia at Alabama is in the snapshot');
+          const gameId = scheduled ? `${game.date}-${game.away}-at-${game.home}` : played.game_id;
           const gamePage = await fetch('https://cfbapex.com/games/' + gameId + cacheBust);
           assert.equal(gamePage.status, 200, 'game page ' + gameId);
           const gameHtml = clean(await gamePage.text());
