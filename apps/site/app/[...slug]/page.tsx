@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HubApp } from "@/components/HubApp";
-import { coaches, fantasyNotes, games, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
+import { boardWeeks, coaches, fantasyNotes, games, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
 import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
+import { selectBoardWeek } from "@/lib/week-cutover";
+
+// The scoreboard and ticker follow the request's server clock; never cache.
+export const dynamic = "force-dynamic";
 
 // Stadium names shared by multiple programs (e.g. "Memorial Stadium" x3) get
 // team-qualified titles so they never collide in SERPs.
@@ -40,6 +44,7 @@ function isKnownPath(parts: string[]) {
 
 interface RoutePageProps {
   params: Promise<{ slug: string[] }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export async function generateMetadata({
@@ -176,8 +181,10 @@ export async function generateMetadata({
   return { ...(await buildMeta()), ...selfCanonical };
 }
 
-export default async function RoutePage({ params }: RoutePageProps) {
+export default async function RoutePage({ params, searchParams }: RoutePageProps) {
   const { slug } = await params;
   if (!isKnownPath(slug)) notFound();
-  return <HubApp path={`/${slug.join("/")}`} />;
+  // `?week=` only previews the scoreboard; other routes follow the clock.
+  const week = slug[0] === "scores" ? (await searchParams)?.week : undefined;
+  return <HubApp path={`/${slug.join("/")}`} boardWeek={selectBoardWeek(boardWeeks, Date.now(), week)} />;
 }

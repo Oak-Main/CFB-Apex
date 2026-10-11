@@ -4,7 +4,7 @@ import test from "node:test";
 import { isCurrentEspnInjury, editorialResearchIsHistorical } from "../lib/injury-freshness.mjs";
 import { parseEspnInjuryFeed, mergeValidatedEspnInjuries, espnInjuryCachePolicy } from "../lib/espn-injuries.ts";
 import { espnInjuries, espnWatchEntries, injuryResearch, officialAvailability, officialAvailabilityFor } from "../lib/injury-report.ts";
-import { fantasyNotesAsOf, verifiedRefresh, games } from "../lib/cfb-dataset.ts";
+import { boardWeeks, fantasyNotesAsOf, verifiedRefresh, games } from "../lib/cfb-dataset.ts";
 const NOW = Date.parse("2026-10-10T14:31:21Z");
 
 test("ESPN row-age checks reject old, undated, invalid, and future claims", () => {
@@ -51,7 +51,9 @@ test("official overlay has 39 tracked players plus 48 changed players with dated
 test("historical cutoffs and long-term classifications are preserved, corrected identities are not duplicated", () => {
   assert.equal(injuryResearch.asOf, "2026-10-05");
   assert.equal(fantasyNotesAsOf, "2026-09-07");
-  assert.equal(verifiedRefresh?.retrieved_at, "2026-10-05T07:24:21.400874Z");
+  // Week 6 keeps its base snapshot time; the Week 7 release carries its own.
+  assert.equal(boardWeeks.find((row) => row.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
+  assert.equal(verifiedRefresh?.retrieved_at, "2026-10-11T10:30:00Z");
   assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-03");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Mason Heintschel")?.status, "IR");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Zahir Mathis")?.teamSlug, "maryland");

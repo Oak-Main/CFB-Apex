@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type {
+  BoardWeekRow,
   CurrentMetrics,
   FantasyNote,
   PollTable,
@@ -54,6 +55,8 @@ export interface HomepageData {
   preseasonRatings: Readonly<Record<string, PreseasonRating>>;
   stadiums: readonly StadiumPreview[];
   referenceDate: string;
+  /** Reviewed board weeks (current plus archive), in calendar order. */
+  boardWeeks?: readonly BoardWeekRow[];
   datasetAsOf: string;
   portalAsOf: string | null;
   fantasyAsOf: string | null;
@@ -84,7 +87,7 @@ export function published(value: number | string | null | undefined): string {
 export function kickoffTime(game: BroadcastGame): string {
   return (
     game.kickoffLabel.match(/\d{1,2}:\d{2}\s*[AP]M\s*ET/i)?.[0] ??
-    "Not published"
+    (/Kickoff TBA/.test(game.kickoffLabel) ? "Kickoff TBA" : "Not published")
   );
 }
 

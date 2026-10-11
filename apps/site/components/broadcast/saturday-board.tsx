@@ -72,16 +72,18 @@ export function SaturdayBoard({
     .map((game) => {
       const away = bySlug.get(game.awayTeamId);
       const home = bySlug.get(game.homeTeamId);
-      const minutes = kickoffMinutes(game);
-      if (!away || !home || minutes == null) return null;
-      return { game, away, home, minutes };
+      if (!away || !home) return null;
+      return { game, away, home, minutes: kickoffMinutes(game) };
     })
     .filter((row): row is NonNullable<typeof row> => row != null);
   if (rows.length === 0) return null;
+  // Official TBA kickoffs stay on the board in their own group, never in a time wave.
+  const unslotted = rows.filter((row) => row.minutes == null);
 
   const playingSlugs = new Set(games.flatMap((game) => [game.awayTeamId, game.homeTeamId]));
   const ap = pollTables.find((table) => table.poll === "ap");
-  const byes =
+  // Absence from an FBS-vs-FBS board is not a bye: the team may face an FCS opponent.
+  const offBoard =
     ap?.rankings
       .filter((entry) => entry.team_slug && !playingSlugs.has(entry.team_slug))
       .sort((a, b) => a.rank - b.rank)
@@ -100,7 +102,7 @@ export function SaturdayBoard({
         {WAVES.map((wave, index) => {
           const waveRows = rows.filter((row) => {
             const previous = WAVES[index - 1]?.max ?? -1;
-            return row.minutes > previous && row.minutes <= wave.max;
+            return row.minutes != null && row.minutes > previous && row.minutes <= wave.max;
           });
           return (
             <div className="apex-gdc-wave" key={wave.key}>
@@ -126,10 +128,25 @@ export function SaturdayBoard({
           );
         })}
       </div>
-      {byes.length > 0 && (
+      {unslotted.length > 0 && (
+        <div className="apex-gdc-wave apex-gdc-wave--tba">
+          <div className="apex-gdc-wave-head">
+            <div>
+              <strong>KICKOFF TBA</strong>
+              <span>officially unannounced</span>
+            </div>
+          </div>
+          <ul>
+            {unslotted.map((row) => (
+              <BoardRow key={row.game.id} game={row.game} away={row.away} home={row.home} />
+            ))}
+          </ul>
+        </div>
+      )}
+      {offBoard.length > 0 && (
         <p className="apex-gdc-byes">
-          <strong>Byes:</strong>{" "}
-          {byes
+          <strong>Ranked, not on this FBS board:</strong>{" "}
+          {offBoard
             .map((entry) => {
               const team = bySlug.get(entry.team_slug ?? "");
               return `No. ${entry.rank} ${team?.shortName ?? entry.team_slug}`;

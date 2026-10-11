@@ -54,7 +54,26 @@ export interface StorylineRow {
   /** Finals a results recap covers (provider ids in playedGames). */
   result_provider_ids?: string[];
   as_of?: string;
+  /** Board week the story belongs to; stories never cross onto another week's board. */
+  week?: number;
   sources: string[];
+}
+export interface BoardWeekRow {
+  week: number;
+  start: string;
+  end: string;
+  label: string;
+  /** Sunday 06:00 America/Los_Angeles before the week starts, as UTC. */
+  cutover_utc: string;
+  retrieved_at?: string;
+  schedule_verified_at?: string;
+  results_verified_at?: string;
+  records_verified_at?: string;
+  audit_applied_at?: string;
+  snapshot_id?: string;
+  /** Editorial Game of the Week, when the release names one. */
+  marquee_game_id?: string;
+  note?: string;
 }
 interface PollNoteMove { team: string; team_slug: string; from: number; to: number; move: number }
 interface PollGapSide { team: string; team_slug: string; ap: number | null; coaches: number | null; ap_points?: number | null; coaches_points?: number | null }
@@ -67,7 +86,11 @@ interface VerifiedRefresh {
   teamRecords: Record<string, string>;
   metrics: CurrentMetrics;
   playedGames?: unknown[];
-  scheduledGames: Array<{ provider_id: string; source_url: string; kickoff_utc: string; week: number; date: string; away: string; home: string; tv: string | null; time_et: string; site: string | null; neutral_site: boolean; verified_at?: string; game_status?: string; announced_kickoff_utc?: string; timing_note?: string; timing_sources?: string[] }>;
+  /** `kickoff_utc`/`time_et` are null only for an official TBD (`kickoff_status: "official_tbd"`). */
+  scheduledGames: Array<{ provider_id: string; source_url: string; kickoff_utc: string | null; kickoff_status?: "confirmed" | "official_tbd"; week: number; date: string; away: string; home: string; tv: string | null; tv_status?: string; time_et: string | null; site: string | null; neutral_site: boolean; verified_at?: string; game_status?: string; announced_kickoff_utc?: string; timing_note?: string; timing_sources?: string[] }>;
+  /** Weeks this release covers: the current board plus its archived predecessor. */
+  board_weeks?: BoardWeekRow[];
+  team_records_review?: { as_of: string; verified: number; carried_from_2026_10_10: string[]; withheld: string[]; note: string };
   excludedGames?: Array<{ provider_id: string; name: string; reason: string; date: string; espn_conference_ids?: { home: number; away: number } }>;
   source_urls?: string[];
   holds?: string[];
@@ -88,9 +111,14 @@ interface VerifiedRefresh {
     poll_gaps: { ap_only: PollGapSide[]; coaches_only: PollGapSide[]; biggest_splits: PollGapSide[] };
     sources: string[];
   };
-  retainedBaseline?: { conferenceStandings: ConferenceStanding[]; espnInjuries: { asOf: string | null; entries: unknown[] } | null; as_of: string; note: string; verified_at?: string };
+  retainedBaseline?: { conferenceStandings: ConferenceStanding[]; espnInjuries: { asOf: string | null; entries: unknown[] } | null; as_of: string; note: string; verified_at?: string; overall_records?: Record<string, string>; overall_records_note?: string };
 }
 export const verifiedRefresh = (bundle as unknown as { refreshData?: VerifiedRefresh }).refreshData ?? null;
+/** Board weeks in calendar order; a snapshot without them covers only its own week. */
+export const boardWeeks: BoardWeekRow[] = verifiedRefresh
+  ? (verifiedRefresh.board_weeks ?? [{ week: verifiedRefresh.week ?? 0, start: verifiedRefresh.reference_date, end: verifiedRefresh.reference_date, label: "", cutover_utc: verifiedRefresh.reference_date }])
+    .slice().sort((a, b) => a.start.localeCompare(b.start))
+  : [];
 export const broadcastEvents = verifiedRefresh?.broadcast_events ?? [];
 export const refreshStorylines = verifiedRefresh?.storylines ?? [];
 /** Match a site Game to a verified broadcast event (e.g. College GameDay) by date + team pair. */
@@ -601,16 +629,24 @@ function buildScheduledGames(): Game[] {
     scheduledByWeekPair.set(pair, keys);
   }
   // Official snapshot additions also cover matchups missing from the old schedules.
+  const snapshotTime = Date.parse(verifiedRefresh?.retrieved_at ?? "");
   for (const row of verifiedRefresh?.scheduledGames ?? []) {
-    const key = gameKey(row.kickoff_utc, row.away, row.home);
+    // An official TBD keeps a date-only value: no instant, so no invented time.
+    const instant = row.kickoff_utc ?? row.date;
+    const key = gameKey(instant, row.away, row.home);
     if (playedGameKeys.has(key)) continue;
     const pair = gameKey(weekStart(row.date), row.away, row.home);
     for (const existingKey of scheduledByWeekPair.get(pair) ?? []) byKey.delete(existingKey);
     const id = `${row.date}-${row.away}-at-${row.home}`;
+    // An earlier week's game whose kickoff has passed is not a final until verified.
+    const resultPending = row.kickoff_utc != null && Date.parse(row.kickoff_utc) < snapshotTime;
     byKey.set(key, {
-      id, week: row.week, date: row.kickoff_utc,
-      kickoffLabel: playedKickoffLabel(row.date, row.kickoff_utc),
-      status: "scheduled", statusDetail: row.timing_note ?? "Scheduled · verified source snapshot",
+      id, week: row.week, date: instant,
+      kickoffLabel: row.kickoff_utc ? playedKickoffLabel(row.date, row.kickoff_utc) : `${kickoffLabel(row.date)} · Kickoff TBA`,
+      status: "scheduled",
+      statusDetail: resultPending
+        ? `Kickoff passed · final not yet verified in this release${row.timing_note ? ` · ${row.timing_note}` : ""}`
+        : row.timing_note ?? "Scheduled · verified source snapshot",
       awayTeamId: row.away, homeTeamId: row.home, venueSlug: row.home,
       venue: row.site ?? "Not published", city: "", broadcast: row.tv,
       weather: null, neutralSite: row.neutral_site,
@@ -623,10 +659,11 @@ function buildScheduledGames(): Game[] {
     });
   }
   if (verifiedRefresh) {
-    const currentWeek = weekStart(verifiedRefresh.reference_date);
-    const verifiedKeys = new Set(verifiedRefresh.scheduledGames.map((row) => gameKey(row.kickoff_utc, row.away, row.home)));
+    // Inside every reviewed board week the release is the complete FBS slate.
+    const reviewedWeeks = new Set(boardWeeks.map((entry) => weekStart(entry.start)));
+    const verifiedKeys = new Set(verifiedRefresh.scheduledGames.map((row) => gameKey(row.kickoff_utc ?? row.date, row.away, row.home)));
     for (const [key, game] of byKey) {
-      if (weekStart(game.date) === currentWeek && !verifiedKeys.has(key)) byKey.delete(key);
+      if (reviewedWeeks.has(weekStart(game.date)) && !verifiedKeys.has(key)) byKey.delete(key);
     }
   }
   return [...byKey.values()].sort((a, b) => a.date.localeCompare(b.date));

@@ -65,3 +65,13 @@
 | Canonical supplemental scoreboard | `reconcileNcaafEvents`, server adapter and honest widget labels | incorrect Kansas/Hawai'i dates, AOT, blank score, false 0–0 final, protected final and ambiguous identity tests |
 | Historical category honesty | dated fantasy labels and source context; unchanged baseline dates | preserved fantasy/poll/metric cutoffs and rendered player context |
 | Dual kickoff meaning | NDSU–UNLV timing note plus separate announced kickoff field | retained 23:00 slot, explicit 23:10 kickoff regression |
+
+## October 11 Week 7 release
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| Reviewed Week 7 release, Week 6 history retained | `scripts/apply-week7-release.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-release.json`, `board_weeks` | apply assertions (59 games, per-day counts, unique pairs, 138-team identities); `tests/week7.test.ts`; live ESPN coverage build check for Oct 12–18 |
+| Official TBD kickoffs without placeholders | nullable `kickoff_utc`/`time_et`, date-only game date, "Kickoff TBA" labels, Saturday-board TBA group, team-feed timing | build-time guard; `tests/week7.test.ts`; rendered `/?week=7` |
+| Server-clock week selection | `lib/week-cutover.ts`, `app/page.tsx`, `app/[...slug]/page.tsx`, `components/broadcast/week-switch.tsx` | 12:59:59.999Z → 6, 13:00:00.000Z/.001Z → 7; `no-store` header and rendered default-week tests |
+| Week navigation | `WeekSwitch` links with `aria-current`, scoreboard rail and source labels per board week | rendered `/scores?week=6|7`, keyboard focus and 390px browser check |
+| Honest records and byes | `team_records_review`, retained October 10 overall records, "Ranked, not on this FBS board" | `tests/week7.test.ts`, refresh/rendered regressions |

@@ -1,4 +1,5 @@
 import {
+  boardWeeks,
   broadcastAsOf,
   fantasyNotes,
   fantasyNotesAsOf,
@@ -21,6 +22,11 @@ const legacyAsOf =
 // Select the scoreboard's week from its own snapshot, independently of portal/fantasy.
 const referenceDate = verifiedRefresh?.reference_date ?? legacyAsOf;
 const datasetAsOf = verifiedRefresh?.reference_date ?? legacyAsOf;
+
+/** The board week's Monday; the snapshot's current week when none is chosen. */
+export function boardWeekStart(week: number | null | undefined): string {
+  return boardWeeks.find((entry) => entry.week === week)?.start ?? referenceDate;
+}
 
 export const homepageData: HomepageData = {
   teams,
@@ -45,6 +51,7 @@ export const homepageData: HomepageData = {
     imageIsIllustration: true,
   })),
   referenceDate,
+  boardWeeks,
   datasetAsOf,
   portalAsOf,
   fantasyAsOf: fantasyNotesAsOf,
@@ -52,12 +59,17 @@ export const homepageData: HomepageData = {
   verifiedAt: verifiedRefresh?.retrieved_at ?? null,
 };
 
-export const tickerGames = [
-  ...weekGames(games, referenceDate)
-    .filter((game) => game.status === "final")
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 8),
-  ...weekGames(games, referenceDate)
-    .filter((game) => game.status !== "final")
-    .slice(0, 8),
-];
+/** Latest verified finals through the board week, then that week's games to come. */
+export function tickerGamesFor(week: number | null | undefined) {
+  const selected = week ?? verifiedRefresh?.week ?? Number.POSITIVE_INFINITY;
+  const slate = weekGames(games, boardWeekStart(week));
+  return [
+    ...games
+      .filter((game) => game.status === "final" && game.week <= selected)
+      .sort((a, b) => b.date.localeCompare(a.date))
+      .slice(0, 8),
+    ...slate.filter((game) => game.status !== "final").slice(0, 8),
+  ];
+}
+
+export const tickerGames = tickerGamesFor(verifiedRefresh?.week);

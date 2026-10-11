@@ -2,7 +2,9 @@
 
 import { featuredGame, weekGames, type HomepageData } from "@/lib/homepage";
 import { easternDate } from "@/lib/game-calendar";
-import { broadcastEventForGame, refreshStorylines, verifiedRefresh } from "@/lib/cfb-dataset";
+import { broadcastEventForGame, refreshStorylines, verifiedRefresh, type BoardWeekRow } from "@/lib/cfb-dataset";
+import type { BoardWeekSelection } from "@/lib/week-cutover";
+import { WeekSwitch, clockWeek, useBoardWeekCutover } from "./week-switch";
 import { WeekHeaderStrip } from "./primitives";
 import { MarqueeGame } from "./marquee-game";
 import { WeekScoreboard } from "./week-scoreboard";
@@ -19,36 +21,63 @@ import {
   RankingsLane,
 } from "./intelligence-lanes";
 
+const stamp = (value: string | undefined) =>
+  value && Number.isFinite(Date.parse(value))
+    ? `${new Date(value).toISOString().slice(0, 10)} ${new Date(value).toISOString().slice(11, 16)} UTC`
+    : null;
+
+/** Each chip names its own cutoff; one week's release never restamps another's. */
+function weekChips(board: BoardWeekRow | undefined, isLatest: boolean): string[] {
+  if (!verifiedRefresh) return [];
+  const source = board ?? { retrieved_at: verifiedRefresh.retrieved_at, results_verified_at: verifiedRefresh.results_verified_at, schedule_verified_at: verifiedRefresh.schedule_verified_at };
+  const chips = [
+    stamp(source.retrieved_at) && `${isLatest ? "REVIEWED" : "SNAPSHOT"} ${stamp(source.retrieved_at)}`,
+    stamp(source.results_verified_at) && `FINALS VERIFIED ${stamp(source.results_verified_at)}`,
+    stamp(source.schedule_verified_at) && `SCHEDULE CHECKED ${stamp(source.schedule_verified_at)}`,
+    board && stamp(board.records_verified_at) && `RECORDS CHECKED ${stamp(board.records_verified_at)}`,
+    `POLLS RELEASED ${verifiedRefresh.polls?.[0]?.release_date ?? "—"}`,
+  ];
+  return chips.filter((chip): chip is string => typeof chip === "string");
+}
+
 export function BroadcastHomepage({
   data,
   cleanMode,
   onModeRequest,
+  selection,
 }: {
   data: HomepageData;
   cleanMode: boolean;
   onModeRequest: () => void;
+  /** Server-clock board week; absent only outside a request (tests, previews). */
+  selection?: BoardWeekSelection;
 }) {
-  const slate = weekGames(data.games, data.referenceDate);
-  const storylines = refreshStorylines;
+  const weeks = data.boardWeeks ?? [];
+  const latest = weeks.at(-1);
+  const board = weeks.find((entry) => entry.week === selection?.week) ?? latest;
+  const boardStart = board?.start ?? data.referenceDate;
+  const previousBoard = board ? weeks[weeks.indexOf(board) - 1] : undefined;
+  const current = selection ? clockWeek(weeks, selection) : (latest?.week ?? null);
+  useBoardWeekCutover(weeks, selection, true);
+  const slate = weekGames(data.games, boardStart);
+  // A story belongs to one board week; untagged stories ride the snapshot's own week.
+  const storylines = refreshStorylines.filter(
+    (story) => (story.week ?? verifiedRefresh?.week) === (board?.week ?? verifiedRefresh?.week),
+  );
   // Shared weekly-header grammar, derived from the verified snapshot so it can
   // never advertise a stale week. Hidden entirely when no snapshot ships.
+  const isLatest = board == null || board === latest;
+  const weekStatus =
+    board == null || current == null || board.week === current
+      ? `AS OF ${(board?.retrieved_at ?? verifiedRefresh?.retrieved_at ?? "").slice(0, 10)}`
+      : board.week < current
+        ? "ARCHIVE"
+        : "PREVIEW";
   const weekEyebrow = verifiedRefresh
-    ? `WEEK ${verifiedRefresh.week} · OCT 6–10 · AS OF ${verifiedRefresh.reference_date}`
+    ? board
+      ? `WEEK ${board.week} · ${board.label.toUpperCase()} · ${weekStatus}`
+      : `WEEK ${verifiedRefresh.week} · AS OF ${verifiedRefresh.reference_date}`
     : null;
-  // Each chip names its own cutoff: the base snapshot, any later results
-  // verification, and the poll release are separate facts.
-  const weekChips = verifiedRefresh
-    ? [
-        `SNAPSHOT ${verifiedRefresh.retrieved_at.slice(0, 10)} ${verifiedRefresh.retrieved_at.slice(11, 16)} UTC`,
-        ...(verifiedRefresh.results_verified_at
-          ? [`FINALS VERIFIED ${verifiedRefresh.results_verified_at.slice(0, 10)} ${verifiedRefresh.results_verified_at.slice(11, 16)} UTC`]
-          : []),
-        ...(verifiedRefresh.schedule_verified_at
-          ? [`SCHEDULE CHECKED ${verifiedRefresh.schedule_verified_at.slice(0, 10)} ${verifiedRefresh.schedule_verified_at.slice(11, 16)} UTC`]
-          : []),
-        `POLLS RELEASED ${verifiedRefresh.polls?.[0]?.release_date ?? "—"}`,
-      ]
-    : [];
   // Finals on the board that post-date the stats cutoff are not in the leader totals.
   const metricsThrough = data.metrics?.through_games ?? null;
   const finalsAfterMetrics = metricsThrough
@@ -56,7 +85,9 @@ export function BroadcastHomepage({
         (game) => game.status === "final" && easternDate(game.date) > metricsThrough,
       ).length
     : 0;
-  const featured = featuredGame(slate, data.teams);
+  const featured =
+    slate.find((game) => game.id === board?.marquee_game_id && game.status !== "final") ??
+    featuredGame(slate, data.teams);
   const away = data.teams.find((team) => team.slug === featured?.awayTeamId);
   const home = data.teams.find((team) => team.slug === featured?.homeTeamId);
   const stadium =
@@ -79,7 +110,9 @@ export function BroadcastHomepage({
           <span className="apex-season-word"> SEASON</span>
         </div>
       </div>
-      <WeekHeaderStrip eyebrow={weekEyebrow} chips={weekChips} />
+      <WeekHeaderStrip eyebrow={weekEyebrow} chips={weekChips(board, isLatest)} />
+      <WeekSwitch weeks={weeks} selected={board?.week ?? null} current={current} />
+      {board?.note ? <p className="apex-data-note apex-week-note">{board.note}</p> : null}
       {featured && away && home ? (
         <MarqueeGame
           game={featured}
@@ -143,9 +176,9 @@ export function BroadcastHomepage({
       <WeekScoreboard
         games={slate}
         teams={data.teams}
-        referenceDate={data.referenceDate}
+        referenceDate={boardStart}
       />
-      <FinalsStrip referenceDate={data.referenceDate} />
+      <FinalsStrip referenceDate={boardStart} fallbackDate={previousBoard?.start} />
       <div className="apex-intelligence-grid">
         <RankingsLane pollTables={data.pollTables} teams={data.teams} />
         <PortalLane
@@ -173,8 +206,8 @@ export function BroadcastHomepage({
       />
       <GamedayLane stadium={stadium} team={stadiumTeam} />
       <p className="apex-data-note">
-        Independent college football intelligence · Scoreboard snapshot{" "}
-        {data.datasetAsOf} · Retrieved {data.verifiedAt ?? "Not published"} · Module source dates shown separately ·{" "}
+        Independent college football intelligence · Latest release: board week of{" "}
+        {data.datasetAsOf} · Reviewed {data.verifiedAt ?? "Not published"} · Module source dates shown separately ·{" "}
         <a href="/data-sources" className="underline underline-offset-4">
           Sources & data status
         </a>

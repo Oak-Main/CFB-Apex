@@ -20,6 +20,8 @@ import type { Stadium, Team } from "@/lib/types";
 import { TeamMark } from "./primitives";
 
 export interface WatchPageProps {
+	/** Server-clock board week to open on, when it has TV rows. */
+	defaultWeek?: number | null;
 	tvRows: readonly TvRow[];
 	tvWeeks: () => number[];
 	broadcastAsOf: string | null;
@@ -209,6 +211,7 @@ function NetworkCard({
 }
 
 export function WatchPage({
+	defaultWeek = null,
 	tvRows,
 	tvWeeks,
 	broadcastAsOf,
@@ -219,8 +222,11 @@ export function WatchPage({
 	teams,
 }: WatchPageProps) {
 	const weeks = useMemo(() => tvWeeks(), [tvWeeks]);
+	// The server-clock board week leads; otherwise the next listed game's week.
 	const [week, setWeek] = useState(() =>
-		initialWeek(tvRows, tvWeeks(), broadcastAsOf),
+		defaultWeek != null && tvWeeks().includes(defaultWeek)
+			? defaultWeek
+			: initialWeek(tvRows, tvWeeks(), broadcastAsOf),
 	);
 	const sortedTeams = useMemo(
 		() => [...teams].sort((a, b) => a.shortName.localeCompare(b.shortName)),

@@ -47,3 +47,10 @@
 - ESPN's complete-game statuses, line scores and school reports corroborate Friday results; all conference and overall records reconcile. Poll records remain historical publication-time records.
 - The AP October 8 Moore/Raiola report is labeled reported, not an independently retrieved official conference filing. Other availability entries were not fully reverified and keep prior dates.
 - Saturday weather advisories do not establish live conditions or a blanket all-clear. GameDay's indoor relocation and Georgia Tech's canceled festivities are explicitly sourced.
+
+## October 11 Week 7 release
+
+- The reviewed Gameday Command Center release is the Week 7 authority. ESPN's FBS scoreboard (checked 2026-10-11 12:20 UTC) lists all 59 pairings plus the three excluded FCS games; its differences (TBD times, "ABC or ESPN" alternatives, the Wisconsin–UCLA placeholder, network abbreviations) are recorded and not adopted.
+- The cutover is a fixed editorial time, Sunday 06:00 America/Los_Angeles before the week starts; poll publication remains independent of it.
+- A team's October 10 ESPN-reconciled record stays valid when its Week 6 game was already a verified final before that check, or its schedule lists an explicit October 10 bye.
+- ESPN conference ids 179 (Charleston Southern), 48 (Elon) and 29 (The Citadel) are outside the FBS set, so those three games stay excluded with evidence.
