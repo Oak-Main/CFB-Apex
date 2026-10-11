@@ -36,16 +36,10 @@ test("Eastern dates keep Friday finals and late Saturday games on the correct da
 test("the Week 6 archive board and its ticker share the verified Week 6 snapshot", () => {
   const slate = weekGames(games, boardWeekStart(6));
   const tickerGames = tickerGamesFor(6);
-  // 58 FBS-vs-FBS games: 14 verified finals and 44 Saturday games without a verified result.
+  // 58 FBS-vs-FBS games, all verified finals (the 46 Saturday results checked Oct 11).
   assert.equal(slate.length, 58);
-  assert.equal(slate.filter((game) => game.status === "final").length, 14);
-  assert.equal(slate.filter((game) => game.status === "scheduled").length, 44);
-  assert.ok(
-    slate
-      .filter((game) => game.status === "scheduled")
-      .every((game) => /final not yet verified/.test(game.statusDetail)),
-    "elapsed Week 6 games say their result is unverified, never upcoming",
-  );
+  assert.equal(slate.filter((game) => game.status === "final").length, 58);
+  assert.ok(slate.every((game) => game.awayScore != null && game.homeScore != null));
   assert.equal(
     new Set(
       slate.map((game) => gameKey(game.date, game.awayTeamId, game.homeTeamId)),
@@ -53,8 +47,9 @@ test("the Week 6 archive board and its ticker share the verified Week 6 snapshot
     slate.length,
   );
   assert.equal(tickerGames.filter((game) => game.status === "final").length, 8);
+  // The archive ticker leads with Saturday's late finals.
   assert.ok(
-    tickerGames.some((game) => game.awayTeamId === "iowa-state" && game.status === "final"),
+    tickerGames.some((game) => game.id === "2026-10-10-hawaii-at-arizona-state" && game.status === "final"),
   );
   assert.ok(slate.every((game) => games.find((row) => row.id === game.id)?.week === 6));
   assert.ok(
@@ -112,10 +107,10 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
   );
   assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "3–3");
   assert.equal(teams.find((team) => team.slug === "fiu")?.record, "3–2");
-  // App State played Oct 10 and its school record could not be retrieved: unknown, not stale.
+  // App State's record was withheld until its Oct 10 loss to Old Dominion was verified.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "Not published",
+    "3–2",
   );
 });
 
@@ -194,17 +189,18 @@ test("verified additions: GameDay badge, ranked matchups, NDSU storyline, standi
   assert.ok(sunBelt.rows.length >= 10);
   assert.ok(sunBelt.rows.every((row) => row.team_slug), "every Sun Belt row links to a team hub");
   const sec = standings.find((conf) => conf.slug === "sec");
-  // W/L are conference games (Georgia 5-0 overall, 3-0 SEC), not overall wins.
+  // W/L are conference games (Georgia 6-0 overall, 4-0 SEC after Alabama), not overall wins.
   const georgia = sec?.rows.find((row) => row.team_slug === "georgia");
-  assert.equal(`${georgia?.w}-${georgia?.l}`, "3-0");
-  assert.equal(georgia?.overall, "5-0");
+  assert.equal(`${georgia?.w}-${georgia?.l}`, "4-0");
+  assert.equal(georgia?.overall, "6-0");
   for (const conf of standings) {
     assert.ok(conf.rows.every((row) => row.team_slug), `${conf.slug} rows all linked`);
     for (const row of conf.rows) {
       // The tables keep their October 10 date; so do the overall records beside them.
       const record = row.team_slug ? verifiedRefresh?.retainedBaseline?.overall_records?.[row.team_slug] : undefined;
       const [ow, ol] = (record ?? "").split("-").map(Number);
-      assert.equal(row.overall, record, `${row.team_slug} overall matches the October 10 records`);
+      assert.equal(row.overall, record, `${row.team_slug} overall matches the standings date's records`);
+      assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, `${row.team_slug} overall matches teamRecords`);
       assert.ok(Number(row.w) <= ow && Number(row.l) <= ol, `${row.team_slug} conference record fits inside overall`);
     }
   }
@@ -268,8 +264,9 @@ test("midweek finals no longer appear as upcoming anywhere", () => {
     !tickerGames.some((game) => game.status !== "final" && pairs.has(pairOf(game.awayTeamId, game.homeTeamId))),
     "ticker shows them only as finals",
   );
-  // The featured game must still be an unplayed matchup.
-  assert.equal(featuredGame(slate, teams)?.status, "scheduled");
+  // With every Week 6 game final, the archive features its marquee result.
+  assert.equal(featuredGame(slate, teams)?.id, "2026-10-10-georgia-at-alabama");
+  assert.equal(featuredGame(slate, teams)?.status, "final");
 });
 
 test("midweek finals keep their Eastern game dates across time zones", () => {
@@ -340,9 +337,10 @@ test("freshness stays per source: polls and stats keep their own cutoffs", () =>
     const played = ((verifiedRefresh?.playedGames ?? []) as Array<{ provider_id?: string; verified_at?: string }>).find((row) => row.provider_id === want.provider);
     assert.ok(played?.verified_at && played.verified_at >= "2026-10-09", `${want.provider} carries its own verification time`);
   }
-  // Remaining rows carry their own re-check time; Hawai'i at Arizona State kept its corrected kickoff.
-  const hawaii = verifiedRefresh?.scheduledGames.find((row) => row.provider_id === "401856808");
+  // Hawai'i at Arizona State kept its corrected kickoff and its Eastern game date as a final.
+  const hawaii = (verifiedRefresh?.playedGames as Array<{ provider_id?: string; kickoff_utc?: string; date: string }> | undefined)?.find((row) => row.provider_id === "401856808");
   assert.equal(hawaii?.kickoff_utc, "2026-10-11T02:30Z");
+  assert.equal(hawaii?.date, "2026-10-10");
   assert.equal(easternDate(hawaii?.kickoff_utc ?? ""), "2026-10-10");
   assert.ok(verifiedRefresh?.scheduledGames.every((row) => (row.verified_at ?? "") >= "2026-10-09"));
   const recap = verifiedRefresh?.storylines?.find((row) => row.id === "week6-thursday-finals");

@@ -1,0 +1,3638 @@
+{
+ "schema_version": 1,
+ "scope": "Week 6 Saturday October 10, 2026: the 44 FBS-vs-FBS games still unverified after the Week 7 release, plus all 138 overall and conference records after them.",
+ "checked_at": "2026-10-11T13:57:20Z",
+ "finals": [
+  {
+   "provider_id": "401856716",
+   "date": "2026-10-10",
+   "away": "texas-am",
+   "home": "missouri",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856716",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "missouri",
+      "name": "Missouri Tigers",
+      "points": 27,
+      "line_score": [
+       0,
+       10,
+       10,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "texas-am",
+      "name": "Texas A&M Aggies",
+      "points": 6,
+      "line_score": [
+       3,
+       0,
+       0,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "1-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604260",
+    "contest_id": 6604260,
+    "final_message": "FINAL",
+    "scores": {
+     "missouri": 27,
+     "texas-am": 6
+    },
+    "home": "missouri"
+   }
+  },
+  {
+   "provider_id": "401856823",
+   "date": "2026-10-10",
+   "away": "arizona",
+   "home": "west-virginia",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856823",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "west-virginia",
+      "name": "West Virginia Mountaineers",
+      "points": 31,
+      "line_score": [
+       3,
+       14,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "0-3"
+     },
+     "away": {
+      "slug": "arizona",
+      "name": "Arizona Wildcats",
+      "points": 52,
+      "line_score": [
+       14,
+       10,
+       14,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6640717",
+    "contest_id": 6640717,
+    "final_message": "FINAL",
+    "scores": {
+     "west-virginia": 31,
+     "arizona": 52
+    },
+    "home": "west-virginia"
+   }
+  },
+  {
+   "provider_id": "401856824",
+   "date": "2026-10-10",
+   "away": "ucf",
+   "home": "oklahoma-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856824",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "oklahoma-state",
+      "name": "Oklahoma State Cowboys",
+      "points": 42,
+      "line_score": [
+       7,
+       14,
+       3,
+       18
+      ],
+      "record": "4-1",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "ucf",
+      "name": "UCF Knights",
+      "points": 28,
+      "line_score": [
+       14,
+       7,
+       0,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603629",
+    "contest_id": 6603629,
+    "final_message": "FINAL",
+    "scores": {
+     "oklahoma-state": 42,
+     "ucf": 28
+    },
+    "home": "oklahoma-state"
+   }
+  },
+  {
+   "provider_id": "401858256",
+   "date": "2026-10-10",
+   "away": "north-carolina",
+   "home": "pittsburgh",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858256",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "pittsburgh",
+      "name": "Pittsburgh Panthers",
+      "points": 17,
+      "line_score": [
+       7,
+       3,
+       0,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "north-carolina",
+      "name": "North Carolina Tar Heels",
+      "points": 21,
+      "line_score": [
+       0,
+       7,
+       7,
+       7
+      ],
+      "record": "3-2",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6640402",
+    "contest_id": 6640402,
+    "final_message": "FINAL",
+    "scores": {
+     "pittsburgh": 17,
+     "north-carolina": 21
+    },
+    "home": "pittsburgh"
+   }
+  },
+  {
+   "provider_id": "401858260",
+   "date": "2026-10-10",
+   "away": "wake-forest",
+   "home": "nc-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858260",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "nc-state",
+      "name": "NC State Wolfpack",
+      "points": 14,
+      "line_score": [
+       7,
+       7,
+       0,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "1-2"
+     },
+     "away": {
+      "slug": "wake-forest",
+      "name": "Wake Forest Demon Deacons",
+      "points": 38,
+      "line_score": [
+       7,
+       3,
+       21,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "3-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604354",
+    "contest_id": 6604354,
+    "final_message": "FINAL",
+    "scores": {
+     "nc-state": 14,
+     "wake-forest": 38
+    },
+    "home": "nc-state"
+   }
+  },
+  {
+   "provider_id": "401862795",
+   "date": "2026-10-10",
+   "away": "tulane",
+   "home": "army",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862795",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "army",
+      "name": "Army Black Knights",
+      "points": 20,
+      "line_score": [
+       7,
+       0,
+       0,
+       13
+      ],
+      "record": "3-2",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "tulane",
+      "name": "Tulane Green Wave",
+      "points": 17,
+      "line_score": [
+       0,
+       3,
+       7,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "0-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603728",
+    "contest_id": 6603728,
+    "final_message": "FINAL",
+    "scores": {
+     "army": 20,
+     "tulane": 17
+    },
+    "home": "army"
+   }
+  },
+  {
+   "provider_id": "401866436",
+   "date": "2026-10-10",
+   "away": "sacramento-state",
+   "home": "bowling-green",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866436",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "bowling-green",
+      "name": "Bowling Green Falcons",
+      "points": 38,
+      "line_score": [
+       0,
+       17,
+       7,
+       14
+      ],
+      "record": "2-4",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "sacramento-state",
+      "name": "Sacramento State Hornets",
+      "points": 10,
+      "line_score": [
+       3,
+       0,
+       0,
+       7
+      ],
+      "record": "1-5",
+      "conference_record": "0-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603976",
+    "contest_id": 6603976,
+    "final_message": "FINAL",
+    "scores": {
+     "bowling-green": 38,
+     "sacramento-state": 10
+    },
+    "home": "bowling-green"
+   }
+  },
+  {
+   "provider_id": "401858482",
+   "date": "2026-10-10",
+   "away": "ball-state",
+   "home": "northwestern",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858482",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "northwestern",
+      "name": "Northwestern Wildcats",
+      "points": 45,
+      "line_score": [
+       14,
+       17,
+       14,
+       0
+      ],
+      "record": "4-1",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "ball-state",
+      "name": "Ball State Cardinals",
+      "points": 14,
+      "line_score": [
+       0,
+       14,
+       0,
+       0
+      ],
+      "record": "1-5",
+      "conference_record": "0-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603798",
+    "contest_id": 6603798,
+    "final_message": "FINAL",
+    "scores": {
+     "northwestern": 45,
+     "ball-state": 14
+    },
+    "home": "northwestern"
+   }
+  },
+  {
+   "provider_id": "401856714",
+   "date": "2026-10-10",
+   "away": "south-carolina",
+   "home": "florida",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856714",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T16:45Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "florida",
+      "name": "Florida Gators",
+      "points": 19,
+      "line_score": [
+       7,
+       3,
+       3,
+       6
+      ],
+      "record": "4-2",
+      "conference_record": "2-2"
+     },
+     "away": {
+      "slug": "south-carolina",
+      "name": "South Carolina Gamecocks",
+      "points": 38,
+      "line_score": [
+       7,
+       10,
+       14,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603648",
+    "contest_id": 6603648,
+    "final_message": "FINAL",
+    "scores": {
+     "florida": 19,
+     "south-carolina": 38
+    },
+    "home": "florida"
+   }
+  },
+  {
+   "provider_id": "401862797",
+   "date": "2026-10-10",
+   "away": "rice",
+   "home": "east-carolina",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862797",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T17:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "east-carolina",
+      "name": "East Carolina Pirates",
+      "points": 28,
+      "line_score": [
+       7,
+       0,
+       7,
+       14
+      ],
+      "record": "3-2",
+      "conference_record": "1-0"
+     },
+     "away": {
+      "slug": "rice",
+      "name": "Rice Owls",
+      "points": 12,
+      "line_score": [
+       0,
+       3,
+       6,
+       3
+      ],
+      "record": "1-5",
+      "conference_record": "0-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604297",
+    "contest_id": 6604297,
+    "final_message": "FINAL",
+    "scores": {
+     "east-carolina": 28,
+     "rice": 12
+    },
+    "home": "east-carolina"
+   }
+  },
+  {
+   "provider_id": "401869843",
+   "date": "2026-10-10",
+   "away": "old-dominion",
+   "home": "appalachian-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869843",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T17:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "appalachian-state",
+      "name": "App State Mountaineers",
+      "points": 3,
+      "line_score": [
+       0,
+       0,
+       3,
+       0
+      ],
+      "record": "3-2",
+      "conference_record": "0-1"
+     },
+     "away": {
+      "slug": "old-dominion",
+      "name": "Old Dominion Monarchs",
+      "points": 10,
+      "line_score": [
+       0,
+       0,
+       2,
+       8
+      ],
+      "record": "2-4",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604213",
+    "contest_id": 6604213,
+    "final_message": "FINAL",
+    "scores": {
+     "appalachian-state": 3,
+     "old-dominion": 10
+    },
+    "home": "appalachian-state"
+   }
+  },
+  {
+   "provider_id": "401866440",
+   "date": "2026-10-10",
+   "away": "miami-oh",
+   "home": "umass",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866440",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T18:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "umass",
+      "name": "Massachusetts Minutemen",
+      "points": 19,
+      "line_score": [
+       7,
+       3,
+       0,
+       9
+      ],
+      "record": "4-2",
+      "conference_record": "1-2"
+     },
+     "away": {
+      "slug": "miami-oh",
+      "name": "Miami (OH) RedHawks",
+      "points": 20,
+      "line_score": [
+       14,
+       0,
+       3,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603871",
+    "contest_id": 6603871,
+    "final_message": "FINAL",
+    "scores": {
+     "umass": 19,
+     "miami-oh": 20
+    },
+    "home": "umass"
+   }
+  },
+  {
+   "provider_id": "401856717",
+   "date": "2026-10-10",
+   "away": "texas",
+   "home": "oklahoma",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": true,
+    "sides": {
+     "home": {
+      "slug": "oklahoma",
+      "name": "Oklahoma Sooners",
+      "points": 27,
+      "line_score": [
+       0,
+       7,
+       3,
+       17
+      ],
+      "record": "3-2",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "texas",
+      "name": "Texas Longhorns",
+      "points": 24,
+      "line_score": [
+       7,
+       10,
+       0,
+       7
+      ],
+      "record": "4-1",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604191",
+    "contest_id": 6604191,
+    "final_message": "FINAL",
+    "scores": {
+     "oklahoma": 27,
+     "texas": 24
+    },
+    "home": "oklahoma"
+   }
+  },
+  {
+   "provider_id": "401856718",
+   "date": "2026-10-10",
+   "away": "ole-miss",
+   "home": "vanderbilt",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856718",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "vanderbilt",
+      "name": "Vanderbilt Commodores",
+      "points": 17,
+      "line_score": [
+       3,
+       0,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "0-3"
+     },
+     "away": {
+      "slug": "ole-miss",
+      "name": "Ole Miss Rebels",
+      "points": 52,
+      "line_score": [
+       14,
+       28,
+       0,
+       10
+      ],
+      "record": "4-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6640769",
+    "contest_id": 6640769,
+    "final_message": "FINAL",
+    "scores": {
+     "vanderbilt": 17,
+     "ole-miss": 52
+    },
+    "home": "vanderbilt"
+   }
+  },
+  {
+   "provider_id": "401856825",
+   "date": "2026-10-10",
+   "away": "houston",
+   "home": "kansas-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856825",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "kansas-state",
+      "name": "Kansas State Wildcats",
+      "points": 16,
+      "line_score": [
+       3,
+       0,
+       6,
+       7
+      ],
+      "record": "3-2",
+      "conference_record": "0-2"
+     },
+     "away": {
+      "slug": "houston",
+      "name": "Houston Cougars",
+      "points": 35,
+      "line_score": [
+       7,
+       14,
+       14,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604068",
+    "contest_id": 6604068,
+    "final_message": "FINAL",
+    "scores": {
+     "kansas-state": 16,
+     "houston": 35
+    },
+    "home": "kansas-state"
+   }
+  },
+  {
+   "provider_id": "401858255",
+   "date": "2026-10-10",
+   "away": "duke",
+   "home": "georgia-tech",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858255",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "georgia-tech",
+      "name": "Georgia Tech Yellow Jackets",
+      "points": 28,
+      "line_score": [
+       7,
+       7,
+       7,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "duke",
+      "name": "Duke Blue Devils",
+      "points": 25,
+      "line_score": [
+       0,
+       10,
+       8,
+       7
+      ],
+      "record": "4-1",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603670",
+    "contest_id": 6603670,
+    "final_message": "FINAL",
+    "scores": {
+     "georgia-tech": 28,
+     "duke": 25
+    },
+    "home": "georgia-tech"
+   }
+  },
+  {
+   "provider_id": "401858257",
+   "date": "2026-10-10",
+   "away": "stanford",
+   "home": "notre-dame",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858257",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "notre-dame",
+      "name": "Notre Dame Fighting Irish",
+      "points": 58,
+      "line_score": [
+       14,
+       23,
+       7,
+       14
+      ],
+      "record": "6-0",
+      "conference_record": "0-0"
+     },
+     "away": {
+      "slug": "stanford",
+      "name": "Stanford Cardinal",
+      "points": 7,
+      "line_score": [
+       0,
+       0,
+       7,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604110",
+    "contest_id": 6604110,
+    "final_message": "FINAL",
+    "scores": {
+     "notre-dame": 58,
+     "stanford": 7
+    },
+    "home": "notre-dame"
+   }
+  },
+  {
+   "provider_id": "401858259",
+   "date": "2026-10-10",
+   "away": "virginia-tech",
+   "home": "california",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858259",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "california",
+      "name": "California Golden Bears",
+      "points": 25,
+      "line_score": [
+       0,
+       10,
+       3,
+       12
+      ],
+      "record": "3-3",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "virginia-tech",
+      "name": "Virginia Tech Hokies",
+      "points": 20,
+      "line_score": [
+       0,
+       14,
+       0,
+       6
+      ],
+      "record": "4-2",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603804",
+    "contest_id": 6603804,
+    "final_message": "FINAL",
+    "scores": {
+     "california": 25,
+     "virginia-tech": 20
+    },
+    "home": "california"
+   }
+  },
+  {
+   "provider_id": "401858480",
+   "date": "2026-10-10",
+   "away": "illinois",
+   "home": "michigan-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final/OT",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "michigan-state",
+      "name": "Michigan State Spartans",
+      "points": 37,
+      "line_score": [
+       0,
+       7,
+       10,
+       14,
+       6
+      ],
+      "record": "2-4",
+      "conference_record": "0-3"
+     },
+     "away": {
+      "slug": "illinois",
+      "name": "Illinois Fighting Illini",
+      "points": 38,
+      "line_score": [
+       10,
+       10,
+       3,
+       8,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604085",
+    "contest_id": 6604085,
+    "final_message": "FINAL",
+    "scores": {
+     "michigan-state": 37,
+     "illinois": 38
+    },
+    "home": "michigan-state"
+   }
+  },
+  {
+   "provider_id": "401858484",
+   "date": "2026-10-10",
+   "away": "ucla",
+   "home": "oregon",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "oregon",
+      "name": "Oregon Ducks",
+      "points": 15,
+      "line_score": [
+       6,
+       0,
+       0,
+       9
+      ],
+      "record": "3-2",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "ucla",
+      "name": "UCLA Bruins",
+      "points": 17,
+      "line_score": [
+       3,
+       7,
+       0,
+       7
+      ],
+      "record": "5-0",
+      "conference_record": "3-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604120",
+    "contest_id": 6604120,
+    "final_message": "FINAL",
+    "scores": {
+     "oregon": 15,
+     "ucla": 17
+    },
+    "home": "oregon"
+   }
+  },
+  {
+   "provider_id": "401862796",
+   "date": "2026-10-10",
+   "away": "charlotte",
+   "home": "north-texas",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862796",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "north-texas",
+      "name": "North Texas Mean Green",
+      "points": 50,
+      "line_score": [
+       10,
+       30,
+       7,
+       3
+      ],
+      "record": "4-2",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "charlotte",
+      "name": "Charlotte 49ers",
+      "points": 10,
+      "line_score": [
+       3,
+       7,
+       0,
+       0
+      ],
+      "record": "0-6",
+      "conference_record": "0-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604135",
+    "contest_id": 6604135,
+    "final_message": "FINAL",
+    "scores": {
+     "north-texas": 50,
+     "charlotte": 10
+    },
+    "home": "north-texas"
+   }
+  },
+  {
+   "provider_id": "401862799",
+   "date": "2026-10-10",
+   "away": "tulsa",
+   "home": "navy",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862799",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "navy",
+      "name": "Navy Midshipmen",
+      "points": 34,
+      "line_score": [
+       7,
+       7,
+       6,
+       14
+      ],
+      "record": "2-3",
+      "conference_record": "1-2"
+     },
+     "away": {
+      "slug": "tulsa",
+      "name": "Tulsa Golden Hurricane",
+      "points": 26,
+      "line_score": [
+       14,
+       6,
+       6,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "0-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603617",
+    "contest_id": 6603617,
+    "final_message": "FINAL",
+    "scores": {
+     "navy": 34,
+     "tulsa": 26
+    },
+    "home": "navy"
+   }
+  },
+  {
+   "provider_id": "401866435",
+   "date": "2026-10-10",
+   "away": "eastern-michigan",
+   "home": "akron",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866435",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "akron",
+      "name": "Akron Zips",
+      "points": 23,
+      "line_score": [
+       7,
+       7,
+       3,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-2"
+     },
+     "away": {
+      "slug": "eastern-michigan",
+      "name": "Eastern Michigan Eagles",
+      "points": 25,
+      "line_score": [
+       3,
+       10,
+       3,
+       9
+      ],
+      "record": "4-3",
+      "conference_record": "3-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6640472",
+    "contest_id": 6640472,
+    "final_message": "FINAL",
+    "scores": {
+     "akron": 23,
+     "eastern-michigan": 25
+    },
+    "home": "akron"
+   }
+  },
+  {
+   "provider_id": "401866437",
+   "date": "2026-10-10",
+   "away": "buffalo",
+   "home": "toledo",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866437",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "toledo",
+      "name": "Toledo Rockets",
+      "points": 8,
+      "line_score": [
+       0,
+       0,
+       0,
+       8
+      ],
+      "record": "4-2",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "buffalo",
+      "name": "Buffalo Bulls",
+      "points": 23,
+      "line_score": [
+       6,
+       7,
+       3,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604244",
+    "contest_id": 6604244,
+    "final_message": "FINAL",
+    "scores": {
+     "toledo": 8,
+     "buffalo": 23
+    },
+    "home": "toledo"
+   }
+  },
+  {
+   "provider_id": "401866438",
+   "date": "2026-10-10",
+   "away": "central-michigan",
+   "home": "ohio",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866438",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "ohio",
+      "name": "Ohio Bobcats",
+      "points": 31,
+      "line_score": [
+       14,
+       17,
+       0,
+       0
+      ],
+      "record": "4-2",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "central-michigan",
+      "name": "Central Michigan Chippewas",
+      "points": 14,
+      "line_score": [
+       0,
+       0,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603895",
+    "contest_id": 6603895,
+    "final_message": "FINAL",
+    "scores": {
+     "ohio": 31,
+     "central-michigan": 14
+    },
+    "home": "ohio"
+   }
+  },
+  {
+   "provider_id": "401866439",
+   "date": "2026-10-10",
+   "away": "kent-state",
+   "home": "western-michigan",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866439",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "western-michigan",
+      "name": "Western Michigan Broncos",
+      "points": 38,
+      "line_score": [
+       7,
+       14,
+       3,
+       14
+      ],
+      "record": "4-2",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "kent-state",
+      "name": "Kent State Golden Flashes",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603828",
+    "contest_id": 6603828,
+    "final_message": "FINAL",
+    "scores": {
+     "western-michigan": 38,
+     "kent-state": 7
+    },
+    "home": "western-michigan"
+   }
+  },
+  {
+   "provider_id": "401861964",
+   "date": "2026-10-10",
+   "away": "uconn",
+   "home": "temple",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401861964",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T19:45Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "temple",
+      "name": "Temple Owls",
+      "points": 20,
+      "line_score": [
+       14,
+       3,
+       3,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "uconn",
+      "name": "UConn Huskies",
+      "points": 34,
+      "line_score": [
+       14,
+       10,
+       0,
+       10
+      ],
+      "record": "3-3",
+      "conference_record": "0-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604247",
+    "contest_id": 6604247,
+    "final_message": "FINAL",
+    "scores": {
+     "temple": 20,
+     "uconn": 34
+    },
+    "home": "temple"
+   }
+  },
+  {
+   "provider_id": "401856713",
+   "date": "2026-10-10",
+   "away": "tennessee",
+   "home": "arkansas",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856713",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T20:15Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "arkansas",
+      "name": "Arkansas Razorbacks",
+      "points": 17,
+      "line_score": [
+       0,
+       0,
+       14,
+       3
+      ],
+      "record": "2-4",
+      "conference_record": "0-3"
+     },
+     "away": {
+      "slug": "tennessee",
+      "name": "Tennessee Volunteers",
+      "points": 24,
+      "line_score": [
+       0,
+       7,
+       3,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603771",
+    "contest_id": 6603771,
+    "final_message": "FINAL",
+    "scores": {
+     "arkansas": 17,
+     "tennessee": 24
+    },
+    "home": "arkansas"
+   }
+  },
+  {
+   "provider_id": "401860902",
+   "date": "2026-10-10",
+   "away": "san-diego-state",
+   "home": "oregon-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860902",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T22:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "oregon-state",
+      "name": "Oregon State Beavers",
+      "points": 66,
+      "line_score": [
+       14,
+       24,
+       21,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "san-diego-state",
+      "name": "San Diego State Aztecs",
+      "points": 14,
+      "line_score": [
+       0,
+       7,
+       7,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604302",
+    "contest_id": 6604302,
+    "final_message": "FINAL",
+    "scores": {
+     "oregon-state": 66,
+     "san-diego-state": 14
+    },
+    "home": "oregon-state"
+   }
+  },
+  {
+   "provider_id": "401856715",
+   "date": "2026-10-10",
+   "away": "lsu",
+   "home": "kentucky",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final/OT",
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "kentucky",
+      "name": "Kentucky Wildcats",
+      "points": 35,
+      "line_score": [
+       7,
+       14,
+       0,
+       6,
+       8
+      ],
+      "record": "5-1",
+      "conference_record": "3-1"
+     },
+     "away": {
+      "slug": "lsu",
+      "name": "LSU Tigers",
+      "points": 34,
+      "line_score": [
+       10,
+       7,
+       3,
+       7,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "1-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603817",
+    "contest_id": 6603817,
+    "final_message": "FINAL",
+    "scores": {
+     "kentucky": 35,
+     "lsu": 34
+    },
+    "home": "kentucky"
+   }
+  },
+  {
+   "provider_id": "401862798",
+   "date": "2026-10-10",
+   "away": "uab",
+   "home": "memphis",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862798",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "memphis",
+      "name": "Memphis Tigers",
+      "points": 38,
+      "line_score": [
+       7,
+       3,
+       14,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "uab",
+      "name": "UAB Blazers",
+      "points": 13,
+      "line_score": [
+       7,
+       6,
+       0,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603718",
+    "contest_id": 6603718,
+    "final_message": "FINAL",
+    "scores": {
+     "memphis": 38,
+     "uab": 13
+    },
+    "home": "memphis"
+   }
+  },
+  {
+   "provider_id": "401864517",
+   "date": "2026-10-10",
+   "away": "nevada",
+   "home": "utep",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864517",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "utep",
+      "name": "UTEP Miners",
+      "points": 13,
+      "line_score": [
+       0,
+       7,
+       0,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-2"
+     },
+     "away": {
+      "slug": "nevada",
+      "name": "Nevada Wolf Pack",
+      "points": 30,
+      "line_score": [
+       7,
+       6,
+       10,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603907",
+    "contest_id": 6603907,
+    "final_message": "FINAL",
+    "scores": {
+     "utep": 13,
+     "nevada": 30
+    },
+    "home": "utep"
+   }
+  },
+  {
+   "provider_id": "401864518",
+   "date": "2026-10-10",
+   "away": "north-dakota-state",
+   "home": "unlv",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864518",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "unlv",
+      "name": "UNLV Rebels",
+      "points": 13,
+      "line_score": [
+       7,
+       0,
+       3,
+       3
+      ],
+      "record": "4-2",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "north-dakota-state",
+      "name": "North Dakota State Bison",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604129",
+    "contest_id": 6604129,
+    "final_message": "FINAL",
+    "scores": {
+     "unlv": 13,
+     "north-dakota-state": 7
+    },
+    "home": "unlv"
+   }
+  },
+  {
+   "provider_id": "401869943",
+   "date": "2026-10-10",
+   "away": "coastal-carolina",
+   "home": "marshall",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869943",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "marshall",
+      "name": "Marshall Thundering Herd",
+      "points": 21,
+      "line_score": [
+       0,
+       0,
+       7,
+       14
+      ],
+      "record": "3-3",
+      "conference_record": "0-2"
+     },
+     "away": {
+      "slug": "coastal-carolina",
+      "name": "Coastal Carolina Chanticleers",
+      "points": 27,
+      "line_score": [
+       3,
+       10,
+       14,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604279",
+    "contest_id": 6604279,
+    "final_message": "FINAL",
+    "scores": {
+     "marshall": 21,
+     "coastal-carolina": 27
+    },
+    "home": "marshall"
+   }
+  },
+  {
+   "provider_id": "401856712",
+   "date": "2026-10-10",
+   "away": "georgia",
+   "home": "alabama",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "alabama",
+      "name": "Alabama Crimson Tide",
+      "points": 17,
+      "line_score": [
+       0,
+       14,
+       3,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "3-1"
+     },
+     "away": {
+      "slug": "georgia",
+      "name": "Georgia Bulldogs",
+      "points": 20,
+      "line_score": [
+       3,
+       7,
+       7,
+       3
+      ],
+      "record": "6-0",
+      "conference_record": "4-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6640743",
+    "contest_id": 6640743,
+    "final_message": "FINAL",
+    "scores": {
+     "alabama": 17,
+     "georgia": 20
+    },
+    "home": "alabama"
+   }
+  },
+  {
+   "provider_id": "401858258",
+   "date": "2026-10-10",
+   "away": "syracuse",
+   "home": "virginia",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858258",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "virginia",
+      "name": "Virginia Cavaliers",
+      "points": 28,
+      "line_score": [
+       7,
+       0,
+       7,
+       14
+      ],
+      "record": "4-2",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "syracuse",
+      "name": "Syracuse Orange",
+      "points": 25,
+      "line_score": [
+       7,
+       10,
+       0,
+       8
+      ],
+      "record": "2-3",
+      "conference_record": "0-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603995",
+    "contest_id": 6603995,
+    "final_message": "FINAL",
+    "scores": {
+     "virginia": 28,
+     "syracuse": 25
+    },
+    "home": "virginia"
+   }
+  },
+  {
+   "provider_id": "401858485",
+   "date": "2026-10-10",
+   "away": "usc",
+   "home": "penn-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "penn-state",
+      "name": "Penn State Nittany Lions",
+      "points": 23,
+      "line_score": [
+       7,
+       10,
+       3,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "0-3"
+     },
+     "away": {
+      "slug": "usc",
+      "name": "USC Trojans",
+      "points": 31,
+      "line_score": [
+       7,
+       10,
+       7,
+       7
+      ],
+      "record": "6-1",
+      "conference_record": "3-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603761",
+    "contest_id": 6603761,
+    "final_message": "FINAL",
+    "scores": {
+     "penn-state": 23,
+     "usc": 31
+    },
+    "home": "penn-state"
+   }
+  },
+  {
+   "provider_id": "401864516",
+   "date": "2026-10-10",
+   "away": "air-force",
+   "home": "northern-illinois",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864516",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "northern-illinois",
+      "name": "Northern Illinois Huskies",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "0-5",
+      "conference_record": "0-1"
+     },
+     "away": {
+      "slug": "air-force",
+      "name": "Air Force Falcons",
+      "points": 28,
+      "line_score": [
+       7,
+       7,
+       14,
+       0
+      ],
+      "record": "4-1",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604050",
+    "contest_id": 6604050,
+    "final_message": "FINAL",
+    "scores": {
+     "northern-illinois": 7,
+     "air-force": 28
+    },
+    "home": "northern-illinois"
+   }
+  },
+  {
+   "provider_id": "401869965",
+   "date": "2026-10-10",
+   "away": "louisiana",
+   "home": "louisiana-tech",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869965",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "louisiana-tech",
+      "name": "Louisiana Tech Bulldogs",
+      "points": 32,
+      "line_score": [
+       0,
+       13,
+       0,
+       19
+      ],
+      "record": "3-2",
+      "conference_record": "1-0"
+     },
+     "away": {
+      "slug": "louisiana",
+      "name": "Louisiana Ragin' Cajuns",
+      "points": 31,
+      "line_score": [
+       0,
+       10,
+       14,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "1-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603750",
+    "contest_id": 6603750,
+    "final_message": "FINAL",
+    "scores": {
+     "louisiana-tech": 32,
+     "louisiana": 31
+    },
+    "home": "louisiana-tech"
+   }
+  },
+  {
+   "provider_id": "401856827",
+   "date": "2026-10-10",
+   "away": "kansas",
+   "home": "utah",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856827",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-11T00:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "utah",
+      "name": "Utah Utes",
+      "points": 41,
+      "line_score": [
+       14,
+       7,
+       6,
+       14
+      ],
+      "record": "5-0",
+      "conference_record": "2-0"
+     },
+     "away": {
+      "slug": "kansas",
+      "name": "Kansas Jayhawks",
+      "points": 24,
+      "line_score": [
+       0,
+       17,
+       7,
+       0
+      ],
+      "record": "2-3",
+      "conference_record": "0-2"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604060",
+    "contest_id": 6604060,
+    "final_message": "FINAL",
+    "scores": {
+     "utah": 41,
+     "kansas": 24
+    },
+    "home": "utah"
+   }
+  },
+  {
+   "provider_id": "401858486",
+   "date": "2026-10-10",
+   "away": "minnesota",
+   "home": "purdue",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858486",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-11T00:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "purdue",
+      "name": "Purdue Boilermakers",
+      "points": 41,
+      "line_score": [
+       10,
+       10,
+       7,
+       14
+      ],
+      "record": "3-3",
+      "conference_record": "2-1"
+     },
+     "away": {
+      "slug": "minnesota",
+      "name": "Minnesota Golden Gophers",
+      "points": 13,
+      "line_score": [
+       0,
+       3,
+       10,
+       0
+      ],
+      "record": "4-2",
+      "conference_record": "2-1"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603686",
+    "contest_id": 6603686,
+    "final_message": "FINAL",
+    "scores": {
+     "purdue": 41,
+     "minnesota": 13
+    },
+    "home": "purdue"
+   }
+  },
+  {
+   "provider_id": "401869949",
+   "date": "2026-10-10",
+   "away": "james-madison",
+   "home": "georgia-southern",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869949",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-11T00:10Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "georgia-southern",
+      "name": "Georgia Southern Eagles",
+      "points": 24,
+      "line_score": [
+       7,
+       3,
+       0,
+       14
+      ],
+      "record": "2-4",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "james-madison",
+      "name": "James Madison Dukes",
+      "points": 27,
+      "line_score": [
+       3,
+       3,
+       14,
+       7
+      ],
+      "record": "6-0",
+      "conference_record": "3-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6603783",
+    "contest_id": 6603783,
+    "final_message": "FINAL",
+    "scores": {
+     "georgia-southern": 24,
+     "james-madison": 27
+    },
+    "home": "georgia-southern"
+   }
+  },
+  {
+   "provider_id": "401856808",
+   "date": "2026-10-10",
+   "away": "hawaii",
+   "home": "arizona-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856808",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-11T02:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "arizona-state",
+      "name": "Arizona State Sun Devils",
+      "points": 30,
+      "line_score": [
+       7,
+       10,
+       7,
+       6
+      ],
+      "record": "3-2",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "hawaii",
+      "name": "Hawai'i Rainbow Warriors",
+      "points": 12,
+      "line_score": [
+       3,
+       3,
+       0,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-3"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604209",
+    "contest_id": 6604209,
+    "final_message": "FINAL",
+    "scores": {
+     "arizona-state": 30,
+     "hawaii": 12
+    },
+    "home": "arizona-state"
+   }
+  },
+  {
+   "provider_id": "401860901",
+   "date": "2026-10-10",
+   "away": "boise-state",
+   "home": "fresno-state",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860901",
+    "checked_at": "2026-10-11T13:56:23Z",
+    "detail": "Final",
+    "kickoff_utc": "2026-10-11T02:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "sides": {
+     "home": {
+      "slug": "fresno-state",
+      "name": "Fresno State Bulldogs",
+      "points": 31,
+      "line_score": [
+       13,
+       7,
+       0,
+       11
+      ],
+      "record": "4-2",
+      "conference_record": "1-1"
+     },
+     "away": {
+      "slug": "boise-state",
+      "name": "Boise State Broncos",
+      "points": 38,
+      "line_score": [
+       15,
+       10,
+       3,
+       10
+      ],
+      "record": "5-1",
+      "conference_record": "2-0"
+     }
+    }
+   },
+   "ncaa": {
+    "url": "https://www.ncaa.com/game/6604289",
+    "contest_id": 6604289,
+    "final_message": "FINAL",
+    "scores": {
+     "fresno-state": 31,
+     "boise-state": 38
+    },
+    "home": "fresno-state"
+   }
+  }
+ ],
+ "ncaa_scoreboard": {
+  "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/06/all-conf",
+  "checked_at": "2026-10-11T13:56:23Z",
+  "sha256": "cc89788431ccc5d465257eab2c68ba36cc6ea6d7e221908351f3119f6829cdc0",
+  "games": 58,
+  "all_final": true,
+  "note": "Server-rendered initialGames for the 2026 FBS week 6 scoreboard (NCAA ORG-SPORTS feed)."
+ },
+ "standings": {
+  "source_url": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
+  "verified_at": "2026-10-11T13:57:20Z",
+  "conferences": [
+   {
+    "slug": "aac",
+    "name": "American Athletic Conference",
+    "short": "AAC",
+    "rows": [
+     {
+      "team": "Memphis",
+      "team_slug": "memphis",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-1"
+     },
+     {
+      "team": "UTSA",
+      "team_slug": "utsa",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-1"
+     },
+     {
+      "team": "Florida Atlantic",
+      "team_slug": "florida-atlantic",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "North Texas",
+      "team_slug": "north-texas",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "South Florida",
+      "team_slug": "south-florida",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "4-2"
+     },
+     {
+      "team": "East Carolina",
+      "team_slug": "east-carolina",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Army",
+      "team_slug": "army",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "3-2"
+     },
+     {
+      "team": "UAB",
+      "team_slug": "uab",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Tulsa",
+      "team_slug": "tulsa",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Navy",
+      "team_slug": "navy",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "2-3"
+     },
+     {
+      "team": "Tulane",
+      "team_slug": "tulane",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Temple",
+      "team_slug": "temple",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Rice",
+      "team_slug": "rice",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     },
+     {
+      "team": "Charlotte",
+      "team_slug": "charlotte",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "0-6"
+     }
+    ]
+   },
+   {
+    "slug": "acc",
+    "name": "Atlantic Coast Conference",
+    "short": "ACC",
+    "rows": [
+     {
+      "team": "Miami (FL)",
+      "team_slug": "miami-fl",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-0"
+     },
+     {
+      "team": "Wake Forest",
+      "team_slug": "wake-forest",
+      "w": "3",
+      "l": "1",
+      "t": "0",
+      "pct": "0.750",
+      "overall": "5-1"
+     },
+     {
+      "team": "Pittsburgh",
+      "team_slug": "pittsburgh",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "SMU",
+      "team_slug": "smu",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-1"
+     },
+     {
+      "team": "Duke",
+      "team_slug": "duke",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-1"
+     },
+     {
+      "team": "Virginia",
+      "team_slug": "virginia",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-2"
+     },
+     {
+      "team": "Virginia Tech",
+      "team_slug": "virginia-tech",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "4-2"
+     },
+     {
+      "team": "Clemson",
+      "team_slug": "clemson",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "3-2"
+     },
+     {
+      "team": "North Carolina",
+      "team_slug": "north-carolina",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-2"
+     },
+     {
+      "team": "California",
+      "team_slug": "california",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "3-3"
+     },
+     {
+      "team": "Louisville",
+      "team_slug": "louisville",
+      "w": "2",
+      "l": "2",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Florida State",
+      "team_slug": "florida-state",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-3"
+     },
+     {
+      "team": "NC State",
+      "team_slug": "nc-state",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-3"
+     },
+     {
+      "team": "Georgia Tech",
+      "team_slug": "georgia-tech",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-3"
+     },
+     {
+      "team": "Boston College",
+      "team_slug": "boston-college",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Syracuse",
+      "team_slug": "syracuse",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Stanford",
+      "team_slug": "stanford",
+      "w": "1",
+      "l": "3",
+      "t": "0",
+      "pct": "0.250",
+      "overall": "2-4"
+     }
+    ]
+   },
+   {
+    "slug": "big12",
+    "name": "Big 12 Conference",
+    "short": "B12",
+    "rows": [
+     {
+      "team": "BYU",
+      "team_slug": "byu",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-0"
+     },
+     {
+      "team": "Texas Tech",
+      "team_slug": "texas-tech",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-0"
+     },
+     {
+      "team": "Utah",
+      "team_slug": "utah",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-0"
+     },
+     {
+      "team": "Arizona",
+      "team_slug": "arizona",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Houston",
+      "team_slug": "houston",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Baylor",
+      "team_slug": "baylor",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "Oklahoma State",
+      "team_slug": "oklahoma-state",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "Cincinnati",
+      "team_slug": "cincinnati",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-1"
+     },
+     {
+      "team": "Arizona State",
+      "team_slug": "arizona-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-2"
+     },
+     {
+      "team": "Kansas State",
+      "team_slug": "kansas-state",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Iowa State",
+      "team_slug": "iowa-state",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-3"
+     },
+     {
+      "team": "UCF",
+      "team_slug": "ucf",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-3"
+     },
+     {
+      "team": "West Virginia",
+      "team_slug": "west-virginia",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Colorado",
+      "team_slug": "colorado",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Kansas",
+      "team_slug": "kansas",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "TCU",
+      "team_slug": "tcu",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     }
+    ]
+   },
+   {
+    "slug": "big-ten",
+    "name": "Big Ten Conference",
+    "short": "B1G",
+    "rows": [
+     {
+      "team": "Indiana",
+      "team_slug": "indiana",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "6-0"
+     },
+     {
+      "team": "UCLA",
+      "team_slug": "ucla",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-0"
+     },
+     {
+      "team": "USC",
+      "team_slug": "usc",
+      "w": "3",
+      "l": "1",
+      "t": "0",
+      "pct": "0.750",
+      "overall": "6-1"
+     },
+     {
+      "team": "Ohio State",
+      "team_slug": "ohio-state",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-1"
+     },
+     {
+      "team": "Iowa",
+      "team_slug": "iowa",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Nebraska",
+      "team_slug": "nebraska",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Wisconsin",
+      "team_slug": "wisconsin",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "Northwestern",
+      "team_slug": "northwestern",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-1"
+     },
+     {
+      "team": "Minnesota",
+      "team_slug": "minnesota",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-2"
+     },
+     {
+      "team": "Oregon",
+      "team_slug": "oregon",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-2"
+     },
+     {
+      "team": "Michigan",
+      "team_slug": "michigan",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Purdue",
+      "team_slug": "purdue",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "3-3"
+     },
+     {
+      "team": "Illinois",
+      "team_slug": "illinois",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-3"
+     },
+     {
+      "team": "Penn State",
+      "team_slug": "penn-state",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Washington",
+      "team_slug": "washington",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Maryland",
+      "team_slug": "maryland",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-4"
+     },
+     {
+      "team": "Michigan State",
+      "team_slug": "michigan-state",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-4"
+     },
+     {
+      "team": "Rutgers",
+      "team_slug": "rutgers",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-4"
+     }
+    ]
+   },
+   {
+    "slug": "cusa",
+    "name": "Conference USA",
+    "short": "CUSA",
+    "rows": [
+     {
+      "team": "Liberty",
+      "team_slug": "liberty",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-1"
+     },
+     {
+      "team": "Jacksonville State",
+      "team_slug": "jacksonville-state",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "FIU",
+      "team_slug": "fiu",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Delaware",
+      "team_slug": "delaware",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Middle Tennessee",
+      "team_slug": "middle-tennessee",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "New Mexico State",
+      "team_slug": "new-mexico-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Western Kentucky",
+      "team_slug": "western-kentucky",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Kennesaw State",
+      "team_slug": "kennesaw-state",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-4"
+     },
+     {
+      "team": "Missouri State",
+      "team_slug": "missouri-state",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-4"
+     },
+     {
+      "team": "Sam Houston",
+      "team_slug": "sam-houston",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-4"
+     }
+    ]
+   },
+   {
+    "slug": "independents",
+    "name": "FBS Independents",
+    "short": "IND",
+    "rows": [
+     {
+      "team": "Notre Dame",
+      "team_slug": "notre-dame",
+      "w": "0",
+      "l": "0",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "6-0"
+     },
+     {
+      "team": "UConn",
+      "team_slug": "uconn",
+      "w": "0",
+      "l": "0",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     }
+    ]
+   },
+   {
+    "slug": "mac",
+    "name": "Mid-American Conference",
+    "short": "MAC",
+    "rows": [
+     {
+      "team": "Ohio",
+      "team_slug": "ohio",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "Western Michigan",
+      "team_slug": "western-michigan",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "Toledo",
+      "team_slug": "toledo",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-2"
+     },
+     {
+      "team": "UMass",
+      "team_slug": "umass",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "4-2"
+     },
+     {
+      "team": "Eastern Michigan",
+      "team_slug": "eastern-michigan",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-3"
+     },
+     {
+      "team": "Buffalo",
+      "team_slug": "buffalo",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Central Michigan",
+      "team_slug": "central-michigan",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Miami (OH)",
+      "team_slug": "miami-oh",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Bowling Green",
+      "team_slug": "bowling-green",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "2-4"
+     },
+     {
+      "team": "Kent State",
+      "team_slug": "kent-state",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "2-4"
+     },
+     {
+      "team": "Akron",
+      "team_slug": "akron",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     },
+     {
+      "team": "Ball State",
+      "team_slug": "ball-state",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     },
+     {
+      "team": "Sacramento State",
+      "team_slug": "sacramento-state",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     }
+    ]
+   },
+   {
+    "slug": "mountain-west",
+    "name": "Mountain West Conference",
+    "short": "MW",
+    "rows": [
+     {
+      "team": "North Dakota State",
+      "team_slug": "north-dakota-state",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "New Mexico",
+      "team_slug": "new-mexico",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "Air Force",
+      "team_slug": "air-force",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-1"
+     },
+     {
+      "team": "UNLV",
+      "team_slug": "unlv",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "Wyoming",
+      "team_slug": "wyoming",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "3-3"
+     },
+     {
+      "team": "San José State",
+      "team_slug": "san-jose-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-3"
+     },
+     {
+      "team": "Nevada",
+      "team_slug": "nevada",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-3"
+     },
+     {
+      "team": "UTEP",
+      "team_slug": "utep",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     },
+     {
+      "team": "Hawai'i",
+      "team_slug": "hawaii",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     },
+     {
+      "team": "Northern Illinois",
+      "team_slug": "northern-illinois",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "0-5"
+     }
+    ]
+   },
+   {
+    "slug": "pac12",
+    "name": "Pac-12 Conference",
+    "short": "PAC",
+    "rows": [
+     {
+      "team": "Boise State",
+      "team_slug": "boise-state",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "5-1"
+     },
+     {
+      "team": "Oregon State",
+      "team_slug": "oregon-state",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "Fresno State",
+      "team_slug": "fresno-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-2"
+     },
+     {
+      "team": "Colorado State",
+      "team_slug": "colorado-state",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "Texas State",
+      "team_slug": "texas-state",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-3"
+     },
+     {
+      "team": "San Diego State",
+      "team_slug": "san-diego-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Utah State",
+      "team_slug": "utah-state",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Washington State",
+      "team_slug": "washington-state",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-5"
+     }
+    ]
+   },
+   {
+    "slug": "sec",
+    "name": "Southeastern Conference",
+    "short": "SEC",
+    "rows": [
+     {
+      "team": "Georgia",
+      "team_slug": "georgia",
+      "w": "4",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "6-0"
+     },
+     {
+      "team": "Alabama",
+      "team_slug": "alabama",
+      "w": "3",
+      "l": "1",
+      "t": "0",
+      "pct": "0.750",
+      "overall": "5-1"
+     },
+     {
+      "team": "Kentucky",
+      "team_slug": "kentucky",
+      "w": "3",
+      "l": "1",
+      "t": "0",
+      "pct": "0.750",
+      "overall": "5-1"
+     },
+     {
+      "team": "Missouri",
+      "team_slug": "missouri",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Tennessee",
+      "team_slug": "tennessee",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "5-1"
+     },
+     {
+      "team": "Mississippi State",
+      "team_slug": "mississippi-state",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-1"
+     },
+     {
+      "team": "Ole Miss",
+      "team_slug": "ole-miss",
+      "w": "2",
+      "l": "1",
+      "t": "0",
+      "pct": "0.667",
+      "overall": "4-1"
+     },
+     {
+      "team": "Texas",
+      "team_slug": "texas",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-1"
+     },
+     {
+      "team": "Florida",
+      "team_slug": "florida",
+      "w": "2",
+      "l": "2",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-2"
+     },
+     {
+      "team": "LSU",
+      "team_slug": "lsu",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "4-2"
+     },
+     {
+      "team": "Oklahoma",
+      "team_slug": "oklahoma",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "3-2"
+     },
+     {
+      "team": "Auburn",
+      "team_slug": "auburn",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "3-2"
+     },
+     {
+      "team": "South Carolina",
+      "team_slug": "south-carolina",
+      "w": "1",
+      "l": "3",
+      "t": "0",
+      "pct": "0.250",
+      "overall": "3-3"
+     },
+     {
+      "team": "Texas A&M",
+      "team_slug": "texas-am",
+      "w": "1",
+      "l": "3",
+      "t": "0",
+      "pct": "0.250",
+      "overall": "3-3"
+     },
+     {
+      "team": "Vanderbilt",
+      "team_slug": "vanderbilt",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Arkansas",
+      "team_slug": "arkansas",
+      "w": "0",
+      "l": "3",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-4"
+     }
+    ]
+   },
+   {
+    "slug": "sun-belt",
+    "name": "Sun Belt Conference",
+    "short": "SBC",
+    "rows": [
+     {
+      "team": "James Madison",
+      "team_slug": "james-madison",
+      "w": "3",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "6-0"
+     },
+     {
+      "team": "Georgia State",
+      "team_slug": "georgia-state",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-1"
+     },
+     {
+      "team": "Appalachian State",
+      "team_slug": "appalachian-state",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Marshall",
+      "team_slug": "marshall",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "3-3"
+     },
+     {
+      "team": "Georgia Southern",
+      "team_slug": "georgia-southern",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Coastal Carolina",
+      "team_slug": "coastal-carolina",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "2-4"
+     },
+     {
+      "team": "Old Dominion",
+      "team_slug": "old-dominion",
+      "w": "1",
+      "l": "2",
+      "t": "0",
+      "pct": "0.333",
+      "overall": "2-4"
+     },
+     {
+      "team": "South Alabama",
+      "team_slug": "south-alabama",
+      "w": "2",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "4-2"
+     },
+     {
+      "team": "Louisiana",
+      "team_slug": "louisiana",
+      "w": "1",
+      "l": "1",
+      "t": "0",
+      "pct": "0.500",
+      "overall": "4-2"
+     },
+     {
+      "team": "Louisiana Tech",
+      "team_slug": "louisiana-tech",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Troy",
+      "team_slug": "troy",
+      "w": "1",
+      "l": "0",
+      "t": "0",
+      "pct": "1.000",
+      "overall": "3-2"
+     },
+     {
+      "team": "Arkansas State",
+      "team_slug": "arkansas-state",
+      "w": "0",
+      "l": "2",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "2-4"
+     },
+     {
+      "team": "Southern Miss",
+      "team_slug": "southern-miss",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "1-4"
+     },
+     {
+      "team": "ULM",
+      "team_slug": "ulm",
+      "w": "0",
+      "l": "1",
+      "t": "0",
+      "pct": "0.000",
+      "overall": "0-5"
+     }
+    ]
+   }
+  ]
+ },
+ "reconciliation": {
+  "rule": "Each overall and conference record equals the October 10 ESPN-reconciled record plus that team's verified October 10 result; ESPN game summaries, ESPN standings and the 102 Week 7 release records must all agree.",
+  "teams": 138,
+  "disagreements": 0,
+  "site_records_matched": 112
+ }
+}

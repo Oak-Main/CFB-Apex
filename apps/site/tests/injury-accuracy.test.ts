@@ -58,10 +58,13 @@ test("historical cutoffs and long-term classifications are preserved, corrected 
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Mason Heintschel")?.status, "IR");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Zahir Mathis")?.teamSlug, "maryland");
   assert.ok(!injuryResearch.watch.some((row) => row.player === "Tre Harris" || row.player === "Jamariun Morrow"));
-  const ndsu = verifiedRefresh?.scheduledGames.find((row) => row.away === "north-dakota-state" && row.home === "unlv");
+  // The final keeps the pregame slot/announced-kickoff history beside its result.
+  const ndsu = (verifiedRefresh?.playedGames as Array<{ provider_id?: string; kickoff_utc?: string; meta?: { pregame_timing_note?: string } }> | undefined)?.find((row) => row.provider_id === "401864518");
   assert.equal(ndsu?.kickoff_utc, "2026-10-10T23:00Z");
-  assert.equal(ndsu?.announced_kickoff_utc, "2026-10-10T23:10Z");
-  assert.match(games.find((row) => row.id === "2026-10-10-north-dakota-state-at-unlv")?.statusDetail ?? "", /7:00 PM ET.*7:10 PM ET/);
+  assert.match(ndsu?.meta?.pregame_timing_note ?? "", /7:00 PM ET.*7:10 PM ET/);
+  const ndsuGame = games.find((row) => row.id === "2026-10-10-north-dakota-state-at-unlv");
+  assert.equal(ndsuGame?.status, "final");
+  assert.equal(`${ndsuGame?.awayScore}-${ndsuGame?.homeScore}`, "7-13");
 });
 
 test("ingestion accepts the out designation already present in the historical research", () => {

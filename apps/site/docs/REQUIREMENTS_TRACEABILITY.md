@@ -75,3 +75,11 @@
 | Server-clock week selection | `lib/week-cutover.ts`, `app/page.tsx`, `app/[...slug]/page.tsx`, `components/broadcast/week-switch.tsx` | 12:59:59.999Z → 6, 13:00:00.000Z/.001Z → 7; `no-store` header and rendered default-week tests |
 | Week navigation | `WeekSwitch` links with `aria-current`, scoreboard rail and source labels per board week | rendered `/scores?week=6|7`, keyboard focus and 390px browser check |
 | Honest records and byes | `team_records_review`, retained October 10 overall records, "Ranked, not on this FBS board" | `tests/week7.test.ts`, refresh/rendered regressions |
+
+## October 11 Saturday finals
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| Every Week 6 game verified, none promoted by time | `scripts/apply-oct10-saturday-finals.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-saturday-finals.json` | ESPN summary + NCAA.com score/winner per game; line-score sums; `tests/refresh.test.ts` (58/58 finals) |
+| Records reconcile, none stale or withheld | derived Oct 10 + result = ESPN summary = ESPN standings = existing site records | builder fails on any disagreement; `tests/week7.test.ts` |
+| Archive marquee and GameDay badge stay correct | `broadcastEventForGame` reads played games; marquee shows FINAL score | rendered `/?week=6` assertions |
