@@ -140,7 +140,7 @@ export function scoreboardDateLabel(date: string, long = false) {
 }
 
 export function kickoffTimeLabel(game: Game) {
-  return game.kickoffLabel.match(/\d{1,2}:\d{2} (?:AM|PM) ET/)?.[0] ?? "TBD";
+  return game.kickoffLabel.match(/\d{1,2}:\d{2} (?:AM|PM) ET/)?.[0] ?? (/Kickoff TBA/.test(game.kickoffLabel) ? "Kickoff TBA" : "TBD");
 }
 
 export function broadcastLabel(game: Game) {
@@ -154,20 +154,30 @@ export function scoreboardSwipeDirection(deltaX: number, deltaY: number): "next"
 }
 
 
-/** A week-scoped source label; a fresh release never restamps other weeks. */
-export function scoreboardSourceLabel(week: number, snapshot: {
+interface SourceStamps {
   week?: number;
   schedule_verified_at?: string;
   results_verified_at?: string;
-} | null): { badge: string; detail: string } {
-  if (!snapshot || snapshot.week !== week) {
+}
+
+/** A week-scoped source label; a fresh release never restamps other weeks.
+ * A release that covers several board weeks supplies each week's own stamps. */
+export function scoreboardSourceLabel(
+  week: number,
+  snapshot: SourceStamps | null,
+  boardWeeks: readonly SourceStamps[] = [],
+): { badge: string; detail: string } {
+  const board = boardWeeks.find((row) => row.week === week);
+  const source = board ?? (snapshot?.week === week ? snapshot : null);
+  if (!snapshot || !source) {
     return { badge: "Published snapshot", detail: `Week ${week} retains its original source dates. This board does not provide continuous live scoring.` };
   }
   const stamp = (value: string | undefined) => value && Number.isFinite(Date.parse(value))
     ? `${new Date(value).toISOString().slice(0, 16).replace("T", " ")} UTC`
     : "not published";
+  const finals = board && !board.results_verified_at ? "no finals verified yet" : `finals verified ${stamp(source.results_verified_at)}`;
   return {
     badge: "Verified snapshot",
-    detail: `Week ${week} schedule checked ${stamp(snapshot.schedule_verified_at)}; finals verified ${stamp(snapshot.results_verified_at)}. Status changes require a newer verified release.`,
+    detail: `Week ${week} schedule checked ${stamp(source.schedule_verified_at)}; ${finals}. Status changes require a newer verified release.`,
   };
 }

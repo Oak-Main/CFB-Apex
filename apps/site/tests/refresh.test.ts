@@ -7,13 +7,14 @@ import {
   seasonWeek,
 } from "../lib/game-calendar.ts";
 import {
+  boardWeeks,
   games,
   getTeamSchedule,
   pollTables,
   teams,
   verifiedRefresh,
 } from "../lib/cfb-dataset.ts";
-import { homepageData, tickerGames } from "../lib/homepage-data.ts";
+import { boardWeekStart, homepageData, tickerGames, tickerGamesFor } from "../lib/homepage-data.ts";
 import { dateLabel, featuredGame, weekGames } from "../lib/homepage.ts";
 
 test("Eastern dates keep Friday finals and late Saturday games on the correct day", () => {
@@ -32,12 +33,19 @@ test("Eastern dates keep Friday finals and late Saturday games on the correct da
   );
 });
 
-test("the weekly board and ticker share the verified Week 6 snapshot", () => {
-  const slate = weekGames(games, homepageData.referenceDate);
-  // 58 FBS-vs-FBS games: 12 Tue–Fri finals and 46 Saturday games.
+test("the Week 6 archive board and its ticker share the verified Week 6 snapshot", () => {
+  const slate = weekGames(games, boardWeekStart(6));
+  const tickerGames = tickerGamesFor(6);
+  // 58 FBS-vs-FBS games: 14 verified finals and 44 Saturday games without a verified result.
   assert.equal(slate.length, 58);
-  assert.equal(slate.filter((game) => game.status === "final").length, 12);
-  assert.equal(slate.filter((game) => game.status === "scheduled").length, 46);
+  assert.equal(slate.filter((game) => game.status === "final").length, 14);
+  assert.equal(slate.filter((game) => game.status === "scheduled").length, 44);
+  assert.ok(
+    slate
+      .filter((game) => game.status === "scheduled")
+      .every((game) => /final not yet verified/.test(game.statusDetail)),
+    "elapsed Week 6 games say their result is unverified, never upcoming",
+  );
   assert.equal(
     new Set(
       slate.map((game) => gameKey(game.date, game.awayTeamId, game.homeTeamId)),
@@ -102,16 +110,17 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     )?.value,
     1588,
   );
-  assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "3–2");
+  assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "3–3");
   assert.equal(teams.find((team) => team.slug === "fiu")?.record, "3–2");
+  // App State played Oct 10 and its school record could not be retrieved: unknown, not stale.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "3–1",
+    "Not published",
   );
 });
 
 test("the two wrongly excluded FBS games are restored with records and TV", () => {
-  const slate = weekGames(games, homepageData.referenceDate);
+  const slate = weekGames(games, boardWeekStart(6));
   const nmsuFiu = slate.find(
     (game) => game.awayTeamId === "new-mexico-state" && game.homeTeamId === "fiu",
   );
@@ -129,7 +138,8 @@ test("the two wrongly excluded FBS games are restored with records and TV", () =
   for (const row of verifiedRefresh?.excludedGames ?? []) {
     assert.ok(row.espn_conference_ids, `${row.name} carries exclusion evidence`);
   }
-  assert.equal(verifiedRefresh?.excludedGames?.length, 3);
+  assert.equal(verifiedRefresh?.excludedGames?.length, 6);
+  assert.equal(verifiedRefresh?.excludedGames?.filter((row) => row.date < "2026-10-12").length, 3);
 });
 
 test("October 4 polls carry others receiving votes, movers, debuts and gaps", () => {
@@ -191,9 +201,10 @@ test("verified additions: GameDay badge, ranked matchups, NDSU storyline, standi
   for (const conf of standings) {
     assert.ok(conf.rows.every((row) => row.team_slug), `${conf.slug} rows all linked`);
     for (const row of conf.rows) {
-      const record = row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined;
+      // The tables keep their October 10 date; so do the overall records beside them.
+      const record = row.team_slug ? verifiedRefresh?.retainedBaseline?.overall_records?.[row.team_slug] : undefined;
       const [ow, ol] = (record ?? "").split("-").map(Number);
-      assert.equal(row.overall, record, `${row.team_slug} overall matches teamRecords`);
+      assert.equal(row.overall, record, `${row.team_slug} overall matches the October 10 records`);
       assert.ok(Number(row.w) <= ow && Number(row.l) <= ol, `${row.team_slug} conference record fits inside overall`);
     }
   }
@@ -248,7 +259,7 @@ test("midweek finals no longer appear as upcoming anywhere", () => {
   const providers = new Set<string>(MIDWEEK_FINALS.map((row) => row.provider));
   assert.ok(!(verifiedRefresh?.scheduledGames ?? []).some((row) => providers.has(row.provider_id)), "removed from scheduledGames");
   const pairs = new Set(MIDWEEK_FINALS.map((row) => pairOf(row.away, row.home)));
-  const slate = weekGames(games, homepageData.referenceDate);
+  const slate = weekGames(games, boardWeekStart(6));
   assert.ok(
     !slate.some((game) => game.status !== "final" && pairs.has(pairOf(game.awayTeamId, game.homeTeamId))),
     "no scheduled/live duplicate on the weekly board",
@@ -322,8 +333,9 @@ test("records for the fourteen midweek teams match the verified finals", () => {
 test("freshness stays per source: polls and stats keep their own cutoffs", () => {
   assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-03", "stats cutoff not advanced by new finals");
   assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-10-04");
-  assert.equal(verifiedRefresh?.retrieved_at, "2026-10-05T07:24:21.400874Z", "base snapshot time unchanged");
-  assert.ok(verifiedRefresh?.results_verified_at && verifiedRefresh.results_verified_at > verifiedRefresh.retrieved_at);
+  const week6 = boardWeeks.find((row) => row.week === 6);
+  assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z", "Week 6 base snapshot time unchanged");
+  assert.ok(week6?.results_verified_at && week6.results_verified_at > week6.retrieved_at);
   for (const want of MIDWEEK_FINALS) {
     const played = ((verifiedRefresh?.playedGames ?? []) as Array<{ provider_id?: string; verified_at?: string }>).find((row) => row.provider_id === want.provider);
     assert.ok(played?.verified_at && played.verified_at >= "2026-10-09", `${want.provider} carries its own verification time`);
@@ -331,7 +343,7 @@ test("freshness stays per source: polls and stats keep their own cutoffs", () =>
   // Remaining rows carry their own re-check time; Hawai'i at Arizona State kept its corrected kickoff.
   const hawaii = verifiedRefresh?.scheduledGames.find((row) => row.provider_id === "401856808");
   assert.equal(hawaii?.kickoff_utc, "2026-10-11T02:30Z");
-  assert.equal(easternDate(hawaii!.kickoff_utc), "2026-10-10");
+  assert.equal(easternDate(hawaii?.kickoff_utc ?? ""), "2026-10-10");
   assert.ok(verifiedRefresh?.scheduledGames.every((row) => (row.verified_at ?? "") >= "2026-10-09"));
   const recap = verifiedRefresh?.storylines?.find((row) => row.id === "week6-thursday-finals");
   assert.ok(recap && recap.sources.length >= 4, "recap is sourced");
@@ -377,9 +389,10 @@ test("weather-related kickoff changes propagate to games, team schedules and bro
   assert.equal(easternDate(utah.date), "2026-10-10");
   assert.equal(utah.broadcast, "ESPN App · linear network TBD");
   assert.equal(getTeamSchedule("utah")?.find(g => g.date === "2026-10-10")?.href, "/games/2026-10-10-kansas-at-utah");
-  assert.ok(verifiedRefresh?.scheduledGames.every(g => g.verified_at?.startsWith("2026-10-10")));
-  assert.ok(verifiedRefresh?.schedule_verified_at?.startsWith("2026-10-10"));
+  assert.ok(verifiedRefresh?.scheduledGames.filter(g => g.week === 6).every(g => g.verified_at?.startsWith("2026-10-10")));
+  const week6 = boardWeeks.find((row) => row.week === 6);
+  assert.ok(week6?.schedule_verified_at?.startsWith("2026-10-10"));
   assert.match(verifiedRefresh?.availability_review?.note ?? "", /not complete Saturday coverage/);
-  assert.equal(verifiedRefresh?.retrieved_at, "2026-10-05T07:24:21.400874Z");
+  assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(verifiedRefresh?.polls?.[0].release_date, "2026-10-04");
 });

@@ -42,6 +42,10 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 function eventTiming(event: NcaafGameEvent): { day: string; detail: string } {
+  // A date-only value is an official TBD kickoff: name the day, never a time.
+  if (/^\d{4}-\d{2}-\d{2}$/.test(event.utc)) {
+    return { day: dayFormatter.format(new Date(`${event.utc}T17:00:00Z`)), detail: "Kickoff TBA" };
+  }
   const at = new Date(event.utc);
   if (Number.isNaN(at.getTime())) return { day: "TBD", detail: "Time not published" };
   const day = dayFormatter.format(at);

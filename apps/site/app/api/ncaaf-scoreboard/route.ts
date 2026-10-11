@@ -1,4 +1,4 @@
-import { games, teams, verifiedRefresh } from "@/lib/cfb-dataset";
+import { boardWeeks, games, teams, verifiedRefresh } from "@/lib/cfb-dataset";
 import { mergeNcaafFeeds, reconcileNcaafEvents, windowThisWeek, type NcaafGameEvent, type NcaafScoreboardPayload, type TsdbRawEvent } from "@/lib/ncaaf-scoreboard";
 
 // This is a partial supplemental snapshot, not a continuously observed live feed.
@@ -8,7 +8,9 @@ const INGEST_BASE = process.env.TRUEAPI_INGEST_BASE || "https://ingest.oakandmai
 let cached: { at: number; payload: NcaafScoreboardPayload } | null = null;
 interface Feed { events: TsdbRawEvent[]; fetchedAt: string | null }
 const names = new Map(teams.map((team) => [team.id, team.shortName]));
-const canonical: NcaafGameEvent[] = games.filter((game) => game.week === verifiedRefresh?.week && (game.status === "final" || game.status === "scheduled")).map((game) => ({
+// Every reviewed board week (the current week and its archive) reconciles.
+const reviewedWeeks = new Set(boardWeeks.map((entry) => entry.week));
+const canonical: NcaafGameEvent[] = games.filter((game) => reviewedWeeks.has(game.week) && (game.status === "final" || game.status === "scheduled")).map((game) => ({
   id: game.id, utc: game.date, home: names.get(game.homeTeamId) ?? game.homeTeamId,
   away: names.get(game.awayTeamId) ?? game.awayTeamId, homeScore: game.homeScore ?? null,
   awayScore: game.awayScore ?? null, state: game.status === "final" ? "final" : "scheduled",

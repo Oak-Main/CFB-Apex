@@ -39,9 +39,12 @@ import {
   tvRows,
   tvWeeks,
   verifiedRefresh,
+  boardWeeks,
 } from "@/lib/cfb-dataset";
 import { brand, disclosureVersion } from "@/lib/config";
-import { homepageData, tickerGames } from "@/lib/homepage-data";
+import { homepageData, tickerGamesFor } from "@/lib/homepage-data";
+import type { BoardWeekSelection } from "@/lib/week-cutover";
+import { WeekSwitch, clockWeek, useBoardWeekCutover } from "./broadcast/week-switch";
 import { getRosterPlayerBySlug } from "@/lib/player-records";
 import {
   continuousWeeks,
@@ -347,19 +350,22 @@ interface HomeProps {
   onFavorite: (teamId: string) => void;
 }
 
-function ScoresPage({ mode, favorites, onFavorite }: HomeProps) {
+function ScoresPage({ mode, favorites, onFavorite, selection }: HomeProps & { selection?: BoardWeekSelection }) {
   const publishedWeeks = useMemo(
     () => [...new Set(games.map((game) => game.week))].sort((a, b) => a - b),
     [],
   );
   const weeks = useMemo(() => continuousWeeks(publishedWeeks), [publishedWeeks]);
-  const [week, setWeek] = useState(() => defaultScoreboardWeek(games, broadcastAsOf));
+  // The server clock picks the opening week; the rail still reaches every week.
+  const initialWeek = selection?.week ?? defaultScoreboardWeek(games, broadcastAsOf);
+  const [week, setWeek] = useState(initialWeek);
+  useBoardWeekCutover(boardWeeks, selection, week === initialWeek);
   const [filter, setFilter] = useState<ScoreFilter>("All");
   const [isPending, startTransition] = useTransition();
   const weekRail = useRef<HTMLFieldSetElement>(null);
   const gesture = useRef({ active: false, x: 0, y: 0 });
   const weekGames = gamesForWeek(games, week);
-  const sourceLabel = scoreboardSourceLabel(week, verifiedRefresh);
+  const sourceLabel = scoreboardSourceLabel(week, verifiedRefresh, boardWeeks);
   const filtered = weekGames.filter((game) => {
     const away = teamFor(game.awayTeamId);
     const home = teamFor(game.homeTeamId);
@@ -406,6 +412,9 @@ function ScoresPage({ mode, favorites, onFavorite }: HomeProps) {
         description={`Scores and assigned TV networks from reviewed source snapshots. ${sourceLabel.detail}`}
         actions={<span className="freshness">{sourceLabel.badge}</span>}
       />
+      {selection ? (
+        <WeekSwitch weeks={boardWeeks} selected={week} current={clockWeek(boardWeeks, selection)} basePath="/scores" />
+      ) : null}
       <div className="sticky-tools scoreboard-tools">
         <div className="scoreboard-week-tools">
           <fieldset className="date-switcher">
@@ -1339,6 +1348,19 @@ function DataSourcesPage() {
             {verifiedRefresh.scheduledGames?.length ?? 0} scheduled FBS-vs-FBS games and{" "}
             {verifiedRefresh.playedGames?.length ?? 0} played results are on the board.
           </p>
+          {boardWeeks.length > 1 ? (
+            <ul className="panel-note">
+              {boardWeeks.map((entry) => (
+                <li key={entry.week}>
+                  Week {entry.week} ({entry.label}): {entry.retrieved_at ? `retrieved ${entry.retrieved_at}` : "retrieval time not published"}
+                  {entry.schedule_verified_at ? `; schedule checked ${entry.schedule_verified_at}` : ""}
+                  {entry.results_verified_at ? `; finals verified ${entry.results_verified_at}` : ""}
+                  {entry.records_verified_at ? `; records checked ${entry.records_verified_at}` : ""}.
+                  {entry.note ? ` ${entry.note}` : ""} Becomes the default board {entry.cutover_utc.replace("T", " ").replace(/:00(?:\.0+)?Z$/, " UTC")}.
+                </li>
+              ))}
+            </ul>
+          ) : null}
           <div className="portal-list">
             {(verifiedRefresh.source_urls ?? []).map((url) => (
               <a className="portal-row" href={url} key={url}>
@@ -1610,7 +1632,7 @@ function NotFoundPage() {
   return <EmptyState title="That route is not in the field." copy="The URL may be old, incomplete, or intentionally unavailable." href="/scores" action="Return to scores" />;
 }
 
-export function HubApp({ path = "/" }: { path?: string }) {
+export function HubApp({ path = "/", boardWeek }: { path?: string; boardWeek?: BoardWeekSelection }) {
   const [mode, setMode] = useState<Mode>("clean");
   const [modeDialogOpen, setModeDialogOpen] = useState(false);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -1659,8 +1681,8 @@ export function HubApp({ path = "/" }: { path?: string }) {
   let content: React.ReactNode;
   const common = { mode, favorites, onFavorite: toggleFavorite };
 
-  if (!root) content = <BroadcastHomepage data={homepageData} cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} />;
-  else if (root === "scores") content = <ScoresPage {...common} />;
+  if (!root) content = <BroadcastHomepage data={homepageData} cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} selection={boardWeek} />;
+  else if (root === "scores") content = <ScoresPage {...common} selection={boardWeek} />;
   else if (root === "schedule") content = <SchedulePage {...common} />;
   else if (root === "games" && parts[1]) content = <GamePage gameId={parts[1]} {...common} />;
   else if (root === "transfer-portal") {
@@ -1731,6 +1753,7 @@ export function HubApp({ path = "/" }: { path?: string }) {
   else if (root === "watch") {
     content = (
       <WatchPage
+        defaultWeek={boardWeek?.week ?? null}
         tvRows={tvRows}
         tvWeeks={tvWeeks}
         broadcastAsOf={broadcastAsOf}
@@ -1764,7 +1787,7 @@ export function HubApp({ path = "/" }: { path?: string }) {
           cleanMode={mode === "clean"}
           onCleanModeChange={(enabled) => enabled ? enableClean() : setModeDialogOpen(true)}
         />
-        <ScoreTicker games={tickerGames} teams={teams} />
+        <ScoreTicker games={tickerGamesFor(boardWeek?.week)} teams={teams} />
         <main id="main-content" className="route-frame" key={normalizedPath}>{content}</main>
         <BroadcastFooter />
         <ModeDialog open={modeDialogOpen} onClose={() => setModeDialogOpen(false)} onConfirm={enableAnalysis} />

@@ -8,7 +8,7 @@ import { LaneHeading } from "./primitives";
  * (hidden) when the feed is missing or has no reconciled finals yet —
  * the homepage never shows an error surface for live data.
  */
-export function FinalsStrip({ referenceDate }: { referenceDate: string }) {
+export function FinalsStrip({ referenceDate, fallbackDate }: { referenceDate: string; fallbackDate?: string }) {
   const [payload, setPayload] = useState<NcaafScoreboardPayload | null>(null);
 
   useEffect(() => {
@@ -20,26 +20,32 @@ export function FinalsStrip({ referenceDate }: { referenceDate: string }) {
     return () => controller.abort();
   }, []);
 
-  const finals = useMemo(() => {
-    if (!payload) return [];
-    const start = new Date(`${referenceDate.slice(0, 10)}T00:00:00Z`);
-    start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7));
-    const end = new Date(start);
-    end.setUTCDate(end.getUTCDate() + 7);
-    return payload.events
-      .filter((event) => {
-        const at = new Date(event.utc);
-        return (
-          event.state === "final" &&
-          Number.isFinite(at.getTime()) &&
-          at >= start &&
-          at < end &&
-          event.homeScore != null &&
-          event.awayScore != null
-        );
-      })
-      .sort((a, b) => b.utc.localeCompare(a.utc));
-  }, [payload, referenceDate]);
+  const { finals, lastWeek } = useMemo(() => {
+    if (!payload) return { finals: [], lastWeek: false };
+    const finalsFor = (date: string) => {
+      const start = new Date(`${date.slice(0, 10)}T00:00:00Z`);
+      start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7));
+      const end = new Date(start);
+      end.setUTCDate(end.getUTCDate() + 7);
+      return payload.events
+        .filter((event) => {
+          const at = new Date(event.utc);
+          return (
+            event.state === "final" &&
+            Number.isFinite(at.getTime()) &&
+            at >= start &&
+            at < end &&
+            event.homeScore != null &&
+            event.awayScore != null
+          );
+        })
+        .sort((a, b) => b.utc.localeCompare(a.utc));
+    };
+    const current = finalsFor(referenceDate);
+    // Before a new week has finals, the previous board week's stay labelled as such.
+    if (current.length > 0 || !fallbackDate) return { finals: current, lastWeek: false };
+    return { finals: finalsFor(fallbackDate), lastWeek: true };
+  }, [payload, referenceDate, fallbackDate]);
 
   if (finals.length === 0) return null;
 
@@ -56,8 +62,8 @@ export function FinalsStrip({ referenceDate }: { referenceDate: string }) {
     <section className="apex-lane" aria-labelledby="gdc-finals-title">
       <LaneHeading
         id="gdc-finals-title"
-        eyebrow="ON THE BOARD"
-        title="The week so far"
+        eyebrow={lastWeek ? "LAST WEEK" : "ON THE BOARD"}
+        title={lastWeek ? "Last week's finals" : "The week so far"}
         href="/scores"
         linkLabel="All scores"
       />

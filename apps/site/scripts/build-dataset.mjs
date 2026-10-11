@@ -926,32 +926,41 @@ if (refreshSnapshot) {
   } : { asOf: null, entries: [], excludedCount: 0 };
   const rows = [...payload.broadcasts.rows];
   const byPair = { ...payload.broadcasts.byPair };
-  const weekStart = Date.parse(`${refreshSnapshot.week_start}T00:00:00Z`);
-  const inRefreshWeek = (date) => {
+  // A release can cover more than one board week (the current week plus the
+  // archived one); each reviewed row only retires rows inside its own week.
+  const boardWeeks = refreshSnapshot.board_weeks ?? [{ week: refreshSnapshot.week, start: refreshSnapshot.week_start }];
+  const boardWeekStart = (date) => {
     const instant = Date.parse(`${date}T00:00:00Z`);
-    return instant >= weekStart && instant < weekStart + 7 * 86400000;
+    return boardWeeks.map((entry) => Date.parse(`${entry.start}T00:00:00Z`))
+      .find((start) => instant >= start && instant < start + 7 * 86400000) ?? null;
   };
   const timeEt = (instant) => new Intl.DateTimeFormat("en-GB", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(instant));
+  const reviewedWeeks = new Set(boardWeeks.map((entry) => entry.week));
   const reviewedRows = [
-    ...refreshSnapshot.playedGames.filter((game) => game.week === refreshSnapshot.week && game.verified_at).map((game) => ({ ...game, away: game.away_slug, home: game.home_slug, time_et: timeEt(game.kickoff_utc), status: "final" })),
+    ...refreshSnapshot.playedGames.filter((game) => reviewedWeeks.has(game.week) && game.verified_at).map((game) => ({ ...game, away: game.away_slug, home: game.home_slug, time_et: timeEt(game.kickoff_utc), status: "final" })),
     ...refreshSnapshot.scheduledGames,
   ];
   for (const row of reviewedRows) {
+    // Official TBD kickoffs stay null; a missing time is never a midnight placeholder.
+    if (row.kickoff_utc == null && (row.time_et != null || row.kickoff_status !== "official_tbd")) {
+      throw new Error(`Scheduled row ${row.provider_id} has no kickoff but is not an official TBD`);
+    }
     const pair = [row.away, row.home].sort().join(":");
+    const rowWeek = boardWeekStart(row.date);
     // Retire the original date for this pair inside the same week. A Friday
     // final can supersede a preseason Saturday row without creating duplicates.
     for (let i = rows.length - 1; i >= 0; i--) {
       const prior = rows[i];
-      if (inRefreshWeek(prior.date) && [prior.away, prior.home].sort().join(":") === pair) rows.splice(i, 1);
+      if (rowWeek != null && boardWeekStart(prior.date) === rowWeek && [prior.away, prior.home].sort().join(":") === pair) rows.splice(i, 1);
     }
     for (const key of Object.keys(byPair)) {
-      if (inRefreshWeek(key.slice(0, 10)) && key.slice(11) === pair) delete byPair[key];
+      if (rowWeek != null && boardWeekStart(key.slice(0, 10)) === rowWeek && key.slice(11) === pair) delete byPair[key];
     }
     byPair[`${row.date}:${pair}`] = { tv: row.tv, time_et: row.time_et, status: row.status, week: row.week };
     rows.push(row);
     for (const [slug, opponent] of [[row.home, row.away], [row.away, row.home]]) {
       for (const entry of payload.schedules[slug] ?? []) {
-        if (entry.opponent_slug !== opponent || !inRefreshWeek(entry.date)) continue;
+        if (entry.opponent_slug !== opponent || rowWeek == null || boardWeekStart(entry.date) !== rowWeek) continue;
         entry.date = row.date;
         entry.week = row.week;
         entry.site = row.site;

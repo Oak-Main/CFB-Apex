@@ -395,6 +395,15 @@ test("scoreboard labels are week-specific snapshots with distinct schedule and f
   }
   assert.equal(scoreboardSourceLabel(6, null).badge, "Published snapshot");
   assert.match(scoreboardSourceLabel(6, { week: 6 }).detail, /schedule checked not published; finals verified not published/);
+  // A two-week release labels each board week with its own stamps.
+  const weeks = [
+    { week: 6, schedule_verified_at: "2026-10-10T09:09:11.286Z", results_verified_at: "2026-10-11T12:21:23Z" },
+    { week: 7, schedule_verified_at: "2026-10-11T10:22:49Z" },
+  ];
+  const release = { week: 7, schedule_verified_at: "2026-10-11T10:22:49Z", results_verified_at: "2026-10-11T12:21:23Z" };
+  assert.match(scoreboardSourceLabel(6, release, weeks).detail, /Week 6 schedule checked 2026-10-10 09:09 UTC; finals verified 2026-10-11 12:21 UTC/);
+  assert.match(scoreboardSourceLabel(7, release, weeks).detail, /Week 7 schedule checked 2026-10-11 10:22 UTC; no finals verified yet/);
+  assert.equal(scoreboardSourceLabel(5, release, weeks).badge, "Published snapshot");
 });
 
 test("civil verification dates agree across server and browser time zones", () => {
