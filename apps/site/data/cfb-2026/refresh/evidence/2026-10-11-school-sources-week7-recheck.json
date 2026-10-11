@@ -1,0 +1,4215 @@
+{
+ "schema_version": 1,
+ "scope": "Official school sources for the 44 Saturday October 10, 2026 (Week 6) FBS-vs-FBS finals that scripts/apply-oct10-saturday-finals.mjs verified against ESPN and NCAA.com, the records those finals imply, and a recheck of the three Week 7 official-TBD kickoffs and two unpublished networks against school schedules.",
+ "checked_at": "2026-10-11T13:02:28Z",
+ "rule": "A game becomes final only when its ESPN completed-game summary (state post, completed) agrees with at least one official school page on the score and winner; quarter scores must sum to each score and each team's ESPN record must equal its October 10 reconciled record plus this result. Elapsed kickoffs are never promoted on time alone.",
+ "excerpt_note": "Excerpts are page text as published. Direct-fetch quotes are checked against the saved page; in rendered-markdown excerpts whitespace is collapsed and image or link targets may be shortened to \"…\".",
+ "finals": [
+  {
+   "provider_id": "401856716",
+   "date": "2026-10-10",
+   "away": "texas-am",
+   "home": "missouri",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856716",
+    "checked_at": "2026-10-11T13:01:18Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Memorial Stadium",
+    "venue_city": "Columbia, MO",
+    "attendance": 63609,
+    "broadcasts": [
+     "ABC",
+     "Disney+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "142",
+      "name": "Missouri Tigers",
+      "points": 27,
+      "line_score": [
+       0,
+       10,
+       10,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "245",
+      "name": "Texas A&M Aggies",
+      "points": 6,
+      "line_score": [
+       3,
+       0,
+       0,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "1-3",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "missouri",
+     "url": "https://mutigers.com/sports/football/schedule/season/2026",
+     "fetched_at": "2026-10-11T13:04:52Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 27-6",
+     "excerpt": "Oct 10 vs. Football Texas A&M Memorial Stadium Columbia, Mo. Memorial Stadium Columbia, Mo. W Win 27-6",
+     "outcome": "W",
+     "team_points": 27,
+     "opponent_points": 6,
+     "overtime": false,
+     "record": {
+      "overall": "5-1",
+      "conference": "2-1",
+      "text": "Overall 5-1 PCT .833 Conf. 2-1"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "texas-am",
+     "url": "https://12thman.com/sports/football/schedule/season/2026",
+     "fetched_at": "2026-10-11T13:05:00Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L, Loss 6-27",
+     "excerpt": "Oct 10 11:00 AM Texas A&M at at (#14) Missouri Memorial Stadium Columbia, Mo. Columbia, Mo. / Memorial Stadium L, Loss 6-27",
+     "outcome": "L",
+     "team_points": 6,
+     "opponent_points": 27,
+     "overtime": false,
+     "record": {
+      "overall": "3-3",
+      "conference": "1-3",
+      "text": "Overall 3-3 PCT .500 Conf. 1-3"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856823",
+   "date": "2026-10-10",
+   "away": "arizona",
+   "home": "west-virginia",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856823",
+    "checked_at": "2026-10-11T13:01:18Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Milan Puskar Stadium",
+    "venue_city": "Morgantown, WV",
+    "attendance": 50121,
+    "broadcasts": [
+     "TNT"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "277",
+      "name": "West Virginia Mountaineers",
+      "points": 31,
+      "line_score": [
+       3,
+       14,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "0-3",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "12",
+      "name": "Arizona Wildcats",
+      "points": 52,
+      "line_score": [
+       14,
+       10,
+       14,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "arizona",
+     "url": "https://arizonawildcats.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:05Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 52-31",
+     "excerpt": "at [West Virginia](http://www.wvusports.com/) Morgantown, W.V. / Milan Puskar Stadium [![TV Logo](...)TV Website](https://www.hbomax.com/) W, 52-31 Oct 10(Sat) 9:00 AM MST",
+     "outcome": "W",
+     "team_points": 52,
+     "opponent_points": 31,
+     "overtime": false,
+     "recap_url": "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries",
+     "record": {
+      "overall": "5-1",
+      "conference": "2-1",
+      "text": "OverallWins5Losses1 Overall Pct..833 Overall Percentage .833 ConfWins2Losses1 Conf Pct..667"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856824",
+   "date": "2026-10-10",
+   "away": "ucf",
+   "home": "oklahoma-state",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856824",
+    "checked_at": "2026-10-11T13:01:19Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Boone Pickens Stadium",
+    "venue_city": "Stillwater, OK",
+    "attendance": 52168,
+    "broadcasts": [
+     "ESPN2"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "197",
+      "name": "Oklahoma State Cowboys",
+      "points": 42,
+      "line_score": [
+       7,
+       14,
+       3,
+       18
+      ],
+      "record": "4-1",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2116",
+      "name": "UCF Knights",
+      "points": 28,
+      "line_score": [
+       14,
+       7,
+       0,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "ucf",
+     "url": "https://ucfknights.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:18Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L Loss 28-42",
+     "excerpt": "Oct 10 at #18/- Oklahoma St. Stillwater, Okla. / Boone Pickens Stadium L Loss 28-42",
+     "outcome": "L",
+     "team_points": 28,
+     "opponent_points": 42,
+     "overtime": false,
+     "record": {
+      "overall": "3-3",
+      "conference": "1-2",
+      "text": "Overall 3-3 PCT .500 Conf. 1-2"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858256",
+   "date": "2026-10-10",
+   "away": "north-carolina",
+   "home": "pittsburgh",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858256",
+    "checked_at": "2026-10-11T13:01:19Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Acrisure Stadium",
+    "venue_city": "Pittsburgh, PA",
+    "attendance": 51416,
+    "broadcasts": [
+     "ESPN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "221",
+      "name": "Pittsburgh Panthers",
+      "points": 17,
+      "line_score": [
+       7,
+       3,
+       0,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "153",
+      "name": "North Carolina Tar Heels",
+      "points": 21,
+      "line_score": [
+       0,
+       7,
+       7,
+       7
+      ],
+      "record": "3-2",
+      "conference_record": "1-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "pittsburgh",
+     "url": "https://pittsburghpanthers.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:04:57Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "L 17-21",
+     "excerpt": "date 2026-10-10T12:00:00 · location H · status L · team_score 17 · opponent_score 21",
+     "outcome": "L",
+     "team_points": 17,
+     "opponent_points": 21,
+     "overtime": false,
+     "recap_url": "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17",
+     "record": {
+      "overall": "5-1",
+      "conference": "2-1",
+      "text": "Overall 5-1 · Conf 2-1 (schedule record block)"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858260",
+   "date": "2026-10-10",
+   "away": "wake-forest",
+   "home": "nc-state",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858260",
+    "checked_at": "2026-10-11T13:01:19Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Carter-Finley Stadium",
+    "venue_city": "Raleigh, NC",
+    "attendance": 56919,
+    "broadcasts": [
+     "CW"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "152",
+      "name": "NC State Wolfpack",
+      "points": 14,
+      "line_score": [
+       7,
+       7,
+       0,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "1-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "154",
+      "name": "Wake Forest Demon Deacons",
+      "points": 38,
+      "line_score": [
+       7,
+       3,
+       21,
+       7
+      ],
+      "record": "5-1",
+      "conference_record": "3-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "nc-state",
+     "url": "https://gopack.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:10:57Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 14-38",
+     "excerpt": "Wake Forest vs Wake Forest Carter-Finley Stadium Raleigh, NC Educator Appreciation L, 14-38 Oct 10(Sat) 12 p.m. Game Center Box Score Recap Game Book History ACC",
+     "outcome": "L",
+     "team_points": 14,
+     "opponent_points": 38,
+     "overtime": false,
+     "recap_url": "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14",
+     "record": {
+      "overall": "3-3",
+      "conference": "1-2",
+      "text": "OverallWins3Losses3 Overall Pct..500 Overall Percentage .500 ConfWins1Losses2 Conf Pct..333 Conference Percentage .333 Streak L1"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401862795",
+   "date": "2026-10-10",
+   "away": "tulane",
+   "home": "army",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862795",
+    "checked_at": "2026-10-11T13:01:19Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Michie Stadium",
+    "venue_city": "West Point, NY",
+    "attendance": 29722,
+    "broadcasts": [
+     "CBSSN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "349",
+      "name": "Army Black Knights",
+      "points": 20,
+      "line_score": [
+       7,
+       0,
+       0,
+       13
+      ],
+      "record": "3-2",
+      "conference_record": "2-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2655",
+      "name": "Tulane Green Wave",
+      "points": 17,
+      "line_score": [
+       0,
+       3,
+       7,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "0-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "army",
+     "url": "https://goarmywestpoint.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:10:56Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W 20-17",
+     "excerpt": "[main page] Oct 10 vs Tulane West Point, N.Y. [img: Tulane]17 [img: School Logo]20 Game Center [text-only page] | Oct 10 (Sat) | 12:00 p.m. | Home | Tulane | West Point, N.Y. (Michie Stadium Preserved by USAA) | | W 20-17 |",
+     "outcome": "W",
+     "team_points": 20,
+     "opponent_points": 17,
+     "overtime": false,
+     "recap_url": null,
+     "record": {
+      "overall": "3-2",
+      "conference": "2-1",
+      "text": "OverallWins3Losses2 ConfWins2Losses1 Streak W1 [text-only page: Overall3-20.600 Conference2-10.667 StreakW1]"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866436",
+   "date": "2026-10-10",
+   "away": "sacramento-state",
+   "home": "bowling-green",
+   "scheduled_kickoff_utc": "2026-10-10T16:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866436",
+    "checked_at": "2026-10-11T13:01:20Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Doyt L. Perry Stadium",
+    "venue_city": "Bowling Green, OH",
+    "attendance": 12559,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "189",
+      "name": "Bowling Green Falcons",
+      "points": 38,
+      "line_score": [
+       0,
+       17,
+       7,
+       14
+      ],
+      "record": "2-4",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "16",
+      "name": "Sacramento State Hornets",
+      "points": 10,
+      "line_score": [
+       3,
+       0,
+       0,
+       7
+      ],
+      "record": "1-5",
+      "conference_record": "0-3",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "bowling-green",
+     "url": "https://bgsufalcons.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:23Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 38-10",
+     "excerpt": "Sacramento State vs Sacramento State Doyt L. Perry StadiumBowling Green, Ohio TV Website Hall of Fame / Future Falcons Day W, 38-10 Oct 10(Sat) 12 p.m. Game Center Box Score Recap Photos BGSU-Sacramento State Box Score MAC",
+     "outcome": "W",
+     "team_points": 38,
+     "opponent_points": 10,
+     "overtime": false,
+     "recap_url": "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory",
+     "record": {
+      "overall": "2-4",
+      "conference": "2-0",
+      "text": "OverallWins2Losses4 Overall Pct..333 Overall Percentage .333 ConfWins2Losses0 Conf Pct.1.000 Conference Percentage 1.000 Streak W2"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858482",
+   "date": "2026-10-10",
+   "away": "ball-state",
+   "home": "northwestern",
+   "scheduled_kickoff_utc": "2026-10-10T16:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858482",
+    "checked_at": "2026-10-11T13:01:20Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "venue": "Ryan Field",
+    "venue_city": "Evanston, IL",
+    "attendance": 25629,
+    "broadcasts": [
+     "BTN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "77",
+      "name": "Northwestern Wildcats",
+      "points": 45,
+      "line_score": [
+       14,
+       17,
+       14,
+       0
+      ],
+      "record": "4-1",
+      "conference_record": "1-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2050",
+      "name": "Ball State Cardinals",
+      "points": 14,
+      "line_score": [
+       0,
+       14,
+       0,
+       0
+      ],
+      "record": "1-5",
+      "conference_record": "0-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "northwestern",
+     "url": "https://nusports.com/sports/football/schedule/season/2026",
+     "fetched_at": "2026-10-11T13:04:54Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 45-14",
+     "excerpt": "Oct 10 vs. Homecoming Ball State Evanston, Ill. / Ryan Field Opens in a new window W Win 45-14",
+     "outcome": "W",
+     "team_points": 45,
+     "opponent_points": 14,
+     "overtime": false,
+     "record": {
+      "overall": "4-1",
+      "conference": "1-1",
+      "text": "Overall 4-1 PCT .800 Conf. 1-1"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856714",
+   "date": "2026-10-10",
+   "away": "south-carolina",
+   "home": "florida",
+   "scheduled_kickoff_utc": "2026-10-10T16:45Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856714",
+    "checked_at": "2026-10-11T13:01:20Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T16:45Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Ben Hill Griffin Stadium",
+    "venue_city": "Gainesville, FL",
+    "attendance": 90311,
+    "broadcasts": [
+     "SEC Network",
+     "ERADM"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "57",
+      "name": "Florida Gators",
+      "points": 19,
+      "line_score": [
+       7,
+       3,
+       3,
+       6
+      ],
+      "record": "4-2",
+      "conference_record": "2-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2579",
+      "name": "South Carolina Gamecocks",
+      "points": 38,
+      "line_score": [
+       7,
+       10,
+       14,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-3",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "florida",
+     "url": "https://floridagators.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:31Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L 19-38",
+     "excerpt": "[main page scoreboard] Completed Event: Football versus South Carolina on October 10, 2026 , Loss , 19, to, 38 [text-only page] | Oct 10 (Sat) | 12:45 p.m. | Home | South Carolina | Gainesville, Fla. (Ben Hill Griffin Stadium) | | L 19-38 |",
+     "outcome": "L",
+     "team_points": 19,
+     "opponent_points": 38,
+     "overtime": false,
+     "recap_url": null,
+     "record": {
+      "overall": "4-2",
+      "conference": "2-2",
+      "text": "OverallWins4Losses2 ConfWins2Losses2 Streak L2 [text-only page: Overall4-20.667 Conference2-20.500 StreakL2]"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "south-carolina",
+     "url": "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+     "fetched_at": "2026-10-11T13:11:57Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": null,
+     "note": "The schedule entry for October 10 posted no result; the school record block is used for the record only.",
+     "record": {
+      "overall": "3-3",
+      "conference": "1-3",
+      "text": "Results Overall **3 - 3** PCT **0.500** Conf. **1 - 3** PCT **0.250** Streak **W1** Home **2 - 2**",
+      "source_url": "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+      "fetched_at": "2026-10-11T13:11:57Z"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401862797",
+   "date": "2026-10-10",
+   "away": "rice",
+   "home": "east-carolina",
+   "scheduled_kickoff_utc": "2026-10-10T17:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862797",
+    "checked_at": "2026-10-11T13:01:20Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T17:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Dowdy-Ficklen Stadium",
+    "venue_city": "Greenville, NC",
+    "attendance": 33968,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "151",
+      "name": "East Carolina Pirates",
+      "points": 28,
+      "line_score": [
+       7,
+       0,
+       7,
+       14
+      ],
+      "record": "3-2",
+      "conference_record": "1-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "242",
+      "name": "Rice Owls",
+      "points": 12,
+      "line_score": [
+       0,
+       3,
+       6,
+       3
+      ],
+      "record": "1-5",
+      "conference_record": "0-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "east-carolina",
+     "url": "https://ecupirates.com/sports/football/schedule/text/2026",
+     "fetched_at": "2026-10-11T13:17:26Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "text-only-schedule-row",
+     "result_text": "W 28-12",
+     "excerpt": "Oct 10 (Sat) | 1:00 P.M. | Home | Rice | Greenville, N.C. (Dowdy-Ficklen Stadium) |  | W 28-12",
+     "outcome": "W",
+     "team_points": 28,
+     "opponent_points": 12,
+     "overtime": false,
+     "recap_url": null,
+     "record": null,
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401869843",
+   "date": "2026-10-10",
+   "away": "old-dominion",
+   "home": "appalachian-state",
+   "scheduled_kickoff_utc": "2026-10-10T17:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869843",
+    "checked_at": "2026-10-11T13:01:21Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T17:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Kidd Brewer Stadium",
+    "venue_city": "Boone, NC",
+    "attendance": 27011,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2026",
+      "name": "App State Mountaineers",
+      "points": 3,
+      "line_score": [
+       0,
+       0,
+       3,
+       0
+      ],
+      "record": "3-2",
+      "conference_record": "0-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "295",
+      "name": "Old Dominion Monarchs",
+      "points": 10,
+      "line_score": [
+       0,
+       0,
+       2,
+       8
+      ],
+      "record": "2-4",
+      "conference_record": "1-2",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "appalachian-state",
+     "url": "https://appstatesports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:10:57Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 3-10",
+     "excerpt": "Oct 10 (Sat) 1 p.m. ESPN+Sun Belt \\*vs [Old Dominion](http://www.odusports.com/) ... BOONE, N.C. [Kidd Brewer Stadium](https://appstatesports.com/facilities/?id=3)TV: ESPN+L, 3-10",
+     "outcome": "L",
+     "team_points": 3,
+     "opponent_points": 10,
+     "overtime": false,
+     "recap_url": "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+     "record": {
+      "overall": "3-2",
+      "conference": "0-1",
+      "text": "### Season Record - Overall 3-2 - PCT .600 - Conf 0-1 - PCT .000 - Streak L2"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "old-dominion",
+     "url": "https://odusports.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:10Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 10-3",
+     "excerpt": "Oct 10 Sat Oct 10 at Appalachian State Boone, N.C. W Win 10-3",
+     "outcome": "W",
+     "team_points": 10,
+     "opponent_points": 3,
+     "overtime": false,
+     "record": {
+      "overall": "2-4",
+      "conference": "1-2",
+      "text": "Overall 2-4 PCT .333 Conf. 1-2"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866440",
+   "date": "2026-10-10",
+   "away": "miami-oh",
+   "home": "umass",
+   "scheduled_kickoff_utc": "2026-10-10T18:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866440",
+    "checked_at": "2026-10-11T13:01:21Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T18:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Warren McGuirk Alumni Stadium",
+    "venue_city": "Amherst, MA",
+    "attendance": 13887,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "113",
+      "name": "Massachusetts Minutemen",
+      "points": 19,
+      "line_score": [
+       7,
+       3,
+       0,
+       9
+      ],
+      "record": "4-2",
+      "conference_record": "1-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "193",
+      "name": "Miami (OH) RedHawks",
+      "points": 20,
+      "line_score": [
+       14,
+       0,
+       3,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "1-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "umass",
+     "url": "https://umassathletics.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:45Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 19-20",
+     "excerpt": "Miami (OH) vs Miami (OH) McGuirk Alumni StadiumAmherst, Mass. TV: ESPN+ HOMECOMING | MENTAL HEALTH AWARENESS | PRESENTED BY UMASS AMHERST FOUNDATION L, 19-20 Oct 10(Sat) 2:00 PM Box Score Recap Box Score (PDF) Game Program MAC",
+     "outcome": "L",
+     "team_points": 19,
+     "opponent_points": 20,
+     "overtime": false,
+     "recap_url": "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19",
+     "record": {
+      "overall": "4-2",
+      "conference": "1-2",
+      "text": "OverallWins4Losses2 Overall Pct..667 Overall Percentage .667 ConfWins1Losses2 Conf Pct..333 Conference Percentage .333 Streak L2"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856717",
+   "date": "2026-10-10",
+   "away": "texas",
+   "home": "oklahoma",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
+    "checked_at": "2026-10-11T13:01:21Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": true,
+    "venue": "Cotton Bowl",
+    "venue_city": "Dallas, TX",
+    "attendance": 92100,
+    "broadcasts": [
+     "ABC"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "201",
+      "name": "Oklahoma Sooners",
+      "points": 27,
+      "line_score": [
+       0,
+       7,
+       3,
+       17
+      ],
+      "record": "3-2",
+      "conference_record": "1-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "251",
+      "name": "Texas Longhorns",
+      "points": 24,
+      "line_score": [
+       7,
+       10,
+       0,
+       7
+      ],
+      "record": "4-1",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "oklahoma",
+     "url": "https://soonersports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:04:55Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "W 27-24",
+     "excerpt": "date 2026-10-10T14:30:00 · location N · status W · team_score 27 · opponent_score 24",
+     "outcome": "W",
+     "team_points": 27,
+     "opponent_points": 24,
+     "overtime": false,
+     "recap_url": "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+     "record": {
+      "overall": "3-2",
+      "conference": "1-1",
+      "text": "Overall 3-2 · Conf 1-1 (schedule record block)"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "texas",
+     "url": "https://texaslonghorns.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:13:07Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 24-27",
+     "excerpt": "Oklahoma vs Oklahoma Cotton Bowl Dallas, Texas ABC Website Allstate Red River Rivalry L, 24-27 Oct 10(Sat) 2:30 p.m. CT Game Center Box Score Recap Box Score (PDF) SEC",
+     "outcome": "L",
+     "team_points": 24,
+     "opponent_points": 27,
+     "overtime": false,
+     "recap_url": "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+     "record": null,
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856718",
+   "date": "2026-10-10",
+   "away": "ole-miss",
+   "home": "vanderbilt",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856718",
+    "checked_at": "2026-10-11T13:01:21Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "FirstBank Stadium",
+    "venue_city": "Nashville, TN",
+    "attendance": 35000,
+    "broadcasts": [
+     "ESPN",
+     "Disney+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "238",
+      "name": "Vanderbilt Commodores",
+      "points": 17,
+      "line_score": [
+       3,
+       0,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "0-3",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "145",
+      "name": "Ole Miss Rebels",
+      "points": 52,
+      "line_score": [
+       14,
+       28,
+       0,
+       10
+      ],
+      "record": "4-1",
+      "conference_record": "2-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "vanderbilt",
+     "url": "https://vucommodores.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:19Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L Loss 17-52",
+     "excerpt": "Oct 10 vs. vs. Ole Miss Nashville, Tenn. L Loss 17-52",
+     "outcome": "L",
+     "team_points": 17,
+     "opponent_points": 52,
+     "overtime": false,
+     "record": {
+      "overall": "3-3",
+      "conference": "0-3",
+      "text": "Overall 3-3 PCT .500 Conf. 0-3"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856825",
+   "date": "2026-10-10",
+   "away": "houston",
+   "home": "kansas-state",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856825",
+    "checked_at": "2026-10-11T13:01:22Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Bill Snyder Family Stadium",
+    "venue_city": "Manhattan, KS",
+    "attendance": 51569,
+    "broadcasts": [
+     "Fox"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2306",
+      "name": "Kansas State Wildcats",
+      "points": 16,
+      "line_score": [
+       3,
+       0,
+       6,
+       7
+      ],
+      "record": "3-2",
+      "conference_record": "0-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "248",
+      "name": "Houston Cougars",
+      "points": 35,
+      "line_score": [
+       7,
+       14,
+       14,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "kansas-state",
+     "url": "https://kstatesports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:52Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 16-35",
+     "excerpt": "Houston vs Houston Bill Snyder Family StadiumManhattan, Kan. [img: FOX] | Radio: K-State Sports Network Celebrate Ag L, 16-35 Oct 10(Sat) 2:30 p.m. Game Center Box Score Recap Photos History Big 12",
+     "outcome": "L",
+     "team_points": 16,
+     "opponent_points": 35,
+     "overtime": false,
+     "recap_url": "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+     "record": {
+      "overall": "3-2",
+      "conference": "0-2",
+      "text": "OverallWins3Losses2 Overall Pct..600 Overall Percentage .600 ConfWins0Losses2 Conf Pct..000 Conference Percentage .000 Streak L2"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858255",
+   "date": "2026-10-10",
+   "away": "duke",
+   "home": "georgia-tech",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858255",
+    "checked_at": "2026-10-11T13:01:22Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Bobby Dodd Stadium",
+    "venue_city": "Atlanta, GA",
+    "attendance": 46432,
+    "broadcasts": [
+     "ESPN2"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "59",
+      "name": "Georgia Tech Yellow Jackets",
+      "points": 28,
+      "line_score": [
+       7,
+       7,
+       7,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "1-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "150",
+      "name": "Duke Blue Devils",
+      "points": 25,
+      "line_score": [
+       0,
+       10,
+       8,
+       7
+      ],
+      "record": "4-1",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "georgia-tech",
+     "url": "https://ramblinwreck.com/sports/m-footbl/schedule",
+     "fetched_at": "2026-10-11T13:07:35Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 28-25",
+     "excerpt": "Oct 10 Georgia Tech Yellow Jackets vs. #23 Duke #23 Duke Blue Devils Atlanta, Ga. Bobby Dodd Stadium at Hyundai Field W Win 28-25",
+     "outcome": "W",
+     "team_points": 28,
+     "opponent_points": 25,
+     "overtime": false,
+     "record": {
+      "overall": "2-3",
+      "conference": "1-1",
+      "text": "Overall 2-3 PCT .400 Conf. 1-1"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "duke",
+     "url": "https://goduke.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:04:44Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "L 25-28",
+     "excerpt": "date 2026-10-10T15:30:00 · location A · status L · team_score 25 · opponent_score 28",
+     "outcome": "L",
+     "team_points": 25,
+     "opponent_points": 28,
+     "overtime": false,
+     "recap_url": "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25",
+     "record": {
+      "overall": "4-1",
+      "conference": "1-1",
+      "text": "Overall 4-1 · Conf 1-1 (schedule record block)"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858257",
+   "date": "2026-10-10",
+   "away": "stanford",
+   "home": "notre-dame",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858257",
+    "checked_at": "2026-10-11T13:01:51Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "venue": "Notre Dame Stadium",
+    "venue_city": "Notre Dame, IN",
+    "attendance": 77622,
+    "broadcasts": [
+     "NBC"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "87",
+      "name": "Notre Dame Fighting Irish",
+      "points": 58,
+      "line_score": [
+       14,
+       23,
+       7,
+       14
+      ],
+      "record": "6-0",
+      "conference_record": "0-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "24",
+      "name": "Stanford Cardinal",
+      "points": 7,
+      "line_score": [
+       0,
+       0,
+       7,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-3",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "notre-dame",
+     "url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+     "fetched_at": "2026-10-11T13:11:50Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "official-news-headline",
+     "result_text": "58-7",
+     "excerpt": "Irish Run Past Stanford 58-7 (October 10, 2026; listed on https://fightingirish.com/sports/football/news/)",
+     "outcome": "W",
+     "team_points": 58,
+     "opponent_points": 7,
+     "overtime": false,
+     "recap_url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+     "record": null,
+     "note": "Schedule page https://fightingirish.com/sports/football/schedule did not render (Page (WMT Digital, title 'Football 2026-27 - Notre Dame Fighting Irish') loaded but schedule content never rendered: only 'Loading…' skeleton placeholders under '2026-27 Season Schedule'. Retried with scrape_url_elements on https://fightingirish.com/sports/football/schedule/ (selector 'main', 13:11:34Z) and https://fightingirish.com/sports/football/schedule/?view=list (selectors '[class*=schedule-event]', '[class*=schedule-summary]', 13:11:42Z): no game elements, summary block still skeleton.).",
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "stanford",
+     "url": "https://gostanford.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:16Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L Loss 7-58",
+     "excerpt": "Oct 10 12:30 PM at at Notre Dame Notre Dame, IN L Loss 7-58",
+     "outcome": "L",
+     "team_points": 7,
+     "opponent_points": 58,
+     "overtime": false,
+     "record": {
+      "overall": "2-4",
+      "conference": "1-3",
+      "text": "Overall 2-4 PCT .333 Conf. 1-3"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858259",
+   "date": "2026-10-10",
+   "away": "virginia-tech",
+   "home": "california",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858259",
+    "checked_at": "2026-10-11T13:01:51Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "California Memorial Stadium",
+    "venue_city": "Berkeley, CA",
+    "attendance": 40170,
+    "broadcasts": [
+     "ACC Network"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "25",
+      "name": "California Golden Bears",
+      "points": 25,
+      "line_score": [
+       0,
+       10,
+       3,
+       12
+      ],
+      "record": "3-3",
+      "conference_record": "2-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "259",
+      "name": "Virginia Tech Hokies",
+      "points": 20,
+      "line_score": [
+       0,
+       14,
+       0,
+       6
+      ],
+      "record": "4-2",
+      "conference_record": "1-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "virginia-tech",
+     "url": "https://hokiesports.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:23Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L 20-25",
+     "excerpt": "Oct 10 Watch at Cal California Memorial Stadium Berkeley, Calif. away L 20-25",
+     "outcome": "L",
+     "team_points": 20,
+     "opponent_points": 25,
+     "overtime": false,
+     "record": null,
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858480",
+   "date": "2026-10-10",
+   "away": "illinois",
+   "home": "michigan-state",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
+    "checked_at": "2026-10-11T13:01:52Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final/OT",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Spartan Stadium",
+    "venue_city": "East Lansing, MI",
+    "attendance": 65837,
+    "broadcasts": [
+     "FS1"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "127",
+      "name": "Michigan State Spartans",
+      "points": 37,
+      "line_score": [
+       0,
+       7,
+       10,
+       14,
+       6
+      ],
+      "record": "2-4",
+      "conference_record": "0-3",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "356",
+      "name": "Illinois Fighting Illini",
+      "points": 38,
+      "line_score": [
+       10,
+       10,
+       3,
+       8,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-2",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "illinois",
+     "url": "https://fightingillini.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:46Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 38-37OT",
+     "excerpt": "at [Michigan State](http://msuspartans.com/) East Lansing, Mich. TV: FS1 W, 38-37OT Oct 10(Sat) 2:30 PM CT",
+     "outcome": "W",
+     "team_points": 38,
+     "opponent_points": 37,
+     "overtime": true,
+     "recap_url": "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37",
+     "record": {
+      "overall": "3-3",
+      "conference": "1-2",
+      "text": "OverallWins3Losses3 Overall Pct..500 Overall Percentage .500 ConfWins1Losses2 Conf Pct..333"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858484",
+   "date": "2026-10-10",
+   "away": "ucla",
+   "home": "oregon",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
+    "checked_at": "2026-10-11T13:01:52Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Autzen Stadium",
+    "venue_city": "Eugene, OR",
+    "attendance": 59262,
+    "broadcasts": [
+     "CBS"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2483",
+      "name": "Oregon Ducks",
+      "points": 15,
+      "line_score": [
+       6,
+       0,
+       0,
+       9
+      ],
+      "record": "3-2",
+      "conference_record": "1-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "26",
+      "name": "UCLA Bruins",
+      "points": 17,
+      "line_score": [
+       3,
+       7,
+       0,
+       7
+      ],
+      "record": "5-0",
+      "conference_record": "3-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "oregon",
+     "url": "https://goducks.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:33Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 15-17",
+     "excerpt": "[#21 UCLA](http://www.uclabruins.com/) [Autzen Stadium](https://goducks.com/facilities/autzen-stadium/22)Eugene, OR TV: CBS | Radio: Oregon Sports Network [WEAR BLACK](https://goducks.com/sports/2013/7/26/208831862) L, 15-17 Oct 10(Sat) 12:30 PM",
+     "outcome": "L",
+     "team_points": 15,
+     "opponent_points": 17,
+     "overtime": false,
+     "recap_url": "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+     "record": {
+      "overall": "3-2",
+      "conference": "1-1",
+      "text": "OverallWins3Losses2 Overall Pct..600 Overall Percentage .600 ConfWins1Losses1 Conf Pct..500 Conference Percentage .500 Streak L1 HomeWins2Losses1 AwayWins1Losses1 NeutralWins0Losses0"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "ucla",
+     "url": "https://uclabruins.com/sports/football/schedule/season/2026",
+     "fetched_at": "2026-10-11T13:05:02Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 17-15",
+     "excerpt": "Oct 10 12:30 PM PDT Football Oregon Eugene, OR / Autzen Stadium W Win 17-15",
+     "outcome": "W",
+     "team_points": 17,
+     "opponent_points": 15,
+     "overtime": false,
+     "record": null,
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401862796",
+   "date": "2026-10-10",
+   "away": "charlotte",
+   "home": "north-texas",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862796",
+    "checked_at": "2026-10-11T13:01:52Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "DATCU Stadium",
+    "venue_city": "Denton, TX",
+    "attendance": 17411,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "249",
+      "name": "North Texas Mean Green",
+      "points": 50,
+      "line_score": [
+       10,
+       30,
+       7,
+       3
+      ],
+      "record": "4-2",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2429",
+      "name": "Charlotte 49ers",
+      "points": 10,
+      "line_score": [
+       3,
+       7,
+       0,
+       0
+      ],
+      "record": "0-6",
+      "conference_record": "0-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "north-texas",
+     "url": "https://meangreensports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:15Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 50-10",
+     "excerpt": "Charlotte vs Charlotte DATCU Stadium Denton, TX ESPN+ Website | Radio: MGSN Jammin’ at DATCU W, 50-10 Oct 10(Sat) 2:30 PM CT Box Score Recap History Game Program The American",
+     "outcome": "W",
+     "team_points": 50,
+     "opponent_points": 10,
+     "overtime": false,
+     "recap_url": "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+     "record": {
+      "overall": "4-2",
+      "conference": "2-0",
+      "text": "OverallWins4Losses2 Overall Pct..667 Overall Percentage .667 ConfWins2Losses0 Conf Pct.1.000 Conference Percentage 1.000 Streak W3"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "charlotte",
+     "url": "https://charlotte49ers.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:10:57Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 10-50",
+     "excerpt": "[North Texas](http://www.meangreensports.com/) at [North Texas](http://www.meangreensports.com/) Denton, Texas ![ESPN+](…) L, 10-50 Oct 10(Sat) 3:30 p.m. [Game Center](https://charlotte49ers.com/game-center/19976)",
+     "outcome": "L",
+     "team_points": 10,
+     "opponent_points": 50,
+     "overtime": false,
+     "recap_url": "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas",
+     "record": {
+      "overall": "0-6",
+      "conference": "0-2",
+      "text": "OverallWins0Losses6 Overall Pct..000 Overall Percentage .000 ConfWins0Losses2 Conf Pct..000 Conference Percentage .000 Streak L6 HomeWins0Losses3 AwayWins0Losses3 NeutralWins0Losses0"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401862799",
+   "date": "2026-10-10",
+   "away": "tulsa",
+   "home": "navy",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862799",
+    "checked_at": "2026-10-11T13:01:53Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Navy-Marine Corps Memorial Stadium",
+    "venue_city": "Annapolis, MD",
+    "attendance": 30963,
+    "broadcasts": [
+     "CBSSN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2426",
+      "name": "Navy Midshipmen",
+      "points": 34,
+      "line_score": [
+       7,
+       7,
+       6,
+       14
+      ],
+      "record": "2-3",
+      "conference_record": "1-2",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "202",
+      "name": "Tulsa Golden Hurricane",
+      "points": 26,
+      "line_score": [
+       14,
+       6,
+       6,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "0-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "navy",
+     "url": "https://navysports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:13:29Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 34-26",
+     "excerpt": "Oct 10 (Sat) 3:30 PM CBS Sports Network Navy Radio NetworkAmerican \\*vs [Tulsa](http://tulsahurricane.com) ... Annapolis, Md. [Navy-Marine Corps Memorial Stadium](https://navysports.com/facilities/?id=12)TV: CBS Sports Network Radio: Navy Radio NetworkW, 34-26",
+     "outcome": "W",
+     "team_points": 34,
+     "opponent_points": 26,
+     "overtime": false,
+     "recap_url": "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+     "record": {
+      "overall": "2-3",
+      "conference": "1-2",
+      "text": "### Season Record - Overall 2-3 - PCT .400 - Conf 1-2 - PCT .333 - Streak W1"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "tulsa",
+     "url": "https://tulsahurricane.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:05:02Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "L 26-34",
+     "excerpt": "date 2026-10-10T14:30:00 · location A · status L · team_score 26 · opponent_score 34",
+     "outcome": "L",
+     "team_points": 26,
+     "opponent_points": 34,
+     "overtime": false,
+     "recap_url": "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy",
+     "record": {
+      "overall": "3-3",
+      "conference": "0-2",
+      "text": "Overall 3-3 · Conf 0-2 (schedule record block)"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866435",
+   "date": "2026-10-10",
+   "away": "eastern-michigan",
+   "home": "akron",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866435",
+    "checked_at": "2026-10-11T13:01:53Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "InfoCision Stadium",
+    "venue_city": "Akron, OH",
+    "attendance": 9038,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2006",
+      "name": "Akron Zips",
+      "points": 23,
+      "line_score": [
+       7,
+       7,
+       3,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2199",
+      "name": "Eastern Michigan Eagles",
+      "points": 25,
+      "line_score": [
+       3,
+       10,
+       3,
+       9
+      ],
+      "record": "4-3",
+      "conference_record": "3-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "akron",
+     "url": "https://gozips.com/sports/football/schedule/text/2026",
+     "fetched_at": "2026-10-11T13:17:26Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "text-only-schedule-row",
+     "result_text": "L 23-25",
+     "excerpt": "Oct 10 (Sat) | 3:30 PM | Home | Eastern Michigan | Akron, Ohio (InfoCision Stadium - Summa Health Field) |  | L 23-25",
+     "outcome": "L",
+     "team_points": 23,
+     "opponent_points": 25,
+     "overtime": false,
+     "recap_url": "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23",
+     "record": null,
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866437",
+   "date": "2026-10-10",
+   "away": "buffalo",
+   "home": "toledo",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866437",
+    "checked_at": "2026-10-11T13:01:53Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Glass Bowl",
+    "venue_city": "Toledo, OH",
+    "attendance": 24767,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2649",
+      "name": "Toledo Rockets",
+      "points": 8,
+      "line_score": [
+       0,
+       0,
+       0,
+       8
+      ],
+      "record": "4-2",
+      "conference_record": "1-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2084",
+      "name": "Buffalo Bulls",
+      "points": 23,
+      "line_score": [
+       6,
+       7,
+       3,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "toledo",
+     "url": "https://utrockets.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:59Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 8-23",
+     "excerpt": "Buffalo vs Buffalo Glass BowlToledo, Ohio TV Website Homecoming L, 8-23 Oct 10(Sat) 3:30 PM Box Score Recap Final Stats (PDF) History Mid-American Conference",
+     "outcome": "L",
+     "team_points": 8,
+     "opponent_points": 23,
+     "overtime": false,
+     "recap_url": "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8",
+     "record": {
+      "overall": "4-2",
+      "conference": "1-1",
+      "text": "OverallWins4Losses2 Overall Pct..667 Overall Percentage .667 ConfWins1Losses1 Conf Pct..500 Conference Percentage .500 Streak L1"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866438",
+   "date": "2026-10-10",
+   "away": "central-michigan",
+   "home": "ohio",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866438",
+    "checked_at": "2026-10-11T13:01:54Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Peden Stadium",
+    "venue_city": "Athens, OH",
+    "attendance": 21368,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "195",
+      "name": "Ohio Bobcats",
+      "points": 31,
+      "line_score": [
+       14,
+       17,
+       0,
+       0
+      ],
+      "record": "4-2",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2117",
+      "name": "Central Michigan Chippewas",
+      "points": 14,
+      "line_score": [
+       0,
+       0,
+       7,
+       7
+      ],
+      "record": "3-3",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "ohio",
+     "url": "https://ohiobobcats.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:07Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 31-14",
+     "excerpt": "Central Michigan vs Central Michigan FRANK SOLICH FIELD/PEDEN STADIUMAthens, OH TV: ESPN+ Homecoming W, 31-14 Oct 10(Sat) 3:30 p.m. ET Game Center Box Score Recap Ohio Notes Digital Guide MAC",
+     "outcome": "W",
+     "team_points": 31,
+     "opponent_points": 14,
+     "overtime": false,
+     "recap_url": "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan",
+     "record": {
+      "overall": "4-2",
+      "conference": "2-0",
+      "text": "OverallWins4Losses2 Overall Pct..667 Overall Percentage .667 ConfWins2Losses0 Conf Pct.1.000 Conference Percentage 1.000 Streak W3"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401866439",
+   "date": "2026-10-10",
+   "away": "kent-state",
+   "home": "western-michigan",
+   "scheduled_kickoff_utc": "2026-10-10T19:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866439",
+    "checked_at": "2026-10-11T13:01:54Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Waldo Stadium",
+    "venue_city": "Kalamazoo, MI",
+    "attendance": 20868,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2711",
+      "name": "Western Michigan Broncos",
+      "points": 38,
+      "line_score": [
+       7,
+       14,
+       3,
+       14
+      ],
+      "record": "4-2",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2309",
+      "name": "Kent State Golden Flashes",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "western-michigan",
+     "url": "https://wmubroncos.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:05:06Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W, 38-7",
+     "excerpt": "Oct 10 (Sat) / Final Kalamazoo, Mich. Stafford-Smith Field at Waldo Stadium vs Kent State University W, 38-7",
+     "outcome": "W",
+     "team_points": 38,
+     "opponent_points": 7,
+     "overtime": false,
+     "record": {
+      "overall": "4-2",
+      "conference": "1-0",
+      "text": "Overall 4-2 Overall PCT Conf 1-0"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401861964",
+   "date": "2026-10-10",
+   "away": "uconn",
+   "home": "temple",
+   "scheduled_kickoff_utc": "2026-10-10T19:45Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401861964",
+    "checked_at": "2026-10-11T13:01:54Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T19:45Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "venue": "Lincoln Financial Field",
+    "venue_city": "Philadelphia, PA",
+    "attendance": 21112,
+    "broadcasts": [
+     "ESPNU"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "218",
+      "name": "Temple Owls",
+      "points": 20,
+      "line_score": [
+       14,
+       3,
+       3,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "41",
+      "name": "UConn Huskies",
+      "points": 34,
+      "line_score": [
+       14,
+       10,
+       0,
+       10
+      ],
+      "record": "3-3",
+      "conference_record": "0-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "uconn",
+     "url": "https://uconnhuskies.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:13:15Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 34-20",
+     "excerpt": "Temple at Temple Philadelphia, PA ESPNU | Radio: UConn Sports Network - FOX Sports 97.9 FM W, 34-20 Oct 10(Sat) 3:45 PM Game Center Box Score Recap Final Stat Book History",
+     "outcome": "W",
+     "team_points": 34,
+     "opponent_points": 20,
+     "overtime": false,
+     "recap_url": "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple",
+     "record": {
+      "overall": "3-3",
+      "conference": "0-0",
+      "text": "OverallWins3Losses3 Overall Pct..500 Overall Percentage .500 ConfWins0Losses0 Conf Pct..000 Conference Percentage .000 Streak W1"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856713",
+   "date": "2026-10-10",
+   "away": "tennessee",
+   "home": "arkansas",
+   "scheduled_kickoff_utc": "2026-10-10T20:15Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856713",
+    "checked_at": "2026-10-11T13:01:54Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T20:15Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Donald W. Reynolds Razorback Stadium",
+    "venue_city": "Fayetteville, AR",
+    "attendance": 69038,
+    "broadcasts": [
+     "SEC Network"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "8",
+      "name": "Arkansas Razorbacks",
+      "points": 17,
+      "line_score": [
+       0,
+       0,
+       14,
+       3
+      ],
+      "record": "2-4",
+      "conference_record": "0-3",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2633",
+      "name": "Tennessee Volunteers",
+      "points": 24,
+      "line_score": [
+       0,
+       7,
+       3,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "arkansas",
+     "url": "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+     "fetched_at": "2026-10-11T13:07:34Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L, 24-17",
+     "excerpt": "Oct. 10 3:15 PM Fayetteville, Ark. #15 Tennessee 3:15 PM L, 24-17",
+     "outcome": "L",
+     "team_points": 17,
+     "opponent_points": 24,
+     "overtime": false,
+     "record": {
+      "overall": "2-4",
+      "conference": "0-3",
+      "text": "- Overall 2 - 4 - PCT. 0.333 - Conf. 0 - 3 - PCT. 0.000 - Streak L2",
+      "source_url": "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+      "fetched_at": "2026-10-11T13:11:11Z"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401860902",
+   "date": "2026-10-10",
+   "away": "san-diego-state",
+   "home": "oregon-state",
+   "scheduled_kickoff_utc": "2026-10-10T22:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860902",
+    "checked_at": "2026-10-11T13:01:55Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T22:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Reser Stadium",
+    "venue_city": "Corvallis, OR",
+    "attendance": 37361,
+    "broadcasts": [
+     "USA Net"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "204",
+      "name": "Oregon State Beavers",
+      "points": 66,
+      "line_score": [
+       14,
+       24,
+       21,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "21",
+      "name": "San Diego State Aztecs",
+      "points": 14,
+      "line_score": [
+       0,
+       7,
+       7,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "san-diego-state",
+     "url": "https://goaztecs.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:15Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L 14-66",
+     "excerpt": "Oct 10 3:00 PM PDT at Oregon State L 14-66",
+     "outcome": "L",
+     "team_points": 14,
+     "opponent_points": 66,
+     "overtime": false,
+     "record": {
+      "overall": "2-4",
+      "conference": "1-1",
+      "text": "Overall 2-4 PCT .333 Conf. 1-1"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856715",
+   "date": "2026-10-10",
+   "away": "lsu",
+   "home": "kentucky",
+   "scheduled_kickoff_utc": "2026-10-10T23:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
+    "checked_at": "2026-10-11T13:01:55Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final/OT",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Kroger Field",
+    "venue_city": "Lexington, KY",
+    "attendance": 61897,
+    "broadcasts": [
+     "ESPN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "96",
+      "name": "Kentucky Wildcats",
+      "points": 35,
+      "line_score": [
+       7,
+       14,
+       0,
+       6,
+       8
+      ],
+      "record": "5-1",
+      "conference_record": "3-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "99",
+      "name": "LSU Tigers",
+      "points": 34,
+      "line_score": [
+       10,
+       7,
+       3,
+       7,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "1-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "kentucky",
+     "url": "https://ukathletics.com/sports/football/schedule/season/2026/",
+     "fetched_at": "2026-10-11T13:04:48Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W 35-34 (OT)",
+     "excerpt": "Oct 10 vs. LSU Lexington, Ky. W 35-34 (OT)",
+     "outcome": "W",
+     "team_points": 35,
+     "opponent_points": 34,
+     "overtime": true,
+     "record": {
+      "overall": "5-1",
+      "conference": "3-1",
+      "text": "Overall **5 - 1** PCT **0.833** Conf. **3 - 1** PCT **0.750** Streak **W4**",
+      "source_url": "https://ukathletics.com/sports/football/schedule/season/2026/",
+      "fetched_at": "2026-10-11T13:12:51Z"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "lsu",
+     "url": "https://lsusports.net/sports/fb/schedule",
+     "fetched_at": "2026-10-11T13:07:07Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L Loss 34-35 OT",
+     "excerpt": "Oct 10 #10 at Sat Oct 10 at Kentucky Lexington, Ky. (Kroger Field at Commonwealth Stadium) Lexington, Ky. (Kroger Field at Commonwealth Stadium) Game sponsor Opens in a new window L Loss 34-35 OT",
+     "outcome": "L",
+     "team_points": 34,
+     "opponent_points": 35,
+     "overtime": true,
+     "record": {
+      "overall": "4-2",
+      "conference": "1-2",
+      "text": "Overall 4-2 PCT .667 Conf. 1-2"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401862798",
+   "date": "2026-10-10",
+   "away": "uab",
+   "home": "memphis",
+   "scheduled_kickoff_utc": "2026-10-10T23:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862798",
+    "checked_at": "2026-10-11T13:01:55Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Simmons Bank Liberty Stadium",
+    "venue_city": "Memphis, TN",
+    "attendance": 30322,
+    "broadcasts": [
+     "ESPN2"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "235",
+      "name": "Memphis Tigers",
+      "points": 38,
+      "line_score": [
+       7,
+       3,
+       14,
+       14
+      ],
+      "record": "5-1",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "5",
+      "name": "UAB Blazers",
+      "points": 13,
+      "line_score": [
+       7,
+       6,
+       0,
+       0
+      ],
+      "record": "3-3",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "memphis",
+     "url": "https://gotigersgo.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:04:50Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "W 38-13",
+     "excerpt": "date 2026-10-10T18:00:00 · location H · status W · team_score 38 · opponent_score 13",
+     "outcome": "W",
+     "team_points": 38,
+     "opponent_points": 13,
+     "overtime": false,
+     "recap_url": "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab",
+     "record": {
+      "overall": "5-1",
+      "conference": "2-0",
+      "text": "Overall 5-1 · Conf 2-0 (schedule record block)"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401864517",
+   "date": "2026-10-10",
+   "away": "nevada",
+   "home": "utep",
+   "scheduled_kickoff_utc": "2026-10-10T23:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864517",
+    "checked_at": "2026-10-11T13:01:55Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Sun Bowl",
+    "venue_city": "El Paso, TX",
+    "attendance": 13927,
+    "broadcasts": [
+     "FS1"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2638",
+      "name": "UTEP Miners",
+      "points": 13,
+      "line_score": [
+       0,
+       7,
+       0,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2440",
+      "name": "Nevada Wolf Pack",
+      "points": 30,
+      "line_score": [
+       7,
+       6,
+       10,
+       7
+      ],
+      "record": "2-3",
+      "conference_record": "1-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "nevada",
+     "url": "https://nevadawolfpack.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:05Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 30-13",
+     "excerpt": "Oct 10 (Sat) 4 P.M. FS1/FOX One 105.7 KOZZ / The Varsity NetworkMW *at UTEP Box Score Recap El Paso, TexasTV: FS1/FOX One Radio: 105.7 KOZZ / The Varsity NetworkW, 30-13",
+     "outcome": "W",
+     "team_points": 30,
+     "opponent_points": 13,
+     "overtime": false,
+     "recap_url": "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx",
+     "record": {
+      "overall": "2-3",
+      "conference": "1-1",
+      "text": "Season Record Overall 2-3 PCT .400 Conf 1-1 PCT .500 Streak W1 Home 1-2 Away 1-1 Neutral 0-0"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401864518",
+   "date": "2026-10-10",
+   "away": "north-dakota-state",
+   "home": "unlv",
+   "scheduled_kickoff_utc": "2026-10-10T23:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864518",
+    "checked_at": "2026-10-11T13:01:56Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Allegiant Stadium",
+    "venue_city": "Las Vegas, NV",
+    "attendance": 33516,
+    "broadcasts": [
+     "CW"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2439",
+      "name": "UNLV Rebels",
+      "points": 13,
+      "line_score": [
+       7,
+       0,
+       3,
+       3
+      ],
+      "record": "4-2",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2449",
+      "name": "North Dakota State Bison",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "2-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "unlv",
+     "url": "https://unlvrebels.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:13:26Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 13-7",
+     "excerpt": "Oct 10 (Sat) 4 PM PT The CW MW *vs NDSU Homecoming and Breast Cancer Awareness Day Box Score Recap Las Vegas, NV Allegiant Stadium The CW W, 13-7",
+     "outcome": "W",
+     "team_points": 13,
+     "opponent_points": 7,
+     "overtime": false,
+     "recap_url": "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx",
+     "record": {
+      "overall": "4-2",
+      "conference": "2-0",
+      "text": "Season Record Overall 4-2 PCT .667 Conf 2-0 PCT 1.000 Streak W3 Home 2-1 Away 2-1 Neutral 0-0"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401869943",
+   "date": "2026-10-10",
+   "away": "coastal-carolina",
+   "home": "marshall",
+   "scheduled_kickoff_utc": "2026-10-10T23:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869943",
+    "checked_at": "2026-10-11T13:01:56Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Joan C. Edwards Stadium",
+    "venue_city": "Huntington, WV",
+    "attendance": 23029,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "276",
+      "name": "Marshall Thundering Herd",
+      "points": 21,
+      "line_score": [
+       0,
+       0,
+       7,
+       14
+      ],
+      "record": "3-3",
+      "conference_record": "0-2",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "324",
+      "name": "Coastal Carolina Chanticleers",
+      "points": 27,
+      "line_score": [
+       3,
+       10,
+       14,
+       0
+      ],
+      "record": "2-4",
+      "conference_record": "1-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "marshall",
+     "url": "https://herdzone.com/sports/football/schedule/text/2026",
+     "fetched_at": "2026-10-11T13:17:26Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "text-only-schedule-row",
+     "result_text": "L 21-27",
+     "excerpt": "Oct 10 (Sat) | 7:00 p.m. | Home | Coastal Carolina | Huntington, W.Va. (Joan C. Edwards Stadium) |  | L 21-27",
+     "outcome": "L",
+     "team_points": 21,
+     "opponent_points": 27,
+     "overtime": false,
+     "recap_url": "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21",
+     "record": {
+      "overall": "3-3",
+      "conference": "0-2",
+      "text": "OverallWins3Losses3 ConfWins0Losses2 Streak L2"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856712",
+   "date": "2026-10-10",
+   "away": "georgia",
+   "home": "alabama",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
+    "checked_at": "2026-10-11T13:01:56Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Bryant-Denny Stadium",
+    "venue_city": "Tuscaloosa, AL",
+    "attendance": 100077,
+    "broadcasts": [
+     "ABC"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "333",
+      "name": "Alabama Crimson Tide",
+      "points": 17,
+      "line_score": [
+       0,
+       14,
+       3,
+       0
+      ],
+      "record": "5-1",
+      "conference_record": "3-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "61",
+      "name": "Georgia Bulldogs",
+      "points": 20,
+      "line_score": [
+       3,
+       7,
+       7,
+       3
+      ],
+      "record": "6-0",
+      "conference_record": "4-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "georgia",
+     "url": "https://georgiadogs.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:04:46Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "W 20-17",
+     "excerpt": "date 2026-10-10T19:30:00 · location A · status W · team_score 20 · opponent_score 17",
+     "outcome": "W",
+     "team_points": 20,
+     "opponent_points": 17,
+     "overtime": false,
+     "recap_url": null,
+     "record": {
+      "overall": "6-0",
+      "conference": "4-0",
+      "text": "Overall 6-0 · Conf 4-0 (schedule record block)"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858258",
+   "date": "2026-10-10",
+   "away": "syracuse",
+   "home": "virginia",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858258",
+    "checked_at": "2026-10-11T13:01:57Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Scott Stadium",
+    "venue_city": "Charlottesville, VA",
+    "attendance": 39661,
+    "broadcasts": [
+     "ACC Network"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "258",
+      "name": "Virginia Cavaliers",
+      "points": 28,
+      "line_score": [
+       7,
+       0,
+       7,
+       14
+      ],
+      "record": "4-2",
+      "conference_record": "2-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "183",
+      "name": "Syracuse Orange",
+      "points": 25,
+      "line_score": [
+       7,
+       10,
+       0,
+       8
+      ],
+      "record": "2-3",
+      "conference_record": "0-3",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "virginia",
+     "url": "https://virginiasports.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:21Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 28-25",
+     "excerpt": "Oct 10 Homecomings, Breast Cancer Awareness vs. Homecomings, Breast Cancer Awareness Syracuse (ACC) Charlottesville, Va. home presented by Opens in a new window W Win 28-25",
+     "outcome": "W",
+     "team_points": 28,
+     "opponent_points": 25,
+     "overtime": false,
+     "record": {
+      "overall": "4-2",
+      "conference": "2-1",
+      "text": "Overall 4-2 PCT .667 Conf. 2-1"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858485",
+   "date": "2026-10-10",
+   "away": "usc",
+   "home": "penn-state",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
+    "checked_at": "2026-10-11T13:01:57Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Beaver Stadium",
+    "venue_city": "University Park, PA",
+    "attendance": 114419,
+    "broadcasts": [
+     "NBC",
+     "ERADM"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "213",
+      "name": "Penn State Nittany Lions",
+      "points": 23,
+      "line_score": [
+       7,
+       10,
+       3,
+       3
+      ],
+      "record": "3-3",
+      "conference_record": "0-3",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "30",
+      "name": "USC Trojans",
+      "points": 31,
+      "line_score": [
+       7,
+       10,
+       7,
+       7
+      ],
+      "record": "6-1",
+      "conference_record": "3-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "penn-state",
+     "url": "https://gopsusports.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:12Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "L Loss 23-31",
+     "excerpt": "Oct 10 vs. USC presented by Opens in a new window presented by Opens in a new window Penn State White Out University Park, Pa. / West Shore Home Field at Beaver Stadium L Loss 23-31",
+     "outcome": "L",
+     "team_points": 23,
+     "opponent_points": 31,
+     "overtime": false,
+     "record": {
+      "overall": "3-3",
+      "conference": "0-3",
+      "text": "Overall 3-3 PCT .500 Conf. 0-3"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "usc",
+     "url": "https://usctrojans.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:13:44Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 31-23",
+     "excerpt": "Penn State at Penn State University Park, Pa. NBC | Radio: ESPN LA 710 Big Ten Football Rivalry Series presented by Venmo W, 31-23 Oct 10(Sat) 4:30 p.m. Game Center Box Score Recap Highlights Big Ten",
+     "outcome": "W",
+     "team_points": 31,
+     "opponent_points": 23,
+     "overtime": false,
+     "recap_url": "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley",
+     "record": {
+      "overall": "6-1",
+      "conference": "3-1",
+      "text": "OverallWins6Losses1 Overall Pct..857 Overall Percentage .857 ConfWins3Losses1 Conf Pct..750 Conference Percentage .750 Streak W2"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401864516",
+   "date": "2026-10-10",
+   "away": "air-force",
+   "home": "northern-illinois",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864516",
+    "checked_at": "2026-10-11T13:01:57Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Huskie Stadium",
+    "venue_city": "Dekalb, IL",
+    "attendance": 15292,
+    "broadcasts": [
+     "CBSSN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2459",
+      "name": "Northern Illinois Huskies",
+      "points": 7,
+      "line_score": [
+       0,
+       7,
+       0,
+       0
+      ],
+      "record": "0-5",
+      "conference_record": "0-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "2005",
+      "name": "Air Force Falcons",
+      "points": 28,
+      "line_score": [
+       7,
+       7,
+       14,
+       0
+      ],
+      "record": "4-1",
+      "conference_record": "2-1",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "northern-illinois",
+     "url": "https://niuhuskies.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:13Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 7-28",
+     "excerpt": "Oct 10 (Sat) 6:30 PM CT CBS Sports Network WDKB 94.9 FM, NIU Huskies AppMW *vs Air Force NIU's 119th Homecoming - Box Score - RecapDeKalb, Ill. Huskie StadiumTV: CBS Sports Network Radio: WDKB 94.9 FM, NIU Huskies AppL, 7-28",
+     "outcome": "L",
+     "team_points": 7,
+     "opponent_points": 28,
+     "overtime": false,
+     "recap_url": "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx",
+     "record": {
+      "overall": "0-5",
+      "conference": "0-1",
+      "text": "### Season Record - Overall 0-5 - PCT .000 - Conf 0-1 - PCT .000 - Streak L5 - Home 0-2 - Away 0-3"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401869949",
+   "date": "2026-10-10",
+   "away": "james-madison",
+   "home": "georgia-southern",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869949",
+    "checked_at": "2026-10-11T13:02:26Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-11T00:10Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Allen E. Paulson Stadium",
+    "venue_city": "Statesboro, GA",
+    "attendance": 20545,
+    "broadcasts": [
+     "ESPNU"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "290",
+      "name": "Georgia Southern Eagles",
+      "points": 24,
+      "line_score": [
+       7,
+       3,
+       0,
+       14
+      ],
+      "record": "2-4",
+      "conference_record": "1-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "256",
+      "name": "James Madison Dukes",
+      "points": 27,
+      "line_score": [
+       3,
+       3,
+       14,
+       7
+      ],
+      "record": "6-0",
+      "conference_record": "3-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "georgia-southern",
+     "url": "https://gseagles.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:20Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 24-27",
+     "excerpt": "James Madison vs James Madison Allen E. Paulson StadiumStatesboro, GA TV: ESPNU | Radio: Georgia Southern Sports Network Family Weekend/Tackling for a Cure L, 24-27 Oct 10(Sat) 7:30 PM Game Center Box Score Recap History Sun Belt",
+     "outcome": "L",
+     "team_points": 24,
+     "opponent_points": 27,
+     "overtime": false,
+     "recap_url": "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes",
+     "record": {
+      "overall": "2-4",
+      "conference": "1-1",
+      "text": "OverallWins2Losses4 Overall Pct..333 Overall Percentage .333 ConfWins1Losses1 Conf Pct..500 Conference Percentage .500 Streak L1"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401869965",
+   "date": "2026-10-10",
+   "away": "louisiana",
+   "home": "louisiana-tech",
+   "scheduled_kickoff_utc": "2026-10-10T23:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869965",
+    "checked_at": "2026-10-11T13:02:27Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-10T23:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Joe Aillet Stadium",
+    "venue_city": "Ruston, LA",
+    "attendance": 20035,
+    "broadcasts": [
+     "ESPN+"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2348",
+      "name": "Louisiana Tech Bulldogs",
+      "points": 32,
+      "line_score": [
+       0,
+       13,
+       0,
+       19
+      ],
+      "record": "3-2",
+      "conference_record": "1-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "309",
+      "name": "Louisiana Ragin' Cajuns",
+      "points": 31,
+      "line_score": [
+       0,
+       10,
+       14,
+       7
+      ],
+      "record": "4-2",
+      "conference_record": "1-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "louisiana-tech",
+     "url": "https://latechsports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:27Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 32-31",
+     "excerpt": "UL-Lafayette vs UL-Lafayette Origin Bank Field at Joe Aillet StadiumRuston, La. TV Website Radio: 107.5 FM Kennel Takeover | Hall of Fame | College of Applied & Natural Science W, 32-31 Oct 10(Sat) 6:30 PM Game Center Box Score Recap Photos Travel SBC",
+     "outcome": "W",
+     "team_points": 32,
+     "opponent_points": 31,
+     "overtime": false,
+     "recap_url": "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener",
+     "record": {
+      "overall": "3-2",
+      "conference": "1-0",
+      "text": "OverallWins3Losses2 Overall Pct..600 Overall Percentage .600 ConfWins1Losses0 Conf Pct.1.000 Conference Percentage 1.000 Streak W2"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856827",
+   "date": "2026-10-10",
+   "away": "kansas",
+   "home": "utah",
+   "scheduled_kickoff_utc": "2026-10-11T00:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856827",
+    "checked_at": "2026-10-11T13:02:27Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-11T00:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Rice-Eccles Stadium",
+    "venue_city": "Salt Lake City, UT",
+    "attendance": 51467,
+    "broadcasts": [
+     "ESPN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "254",
+      "name": "Utah Utes",
+      "points": 41,
+      "line_score": [
+       14,
+       7,
+       6,
+       14
+      ],
+      "record": "5-0",
+      "conference_record": "2-0",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "2305",
+      "name": "Kansas Jayhawks",
+      "points": 24,
+      "line_score": [
+       0,
+       17,
+       7,
+       0
+      ],
+      "record": "2-3",
+      "conference_record": "0-2",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "utah",
+     "url": "https://utahutes.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:05:04Z",
+     "access": "direct-http",
+     "format": "nuxt-payload",
+     "result_text": "W 41-24",
+     "excerpt": "date 2026-10-10T18:00:00 · location H · status W · team_score 41 · opponent_score 24",
+     "outcome": "W",
+     "team_points": 41,
+     "opponent_points": 24,
+     "overtime": false,
+     "recap_url": "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0",
+     "record": {
+      "overall": "5-0",
+      "conference": "2-0",
+      "text": "Overall 5-0 · Conf 2-0 (schedule record block)"
+     },
+     "side": "home"
+    }
+   ]
+  },
+  {
+   "provider_id": "401858486",
+   "date": "2026-10-10",
+   "away": "minnesota",
+   "home": "purdue",
+   "scheduled_kickoff_utc": "2026-10-11T00:00Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858486",
+    "checked_at": "2026-10-11T13:02:27Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-11T00:00Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Ross-Ade Stadium",
+    "venue_city": "West Lafayette, IN",
+    "attendance": 48559,
+    "broadcasts": [
+     "BTN"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "2509",
+      "name": "Purdue Boilermakers",
+      "points": 41,
+      "line_score": [
+       10,
+       10,
+       7,
+       14
+      ],
+      "record": "3-3",
+      "conference_record": "2-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "135",
+      "name": "Minnesota Golden Gophers",
+      "points": 13,
+      "line_score": [
+       0,
+       3,
+       10,
+       0
+      ],
+      "record": "4-2",
+      "conference_record": "2-1",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "minnesota",
+     "url": "https://gophersports.com/sports/football/schedule/text/2026",
+     "fetched_at": "2026-10-11T13:17:26Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "text-only-schedule-row",
+     "result_text": "L 13-41",
+     "excerpt": "Oct 10 (Sat) | 7:00 PM | Away | Purdue | West Lafayette, IN |  | L 13-41",
+     "outcome": "L",
+     "team_points": 13,
+     "opponent_points": 41,
+     "overtime": false,
+     "recap_url": null,
+     "record": null,
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401856808",
+   "date": "2026-10-10",
+   "away": "hawaii",
+   "home": "arizona-state",
+   "scheduled_kickoff_utc": "2026-10-11T02:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856808",
+    "checked_at": "2026-10-11T13:02:28Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-11T02:30Z",
+    "conference_game": false,
+    "neutral_site": false,
+    "venue": "Mountain America Stadium",
+    "venue_city": "Tempe, AZ",
+    "attendance": 47931,
+    "broadcasts": [
+     "FS1"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "9",
+      "name": "Arizona State Sun Devils",
+      "points": 30,
+      "line_score": [
+       7,
+       10,
+       7,
+       6
+      ],
+      "record": "3-2",
+      "conference_record": "1-1",
+      "winner": true
+     },
+     "away": {
+      "espn_team_id": "62",
+      "name": "Hawai'i Rainbow Warriors",
+      "points": 12,
+      "line_score": [
+       3,
+       3,
+       0,
+       6
+      ],
+      "record": "1-5",
+      "conference_record": "0-3",
+      "winner": false
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "arizona-state",
+     "url": "https://thesundevils.com/sports/football/schedule",
+     "fetched_at": "2026-10-11T13:07:02Z",
+     "access": "direct-http",
+     "format": "page-text",
+     "result_text": "W Win 30-12",
+     "excerpt": "Oct 10 Oct 10 (Sat) 7:30 p.m. (MST) Mountain America Stadium vs. Hawaii Hall of Fame Game Opens in a new window Wear gold Box Score (PDF) Opens in a new window Postgame Notes Opens in a new window W Win 30-12",
+     "outcome": "W",
+     "team_points": 30,
+     "opponent_points": 12,
+     "overtime": false,
+     "record": {
+      "overall": "3-2",
+      "conference": "1-1",
+      "text": "Overall 3-2 PCT .600 Conf. 1-1"
+     },
+     "side": "home"
+    },
+    {
+     "source": "school",
+     "slug": "hawaii",
+     "url": "https://hawaiiathletics.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:12:41Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "L, 12-30",
+     "excerpt": "Oct 10 (Sat) 4:30 P.M. HT FS1 ESPN Honoluluat [Arizona State](http://www.thesundevils.com/) ... Tempe, Ariz.TV: FS1 Radio: ESPN HonoluluL, 12-30",
+     "outcome": "L",
+     "team_points": 12,
+     "opponent_points": 30,
+     "overtime": false,
+     "recap_url": "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx",
+     "record": {
+      "overall": "1-5",
+      "conference": "0-3",
+      "text": "### Season Record - Overall 1-5 - PCT .167 - Conf 0-3 - PCT .000 - Streak L3"
+     },
+     "side": "away"
+    }
+   ]
+  },
+  {
+   "provider_id": "401860901",
+   "date": "2026-10-10",
+   "away": "boise-state",
+   "home": "fresno-state",
+   "scheduled_kickoff_utc": "2026-10-11T02:30Z",
+   "espn_summary": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860901",
+    "checked_at": "2026-10-11T13:02:28Z",
+    "completed": true,
+    "state": "post",
+    "status": "STATUS_FINAL",
+    "detail": "Final",
+    "period": null,
+    "kickoff_utc": "2026-10-11T02:30Z",
+    "conference_game": true,
+    "neutral_site": false,
+    "venue": "Valley Children's Stadium",
+    "venue_city": "Fresno, CA",
+    "attendance": 43086,
+    "broadcasts": [
+     "CW"
+    ],
+    "sides": {
+     "home": {
+      "espn_team_id": "278",
+      "name": "Fresno State Bulldogs",
+      "points": 31,
+      "line_score": [
+       13,
+       7,
+       0,
+       11
+      ],
+      "record": "4-2",
+      "conference_record": "1-1",
+      "winner": false
+     },
+     "away": {
+      "espn_team_id": "68",
+      "name": "Boise State Broncos",
+      "points": 38,
+      "line_score": [
+       15,
+       10,
+       3,
+       10
+      ],
+      "record": "5-1",
+      "conference_record": "2-0",
+      "winner": true
+     }
+    }
+   },
+   "official": [
+    {
+     "source": "school",
+     "slug": "boise-state",
+     "url": "https://broncosports.com/sports/football/schedule/2026",
+     "fetched_at": "2026-10-11T13:11:16Z",
+     "access": "cloudflare-browser-rendering",
+     "format": "rendered-markdown",
+     "result_text": "W, 38-31",
+     "excerpt": "at [Fresno State](http://www.gobulldogs.com/) Fresno, Calif. ![The CW](...) [Wear Blue](#) W, 38-31 Oct 10(Sat) 8:30 p.m. [Box Score](https://broncosports.com/sports/football/stats/2026/fresno-state/boxscore/22962)",
+     "outcome": "W",
+     "team_points": 38,
+     "opponent_points": 31,
+     "overtime": false,
+     "recap_url": "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
+     "record": {
+      "overall": "5-1",
+      "conference": "2-0",
+      "text": "OverallWins5Losses1 Overall Pct..833 Overall Percentage .833 ConfWins2Losses0 Conf Pct.1.000"
+     },
+     "side": "away"
+    }
+   ]
+  }
+ ],
+ "records": {
+  "rule": "A withheld record is recomputed from the October 10 ESPN-reconciled record plus the verified October 10 final. It must equal the ESPN post-game record, and the school's published overall record where the page shows one; any disagreement keeps the record withheld. A team with no October 10 final is not given a bye; it needs a published school record that agrees with ESPN.",
+  "recomputed": {
+   "appalachian-state": {
+    "before": "3-1",
+    "final_provider_id": "401869843",
+    "result": "L",
+    "record": "3-2",
+    "espn_record": "3-2",
+    "school_record": "3-2",
+    "school_source": "https://appstatesports.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "arizona": {
+    "before": "4-1",
+    "final_provider_id": "401856823",
+    "result": "W",
+    "record": "5-1",
+    "espn_record": "5-1",
+    "school_record": "5-1",
+    "school_source": "https://arizonawildcats.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "arkansas": {
+    "before": "2-3",
+    "final_provider_id": "401856713",
+    "result": "L",
+    "record": "2-4",
+    "espn_record": "2-4",
+    "school_record": "2-4",
+    "school_source": "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+    "agreement": "school+provider"
+   },
+   "boise-state": {
+    "before": "4-1",
+    "final_provider_id": "401860901",
+    "result": "W",
+    "record": "5-1",
+    "espn_record": "5-1",
+    "school_record": "5-1",
+    "school_source": "https://broncosports.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "georgia-tech": {
+    "before": "1-3",
+    "final_provider_id": "401858255",
+    "result": "W",
+    "record": "2-3",
+    "espn_record": "2-3",
+    "school_record": "2-3",
+    "school_source": "https://ramblinwreck.com/sports/m-footbl/schedule",
+    "agreement": "school+provider"
+   },
+   "hawaii": {
+    "before": "1-4",
+    "final_provider_id": "401856808",
+    "result": "L",
+    "record": "1-5",
+    "espn_record": "1-5",
+    "school_record": "1-5",
+    "school_source": "https://hawaiiathletics.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "illinois": {
+    "before": "2-3",
+    "final_provider_id": "401858480",
+    "result": "W",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://fightingillini.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "kentucky": {
+    "before": "4-1",
+    "final_provider_id": "401856715",
+    "result": "W",
+    "record": "5-1",
+    "espn_record": "5-1",
+    "school_record": "5-1",
+    "school_source": "https://ukathletics.com/sports/football/schedule/season/2026/",
+    "agreement": "school+provider"
+   },
+   "marshall": {
+    "before": "3-2",
+    "final_provider_id": "401869943",
+    "result": "L",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://herdzone.com/sports/football/schedule/text/2026",
+    "agreement": "school+provider"
+   },
+   "minnesota": {
+    "before": "4-1",
+    "final_provider_id": "401858486",
+    "result": "L",
+    "record": "4-2",
+    "espn_record": "4-2",
+    "school_record": null,
+    "school_source": null,
+    "agreement": "verified-final+provider"
+   },
+   "navy": {
+    "before": "1-3",
+    "final_provider_id": "401862799",
+    "result": "W",
+    "record": "2-3",
+    "espn_record": "2-3",
+    "school_record": "2-3",
+    "school_source": "https://navysports.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "nc-state": {
+    "before": "3-2",
+    "final_provider_id": "401858260",
+    "result": "L",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://gopack.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "nevada": {
+    "before": "1-3",
+    "final_provider_id": "401864517",
+    "result": "W",
+    "record": "2-3",
+    "espn_record": "2-3",
+    "school_record": "2-3",
+    "school_source": "https://nevadawolfpack.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "north-texas": {
+    "before": "3-2",
+    "final_provider_id": "401862796",
+    "result": "W",
+    "record": "4-2",
+    "espn_record": "4-2",
+    "school_record": "4-2",
+    "school_source": "https://meangreensports.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "notre-dame": {
+    "before": "5-0",
+    "final_provider_id": "401858257",
+    "result": "W",
+    "record": "6-0",
+    "espn_record": "6-0",
+    "school_record": null,
+    "school_source": null,
+    "agreement": "verified-final+provider"
+   },
+   "south-carolina": {
+    "before": "2-3",
+    "final_provider_id": "401856714",
+    "result": "W",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+    "agreement": "school+provider"
+   },
+   "stanford": {
+    "before": "2-3",
+    "final_provider_id": "401858257",
+    "result": "L",
+    "record": "2-4",
+    "espn_record": "2-4",
+    "school_record": "2-4",
+    "school_source": "https://gostanford.com/sports/football/schedule",
+    "agreement": "school+provider"
+   },
+   "texas": {
+    "before": "4-0",
+    "final_provider_id": "401856717",
+    "result": "L",
+    "record": "4-1",
+    "espn_record": "4-1",
+    "school_record": null,
+    "school_source": null,
+    "agreement": "verified-final+provider"
+   },
+   "texas-am": {
+    "before": "3-2",
+    "final_provider_id": "401856716",
+    "result": "L",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://12thman.com/sports/football/schedule/season/2026",
+    "agreement": "school+provider"
+   },
+   "ucf": {
+    "before": "3-2",
+    "final_provider_id": "401856824",
+    "result": "L",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://ucfknights.com/sports/football/schedule",
+    "agreement": "school+provider"
+   },
+   "uconn": {
+    "before": "2-3",
+    "final_provider_id": "401861964",
+    "result": "W",
+    "record": "3-3",
+    "espn_record": "3-3",
+    "school_record": "3-3",
+    "school_source": "https://uconnhuskies.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "unlv": {
+    "before": "3-2",
+    "final_provider_id": "401864518",
+    "result": "W",
+    "record": "4-2",
+    "espn_record": "4-2",
+    "school_record": "4-2",
+    "school_source": "https://unlvrebels.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "usc": {
+    "before": "5-1",
+    "final_provider_id": "401858485",
+    "result": "W",
+    "record": "6-1",
+    "espn_record": "6-1",
+    "school_record": "6-1",
+    "school_source": "https://usctrojans.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   },
+   "virginia-tech": {
+    "before": "4-1",
+    "final_provider_id": "401858259",
+    "result": "L",
+    "record": "4-2",
+    "espn_record": "4-2",
+    "school_record": null,
+    "school_source": null,
+    "agreement": "verified-final+provider"
+   },
+   "western-michigan": {
+    "before": "3-2",
+    "final_provider_id": "401866439",
+    "result": "W",
+    "record": "4-2",
+    "espn_record": "4-2",
+    "school_record": "4-2",
+    "school_source": "https://wmubroncos.com/sports/football/schedule/2026",
+    "agreement": "school+provider"
+   }
+  },
+  "georgia_state": {
+   "rule": "Week 7 record rule: the published school overall record must agree with the ESPN team record. No October 10 game or bye is inferred.",
+   "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/2247/schedule?season=2026",
+    "checked_at": "2026-10-11T13:09:14Z",
+    "espn_team_id": "2247",
+    "record": "4-1",
+    "events_listed": [
+     "2026-09-04T23:00Z North Carolina A&T Aggies at Georgia State Panthers STATUS_FINAL",
+     "2026-09-12T23:00Z Georgia State Panthers at Kennesaw State Owls STATUS_FINAL",
+     "2026-09-19T23:00Z Georgia State Panthers at UCF Knights STATUS_FINAL",
+     "2026-09-26T18:00Z Northern Illinois Huskies at Georgia State Panthers STATUS_FINAL",
+     "2026-10-03T19:30Z Old Dominion Monarchs at Georgia State Panthers STATUS_FINAL",
+     "2026-10-17T16:00Z Georgia State Panthers at James Madison Dukes STATUS_SCHEDULED"
+    ]
+   },
+   "school": {
+    "url": "https://georgiastatesports.com/sports/football/schedule",
+    "fetched_at": "2026-10-11T13:12:33Z",
+    "record": {
+     "overall": "4-1",
+     "conference": "1-0",
+     "text": "### Season Records - Overall4-1 - Overall PCT - Conf1-0 - Conf. PCT - StreakW2"
+    },
+    "oct10_entry": null,
+    "note": "First attempt on the /2026 URL (2026-10-11T13:11:30Z) timed out after 60s; retry without /2026 loaded a page titled '2026 Football Schedule - Georgia State University'. The page shows NO Oct 10 entry and does not say bye/open date. Surrounding entries verbatim: Oct 3 -> 'Oct 3 (Sat) / FinalAtlanta, GA Center Parc Credit Union Stadium HOMECOMING![Old Dominion University Logo](...)vs [Old Dominion](http://www.odusports.com/)W, 42-10'; Oct 17 -> 'Oct 17 (Sat) / TBAHarrisonburg, VA![James Madison University Logo](...)at [James Madison](http://www.jmusports.com/)'. Fallback page https://georgiastatesports.com/sports/football/archives fetched 2026-10-11T13:13:36Z loaded but rendered no story list (nav/footer only), so no Oct 10/11 recap found. Related Headlines on the schedule page list no Oct 10 game story (latest game story: 'Five Panthers Reach End Zone as GSU Takes the Crown from ODU', 2026/10/3)."
+   },
+   "record": "4-1",
+   "adopt": true
+  }
+ },
+ "week7_recheck": {
+  "rule": "The host school's official schedule settles its own home game's kickoff or network. A visiting school's listing is adopted only when ESPN shows the same value with a valid time (timeValid). Anything else is recorded, not adopted.",
+  "checks": [
+   {
+    "provider_id": "401862803",
+    "matchup": "charlotte at temple",
+    "field": "kickoff",
+    "release": {
+     "kickoff_utc": null,
+     "kickoff_status": "official_tbd",
+     "tv": "ESPN+"
+    },
+    "schools": [
+     {
+      "slug": "charlotte",
+      "role": "away",
+      "url": "https://charlotte49ers.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:10:57Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "1:00 p.m.",
+      "tv_text": "ESPN+",
+      "excerpt": "[Temple](https://owlsports.com) at [Temple](https://owlsports.com) Philadelphia, Pa. ![ESPN+](…) Oct 17 (Sat) 1:00 p.m. [Game Center](https://charlotte49ers.com/game-center/19977) [Watch](https://www.espn.com/watch/player/_/id/49ee8de8-9995-44f7-a444-cb99881788cf)",
+      "time_zone": "Eastern: the same page lists the 19:30Z October 10 kickoff at North Texas as 3:30 p.m.",
+      "text_only_confirmation": {
+       "url": "https://charlotte49ers.com/sports/football/schedule/text/2026",
+       "fetched_between": [
+        "2026-10-11T13:14:39Z",
+        "2026-10-11T13:17:26Z"
+       ],
+       "row": "Oct 17 (Sat) | 1:00 p.m. | Away | Temple | Philadelphia, Pa."
+      }
+     },
+     {
+      "slug": "temple",
+      "role": "home",
+      "url": "https://owlsports.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:11:02Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "TBD",
+      "tv_text": null,
+      "excerpt": "[Charlotte](http://www.charlotte49ers.com/) vs [Charlotte](http://www.charlotte49ers.com/) [Lincoln Financial Field](https://owlsports.com/facilities/lincoln-financial-field/17) Radio: owlsports.com/listen [Kids Day](#) Oct 17 (Sat) TBD [Game Center](https://owlsports.com/game-center/14980)"
+     }
+    ],
+    "provider": {
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
+     "checked_at": "2026-10-11T13:14:39Z",
+     "kickoff_utc": "2026-10-17T17:00Z",
+     "time_valid": true,
+     "broadcasts": [
+      "ESPN+"
+     ]
+    },
+    "decision": "adopt",
+    "kickoff_utc": "2026-10-17T17:00Z",
+    "reason": "Charlotte lists 1:00 p.m. ET and ESPN lists 17:00Z with a valid time; Temple (host) still lists TBD."
+   },
+   {
+    "provider_id": "401871091",
+    "matchup": "louisiana-tech at ulm",
+    "field": "kickoff",
+    "release": {
+     "kickoff_utc": null,
+     "kickoff_status": "official_tbd",
+     "tv": "ESPN+"
+    },
+    "schools": [
+     {
+      "slug": "louisiana-tech",
+      "role": "away",
+      "url": "https://latechsports.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:12:27Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "7 PM",
+      "tv_text": null,
+      "excerpt": "ULM at ULM Malone StadiumMonroe, La. [img: TV Logo]TV Website Radio: 107.5 FM Radiance Technologies I-20 Showdown Oct 17 (Sat) 7 PM Game Center ESPN+ Listen Live Stats SBC",
+      "time_zone": "Central: the same page lists the 23:30Z October 10 kickoff vs UL-Lafayette as 6:30 PM.",
+      "text_only_confirmation": {
+       "url": "https://latechsports.com/sports/football/schedule/text/2026",
+       "fetched_between": [
+        "2026-10-11T13:14:39Z",
+        "2026-10-11T13:17:26Z"
+       ],
+       "row": "Oct 17 (Sat) | 7 PM | Away | ULM | Monroe, La. (Malone Stadium)"
+      }
+     },
+     {
+      "slug": "ulm",
+      "role": "home",
+      "url": "https://ulmwarhawks.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:11:09Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "TBA",
+      "tv_text": null,
+      "excerpt": "![Louisiana Tech Logo]()Oct 17 (Sat) TBAvs [Louisiana Tech](http://www.latechsports.com/) Fans Wear Gold![](https://ulmwarhawks.com/images/2024/8/12/St_Francis_Health_ccqZ3.png) Monroe, La. [FMOL Health | St. Francis Stadium](https://ulmwarhawks.com/facilities/?id=1)"
+     }
+    ],
+    "provider": {
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
+     "checked_at": "2026-10-11T13:14:39Z",
+     "kickoff_utc": "2026-10-18T00:00Z",
+     "time_valid": true,
+     "broadcasts": [
+      "ESPN+"
+     ]
+    },
+    "decision": "adopt",
+    "kickoff_utc": "2026-10-18T00:00Z",
+    "reason": "Louisiana Tech lists 7 PM CT (8 PM ET) and ESPN lists 00:00Z with a valid time; ULM (host) still lists TBA."
+   },
+   {
+    "provider_id": "401858492",
+    "matchup": "nebraska at oregon",
+    "field": "kickoff",
+    "release": {
+     "kickoff_utc": null,
+     "kickoff_status": "official_tbd",
+     "tv": null
+    },
+    "schools": [
+     {
+      "slug": "nebraska",
+      "role": "away",
+      "url": "https://huskers.com/sports/football/schedule",
+      "fetched_at": "2026-10-11T13:11:14Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "10:00 PM CDT",
+      "tv_text": "FOX_small_black",
+      "excerpt": "**Away** **SaturdayOct 17** **10:00 PM CDT** ![Nebraska\\_N\\_RGB](…) **at** ![oregon](…) **Oregon** Eugene, Ore. Open Info [Live Audio Opens in a new window](https://huskers.com/listen) … [![FOX\\_small\\_black](…)Read more - Nebraska at Oregon](https://foxsports.com/live)"
+     },
+     {
+      "slug": "oregon",
+      "role": "home",
+      "url": "https://goducks.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:11:33Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "TBD",
+      "tv_text": null,
+      "excerpt": "[Nebraska](http://www.huskers.com) [Autzen Stadium](https://goducks.com/facilities/autzen-stadium/22)Eugene, OR Radio: Oregon Sports Network [WEAR GREEN](https://goducks.com/sports/2013/7/26/208831862) Oct 17 (Sat) TBD [Game Center](https://goducks.com/game-center/24382)"
+     }
+    ],
+    "provider": {
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
+     "checked_at": "2026-10-11T13:14:39Z",
+     "kickoff_utc": "2026-10-17T04:00Z",
+     "time_valid": false,
+     "broadcasts": []
+    },
+    "decision": "keep_official_tbd",
+    "reason": "Only Nebraska (visitor) lists a time (10:00 PM CDT); Oregon (host) lists TBD and ESPN still carries a placeholder flagged timeValid false. Recorded, not adopted."
+   },
+   {
+    "provider_id": "401858492",
+    "matchup": "nebraska at oregon",
+    "field": "tv",
+    "release": {
+     "tv": null,
+     "tv_status": "not_published_in_reviewed_sources"
+    },
+    "schools": [
+     {
+      "slug": "nebraska",
+      "role": "away",
+      "url": "https://huskers.com/sports/football/schedule",
+      "fetched_at": "2026-10-11T13:11:14Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "10:00 PM CDT",
+      "tv_text": "FOX_small_black",
+      "excerpt": "**Away** **SaturdayOct 17** **10:00 PM CDT** ![Nebraska\\_N\\_RGB](…) **at** ![oregon](…) **Oregon** Eugene, Ore. Open Info [Live Audio Opens in a new window](https://huskers.com/listen) … [![FOX\\_small\\_black](…)Read more - Nebraska at Oregon](https://foxsports.com/live)"
+     },
+     {
+      "slug": "oregon",
+      "role": "home",
+      "url": "https://goducks.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:11:33Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "TBD",
+      "tv_text": null,
+      "excerpt": "[Nebraska](http://www.huskers.com) [Autzen Stadium](https://goducks.com/facilities/autzen-stadium/22)Eugene, OR Radio: Oregon Sports Network [WEAR GREEN](https://goducks.com/sports/2013/7/26/208831862) Oct 17 (Sat) TBD [Game Center](https://goducks.com/game-center/24382)"
+     }
+    ],
+    "provider": {
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
+     "checked_at": "2026-10-11T13:14:39Z",
+     "kickoff_utc": "2026-10-17T04:00Z",
+     "time_valid": false,
+     "broadcasts": []
+    },
+    "decision": "keep_unpublished",
+    "reason": "Only Nebraska (visitor) shows a FOX logo; Oregon (host) lists no network and ESPN lists none. Recorded, not adopted."
+   },
+   {
+    "provider_id": "401858490",
+    "matchup": "penn-state at michigan",
+    "field": "tv",
+    "release": {
+     "tv": null,
+     "tv_status": "not_published_in_reviewed_sources",
+     "kickoff_utc": "2026-10-17T19:30Z"
+    },
+    "schools": [
+     {
+      "slug": "michigan",
+      "role": "home",
+      "url": "https://mgoblue.com/sports/football/schedule/2026",
+      "fetched_at": "2026-10-11T13:12:00Z",
+      "access": "cloudflare-browser-rendering",
+      "time_text": "3:30 PM",
+      "tv_text": "TV: CBS",
+      "excerpt": "[Penn State](http://www.gopsusports.com/) vs [Penn State](http://www.gopsusports.com/) Ann Arbor, Mich. TV: CBS | Radio: Learfield Michigan Sports Network [Homecoming | Presented by DTE](#) Oct 17 (Sat) 3:30 PM [Game Center](https://mgoblue.com/game-center/30379)",
+      "text_only_confirmation": {
+       "url": "https://mgoblue.com/sports/football/schedule/text/2026",
+       "fetched_between": [
+        "2026-10-11T13:14:39Z",
+        "2026-10-11T13:17:26Z"
+       ],
+       "row": "Oct 17 (Sat) | 3:30 PM | Home | Penn State | Ann Arbor, Mich."
+      }
+     },
+     {
+      "slug": "penn-state",
+      "role": "away",
+      "url": "https://gopsusports.com/sports/football/schedule",
+      "fetched_at": "2026-10-11T13:07:12Z",
+      "access": "direct-http",
+      "time_text": "3:30 PM EDT",
+      "tv_text": null,
+      "excerpt": "Saturday Oct 17 at Michigan Ann Arbor, Mich. / Michigan Stadium 3:30 PM EDT"
+     }
+    ],
+    "provider": {
+     "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
+     "checked_at": "2026-10-11T13:14:39Z",
+     "kickoff_utc": "2026-10-17T19:30Z",
+     "time_valid": true,
+     "broadcasts": []
+    },
+    "decision": "adopt",
+    "tv": "CBS",
+    "reason": "Michigan (host) lists \"TV: CBS\"; Penn State and ESPN list no network. Kickoff 3:30 PM ET is unchanged on both school pages."
+   }
+  ]
+ },
+ "differences_not_adopted": [
+  {
+   "slug": "western-michigan",
+   "field": "conference_record",
+   "school": "1-0",
+   "espn": "2-0",
+   "note": "WMU schedule record block lists Conf 1-0 although both MAC games (at Buffalo, vs Kent State) are wins; ESPN 2-0 equals the October 10 table plus this conference win. Conference tables keep their October 10 date; nothing adopted."
+  },
+  {
+   "slug": "nevada",
+   "field": "recap_url_slug",
+   "school": "football-wolf-pack-smothers-utep-23-7",
+   "espn": "30-13",
+   "note": "The schedule entry prints \"W, 30-13\" (agreeing with ESPN); only the recap URL slug reads 23-7. The printed result is used."
+  },
+  {
+   "slug": "south-carolina",
+   "field": "oct10_result",
+   "school": "no result in the schedule entry; ticker recap slug reads 38-13",
+   "espn": "38-19",
+   "note": "South Carolina's own schedule did not post the result; Florida's official schedule (L 19-38) is the school source for this game."
+  },
+  {
+   "slug": "kansas-utah",
+   "field": "tv",
+   "school": "Utah schedule: \"ESPN App / Game will begin on ESPNews\"",
+   "espn": "ESPN",
+   "note": "School and provider disagree on the linear network, so the October 10 label (ESPN App · linear network TBD) is kept on the final."
+  }
+ ],
+ "content_sha256": "222742aa8da19896626631c4c01c3dacfa4493fffd8f3ace57ea5072f5c442f7"
+}

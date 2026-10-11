@@ -248,7 +248,12 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   assert.match(week7, /MARQUEE MATCHUP Ohio State at Indiana Sat, Oct 17 FOX · 12:00 PM ET/);
   assert.match(week7, /Ohio State 5–1/);
   assert.match(week7, /Indiana 6–0/);
-  assert.match(week7, /KICKOFF TBA[\s\S]*?Nebraska at 13 Oregon[\s\S]*?Charlotte at Temple[\s\S]*?Louisiana Tech at ULM/);
+  // After the Oct 11 recheck only Nebraska–Oregon is still officially TBA; the
+  // two kickoffs confirmed by the visiting school and ESPN sit in their waves.
+  assert.match(week7, /KICKOFF TBA officially unannounced Kickoff TBA Nebraska at 13 Oregon TV N\/A/);
+  assert.doesNotMatch(week7, /KICKOFF TBA[^·]*Charlotte at Temple/);
+  assert.match(week7, /1:00 PM ET Charlotte at Temple ESPN\+/);
+  assert.match(week7, /8:00 PM ET Louisiana Tech at ULM ESPN\+/);
   assert.match(week7, /Week 7: Ohio State at Indiana leads a 59-game FBS slate/);
   assert.doesNotMatch(week7, /Saturday finals: Oklahoma stuns/, "Week 6 stories stay on Week 6");
   assert.match(week7, /Week 6 Oct 6–10 · (Archive|Current)[\s\S]*?Week 7 Oct 13–17 · (Current|Preview)/);
