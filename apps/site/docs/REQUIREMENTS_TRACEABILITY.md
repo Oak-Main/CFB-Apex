@@ -90,3 +90,10 @@
 |---|---|---|
 | Official school source for every October 10 final | `scripts/apply-oct11-school-recheck.mjs`, `meta.school_sources`, `data/cfb-2026/refresh/official-school-hosts.json` (per-school official host), `data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json` | apply assertions (school score and winner, ESPN agreement, line-score sums, records unchanged, evidence hash); `tests/refresh.test.ts` school-source regression |
 | Week 7 TBD recheck with primary sources | `week7_recheck` evidence, row `timing_note`/`tv_note`/`rechecked_at` | `tests/week7.test.ts` TBD, adopted-kickoff and network tests; rendered `/?week=7` TBA group |
+
+## October 11 Week 7 afternoon recheck
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| No TBA filled without a school source and a valid ESPN time | `scripts/apply-week7-kickoff-updates.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json` | school time in its own zone = ESPN instant with `timeValid: true`; official-host check; `tests/week7.test.ts` |
+| Every Week 7 game shows one published kickoff and network | all 59 rows `confirmed` with a single `tv` | apply assertions; rendered `/?week=7` board assertions |

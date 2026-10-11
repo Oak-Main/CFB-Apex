@@ -64,3 +64,8 @@
 
 - A school page rendered through Cloudflare Browser Rendering is the school's own published page; the rendering service only gets past bot protection and changes no content.
 - A school schedule that lists a specific time while the host still lists TBA counts for a kickoff only when ESPN shows the same time as valid; a network shown only as a visiting school's logo is not adopted.
+
+## October 11 Week 7 afternoon recheck
+
+- ESPN's `timeValid` flag separates a placeholder from a set time. A visiting school's listing is adopted once ESPN shows the same instant with `timeValid: true`.
+- A host schedule that lists two alternative networks ("ABC or ESPN") is unresolved, not conflicting. A participating school's single network that ESPN also shows resolves it.

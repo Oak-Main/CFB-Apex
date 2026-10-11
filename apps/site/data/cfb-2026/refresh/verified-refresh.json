@@ -13937,10 +13937,10 @@
    "home_slug": "texas",
    "away_slug": "florida",
    "site": "DKR-Texas Memorial Stadium",
-   "tv": "ABC or ESPN",
+   "tv": "ABC",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T10:22:37.570467+00:00",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "florida",
    "home": "texas",
    "time_et": "12:00",
@@ -13951,9 +13951,13 @@
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401856724",
-    "https://texaslonghorns.com/sports/football/schedule/2026"
+    "https://texaslonghorns.com/sports/football/schedule/2026",
+    "https://floridagators.com/sports/football/schedule/2026",
+    "https://floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc"
    ],
-   "release": "week7-90552f488b59c2cd"
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "ABC from Florida's schedule and its October 10 announcement; ESPN lists ABC. Texas schedule still listed the ABC-or-ESPN alternative (October 11 afternoon recheck)."
   },
   {
    "provider_id": "401856829",
@@ -14399,10 +14403,10 @@
    "home_slug": "tennessee",
    "away_slug": "alabama",
    "site": "Neyland Stadium",
-   "tv": "ABC or ESPN",
+   "tv": "ABC",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T10:22:37.138560+00:00",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "alabama",
    "home": "tennessee",
    "time_et": "15:30",
@@ -14415,7 +14419,9 @@
     "https://www.espn.com/college-football/game/_/gameId/401856723",
     "https://utsports.com/sports/football/schedule/2026"
    ],
-   "release": "week7-90552f488b59c2cd"
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "Network from the Tennessee schedule (October 11 afternoon recheck); ESPN lists ABC."
   },
   {
    "provider_id": "401856828",
@@ -15286,32 +15292,34 @@
    "provider_id": "401858492",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858492",
    "date": "2026-10-17",
-   "kickoff_utc": null,
-   "kickoff_status": "official_tbd",
+   "kickoff_utc": "2026-10-18T03:00Z",
+   "kickoff_status": "confirmed",
    "week": 7,
    "home_slug": "oregon",
    "away_slug": "nebraska",
    "site": "Autzen Stadium",
-   "tv": null,
-   "tv_status": "not_published_in_reviewed_sources",
+   "tv": "FOX",
+   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T10:20:32.744821+00:00",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "nebraska",
    "home": "oregon",
-   "time_et": null,
-   "status": "official_tbd",
+   "time_et": "23:00",
+   "status": "announced",
    "game_status": "scheduled",
-   "timing_note": "Official kickoff TBA · school schedule at review",
+   "timing_note": "Nebraska schedule lists 10:00 PM CDT (Central) and ESPN agrees; Oregon schedule still listed TBD at the October 11 afternoon recheck.",
    "timing_sources": [
-    "https://goducks.com/sports/football/schedule/2026",
+    "https://huskers.com/sports/football/schedule",
     "https://www.espn.com/college-football/game/_/gameId/401858492"
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401858492",
-    "https://goducks.com/sports/football/schedule/2026"
+    "https://goducks.com/sports/football/schedule/2026",
+    "https://huskers.com/sports/football/schedule"
    ],
    "release": "week7-90552f488b59c2cd",
-   "rechecked_at": "2026-10-11T13:14:39Z"
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "FOX from the Nebraska schedule; ESPN lists Fox. Oregon schedule shows no network yet (October 11 afternoon recheck)."
   }
  ],
  "excludedGames": [
@@ -16150,14 +16158,15 @@
   "https://broncosports.com/sports/football/schedule/2026",
   "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
   "https://georgiastatesports.com/sports/football/schedule",
-  "https://huskers.com/sports/football/schedule"
+  "https://huskers.com/sports/football/schedule",
+  "https://floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc"
  ],
  "holds": [
   "Week 6 SP+ not independently verified; retained ratings show their own Sep 27 cutoff. FPI verified Oct 4, 2026 (The Big Lead).",
   "Same-book minute-timestamped odds and line movement not verified: the content lane carries VegasInsider/Action Network lines as of Oct 4-5 (content/research/P1-lines.md) and the gated odds mode stays closed until a timestamped book feed is wired.",
   "Weekly injury research remains dated October 5, with a partial Dante Moore follow-up checked October 10. Official SEC and Big Ten availability filings were not fully retrievable; no empty report or all-clear is inferred.",
   "No live in-season scores feed is wired. All 58 Week 6 FBS-vs-FBS games are verified finals (October 11); Week 7 results require another verified refresh.",
-  "Week 7 official kickoff TBA: Nebraska at Oregon (Oregon lists TBD; Nebraska’s 10 PM CDT listing is not yet corroborated). Network unpublished: Nebraska at Oregon. Rechecked October 11: Charlotte at Temple 1 PM ET and Louisiana Tech at ULM 8 PM ET (visiting-school schedule and ESPN agree; host still TBA); Penn State at Michigan on CBS (Michigan schedule). Texas–Florida and Alabama–Tennessee keep the published ABC-or-ESPN alternative.",
+  "Week 7 kickoffs and networks: all 59 published after the October 11 rechecks. Charlotte–Temple 1 PM ET, Louisiana Tech–ULM 8 PM ET and Nebraska–Oregon 11 PM ET on FOX come from the visiting school with ESPN agreeing (hosts still listed TBA/TBD); Penn State–Michigan (CBS) and Alabama–Tennessee (ABC) from the host; Florida–Texas on ABC from Florida and ESPN (Texas still listed ABC or ESPN).",
   "Overall records: all 138 reconcile October 11 against ESPN standings after the verified Week 6 finals; poll records keep their October 4 publication values."
  ],
  "retainedBaseline": {
@@ -18003,7 +18012,7 @@
    "id": "week7-schedule-notes",
    "week": 7,
    "headline": "Week 7: Ohio State at Indiana leads a 59-game FBS slate",
-   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Charlotte–Temple is 1 PM ET and Louisiana Tech–ULM 8 PM ET; Penn State–Michigan is on CBS. Nebraska–Oregon’s kickoff is still officially TBA.",
+   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Charlotte–Temple is 1 PM ET and Louisiana Tech–ULM 8 PM ET; Penn State–Michigan is on CBS. Nebraska–Oregon is 11 PM ET (8 PM PT) on FOX.",
    "game_provider_id": "401858488",
    "as_of": "2026-10-11",
    "sources": [
@@ -18014,7 +18023,8 @@
     "https://uclabruins.com/sports/football/schedule/2026",
     "https://charlotte49ers.com/sports/football/schedule/2026",
     "https://latechsports.com/sports/football/schedule/2026",
-    "https://mgoblue.com/sports/football/schedule/2026"
+    "https://mgoblue.com/sports/football/schedule/2026",
+    "https://huskers.com/sports/football/schedule"
    ]
   },
   {
@@ -18758,6 +18768,25 @@
     "401858492:tv"
    ],
    "differences_recorded": 4
+  },
+  {
+   "applied_at": "2026-10-11T14:48:35Z",
+   "evidence_checked_at": "2026-10-11T14:48:35Z",
+   "script": "scripts/apply-week7-kickoff-updates.mjs",
+   "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json",
+   "scope": "Week 7 (Oct 13-17, 2026) afternoon recheck after scripts/apply-oct11-school-recheck.mjs: Nebraska-Oregon kickoff and network, and the Florida-Texas and Alabama-Tennessee ABC-or-ESPN alternatives; the three morning adoptions are reconfirmed unchanged.",
+   "week7_changes": [
+    "401858492:kickoff",
+    "401858492:tv",
+    "401856724:tv",
+    "401856723:tv"
+   ],
+   "week7_reconfirmed": [
+    "401862803",
+    "401871091",
+    "401858490"
+   ],
+   "week7_official_tbd": []
   }
  ],
  "schedule_verified_at": "2026-10-11T10:29:37.195Z",
@@ -18801,7 +18830,7 @@
    "retrieved_at": "2026-10-11T10:30:00Z",
    "schedule_verified_at": "2026-10-11T10:29:37.195Z",
    "records_verified_at": "2026-10-11T11:06:09.779Z",
-   "note": "59 FBS-vs-FBS games from the reviewed release. Three official kickoffs remain TBA and two networks are unpublished; nothing is filled with placeholders."
+   "note": "59 FBS-vs-FBS games from the reviewed release. After the October 11 rechecks every kickoff and network is published from a school schedule; nothing is filled with placeholders."
   }
  ]
 }
