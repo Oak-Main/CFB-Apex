@@ -125,9 +125,13 @@ export const refreshStorylines = verifiedRefresh?.storylines ?? [];
 export function broadcastEventForGame(game: Pick<Game, "date" | "awayTeamId" | "homeTeamId">): BroadcastEventRow | null {
   for (const event of broadcastEvents) {
     if (easternDate(game.date) !== event.date) continue;
-    const row = verifiedRefresh?.scheduledGames.find((g) => g.provider_id === event.game_provider_id);
-    if (!row) continue;
-    if ([row.away, row.home].sort().join(":") === [game.awayTeamId, game.homeTeamId].sort().join(":")) return event;
+    // The event stays with its game after the final is verified and the row moves to playedGames.
+    const scheduled = verifiedRefresh?.scheduledGames.find((g) => g.provider_id === event.game_provider_id);
+    const played = (verifiedRefresh?.playedGames as Array<{ provider_id?: string; away_slug: string; home_slug: string }> | undefined)
+      ?.find((g) => g.provider_id === event.game_provider_id);
+    const pair = scheduled ? [scheduled.away, scheduled.home] : played ? [played.away_slug, played.home_slug] : null;
+    if (!pair) continue;
+    if (pair.sort().join(":") === [game.awayTeamId, game.homeTeamId].sort().join(":")) return event;
   }
   return null;
 }

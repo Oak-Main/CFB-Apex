@@ -236,8 +236,10 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   assert.match(week6, /POLLS RELEASED 2026-10-04/);
   assert.match(week6, /SP\+ CONTRAST · AS OF Sep 27/);
   assert.match(week6, /North Dakota State/);
+  // Every Week 6 game is a verified final: nothing waits on a result, and the
+  // archive's Saturday board (upcoming kickoffs only) has nothing left to slot.
+  assert.doesNotMatch(week6, /final not yet verified|KICKOFF TBA/);
   // Absence from the FBS board is never called a bye.
-  assert.match(week6, /Ranked, not on this FBS board:/);
   for (const text of byPath.values()) assert.doesNotMatch(text, /Byes:/);
   // Week 7: the reviewed release, its marquee, and official TBAs without placeholder times.
   const week7 = byPath.get("/?week=7") ?? "";
@@ -246,7 +248,11 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   assert.match(week7, /MARQUEE MATCHUP Ohio State at Indiana Sat, Oct 17 FOX · 12:00 PM ET/);
   assert.match(week7, /Ohio State 5–1/);
   assert.match(week7, /Indiana 6–0/);
-  assert.match(week7, /KICKOFF TBA[\s\S]*?Nebraska at 13 Oregon[\s\S]*?Charlotte at Temple[\s\S]*?Louisiana Tech at ULM/);
+  // After the Oct 11 recheck only Nebraska–Oregon is still officially TBA; the
+  // two kickoffs confirmed by the visiting school and ESPN sit in their waves.
+  assert.match(week7, /KICKOFF TBA officially unannounced Kickoff TBA Nebraska at 13 Oregon TV N\/A Ranked, not on this FBS board:/);
+  assert.match(week7, /1:00 PM ET Charlotte at Temple ESPN\+/);
+  assert.match(week7, /8:00 PM ET Louisiana Tech at ULM ESPN\+/);
   assert.match(week7, /Week 7: Ohio State at Indiana leads a 59-game FBS slate/);
   assert.doesNotMatch(week7, /Saturday finals: Indiana edges Nebraska/, "Week 6 stories stay on Week 6");
   assert.match(week7, /Week 6 Oct 6–10 · (Archive|Current)[\s\S]*?Week 7 Oct 13–17 · (Current|Preview)/);
@@ -254,7 +260,8 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   const home = byPath.get("/") ?? "";
   if (Date.now() >= Date.parse("2026-10-11T13:00:00Z")) assert.match(home, /WEEK 7 · OCT 13–17 · AS OF 2026-10-11/);
   else assert.match(home, /WEEK 6 · OCT 6–10 · AS OF 2026-10-05/);
-  assert.match(byPath.get("/?week=6") ?? "", /Texas[\s\S]*?vs\.? Oklahoma|Oklahoma[\s\S]*?Cotton Bowl \(neutral site\)/);
+  // The neutral-site Red River final keeps its neutral label.
+  assert.match(byPath.get("/?week=6") ?? "", /Neutral final 1 Texas 24 Oklahoma 27 Cotton Bowl \(neutral\)/);
   assert.match(byPath.get("/games/2026-10-10-georgia-at-alabama") ?? "", /College GameDay · Tuscaloosa · Sat Oct 10 · ESPN/);
   assert.match(byPath.get("/rankings") ?? "", /OTHERS RECEIVING VOTES[\s\S]*?Kentucky/);
   assert.match(byPath.get("/rankings") ?? "", /NEW/);
@@ -275,13 +282,15 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
       .replace(/<script[\s\S]*?<\/script>/g, " ")
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ");
-  const home = await visible("/");
-  // Homepage week board: Tue-Thu rows are finals with scores, no kickoff times.
+  // Week 6 archive board (the server clock opens on Week 7 after the Oct 11 cutover):
+  // Tue-Thu rows are finals with scores, no kickoff times.
+  const home = await visible("/?week=6");
   assert.match(home, /Tue, Oct 6 final Southern Miss 34 Troy 55 Final/);
   assert.match(home, /Thu, Oct 8 final Sam Houston 3 Liberty 35 Final/);
   // Every Tue-Thu board row is a final; no midweek row carries a kickoff/TV slot.
   assert.doesNotMatch(home, /(Tue, Oct 6|Wed, Oct 7|Thu, Oct 8) (?!final\b)/);
-  assert.match(home, /Hawai.i at Arizona State FS1|10:30 PM ET Hawai/);
+  // Saturday games are verified finals too, including the late Hawai'i kickoff.
+  assert.match(home, /Sat, Oct 10 final Hawai(?:'|&#x27;)i 12 Arizona State 30 Final/);
   const game = await visible("/games/2026-10-08-south-florida-at-utsa");
   assert.match(game, /South Florida Bulls at UTSA Roadrunners final/);
   assert.doesNotMatch(game, /South Florida Bulls at UTSA Roadrunners game preview/);
@@ -315,7 +324,8 @@ test("October 10 pregame corrections and partial availability caveat render", as
   assert.match(watchHtml, new RegExp(`aria-pressed="true">W(?:eek|K|k) ?${boardWeek}</button>`));
   const watch = await visible("/watch");
   assert.match(watch, /ESPN App · linear network TBD/);
-  assert.match(watch, /Iowa[\s\S]{0,80}Washington/);
+  const iowa = await visible("/games/2026-10-09-iowa-at-washington");
+  assert.match(iowa, /Iowa Hawkeyes at Washington Huskies final/);
   const injuries = await visible("/injuries");
   assert.match(injuries, /Limited official availability snapshot · 2026-10-10/);
   assert.match(injuries, /AP reported October 8 that Dante Moore is out/);
@@ -370,7 +380,9 @@ test("scores metadata and hero disclose the current verified snapshot without re
   const game = (await (await fetchRoute("/games/2026-10-10-north-dakota-state-at-unlv")).text()).replace(/<!--[\s\S]*?-->/g, "");
   assert.match(game, /Verified Sep 7, 2026/);
   assert.doesNotMatch(game, /Verified Sep 6, 2026/);
-  assert.match(game, /Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET/);
+  // Now a verified final at its 7:00 PM ET slot; the announced 7:10 PM ET start stays in the evidence.
+  const gameText = game.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  assert.match(gameText, /North Dakota State Bison at UNLV Rebels final Sat · 2026-10-10 · 7:00 PM ET/);
 });
 
 
