@@ -282,9 +282,9 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
       .replace(/<script[\s\S]*?<\/script>/g, " ")
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ");
-  // Week 6 archive board (the server clock opens on Week 7 after the Oct 11 cutover):
-  // Tue-Thu rows are finals with scores, no kickoff times.
+  // Week 6 is the archive board after the Oct 11 cutover; `?week=6` pins it.
   const home = await visible("/?week=6");
+  // Homepage week board: Tue-Thu rows are finals with scores, no kickoff times.
   assert.match(home, /Tue, Oct 6 final Southern Miss 34 Troy 55 Final/);
   assert.match(home, /Thu, Oct 8 final Sam Houston 3 Liberty 35 Final/);
   // Every Tue-Thu board row is a final; no midweek row carries a kickoff/TV slot.
@@ -322,7 +322,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   const watchHtml = (await (await fetchRoute("/watch")).text()).replace(/<!--[\s\S]*?-->/g, "");
   const boardWeek = Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
   assert.match(watchHtml, new RegExp(`aria-pressed="true">W(?:eek|K|k) ?${boardWeek}</button>`));
-  const watch = await visible("/watch");
+  const watch = await visible("/watch?week=6");
   assert.match(watch, /ESPN App · linear network TBD/);
   const iowa = await visible("/games/2026-10-09-iowa-at-washington");
   assert.match(iowa, /Iowa Hawkeyes at Washington Huskies final/);
