@@ -184,7 +184,7 @@ export async function generateMetadata({
 export default async function RoutePage({ params, searchParams }: RoutePageProps) {
   const { slug } = await params;
   if (!isKnownPath(slug)) notFound();
-  // `?week=` only previews the scoreboard; other routes follow the clock.
-  const week = slug[0] === "scores" ? (await searchParams)?.week : undefined;
+  // `?week=` previews the scoreboard and watch board; other routes follow the clock.
+  const week = slug[0] === "scores" || slug[0] === "watch" ? (await searchParams)?.week : undefined;
   return <HubApp path={`/${slug.join("/")}`} boardWeek={selectBoardWeek(boardWeeks, Date.now(), week)} />;
 }

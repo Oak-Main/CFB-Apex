@@ -65,12 +65,19 @@ jobs:
           // wait (up to two minutes) for this release before asserting on it.
           let home;
           let homeHtml = '';
+          let lastError;
           for (let attempt = 0; attempt < 12; attempt++) {
-            home = await fetch('https://cfbapex.com/' + cacheBust + '&attempt=' + attempt);
-            homeHtml = clean(await home.text());
-            if (home.status === 200 && homeHtml.includes(snapshot.reference_date) && homeHtml.includes(snapshot.retrieved_at)) break;
+            try {
+              home = await fetch('https://cfbapex.com/' + cacheBust + '&attempt=' + attempt);
+              homeHtml = clean(await home.text());
+              if (home.status === 200 && homeHtml.includes(snapshot.reference_date) && homeHtml.includes(snapshot.retrieved_at)) break;
+            } catch (error) {
+              // A transient connection failure is retried like a stale edge.
+              lastError = error;
+            }
             await new Promise((resolve) => setTimeout(resolve, 10_000));
           }
+          assert.ok(home, 'homepage unreachable: ' + (lastError?.message ?? 'no response'));
           assert.equal(home.status, 200, 'homepage');
           assert.ok(homeHtml.includes(snapshot.reference_date), 'Production snapshot date is stale');
           assert.ok(homeHtml.includes(snapshot.retrieved_at), 'Production source retrieval timestamp is stale');
