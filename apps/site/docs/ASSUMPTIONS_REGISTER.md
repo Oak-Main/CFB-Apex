@@ -60,7 +60,12 @@
 - NCAA.com's server-rendered FBS week 6 scoreboard (58 games, all final, NCAA ORG-SPORTS feed) is the independent official check beside ESPN's completed-game summaries. School pages were largely bot-protected from this environment.
 - ESPN standings after Saturday are the record authority only where they agree with the derivation from verified results; a disagreement would block the refresh.
 
-## October 11 Week 7 kickoff and network recheck
+## October 11 school-source and Week 7 recheck
 
-- One participating school's official schedule, matched by ESPN's instant, is enough to replace an official TBA; the other school's page often lags. Conference schedule pages did not render from this environment and were not used.
-- A school schedule's network logo or "TV:" line is a published network; Louisiana Tech's asterisk convention marks tentative times, so an unmarked time is treated as set.
+- A school page rendered through Cloudflare Browser Rendering is the school's own published page; the rendering service only gets past bot protection and changes no content.
+- A school schedule that lists a specific time while the host still lists TBA counts for a kickoff only when ESPN shows the same time as valid; a network shown only as a visiting school's logo is not adopted.
+
+## October 11 Week 7 afternoon recheck
+
+- ESPN's `timeValid` flag separates a placeholder from a set time. A visiting school's listing is adopted once ESPN shows the same instant with `timeValid: true`.
+- A host schedule that lists two alternative networks ("ABC or ESPN") is unresolved, not conflicting. A participating school's single network that ESPN also shows resolves it.

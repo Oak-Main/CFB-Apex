@@ -84,9 +84,16 @@
 | Records reconcile, none stale or withheld | derived Oct 10 + result = ESPN summary = ESPN standings = existing site records | builder fails on any disagreement; `tests/week7.test.ts` |
 | Archive marquee and GameDay badge stay correct | `broadcastEventForGame` reads played games; marquee shows FINAL score | rendered `/?week=6` assertions |
 
-## October 11 Week 7 kickoff and network recheck
+## October 11 school-source and Week 7 recheck
 
 | Requirement | Implementation | Evidence |
 |---|---|---|
-| No official TBA filled without a primary source | `scripts/apply-week7-kickoff-updates.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json` | school time converted in its own zone = ESPN instant; network = school network and ESPN lists no other; `tests/week7.test.ts` |
+| Official school source for every October 10 final | `scripts/apply-oct11-school-recheck.mjs`, `meta.school_sources`, `data/cfb-2026/refresh/official-school-hosts.json` (per-school official host), `data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json` | apply assertions (school score and winner, ESPN agreement, line-score sums, records unchanged, evidence hash); `tests/refresh.test.ts` school-source regression |
+| Week 7 TBD recheck with primary sources | `week7_recheck` evidence, row `timing_note`/`tv_note`/`rechecked_at` | `tests/week7.test.ts` TBD, adopted-kickoff and network tests; rendered `/?week=7` TBA group |
+
+## October 11 Week 7 afternoon recheck
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| No TBA filled without a school source and a valid ESPN time | `scripts/apply-week7-kickoff-updates.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json` | school time in its own zone = ESPN instant with `timeValid: true`; official-host check; `tests/week7.test.ts` |
 | Every Week 7 game shows one published kickoff and network | all 59 rows `confirmed` with a single `tv` | apply assertions; rendered `/?week=7` board assertions |

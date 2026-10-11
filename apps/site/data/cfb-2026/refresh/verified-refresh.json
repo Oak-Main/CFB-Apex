@@ -10789,7 +10789,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856716",
-     "https://www.ncaa.com/game/6604260"
+     "https://www.ncaa.com/game/6604260",
+     "https://mutigers.com/sports/football/schedule/season/2026",
+     "https://12thman.com/sports/football/schedule/season/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -10805,7 +10807,25 @@
       0,
       3
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "missouri",
+      "url": "https://mutigers.com/sports/football/schedule/season/2026",
+      "result_text": "W Win 27-6",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:04:52Z"
+     },
+     {
+      "slug": "texas-am",
+      "url": "https://12thman.com/sports/football/schedule/season/2026",
+      "result_text": "L, Loss 6-27",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:05:00Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:05:00Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -10838,7 +10858,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856823",
-     "https://www.ncaa.com/game/6640717"
+     "https://www.ncaa.com/game/6640717",
+     "https://arizonawildcats.com/sports/football/schedule/2026",
+     "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries"
     ],
     "conference_game": true,
     "line_score": {
@@ -10854,7 +10876,19 @@
       14,
       14
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "arizona",
+      "url": "https://arizonawildcats.com/sports/football/schedule/2026",
+      "recap_url": "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries",
+      "result_text": "W, 52-31",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:11:05Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:05Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -10887,7 +10921,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856824",
-     "https://www.ncaa.com/game/6603629"
+     "https://www.ncaa.com/game/6603629",
+     "https://ucfknights.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -10903,7 +10938,18 @@
       0,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "ucf",
+      "url": "https://ucfknights.com/sports/football/schedule",
+      "result_text": "L Loss 28-42",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:07:18Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:18Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -10936,7 +10982,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858256",
-     "https://www.ncaa.com/game/6640402"
+     "https://www.ncaa.com/game/6640402",
+     "https://pittsburghpanthers.com/sports/football/schedule/2026",
+     "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17"
     ],
     "conference_game": true,
     "line_score": {
@@ -10952,7 +11000,19 @@
       7,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "pittsburgh",
+      "url": "https://pittsburghpanthers.com/sports/football/schedule/2026",
+      "recap_url": "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17",
+      "result_text": "L 17-21",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:04:57Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:04:57Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -10985,7 +11045,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858260",
-     "https://www.ncaa.com/game/6604354"
+     "https://www.ncaa.com/game/6604354",
+     "https://gopack.com/sports/football/schedule/2026",
+     "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14"
     ],
     "conference_game": true,
     "line_score": {
@@ -11001,7 +11063,19 @@
       21,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "nc-state",
+      "url": "https://gopack.com/sports/football/schedule/2026",
+      "recap_url": "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14",
+      "result_text": "L, 14-38",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:10:57Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:10:57Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11034,7 +11108,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862795",
-     "https://www.ncaa.com/game/6603728"
+     "https://www.ncaa.com/game/6603728",
+     "https://goarmywestpoint.com/sports/football/schedule/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -11050,7 +11125,18 @@
       7,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "army",
+      "url": "https://goarmywestpoint.com/sports/football/schedule/2026",
+      "result_text": "W 20-17",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:10:56Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:10:56Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11083,7 +11169,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866436",
-     "https://www.ncaa.com/game/6603976"
+     "https://www.ncaa.com/game/6603976",
+     "https://bgsufalcons.com/sports/football/schedule/2026",
+     "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory"
     ],
     "conference_game": true,
     "line_score": {
@@ -11099,7 +11187,19 @@
       0,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "bowling-green",
+      "url": "https://bgsufalcons.com/sports/football/schedule/2026",
+      "recap_url": "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory",
+      "result_text": "W, 38-10",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:11:23Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:23Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11132,7 +11232,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858482",
-     "https://www.ncaa.com/game/6603798"
+     "https://www.ncaa.com/game/6603798",
+     "https://nusports.com/sports/football/schedule/season/2026"
     ],
     "conference_game": false,
     "line_score": {
@@ -11148,7 +11249,18 @@
       0,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "northwestern",
+      "url": "https://nusports.com/sports/football/schedule/season/2026",
+      "result_text": "W Win 45-14",
+      "record": "4-1",
+      "fetched_at": "2026-10-11T13:04:54Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:04:54Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11181,7 +11293,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856714",
-     "https://www.ncaa.com/game/6603648"
+     "https://www.ncaa.com/game/6603648",
+     "https://floridagators.com/sports/football/schedule/2026",
+     "https://gamecocksonline.com/sports/football/schedule/season/2026/"
     ],
     "conference_game": true,
     "line_score": {
@@ -11197,7 +11311,25 @@
       14,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "florida",
+      "url": "https://floridagators.com/sports/football/schedule/2026",
+      "result_text": "L 19-38",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:11:31Z"
+     },
+     {
+      "slug": "south-carolina",
+      "url": "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+      "result_text": null,
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:11:57Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:57Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11230,7 +11362,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862797",
-     "https://www.ncaa.com/game/6604297"
+     "https://www.ncaa.com/game/6604297",
+     "https://ecupirates.com/sports/football/schedule/text/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -11246,7 +11379,18 @@
       6,
       3
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "east-carolina",
+      "url": "https://ecupirates.com/sports/football/schedule/text/2026",
+      "result_text": "W 28-12",
+      "record": null,
+      "fetched_at": "2026-10-11T13:17:26Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:17:26Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11279,7 +11423,10 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869843",
-     "https://www.ncaa.com/game/6604213"
+     "https://www.ncaa.com/game/6604213",
+     "https://appstatesports.com/sports/football/schedule/2026",
+     "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+     "https://odusports.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -11295,7 +11442,26 @@
       2,
       8
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "appalachian-state",
+      "url": "https://appstatesports.com/sports/football/schedule/2026",
+      "recap_url": "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+      "result_text": "L, 3-10",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:10:57Z"
+     },
+     {
+      "slug": "old-dominion",
+      "url": "https://odusports.com/sports/football/schedule",
+      "result_text": "W Win 10-3",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:07:10Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:10:57Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11328,7 +11494,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866440",
-     "https://www.ncaa.com/game/6603871"
+     "https://www.ncaa.com/game/6603871",
+     "https://umassathletics.com/sports/football/schedule/2026",
+     "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19"
     ],
     "conference_game": true,
     "line_score": {
@@ -11344,7 +11512,19 @@
       3,
       3
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "umass",
+      "url": "https://umassathletics.com/sports/football/schedule/2026",
+      "recap_url": "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19",
+      "result_text": "L, 19-20",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:11:45Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:45Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11377,7 +11557,11 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
-     "https://www.ncaa.com/game/6604191"
+     "https://www.ncaa.com/game/6604191",
+     "https://soonersports.com/sports/football/schedule/2026",
+     "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+     "https://texaslonghorns.com/sports/football/schedule/2026",
+     "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24"
     ],
     "conference_game": true,
     "line_score": {
@@ -11393,7 +11577,27 @@
       0,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "oklahoma",
+      "url": "https://soonersports.com/sports/football/schedule/2026",
+      "recap_url": "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+      "result_text": "W 27-24",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:04:55Z"
+     },
+     {
+      "slug": "texas",
+      "url": "https://texaslonghorns.com/sports/football/schedule/2026",
+      "recap_url": "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+      "result_text": "L, 24-27",
+      "record": null,
+      "fetched_at": "2026-10-11T13:13:07Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:13:07Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11426,7 +11630,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856718",
-     "https://www.ncaa.com/game/6640769"
+     "https://www.ncaa.com/game/6640769",
+     "https://vucommodores.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -11442,7 +11647,18 @@
       0,
       10
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "vanderbilt",
+      "url": "https://vucommodores.com/sports/football/schedule",
+      "result_text": "L Loss 17-52",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:07:19Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:19Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11475,7 +11691,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856825",
-     "https://www.ncaa.com/game/6604068"
+     "https://www.ncaa.com/game/6604068",
+     "https://kstatesports.com/sports/football/schedule/2026",
+     "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16"
     ],
     "conference_game": true,
     "line_score": {
@@ -11491,7 +11709,19 @@
       14,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "kansas-state",
+      "url": "https://kstatesports.com/sports/football/schedule/2026",
+      "recap_url": "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+      "result_text": "L, 16-35",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:11:52Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:52Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11524,7 +11754,10 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858255",
-     "https://www.ncaa.com/game/6603670"
+     "https://www.ncaa.com/game/6603670",
+     "https://ramblinwreck.com/sports/m-footbl/schedule",
+     "https://goduke.com/sports/football/schedule/2026",
+     "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25"
     ],
     "conference_game": true,
     "line_score": {
@@ -11540,7 +11773,26 @@
       8,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "georgia-tech",
+      "url": "https://ramblinwreck.com/sports/m-footbl/schedule",
+      "result_text": "W Win 28-25",
+      "record": "2-3",
+      "fetched_at": "2026-10-11T13:07:35Z"
+     },
+     {
+      "slug": "duke",
+      "url": "https://goduke.com/sports/football/schedule/2026",
+      "recap_url": "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25",
+      "result_text": "L 25-28",
+      "record": "4-1",
+      "fetched_at": "2026-10-11T13:04:44Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:35Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11573,7 +11825,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858257",
-     "https://www.ncaa.com/game/6604110"
+     "https://www.ncaa.com/game/6604110",
+     "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+     "https://gostanford.com/sports/football/schedule"
     ],
     "conference_game": false,
     "line_score": {
@@ -11589,7 +11843,26 @@
       7,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "notre-dame",
+      "url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+      "recap_url": "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+      "result_text": "58-7",
+      "record": null,
+      "fetched_at": "2026-10-11T13:11:50Z"
+     },
+     {
+      "slug": "stanford",
+      "url": "https://gostanford.com/sports/football/schedule",
+      "result_text": "L Loss 7-58",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:07:16Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:50Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11622,7 +11895,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858259",
-     "https://www.ncaa.com/game/6603804"
+     "https://www.ncaa.com/game/6603804",
+     "https://hokiesports.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -11638,7 +11912,18 @@
       0,
       6
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "virginia-tech",
+      "url": "https://hokiesports.com/sports/football/schedule",
+      "result_text": "L 20-25",
+      "record": null,
+      "fetched_at": "2026-10-11T13:07:23Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:23Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11671,7 +11956,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
-     "https://www.ncaa.com/game/6604085"
+     "https://www.ncaa.com/game/6604085",
+     "https://fightingillini.com/sports/football/schedule/2026",
+     "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37"
     ],
     "conference_game": true,
     "line_score": {
@@ -11689,7 +11976,19 @@
       8,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "illinois",
+      "url": "https://fightingillini.com/sports/football/schedule/2026",
+      "recap_url": "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37",
+      "result_text": "W, 38-37OT",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:12:46Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:46Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11722,7 +12021,10 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
-     "https://www.ncaa.com/game/6604120"
+     "https://www.ncaa.com/game/6604120",
+     "https://goducks.com/sports/football/schedule/2026",
+     "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+     "https://uclabruins.com/sports/football/schedule/season/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -11738,7 +12040,26 @@
       0,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "oregon",
+      "url": "https://goducks.com/sports/football/schedule/2026",
+      "recap_url": "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+      "result_text": "L, 15-17",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:11:33Z"
+     },
+     {
+      "slug": "ucla",
+      "url": "https://uclabruins.com/sports/football/schedule/season/2026",
+      "result_text": "W Win 17-15",
+      "record": null,
+      "fetched_at": "2026-10-11T13:05:02Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:33Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11771,7 +12092,11 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862796",
-     "https://www.ncaa.com/game/6604135"
+     "https://www.ncaa.com/game/6604135",
+     "https://meangreensports.com/sports/football/schedule/2026",
+     "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+     "https://charlotte49ers.com/sports/football/schedule/2026",
+     "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas"
     ],
     "conference_game": true,
     "line_score": {
@@ -11787,7 +12112,27 @@
       0,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "north-texas",
+      "url": "https://meangreensports.com/sports/football/schedule/2026",
+      "recap_url": "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+      "result_text": "W, 50-10",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:11:15Z"
+     },
+     {
+      "slug": "charlotte",
+      "url": "https://charlotte49ers.com/sports/football/schedule/2026",
+      "recap_url": "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas",
+      "result_text": "L, 10-50",
+      "record": "0-6",
+      "fetched_at": "2026-10-11T13:10:57Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:15Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11820,7 +12165,11 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862799",
-     "https://www.ncaa.com/game/6603617"
+     "https://www.ncaa.com/game/6603617",
+     "https://navysports.com/sports/football/schedule/2026",
+     "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+     "https://tulsahurricane.com/sports/football/schedule/2026",
+     "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy"
     ],
     "conference_game": true,
     "line_score": {
@@ -11836,7 +12185,27 @@
       6,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "navy",
+      "url": "https://navysports.com/sports/football/schedule/2026",
+      "recap_url": "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+      "result_text": "W, 34-26",
+      "record": "2-3",
+      "fetched_at": "2026-10-11T13:13:29Z"
+     },
+     {
+      "slug": "tulsa",
+      "url": "https://tulsahurricane.com/sports/football/schedule/2026",
+      "recap_url": "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy",
+      "result_text": "L 26-34",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:05:02Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:13:29Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11869,7 +12238,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866435",
-     "https://www.ncaa.com/game/6640472"
+     "https://www.ncaa.com/game/6640472",
+     "https://gozips.com/sports/football/schedule/text/2026",
+     "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23"
     ],
     "conference_game": true,
     "line_score": {
@@ -11885,7 +12256,19 @@
       3,
       9
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "akron",
+      "url": "https://gozips.com/sports/football/schedule/text/2026",
+      "recap_url": "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23",
+      "result_text": "L 23-25",
+      "record": null,
+      "fetched_at": "2026-10-11T13:17:26Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:17:26Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11918,7 +12301,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866437",
-     "https://www.ncaa.com/game/6604244"
+     "https://www.ncaa.com/game/6604244",
+     "https://utrockets.com/sports/football/schedule/2026",
+     "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8"
     ],
     "conference_game": true,
     "line_score": {
@@ -11934,7 +12319,19 @@
       3,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "toledo",
+      "url": "https://utrockets.com/sports/football/schedule/2026",
+      "recap_url": "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8",
+      "result_text": "L, 8-23",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:11:59Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:59Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -11967,7 +12364,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866438",
-     "https://www.ncaa.com/game/6603895"
+     "https://www.ncaa.com/game/6603895",
+     "https://ohiobobcats.com/sports/football/schedule/2026",
+     "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan"
     ],
     "conference_game": true,
     "line_score": {
@@ -11983,7 +12382,19 @@
       7,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "ohio",
+      "url": "https://ohiobobcats.com/sports/football/schedule/2026",
+      "recap_url": "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan",
+      "result_text": "W, 31-14",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:12:07Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:07Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12016,7 +12427,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866439",
-     "https://www.ncaa.com/game/6603828"
+     "https://www.ncaa.com/game/6603828",
+     "https://wmubroncos.com/sports/football/schedule/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -12032,7 +12444,18 @@
       0,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "western-michigan",
+      "url": "https://wmubroncos.com/sports/football/schedule/2026",
+      "result_text": "W, 38-7",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:05:06Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:05:06Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12065,7 +12488,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401861964",
-     "https://www.ncaa.com/game/6604247"
+     "https://www.ncaa.com/game/6604247",
+     "https://uconnhuskies.com/sports/football/schedule/2026",
+     "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple"
     ],
     "conference_game": false,
     "line_score": {
@@ -12081,7 +12506,19 @@
       0,
       10
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "uconn",
+      "url": "https://uconnhuskies.com/sports/football/schedule/2026",
+      "recap_url": "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple",
+      "result_text": "W, 34-20",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:13:15Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:13:15Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12114,7 +12551,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856713",
-     "https://www.ncaa.com/game/6603771"
+     "https://www.ncaa.com/game/6603771",
+     "https://arkansasrazorbacks.com/sport/m-footbl/schedule/"
     ],
     "conference_game": true,
     "line_score": {
@@ -12130,7 +12568,18 @@
       3,
       14
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "arkansas",
+      "url": "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+      "result_text": "L, 24-17",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:07:34Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:34Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12163,7 +12612,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860902",
-     "https://www.ncaa.com/game/6604302"
+     "https://www.ncaa.com/game/6604302",
+     "https://goaztecs.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -12179,7 +12629,18 @@
       7,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "san-diego-state",
+      "url": "https://goaztecs.com/sports/football/schedule",
+      "result_text": "L 14-66",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:07:15Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:15Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12212,7 +12673,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
-     "https://www.ncaa.com/game/6603817"
+     "https://www.ncaa.com/game/6603817",
+     "https://ukathletics.com/sports/football/schedule/season/2026/",
+     "https://lsusports.net/sports/fb/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -12230,7 +12693,25 @@
       7,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "kentucky",
+      "url": "https://ukathletics.com/sports/football/schedule/season/2026/",
+      "result_text": "W 35-34 (OT)",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:04:48Z"
+     },
+     {
+      "slug": "lsu",
+      "url": "https://lsusports.net/sports/fb/schedule",
+      "result_text": "L Loss 34-35 OT",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:07:07Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:07Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12263,7 +12744,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862798",
-     "https://www.ncaa.com/game/6603718"
+     "https://www.ncaa.com/game/6603718",
+     "https://gotigersgo.com/sports/football/schedule/2026",
+     "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab"
     ],
     "conference_game": true,
     "line_score": {
@@ -12279,7 +12762,19 @@
       0,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "memphis",
+      "url": "https://gotigersgo.com/sports/football/schedule/2026",
+      "recap_url": "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab",
+      "result_text": "W 38-13",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:04:50Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:04:50Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12312,7 +12807,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864517",
-     "https://www.ncaa.com/game/6603907"
+     "https://www.ncaa.com/game/6603907",
+     "https://nevadawolfpack.com/sports/football/schedule/2026",
+     "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx"
     ],
     "conference_game": true,
     "line_score": {
@@ -12328,7 +12825,19 @@
       10,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "nevada",
+      "url": "https://nevadawolfpack.com/sports/football/schedule/2026",
+      "recap_url": "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx",
+      "result_text": "W, 30-13",
+      "record": "2-3",
+      "fetched_at": "2026-10-11T13:11:05Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:05Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12361,7 +12870,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864518",
-     "https://www.ncaa.com/game/6604129"
+     "https://www.ncaa.com/game/6604129",
+     "https://unlvrebels.com/sports/football/schedule/2026",
+     "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx"
     ],
     "conference_game": true,
     "line_score": {
@@ -12378,7 +12889,19 @@
       0
      ]
     },
-    "pregame_timing_note": "Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET."
+    "pregame_timing_note": "Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET.",
+    "school_sources": [
+     {
+      "slug": "unlv",
+      "url": "https://unlvrebels.com/sports/football/schedule/2026",
+      "recap_url": "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx",
+      "result_text": "W, 13-7",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:13:26Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:13:26Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12411,7 +12934,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869943",
-     "https://www.ncaa.com/game/6604279"
+     "https://www.ncaa.com/game/6604279",
+     "https://herdzone.com/sports/football/schedule/text/2026",
+     "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21"
     ],
     "conference_game": true,
     "line_score": {
@@ -12427,7 +12952,19 @@
       14,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "marshall",
+      "url": "https://herdzone.com/sports/football/schedule/text/2026",
+      "recap_url": "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21",
+      "result_text": "L 21-27",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:17:26Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:17:26Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12460,7 +12997,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
-     "https://www.ncaa.com/game/6640743"
+     "https://www.ncaa.com/game/6640743",
+     "https://georgiadogs.com/sports/football/schedule/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -12476,7 +13014,18 @@
       7,
       3
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "georgia",
+      "url": "https://georgiadogs.com/sports/football/schedule/2026",
+      "result_text": "W 20-17",
+      "record": "6-0",
+      "fetched_at": "2026-10-11T13:04:46Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:04:46Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12509,7 +13058,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858258",
-     "https://www.ncaa.com/game/6603995"
+     "https://www.ncaa.com/game/6603995",
+     "https://virginiasports.com/sports/football/schedule"
     ],
     "conference_game": true,
     "line_score": {
@@ -12525,7 +13075,18 @@
       0,
       8
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "virginia",
+      "url": "https://virginiasports.com/sports/football/schedule",
+      "result_text": "W Win 28-25",
+      "record": "4-2",
+      "fetched_at": "2026-10-11T13:07:21Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:07:21Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12558,7 +13119,10 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
-     "https://www.ncaa.com/game/6603761"
+     "https://www.ncaa.com/game/6603761",
+     "https://gopsusports.com/sports/football/schedule",
+     "https://usctrojans.com/sports/football/schedule/2026",
+     "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley"
     ],
     "conference_game": true,
     "line_score": {
@@ -12574,7 +13138,26 @@
       7,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "penn-state",
+      "url": "https://gopsusports.com/sports/football/schedule",
+      "result_text": "L Loss 23-31",
+      "record": "3-3",
+      "fetched_at": "2026-10-11T13:07:12Z"
+     },
+     {
+      "slug": "usc",
+      "url": "https://usctrojans.com/sports/football/schedule/2026",
+      "recap_url": "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley",
+      "result_text": "W, 31-23",
+      "record": "6-1",
+      "fetched_at": "2026-10-11T13:13:44Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:13:44Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12607,7 +13190,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864516",
-     "https://www.ncaa.com/game/6604050"
+     "https://www.ncaa.com/game/6604050",
+     "https://niuhuskies.com/sports/football/schedule/2026",
+     "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx"
     ],
     "conference_game": true,
     "line_score": {
@@ -12623,7 +13208,19 @@
       14,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "northern-illinois",
+      "url": "https://niuhuskies.com/sports/football/schedule/2026",
+      "recap_url": "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx",
+      "result_text": "L, 7-28",
+      "record": "0-5",
+      "fetched_at": "2026-10-11T13:12:13Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:13Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12656,7 +13253,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869965",
-     "https://www.ncaa.com/game/6603750"
+     "https://www.ncaa.com/game/6603750",
+     "https://latechsports.com/sports/football/schedule/2026",
+     "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener"
     ],
     "conference_game": true,
     "line_score": {
@@ -12672,7 +13271,19 @@
       14,
       7
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "louisiana-tech",
+      "url": "https://latechsports.com/sports/football/schedule/2026",
+      "recap_url": "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener",
+      "result_text": "W, 32-31",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:12:27Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:27Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12705,7 +13316,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856827",
-     "https://www.ncaa.com/game/6604060"
+     "https://www.ncaa.com/game/6604060",
+     "https://utahutes.com/sports/football/schedule/2026",
+     "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0"
     ],
     "conference_game": true,
     "line_score": {
@@ -12721,7 +13334,19 @@
       7,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "utah",
+      "url": "https://utahutes.com/sports/football/schedule/2026",
+      "recap_url": "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0",
+      "result_text": "W 41-24",
+      "record": "5-0",
+      "fetched_at": "2026-10-11T13:05:04Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:05:04Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12754,7 +13379,8 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858486",
-     "https://www.ncaa.com/game/6603686"
+     "https://www.ncaa.com/game/6603686",
+     "https://gophersports.com/sports/football/schedule/text/2026"
     ],
     "conference_game": true,
     "line_score": {
@@ -12770,7 +13396,18 @@
       10,
       0
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "minnesota",
+      "url": "https://gophersports.com/sports/football/schedule/text/2026",
+      "result_text": "L 13-41",
+      "record": null,
+      "fetched_at": "2026-10-11T13:17:26Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:17:26Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12803,7 +13440,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869949",
-     "https://www.ncaa.com/game/6603783"
+     "https://www.ncaa.com/game/6603783",
+     "https://gseagles.com/sports/football/schedule/2026",
+     "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes"
     ],
     "conference_game": true,
     "line_score": {
@@ -12821,7 +13460,19 @@
      ]
     },
     "originally_scheduled_kickoff_utc": "2026-10-10T23:30Z",
-    "kickoff_note": "ESPN game summary lists the actual start; stable Eastern game id retained."
+    "kickoff_note": "ESPN game summary lists the actual start; stable Eastern game id retained.",
+    "school_sources": [
+     {
+      "slug": "georgia-southern",
+      "url": "https://gseagles.com/sports/football/schedule/2026",
+      "recap_url": "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes",
+      "result_text": "L, 24-27",
+      "record": "2-4",
+      "fetched_at": "2026-10-11T13:12:20Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:20Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12854,7 +13505,10 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856808",
-     "https://www.ncaa.com/game/6604209"
+     "https://www.ncaa.com/game/6604209",
+     "https://thesundevils.com/sports/football/schedule",
+     "https://hawaiiathletics.com/sports/football/schedule/2026",
+     "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx"
     ],
     "conference_game": false,
     "line_score": {
@@ -12870,7 +13524,26 @@
       0,
       6
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "arizona-state",
+      "url": "https://thesundevils.com/sports/football/schedule",
+      "result_text": "W Win 30-12",
+      "record": "3-2",
+      "fetched_at": "2026-10-11T13:07:02Z"
+     },
+     {
+      "slug": "hawaii",
+      "url": "https://hawaiiathletics.com/sports/football/schedule/2026",
+      "recap_url": "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx",
+      "result_text": "L, 12-30",
+      "record": "1-5",
+      "fetched_at": "2026-10-11T13:12:41Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:12:41Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   },
   {
@@ -12903,7 +13576,9 @@
     "as_of": "2026-10-11",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860901",
-     "https://www.ncaa.com/game/6604289"
+     "https://www.ncaa.com/game/6604289",
+     "https://broncosports.com/sports/football/schedule/2026",
+     "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state"
     ],
     "conference_game": true,
     "line_score": {
@@ -12919,7 +13594,19 @@
       3,
       10
      ]
-    }
+    },
+    "school_sources": [
+     {
+      "slug": "boise-state",
+      "url": "https://broncosports.com/sports/football/schedule/2026",
+      "recap_url": "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
+      "result_text": "W, 38-31",
+      "record": "5-1",
+      "fetched_at": "2026-10-11T13:11:16Z"
+     }
+    ],
+    "school_checked_at": "2026-10-11T13:11:16Z",
+    "school_evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json"
    }
   }
  ],
@@ -13253,23 +13940,24 @@
    "tv": "ABC",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T14:38:53Z",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "florida",
    "home": "texas",
    "time_et": "12:00",
    "status": "announced",
    "game_status": "scheduled",
    "timing_sources": [
-    "https://floridagators.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401856724"
+    "https://texaslonghorns.com/sports/football/schedule/2026"
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401856724",
     "https://texaslonghorns.com/sports/football/schedule/2026",
-    "https://floridagators.com/sports/football/schedule/2026"
+    "https://floridagators.com/sports/football/schedule/2026",
+    "https://floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc"
    ],
    "release": "week7-90552f488b59c2cd",
-   "timing_note": "Florida announced noon ET on ABC (October 10 release and schedule); Texas schedule still listed ABC or ESPN at review."
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "ABC from Florida's schedule and its October 10 announcement; ESPN lists ABC. Texas schedule still listed the ABC-or-ESPN alternative (October 11 afternoon recheck)."
   },
   {
    "provider_id": "401856829",
@@ -13560,6 +14248,38 @@
    "release": "week7-90552f488b59c2cd"
   },
   {
+   "provider_id": "401862803",
+   "source_url": "https://www.espn.com/college-football/game/_/gameId/401862803",
+   "date": "2026-10-17",
+   "kickoff_utc": "2026-10-17T17:00Z",
+   "kickoff_status": "confirmed",
+   "week": 7,
+   "home_slug": "temple",
+   "away_slug": "charlotte",
+   "site": "Lincoln Financial Field",
+   "tv": "ESPN+",
+   "tv_status": "published",
+   "neutral_site": false,
+   "verified_at": "2026-10-11T13:14:39Z",
+   "away": "charlotte",
+   "home": "temple",
+   "time_et": "13:00",
+   "status": "announced",
+   "game_status": "scheduled",
+   "timing_note": "Charlotte schedule lists 1:00 p.m. (Eastern) and ESPN agrees; Temple schedule still listed TBD at the October 11 recheck.",
+   "timing_sources": [
+    "https://charlotte49ers.com/sports/football/schedule/2026",
+    "https://www.espn.com/college-football/game/_/gameId/401862803"
+   ],
+   "source_urls": [
+    "https://www.espn.com/college-football/game/_/gameId/401862803",
+    "https://owlsports.com/sports/football/schedule/2026",
+    "https://charlotte49ers.com/sports/football/schedule/2026"
+   ],
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z"
+  },
+  {
    "provider_id": "401866442",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866442",
    "date": "2026-10-17",
@@ -13686,22 +14406,22 @@
    "tv": "ABC",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T14:38:53Z",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "alabama",
    "home": "tennessee",
    "time_et": "15:30",
    "status": "announced",
    "game_status": "scheduled",
    "timing_sources": [
-    "https://utsports.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401856723"
+    "https://utsports.com/sports/football/schedule/2026"
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401856723",
     "https://utsports.com/sports/football/schedule/2026"
    ],
    "release": "week7-90552f488b59c2cd",
-   "timing_note": "Tennessee schedule lists 3:30 PM ET on ABC."
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "Network from the Tennessee schedule (October 11 afternoon recheck); ESPN lists ABC."
   },
   {
    "provider_id": "401856828",
@@ -13802,7 +14522,7 @@
    "tv": "CBS",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T14:36:24Z",
+   "verified_at": "2026-10-11T13:14:39Z",
    "away": "penn-state",
    "home": "michigan",
    "time_et": "15:30",
@@ -13814,11 +14534,11 @@
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401858490",
-    "https://mgoblue.com/sports/football/schedule/2026",
-    "https://gopsusports.com/sports/football/schedule"
+    "https://mgoblue.com/sports/football/schedule/2026"
    ],
    "release": "week7-90552f488b59c2cd",
-   "timing_note": "Michigan schedule lists 3:30 PM ET on CBS; ESPN listed no network at review."
+   "rechecked_at": "2026-10-11T13:14:39Z",
+   "tv_note": "Network from the Michigan schedule (October 11 recheck)."
   },
   {
    "provider_id": "401864522",
@@ -14366,6 +15086,38 @@
    "release": "week7-90552f488b59c2cd"
   },
   {
+   "provider_id": "401871091",
+   "source_url": "https://www.espn.com/college-football/game/_/gameId/401871091",
+   "date": "2026-10-17",
+   "kickoff_utc": "2026-10-18T00:00Z",
+   "kickoff_status": "confirmed",
+   "week": 7,
+   "home_slug": "ulm",
+   "away_slug": "louisiana-tech",
+   "site": "Malone Stadium",
+   "tv": "ESPN+",
+   "tv_status": "published",
+   "neutral_site": false,
+   "verified_at": "2026-10-11T13:14:39Z",
+   "away": "louisiana-tech",
+   "home": "ulm",
+   "time_et": "20:00",
+   "status": "announced",
+   "game_status": "scheduled",
+   "timing_note": "Louisiana Tech schedule lists 7 PM (Central) and ESPN agrees; ULM schedule still listed TBA at the October 11 recheck.",
+   "timing_sources": [
+    "https://latechsports.com/sports/football/schedule/2026",
+    "https://www.espn.com/college-football/game/_/gameId/401871091"
+   ],
+   "source_urls": [
+    "https://www.espn.com/college-football/game/_/gameId/401871091",
+    "https://ulmwarhawks.com/sports/football/schedule/2026",
+    "https://latechsports.com/sports/football/schedule/2026"
+   ],
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z"
+  },
+  {
    "provider_id": "401864523",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401864523",
    "date": "2026-10-17",
@@ -14549,13 +15301,13 @@
    "tv": "FOX",
    "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T14:36:24Z",
+   "verified_at": "2026-10-11T14:48:35Z",
    "away": "nebraska",
    "home": "oregon",
    "time_et": "23:00",
    "status": "announced",
    "game_status": "scheduled",
-   "timing_note": "Nebraska schedule lists 10 PM CT (11 PM ET, 8 PM PT) on FOX; Oregon schedule still listed TBD at review.",
+   "timing_note": "Nebraska schedule lists 10:00 PM CDT (Central) and ESPN agrees; Oregon schedule still listed TBD at the October 11 afternoon recheck.",
    "timing_sources": [
     "https://huskers.com/sports/football/schedule",
     "https://www.espn.com/college-football/game/_/gameId/401858492"
@@ -14565,69 +15317,9 @@
     "https://goducks.com/sports/football/schedule/2026",
     "https://huskers.com/sports/football/schedule"
    ],
-   "release": "week7-90552f488b59c2cd"
-  },
-  {
-   "provider_id": "401862803",
-   "source_url": "https://www.espn.com/college-football/game/_/gameId/401862803",
-   "date": "2026-10-17",
-   "kickoff_utc": "2026-10-17T17:00Z",
-   "kickoff_status": "confirmed",
-   "week": 7,
-   "home_slug": "temple",
-   "away_slug": "charlotte",
-   "site": "Lincoln Financial Field",
-   "tv": "ESPN+",
-   "tv_status": "published",
-   "neutral_site": false,
-   "verified_at": "2026-10-11T14:36:24Z",
-   "away": "charlotte",
-   "home": "temple",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_note": "Charlotte schedule lists 1:00 PM ET on ESPN+; Temple schedule still listed TBD at review.",
-   "timing_sources": [
-    "https://charlotte49ers.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401862803"
-   ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401862803",
-    "https://owlsports.com/sports/football/schedule/2026",
-    "https://charlotte49ers.com/sports/football/schedule/2026"
-   ],
-   "release": "week7-90552f488b59c2cd"
-  },
-  {
-   "provider_id": "401871091",
-   "source_url": "https://www.espn.com/college-football/game/_/gameId/401871091",
-   "date": "2026-10-17",
-   "kickoff_utc": "2026-10-18T00:00Z",
-   "kickoff_status": "confirmed",
-   "week": 7,
-   "home_slug": "ulm",
-   "away_slug": "louisiana-tech",
-   "site": "Malone Stadium",
-   "tv": "ESPN+",
-   "tv_status": "published",
-   "neutral_site": false,
-   "verified_at": "2026-10-11T14:36:24Z",
-   "away": "louisiana-tech",
-   "home": "ulm",
-   "time_et": "20:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_note": "Louisiana Tech schedule lists 7 PM CT (8 PM ET) on ESPN+; ULM schedule still listed TBA at review.",
-   "timing_sources": [
-    "https://latechsports.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401871091"
-   ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871091",
-    "https://ulmwarhawks.com/sports/football/schedule/2026",
-    "https://latechsports.com/sports/football/schedule/2026"
-   ],
-   "release": "week7-90552f488b59c2cd"
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T14:48:35Z",
+   "tv_note": "FOX from the Nebraska schedule; ESPN lists Fox. Oregon schedule shows no network yet (October 11 afternoon recheck)."
   }
  ],
  "excludedGames": [
@@ -15402,15 +16094,79 @@
   "https://www.ncaa.com/game/6604289",
   "https://www.ncaa.com/scoreboard/football/fbs/2026/06/all-conf",
   "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
+  "https://mutigers.com/sports/football/schedule/season/2026",
+  "https://12thman.com/sports/football/schedule/season/2026",
+  "https://arizonawildcats.com/sports/football/schedule/2026",
+  "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries",
+  "https://ucfknights.com/sports/football/schedule",
+  "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17",
+  "https://gopack.com/sports/football/schedule/2026",
+  "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14",
+  "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory",
+  "https://nusports.com/sports/football/schedule/season/2026",
+  "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+  "https://ecupirates.com/sports/football/schedule/text/2026",
+  "https://appstatesports.com/sports/football/schedule/2026",
+  "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+  "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19",
+  "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+  "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+  "https://vucommodores.com/sports/football/schedule",
+  "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+  "https://ramblinwreck.com/sports/m-footbl/schedule",
+  "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25",
+  "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+  "https://gostanford.com/sports/football/schedule",
+  "https://fightingillini.com/sports/football/schedule/2026",
+  "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37",
+  "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+  "https://uclabruins.com/sports/football/schedule/season/2026",
+  "https://meangreensports.com/sports/football/schedule/2026",
+  "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+  "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas",
+  "https://navysports.com/sports/football/schedule/2026",
+  "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+  "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy",
+  "https://gozips.com/sports/football/schedule/text/2026",
+  "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23",
+  "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8",
+  "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan",
+  "https://wmubroncos.com/sports/football/schedule/2026",
+  "https://uconnhuskies.com/sports/football/schedule/2026",
+  "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple",
+  "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+  "https://ukathletics.com/sports/football/schedule/season/2026/",
+  "https://lsusports.net/sports/fb/schedule",
+  "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab",
+  "https://nevadawolfpack.com/sports/football/schedule/2026",
+  "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx",
+  "https://unlvrebels.com/sports/football/schedule/2026",
+  "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx",
+  "https://herdzone.com/sports/football/schedule/text/2026",
+  "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21",
+  "https://virginiasports.com/sports/football/schedule",
+  "https://gopsusports.com/sports/football/schedule",
+  "https://usctrojans.com/sports/football/schedule/2026",
+  "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley",
+  "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx",
+  "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes",
+  "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener",
+  "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0",
+  "https://gophersports.com/sports/football/schedule/text/2026",
+  "https://hawaiiathletics.com/sports/football/schedule/2026",
+  "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx",
+  "https://broncosports.com/sports/football/schedule/2026",
+  "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
+  "https://georgiastatesports.com/sports/football/schedule",
   "https://huskers.com/sports/football/schedule",
-  "https://gopsusports.com/sports/football/schedule"
+  "https://floridagators.com/news/2026/10/10/football-florida-texas-game-set-for-12-pm-kick-on-abc"
  ],
  "holds": [
   "Week 6 SP+ not independently verified; retained ratings show their own Sep 27 cutoff. FPI verified Oct 4, 2026 (The Big Lead).",
   "Same-book minute-timestamped odds and line movement not verified: the content lane carries VegasInsider/Action Network lines as of Oct 4-5 (content/research/P1-lines.md) and the gated odds mode stays closed until a timestamped book feed is wired.",
   "Weekly injury research remains dated October 5, with a partial Dante Moore follow-up checked October 10. Official SEC and Big Ten availability filings were not fully retrievable; no empty report or all-clear is inferred.",
   "No live in-season scores feed is wired. All 58 Week 6 FBS-vs-FBS games are verified finals (October 11); Week 7 results require another verified refresh.",
-  "Week 7 kickoffs and networks rechecked October 11: all 59 games have a published kickoff and network. Charlotte–Temple, Louisiana Tech–ULM and Nebraska–Oregon kickoffs and the Penn State–Michigan, Florida–Texas and Alabama–Tennessee networks come from a participating school's official schedule; ESPN agrees wherever it lists them, and the other school's TBA at review is recorded, not filled.",
+  "Week 7 kickoffs and networks: all 59 published after the October 11 rechecks. Charlotte–Temple 1 PM ET, Louisiana Tech–ULM 8 PM ET and Nebraska–Oregon 11 PM ET on FOX come from the visiting school with ESPN agreeing (hosts still listed TBA/TBD); Penn State–Michigan (CBS) and Alabama–Tennessee (ABC) from the host; Florida–Texas on ABC from Florida and ESPN (Texas still listed ABC or ESPN).",
   "Overall records: all 138 reconcile October 11 against ESPN standings after the verified Week 6 finals; poll records keep their October 4 publication values."
  ],
  "retainedBaseline": {
@@ -17256,7 +18012,7 @@
    "id": "week7-schedule-notes",
    "week": 7,
    "headline": "Week 7: Ohio State at Indiana leads a 59-game FBS slate",
-   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Penn State at Michigan is 3:30 PM ET on CBS, and Nebraska at Oregon kicks off at 11 PM ET (8 PM PT) on FOX.",
+   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Charlotte–Temple is 1 PM ET and Louisiana Tech–ULM 8 PM ET; Penn State–Michigan is on CBS. Nebraska–Oregon is 11 PM ET (8 PM PT) on FOX.",
    "game_provider_id": "401858488",
    "as_of": "2026-10-11",
    "sources": [
@@ -17265,6 +18021,8 @@
     "https://purduesports.com/sports/football/schedule",
     "https://uwbadgers.com/sports/football/schedule/2026",
     "https://uclabruins.com/sports/football/schedule/2026",
+    "https://charlotte49ers.com/sports/football/schedule/2026",
+    "https://latechsports.com/sports/football/schedule/2026",
     "https://mgoblue.com/sports/football/schedule/2026",
     "https://huskers.com/sports/football/schedule"
    ]
@@ -17917,34 +18675,121 @@
    }
   },
   {
-   "applied_at": "2026-10-11T14:38:53Z",
+   "applied_at": "2026-10-11T13:57:20Z",
+   "evidence_checked_at": "2026-10-11T13:17:26Z",
+   "script": "scripts/apply-oct11-school-recheck.mjs",
+   "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json",
+   "scope": "Official school sources for the 44 Saturday October 10, 2026 (Week 6) FBS-vs-FBS finals that scripts/apply-oct10-saturday-finals.mjs verified against ESPN and NCAA.com, the records those finals imply, and a recheck of the three Week 7 official-TBD kickoffs and two unpublished networks against school schedules.",
+   "finals_corroborated": [
+    "401856716",
+    "401856823",
+    "401856824",
+    "401858256",
+    "401858260",
+    "401862795",
+    "401866436",
+    "401858482",
+    "401856714",
+    "401862797",
+    "401869843",
+    "401866440",
+    "401856717",
+    "401856718",
+    "401856825",
+    "401858255",
+    "401858257",
+    "401858259",
+    "401858480",
+    "401858484",
+    "401862796",
+    "401862799",
+    "401866435",
+    "401866437",
+    "401866438",
+    "401866439",
+    "401861964",
+    "401856713",
+    "401860902",
+    "401856715",
+    "401862798",
+    "401864517",
+    "401864518",
+    "401869943",
+    "401856712",
+    "401858258",
+    "401858485",
+    "401864516",
+    "401869949",
+    "401869965",
+    "401856827",
+    "401858486",
+    "401856808",
+    "401860901"
+   ],
+   "records_confirmed": 88,
+   "week7_changes": [
+    {
+     "provider_id": "401862803",
+     "field": "kickoff",
+     "before": {
+      "kickoff_utc": null,
+      "kickoff_status": "official_tbd"
+     },
+     "after": {
+      "kickoff_utc": "2026-10-17T17:00Z",
+      "kickoff_status": "confirmed"
+     }
+    },
+    {
+     "provider_id": "401871091",
+     "field": "kickoff",
+     "before": {
+      "kickoff_utc": null,
+      "kickoff_status": "official_tbd"
+     },
+     "after": {
+      "kickoff_utc": "2026-10-18T00:00Z",
+      "kickoff_status": "confirmed"
+     }
+    },
+    {
+     "provider_id": "401858490",
+     "field": "tv",
+     "before": {
+      "tv": null
+     },
+     "after": {
+      "tv": "CBS"
+     }
+    }
+   ],
+   "week7_kept": [
+    "401858492:kickoff",
+    "401858492:tv"
+   ],
+   "differences_recorded": 4
+  },
+  {
+   "applied_at": "2026-10-11T14:48:35Z",
+   "evidence_checked_at": "2026-10-11T14:48:35Z",
    "script": "scripts/apply-week7-kickoff-updates.mjs",
    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json",
-   "scope": "Week 7 (Oct 13-17, 2026) recheck of the open kickoffs and networks left by the reviewed release: three official TBA kickoffs, two unpublished networks and two ABC-or-ESPN alternatives.",
-   "kickoffs_adopted": [
-    "401858492",
+   "scope": "Week 7 (Oct 13-17, 2026) afternoon recheck after scripts/apply-oct11-school-recheck.mjs: Nebraska-Oregon kickoff and network, and the Florida-Texas and Alabama-Tennessee ABC-or-ESPN alternatives; the three morning adoptions are reconfirmed unchanged.",
+   "week7_changes": [
+    "401858492:kickoff",
+    "401858492:tv",
+    "401856724:tv",
+    "401856723:tv"
+   ],
+   "week7_reconfirmed": [
     "401862803",
-    "401871091"
+    "401871091",
+    "401858490"
    ],
-   "networks_adopted": [
-    "401856723",
-    "401856724",
-    "401858490",
-    "401858492"
-   ],
-   "week7_official_tbd": [],
-   "untouched_cutoffs": {
-    "week7_retrieved_at": "2026-10-11T10:30:00Z",
-    "results_verified_at": "2026-10-11T13:57:20Z",
-    "polls_released": [
-     "ap 2026-10-04",
-     "coaches 2026-10-04",
-     "composite 2026-10-04"
-    ]
-   }
+   "week7_official_tbd": []
   }
  ],
- "schedule_verified_at": "2026-10-11T14:38:53Z",
+ "schedule_verified_at": "2026-10-11T10:29:37.195Z",
  "availability_review": {
   "checked_at": "2026-10-10T14:31:21.972853+00:00",
   "scope": "Limited official availability snapshot",
@@ -17983,9 +18828,9 @@
    "source_revision": "deb4f64ea413c91c38e4e5062ceadd2326753861",
    "marquee_game_id": "2026-10-17-ohio-state-at-indiana",
    "retrieved_at": "2026-10-11T10:30:00Z",
-   "schedule_verified_at": "2026-10-11T14:38:53Z",
+   "schedule_verified_at": "2026-10-11T10:29:37.195Z",
    "records_verified_at": "2026-10-11T11:06:09.779Z",
-   "note": "59 FBS-vs-FBS games from the reviewed release. October 11 recheck: every kickoff and network is published; nothing is filled with placeholders."
+   "note": "59 FBS-vs-FBS games from the reviewed release. After the October 11 rechecks every kickoff and network is published from a school schedule; nothing is filled with placeholders."
   }
  ]
 }

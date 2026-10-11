@@ -241,20 +241,21 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   // Absence from the FBS board is never called a bye.
   assert.match(byPath.get("/?week=7") ?? "", /Ranked, not on this FBS board:/);
   for (const text of byPath.values()) assert.doesNotMatch(text, /Byes:/);
-  // Week 7: the reviewed release, its marquee, and the kickoffs and networks the
-  // October 11 recheck confirmed (no TBA group remains, and no placeholder times).
+  // Week 7: the reviewed release, its marquee, and official TBAs without placeholder times.
   const week7 = byPath.get("/?week=7") ?? "";
   assert.match(week7, /WEEK 7 · OCT 13–17 · (PREVIEW|AS OF 2026-10-11)/);
   assert.match(week7, /REVIEWED 2026-10-11 10:30 UTC/);
   assert.match(week7, /MARQUEE MATCHUP Ohio State at Indiana Sat, Oct 17 FOX · 12:00 PM ET/);
   assert.match(week7, /Ohio State 5–1/);
   assert.match(week7, /Indiana 6–0/);
+  // After the Oct 11 rechecks no Week 7 kickoff is TBA: each game sits in its
+  // wave with the time and single network a school schedule published.
   assert.doesNotMatch(week7, /KICKOFF TBA/);
   assert.match(week7, /12:00 PM ET 16 Florida at 1 Texas ABC /);
-  assert.match(week7, /1:00 PM ET Charlotte at Temple ESPN\+ /);
+  assert.match(week7, /1:00 PM ET Charlotte at Temple ESPN\+/);
   assert.match(week7, /3:30 PM ET 6 Alabama at 15 Tennessee ABC /);
   assert.match(week7, /3:30 PM ET Penn State at Michigan CBS /);
-  assert.match(week7, /8:00 PM ET Louisiana Tech at ULM ESPN\+ /);
+  assert.match(week7, /8:00 PM ET Louisiana Tech at ULM ESPN\+/);
   assert.match(week7, /LATE[\s\S]*?11:00 PM ET Nebraska at 13 Oregon FOX /);
   assert.match(week7, /Week 7: Ohio State at Indiana leads a 59-game FBS slate/);
   assert.doesNotMatch(week7, /Saturday finals: Oklahoma stuns/, "Week 6 stories stay on Week 6");
