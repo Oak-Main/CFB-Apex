@@ -75,3 +75,12 @@
 | Server-clock week selection | `lib/week-cutover.ts`, `app/page.tsx`, `app/[...slug]/page.tsx`, `components/broadcast/week-switch.tsx` | 12:59:59.999Z → 6, 13:00:00.000Z/.001Z → 7; `no-store` header and rendered default-week tests |
 | Week navigation | `WeekSwitch` links with `aria-current`, scoreboard rail and source labels per board week | rendered `/scores?week=6|7`, keyboard focus and 390px browser check |
 | Honest records and byes | `team_records_review`, retained October 10 overall records, "Ranked, not on this FBS board" | `tests/week7.test.ts`, refresh/rendered regressions |
+
+## October 11 results refresh (October 10 finals)
+
+| Requirement | Implementation | Evidence |
+|---|---|---|
+| October 10 results verified, never promoted on time | `scripts/apply-oct10-finals.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json` | apply assertions (ESPN post/final, line-score sums, OT periods, school score and winner, evidence hash); `tests/refresh.test.ts` October 10 finals regression |
+| Records recomputed from verified finals | `team_records_review.recomputed_from_2026_10_10_finals`, Georgia State school+provider check | apply assertions (October 10 record + result = ESPN = school); `tests/week7.test.ts` records test |
+| Week 7 TBD recheck with primary sources | `week7_recheck` evidence, row `timing_note`/`tv_note`/`rechecked_at` | `tests/week7.test.ts` TBD, adopted-kickoff and network tests |
+| Stamps stay per week | `board_weeks[0].results_verified_at`; Week 7 board, polls and snapshot cutoffs untouched | apply assertions; refresh/injury-accuracy freshness tests |

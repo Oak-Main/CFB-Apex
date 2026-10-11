@@ -54,3 +54,10 @@
 - The cutover is a fixed editorial time, Sunday 06:00 America/Los_Angeles before the week starts; poll publication remains independent of it.
 - A team's October 10 ESPN-reconciled record stays valid when its Week 6 game was already a verified final before that check, or its schedule lists an explicit October 10 bye.
 - ESPN conference ids 179 (Charleston Southern), 48 (Elon) and 29 (The Citadel) are outside the FBS set, so those three games stay excluded with evidence.
+
+## October 11 results refresh (October 10 finals)
+
+- ESPN's completed-game summary is the provider of record for quarter scores and post-game records; an official school schedule, text-only schedule row or school recap is the primary source for the score and winner. Both must agree before a game becomes final.
+- A school page rendered through Cloudflare Browser Rendering is the school's own published page; the rendering service only gets past bot protection and changes no content.
+- A record recomputed from the October 10 ESPN-reconciled record plus a verified final is current while the team has not played since October 10; no FBS team plays again before October 13.
+- A school schedule that lists a specific time while the host still lists TBA counts for a kickoff only when ESPN shows the same time as valid; a network shown only as a visiting school's logo is not adopted.

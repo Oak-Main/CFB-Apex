@@ -36,15 +36,13 @@ test("Eastern dates keep Friday finals and late Saturday games on the correct da
 test("the Week 6 archive board and its ticker share the verified Week 6 snapshot", () => {
   const slate = weekGames(games, boardWeekStart(6));
   const tickerGames = tickerGamesFor(6);
-  // 58 FBS-vs-FBS games: 14 verified finals and 44 Saturday games without a verified result.
+  // 58 FBS-vs-FBS games, every one a verified final after the October 11 results refresh.
   assert.equal(slate.length, 58);
-  assert.equal(slate.filter((game) => game.status === "final").length, 14);
-  assert.equal(slate.filter((game) => game.status === "scheduled").length, 44);
+  assert.equal(slate.filter((game) => game.status === "final").length, 58);
+  assert.equal(slate.filter((game) => game.status === "scheduled").length, 0);
   assert.ok(
-    slate
-      .filter((game) => game.status === "scheduled")
-      .every((game) => /final not yet verified/.test(game.statusDetail)),
-    "elapsed Week 6 games say their result is unverified, never upcoming",
+    !slate.some((game) => /final not yet verified/.test(game.statusDetail)),
+    "no Week 6 game is left waiting on a result",
   );
   assert.equal(
     new Set(
@@ -52,9 +50,10 @@ test("the Week 6 archive board and its ticker share the verified Week 6 snapshot
     ).size,
     slate.length,
   );
-  assert.equal(tickerGames.filter((game) => game.status === "final").length, 8);
+  assert.equal(tickerGames.length, 8);
   assert.ok(
-    tickerGames.some((game) => game.awayTeamId === "iowa-state" && game.status === "final"),
+    tickerGames.every((game) => game.status === "final" && easternDate(game.date) === "2026-10-10"),
+    "the archive ticker leads with the latest Saturday finals and has nothing upcoming",
   );
   assert.ok(slate.every((game) => games.find((row) => row.id === game.id)?.week === 6));
   assert.ok(
@@ -112,10 +111,11 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
   );
   assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "3–3");
   assert.equal(teams.find((team) => team.slug === "fiu")?.record, "3–2");
-  // App State played Oct 10 and its school record could not be retrieved: unknown, not stale.
+  // App State's record was withheld until its Oct 10 final was verified; it now
+  // carries that final, with the school and ESPN agreeing.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "Not published",
+    "3–2",
   );
 });
 
@@ -268,8 +268,8 @@ test("midweek finals no longer appear as upcoming anywhere", () => {
     !tickerGames.some((game) => game.status !== "final" && pairs.has(pairOf(game.awayTeamId, game.homeTeamId))),
     "ticker shows them only as finals",
   );
-  // The featured game must still be an unplayed matchup.
-  assert.equal(featuredGame(slate, teams)?.status, "scheduled");
+  // Every Week 6 game is now final, so the archive features a verified final, never a stale scheduled row.
+  assert.equal(featuredGame(slate, teams)?.status, "final");
 });
 
 test("midweek finals keep their Eastern game dates across time zones", () => {
@@ -340,10 +340,13 @@ test("freshness stays per source: polls and stats keep their own cutoffs", () =>
     const played = ((verifiedRefresh?.playedGames ?? []) as Array<{ provider_id?: string; verified_at?: string }>).find((row) => row.provider_id === want.provider);
     assert.ok(played?.verified_at && played.verified_at >= "2026-10-09", `${want.provider} carries its own verification time`);
   }
-  // Remaining rows carry their own re-check time; Hawai'i at Arizona State kept its corrected kickoff.
-  const hawaii = verifiedRefresh?.scheduledGames.find((row) => row.provider_id === "401856808");
+  // Rows carry their own re-check time; Hawai'i at Arizona State kept its corrected kickoff as a final.
+  const hawaii = ((verifiedRefresh?.playedGames ?? []) as Array<{ provider_id?: string; kickoff_utc?: string; meta?: { pregame?: { correction?: string } } }>)
+    .find((row) => row.provider_id === "401856808");
   assert.equal(hawaii?.kickoff_utc, "2026-10-11T02:30Z");
   assert.equal(easternDate(hawaii?.kickoff_utc ?? ""), "2026-10-10");
+  assert.match(hawaii?.meta?.pregame?.correction ?? "", /7:30 PM MST/);
+  assert.equal(games.find((row) => row.id === "2026-10-10-hawaii-at-arizona-state")?.status, "final");
   assert.ok(verifiedRefresh?.scheduledGames.every((row) => (row.verified_at ?? "") >= "2026-10-09"));
   const recap = verifiedRefresh?.storylines?.find((row) => row.id === "week6-thursday-finals");
   assert.ok(recap && recap.sources.length >= 4, "recap is sourced");
@@ -389,10 +392,53 @@ test("weather-related kickoff changes propagate to games, team schedules and bro
   assert.equal(easternDate(utah.date), "2026-10-10");
   assert.equal(utah.broadcast, "ESPN App · linear network TBD");
   assert.equal(getTeamSchedule("utah")?.find(g => g.date === "2026-10-10")?.href, "/games/2026-10-10-kansas-at-utah");
-  assert.ok(verifiedRefresh?.scheduledGames.filter(g => g.week === 6).every(g => g.verified_at?.startsWith("2026-10-10")));
+  // Both are verified finals now; their pre-game corrections stay with the game.
+  assert.equal(rice.status, "final");
+  assert.equal(utah.status, "final");
+  assert.equal(verifiedRefresh?.scheduledGames.filter(g => g.week === 6).length, 0);
+  const pregame = (id: string) => ((verifiedRefresh?.playedGames ?? []) as Array<{ game_id: string; meta?: { pregame?: { correction?: string } } }>)
+    .find((row) => row.game_id === id)?.meta?.pregame?.correction ?? "";
+  assert.match(pregame("2026-10-10-rice-at-east-carolina"), /1 PM ET/);
+  assert.match(pregame("2026-10-10-kansas-at-utah"), /6 PM MDT/);
   const week6 = boardWeeks.find((row) => row.week === 6);
   assert.ok(week6?.schedule_verified_at?.startsWith("2026-10-10"));
   assert.match(verifiedRefresh?.availability_review?.note ?? "", /not complete Saturday coverage/);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(verifiedRefresh?.polls?.[0].release_date, "2026-10-04");
+});
+
+const OCT10_FINALS = [
+  { id: "2026-10-10-georgia-at-alabama", away: 20, home: 17 },
+  { id: "2026-10-10-texas-at-oklahoma", away: 24, home: 27 },
+  { id: "2026-10-10-lsu-at-kentucky", away: 34, home: 35, ot: true },
+  { id: "2026-10-10-illinois-at-michigan-state", away: 38, home: 37, ot: true },
+  { id: "2026-10-10-ucla-at-oregon", away: 17, home: 15 },
+  { id: "2026-10-10-usc-at-penn-state", away: 31, home: 23 },
+] as const;
+
+test("every Saturday October 10 game is a verified final with summing line scores and a school source", () => {
+  type Played = { game_id: string; date: string; week?: number; kickoff_utc?: string; verified_at?: string; title?: string; teams: Array<{ slug: string; points: number }>; meta?: { sources?: string[]; line_score?: Record<string, number[]>; originally_scheduled_kickoff_utc?: string } };
+  const played = (verifiedRefresh?.playedGames ?? []) as Played[];
+  const oct10 = played.filter((g) => g.week === 6 && g.date === "2026-10-10");
+  assert.equal(oct10.length, 46);
+  assert.equal(new Set(oct10.map((g) => g.game_id)).size, 46);
+  for (const g of oct10) {
+    assert.match(g.title ?? "", /^Final/);
+    assert.ok(g.verified_at && g.verified_at >= "2026-10-11", `${g.game_id} verified after the games`);
+    assert.equal(easternDate(g.kickoff_utc ?? ""), "2026-10-10", `${g.game_id} keeps its Eastern date`);
+    for (const t of g.teams) assert.equal(g.meta?.line_score?.[t.slug]?.reduce((a, b) => a + b, 0), t.points, `${g.game_id} ${t.slug} line score`);
+    assert.ok(g.meta?.sources?.some((u) => u.startsWith("https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=")), `${g.game_id} ESPN summary`);
+    assert.ok(g.meta?.sources?.some((u) => !/espn\.com/.test(u)), `${g.game_id} official school source`);
+  }
+  for (const want of OCT10_FINALS) {
+    const game = games.find((row) => row.id === want.id);
+    assert.equal(game?.status, "final", want.id);
+    assert.equal(game?.awayScore, want.away);
+    assert.equal(game?.homeScore, want.home);
+    assert.equal(/OT/.test(game?.statusDetail ?? ""), "ot" in want, `${want.id} overtime label`);
+  }
+  // JMU at Georgia Southern started late: ESPN's actual start, same Eastern game id.
+  const jmu = played.find((g) => g.game_id === "2026-10-10-james-madison-at-georgia-southern");
+  assert.equal(jmu?.kickoff_utc, "2026-10-11T00:10Z");
+  assert.equal(jmu?.meta?.originally_scheduled_kickoff_utc, "2026-10-10T23:30Z");
 });

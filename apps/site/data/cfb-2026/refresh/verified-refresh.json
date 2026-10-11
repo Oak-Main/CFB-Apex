@@ -10758,12 +10758,11 @@
     "reviewed_at": "2026-10-11T10:15:00Z",
     "release": "week7-90552f488b59c2cd"
    }
-  }
- ],
- "scheduledGames": [
+  },
   {
    "provider_id": "401856716",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856716",
+   "game_id": "2026-10-10-texas-am-at-missouri",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10772,16 +10771,50 @@
    "site": "Memorial Stadium",
    "tv": "ABC",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "texas-am",
-   "home": "missouri",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:05:00Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "missouri",
+     "name": "Missouri",
+     "points": 27
+    },
+    {
+     "slug": "texas-am",
+     "name": "Texas A&M",
+     "points": 6
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856716",
+     "https://www.espn.com/college-football/game/_/gameId/401856716",
+     "https://mutigers.com/sports/football/schedule/season/2026",
+     "https://12thman.com/sports/football/schedule/season/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "missouri": [
+      0,
+      10,
+      10,
+      7
+     ],
+     "texas-am": [
+      3,
+      0,
+      0,
+      3
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856823",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856823",
+   "game_id": "2026-10-10-arizona-at-west-virginia",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10790,16 +10823,50 @@
    "site": "Milan Puskar Stadium",
    "tv": "TNT",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "arizona",
-   "home": "west-virginia",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:05Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "west-virginia",
+     "name": "West Virginia",
+     "points": 31
+    },
+    {
+     "slug": "arizona",
+     "name": "Arizona",
+     "points": 52
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856823",
+     "https://www.espn.com/college-football/game/_/gameId/401856823",
+     "https://arizonawildcats.com/sports/football/schedule/2026",
+     "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "west-virginia": [
+      3,
+      14,
+      7,
+      7
+     ],
+     "arizona": [
+      14,
+      10,
+      14,
+      14
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856824",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856824",
+   "game_id": "2026-10-10-ucf-at-oklahoma-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10808,16 +10875,49 @@
    "site": "Boone Pickens Stadium",
    "tv": "ESPN2",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "ucf",
-   "home": "oklahoma-state",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:18Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "oklahoma-state",
+     "name": "Oklahoma State",
+     "points": 42
+    },
+    {
+     "slug": "ucf",
+     "name": "UCF",
+     "points": 28
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856824",
+     "https://www.espn.com/college-football/game/_/gameId/401856824",
+     "https://ucfknights.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "oklahoma-state": [
+      7,
+      14,
+      3,
+      18
+     ],
+     "ucf": [
+      14,
+      7,
+      0,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858256",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858256",
+   "game_id": "2026-10-10-north-carolina-at-pittsburgh",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10826,16 +10926,50 @@
    "site": "Acrisure Stadium",
    "tv": "ESPN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "north-carolina",
-   "home": "pittsburgh",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:04:57Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "pittsburgh",
+     "name": "Pittsburgh",
+     "points": 17
+    },
+    {
+     "slug": "north-carolina",
+     "name": "North Carolina",
+     "points": 21
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858256",
+     "https://www.espn.com/college-football/game/_/gameId/401858256",
+     "https://pittsburghpanthers.com/sports/football/schedule/2026",
+     "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "pittsburgh": [
+      7,
+      3,
+      0,
+      7
+     ],
+     "north-carolina": [
+      0,
+      7,
+      7,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858260",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858260",
+   "game_id": "2026-10-10-wake-forest-at-nc-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10844,16 +10978,50 @@
    "site": "Carter-Finley Stadium",
    "tv": "CW",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "wake-forest",
-   "home": "nc-state",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:10:57Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "nc-state",
+     "name": "NC State",
+     "points": 14
+    },
+    {
+     "slug": "wake-forest",
+     "name": "Wake Forest",
+     "points": 38
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858260",
+     "https://www.espn.com/college-football/game/_/gameId/401858260",
+     "https://gopack.com/sports/football/schedule/2026",
+     "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "nc-state": [
+      7,
+      7,
+      0,
+      0
+     ],
+     "wake-forest": [
+      7,
+      3,
+      21,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401862795",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862795",
+   "game_id": "2026-10-10-tulane-at-army",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10862,16 +11030,49 @@
    "site": "Michie Stadium",
    "tv": "CBSSN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "tulane",
-   "home": "army",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:10:56Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "army",
+     "name": "Army",
+     "points": 20
+    },
+    {
+     "slug": "tulane",
+     "name": "Tulane",
+     "points": 17
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862795",
+     "https://www.espn.com/college-football/game/_/gameId/401862795",
+     "https://goarmywestpoint.com/sports/football/schedule/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "army": [
+      7,
+      0,
+      0,
+      13
+     ],
+     "tulane": [
+      0,
+      3,
+      7,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401866436",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866436",
+   "game_id": "2026-10-10-sacramento-state-at-bowling-green",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:00Z",
    "week": 6,
@@ -10880,16 +11081,50 @@
    "site": "Doyt L. Perry Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "sacramento-state",
-   "home": "bowling-green",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:23Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "bowling-green",
+     "name": "Bowling Green",
+     "points": 38
+    },
+    {
+     "slug": "sacramento-state",
+     "name": "Sacramento State",
+     "points": 10
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866436",
+     "https://www.espn.com/college-football/game/_/gameId/401866436",
+     "https://bgsufalcons.com/sports/football/schedule/2026",
+     "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "bowling-green": [
+      0,
+      17,
+      7,
+      14
+     ],
+     "sacramento-state": [
+      3,
+      0,
+      0,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858482",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858482",
+   "game_id": "2026-10-10-ball-state-at-northwestern",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:30Z",
    "week": 6,
@@ -10898,16 +11133,49 @@
    "site": "Ryan Field",
    "tv": "BTN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "ball-state",
-   "home": "northwestern",
-   "time_et": "12:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:04:54Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "northwestern",
+     "name": "Northwestern",
+     "points": 45
+    },
+    {
+     "slug": "ball-state",
+     "name": "Ball State",
+     "points": 14
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858482",
+     "https://www.espn.com/college-football/game/_/gameId/401858482",
+     "https://nusports.com/sports/football/schedule/season/2026"
+    ],
+    "conference_game": false,
+    "line_score": {
+     "northwestern": [
+      14,
+      17,
+      14,
+      0
+     ],
+     "ball-state": [
+      0,
+      14,
+      0,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856714",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856714",
+   "game_id": "2026-10-10-south-carolina-at-florida",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T16:45Z",
    "week": 6,
@@ -10916,16 +11184,50 @@
    "site": "Ben Hill Griffin Stadium",
    "tv": "SEC Network",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "south-carolina",
-   "home": "florida",
-   "time_et": "12:45",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:57Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "florida",
+     "name": "Florida",
+     "points": 19
+    },
+    {
+     "slug": "south-carolina",
+     "name": "South Carolina",
+     "points": 38
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856714",
+     "https://www.espn.com/college-football/game/_/gameId/401856714",
+     "https://floridagators.com/sports/football/schedule/2026",
+     "https://gamecocksonline.com/sports/football/schedule/season/2026/"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "florida": [
+      7,
+      3,
+      3,
+      6
+     ],
+     "south-carolina": [
+      7,
+      10,
+      14,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401862797",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862797",
+   "game_id": "2026-10-10-rice-at-east-carolina",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T17:00Z",
    "week": 6,
@@ -10934,21 +11236,56 @@
    "site": "Dowdy-Ficklen Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "rice",
-   "home": "east-carolina",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "correction": "Moved to 1 PM ET due to weather; ESPN+ unchanged.",
-   "correction_sources": [
-    "https://ecupirates.com/news/2026/10/9/football-ecu-opens-american-conference-play-hosting-rice-at-1-pm",
-    "https://riceowls.com/news/2026/10/9/football-owls-look-to-even-conference-mark-against-pirates"
-   ]
+   "verified_at": "2026-10-11T13:17:26Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "east-carolina",
+     "name": "East Carolina",
+     "points": 28
+    },
+    {
+     "slug": "rice",
+     "name": "Rice",
+     "points": 12
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862797",
+     "https://www.espn.com/college-football/game/_/gameId/401862797",
+     "https://ecupirates.com/sports/football/schedule/text/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "east-carolina": [
+      7,
+      0,
+      7,
+      14
+     ],
+     "rice": [
+      0,
+      3,
+      6,
+      3
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "pregame": {
+     "correction": "Moved to 1 PM ET due to weather; ESPN+ unchanged.",
+     "correction_sources": [
+      "https://ecupirates.com/news/2026/10/9/football-ecu-opens-american-conference-play-hosting-rice-at-1-pm",
+      "https://riceowls.com/news/2026/10/9/football-owls-look-to-even-conference-mark-against-pirates"
+     ]
+    }
+   }
   },
   {
    "provider_id": "401869843",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401869843",
+   "game_id": "2026-10-10-old-dominion-at-appalachian-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T17:00Z",
    "week": 6,
@@ -10957,17 +11294,54 @@
    "site": "Kidd Brewer Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "old-dominion",
-   "home": "appalachian-state",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "correction": "Restored from excludedGames: the Oct 5 snapshot tagged Old Dominion Monarchs at App State Mountaineers as FBS–FCS, but ESPN lists both schools in FBS conferences (ids 37/37)."
+   "verified_at": "2026-10-11T13:10:57Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "appalachian-state",
+     "name": "Appalachian State",
+     "points": 3
+    },
+    {
+     "slug": "old-dominion",
+     "name": "Old Dominion",
+     "points": 10
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869843",
+     "https://www.espn.com/college-football/game/_/gameId/401869843",
+     "https://appstatesports.com/sports/football/schedule/2026",
+     "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+     "https://odusports.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "appalachian-state": [
+      0,
+      0,
+      3,
+      0
+     ],
+     "old-dominion": [
+      0,
+      0,
+      2,
+      8
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "pregame": {
+     "correction": "Restored from excludedGames: the Oct 5 snapshot tagged Old Dominion Monarchs at App State Mountaineers as FBS–FCS, but ESPN lists both schools in FBS conferences (ids 37/37)."
+    }
+   }
   },
   {
    "provider_id": "401866440",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866440",
+   "game_id": "2026-10-10-miami-oh-at-umass",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T18:00Z",
    "week": 6,
@@ -10976,16 +11350,50 @@
    "site": "Warren McGuirk Alumni Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "miami-oh",
-   "home": "umass",
-   "time_et": "14:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:45Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "umass",
+     "name": "UMass",
+     "points": 19
+    },
+    {
+     "slug": "miami-oh",
+     "name": "Miami (OH)",
+     "points": 20
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866440",
+     "https://www.espn.com/college-football/game/_/gameId/401866440",
+     "https://umassathletics.com/sports/football/schedule/2026",
+     "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "umass": [
+      7,
+      3,
+      0,
+      9
+     ],
+     "miami-oh": [
+      14,
+      0,
+      3,
+      3
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856717",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856717",
+   "game_id": "2026-10-10-texas-at-oklahoma",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -10994,16 +11402,52 @@
    "site": "Cotton Bowl",
    "tv": "ABC",
    "neutral_site": true,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "texas",
-   "home": "oklahoma",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:13:07Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "oklahoma",
+     "name": "Oklahoma",
+     "points": 27
+    },
+    {
+     "slug": "texas",
+     "name": "Texas",
+     "points": 24
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
+     "https://www.espn.com/college-football/game/_/gameId/401856717",
+     "https://soonersports.com/sports/football/schedule/2026",
+     "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+     "https://texaslonghorns.com/sports/football/schedule/2026",
+     "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "oklahoma": [
+      0,
+      7,
+      3,
+      17
+     ],
+     "texas": [
+      7,
+      10,
+      0,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856718",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856718",
+   "game_id": "2026-10-10-ole-miss-at-vanderbilt",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11012,16 +11456,49 @@
    "site": "FirstBank Stadium",
    "tv": "ESPN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "ole-miss",
-   "home": "vanderbilt",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:19Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "vanderbilt",
+     "name": "Vanderbilt",
+     "points": 17
+    },
+    {
+     "slug": "ole-miss",
+     "name": "Ole Miss",
+     "points": 52
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856718",
+     "https://www.espn.com/college-football/game/_/gameId/401856718",
+     "https://vucommodores.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "vanderbilt": [
+      3,
+      0,
+      7,
+      7
+     ],
+     "ole-miss": [
+      14,
+      28,
+      0,
+      10
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856825",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856825",
+   "game_id": "2026-10-10-houston-at-kansas-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11030,16 +11507,50 @@
    "site": "Bill Snyder Family Stadium",
    "tv": "FOX",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "houston",
-   "home": "kansas-state",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:52Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "kansas-state",
+     "name": "Kansas State",
+     "points": 16
+    },
+    {
+     "slug": "houston",
+     "name": "Houston",
+     "points": 35
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856825",
+     "https://www.espn.com/college-football/game/_/gameId/401856825",
+     "https://kstatesports.com/sports/football/schedule/2026",
+     "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "kansas-state": [
+      3,
+      0,
+      6,
+      7
+     ],
+     "houston": [
+      7,
+      14,
+      14,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858255",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858255",
+   "game_id": "2026-10-10-duke-at-georgia-tech",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11048,16 +11559,51 @@
    "site": "Bobby Dodd Stadium",
    "tv": "ESPN2",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "duke",
-   "home": "georgia-tech",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:35Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "georgia-tech",
+     "name": "Georgia Tech",
+     "points": 28
+    },
+    {
+     "slug": "duke",
+     "name": "Duke",
+     "points": 25
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858255",
+     "https://www.espn.com/college-football/game/_/gameId/401858255",
+     "https://ramblinwreck.com/sports/m-footbl/schedule",
+     "https://goduke.com/sports/football/schedule/2026",
+     "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "georgia-tech": [
+      7,
+      7,
+      7,
+      7
+     ],
+     "duke": [
+      0,
+      10,
+      8,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858257",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858257",
+   "game_id": "2026-10-10-stanford-at-notre-dame",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11066,16 +11612,50 @@
    "site": "Notre Dame Stadium",
    "tv": "NBC",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "stanford",
-   "home": "notre-dame",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:50Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "notre-dame",
+     "name": "Notre Dame",
+     "points": 58
+    },
+    {
+     "slug": "stanford",
+     "name": "Stanford",
+     "points": 7
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858257",
+     "https://www.espn.com/college-football/game/_/gameId/401858257",
+     "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+     "https://gostanford.com/sports/football/schedule"
+    ],
+    "conference_game": false,
+    "line_score": {
+     "notre-dame": [
+      14,
+      23,
+      7,
+      14
+     ],
+     "stanford": [
+      0,
+      0,
+      7,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858259",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858259",
+   "game_id": "2026-10-10-virginia-tech-at-california",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11084,16 +11664,49 @@
    "site": "California Memorial Stadium",
    "tv": "ACC Network",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "virginia-tech",
-   "home": "california",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:23Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "california",
+     "name": "California",
+     "points": 25
+    },
+    {
+     "slug": "virginia-tech",
+     "name": "Virginia Tech",
+     "points": 20
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858259",
+     "https://www.espn.com/college-football/game/_/gameId/401858259",
+     "https://hokiesports.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "california": [
+      0,
+      10,
+      3,
+      12
+     ],
+     "virginia-tech": [
+      0,
+      14,
+      0,
+      6
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858480",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858480",
+   "game_id": "2026-10-10-illinois-at-michigan-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11102,16 +11715,52 @@
    "site": "Spartan Stadium",
    "tv": "FS1",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "illinois",
-   "home": "michigan-state",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:12:46Z",
+   "title": "Final/OT",
+   "teams": [
+    {
+     "slug": "michigan-state",
+     "name": "Michigan State",
+     "points": 37
+    },
+    {
+     "slug": "illinois",
+     "name": "Illinois",
+     "points": 38
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
+     "https://www.espn.com/college-football/game/_/gameId/401858480",
+     "https://fightingillini.com/sports/football/schedule/2026",
+     "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "michigan-state": [
+      0,
+      7,
+      10,
+      14,
+      6
+     ],
+     "illinois": [
+      10,
+      10,
+      3,
+      8,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858484",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858484",
+   "game_id": "2026-10-10-ucla-at-oregon",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11120,16 +11769,51 @@
    "site": "Autzen Stadium",
    "tv": "CBS",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "ucla",
-   "home": "oregon",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:33Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "oregon",
+     "name": "Oregon",
+     "points": 15
+    },
+    {
+     "slug": "ucla",
+     "name": "UCLA",
+     "points": 17
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
+     "https://www.espn.com/college-football/game/_/gameId/401858484",
+     "https://goducks.com/sports/football/schedule/2026",
+     "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+     "https://uclabruins.com/sports/football/schedule/season/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "oregon": [
+      6,
+      0,
+      0,
+      9
+     ],
+     "ucla": [
+      3,
+      7,
+      0,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401862796",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862796",
+   "game_id": "2026-10-10-charlotte-at-north-texas",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11138,16 +11822,52 @@
    "site": "DATCU Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "charlotte",
-   "home": "north-texas",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:15Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "north-texas",
+     "name": "North Texas",
+     "points": 50
+    },
+    {
+     "slug": "charlotte",
+     "name": "Charlotte",
+     "points": 10
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862796",
+     "https://www.espn.com/college-football/game/_/gameId/401862796",
+     "https://meangreensports.com/sports/football/schedule/2026",
+     "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+     "https://charlotte49ers.com/sports/football/schedule/2026",
+     "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "north-texas": [
+      10,
+      30,
+      7,
+      3
+     ],
+     "charlotte": [
+      3,
+      7,
+      0,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401862799",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862799",
+   "game_id": "2026-10-10-tulsa-at-navy",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11156,16 +11876,52 @@
    "site": "Navy-Marine Corps Memorial Stadium",
    "tv": "CBSSN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "tulsa",
-   "home": "navy",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:13:29Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "navy",
+     "name": "Navy",
+     "points": 34
+    },
+    {
+     "slug": "tulsa",
+     "name": "Tulsa",
+     "points": 26
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862799",
+     "https://www.espn.com/college-football/game/_/gameId/401862799",
+     "https://navysports.com/sports/football/schedule/2026",
+     "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+     "https://tulsahurricane.com/sports/football/schedule/2026",
+     "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "navy": [
+      7,
+      7,
+      6,
+      14
+     ],
+     "tulsa": [
+      14,
+      6,
+      6,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401866435",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866435",
+   "game_id": "2026-10-10-eastern-michigan-at-akron",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11174,16 +11930,50 @@
    "site": "InfoCision Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "eastern-michigan",
-   "home": "akron",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:17:26Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "akron",
+     "name": "Akron",
+     "points": 23
+    },
+    {
+     "slug": "eastern-michigan",
+     "name": "Eastern Michigan",
+     "points": 25
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866435",
+     "https://www.espn.com/college-football/game/_/gameId/401866435",
+     "https://gozips.com/sports/football/schedule/text/2026",
+     "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "akron": [
+      7,
+      7,
+      3,
+      6
+     ],
+     "eastern-michigan": [
+      3,
+      10,
+      3,
+      9
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401866437",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866437",
+   "game_id": "2026-10-10-buffalo-at-toledo",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11192,16 +11982,50 @@
    "site": "Glass Bowl",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "buffalo",
-   "home": "toledo",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:59Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "toledo",
+     "name": "Toledo",
+     "points": 8
+    },
+    {
+     "slug": "buffalo",
+     "name": "Buffalo",
+     "points": 23
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866437",
+     "https://www.espn.com/college-football/game/_/gameId/401866437",
+     "https://utrockets.com/sports/football/schedule/2026",
+     "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "toledo": [
+      0,
+      0,
+      0,
+      8
+     ],
+     "buffalo": [
+      6,
+      7,
+      3,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401866438",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866438",
+   "game_id": "2026-10-10-central-michigan-at-ohio",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11210,16 +12034,50 @@
    "site": "Peden Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "central-michigan",
-   "home": "ohio",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:12:07Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "ohio",
+     "name": "Ohio",
+     "points": 31
+    },
+    {
+     "slug": "central-michigan",
+     "name": "Central Michigan",
+     "points": 14
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866438",
+     "https://www.espn.com/college-football/game/_/gameId/401866438",
+     "https://ohiobobcats.com/sports/football/schedule/2026",
+     "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "ohio": [
+      14,
+      17,
+      0,
+      0
+     ],
+     "central-michigan": [
+      0,
+      0,
+      7,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401866439",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866439",
+   "game_id": "2026-10-10-kent-state-at-western-michigan",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:30Z",
    "week": 6,
@@ -11228,16 +12086,49 @@
    "site": "Waldo Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "kent-state",
-   "home": "western-michigan",
-   "time_et": "15:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:05:06Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "western-michigan",
+     "name": "Western Michigan",
+     "points": 38
+    },
+    {
+     "slug": "kent-state",
+     "name": "Kent State",
+     "points": 7
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866439",
+     "https://www.espn.com/college-football/game/_/gameId/401866439",
+     "https://wmubroncos.com/sports/football/schedule/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "western-michigan": [
+      7,
+      14,
+      3,
+      14
+     ],
+     "kent-state": [
+      0,
+      7,
+      0,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401861964",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401861964",
+   "game_id": "2026-10-10-uconn-at-temple",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T19:45Z",
    "week": 6,
@@ -11246,16 +12137,50 @@
    "site": "Lincoln Financial Field",
    "tv": "ESPNU",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "uconn",
-   "home": "temple",
-   "time_et": "15:45",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:13:15Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "temple",
+     "name": "Temple",
+     "points": 20
+    },
+    {
+     "slug": "uconn",
+     "name": "UConn",
+     "points": 34
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401861964",
+     "https://www.espn.com/college-football/game/_/gameId/401861964",
+     "https://uconnhuskies.com/sports/football/schedule/2026",
+     "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple"
+    ],
+    "conference_game": false,
+    "line_score": {
+     "temple": [
+      14,
+      3,
+      3,
+      0
+     ],
+     "uconn": [
+      14,
+      10,
+      0,
+      10
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856713",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856713",
+   "game_id": "2026-10-10-tennessee-at-arkansas",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T20:15Z",
    "week": 6,
@@ -11264,16 +12189,49 @@
    "site": "Donald W. Reynolds Razorback Stadium",
    "tv": "SEC Network",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "tennessee",
-   "home": "arkansas",
-   "time_et": "16:15",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:34Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "arkansas",
+     "name": "Arkansas",
+     "points": 17
+    },
+    {
+     "slug": "tennessee",
+     "name": "Tennessee",
+     "points": 24
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856713",
+     "https://www.espn.com/college-football/game/_/gameId/401856713",
+     "https://arkansasrazorbacks.com/sport/m-footbl/schedule/"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "arkansas": [
+      0,
+      0,
+      14,
+      3
+     ],
+     "tennessee": [
+      0,
+      7,
+      3,
+      14
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401860902",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401860902",
+   "game_id": "2026-10-10-san-diego-state-at-oregon-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T22:00Z",
    "week": 6,
@@ -11282,16 +12240,49 @@
    "site": "Reser Stadium",
    "tv": "USA Net",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "san-diego-state",
-   "home": "oregon-state",
-   "time_et": "18:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:15Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "oregon-state",
+     "name": "Oregon State",
+     "points": 66
+    },
+    {
+     "slug": "san-diego-state",
+     "name": "San Diego State",
+     "points": 14
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860902",
+     "https://www.espn.com/college-football/game/_/gameId/401860902",
+     "https://goaztecs.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "oregon-state": [
+      14,
+      24,
+      21,
+      7
+     ],
+     "san-diego-state": [
+      0,
+      7,
+      7,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856715",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856715",
+   "game_id": "2026-10-10-lsu-at-kentucky",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:00Z",
    "week": 6,
@@ -11300,16 +12291,52 @@
    "site": "Kroger Field",
    "tv": "ESPN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "lsu",
-   "home": "kentucky",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:07Z",
+   "title": "Final/OT",
+   "teams": [
+    {
+     "slug": "kentucky",
+     "name": "Kentucky",
+     "points": 35
+    },
+    {
+     "slug": "lsu",
+     "name": "LSU",
+     "points": 34
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
+     "https://www.espn.com/college-football/game/_/gameId/401856715",
+     "https://ukathletics.com/sports/football/schedule/season/2026/",
+     "https://lsusports.net/sports/fb/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "kentucky": [
+      7,
+      14,
+      0,
+      6,
+      8
+     ],
+     "lsu": [
+      10,
+      7,
+      3,
+      7,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401862798",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862798",
+   "game_id": "2026-10-10-uab-at-memphis",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:00Z",
    "week": 6,
@@ -11318,16 +12345,50 @@
    "site": "Simmons Bank Liberty Stadium",
    "tv": "ESPN2",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "uab",
-   "home": "memphis",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:04:50Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "memphis",
+     "name": "Memphis",
+     "points": 38
+    },
+    {
+     "slug": "uab",
+     "name": "UAB",
+     "points": 13
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862798",
+     "https://www.espn.com/college-football/game/_/gameId/401862798",
+     "https://gotigersgo.com/sports/football/schedule/2026",
+     "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "memphis": [
+      7,
+      3,
+      14,
+      14
+     ],
+     "uab": [
+      7,
+      6,
+      0,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401864517",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401864517",
+   "game_id": "2026-10-10-nevada-at-utep",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:00Z",
    "week": 6,
@@ -11336,16 +12397,50 @@
    "site": "Sun Bowl",
    "tv": "FS1",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "nevada",
-   "home": "utep",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:11:05Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "utep",
+     "name": "UTEP",
+     "points": 13
+    },
+    {
+     "slug": "nevada",
+     "name": "Nevada",
+     "points": 30
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864517",
+     "https://www.espn.com/college-football/game/_/gameId/401864517",
+     "https://nevadawolfpack.com/sports/football/schedule/2026",
+     "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "utep": [
+      0,
+      7,
+      0,
+      6
+     ],
+     "nevada": [
+      7,
+      6,
+      10,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401864518",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401864518",
+   "game_id": "2026-10-10-north-dakota-state-at-unlv",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:00Z",
    "week": 6,
@@ -11354,22 +12449,58 @@
    "site": "Allegiant Stadium",
    "tv": "CW",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "north-dakota-state",
-   "home": "unlv",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "announced_kickoff_utc": "2026-10-10T23:10Z",
-   "timing_note": "Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET.",
-   "timing_sources": [
-    "https://gobison.com/sports/football/schedule",
-    "https://unlvrebels.com/news/2026/10/6/football-game-6-bison-here-for-homecoming.aspx"
-   ]
+   "verified_at": "2026-10-11T13:13:26Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "unlv",
+     "name": "UNLV",
+     "points": 13
+    },
+    {
+     "slug": "north-dakota-state",
+     "name": "North Dakota State",
+     "points": 7
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864518",
+     "https://www.espn.com/college-football/game/_/gameId/401864518",
+     "https://unlvrebels.com/sports/football/schedule/2026",
+     "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "unlv": [
+      7,
+      0,
+      3,
+      3
+     ],
+     "north-dakota-state": [
+      0,
+      7,
+      0,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "pregame": {
+     "announced_kickoff_utc": "2026-10-10T23:10Z",
+     "timing_note": "Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET.",
+     "timing_sources": [
+      "https://gobison.com/sports/football/schedule",
+      "https://unlvrebels.com/news/2026/10/6/football-game-6-bison-here-for-homecoming.aspx"
+     ]
+    }
+   }
   },
   {
    "provider_id": "401869943",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401869943",
+   "game_id": "2026-10-10-coastal-carolina-at-marshall",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:00Z",
    "week": 6,
@@ -11378,16 +12509,50 @@
    "site": "Joan C. Edwards Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "coastal-carolina",
-   "home": "marshall",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:17:26Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "marshall",
+     "name": "Marshall",
+     "points": 21
+    },
+    {
+     "slug": "coastal-carolina",
+     "name": "Coastal Carolina",
+     "points": 27
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869943",
+     "https://www.espn.com/college-football/game/_/gameId/401869943",
+     "https://herdzone.com/sports/football/schedule/text/2026",
+     "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "marshall": [
+      0,
+      0,
+      7,
+      14
+     ],
+     "coastal-carolina": [
+      3,
+      10,
+      14,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856712",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856712",
+   "game_id": "2026-10-10-georgia-at-alabama",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:30Z",
    "week": 6,
@@ -11396,16 +12561,49 @@
    "site": "Bryant-Denny Stadium",
    "tv": "ABC",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "georgia",
-   "home": "alabama",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:04:46Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "alabama",
+     "name": "Alabama",
+     "points": 17
+    },
+    {
+     "slug": "georgia",
+     "name": "Georgia",
+     "points": 20
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
+     "https://www.espn.com/college-football/game/_/gameId/401856712",
+     "https://georgiadogs.com/sports/football/schedule/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "alabama": [
+      0,
+      14,
+      3,
+      0
+     ],
+     "georgia": [
+      3,
+      7,
+      7,
+      3
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858258",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858258",
+   "game_id": "2026-10-10-syracuse-at-virginia",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:30Z",
    "week": 6,
@@ -11414,16 +12612,49 @@
    "site": "Scott Stadium",
    "tv": "ACC Network",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "syracuse",
-   "home": "virginia",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:07:21Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "virginia",
+     "name": "Virginia",
+     "points": 28
+    },
+    {
+     "slug": "syracuse",
+     "name": "Syracuse",
+     "points": 25
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858258",
+     "https://www.espn.com/college-football/game/_/gameId/401858258",
+     "https://virginiasports.com/sports/football/schedule"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "virginia": [
+      7,
+      0,
+      7,
+      14
+     ],
+     "syracuse": [
+      7,
+      10,
+      0,
+      8
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401858485",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858485",
+   "game_id": "2026-10-10-usc-at-penn-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:30Z",
    "week": 6,
@@ -11432,16 +12663,51 @@
    "site": "Beaver Stadium",
    "tv": "NBC",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "usc",
-   "home": "penn-state",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:13:44Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "penn-state",
+     "name": "Penn State",
+     "points": 23
+    },
+    {
+     "slug": "usc",
+     "name": "USC",
+     "points": 31
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
+     "https://www.espn.com/college-football/game/_/gameId/401858485",
+     "https://gopsusports.com/sports/football/schedule",
+     "https://usctrojans.com/sports/football/schedule/2026",
+     "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "penn-state": [
+      7,
+      10,
+      3,
+      3
+     ],
+     "usc": [
+      7,
+      10,
+      7,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401864516",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401864516",
+   "game_id": "2026-10-10-air-force-at-northern-illinois",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:30Z",
    "week": 6,
@@ -11450,34 +12716,104 @@
    "site": "Huskie Stadium",
    "tv": "CBSSN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "air-force",
-   "home": "northern-illinois",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:12:13Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "northern-illinois",
+     "name": "Northern Illinois",
+     "points": 7
+    },
+    {
+     "slug": "air-force",
+     "name": "Air Force",
+     "points": 28
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864516",
+     "https://www.espn.com/college-football/game/_/gameId/401864516",
+     "https://niuhuskies.com/sports/football/schedule/2026",
+     "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "northern-illinois": [
+      0,
+      7,
+      0,
+      0
+     ],
+     "air-force": [
+      7,
+      7,
+      14,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401869949",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401869949",
+   "game_id": "2026-10-10-james-madison-at-georgia-southern",
    "date": "2026-10-10",
-   "kickoff_utc": "2026-10-10T23:30Z",
+   "kickoff_utc": "2026-10-11T00:10Z",
    "week": 6,
    "home_slug": "georgia-southern",
    "away_slug": "james-madison",
    "site": "Allen E. Paulson Stadium",
    "tv": "ESPNU",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "james-madison",
-   "home": "georgia-southern",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:12:20Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "georgia-southern",
+     "name": "Georgia Southern",
+     "points": 24
+    },
+    {
+     "slug": "james-madison",
+     "name": "James Madison",
+     "points": 27
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869949",
+     "https://www.espn.com/college-football/game/_/gameId/401869949",
+     "https://gseagles.com/sports/football/schedule/2026",
+     "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "georgia-southern": [
+      7,
+      3,
+      0,
+      14
+     ],
+     "james-madison": [
+      3,
+      3,
+      14,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "originally_scheduled_kickoff_utc": "2026-10-10T23:30Z",
+    "kickoff_note": "ESPN completed-game summary lists the actual start; stable Eastern game id retained."
+   }
   },
   {
    "provider_id": "401869965",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401869965",
+   "game_id": "2026-10-10-louisiana-at-louisiana-tech",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-10T23:30Z",
    "week": 6,
@@ -11486,16 +12822,50 @@
    "site": "Joe Aillet Stadium",
    "tv": "ESPN+",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "louisiana",
-   "home": "louisiana-tech",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:12:27Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "louisiana-tech",
+     "name": "Louisiana Tech",
+     "points": 32
+    },
+    {
+     "slug": "louisiana",
+     "name": "Louisiana",
+     "points": 31
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869965",
+     "https://www.espn.com/college-football/game/_/gameId/401869965",
+     "https://latechsports.com/sports/football/schedule/2026",
+     "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "louisiana-tech": [
+      0,
+      13,
+      0,
+      19
+     ],
+     "louisiana": [
+      0,
+      10,
+      14,
+      7
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856827",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856827",
+   "game_id": "2026-10-10-kansas-at-utah",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-11T00:00Z",
    "week": 6,
@@ -11504,21 +12874,57 @@
    "site": "Rice-Eccles Stadium",
    "tv": "ESPN App · linear network TBD",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "kansas",
-   "home": "utah",
-   "time_et": "20:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "correction": "Moved to 6 PM MDT (8 PM ET); ESPN App confirmed, linear ESPN network to be announced.",
-   "correction_sources": [
-    "https://utahutes.com/news/2026/10/9/saturdays-utah-football-game-vs-kansas-moved-to-6-pm",
-    "https://big12sports.com/news/2026/10/10/big-12-update-on-kansas-utah-football-game.aspx"
-   ]
+   "verified_at": "2026-10-11T13:05:04Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "utah",
+     "name": "Utah",
+     "points": 41
+    },
+    {
+     "slug": "kansas",
+     "name": "Kansas",
+     "points": 24
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856827",
+     "https://www.espn.com/college-football/game/_/gameId/401856827",
+     "https://utahutes.com/sports/football/schedule/2026",
+     "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "utah": [
+      14,
+      7,
+      6,
+      14
+     ],
+     "kansas": [
+      0,
+      17,
+      7,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "pregame": {
+     "correction": "Moved to 6 PM MDT (8 PM ET); ESPN App confirmed, linear ESPN network to be announced.",
+     "correction_sources": [
+      "https://utahutes.com/news/2026/10/9/saturdays-utah-football-game-vs-kansas-moved-to-6-pm",
+      "https://big12sports.com/news/2026/10/10/big-12-update-on-kansas-utah-football-game.aspx"
+     ]
+    }
+   }
   },
   {
    "provider_id": "401858486",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858486",
+   "game_id": "2026-10-10-minnesota-at-purdue",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-11T00:00Z",
    "week": 6,
@@ -11527,16 +12933,49 @@
    "site": "Ross-Ade Stadium",
    "tv": "BTN",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "minnesota",
-   "home": "purdue",
-   "time_et": "20:00",
-   "status": "announced",
-   "game_status": "scheduled"
+   "verified_at": "2026-10-11T13:17:26Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "purdue",
+     "name": "Purdue",
+     "points": 41
+    },
+    {
+     "slug": "minnesota",
+     "name": "Minnesota",
+     "points": 13
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858486",
+     "https://www.espn.com/college-football/game/_/gameId/401858486",
+     "https://gophersports.com/sports/football/schedule/text/2026"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "purdue": [
+      10,
+      10,
+      7,
+      14
+     ],
+     "minnesota": [
+      0,
+      3,
+      10,
+      0
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
   },
   {
    "provider_id": "401856808",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856808",
+   "game_id": "2026-10-10-hawaii-at-arizona-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-11T02:30Z",
    "week": 6,
@@ -11545,21 +12984,58 @@
    "site": "Mountain America Stadium",
    "tv": "FS1",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "hawaii",
-   "home": "arizona-state",
-   "time_et": "22:30",
-   "status": "announced",
-   "game_status": "scheduled",
-   "correction": "Oct 9 refresh: Kickoff corrected from 01:30Z (9:30 PM ET) to 02:30Z: Arizona State lists 7:30 PM MST (Arizona does not observe DST) and ESPN agrees.",
-   "correction_sources": [
-    "https://thesundevils.com/sports/football/schedule",
-    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261010&groups=80&limit=200"
-   ]
+   "verified_at": "2026-10-11T13:12:41Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "arizona-state",
+     "name": "Arizona State",
+     "points": 30
+    },
+    {
+     "slug": "hawaii",
+     "name": "Hawai'i",
+     "points": 12
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856808",
+     "https://www.espn.com/college-football/game/_/gameId/401856808",
+     "https://thesundevils.com/sports/football/schedule",
+     "https://hawaiiathletics.com/sports/football/schedule/2026",
+     "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx"
+    ],
+    "conference_game": false,
+    "line_score": {
+     "arizona-state": [
+      7,
+      10,
+      7,
+      6
+     ],
+     "hawaii": [
+      3,
+      3,
+      0,
+      6
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+    "pregame": {
+     "correction": "Oct 9 refresh: Kickoff corrected from 01:30Z (9:30 PM ET) to 02:30Z: Arizona State lists 7:30 PM MST (Arizona does not observe DST) and ESPN agrees.",
+     "correction_sources": [
+      "https://thesundevils.com/sports/football/schedule",
+      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261010&groups=80&limit=200"
+     ]
+    }
+   }
   },
   {
    "provider_id": "401860901",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401860901",
+   "game_id": "2026-10-10-boise-state-at-fresno-state",
    "date": "2026-10-10",
    "kickoff_utc": "2026-10-11T02:30Z",
    "week": 6,
@@ -11568,13 +13044,48 @@
    "site": "Valley Children's Stadium",
    "tv": "CW",
    "neutral_site": false,
-   "verified_at": "2026-10-10T09:07:35.372Z",
-   "away": "boise-state",
-   "home": "fresno-state",
-   "time_et": "22:30",
-   "status": "announced",
-   "game_status": "scheduled"
-  },
+   "verified_at": "2026-10-11T13:11:16Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "fresno-state",
+     "name": "Fresno State",
+     "points": 31
+    },
+    {
+     "slug": "boise-state",
+     "name": "Boise State",
+     "points": 38
+    }
+   ],
+   "meta": {
+    "as_of": "2026-10-11",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860901",
+     "https://www.espn.com/college-football/game/_/gameId/401860901",
+     "https://broncosports.com/sports/football/schedule/2026",
+     "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "fresno-state": [
+      13,
+      7,
+      0,
+      11
+     ],
+     "boise-state": [
+      15,
+      10,
+      3,
+      10
+     ]
+    },
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json"
+   }
+  }
+ ],
+ "scheduledGames": [
   {
    "provider_id": "401871067",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871067",
@@ -12208,6 +13719,38 @@
    "release": "week7-90552f488b59c2cd"
   },
   {
+   "provider_id": "401862803",
+   "source_url": "https://www.espn.com/college-football/game/_/gameId/401862803",
+   "date": "2026-10-17",
+   "kickoff_utc": "2026-10-17T17:00Z",
+   "kickoff_status": "confirmed",
+   "week": 7,
+   "home_slug": "temple",
+   "away_slug": "charlotte",
+   "site": "Lincoln Financial Field",
+   "tv": "ESPN+",
+   "tv_status": "published",
+   "neutral_site": false,
+   "verified_at": "2026-10-11T13:14:39Z",
+   "away": "charlotte",
+   "home": "temple",
+   "time_et": "13:00",
+   "status": "announced",
+   "game_status": "scheduled",
+   "timing_note": "Charlotte schedule lists 1:00 p.m. (Eastern) and ESPN agrees; Temple schedule still listed TBD at the October 11 recheck.",
+   "timing_sources": [
+    "https://charlotte49ers.com/sports/football/schedule/2026",
+    "https://www.espn.com/college-football/game/_/gameId/401862803"
+   ],
+   "source_urls": [
+    "https://www.espn.com/college-football/game/_/gameId/401862803",
+    "https://owlsports.com/sports/football/schedule/2026",
+    "https://charlotte49ers.com/sports/football/schedule/2026"
+   ],
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z"
+  },
+  {
    "provider_id": "401866442",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866442",
    "date": "2026-10-17",
@@ -12445,10 +13988,10 @@
    "home_slug": "michigan",
    "away_slug": "penn-state",
    "site": "Michigan Stadium",
-   "tv": null,
-   "tv_status": "not_published_in_reviewed_sources",
+   "tv": "CBS",
+   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-11T10:20:32.778574+00:00",
+   "verified_at": "2026-10-11T13:14:39Z",
    "away": "penn-state",
    "home": "michigan",
    "time_et": "15:30",
@@ -12462,7 +14005,9 @@
     "https://www.espn.com/college-football/game/_/gameId/401858490",
     "https://mgoblue.com/sports/football/schedule/2026"
    ],
-   "release": "week7-90552f488b59c2cd"
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z",
+   "tv_note": "Network from the Michigan schedule (October 11 recheck)."
   },
   {
    "provider_id": "401864522",
@@ -13010,6 +14555,38 @@
    "release": "week7-90552f488b59c2cd"
   },
   {
+   "provider_id": "401871091",
+   "source_url": "https://www.espn.com/college-football/game/_/gameId/401871091",
+   "date": "2026-10-17",
+   "kickoff_utc": "2026-10-18T00:00Z",
+   "kickoff_status": "confirmed",
+   "week": 7,
+   "home_slug": "ulm",
+   "away_slug": "louisiana-tech",
+   "site": "Malone Stadium",
+   "tv": "ESPN+",
+   "tv_status": "published",
+   "neutral_site": false,
+   "verified_at": "2026-10-11T13:14:39Z",
+   "away": "louisiana-tech",
+   "home": "ulm",
+   "time_et": "20:00",
+   "status": "announced",
+   "game_status": "scheduled",
+   "timing_note": "Louisiana Tech schedule lists 7 PM (Central) and ESPN agrees; ULM schedule still listed TBA at the October 11 recheck.",
+   "timing_sources": [
+    "https://latechsports.com/sports/football/schedule/2026",
+    "https://www.espn.com/college-football/game/_/gameId/401871091"
+   ],
+   "source_urls": [
+    "https://www.espn.com/college-football/game/_/gameId/401871091",
+    "https://ulmwarhawks.com/sports/football/schedule/2026",
+    "https://latechsports.com/sports/football/schedule/2026"
+   ],
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z"
+  },
+  {
    "provider_id": "401864523",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401864523",
    "date": "2026-10-17",
@@ -13208,67 +14785,8 @@
     "https://www.espn.com/college-football/game/_/gameId/401858492",
     "https://goducks.com/sports/football/schedule/2026"
    ],
-   "release": "week7-90552f488b59c2cd"
-  },
-  {
-   "provider_id": "401862803",
-   "source_url": "https://www.espn.com/college-football/game/_/gameId/401862803",
-   "date": "2026-10-17",
-   "kickoff_utc": null,
-   "kickoff_status": "official_tbd",
-   "week": 7,
-   "home_slug": "temple",
-   "away_slug": "charlotte",
-   "site": "Lincoln Financial Field",
-   "tv": "ESPN+",
-   "tv_status": "published",
-   "neutral_site": false,
-   "verified_at": "2026-10-11T10:22:37.037117+00:00",
-   "away": "charlotte",
-   "home": "temple",
-   "time_et": null,
-   "status": "official_tbd",
-   "game_status": "scheduled",
-   "timing_note": "Official kickoff TBA · school schedule at review",
-   "timing_sources": [
-    "https://owlsports.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401862803"
-   ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401862803",
-    "https://owlsports.com/sports/football/schedule/2026"
-   ],
-   "release": "week7-90552f488b59c2cd"
-  },
-  {
-   "provider_id": "401871091",
-   "source_url": "https://www.espn.com/college-football/game/_/gameId/401871091",
-   "date": "2026-10-17",
-   "kickoff_utc": null,
-   "kickoff_status": "official_tbd",
-   "week": 7,
-   "home_slug": "ulm",
-   "away_slug": "louisiana-tech",
-   "site": "Malone Stadium",
-   "tv": "ESPN+",
-   "tv_status": "published",
-   "neutral_site": false,
-   "verified_at": "2026-10-11T10:22:49.644665+00:00",
-   "away": "louisiana-tech",
-   "home": "ulm",
-   "time_et": null,
-   "status": "official_tbd",
-   "game_status": "scheduled",
-   "timing_note": "Official kickoff TBA · school schedule at review",
-   "timing_sources": [
-    "https://ulmwarhawks.com/sports/football/schedule/2026",
-    "https://www.espn.com/college-football/game/_/gameId/401871091"
-   ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871091",
-    "https://ulmwarhawks.com/sports/football/schedule/2026"
-   ],
-   "release": "week7-90552f488b59c2cd"
+   "release": "week7-90552f488b59c2cd",
+   "rechecked_at": "2026-10-11T13:14:39Z"
   }
  ],
  "excludedGames": [
@@ -13499,7 +15017,33 @@
   "west-virginia": "3-3",
   "western-kentucky": "2-4",
   "wisconsin": "4-1",
-  "wyoming": "3-3"
+  "wyoming": "3-3",
+  "appalachian-state": "3-2",
+  "arizona": "5-1",
+  "arkansas": "2-4",
+  "boise-state": "5-1",
+  "georgia-tech": "2-3",
+  "hawaii": "1-5",
+  "illinois": "3-3",
+  "kentucky": "5-1",
+  "marshall": "3-3",
+  "minnesota": "4-2",
+  "navy": "2-3",
+  "nc-state": "3-3",
+  "nevada": "2-3",
+  "north-texas": "4-2",
+  "notre-dame": "6-0",
+  "south-carolina": "3-3",
+  "stanford": "2-4",
+  "texas": "4-1",
+  "texas-am": "3-3",
+  "ucf": "3-3",
+  "uconn": "3-3",
+  "unlv": "4-2",
+  "usc": "6-1",
+  "virginia-tech": "4-2",
+  "western-michigan": "4-2",
+  "georgia-state": "4-1"
  },
  "metrics": {
   "source_url": "https://www.ncaa.com/stats/football/fbs",
@@ -13926,15 +15470,169 @@
   "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261015&groups=80&limit=300",
   "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261016&groups=80&limit=300",
   "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=300",
-  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261018&groups=80&limit=300"
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261018&groups=80&limit=300",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856716",
+  "https://www.espn.com/college-football/game/_/gameId/401856716",
+  "https://mutigers.com/sports/football/schedule/season/2026",
+  "https://12thman.com/sports/football/schedule/season/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856823",
+  "https://www.espn.com/college-football/game/_/gameId/401856823",
+  "https://arizonawildcats.com/sports/football/schedule/2026",
+  "https://arizonawildcats.com/news/2026/10/10/football-arizona-dominates-west-virginia-52-31-despite-missing-top-3-receivers-with-injuries",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856824",
+  "https://www.espn.com/college-football/game/_/gameId/401856824",
+  "https://ucfknights.com/sports/football/schedule",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858256",
+  "https://www.espn.com/college-football/game/_/gameId/401858256",
+  "https://pittsburghpanthers.com/news/2026/10/10/football-25-pitt-falls-to-north-carolina-21-17",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858260",
+  "https://www.espn.com/college-football/game/_/gameId/401858260",
+  "https://gopack.com/sports/football/schedule/2026",
+  "https://gopack.com/news/2026/10/10/football-wolfpack-goes-quiet-in-second-half-falls-to-wake-forest-38-14",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862795",
+  "https://www.espn.com/college-football/game/_/gameId/401862795",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866436",
+  "https://www.espn.com/college-football/game/_/gameId/401866436",
+  "https://bgsufalcons.com/news/2026/10/10/football-bowling-green-dominates-sacramento-state-for-second-straight-victory",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858482",
+  "https://www.espn.com/college-football/game/_/gameId/401858482",
+  "https://nusports.com/sports/football/schedule/season/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856714",
+  "https://www.espn.com/college-football/game/_/gameId/401856714",
+  "https://gamecocksonline.com/sports/football/schedule/season/2026/",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862797",
+  "https://www.espn.com/college-football/game/_/gameId/401862797",
+  "https://ecupirates.com/sports/football/schedule/text/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869843",
+  "https://www.espn.com/college-football/game/_/gameId/401869843",
+  "https://appstatesports.com/sports/football/schedule/2026",
+  "https://appstatesports.com/news/2026/10/10/football-odu-edges-app-state-in-rain-soaked-defensive-slugfest.aspx",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866440",
+  "https://www.espn.com/college-football/game/_/gameId/401866440",
+  "https://umassathletics.com/news/2026/10/10/football-minutemen-comeback-falls-one-point-short-to-miami-oh-20-19",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
+  "https://www.espn.com/college-football/game/_/gameId/401856717",
+  "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+  "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856718",
+  "https://www.espn.com/college-football/game/_/gameId/401856718",
+  "https://vucommodores.com/sports/football/schedule",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856825",
+  "https://www.espn.com/college-football/game/_/gameId/401856825",
+  "https://kstatesports.com/news/2026/10/10/football-19-22-houston-too-much-for-k-state-35-16",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858255",
+  "https://www.espn.com/college-football/game/_/gameId/401858255",
+  "https://ramblinwreck.com/sports/m-footbl/schedule",
+  "https://goduke.com/news/2026/10/10/duke-falls-at-georgia-tech-28-25",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858257",
+  "https://www.espn.com/college-football/game/_/gameId/401858257",
+  "https://fightingirish.com/news/2026/10/10/irish-run-past-stanford-58-7",
+  "https://gostanford.com/sports/football/schedule",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858259",
+  "https://www.espn.com/college-football/game/_/gameId/401858259",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
+  "https://www.espn.com/college-football/game/_/gameId/401858480",
+  "https://fightingillini.com/sports/football/schedule/2026",
+  "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
+  "https://www.espn.com/college-football/game/_/gameId/401858484",
+  "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+  "https://uclabruins.com/sports/football/schedule/season/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862796",
+  "https://www.espn.com/college-football/game/_/gameId/401862796",
+  "https://meangreensports.com/sports/football/schedule/2026",
+  "https://meangreensports.com/news/2026/10/10/football-jackson-throws-5-touchdowns-in-rout-of-charlotte",
+  "https://charlotte49ers.com/news/2026/10/10/football-niners-fall-at-north-texas",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862799",
+  "https://www.espn.com/college-football/game/_/gameId/401862799",
+  "https://navysports.com/sports/football/schedule/2026",
+  "https://navysports.com/news/2026/10/10/football-gutierrez-rushes-for-232-yards-leads-navy-to-34-26-comeback-win-over-tulsa.aspx",
+  "https://tulsahurricane.com/news/2026/10/10/football-tulsa-falls-to-navy",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866435",
+  "https://www.espn.com/college-football/game/_/gameId/401866435",
+  "https://gozips.com/sports/football/schedule/text/2026",
+  "https://gozips.com/news/2026/10/10/football-drops-homecoming-heartbreaker-25-23",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866437",
+  "https://www.espn.com/college-football/game/_/gameId/401866437",
+  "https://utrockets.com/news/2026/10/10/football-rockets-drop-homecoming-game-to-buffalo-23-8",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866438",
+  "https://www.espn.com/college-football/game/_/gameId/401866438",
+  "https://ohiobobcats.com/news/2026/10/10/ohio-football-claims-homecoming-victory-over-central-michigan",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401866439",
+  "https://www.espn.com/college-football/game/_/gameId/401866439",
+  "https://wmubroncos.com/sports/football/schedule/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401861964",
+  "https://www.espn.com/college-football/game/_/gameId/401861964",
+  "https://uconnhuskies.com/sports/football/schedule/2026",
+  "https://uconnhuskies.com/news/2026/10/10/football-huskies-go-on-the-road-and-beat-temple",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856713",
+  "https://www.espn.com/college-football/game/_/gameId/401856713",
+  "https://arkansasrazorbacks.com/sport/m-footbl/schedule/",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860902",
+  "https://www.espn.com/college-football/game/_/gameId/401860902",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
+  "https://www.espn.com/college-football/game/_/gameId/401856715",
+  "https://ukathletics.com/sports/football/schedule/season/2026/",
+  "https://lsusports.net/sports/fb/schedule",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401862798",
+  "https://www.espn.com/college-football/game/_/gameId/401862798",
+  "https://gotigersgo.com/news/2026/10/10/football-tigers-score-28-second-half-points-in-win-over-uab",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864517",
+  "https://www.espn.com/college-football/game/_/gameId/401864517",
+  "https://nevadawolfpack.com/sports/football/schedule/2026",
+  "https://nevadawolfpack.com/news/2026/10/10/football-wolf-pack-smothers-utep-23-7.aspx",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864518",
+  "https://www.espn.com/college-football/game/_/gameId/401864518",
+  "https://unlvrebels.com/sports/football/schedule/2026",
+  "https://unlvrebels.com/news/2026/10/10/football-first-place-rebels-stifle-bison-to-take-third-straight.aspx",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869943",
+  "https://www.espn.com/college-football/game/_/gameId/401869943",
+  "https://herdzone.com/sports/football/schedule/text/2026",
+  "https://herdzone.com/news/2026/10/10/marshall-football-falls-to-coastal-carolina-27-21",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
+  "https://www.espn.com/college-football/game/_/gameId/401856712",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858258",
+  "https://www.espn.com/college-football/game/_/gameId/401858258",
+  "https://virginiasports.com/sports/football/schedule",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
+  "https://www.espn.com/college-football/game/_/gameId/401858485",
+  "https://gopsusports.com/sports/football/schedule",
+  "https://usctrojans.com/sports/football/schedule/2026",
+  "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401864516",
+  "https://www.espn.com/college-football/game/_/gameId/401864516",
+  "https://niuhuskies.com/news/2026/10/10/football-niu-drops-conference-opener-to-air-force.aspx",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869949",
+  "https://www.espn.com/college-football/game/_/gameId/401869949",
+  "https://gseagles.com/news/2026/10/11/football-late-rally-falls-just-short-to-dukes",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401869965",
+  "https://www.espn.com/college-football/game/_/gameId/401869965",
+  "https://latechsports.com/news/2026/10/11/football-bulldogs-mount-fourth-quarter-comeback-down-ragin-cajuns-in-sun-belt-opener",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856827",
+  "https://www.espn.com/college-football/game/_/gameId/401856827",
+  "https://utahutes.com/news/2026/10/10/football-no-12-utah-races-past-kansas-moves-to-5-0",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858486",
+  "https://www.espn.com/college-football/game/_/gameId/401858486",
+  "https://gophersports.com/sports/football/schedule/text/2026",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856808",
+  "https://www.espn.com/college-football/game/_/gameId/401856808",
+  "https://hawaiiathletics.com/sports/football/schedule/2026",
+  "https://hawaiiathletics.com/news/2026/10/10/football-warriors-fall-to-sun-devils-30-12.aspx",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401860901",
+  "https://www.espn.com/college-football/game/_/gameId/401860901",
+  "https://broncosports.com/sports/football/schedule/2026",
+  "https://broncosports.com/news/2026/10/11/football-no-23-broncos-take-down-fresno-state",
+  "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/2247/schedule?season=2026",
+  "https://georgiastatesports.com/sports/football/schedule",
+  "https://huskers.com/sports/football/schedule"
  ],
  "holds": [
   "Week 6 SP+ not independently verified; retained ratings show their own Sep 27 cutoff. FPI verified Oct 4, 2026 (The Big Lead).",
   "Same-book minute-timestamped odds and line movement not verified: the content lane carries VegasInsider/Action Network lines as of Oct 4-5 (content/research/P1-lines.md) and the gated odds mode stays closed until a timestamped book feed is wired.",
   "Weekly injury research remains dated October 5, with a partial Dante Moore follow-up checked October 10. Official SEC and Big Ten availability filings were not fully retrievable; no empty report or all-clear is inferred.",
-  "No live in-season scores feed is wired. Week 6 shows 14 verified finals; the other 44 Saturday October 10 games are not promoted to final until a result is verified.",
-  "Week 7 official kickoff TBAs: Charlotte at Temple, Louisiana Tech at ULM and Nebraska at Oregon (school schedules at review). Networks unpublished: Nebraska at Oregon and Penn State at Michigan. Texas–Florida and Alabama–Tennessee keep the published ABC-or-ESPN alternative.",
-  "Overall records: 102 of 118 Week 7 participants verified October 11 (school and provider agreement); 10 teams with no game since the October 10 ESPN reconciliation keep that record; 26 teams that played October 10 without a verified final in this release are withheld rather than shown stale."
+  "No live in-season scores feed is wired. All 58 Week 6 FBS-vs-FBS games are verified finals; the 44 Saturday October 10 results were verified October 11 against ESPN completed-game summaries and official school pages. Week 7 results need another verified refresh.",
+  "Week 7 official kickoff TBA: Nebraska at Oregon (Oregon lists TBD; Nebraska’s 10 PM CDT listing is not yet corroborated). Network unpublished: Nebraska at Oregon. Rechecked October 11: Charlotte at Temple 1 PM ET and Louisiana Tech at ULM 8 PM ET (visiting-school schedule and ESPN agree; host still TBA); Penn State at Michigan on CBS (Michigan schedule). Texas–Florida and Alabama–Tennessee keep the published ABC-or-ESPN alternative.",
+  "Overall records: 102 of 118 Week 7 participants verified October 11 (school and provider agreement); 10 teams with no game since the October 10 ESPN reconciliation keep that record; 25 teams withheld for an unverified October 10 game now carry their verified final; Georgia State’s school and ESPN records agree. No record is withheld."
  ],
  "retainedBaseline": {
   "conferenceStandings": [
@@ -15714,7 +17412,7 @@
    "id": "week7-schedule-notes",
    "week": 7,
    "headline": "Week 7: Ohio State at Indiana leads a 59-game FBS slate",
-   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Kickoffs for Charlotte–Temple, Louisiana Tech–ULM and Nebraska–Oregon are still officially TBA.",
+   "body": "Ohio State (5–1) visits unbeaten Indiana (6–0) at noon ET on FOX. Washington–Purdue moved to Friday, Oct. 16. Wisconsin at UCLA is 7:30 PM ET on NBC. Charlotte–Temple is 1 PM ET and Louisiana Tech–ULM 8 PM ET; Penn State–Michigan is on CBS. Nebraska–Oregon’s kickoff is still officially TBA.",
    "game_provider_id": "401858488",
    "as_of": "2026-10-11",
    "sources": [
@@ -15722,14 +17420,100 @@
     "https://iuhoosiers.com/sports/football/schedule/2026",
     "https://purduesports.com/sports/football/schedule",
     "https://uwbadgers.com/sports/football/schedule/2026",
-    "https://uclabruins.com/sports/football/schedule/2026"
+    "https://uclabruins.com/sports/football/schedule/2026",
+    "https://charlotte49ers.com/sports/football/schedule/2026",
+    "https://latechsports.com/sports/football/schedule/2026",
+    "https://mgoblue.com/sports/football/schedule/2026"
+   ]
+  },
+  {
+   "id": "week6-saturday-finals",
+   "week": 6,
+   "headline": "Saturday finals: Georgia wins at Alabama; Oklahoma edges Texas",
+   "body": "October 10: Georgia 20–17 at Alabama; Oklahoma 27–24 over Texas in Dallas; Kentucky 35–34 over LSU in overtime; UCLA 17–15 at Oregon; USC 31–23 at Penn State; Illinois 38–37 at Michigan State in overtime. All 44 remaining Saturday FBS-vs-FBS results were verified October 11 against ESPN completed-game summaries and official school pages.",
+   "game_provider_id": null,
+   "result_provider_ids": [
+    "401856716",
+    "401856823",
+    "401856824",
+    "401858256",
+    "401858260",
+    "401862795",
+    "401866436",
+    "401858482",
+    "401856714",
+    "401862797",
+    "401869843",
+    "401866440",
+    "401856717",
+    "401856718",
+    "401856825",
+    "401858255",
+    "401858257",
+    "401858259",
+    "401858480",
+    "401858484",
+    "401862796",
+    "401862799",
+    "401866435",
+    "401866437",
+    "401866438",
+    "401866439",
+    "401861964",
+    "401856713",
+    "401860902",
+    "401856715",
+    "401862798",
+    "401864517",
+    "401864518",
+    "401869943",
+    "401856712",
+    "401858258",
+    "401858485",
+    "401864516",
+    "401869949",
+    "401869965",
+    "401856827",
+    "401858486",
+    "401856808",
+    "401860901"
+   ],
+   "as_of": "2026-10-11",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856712",
+    "https://www.espn.com/college-football/game/_/gameId/401856712",
+    "https://georgiadogs.com/sports/football/schedule/2026",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856717",
+    "https://www.espn.com/college-football/game/_/gameId/401856717",
+    "https://soonersports.com/sports/football/schedule/2026",
+    "https://soonersports.com/news/2026/10/10/football-sooners-walk-off-no-1-texas",
+    "https://texaslonghorns.com/sports/football/schedule/2026",
+    "https://texaslonghorns.com/news/2026/10/10/no-1-1-football-suffers-first-loss-to-oklahoma-27-24",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856715",
+    "https://www.espn.com/college-football/game/_/gameId/401856715",
+    "https://ukathletics.com/sports/football/schedule/season/2026/",
+    "https://lsusports.net/sports/fb/schedule",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858484",
+    "https://www.espn.com/college-football/game/_/gameId/401858484",
+    "https://goducks.com/sports/football/schedule/2026",
+    "https://goducks.com/news/2026/10/10/football-ducks-drop-top-25-matchup-to-bruins",
+    "https://uclabruins.com/sports/football/schedule/season/2026",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858485",
+    "https://www.espn.com/college-football/game/_/gameId/401858485",
+    "https://gopsusports.com/sports/football/schedule",
+    "https://usctrojans.com/sports/football/schedule/2026",
+    "https://usctrojans.com/news/2026/10/10/usc-trojans-football-game-recap-associated-press-ap-penn-state-nittany-lions-jayden-maiava-lincoln-riley",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858480",
+    "https://www.espn.com/college-football/game/_/gameId/401858480",
+    "https://fightingillini.com/sports/football/schedule/2026",
+    "https://fightingillini.com/news/2026/10/10/football-illinois-survives-spartans-late-surge-38-37"
    ]
   },
   {
    "id": "week6-saturday-big-ten-finals",
    "week": 6,
    "headline": "Saturday finals: Indiana edges Nebraska; Ohio State beats Maryland",
-   "body": "October 10: Indiana 20–17 at Nebraska; Ohio State 45–16 over Maryland. Verified October 11 against ESPN completed-game summaries and the schools. Other Saturday results are not yet in this release.",
+   "body": "October 10: Indiana 20–17 at Nebraska; Ohio State 45–16 over Maryland. Verified October 11 against ESPN completed-game summaries and the schools.",
    "game_provider_id": null,
    "result_provider_ids": [
     "401858481",
@@ -15827,7 +17611,7 @@
   }
  ],
  "research_ingested_at": "2026-10-05T11:55:00Z",
- "results_verified_at": "2026-10-11T12:21:23Z",
+ "results_verified_at": "2026-10-11T13:17:26Z",
  "refresh_log": [
   {
    "applied_at": "2026-10-09T11:07:58.049Z",
@@ -16301,6 +18085,141 @@
     "metrics_through_games": "2026-10-03",
     "week6_retrieved_at": "2026-10-05T07:24:21.400874Z"
    }
+  },
+  {
+   "applied_at": "2026-10-11T13:17:26Z",
+   "script": "scripts/apply-oct10-finals.mjs",
+   "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-oct10-finals.json",
+   "scope": "Saturday October 10, 2026 (Week 6) finals for the 44 FBS-vs-FBS games the Week 7 release left unverified; overall records for the teams it withheld; recheck of three Week 7 official-TBD kickoffs and two unpublished networks.",
+   "finals_added": [
+    "401856716",
+    "401856823",
+    "401856824",
+    "401858256",
+    "401858260",
+    "401862795",
+    "401866436",
+    "401858482",
+    "401856714",
+    "401862797",
+    "401869843",
+    "401866440",
+    "401856717",
+    "401856718",
+    "401856825",
+    "401858255",
+    "401858257",
+    "401858259",
+    "401858480",
+    "401858484",
+    "401862796",
+    "401862799",
+    "401866435",
+    "401866437",
+    "401866438",
+    "401866439",
+    "401861964",
+    "401856713",
+    "401860902",
+    "401856715",
+    "401862798",
+    "401864517",
+    "401864518",
+    "401869943",
+    "401856712",
+    "401858258",
+    "401858485",
+    "401864516",
+    "401869949",
+    "401869965",
+    "401856827",
+    "401858486",
+    "401856808",
+    "401860901"
+   ],
+   "week6_finals": 58,
+   "records_recomputed": [
+    "appalachian-state",
+    "arizona",
+    "arkansas",
+    "boise-state",
+    "georgia-tech",
+    "hawaii",
+    "illinois",
+    "kentucky",
+    "marshall",
+    "minnesota",
+    "navy",
+    "nc-state",
+    "nevada",
+    "north-texas",
+    "notre-dame",
+    "south-carolina",
+    "stanford",
+    "texas",
+    "texas-am",
+    "ucf",
+    "uconn",
+    "unlv",
+    "usc",
+    "virginia-tech",
+    "western-michigan"
+   ],
+   "records_school_and_provider": [
+    "georgia-state"
+   ],
+   "records_withheld": [],
+   "week7_changes": [
+    {
+     "provider_id": "401862803",
+     "field": "kickoff",
+     "before": {
+      "kickoff_utc": null,
+      "kickoff_status": "official_tbd"
+     },
+     "after": {
+      "kickoff_utc": "2026-10-17T17:00Z",
+      "kickoff_status": "confirmed"
+     }
+    },
+    {
+     "provider_id": "401871091",
+     "field": "kickoff",
+     "before": {
+      "kickoff_utc": null,
+      "kickoff_status": "official_tbd"
+     },
+     "after": {
+      "kickoff_utc": "2026-10-18T00:00Z",
+      "kickoff_status": "confirmed"
+     }
+    },
+    {
+     "provider_id": "401858490",
+     "field": "tv",
+     "before": {
+      "tv": null
+     },
+     "after": {
+      "tv": "CBS"
+     }
+    }
+   ],
+   "week7_kept": [
+    "401858492:kickoff",
+    "401858492:tv"
+   ],
+   "differences_recorded": 4,
+   "untouched_cutoffs": {
+    "polls_released": [
+     "ap 2026-10-04",
+     "coaches 2026-10-04",
+     "composite 2026-10-04"
+    ],
+    "metrics_through_games": "2026-10-03",
+    "week6_retrieved_at": "2026-10-05T07:24:21.400874Z",
+    "week7_retrieved_at": "2026-10-11T10:30:00Z"
+   }
   }
  ],
  "schedule_verified_at": "2026-10-11T10:29:37.195Z",
@@ -16325,12 +18244,14 @@
    "utah-state",
    "wyoming"
   ],
-  "withheld": [
+  "withheld": [],
+  "note": "Records for 102 of 118 Week 7 participants carry school and provider agreement; 10 teams that have not played since the October 10 ESPN reconciliation keep that record; 25 teams withheld for an unverified October 10 game now carry that record plus their verified final (ESPN post-game record for all, school record agreement for 21). Georgia State's school and ESPN records agree with no October 10 game claimed. No record is withheld.",
+  "recompute_rule": "A withheld record is recomputed from the October 10 ESPN-reconciled record plus the verified October 10 final. It must equal the ESPN post-game record, and the school's published overall record where the page shows one; any disagreement keeps the record withheld. A team with no October 10 final is not given a bye; it needs a published school record that agrees with ESPN.",
+  "recomputed_from_2026_10_10_finals": [
    "appalachian-state",
    "arizona",
    "arkansas",
    "boise-state",
-   "georgia-state",
    "georgia-tech",
    "hawaii",
    "illinois",
@@ -16353,7 +18274,9 @@
    "virginia-tech",
    "western-michigan"
   ],
-  "note": "Records for 102 of 118 Week 7 participants carry school and provider agreement; 10 teams that have not played since the October 10 ESPN reconciliation keep that record; the other 26 are withheld rather than shown stale."
+  "school_and_provider_without_oct10_game": [
+   "georgia-state"
+  ]
  },
  "board_weeks": [
   {
@@ -16365,10 +18288,10 @@
    "requested_cutoff": "2026-10-05T07:24:21.400874Z",
    "retrieved_at": "2026-10-05T07:24:21.400874Z",
    "audit_applied_at": "2026-10-05T10:01:57.669Z",
-   "results_verified_at": "2026-10-11T12:21:23Z",
+   "results_verified_at": "2026-10-11T13:17:26Z",
    "schedule_verified_at": "2026-10-10T09:09:11.286Z",
    "baseline_note": "Week 6 refresh retrieved October 5 UTC. Historical baseline is retained; October 3 finals newly verified. Snapshot retrieval time is not a future live update guarantee.",
-   "note": "Week 6 archive: 14 verified finals; the other 44 Saturday games keep their October 10 schedule check and show no result until a final is verified."
+   "note": "Week 6 archive: all 58 FBS-vs-FBS games are verified finals. The 44 Saturday October 10 results were verified October 11 against ESPN completed-game summaries and official school pages."
   },
   {
    "week": 7,

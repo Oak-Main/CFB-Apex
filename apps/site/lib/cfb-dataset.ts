@@ -90,7 +90,7 @@ interface VerifiedRefresh {
   scheduledGames: Array<{ provider_id: string; source_url: string; kickoff_utc: string | null; kickoff_status?: "confirmed" | "official_tbd"; week: number; date: string; away: string; home: string; tv: string | null; tv_status?: string; time_et: string | null; site: string | null; neutral_site: boolean; verified_at?: string; game_status?: string; announced_kickoff_utc?: string; timing_note?: string; timing_sources?: string[] }>;
   /** Weeks this release covers: the current board plus its archived predecessor. */
   board_weeks?: BoardWeekRow[];
-  team_records_review?: { as_of: string; verified: number; carried_from_2026_10_10: string[]; withheld: string[]; note: string };
+  team_records_review?: { as_of: string; verified: number; carried_from_2026_10_10: string[]; withheld: string[]; note: string; recomputed_from_2026_10_10_finals?: string[]; school_and_provider_without_oct10_game?: string[] };
   excludedGames?: Array<{ provider_id: string; name: string; reason: string; date: string; espn_conference_ids?: { home: number; away: number } }>;
   source_urls?: string[];
   holds?: string[];
