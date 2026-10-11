@@ -18665,7 +18665,8 @@
    }
   },
   {
-   "applied_at": "2026-10-11T13:17:26Z",
+   "applied_at": "2026-10-11T13:57:20Z",
+   "evidence_checked_at": "2026-10-11T13:17:26Z",
    "script": "scripts/apply-oct11-school-recheck.mjs",
    "evidence": "data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json",
    "scope": "Official school sources for the 44 Saturday October 10, 2026 (Week 6) FBS-vs-FBS finals that scripts/apply-oct10-saturday-finals.mjs verified against ESPN and NCAA.com, the records those finals imply, and a recheck of the three Week 7 official-TBD kickoffs and two unpublished networks against school schedules.",

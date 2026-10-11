@@ -13,6 +13,9 @@ const path = new URL('../data/cfb-2026/refresh/verified-refresh.json', import.me
 const evidenceFile = 'data/cfb-2026/refresh/evidence/2026-10-11-school-sources-week7-recheck.json';
 const snapshot = JSON.parse(readFileSync(path, 'utf8'));
 const evidence = JSON.parse(readFileSync(new URL(`../${evidenceFile}`, import.meta.url), 'utf8'));
+const { hosts: officialHosts } = JSON.parse(readFileSync(new URL('../data/cfb-2026/refresh/official-school-hosts.json', import.meta.url), 'utf8'));
+// A school source counts only from that school's own official athletics host.
+const assertOfficial = (slug, url) => assert.equal(new URL(url).hostname, officialHosts[slug], `${url} is ${slug}'s official site`);
 const easternDate = (iso) => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(iso));
 const easternTime = (iso) => new Intl.DateTimeFormat('en-GB', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(iso));
 const latest = (values) => values.filter(Boolean).sort().at(-1);
@@ -77,7 +80,8 @@ for (const final of evidence.finals) {
     const [me, them] = source.side === 'home' ? [home, away] : [away, home];
     assert.equal(source.slug, me.slug);
     assert.match(source.url, /^https:\/\//);
-    assert.doesNotMatch(source.url, /espn\.com|ncaa\.com/, 'school source is not a provider');
+    assertOfficial(me.slug, source.url);
+    if (source.recap_url) assertOfficial(me.slug, source.recap_url);
     assert.ok(source.fetched_at > espn.kickoff_utc);
     if (source.result_text) {
       assert.equal(source.team_points, me.points, `${source.slug} school score`);
@@ -111,6 +115,7 @@ for (const [slug, r] of Object.entries(evidence.records.recomputed)) {
 }
 // Georgia State has no October 10 game; its record stands on school and ESPN agreement.
 const gs = evidence.records.georgia_state;
+assertOfficial('georgia-state', gs.school.url);
 assert.equal(gs.school.oct10_entry, null);
 assert.equal(gs.school.record.overall, gs.espn.record);
 assert.equal(snapshot.teamRecords['georgia-state'], gs.record);
@@ -123,6 +128,7 @@ for (const check of evidence.week7_recheck.checks) {
   assert.equal(`${row.away} at ${row.home}`, check.matchup);
   const host = check.schools.find((s) => s.role === 'home');
   const visitor = check.schools.find((s) => s.role === 'away');
+  for (const school of check.schools) assertOfficial(school.slug, school.url);
   const checkedAt = latest([check.provider.checked_at, ...check.schools.map((s) => s.fetched_at)]);
   row.rechecked_at = checkedAt;
   if (check.field === 'kickoff') {
@@ -187,12 +193,14 @@ snapshot.source_urls = [...new Set([
   gs.school.url,
   ...evidence.week7_recheck.checks.flatMap((c) => [c.provider.url, ...c.schools.map((s) => s.url)]),
 ])];
-const appliedAt = latest([
+const evidenceCheckedAt = latest([
   ...evidence.finals.flatMap((f) => f.official.map((o) => o.fetched_at)),
   ...evidence.week7_recheck.checks.flatMap((c) => [c.provider.checked_at, ...c.schools.map((s) => s.fetched_at)]),
 ]);
+// The log stays in application order even though this evidence predates the previous entry.
+const appliedAt = latest([evidenceCheckedAt, ...snapshot.refresh_log.map((entry) => entry.applied_at)]);
 snapshot.refresh_log = [...snapshot.refresh_log, {
-  applied_at: appliedAt, script: LOG_SCRIPT, evidence: evidenceFile, scope: evidence.scope,
+  applied_at: appliedAt, evidence_checked_at: evidenceCheckedAt, script: LOG_SCRIPT, evidence: evidenceFile, scope: evidence.scope,
   finals_corroborated: corroborated, records_confirmed: Object.keys(postGame).length,
   week7_changes: week7Changes, week7_kept: evidence.week7_recheck.checks.filter((c) => c.decision !== 'adopt').map((c) => `${c.provider_id}:${c.field}`),
   differences_recorded: evidence.differences_not_adopted.length,
