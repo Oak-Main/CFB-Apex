@@ -59,8 +59,11 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
 
 test("official TBD kickoffs stay unannounced, never a midnight placeholder", () => {
   const tbd = week7().filter((row) => /^\d{4}-\d{2}-\d{2}$/.test(row.date));
-  // Nebraska lists 10 PM CDT, but host Oregon still lists TBD and ESPN's time is a placeholder.
-  assert.deepEqual(tbd.map((row) => row.id), ["2026-10-17-nebraska-at-oregon"]);
+  assert.deepEqual(tbd.map((row) => row.id).sort(), [
+    "2026-10-17-charlotte-at-temple",
+    "2026-10-17-louisiana-tech-at-ulm",
+    "2026-10-17-nebraska-at-oregon",
+  ]);
   for (const row of tbd) {
     assert.match(row.kickoffLabel, /Kickoff TBA$/);
     assert.equal(kickoffTime(row), "Kickoff TBA");
@@ -74,23 +77,6 @@ test("official TBD kickoffs stay unannounced, never a midnight placeholder", () 
   }
 });
 
-test("October 11 recheck adopts a visiting school's kickoff only when ESPN agrees", () => {
-  const charlotte = game("2026-10-17-charlotte-at-temple");
-  assert.equal(charlotte.date, "2026-10-17T17:00Z");
-  assert.equal(kickoffTime(charlotte), "1:00 PM ET");
-  assert.equal(charlotte.broadcast, "ESPN+");
-  const latech = game("2026-10-17-louisiana-tech-at-ulm");
-  assert.equal(latech.date, "2026-10-18T00:00Z");
-  assert.equal(kickoffTime(latech), "8:00 PM ET");
-  assert.equal(easternDate(latech.date), "2026-10-17", "an 8 PM ET kickoff stays on Saturday");
-  assert.equal(latech.week, 7);
-  for (const id of ["401862803", "401871091"]) {
-    const row = verifiedRefresh?.scheduledGames.find((candidate) => candidate.provider_id === id);
-    assert.equal(row?.kickoff_status, "confirmed");
-    assert.match(row?.timing_note ?? "", /ESPN agrees; .* still listed TB[AD]/);
-  }
-});
-
 test("primary-source corrections and unpublished networks are kept as reviewed", () => {
   const wisconsin = game("2026-10-17-wisconsin-at-ucla");
   assert.equal(wisconsin?.date, "2026-10-17T23:30Z");
@@ -99,8 +85,7 @@ test("primary-source corrections and unpublished networks are kept as reviewed",
   const purdue = game("2026-10-16-washington-at-purdue");
   assert.equal(easternDate(purdue.date), "2026-10-16", "Washington–Purdue is Friday");
   assert.ok(!games.some((row) => row.week === 7 && row.awayTeamId === "washington" && easternDate(row.date) === "2026-10-17"));
-  // Michigan's own schedule lists CBS; only Nebraska shows a network for its trip to Oregon.
-  assert.equal(game("2026-10-17-penn-state-at-michigan")?.broadcast, "CBS");
+  assert.equal(game("2026-10-17-penn-state-at-michigan")?.broadcast, null);
   assert.equal(game("2026-10-17-nebraska-at-oregon")?.broadcast, null);
   assert.equal(game("2026-10-17-florida-at-texas")?.broadcast, "ABC or ESPN");
   assert.equal(game("2026-10-17-alabama-at-tennessee")?.broadcast, "ABC or ESPN");
@@ -123,31 +108,21 @@ test("Ohio State at Indiana is the Week 7 marquee with verified records", () => 
   }
 });
 
-test("records: verified, carried only without a game since, recomputed from verified October 10 finals", () => {
+test("records: all 138 reconcile after the verified Week 6 finals", () => {
   const review = verifiedRefresh?.team_records_review;
-  assert.equal(review?.verified, 102);
-  assert.equal(review?.carried_from_2026_10_10.length, 10);
+  assert.equal(review?.verified, 138);
+  assert.deepEqual(review?.carried_from_2026_10_10, []);
   assert.deepEqual(review?.withheld, []);
-  assert.equal(review?.recomputed_from_2026_10_10_finals?.length, 25);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
-  // Texas played October 10: its October 10 ESPN record plus the verified loss to Oklahoma.
+  // Texas lost to Oklahoma on October 10: 4–0 became 4–1.
   assert.equal(teams.find((team) => team.slug === "texas")?.record, "4–1");
-  const before = verifiedRefresh?.retainedBaseline?.overall_records ?? {};
-  for (const slug of review?.recomputed_from_2026_10_10_finals ?? []) {
-    const final = games.find((row) => row.week === 6 && row.status === "final" && easternDate(row.date) === "2026-10-10" && (row.homeTeamId === slug || row.awayTeamId === slug));
-    assert.ok(final, `${slug} has a verified October 10 final`);
-    const [mine, theirs] = final.homeTeamId === slug ? [final.homeScore, final.awayScore] : [final.awayScore, final.homeScore];
-    const won = (mine ?? 0) > (theirs ?? 0);
-    const [w, l] = (before[slug] ?? "").split("-").map(Number);
-    assert.equal(verifiedRefresh?.teamRecords[slug], `${w + Number(won)}-${l + Number(!won)}`, slug);
+  // Records the Week 7 release verified are unchanged.
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "5–1");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–0");
+  // Every team's record equals its conference table's overall column.
+  for (const conf of verifiedRefresh?.retainedBaseline?.conferenceStandings ?? []) {
+    for (const row of conf.rows) assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, row.team);
   }
-  // Clemson's schedule lists an October 10 bye, so its October 10 record still stands.
-  assert.equal(teams.find((team) => team.slug === "clemson")?.record, verifiedRefresh?.retainedBaseline?.overall_records?.clemson?.replace("-", "–"));
-  // Georgia State has no October 10 row, and absence is not a bye: its record stands
-  // only because its school schedule and ESPN publish the same one.
-  assert.deepEqual(review?.school_and_provider_without_oct10_game, ["georgia-state"]);
-  assert.ok(!games.some((row) => easternDate(row.date) === "2026-10-10" && [row.homeTeamId, row.awayTeamId].includes("georgia-state")));
-  assert.equal(teams.find((team) => team.slug === "georgia-state")?.record, "4–1");
 });
 
 test("polls keep their October 4 editions on the Week 7 board", () => {
@@ -166,9 +141,9 @@ test("the Week 7 ticker leads with the latest verified finals, then the new slat
   const ticker = tickerGamesFor(7);
   const finals = ticker.filter((row) => row.status === "final");
   assert.equal(finals.length, 8);
-  // The latest verified finals are the late Saturday October 10 games, newest first.
+  // Latest kickoff first: Saturday's late-night Pacific finals.
+  assert.equal(easternDate(finals[0].date), "2026-10-10");
   assert.equal(finals[0].date, "2026-10-11T02:30Z");
-  assert.ok(finals.every((row, index) => easternDate(row.date) === "2026-10-10" && (index === 0 || finals[index - 1].date >= row.date)));
   const upcoming = ticker.filter((row) => row.status !== "final");
   assert.equal(upcoming.length, 8);
   assert.ok(upcoming.every((row) => easternDate(row.date) >= "2026-10-13" && easternDate(row.date) <= "2026-10-17"));

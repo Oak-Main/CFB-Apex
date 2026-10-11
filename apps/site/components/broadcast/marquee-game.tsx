@@ -71,7 +71,10 @@ export function MarqueeGame({
               <Tv size={15} aria-hidden="true" />
               {published(game.broadcast)}
               <span aria-hidden="true">·</span>
-              {kickoffTime(game)}
+              {/* An archived week's marquee is a verified final: show the result, not a kickoff. */}
+              {game.status === "final" && game.awayScore != null && game.homeScore != null
+                ? `FINAL · ${away.shortName} ${game.awayScore}, ${home.shortName} ${game.homeScore}`
+                : kickoffTime(game)}
             </span>
           </div>
           <div className="apex-marquee-actions">
