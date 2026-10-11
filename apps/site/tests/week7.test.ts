@@ -108,18 +108,21 @@ test("Ohio State at Indiana is the Week 7 marquee with verified records", () => 
   }
 });
 
-test("records: verified, carried only without a game since, otherwise withheld", () => {
+test("records: all 138 reconcile after the verified Week 6 finals", () => {
   const review = verifiedRefresh?.team_records_review;
-  assert.equal(review?.verified, 102);
-  assert.equal(review?.carried_from_2026_10_10.length, 10);
-  assert.equal(review?.withheld.length, 26);
-  assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 112);
-  // Texas played October 10 and its school record was not retrievable: unknown, not stale.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "Not published");
-  // Clemson's schedule lists an October 10 bye, so its October 10 record still stands.
-  assert.equal(teams.find((team) => team.slug === "clemson")?.record, verifiedRefresh?.retainedBaseline?.overall_records?.clemson?.replace("-", "–"));
-  // Georgia State has no October 10 row; absence is not a bye.
-  assert.equal(teams.find((team) => team.slug === "georgia-state")?.record, "Not published");
+  assert.equal(review?.verified, 138);
+  assert.deepEqual(review?.carried_from_2026_10_10, []);
+  assert.deepEqual(review?.withheld, []);
+  assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
+  // Texas lost to Oklahoma on October 10: 4–0 became 4–1.
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "4–1");
+  // Records the Week 7 release verified are unchanged.
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "5–1");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–0");
+  // Every team's record equals its conference table's overall column.
+  for (const conf of verifiedRefresh?.retainedBaseline?.conferenceStandings ?? []) {
+    for (const row of conf.rows) assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, row.team);
+  }
 });
 
 test("polls keep their October 4 editions on the Week 7 board", () => {
@@ -138,7 +141,9 @@ test("the Week 7 ticker leads with the latest verified finals, then the new slat
   const ticker = tickerGamesFor(7);
   const finals = ticker.filter((row) => row.status === "final");
   assert.equal(finals.length, 8);
-  assert.equal(finals[0].id, "2026-10-10-maryland-at-ohio-state");
+  // Latest kickoff first: Saturday's late-night Pacific finals.
+  assert.equal(easternDate(finals[0].date), "2026-10-10");
+  assert.equal(finals[0].date, "2026-10-11T02:30Z");
   const upcoming = ticker.filter((row) => row.status !== "final");
   assert.equal(upcoming.length, 8);
   assert.ok(upcoming.every((row) => easternDate(row.date) >= "2026-10-13" && easternDate(row.date) <= "2026-10-17"));

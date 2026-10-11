@@ -230,14 +230,16 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   assert.match(week6, /SNAPSHOT 2026-10-05 07:24 UTC/);
   assert.match(week6, /FINALS VERIFIED 2026-10-11 \d\d:\d\d UTC/);
   assert.match(week6, /Thursday finals: Liberty, Western Kentucky, UTSA and South Alabama win/);
-  assert.match(week6, /Saturday finals: Indiana edges Nebraska; Ohio State beats Maryland/);
+  assert.match(week6, /Saturday finals: Oklahoma stuns No\. 1 Texas; Georgia wins at Alabama/);
+  // An archived marquee is a verified final, shown with its result.
+  assert.match(week6, /MARQUEE MATCHUP Georgia at Alabama Sat, Oct 10 ABC · FINAL · Georgia 20, Alabama 17/);
   assert.match(week6, /games? played since then (is|are) not yet included/);
   assert.doesNotMatch(week6, /These are season totals, updated after completed games/);
   assert.match(week6, /POLLS RELEASED 2026-10-04/);
   assert.match(week6, /SP\+ CONTRAST · AS OF Sep 27/);
   assert.match(week6, /North Dakota State/);
   // Absence from the FBS board is never called a bye.
-  assert.match(week6, /Ranked, not on this FBS board:/);
+  assert.match(byPath.get("/?week=7") ?? "", /Ranked, not on this FBS board:/);
   for (const text of byPath.values()) assert.doesNotMatch(text, /Byes:/);
   // Week 7: the reviewed release, its marquee, and official TBAs without placeholder times.
   const week7 = byPath.get("/?week=7") ?? "";
@@ -248,13 +250,14 @@ test("audit week 6: forbidden stale strings never ship; verified additions rende
   assert.match(week7, /Indiana 6–0/);
   assert.match(week7, /KICKOFF TBA[\s\S]*?Nebraska at 13 Oregon[\s\S]*?Charlotte at Temple[\s\S]*?Louisiana Tech at ULM/);
   assert.match(week7, /Week 7: Ohio State at Indiana leads a 59-game FBS slate/);
-  assert.doesNotMatch(week7, /Saturday finals: Indiana edges Nebraska/, "Week 6 stories stay on Week 6");
+  assert.doesNotMatch(week7, /Saturday finals: Oklahoma stuns/, "Week 6 stories stay on Week 6");
   assert.match(week7, /Week 6 Oct 6–10 · (Archive|Current)[\s\S]*?Week 7 Oct 13–17 · (Current|Preview)/);
   // The default board follows the server clock: Week 7 from 06:00 Pacific on Oct 11.
   const home = byPath.get("/") ?? "";
   if (Date.now() >= Date.parse("2026-10-11T13:00:00Z")) assert.match(home, /WEEK 7 · OCT 13–17 · AS OF 2026-10-11/);
   else assert.match(home, /WEEK 6 · OCT 6–10 · AS OF 2026-10-05/);
-  assert.match(byPath.get("/?week=6") ?? "", /Texas[\s\S]*?vs\.? Oklahoma|Oklahoma[\s\S]*?Cotton Bowl \(neutral site\)/);
+  // The neutral-site Red River final keeps its venue label.
+  assert.match(byPath.get("/?week=6") ?? "", /Sat, Oct 10 · Neutral final 1 Texas 24 Oklahoma 27 Cotton Bowl \(neutral\) · Final/);
   assert.match(byPath.get("/games/2026-10-10-georgia-at-alabama") ?? "", /College GameDay · Tuscaloosa · Sat Oct 10 · ESPN/);
   assert.match(byPath.get("/rankings") ?? "", /OTHERS RECEIVING VOTES[\s\S]*?Kentucky/);
   assert.match(byPath.get("/rankings") ?? "", /NEW/);
@@ -282,7 +285,10 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   assert.match(home, /Thu, Oct 8 final Sam Houston 3 Liberty 35 Final/);
   // Every Tue-Thu board row is a final; no midweek row carries a kickoff/TV slot.
   assert.doesNotMatch(home, /(Tue, Oct 6|Wed, Oct 7|Thu, Oct 8) (?!final\b)/);
-  assert.match(home, /Hawai.i at Arizona State FS1|10:30 PM ET Hawai/);
+  // Saturday's late game is a verified final on its own Eastern date.
+  const hawaii = await visible("/games/2026-10-10-hawaii-at-arizona-state");
+  assert.match(hawaii, /Arizona State Sun Devils final Sat · 2026-10-10 · 10:30 PM ET FS1/);
+  assert.match(hawaii, /Arizona State Sun Devils 3–2 30/);
   const game = await visible("/games/2026-10-08-south-florida-at-utsa");
   assert.match(game, /South Florida Bulls at UTSA Roadrunners final/);
   assert.doesNotMatch(game, /South Florida Bulls at UTSA Roadrunners game preview/);
@@ -290,7 +296,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
-  assert.match(rankings, /as of 2026-10-10/);
+  assert.match(rankings, /as of 2026-10-11/);
   assert.match(rankings, /UTSA 2 0 0 1\.000 5-1/);
   assert.match(rankings, /South Florida 1 2 0 0\.333 4-2/);
 });
@@ -371,7 +377,10 @@ test("scores metadata and hero disclose the current verified snapshot without re
   const game = (await (await fetchRoute("/games/2026-10-10-north-dakota-state-at-unlv")).text()).replace(/<!--[\s\S]*?-->/g, "");
   assert.match(game, /Verified Sep 7, 2026/);
   assert.doesNotMatch(game, /Verified Sep 6, 2026/);
-  assert.match(game, /Broadcast slot 7:00 PM ET; both schools announce kickoff at 7:10 PM ET/);
+  // Now final: the result replaces the pregame slot/announced-kickoff note.
+  const gameText = game.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  assert.match(gameText, /North Dakota State Bison at UNLV Rebels final/);
+  assert.match(gameText, /UNLV Rebels 4–2 13/);
 });
 
 

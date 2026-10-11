@@ -54,3 +54,8 @@
 - The cutover is a fixed editorial time, Sunday 06:00 America/Los_Angeles before the week starts; poll publication remains independent of it.
 - A team's October 10 ESPN-reconciled record stays valid when its Week 6 game was already a verified final before that check, or its schedule lists an explicit October 10 bye.
 - ESPN conference ids 179 (Charleston Southern), 48 (Elon) and 29 (The Citadel) are outside the FBS set, so those three games stay excluded with evidence.
+
+## October 11 Saturday finals
+
+- NCAA.com's server-rendered FBS week 6 scoreboard (58 games, all final, NCAA ORG-SPORTS feed) is the independent official check beside ESPN's completed-game summaries. School pages were largely bot-protected from this environment.
+- ESPN standings after Saturday are the record authority only where they agree with the derivation from verified results; a disagreement would block the refresh.
