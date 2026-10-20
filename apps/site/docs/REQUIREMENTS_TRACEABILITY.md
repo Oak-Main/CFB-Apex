@@ -138,3 +138,5 @@ Detailed source decisions, exact paths and ownership: `docs/WEEK8_RESEARCH_COMPL
 | Safely follow pending official reports | Bounded Week 8 follow-up runbook and shared atomic owner lock | Competing/wrong-owner lock regression; exact-head PR checks and production comparison |
 
 Scope, source portals, integration contract and future ownership: `docs/WEEK8_OFFICIAL_FOLLOWUP.md`.
+
+Review safeguards: `lib/official-availability-validation.mjs` gates direct builds and ingestion with canonical game/week/source checks; `tests/gameday.test.ts` exercises wrong-team/week/matchup/URL rejection and an actual malformed-input build. Owner-verified lock recovery is tested for exact identity/token matching and preservation of the recovered audit record.

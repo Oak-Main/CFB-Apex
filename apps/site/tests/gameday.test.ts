@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -9,7 +9,7 @@ import { gameDaySnapshot } from "../lib/gameday-shared.ts";
 import { boardWeeks, games } from "../lib/cfb-dataset.ts";
 import { easternDate } from "../lib/game-calendar.ts";
 import { injuryResearch } from "../lib/injury-report.ts";
-import { acquireWriterLock, releaseWriterLock } from "../scripts/weekly-writer-lock.mjs";
+import { acquireWriterLock, recoverWriterLock, releaseWriterLock } from "../scripts/weekly-writer-lock.mjs";
 
 const now = Date.parse("2026-10-20T22:00Z");
 test("repository writers cannot acquire or release another owner's lock", () => {
@@ -23,6 +23,24 @@ test("repository writers cannot acquire or release another owner's lock", () => 
     assert.equal(acquireWriterLock(path, "second"), true);
     assert.equal(releaseWriterLock(path, "second"), true);
   } finally { rmSync(scratch, {recursive:true,force:true}); }
+});
+test("crashed writer recovery requires stopped-owner verification, exact owner/token and a reason", () => {
+  const scratch = mkdtempSync(join(tmpdir(), "cfb-recovery-"));
+  const path = join(scratch,"writer.lock");
+  try {
+    assert.equal(acquireWriterLock(path,"old","owner-a"),true);
+    const verified = {ownerStopped:true,expectedOwner:"owner-a",reason:"Recorded owner run is confirmed stopped"};
+    assert.equal(recoverWriterLock(path,"old",{...verified,ownerStopped:false}),null);
+    assert.equal(recoverWriterLock(path,"wrong",verified),null);
+    assert.equal(recoverWriterLock(path,"old",{...verified,expectedOwner:"owner-b"}),null);
+    assert.equal(recoverWriterLock(path,"old",{...verified,reason:""}),null);
+    const archive = recoverWriterLock(path,"old",verified);
+    assert.ok(archive);
+    assert.equal(JSON.parse(readFileSync(archive,"utf8")).token,"old");
+    assert.equal(acquireWriterLock(path,"new","owner-b"),true);
+    assert.equal(releaseWriterLock(path,"old"),false);
+    assert.equal(releaseWriterLock(path,"new"),true);
+  } finally { rmSync(scratch,{recursive:true,force:true}); }
 });
 test("shared feed follows reviewed cutovers and preserves all archive games", () => {
   for (const row of boardWeeks) {
@@ -83,7 +101,7 @@ test("ingestion rejects invalid, undated, duplicate and unknown-team official ro
   const script = fileURLToPath(new URL("../scripts/ingest-injury-research.mjs", import.meta.url));
   const scratch = mkdtempSync(join(tmpdir(), "cfb-official-"));
   try {
-    for (const patch of [{status:"Likely cleared"}, {game_date:"2026-02-30"}, {published_at:null}, {team_slug:"unverified-team"}, {source_url:"http://example.com"}]) {
+    for (const patch of [{status:"Likely cleared"}, {game_date:"2026-02-30"}, {published_at:null}, {team_slug:"unverified-team"}, {team_slug:"texas"}, {game_id:"wrong-game"}, {game_date:"2026-10-17"}, {matchup:"Appalachian State at James Madison"}, {source_url:"http://example.com"}, {source_url:"https://"}]) {
       const path = join(scratch, "invalid.json");
       writeFileSync(path, JSON.stringify({...doc, official_reports:[{...doc.official_reports[0], ...patch}]}));
       const result = spawnSync(process.execPath, [script, path, "--check"], {encoding:"utf8"});
@@ -93,4 +111,20 @@ test("ingestion rejects invalid, undated, duplicate and unknown-team official ro
     writeFileSync(duplicate, JSON.stringify({...doc, official_reports:[doc.official_reports[0],doc.official_reports[0]]}));
     assert.notEqual(spawnSync(process.execPath, [script, duplicate, "--check"]).status, 0);
   } finally { rmSync(scratch, {recursive:true,force:true}); }
+});
+
+test("dataset build rejects a directly edited malformed official row before generating output", () => {
+  const source = new URL("../",import.meta.url);
+  const scratch = mkdtempSync(join(tmpdir(),"cfb-invalid-build-"));
+  try {
+    for (const dir of ["scripts","lib","data/cfb-2026/refresh","data/injury-research"]) mkdirSync(join(scratch,dir),{recursive:true});
+    for (const path of ["scripts/build-dataset.mjs","lib/injury-freshness.mjs","lib/official-availability-validation.mjs","data/cfb-2026/teams.json","data/cfb-2026/refresh/verified-refresh.json"]) copyFileSync(new URL(path,source),join(scratch,path));
+    const doc=JSON.parse(readFileSync(new URL("data/injury-research/current.json",source),"utf8"));
+    doc.official_reports[0].status="Fabricated cleared";
+    writeFileSync(join(scratch,"data/injury-research/current.json"),JSON.stringify(doc));
+    const result=spawnSync(process.execPath,[join(scratch,"scripts/build-dataset.mjs")],{encoding:"utf8"});
+    assert.notEqual(result.status,0);
+    assert.match(result.stderr,/Invalid official availability report/);
+    assert.doesNotMatch(result.stderr,/ENOENT/);
+  } finally { rmSync(scratch,{recursive:true,force:true}); }
 });
