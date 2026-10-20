@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 import { inflateSync } from "node:zlib";
 import { createHash } from "node:crypto";
 import { isCurrentEspnInjury } from "../lib/injury-freshness.mjs";
+import { validateOfficialReports } from "../lib/official-availability-validation.mjs";
 
 const root = fileURLToPath(new URL("../data/cfb-2026", import.meta.url));
 const projectRoot = fileURLToPath(new URL("..", import.meta.url));
@@ -27,6 +28,14 @@ async function providerFetch(...args) {
 }
 
 const teams = read("teams.json").teams;
+// Validate direct edits before any provider work; errors must fail the build,
+// never be swallowed as an optional editorial input.
+const RESEARCH_PATH = join(projectRoot, "data", "injury-research", "current.json");
+const stagedInjuryResearch = existsSync(RESEARCH_PATH) ? JSON.parse(readFileSync(RESEARCH_PATH, "utf8")) : null;
+const reviewedOfficialReports = validateOfficialReports(stagedInjuryResearch?.official_reports, {
+  teams, games: [...(refreshSnapshot?.scheduledGames ?? []), ...(refreshSnapshot?.playedGames ?? [])],
+  weeks: refreshSnapshot?.board_weeks ?? [], week: stagedInjuryResearch?.week,
+});
 const conferences = read("conferences.json").conferences;
 const sosDoc = read("sos/2026.json");
 const sos = sosDoc.teams.map((row) => ({
@@ -877,24 +886,19 @@ console.log(`Playoff audit: ${playoffAudit ? "week " + playoffAudit.week + " —
 /* ------------------------------------------- editorial injury research ----- */
 // data/injury-research/current.json is written by scripts/ingest-injury-research.mjs
 // from the weekly research run. Absent file = nothing published.
-const RESEARCH_PATH = join(projectRoot, "data", "injury-research", "current.json");
 let injuryResearch = { week: null, as_of: null, coverage_note: null, checked_at: null, ledger: [], watch: [], context_notes: [] };
-if (existsSync(RESEARCH_PATH)) {
-  try {
-    const raw = JSON.parse(readFileSync(RESEARCH_PATH, "utf8"));
+if (stagedInjuryResearch) {
+    const raw = stagedInjuryResearch;
     injuryResearch = {
       week: typeof raw.week === "number" ? raw.week : null,
       as_of: raw.as_of ?? null,
       coverage_note: raw.coverage_note ?? null,
       checked_at: raw.checked_at ?? null,
       context_notes: Array.isArray(raw.context_notes) ? raw.context_notes : [],
-      official_reports: Array.isArray(raw.official_reports) ? raw.official_reports : [],
+      official_reports: reviewedOfficialReports,
       ledger: Array.isArray(raw.ledger) ? raw.ledger : [],
       watch: Array.isArray(raw.watch) ? raw.watch : [],
     };
-  } catch (error) {
-    console.warn(`injury research present but unreadable — skipping (${error.message})`);
-  }
 } else {
   console.log("No injury research staged yet — editorial layer ships empty (fail-closed).");
 }

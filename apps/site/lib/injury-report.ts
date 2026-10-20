@@ -280,6 +280,7 @@ export const INJURY_METHOD = {
 /** Limited, dated official report snapshot; absence never implies Available. */
 export type OfficialAvailabilityStatus = "Available" | "Out" | "Doubtful" | "Questionable" | "Probable" | "Game Time Decision" | "Exempt" | "Out (1st Half)" | "Out for Season";
 export interface OfficialAvailabilityEntry {
+  game_id?: string;
   player: string; team_slug: string; position: string; jersey: string | null;
   status: OfficialAvailabilityStatus; exempt_status: string; conference: string;
   game_date: string; matchup: string; report_id: string; report_type: string;

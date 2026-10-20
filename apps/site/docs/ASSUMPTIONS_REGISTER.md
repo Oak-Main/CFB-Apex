@@ -99,3 +99,4 @@
 - The public Command Center feed exposes only reviewed public facts and uses current records/poll editions even with an archived schedule, explicitly labeled. Request time does not renew freshness.
 - Lovable's public homepage consumes the production release; its preview database and old poll scheduler are not production authorities. Routine weekly releases require no Lovable AI build or code republish.
 - Follow-up is bounded to Week 8 through October 25, with sequential writers and checked exact-head merges. Source/connector failure preserves unknowns and the last verified release.
+- Direct JSON edits receive the same official game/source validation as ingestion. Interrupted locks can be recovered only after confirming the recorded owner stopped; uncertain ownership blocks recovery.
