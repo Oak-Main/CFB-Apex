@@ -54,5 +54,5 @@
     }
   ],
   "trap": null,
-  "notes": "Three editorial upset cases, not win probabilities or betting recommendations. Each underdog was receiving at least six published points in the October 20 ESPN/Draft Kings snapshot. Lines are copied verbatim from pointSpread.[side].close.line (the API field name does not mean the pregame market has closed). Prices can move; publication time was not supplied by the API. Observation times appear on each card in Analysis Mode. USC–Wisconsin was excluded at three points. No public betting splits were verified, so no crowd-based market-trap claim is made."
+  "notes": "Three editorial upset cases, not win probabilities or betting recommendations. Each underdog was receiving at least six published points in the October 20 ESPN/Draft Kings snapshot. Lines are reported snapshots and can move. Provider publication times were unavailable; observation times appear on each card in Analysis Mode. USC–Wisconsin was excluded at three points. No public betting splits were verified, so no crowd-based market-trap claim is made."
 }
