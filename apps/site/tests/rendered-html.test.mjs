@@ -49,6 +49,35 @@ test("server-renders the finished home utility", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
+test("Command Center serves the same dated public snapshot and reviewed archives", async () => {
+  const response = await fetchRoute("/api/gameday");
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("cache-control"), /no-store/);
+  assert.equal(response.headers.get("access-control-allow-origin"), "*");
+  const snapshot = await response.json();
+  assert.equal(snapshot.schemaVersion, 1);
+  assert.match(snapshot.revision, /^[a-f0-9]{64}$/);
+  assert.equal(snapshot.teams.length, 138);
+  assert.equal(snapshot.injuries.officialReports.find(r => r.player === "Malachi Singleton")?.status, "Questionable");
+  for (const week of snapshot.weeks) {
+    const feed = await fetchRoute(`/api/gameday?week=${week.week}`);
+    const doc = await feed.json();
+    const page = await fetchRoute(`/gameday?week=${week.week}`);
+    assert.equal(page.status, 200);
+    const text = visibleText(await page.text());
+    assert.ok(text.includes("GameDay Command Center"));
+    assert.match(text, new RegExp(`WEEK ${week.week}`));
+    assert.ok(text.includes(`${doc.games.length} matching games`));
+    assert.ok(text.includes("Official Questionable"));
+    assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
+    assert.equal(doc.revision, snapshot.revision);
+  }
+  for (const week of ["9", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
+  const options = await fetchRoute("/api/gameday", {method:"OPTIONS"});
+  assert.equal(options.status, 204);
+  assert.equal((await fetchRoute("/api/gameday", {method:"POST"})).status, 405);
+});
+
 test("the reviewed Week 6 archive renders its games and sourced metrics", async () => {
   const response = await fetchRoute("/?week=6");
   const html = withoutComments(await response.text());

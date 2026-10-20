@@ -128,3 +128,13 @@ Detailed accepted claims, amendments, withheld items and owner handoff: docs/WEE
 | Default Clean Mode and deliberate disclosure | Existing mode state and dialog shared by both research pages | Rendered prices-hidden assertions and production browser disclosure verification |
 
 Detailed source decisions, exact paths and ownership: `docs/WEEK8_RESEARCH_COMPLETION.md`.
+
+## October 20 official follow-up and Command Center integration
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Publish newly verified official designations | Singleton Questionable for October 22; separately dated official rows and immutable source evidence | Source/game/identity/timestamp regression; invalid ingestion rejection |
+| One approved weekly release for native and Lovable Command Centers | Versioned odds-free `/api/gameday`, native `/gameday`, dynamic reviewed archives and separate source dates | Revision/data/identity/cutover tests; API methods/CORS/errors; rendered archive checks and both live browsers |
+| Safely follow pending official reports | Bounded Week 8 follow-up runbook and shared atomic owner lock | Competing/wrong-owner lock regression; exact-head PR checks and production comparison |
+
+Scope, source portals, integration contract and future ownership: `docs/WEEK8_OFFICIAL_FOLLOWUP.md`.

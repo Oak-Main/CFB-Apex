@@ -75,6 +75,7 @@ export interface InjuryResearchDoc {
   ledger: InjuryLedgerEntry[];
   watch: InjuryWatchEntry[];
   contextNotes: Array<{ player: string; team_slug: string; source_as_of: string; title: string; note: string; sources: string[] }>;
+  officialReports: OfficialAvailabilityEntry[];
 }
 
 /* ------------------------------------------------- editorial (vendored doc) */
@@ -86,6 +87,7 @@ interface GeneratedInjuryResearch {
   ledger?: unknown[];
   watch?: unknown[];
   context_notes?: InjuryResearchDoc["contextNotes"];
+  official_reports?: OfficialAvailabilityEntry[];
 }
 
 const researchDoc = ((bundle as Record<string, unknown>).injuryResearch ?? {}) as GeneratedInjuryResearch;
@@ -134,6 +136,7 @@ export const injuryResearch: InjuryResearchDoc = {
     social: (row.social as string[]) ?? [],
   })),
   contextNotes: researchDoc.context_notes ?? [],
+  officialReports: researchDoc.official_reports ?? [],
 };
 
 /* ----------------------------------------------------- ESPN base (snapshot) */
@@ -275,7 +278,7 @@ export const INJURY_METHOD = {
 } as const;
 
 /** Limited, dated official report snapshot; absence never implies Available. */
-export type OfficialAvailabilityStatus = "Available" | "Out" | "Doubtful" | "Questionable" | "Probable" | "Game Time Decision" | "Exempt";
+export type OfficialAvailabilityStatus = "Available" | "Out" | "Doubtful" | "Questionable" | "Probable" | "Game Time Decision" | "Exempt" | "Out (1st Half)" | "Out for Season";
 export interface OfficialAvailabilityEntry {
   player: string; team_slug: string; position: string; jersey: string | null;
   status: OfficialAvailabilityStatus; exempt_status: string; conference: string;

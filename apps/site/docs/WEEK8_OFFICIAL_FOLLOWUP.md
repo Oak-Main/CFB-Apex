@@ -1,0 +1,50 @@
+# Week 8 official availability and shared Command Center
+
+## Mission and ownership
+
+Maintain the remaining tracked Week 8 injury designations as official reports publish through October 25, 2026, Pacific. The user authorizes focused researched changes, PRs, exact-head merging and production verification. Lovable integration/deployment credits are approved when necessary. CFB Apex remains the reviewed data authority. This does not authorize unrelated new accounts, roles, secret collection or automated market claims.
+
+Native page: https://cfbapex.com/gameday. Shared read-only endpoint: https://cfbapex.com/api/gameday. Companion project: https://lovable.dev/projects/87b5a164-7cf5-40fa-9d8a-fb7f3b6646f3 (GameDay Command). Its connected repository is kevynsgrin-a11y/gametime-visuals. Its public homepage consumes the production feed; its authenticated editor/preview database does not publish production facts.
+
+## Evidence and remaining items
+
+October 20 follow-up evidence: `data/cfb-2026/refresh/evidence/2026-10-20-week8-official-followup.json`. Sun Belt lists Malachi Singleton as **Questionable**, Initial Report, James Madison at Appalachian State on October 22. Source `updatedAtUTC` is October 20 00:04:54 UTC (October 19 Eastern evening), retrieved October 20 21:30:12 UTC. This is a source update timestamp, not a newly inferred publication time or clearance. His ankle description remains separately attributed to October 19 reporting. Practice and return likelihood remain null.
+
+At this review Big Ten displayed “REPORT PENDING 10/21/26”; SEC displayed reports pending October 21 at 7:10 p.m. Central; MAC displayed pending game-day reports; Pac-12's official JSON had `games: []`. Mountain West's embed could not be read in the browser; treat that as unavailable evidence, not an empty official list. Other watch source dates remain unchanged.
+
+Tracked watch: Hollywood Smothers (Texas), Khobie Martin (Indiana), Mark Bowman (USC), Kamario Taylor (Mississippi State), AJ Bianco and Carter Jones (Nevada), Malachi Singleton (Appalachian State), Jayden Denegal (San Diego State), Noah Kim (Eastern Michigan), Dante Moore (Oregon), Julian Sayin (Ohio State). Match each to the actual official schedule/game date; no Ohio State FBS-vs-FBS game is in the reviewed Week 8 board. Do not invent a Week 8 designation for a team without a matching game. Brown and Thomas/Raiola remain quarterback context; October 10 official rows remain history.
+
+Primary portals:
+
+- Big Ten: https://bigten.org/sports/2026/9/10/FB_Availability_Reports.aspx — public report embed https://app.hdintelligence.com/?source=B10&sport=Football&conf=B10&type=report
+- SEC: https://www.secsports.com/fbreports — public embed https://app.hdintelligence.com/?source=SEC&sport=Football&conf=SEC&type=report
+- MAC: https://getsomemaction.com/sports/2026/7/28/FB_0728265050.aspx.aspx — public embed https://app.hdintelligence.com/?source=MAC&sport=Football&conf=MAC&type=report
+- Mountain West: https://themw.com/sports/2026/8/21/football_reports.aspx
+- Pac-12: https://pac-12.com/news/2026/9/11/2026-football-reports.aspx — its linked public JSON is https://sbcautostorage.blob.core.windows.net/availability-reports/pac12-football/prod/report.json
+- Sun Belt: https://sunbeltsports.org/news/2025/8/11/football-availability-report-new.aspx — its linked public JSON is https://sbcautostorage.blob.core.windows.net/availability-reports/sunbelt-football/prod/report.json
+
+Big Ten's August 28, 2026 policy specifies Wednesday/Thursday/Friday 8 p.m. Eastern updates and game-day reports two hours before kickoff for Saturday games. Use the actual current policy and report identity for each conference; never generalize timing/status categories across conferences. Reject wrong-week, archived or partial reports. Do not use administrative endpoints, credentials exposed in third-party scripts, paywalls or restricted content. Firecrawl credits are exhausted; use other public tools.
+
+## One release updates both experiences
+
+`/api/gameday` schemaVersion 1 projects reviewed weeks, 138 team identities/current records, selected-week games, previous reviewed finals, AP/Coaches editions and dated injury/context rows. It deliberately excludes markets, model metrics, practice guesses and private configuration. `date` is the UTC kickoff timestamp; group by America/New_York date, including Saturday games after UTC midnight. `marquee_game_id` may be absent for older archives. Logos and injury details may be null. Unknown values stay unknown.
+
+`revision` is the SHA-256 of the deterministic generated dataset, independent of request time. `serverNow` selects the default week and is never a source-freshness claim. `?week=N` accepts any reviewed week; invalid/unreviewed API selections return 400. GET/HEAD/OPTIONS only; no-store and anonymous public CORS. The native page renders the same builder and revalidates on focus/visibility and every five visible minutes; server-time cutover reloads preserve archive overrides. On failure it retains the last verified snapshot with an honest warning and original dates. The companion validates the contract, resolves URLs against production, and never substitutes old fixtures when the feed fails. Its preview poll scheduler remains disabled.
+
+Future approved weekly releases automatically reach both applications through this endpoint. Do not spend Lovable AI credits or republish its code for routine data changes. If a schema/adapter defect requires a code change, use the authorized Lovable project, review its diff and preview, test the actual live feed, then publish and compare the public result. Native production/domain/CSP stay under the existing Cloudflare workflow; no iframe or domain migration is needed.
+
+## Sequential publication runbook
+
+1. Read current main and applicable AGENTS.md. Preserve unrelated/dirty checkouts. Fetch main and use a focused branch. Before mutation, acquire the shared repository lock with `node scripts/weekly-writer-lock.mjs acquire OWNER_TOKEN` from `apps/site`, using a new UUID. Exit code 2 means another writer: skip and retry later. Never steal a lock on age alone. Release only your token in a finally step with the `release` action. Separate checkouts on other machines are additionally protected by GitHub exact-head checks and current-main comparison.
+2. Research public official reports afresh. Record resolved URL, actual UTC retrieval, literal report update/publication time, conference, report ID/type, player identity/team, matchup and game date. Save bounded source observations and SHA-256 evidence. Check official team identity/schedule. A literal official designation is authoritative; do not count two mirrors of the same report as independent confirmation.
+3. Publish only a supported change. A pending/failed request or absent player is not clearance. If a conference explicitly defines absence as Available, adoption requires a complete matching team report, retained evidence and the verified policy; partial search results never qualify. Conflicts remain unresolved. Do not advance module/row dates just because the job ran. No verified change means no commit/deploy.
+4. Amend `data/injury-research/current.json`, its `official_reports`, appropriate watch/ledger note and new dated evidence. Preserve other source cutoffs and historical reports. Maintain literal categories rather than inferred practice/likelihood. If an official designation changes, retain the prior observation in evidence. Validate with `node scripts/ingest-injury-research.mjs data/injury-research/current.json --check`.
+5. Run dataset build then `npm run verify`. Inspect the focused diff and source/test evidence. Push a PR, attach it to this chat, address actionable review findings and wait for all required checks (including completed CodeQL). Fetch current main again; if another release changed the affected data, reconcile and rerun checks. Merge only the reviewed exact head SHA. Never force-push shared branches.
+6. Wait for the main production workflow to succeed. Compare the live `/api/gameday` revision/data with the checked build; verify `/injuries`, `/gameday`, archives, and the published Lovable page. Confirm the changed player, exact status/source date and game are visible. Both Command Centers should match the shared revision. Test a finder filter, archive and returning to current; inspect browser errors and preserve screenshots. Failed production verification blocks acceptance: investigate, repair through another checked PR, or restore the prior known-good release using the repository's deployment process.
+7. Save a dated compact run record under this chat's `outputs/week8-followup`, with source observations, PR/head/merge/checks/deploy, both live URLs/revisions and browser proof. Notify only this chat on a material publication, completion, new failure or required owner action. Stay quiet when unchanged/non-actionable; no email/social outreach. Stop the bounded Week 8 follow-up after October 25 Pacific; do not silently roll into Week 9.
+
+## Deliverables and acceptance
+
+Implementation: `lib/gameday-shared.ts`, `app/api/gameday/route.ts`, `components/gameday-command-center.tsx`, `app/gameday.css`, shared route/nav/metadata additions, validated `official_reports` ingestion and `scripts/weekly-writer-lock.mjs`. Evidence/data: current injury JSON and the dated evidence above. Tests: `tests/gameday.test.ts`, `tests/rendered-html.test.mjs` plus the existing full verification suite.
+
+Assumptions: public official reports may be pending; selected schedules and latest polls/records have independent dates. Risks: sources/connector access or future schema changes can fail; external data publication remains a researched release, never a live-clearance guarantee. Next owner: the bounded follow-up in this chat for Week 8; repository owner for later weekly reviewed releases and any credentials requiring secure entry. Acceptance is PASS only after checked merge, successful production deployment, both live experiences verified and follow-up saved; unresolved official statuses remain an explicit condition, not fabricated completion.

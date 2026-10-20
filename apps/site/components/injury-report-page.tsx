@@ -306,7 +306,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
 
       <section className="apex-container db-section" aria-labelledby="inj-current-title">
         <div className="section-heading"><div><span className="eyebrow">WEEK {injuryResearch.week} · DATED REPORTING</span><h2 id="inj-current-title">Current injury and quarterback updates</h2></div></div>
-        <p className="inj-watch-note">Reported status is attributed to the linked source. It is separate from an official game designation. No practice participation or return date is inferred.</p>
+        <p className="inj-watch-note">Each status is attributed to its dated source. Official game designations are labeled explicitly; other reporting does not establish clearance. No practice participation or return date is inferred.</p>
         <div className="xy-primer-grid">
           {injuryResearch.watch.filter(row => !teamFilter || row.teamSlug === teamFilter).map(row => <article className="xy-primer-card" key={`${row.player}-${row.teamSlug}`}>
             <span className="db-position-tag">{teamBySlug.get(row.teamSlug)?.shortName ?? row.teamSlug} · {row.position}</span>
