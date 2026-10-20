@@ -1703,8 +1703,8 @@ export function HubApp({ path = "/", boardWeek }: { path?: string; boardWeek?: B
 
   else if (root === "no-names") content = <NoNamesPage />;
   else if (root === "highlight") content = <HighlightPage />;
-  else if (root === "heisman") content = <HeismanPage />;
-  else if (root === "upset-watch") content = <UpsetWatchPage />;
+  else if (root === "heisman") content = <HeismanPage cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} />;
+  else if (root === "upset-watch") content = <UpsetWatchPage cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} />;
   else if (root === "playoff-audit") content = <PlayoffAuditPage />;
   else if (root === "nil") content = <NILWatchPage />;
   else if (root === "panel") content = <AIPanelPage />;

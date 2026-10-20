@@ -84,3 +84,11 @@
 - A host school's explicit game-week announcement can resolve a blank schedule-grid network when the matchup, date, time and ESPN assignment agree. Ball State's October 19 announcement now confirms ESPN+; this supersedes the earlier unresolved-TV finding without rewriting its historical evidence.
 - Travelpayouts' public configuration identifies cfbapex.com, marker 775855 and project 572310. The existing account configuration is valid; only the missing exact-origin connection permission changes. Its disabled feature settings stay disabled, so this fix does not enable automatic link switching or offers.
 - The single-game recheck advances that row's verification time and adds a refresh-log entry. Whole-slate, poll, result and record cutoffs keep their own dates.
+
+## October 20 Week 8 research completion
+
+- All 13 supplied availability items have a sourced disposition, including unresolved returns. Research completion does not establish medical clearance. Reported statuses are separate from dated official designations; no practice participation is inferred.
+- Brown is reported healthy and not starting; Thomas/Raiola competition is context, not an injury. Laubstein's newer season-ending report supersedes the uncertain prognosis. Six older ledger items and October 10 official rows remain historical.
+- Heisman statistics are Week 7 game totals. Selection and cases are editorial, with no weighted voting model. October 20 prices are Betfirm's named-book reports, not independent sportsbook captures; sourcing confidence remains medium.
+- Upset labels are editorial risk categories, not probabilities. Only literal published underdog lines of six or more points qualify. Retrieval times are known; provider publication times are not. No betting-split claim supports a market-trap card.
+- Clean Mode hides prices and uses editorial Heisman ordering. Analysis Mode is an explicit opt-in through the existing disclosure.

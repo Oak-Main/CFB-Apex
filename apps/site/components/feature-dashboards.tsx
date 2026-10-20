@@ -130,16 +130,9 @@ export function NoNamesPage() {
 
 /* ============================================================== Heisman Watch */
 
-const HEISMAN_METHODOLOGY = [
-  { component: "Statistical Production", weight: "40%", description: "Individual offense, scrimmage yards, TDs, PFF grade, EPA contribution — weighted by position group." },
-  { component: "Team Success", weight: "25%", description: "Team winning percentage, AP/Coaches ranking, conference championship likelihood. Heisman winners come from top-10 teams." },
-  { component: "Expert Consensus", weight: "20%", description: "Aggregation of published Heisman watch lists from ESPN, The Athletic, CBS Sports, Yahoo, On3." },
-  { component: "Public Sentiment", weight: "15%", description: "Betting odds movement, social volume, Google Trends. The Heisman is partly a narrative award." },
-];
-
 function OddsChips({ contender }: { contender: HeismanContender }) {
   if (!contender.odds_as_reported || contender.odds_as_reported.length === 0) {
-    return <span style={{ fontSize: 12, color: "var(--muted-foreground)" }}>Unlisted — no major book posts odds</span>;
+    return <span style={{ fontSize: 12, color: "var(--muted-foreground)" }}>No verified price in this snapshot</span>;
   }
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -164,8 +157,8 @@ function OddsChips({ contender }: { contender: HeismanContender }) {
   );
 }
 
-export function HeismanPage() {
-  const board = heismanBoard();
+export function HeismanPage({ cleanMode = true, onModeRequest }: { cleanMode?: boolean; onModeRequest?: () => void }) {
+  const board = cleanMode ? heismanWatch.contenders : heismanBoard();
   const hasBoard = board.length > 0;
 
   return (
@@ -177,7 +170,7 @@ export function HeismanPage() {
             <h1>The most outstanding player in college football</h1>
             <p>
               {hasBoard
-                ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} contenders, every stat line sourced, every odds figure as reported by the named book. Compiled ${heismanWatch.as_of ?? ""} from a sourced research pass (see compilation note).`
+                ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} selected contenders with verified Week 7 box scores and dated sources. Reviewed ${heismanWatch.as_of ?? ""}. Cases for and against are editorial analysis.`
                 : heismanWatch.notes ?? "The current Heisman watch is pending source verification."}
             </p>
           </div>
@@ -189,10 +182,11 @@ export function HeismanPage() {
             <div className="apex-lane">
               <div className="apex-lane-heading">
                 <div>
-                  <span className="apex-eyebrow">THE BOARD · ORDERED BY SHORTEST REPORTED ODDS</span>
+                  <span className="apex-eyebrow">{cleanMode ? "THE BOARD · EDITORIAL WATCH ORDER" : "THE BOARD · ORDERED BY SHORTEST REPORTED ODDS"}</span>
                   <h2>{board.length} contenders</h2>
                 </div>
               </div>
+              {cleanMode ? <p>Clean Mode hides market prices. <button type="button" className="button button--ghost" onClick={onModeRequest}>Review Analysis Mode disclosure</button></p> : <p>Reported prices dated {heismanWatch.odds_as_of ?? "unknown"}; reviewed {heismanWatch.checked_at ?? "unknown"}. <a href={heismanWatch.odds_source ?? undefined} target="_blank" rel="noopener noreferrer">Market source</a>. Named books as carried by Betfirm; no live-price claim.</p>}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(420px, 100%), 1fr))", gap: 14 }}>
                 {board.map((contender, index) => {
                   const team = getTeamBySlug(contender.team_slug);
@@ -215,7 +209,7 @@ export function HeismanPage() {
                               </a>
                             ) : (
                               contender.team_slug
-                            )} · {contender.position} · {contender.class}
+                            )} · {contender.position}{contender.class ? ` · ${contender.class}` : ""}
                           </div>
                         </div>
                         <span
@@ -243,7 +237,7 @@ export function HeismanPage() {
 
                       <p style={{ fontSize: 13, fontFamily: "var(--display-family)", color: "var(--foreground)", margin: 0 }}>{contender.stat_line}</p>
 
-                      <OddsChips contender={contender} />
+                      {!cleanMode ? <OddsChips contender={contender} /> : null}
 
                       <div style={{ display: "grid", gap: 6, fontSize: 13, lineHeight: 1.5 }}>
                         <p style={{ margin: 0 }}><strong style={{ color: "var(--green)" }}>Case for:</strong> <span style={{ color: "var(--muted-foreground)" }}>{contender.case_for}</span></p>
@@ -251,15 +245,16 @@ export function HeismanPage() {
                         <p style={{ margin: 0 }}><strong>Next test:</strong> <span style={{ color: "var(--muted-foreground)" }}>{contender.next_test}</span></p>
                       </div>
 
-                      <footer style={{ marginTop: "auto", display: "flex", gap: 10, fontSize: 12, color: "var(--muted-foreground)" }}>
+                      <footer style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: 10, fontSize: 12, color: "var(--muted-foreground)" }}>
                         <a href={contender.sources[0]} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
-                          Source <ExternalLink size={11} aria-hidden />
+                          Box score <ExternalLink size={11} aria-hidden />
                         </a>
                         {contender.sources[1] ? (
                           <a href={contender.sources[1]} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
-                            Second source <ExternalLink size={11} aria-hidden />
+                            Market compilation <ExternalLink size={11} aria-hidden />
                           </a>
                         ) : null}
+                        {contender.sources[2] ? <a href={contender.sources[2]} target="_blank" rel="noopener noreferrer">Watch selection</a> : null}
                       </footer>
                     </article>
                   );
@@ -278,26 +273,11 @@ export function HeismanPage() {
                 </div>
               </div>
               <p style={{ fontSize: 13, color: "var(--muted-foreground)", lineHeight: 1.6, marginTop: 0 }}>
-                Two research engines compile the week independently; discrepancies are resolved against the box score of
-                record before anything publishes. Odds are always the named outlet&apos;s published number — we never
-                compute, average, or estimate them. Confidence is high only when stats and odds carry at least two
-                independent sources; a contender that failed cross-verification (see Marcel Reed) is flagged low, not
-                dropped silently.
+                ESPN box scores establish the displayed Week 7 statistics. USA TODAY&apos;s October 19 watch informs the
+                selected field; cases and counterweights are our editorial interpretation. This board has no weighted
+                scoring model, vote projection or measured public-sentiment input. Reported prices come from one
+                market compilation, so confidence is capped at medium even when multiple book labels appear.
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
-                {HEISMAN_METHODOLOGY.map((m) => (
-                  <div key={m.component} className="apex-portal-card" style={{ padding: 20 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                      <h3 style={{ fontSize: 16, fontWeight: 700 }}>{m.component}</h3>
-                      <span style={{ fontSize: 22, fontFamily: "var(--display-family)", fontWeight: 700, color: "var(--accent)" }}>{m.weight}</span>
-                    </div>
-                    <p style={{ fontSize: 13, color: "var(--muted-foreground)", lineHeight: 1.5 }}>{m.description}</p>
-                    <div style={{ marginTop: 12, height: 4, borderRadius: 2, background: "var(--secondary)" }}>
-                      <div style={{ height: "100%", borderRadius: 2, background: "var(--primary)", width: m.weight }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </>
         ) : (

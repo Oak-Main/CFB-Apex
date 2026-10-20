@@ -117,3 +117,14 @@ Detailed accepted claims, amendments, withheld items and owner handoff: docs/WEE
 | Installed Drive loader can obtain its project configuration | Exact `https://tpembars.com` origin added to Worker `connect-src`; no feature or project changes | Rendered-response CSP regression; public configuration identifies cfbapex.com; post-deploy browser console check |
 | Resolve the last Week 8 TV assignment from a school source | `scripts/apply-oct20-tv-followup.mjs`, `refresh/evidence/2026-10-20-tv-followup.json`; ESPN+ on game 401866447 | Host school announcement and fresh ESPN valid time/network; all 56 networks published; rendered homepage and game-page checks |
 | Keep the scope limited to one network and one connection permission | Prior release evidence retained; other source timestamps and data preserved | Offline dry-run/replay/idempotence and untouched-data assertions; full `npm run verify` |
+
+## October 20 Week 8 research completion
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Resolve all 13 supplied availability items without guessing returns | Dated current ledger/watch and separate quarterback context; historical official table retained | Evidence `refresh/evidence/2026-10-20-week8-research.json`; unknown/practice-null/identity and rendered separation checks |
+| Current sourced Heisman watch | Seven selected candidates, Week 7 box scores, October 20 named-book reports, confidence cap | Source links, signed American-price ordering and invalid-format regressions |
+| Eligible sourced upset cases | Three underdogs with literal six-plus-point provider lines, reasons and counterweights | Snapshot hash/time evidence, team/week/line eligibility checks; USC–Wisconsin excluded |
+| Default Clean Mode and deliberate disclosure | Existing mode state and dialog shared by both research pages | Rendered prices-hidden assertions and production browser disclosure verification |
+
+Detailed source decisions, exact paths and ownership: `docs/WEEK8_RESEARCH_COMPLETION.md`.

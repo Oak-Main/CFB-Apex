@@ -1,110 +1,400 @@
 {
- "week": 8,
- "as_of": "2026-10-20",
- "coverage_note": "Partial Week 8 review: Nico Iamaleava’s season-ending surgery is newly verified. Other long-term entries are explicitly retained from October 5 and have not been rechecked for Week 8. No status is inferred for a player absent from this list. The October 10 official availability reports remain historical.",
- "ledger": [
-  {
-   "player": "Mason Heintschel",
-   "team_slug": "pittsburgh",
-   "position": "QB",
-   "injury": "Torn right ACL (Oct 2 at Virginia Tech)",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Season-ending reconstructive surgery confirmed by HC Pat Narduzzi Oct 4; completed 67.7% for 1,191 yards, 13 TD, 1 INT in guiding Pitt to 5-0 and No. 25 AP.",
-   "sources": [
-    "https://www.altoonamirror.com/sports/2026/10/pitt-loses-qb-heintschel-for-season/"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Amaris Williams",
-   "team_slug": "georgia",
-   "position": "OLB",
-   "injury": "Knee (spring)",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Spring knee injury; confirmed sidelined for the entire 2026 campaign.",
-   "sources": [
-    "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Jayden Gibson",
-   "team_slug": "south-carolina",
-   "position": "WR",
-   "injury": "Lower body",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Ruled out for remainder of the season.",
-   "sources": [
-    "https://gamecocksonline.com/sports/football/roster/player/jayden-gibson/",
-    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
-    "https://www.dailygamecock.com/article/2026/08/receivers-jayden-sellers-jayden-gibson-out-for-the-season-sports-davis"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Zahir Mathis",
-   "team_slug": "maryland",
-   "position": "LB",
-   "injury": "Knee",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
-   "sources": [
-    "https://umterps.com/sports/football/roster/zahir-mathis/15629",
-    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
-    "https://www.testudotimes.com/maryland-terps-football/92288/maryland-de-zahir-mathis-reportedly-suffers-season-ending-injury"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Jayden Sellers",
-   "team_slug": "south-carolina",
-   "position": "WR",
-   "injury": "Lower body",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
-   "sources": [
-    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Jake Maikkula",
-   "team_slug": "oklahoma",
-   "position": "C",
-   "injury": "Knee",
-   "status": "OUT",
-   "weeks_out": 3,
-   "detail": "Historical October 5 entry; not rechecked for Week 8. Expected to miss multiple consecutive weeks; out for the Red River Rivalry.",
-   "sources": [
-    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-05"
-  },
-  {
-   "player": "Nico Iamaleava",
-   "team_slug": "ucla",
-   "position": "QB",
-   "injury": "Knee; season-ending surgery",
-   "status": "IR",
-   "weeks_out": null,
-   "detail": "Coach Bob Chesney said October 19 that Iamaleava will miss the rest of the season and undergo knee surgery, according to AP/ESPN. Reported availability; no Week 8 conference filing retrieved.",
-   "sources": [
-    "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery"
-   ],
-   "social": [],
-   "source_as_of": "2026-10-19"
-  }
- ],
- "watch": []
+  "week": 8,
+  "as_of": "2026-10-20",
+  "coverage_note": "Week 8 research completed October 20 for the 13 supplied injury/quarterback items, plus Dante Moore and Julian Sayin. Reports below are dated reporting, not official Week 8 game designations. Unknown returns remain unknown; no practice participation was inferred. Six October 5 long-term entries and the October 10 official table remain explicitly historical. Coverage is limited, not an all-FBS clearance report.",
+  "ledger": [
+    {
+      "player": "Mason Heintschel",
+      "team_slug": "pittsburgh",
+      "position": "QB",
+      "injury": "Torn right ACL (Oct 2 at Virginia Tech)",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Season-ending reconstructive surgery confirmed by HC Pat Narduzzi Oct 4; completed 67.7% for 1,191 yards, 13 TD, 1 INT in guiding Pitt to 5-0 and No. 25 AP.",
+      "sources": [
+        "https://www.altoonamirror.com/sports/2026/10/pitt-loses-qb-heintschel-for-season/"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Amaris Williams",
+      "team_slug": "georgia",
+      "position": "OLB",
+      "injury": "Knee (spring)",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Spring knee injury; confirmed sidelined for the entire 2026 campaign.",
+      "sources": [
+        "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Jayden Gibson",
+      "team_slug": "south-carolina",
+      "position": "WR",
+      "injury": "Lower body",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Ruled out for remainder of the season.",
+      "sources": [
+        "https://gamecocksonline.com/sports/football/roster/player/jayden-gibson/",
+        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
+        "https://www.dailygamecock.com/article/2026/08/receivers-jayden-sellers-jayden-gibson-out-for-the-season-sports-davis"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Zahir Mathis",
+      "team_slug": "maryland",
+      "position": "LB",
+      "injury": "Knee",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
+      "sources": [
+        "https://umterps.com/sports/football/roster/zahir-mathis/15629",
+        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
+        "https://www.testudotimes.com/maryland-terps-football/92288/maryland-de-zahir-mathis-reportedly-suffers-season-ending-injury"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Jayden Sellers",
+      "team_slug": "south-carolina",
+      "position": "WR",
+      "injury": "Lower body",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
+      "sources": [
+        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Jake Maikkula",
+      "team_slug": "oklahoma",
+      "position": "C",
+      "injury": "Knee",
+      "status": "OUT",
+      "weeks_out": 3,
+      "detail": "Historical October 5 entry; not rechecked for Week 8. Expected to miss multiple consecutive weeks; out for the Red River Rivalry.",
+      "sources": [
+        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-05"
+    },
+    {
+      "player": "Nico Iamaleava",
+      "team_slug": "ucla",
+      "position": "QB",
+      "injury": "Knee; season-ending surgery",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "Coach Bob Chesney said October 19 that Iamaleava will miss the rest of the season and undergo knee surgery, according to AP/ESPN. Reported availability; no Week 8 conference filing retrieved.",
+      "sources": [
+        "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery"
+      ],
+      "social": [],
+      "source_as_of": "2026-10-19"
+    },
+    {
+      "player": "Donte Lee Jr.",
+      "team_slug": "texas-tech",
+      "position": "WR",
+      "injury": "Torn ACL",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "October 19 report: torn ACL; will miss the remainder of the season. RotoWire attributes the report to Lane Selph/On3. No return date is assigned.",
+      "source_as_of": "2026-10-19",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/donte-lee-injury-ruled-ofs-235744"
+      ],
+      "social": [],
+      "confidence": "medium"
+    },
+    {
+      "player": "James Laubstein",
+      "team_slug": "new-mexico",
+      "position": "QB",
+      "injury": "Patellar tendon",
+      "status": "IR",
+      "weeks_out": null,
+      "detail": "October 19 KRQE report: Jason Eck confirmed a season-ending patellar tendon injury and surgery. Supersedes the earlier lower-leg injury with an uncertain prognosis.",
+      "source_as_of": "2026-10-19",
+      "sources": [
+        "https://sports.yahoo.com/articles/lobos-lose-key-rushing-threat-225939797.html"
+      ],
+      "social": [],
+      "confidence": "medium"
+    }
+  ],
+  "watch": [
+    {
+      "player": "Hollywood Smothers",
+      "team_slug": "texas",
+      "position": "RB",
+      "injury": "Undisclosed",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported questionable",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Reported questionable for October 24 against Ole Miss; RotoWire cites Anwar Richardson of Orangebloods. This is not a final official game designation.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/hollywood-smothers-injury-questionable-for-week-8-235686"
+      ],
+      "social": []
+    },
+    {
+      "player": "Khobie Martin",
+      "team_slug": "indiana",
+      "position": "RB",
+      "injury": "Forearm",
+      "source_as_of": "2026-10-17",
+      "reported_status": "Week 8 return unconfirmed",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Last verified game report ruled him out against Ohio State on October 17. The October 13 coach report said he was getting close; it does not confirm clearance for Michigan on October 24. No new practice status or return date verified.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/player/khobie-martin-45466",
+        "https://www.on3.com/teams/indiana-hoosiers/news/indiana-running-back-khobie-martin-getting-close-to-returning-from-forearm-injury/"
+      ],
+      "social": []
+    },
+    {
+      "player": "Mark Bowman",
+      "team_slug": "usc",
+      "position": "TE",
+      "injury": "Undisclosed",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported expected to return",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Expected back at Wisconsin on October 24, according to the report attributed to Scott Schrader/On3. Expected return is not confirmed game-day availability.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/mark-bowman-injury-expected-to-return-at-wisconsin-235733"
+      ],
+      "social": []
+    },
+    {
+      "player": "Kamario Taylor",
+      "team_slug": "mississippi-state",
+      "position": "QB",
+      "injury": "Foot",
+      "source_as_of": "2026-10-20",
+      "reported_status": "Week 8 status unresolved",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "The Norman Transcript reports that his status for Oklahoma remains uncertain after he missed LSU. No verified clearance or final October 24 designation; the older LSU absence does not establish his Week 8 status.",
+      "sources": [
+        "https://sports.yahoo.com/articles/even-kamario-taylor-doesnt-play-163200270.html"
+      ],
+      "social": []
+    },
+    {
+      "player": "AJ Bianco",
+      "team_slug": "nevada",
+      "position": "QB",
+      "injury": "Ankle",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported uncertain",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Week 8 status against San Jose State is uncertain; RotoWire cites Chris Murray of Nevada SportsNet. The ankle injury occurred against North Dakota State. No verified return date.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/aj-bianco-injury-status-uncertain-for-week-8-235821"
+      ],
+      "social": []
+    },
+    {
+      "player": "Carter Jones",
+      "team_slug": "nevada",
+      "position": "QB",
+      "injury": "Arm",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported uncertain",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Week 8 status against San Jose State remains uncertain, per the report attributed to Chris Murray of Nevada SportsNet. Both Nevada quarterback injuries remain unresolved.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/carter-jones-injury-question-mark-for-week-8-235820"
+      ],
+      "social": []
+    },
+    {
+      "player": "Malachi Singleton",
+      "team_slug": "appalachian-state",
+      "position": "QB",
+      "injury": "Ankle",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported questionable",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Reported questionable for Thursday, October 22 against James Madison. Playing in the prior Coastal Carolina game does not establish clearance for Thursday.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/malachi-singleton-injury-questionable-to-play-thursday-235823"
+      ],
+      "social": []
+    },
+    {
+      "player": "Jayden Denegal",
+      "team_slug": "san-diego-state",
+      "position": "QB",
+      "injury": "Right ankle",
+      "source_as_of": "2026-10-18",
+      "reported_status": "Week 8 return unconfirmed",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "The school confirms an injury exit against Fresno State; RotoWire, citing Andre Haghverdian, identifies the right ankle. No verified Week 8 clearance or recovery timetable.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/jayden-denegal-injury-dealing-with-ankle-issue-235597",
+        "https://goaztecs.com/news/2026/10/18/last-minute-field-goal-lifts-aztecs-past-fresno-state-26-23"
+      ],
+      "social": []
+    },
+    {
+      "player": "Noah Kim",
+      "team_slug": "eastern-michigan",
+      "position": "QB",
+      "injury": "Undisclosed",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported questionable",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Reported questionable for October 24 at Ohio. RotoWire attributes the update to Andrew E. Graham and Chris Creighton’s Monday comments about how much Kim can handle in practice. No participation designation was published here.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/noah-kim-injury-questionable-at-ohio-235716"
+      ],
+      "social": []
+    },
+    {
+      "player": "Dante Moore",
+      "team_slug": "oregon",
+      "position": "QB",
+      "injury": "Injury; current diagnosis not verified",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Return unconfirmed",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Oregon’s recap confirms his absence against Nebraska; October 19 reporting leaves his return and the Illinois starting quarterback unresolved. No medical clearance inferred from the quarterback competition.",
+      "sources": [
+        "https://goducks.com/news/2026/10/18/football-raiola-sparks-ducks-to-comeback-victory",
+        "https://sports.yahoo.com/articles/dan-lannings-dylan-raiola-comments-142000495.html"
+      ],
+      "social": []
+    },
+    {
+      "player": "Julian Sayin",
+      "team_slug": "ohio-state",
+      "position": "QB",
+      "injury": "Injury; diagnosis not confirmed",
+      "source_as_of": "2026-10-19",
+      "reported_status": "Reported out several weeks",
+      "practice": {
+        "wed": null,
+        "thu": null,
+        "fri": null,
+        "sat": null
+      },
+      "likelihood": null,
+      "confidence": "medium",
+      "note": "Ryan Day said on Buckeye Roundtable that Sayin would miss at least several weeks, as reported by Eleven Warriors. Ohio State has a Week 8 bye. Testing remained ongoing; neither a season-ending diagnosis nor an exact return date is established.",
+      "sources": [
+        "https://www.elevenwarriors.com/ohio-state-football/2026/10/164754/ryan-day-says-julian-sayin-will-be-out-at-least-several-weeks-on-buckeye-roundtable-show"
+      ],
+      "social": []
+    }
+  ],
+  "checked_at": "2026-10-20T20:44:37.109Z",
+  "context_notes": [
+    {
+      "player": "Hank Brown",
+      "team_slug": "iowa",
+      "source_as_of": "2026-10-20",
+      "title": "Healthy; coaching decision at quarterback",
+      "note": "October 20 reporting supersedes Monday’s co-starter listing: Brown is reported healthy; Jeremy Hecklinski will start at Minnesota. Do not carry the earlier shoulder issue as a current questionable injury designation.",
+      "sources": [
+        "https://www.rotowire.com/cfootball/headlines/hank-brown-injury-wont-start-vs-minnesota-236048",
+        "https://www.kcci.com/article/iowa-football-starting-quarterback-hecklinski-or-brown/74195649"
+      ]
+    },
+    {
+      "player": "Brock Thomas / Dylan Raiola",
+      "team_slug": "oregon",
+      "source_as_of": "2026-10-19",
+      "title": "Quarterback competition, not an injury designation",
+      "note": "Thomas started against Nebraska; Raiola led the comeback. October 19 reporting says the Illinois starter remains undecided. Neither player is assigned an injury merely because the job is contested; Dante Moore’s return is tracked separately.",
+      "sources": [
+        "https://goducks.com/news/2026/10/18/football-raiola-sparks-ducks-to-comeback-victory",
+        "https://sports.yahoo.com/articles/dan-lannings-dylan-raiola-comments-142000495.html"
+      ]
+    }
+  ]
 }

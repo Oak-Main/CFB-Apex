@@ -1,7 +1,193 @@
 {
- "week": 8,
- "as_of": "2026-10-20",
- "contenders": [],
- "notes": "Week 8 Heisman research is pending. The October 5 watch and its prices are archived; no current ranking or timestamped odds have been verified.",
- "source_engines": "Publication status only; no new market data."
+  "week": 8,
+  "as_of": "2026-10-20",
+  "checked_at": "2026-10-20T20:44:37.109Z",
+  "odds_as_of": "2026-10-20",
+  "odds_source": "https://www.betfirm.com/heisman-trophy-odds/",
+  "contenders": [
+    {
+      "player": "Jeremiah Smith",
+      "team_slug": "ohio-state",
+      "position": "WR",
+      "class": "",
+      "stat_line": "Week 7: 4 catches, 68 receiving yards, 1 receiving TD vs. Indiana.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "-110"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "-125"
+        }
+      ],
+      "case_for": "A touchdown contribution in a 19–15 win over Indiana keeps him central to Ohio State’s award case.",
+      "case_against": "Julian Sayin’s reported absence introduces uncertainty at quarterback; this is an editorial concern, not a projection of Smith’s production.",
+      "next_test": "Week 8 bye; next scheduled game at USC, October 31.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401858488",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Darian Mensah",
+      "team_slug": "miami-fl",
+      "position": "QB",
+      "class": "",
+      "stat_line": "Week 7: 23/34 passing, 326 yards, 3 TD, 1 INT vs. Florida State.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+340"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+325"
+        }
+      ],
+      "case_for": "Led Miami to a 43–35 double-overtime win; the October 18 AP No. 1 team supplies a prominent award platform.",
+      "case_against": "The game required two overtimes, and his interception belongs in the assessment alongside the touchdowns.",
+      "next_test": "Pittsburgh at Miami, October 24.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401858263",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Trinidad Chambliss",
+      "team_slug": "ole-miss",
+      "position": "QB",
+      "class": "",
+      "stat_line": "Week 7: 241 passing yards, 3 passing TD; 14 rushing yards, 1 rushing TD vs. Missouri.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+600"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+650"
+        }
+      ],
+      "case_for": "Four total touchdowns in a 31–3 win supply a concrete performance case.",
+      "case_against": "Completed 20 of 36 passes; the completion rate tempers the touchdown headline.",
+      "next_test": "Ole Miss at Texas, October 24.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856721",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Jesse Legree",
+      "team_slug": "oregon-state",
+      "position": "WR",
+      "class": "",
+      "stat_line": "Week 7: 8 catches, 108 receiving yards, 2 receiving TD vs. Washington State.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+1800"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+2000"
+        }
+      ],
+      "case_for": "Two touchdowns in the 48–30 rivalry win extend his receiving-based case.",
+      "case_against": "He has a Week 8 bye while several competing candidates have another game to add to their resumes.",
+      "next_test": "Week 8 bye; next scheduled opponent Fresno State.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401860903",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Bear Bachmeier",
+      "team_slug": "byu",
+      "position": "QB",
+      "class": "",
+      "stat_line": "Week 7: 224 passing yards/1 TD, 45 rushing yards/2 TD, 15 receiving yards/1 TD vs. Notre Dame.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+2500"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+2500"
+        }
+      ],
+      "case_for": "Touchdowns as a passer, runner and receiver drove BYU’s 28–24 win over Notre Dame.",
+      "case_against": "His passing line also includes an interception; the versatile scoring output does not erase the turnover.",
+      "next_test": "BYU at UCF, October 24.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856809",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Malachi Toney",
+      "team_slug": "miami-fl",
+      "position": "WR",
+      "class": "",
+      "stat_line": "Week 7: 11 catches, 154 receiving yards, 2 receiving TD vs. Florida State.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+1600"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+2000"
+        }
+      ],
+      "case_for": "High receiving volume and two scores make him a distinct candidate on Miami’s offense.",
+      "case_against": "His case shares the same team spotlight as Mensah; this is an editorial consideration, not a measured vote split.",
+      "next_test": "Pittsburgh at Miami, October 24.",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401858263",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "player": "Conner Weigman",
+      "team_slug": "houston",
+      "position": "QB",
+      "class": "",
+      "stat_line": "Week 7: 24/33 passing, 343 yards, 5 TD, 1 INT; 52 rushing yards vs. Oklahoma State.",
+      "odds_as_reported": [
+        {
+          "outlet": "FanDuel via Betfirm",
+          "value": "+10000"
+        },
+        {
+          "outlet": "Caesars via Betfirm",
+          "value": "+10000"
+        }
+      ],
+      "case_for": "Five touchdown passes powered Houston’s 35–32 win and earn a place on this watch despite longer reported prices.",
+      "case_against": "The three-point margin and interception leave a clear counterweight to the touchdown total.",
+      "next_test": "Houston at Utah, October 24 (Eastern).",
+      "sources": [
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856831",
+        "https://www.betfirm.com/heisman-trophy-odds/",
+        "https://www.aol.com/articles/heisman-momentum-meter-upsets-shook-154537000.html"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "notes": "A selected seven-player watch, not an exhaustive ranking or a voting model. Statistics are Week 7 box-score facts, not season totals. Cases are CFBApex editorial analysis. Prices are the October 20 Betfirm table’s named-book reports, not independently captured sportsbook quotes or a live feed; sourcing confidence is capped at medium. Source publication date and review time are separate. Clean Mode hides prices.",
+  "source_engines": "Manual review of ESPN box scores, USA TODAY’s October 19 watch and Betfirm’s October 20 market table; no independent-engine claim."
 }

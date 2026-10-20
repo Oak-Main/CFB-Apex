@@ -53,6 +53,7 @@ function validate(doc, slugs) {
   });
   watch.forEach((entry, index) => {
     if (!entry.player) fail("player missing", entry, index);
+    if (entry.reported_status && !/^\d{4}-\d{2}-\d{2}$/.test(entry.source_as_of ?? "")) fail("dated reported status requires source_as_of", entry, index);
     if (!slugs.has(entry.team_slug)) fail(`unknown team_slug ${entry.team_slug}`, entry, index);
     for (const day of ["wed", "thu", "fri", "sat"]) {
       if (!PRACTICE.has(entry.practice?.[day] ?? null)) {
@@ -70,9 +71,16 @@ function validate(doc, slugs) {
     const allSources = [...(entry.sources ?? []), ...(entry.social ?? [])];
     if (allSources.length === 0) fail("at least one source or verified social link required", entry, index);
   });
+  const context = Array.isArray(doc.context_notes) ? doc.context_notes : [];
+  for (const entry of context) {
+    if (!entry.player || !entry.title || !entry.note || !slugs.has(entry.team_slug) || !/^\d{4}-\d{2}-\d{2}$/.test(entry.source_as_of ?? "") || !Array.isArray(entry.sources) || entry.sources.length === 0) fail("invalid dated quarterback context");
+  }
   return {
     week: typeof doc.week === "number" ? doc.week : null,
     as_of: doc.as_of ?? new Date().toISOString().slice(0, 10),
+    coverage_note: doc.coverage_note ?? null,
+    checked_at: doc.checked_at ?? null,
+    context_notes: context,
     ledger,
     watch,
   };
@@ -98,6 +106,11 @@ if (!sourcePath) {
 const slugs = teamSlugs();
 const raw = JSON.parse(readFileSync(sourcePath, "utf8"));
 const doc = validate(weekArg ? { ...raw, week: weekArg } : raw, slugs);
+
+if (process.argv.includes("--check")) {
+  console.log(`Validated week ${doc.week}: ${doc.ledger.length} ledger, ${doc.watch.length} watch, ${doc.context_notes.length} context entries; no files written.`);
+  process.exit(0);
+}
 
 writeFileSync(CURRENT, `${JSON.stringify(doc, null, 2)}\n`, "utf8");
 // Keep the source for auditability.
