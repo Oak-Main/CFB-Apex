@@ -43,8 +43,8 @@ test("server-renders the finished home utility", async () => {
     const [name, ...sources] = part.trim().split(/\s+/);
     return [name, sources];
   }));
-  assert.ok(directives.get("script-src")?.includes("https://tpembars.com"));
-  assert.ok(directives.get("connect-src")?.includes("https://tpembars.com"));
+  assert.ok(new Set(directives.get("script-src")).has("https://tpembars.com"));
+  assert.ok(new Set(directives.get("connect-src")).has("https://tpembars.com"));
   assert.ok(!directives.get("connect-src")?.some(source => ["*", "https:", "http:"].includes(source)));
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
