@@ -182,7 +182,7 @@ test("weekly release renders current data, truthful pending states and both arch
   const pages = new Map(await Promise.all(paths.map(async path => {
     const response = await fetchRoute(path);
     assert.equal(response.status, 200, path);
-    const text = (await response.text()).replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    const text = (await response.text()).replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
     assert.doesNotMatch(text, /Demonstration records|fictional|Pending 2026 season data|Live standings from ESPN, refreshed on every build/i, path);
     return [path, text];
   })));
@@ -217,7 +217,7 @@ test("weekly release renders current data, truthful pending states and both arch
 test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", async () => {
   const visible = async (path) =>
     (await (await fetchRoute(path)).text())
-      .replace(/<script[\s\S]*?<\/script>/g, " ")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
       .replace(/<[^>]+>/g, " ")
       .replace(/\s+/g, " ");
   // Week 6 is the archive board after the Oct 11 cutover; `?week=6` pins it.
@@ -244,7 +244,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
 });
 
 test("October 10 pregame corrections and partial availability caveat render", async () => {
-  const visible = async (path) => (await (await fetchRoute(path)).text()).replace(/<!--[\s\S]*?-->/g, "").replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const visible = async (path) => (await (await fetchRoute(path)).text()).replace(/<!--[\s\S]*?-->/g, "").replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   const home = await visible("/?week=6");
   assert.match(home, /SCHEDULE CHECKED 2026-10-10/);
   assert.match(home, /Friday finals: Louisville, Iowa, Utah State, Wyoming and BYU win/);
@@ -273,7 +273,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
 
 test("official availability containment renders literal designations and historical context", async () => {
   const html = (await (await fetchRoute("/injuries")).text()).replace(/<!--[\s\S]*?-->/g, "");
-  const text = html.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   assert.doesNotMatch(text, /Kahleil Jackson|Jamariun Morrow|Tre Harris/);
   assert.match(text, /87 tracked players from 19 teams/);
   assert.match(text, /Jayden Gibson[\s\S]*?South Carolina/);
@@ -320,7 +320,7 @@ test("scores metadata and hero disclose the current verified snapshot without re
   assert.match(game, /Verified Sep 7, 2026/);
   assert.doesNotMatch(game, /Verified Sep 6, 2026/);
   // Now final: the result replaces the pregame slot/announced-kickoff note.
-  const gameText = game.replace(/<script[\s\S]*?<\/script>/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const gameText = game.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
   assert.match(gameText, /North Dakota State Bison at UNLV Rebels final/);
   assert.match(gameText, /UNLV Rebels 4–3 13/);
 });
