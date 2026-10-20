@@ -5,7 +5,7 @@ import { boardWeeks, games, pollTables, verifiedRefresh } from "../lib/cfb-datas
 import { easternDate } from "../lib/game-calendar.ts";
 import { tickerGamesFor } from "../lib/homepage-data.ts";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
-import { athleteHighlight, heismanWatch, panelBrief, playoffAudit, upsetWatch } from "../lib/awards-watch.ts";
+import { athleteHighlight, heismanWatch, heismanBoard, oddsRank, panelBrief, playoffAudit, upsetWatch } from "../lib/awards-watch.ts";
 import { injuryResearch } from "../lib/injury-report.ts";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-week8-release.json", import.meta.url), "utf8"));
@@ -102,19 +102,58 @@ test("source cutoffs advance separately and all 138 records reconcile", () => {
   }
 });
 
-test("current editorial modules use verified facts and pending data stays empty", () => {
+test("current editorial modules retain their independently dated facts", () => {
   assert.equal(athleteHighlight.week, 7);
   assert.equal(athleteHighlight.athlete_of_the_week?.player, "DeSean Bishop");
   assert.equal(panelBrief.week, 8);
   assert.equal(playoffAudit.week, 8);
   assert.ok(playoffAudit.contenders.every(c => c.losses_that_end_case == null && c.remaining_sos == null));
   assert.equal(heismanWatch.week, 8);
-  assert.deepEqual(heismanWatch.contenders, []);
-  assert.match(heismanWatch.notes ?? "", /pending/);
+  assert.equal(heismanWatch.contenders.length, 7);
+  assert.equal(heismanWatch.odds_as_of, "2026-10-20");
   assert.equal(upsetWatch.week, 8);
-  assert.deepEqual(upsetWatch.picks, []);
+  assert.equal(upsetWatch.picks.length, 3);
   assert.equal(upsetWatch.trap, null);
-  assert.match(injuryResearch.coverageNote ?? "", /Partial Week 8/);
+  assert.match(injuryResearch.coverageNote ?? "", /Week 8 research completed/);
   assert.match(injuryResearch.ledger.find(r => r.player === "Nico Iamaleava")?.detail ?? "", /rest of the season/);
-  assert.ok(injuryResearch.ledger.filter(r => r.player !== "Nico Iamaleava").every(r => r.detail?.startsWith("Historical October 5")));
+  assert.equal(injuryResearch.ledger.filter(r => r.sourceAsOf === "2026-10-05").length, 6);
+});
+
+test("Week 8 research keeps unknown returns, reported statuses and medical context distinct", () => {
+  assert.equal(injuryResearch.watch.length, 11);
+  assert.equal(injuryResearch.contextNotes.length, 2);
+  assert.ok(injuryResearch.watch.every(r => Object.values(r.practice).every(v => v == null) && r.likelihood == null && r.sourceAsOf && r.sources.length));
+  assert.equal(injuryResearch.watch.find(r => r.player === "Khobie Martin")?.reportedStatus, "Week 8 return unconfirmed");
+  assert.match(injuryResearch.watch.find(r => r.player === "Kamario Taylor")?.note ?? "", /remains uncertain/);
+  assert.match(injuryResearch.contextNotes.find(r => r.player === "Hank Brown")?.note ?? "", /reported healthy/);
+  assert.ok(!injuryResearch.watch.some(r => ["Hank Brown", "Brock Thomas", "Dylan Raiola"].includes(r.player)));
+  assert.equal(injuryResearch.ledger.find(r => r.player === "James Laubstein")?.status, "IR");
+  assert.equal(injuryResearch.ledger.find(r => r.player === "Donte Lee Jr.")?.status, "IR");
+});
+
+test("Heisman signed prices sort favorites correctly and invalid formats stay unpriced", () => {
+  const example = heismanWatch.contenders[0];
+  const rank = (value: string) => oddsRank({ ...example, odds_as_reported: [{ outlet: "test", value }] });
+  assert.ok(rank("-125") < rank("-110"));
+  assert.ok(rank("-110") < rank("+100"));
+  assert.ok(rank("+100") < rank("+325"));
+  for (const value of ["N/A", "12/1", "EVEN", "+99", "-20", "+100 text"]) assert.equal(rank(value), Number.POSITIVE_INFINITY);
+  assert.ok(rank("+150000") < rank("N/A"));
+  assert.equal(heismanBoard()[0].player, "Jeremiah Smith");
+  assert.ok(heismanWatch.contenders.every(r => r.confidence === "medium" && r.stat_line.startsWith("Week 7:")));
+});
+
+test("upset entries match literal provider lines, eligible dogs, and Week 8 identities", () => {
+  const research = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-week8-research.json", import.meta.url), "utf8"));
+  for (const pick of upsetWatch.picks) {
+    const source = research.upset_lines.find((r: { url: string }) => r.url === pick.line_source_url);
+    assert.ok(source);
+    assert.equal(pick.line, pick.underdog_slug === pick.away_slug ? source.away_line : source.home_line);
+    assert.ok(Number(pick.line) >= 6);
+    assert.equal(pick.line_observed_at, source.retrieved_at);
+    assert.ok(pick.case?.includes("Counterweight:"));
+    assert.ok(games.some(g => g.week === 8 && g.homeTeamId === pick.home_slug && g.awayTeamId === pick.away_slug));
+    assert.ok(pick.sources.length >= 2);
+  }
+  assert.ok(!upsetWatch.picks.some(r => r.home_slug === "wisconsin"));
 });

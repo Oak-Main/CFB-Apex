@@ -13,7 +13,6 @@ import {
   espnLedgerEntries,
   espnWatchEntries,
   injuryResearch,
-  likelihoodFromPractice,
   officialAvailability,
   officialAvailabilityFor,
   officialAvailabilityNote,
@@ -101,6 +100,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       sources: string[];
       social: string[];
       confidence: string | null;
+      sourceAsOf: string | null;
     }> = (liveLedger ?? baseLedger).map((entry) => ({
       kind: "espn" as const,
       player: entry.player,
@@ -113,6 +113,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       sources: [] as string[],
       social: [] as string[],
       confidence: null as string | null,
+      sourceAsOf: liveAsOf ?? espnInjuriesAsOf,
     }));
     const seen = new Set(rows.map((row) => `${row.player}:${row.teamSlug}`));
     for (const entry of injuryResearch.ledger) {
@@ -131,14 +132,18 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
         sources: entry.sources,
         social: entry.social,
         confidence: entry.confidence,
+        sourceAsOf: entry.sourceAsOf ?? null,
       });
     }
-    const eligible = rows.filter((row) => officialAvailabilityFor(row.player, row.teamSlug)?.status !== "Available");
+    const eligible = rows.filter((row) => {
+      const official = officialAvailabilityFor(row.player, row.teamSlug);
+      return !(official?.status === "Available" && (!row.sourceAsOf || official.game_date >= row.sourceAsOf));
+    });
     const filtered = teamFilter ? eligible.filter((row) => row.teamSlug === teamFilter) : eligible;
     return filtered.sort(
       (a, b) => (a.teamSlug ?? "").localeCompare(b.teamSlug ?? "") || a.player.localeCompare(b.player),
     );
-  }, [liveLedger, baseLedger, teamFilter]);
+  }, [liveLedger, liveAsOf, baseLedger, teamFilter]);
 
   const watchRows = useMemo(() => {
     const espnRows = baseWatch.map((entry) => ({
@@ -155,26 +160,9 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       social: [] as string[],
       official: null as OfficialAvailabilityEntry | null,
     }));
-    const researchRows = injuryResearch.watch.map((entry) => {
-      const model = likelihoodFromPractice(entry.practice);
-      return {
-        kind: "research" as const,
-        player: entry.player,
-        teamSlug: entry.teamSlug,
-        position: entry.position,
-        injury: entry.injury,
-        practice: entry.practice,
-        likelihood: entry.likelihood ?? model.likelihood,
-        confidence: entry.confidence ?? model.confidence,
-        note: entry.note ?? model.basis,
-        sources: entry.sources,
-        social: entry.social,
-        official: null as OfficialAvailabilityEntry | null,
-      };
-    });
-    // Research rows outrank their ESPN twin; ESPN-only rows fill the board.
-    const researchKeys = new Set(researchRows.map((row) => `${row.player}:${row.teamSlug}`));
-    const priorRows = [...researchRows, ...espnRows.filter((row) => !researchKeys.has(`${row.player}:${row.teamSlug}`))];
+    // Current reporting renders separately. An October 10 designation must
+    // never replace an October 19/20 report about a different game.
+    const priorRows = espnRows;
     const officialRows = (officialAvailability?.entries ?? []).map((official) => {
       const prior = priorRows.find((row) => row.player === official.player && row.teamSlug === official.team_slug);
       const priorLedger = injuryResearch.ledger.find((row) => row.player === official.player && row.teamSlug === official.team_slug);
@@ -202,7 +190,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       <DataBoardHero
         eyebrow="Injury desk · Verified weekly"
         title="The injury report, on the record."
-        description="A limited, dated snapshot of official game availability alongside sourced long-term injury history. Missing players and teams are unknown; this is not a complete college-football injury list."
+        description="Dated Week 8 reporting, quarterback context and long-term injury updates, alongside clearly separate official game history. Missing players and teams are unknown; this is not a complete college-football injury list."
       />
       <DataBoardSummary
         label="Injury desk summary"
@@ -210,9 +198,9 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
         items={[
           { label: "Long-term ledger", value: ledgerRows.length, emphasis: true },
           { label: "Tracked game designations", value: officialAvailability?.entries.length ?? 0 },
-          { label: "Research entries", value: injuryResearch.ledger.length + injuryResearch.watch.length },
+          { label: "Research entries", value: injuryResearch.ledger.length + injuryResearch.watch.length + injuryResearch.contextNotes.length },
           { label: "Research as of", value: injuryResearch.asOf ?? "Not published" },
-          { label: "Teams covered", value: new Set([...ledgerRows, ...watchRows].map((row) => row.teamSlug)).size },
+          { label: "Teams covered", value: new Set([...ledgerRows.map(row => row.teamSlug), ...watchRows.map(row => row.teamSlug), ...injuryResearch.watch.map(row => row.teamSlug), ...injuryResearch.contextNotes.map(row => row.team_slug)].filter(Boolean)).size },
         ]}
       />
 
@@ -289,9 +277,9 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
                       <td>{row.position ?? "—"}</td>
                       <td>
                         <StatusPill status={row.status} />
-                        <small className="inj-conf">Editorial long-term category</small>
+                        <small className="inj-conf">Editorial long-term category · source {row.sourceAsOf ?? "unknown"}</small>
                       </td>
-                      <td>{row.weeksOut != null ? `${row.weeksOut}+` : row.status === "IR" ? "Indefinite" : "—"}</td>
+                      <td>{row.weeksOut != null ? `${row.weeksOut}+` : "See report"}</td>
                       <td className="inj-detail">
                         {row.detail ?? row.injury ?? "Not published"}
                         {officialAvailabilityFor(row.player, row.teamSlug) ? <p>{officialAvailabilityNote(officialAvailabilityFor(row.player, row.teamSlug)!)}</p> : null}
@@ -316,16 +304,36 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
         )}
       </section>
 
+      <section className="apex-container db-section" aria-labelledby="inj-current-title">
+        <div className="section-heading"><div><span className="eyebrow">WEEK {injuryResearch.week} · DATED REPORTING</span><h2 id="inj-current-title">Current injury and quarterback updates</h2></div></div>
+        <p className="inj-watch-note">Reported status is attributed to the linked source. It is separate from an official game designation. No practice participation or return date is inferred.</p>
+        <div className="xy-primer-grid">
+          {injuryResearch.watch.filter(row => !teamFilter || row.teamSlug === teamFilter).map(row => <article className="xy-primer-card" key={`${row.player}-${row.teamSlug}`}>
+            <span className="db-position-tag">{teamBySlug.get(row.teamSlug)?.shortName ?? row.teamSlug} · {row.position}</span>
+            <h3>{row.player}</h3>
+            <p><strong>{row.reportedStatus ?? "Not graded"}</strong> · {row.injury ?? "Not disclosed"}</p>
+            <p>Source date {row.sourceAsOf ?? "unknown"} · {row.confidence ?? "ungraded"} sourcing confidence</p>
+            <p>{row.note}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>{row.sources.map((url, index) => <a href={url} key={url} target="_blank" rel="noopener noreferrer">Source {index + 1}</a>)}</div>
+          </article>)}
+          {injuryResearch.contextNotes.filter(row => !teamFilter || row.team_slug === teamFilter).map(row => <article className="xy-primer-card" key={`${row.player}-${row.team_slug}`}>
+            <span className="db-position-tag">QUARTERBACK CONTEXT · {teamBySlug.get(row.team_slug)?.shortName ?? row.team_slug}</span>
+            <h3>{row.player}</h3><p><strong>{row.title}</strong></p><p>Source date {row.source_as_of}</p><p>{row.note}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>{row.sources.map((url, index) => <a href={url} key={url} target="_blank" rel="noopener noreferrer">Source {index + 1}</a>)}</div>
+          </article>)}
+        </div>
+      </section>
+
       <section className="apex-container db-section" aria-labelledby="inj-watch-title">
         <div className="section-heading">
           <div>
             <span className="eyebrow">GAME AVAILABILITY · DATED OFFICIAL DESIGNATIONS</span>
-            <h2 id="inj-watch-title">Tracked game availability</h2>
+            <h2 id="inj-watch-title">Historical official game availability</h2>
           </div>
         </div>
         <p className="inj-watch-note">{officialAvailability?.scope} {officialAvailability?.note}</p>
         {watchRows.length ? (
-          <details className="inj-watch-details" open={Boolean(officialAvailability?.entries.length) || !researchStale}>
+          <details className="inj-watch-details" open={!researchStale && injuryResearch.watch.length === 0}>
             <summary>
               {`Tracked availability table — ${watchRows.length} rows; official snapshot ${officialAvailability?.as_of ?? "not published"}` }
             </summary>
@@ -413,7 +421,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
           </article>
           <article className="xy-primer-card">
             <span className="db-position-tag">SOURCES</span>
-            <h3>Sentiment is evidence</h3>
+            <h3>Reporting with attribution</h3>
             <p>{INJURY_METHOD.sentiment}</p>
           </article>
         </div>

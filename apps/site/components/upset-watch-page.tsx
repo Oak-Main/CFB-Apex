@@ -16,7 +16,7 @@ const CONFIDENCE_LABEL: Record<string, string> = {
   long_fuse: "Long fuse",
 };
 
-function PickCard({ pick }: { pick: UpsetPick }) {
+function PickCard({ pick, cleanMode }: { pick: UpsetPick; cleanMode: boolean }) {
   const away = getTeamBySlug(pick.away_slug);
   const home = getTeamBySlug(pick.home_slug);
   return (
@@ -29,9 +29,11 @@ function PickCard({ pick }: { pick: UpsetPick }) {
           <h3 style={{ fontSize: 17, fontWeight: 800 }}>
             {away?.shortName ?? pick.away_slug} <span style={{ color: "var(--muted-foreground)" }}>@</span> {home?.shortName ?? pick.home_slug}
           </h3>
-          <div style={{ marginTop: 4, fontSize: 13, color: "var(--muted-foreground)" }}>
-            {pick.line != null ? pick.line : "line not published"} · {pick.line_source ?? "source n/p"}
-          </div>
+          <p style={{ marginTop: 4, fontSize: 13 }}>Upset case: {getTeamBySlug(pick.underdog_slug ?? "")?.shortName ?? pick.underdog_slug ?? "Not identified"}</p>
+          {!cleanMode ? <div style={{ marginTop: 4, fontSize: 13, color: "var(--muted-foreground)" }}>
+            Underdog {pick.line != null ? pick.line : "line not published"} · {pick.line_source ?? "source n/p"}
+            <p>Observed {pick.line_observed_at ?? "unknown"}. <a href={pick.line_source_url} target="_blank" rel="noopener noreferrer">Line source</a></p>
+          </div> : null}
         </div>
         {pick.confidence ? (
           <span
@@ -57,11 +59,14 @@ function PickCard({ pick }: { pick: UpsetPick }) {
           <strong style={{ color: "var(--foreground)" }}>Race effect:</strong> {pick.race_effect}
         </p>
       ) : null}
+      <footer style={{ display: "flex", flexWrap: "wrap", gap: 12, fontSize: 12 }}>
+        {pick.sources.filter(source => !cleanMode || source !== pick.line_source_url).map((source, index) => <a key={source} href={source} target="_blank" rel="noopener noreferrer">{source === pick.line_source_url ? "Provider snapshot" : `Box score ${index + 1}`}</a>)}
+      </footer>
     </article>
   );
 }
 
-export function UpsetWatchPage() {
+export function UpsetWatchPage({ cleanMode = true, onModeRequest }: { cleanMode?: boolean; onModeRequest?: () => void }) {
   const has = upsetWatch.picks.length > 0 || upsetWatch.trap;
   return (
     <div className="apex-home" style={{ paddingTop: 32 }}>
@@ -72,7 +77,7 @@ export function UpsetWatchPage() {
             <h1>Where the weekend&apos;s upsets actually live</h1>
             <p>
               {has
-                ? `Week ${upsetWatch.week ?? "?"} board — eligibility requires an underdog getting 6+ points per a published, cited line plus a concrete on-field reason. Lines as carried by ESPN (provider-labeled), never computed. Compiled ${upsetWatch.as_of ?? ""}.`
+                ? `Week ${upsetWatch.week ?? "?"} editorial upset cases — each meets our published-line threshold and has a concrete on-field reason plus a counterweight. Reviewed ${upsetWatch.as_of ?? ""}. These labels are not calibrated win probabilities.`
                 : upsetWatch.notes ?? "The current upset board is pending a sourced line. No line, no pick."}
             </p>
           </div>
@@ -85,12 +90,13 @@ export function UpsetWatchPage() {
               <div className="apex-lane-heading">
                 <div>
                   <span className="apex-eyebrow">THE BOARD · DOGS WITH A CASE</span>
-                  <h2>{upsetWatch.picks.length} pick{upsetWatch.picks.length === 1 ? "" : "s"} this week</h2>
+                  <h2>{`${upsetWatch.picks.length} ${upsetWatch.picks.length === 1 ? "pick" : "picks"} this week`}</h2>
                 </div>
               </div>
+              {cleanMode ? <p>Clean Mode hides market lines. <button type="button" className="button button--ghost" onClick={onModeRequest}>Review Analysis Mode disclosure</button></p> : <p>Eligibility: underdogs receiving at least six published points. Lines are copied from the dated ESPN provider snapshot and may move.</p>}
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(420px, 100%), 1fr))", gap: 14 }}>
                 {upsetWatch.picks.map((p) => (
-                  <PickCard key={`${p.away_slug}-${p.home_slug}`} pick={p} />
+                  <PickCard key={`${p.away_slug}-${p.home_slug}`} pick={p} cleanMode={cleanMode} />
                 ))}
               </div>
               {upsetWatch.notes ? (

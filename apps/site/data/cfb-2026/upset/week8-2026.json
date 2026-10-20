@@ -1,7 +1,58 @@
 {
- "week": 8,
- "as_of": "2026-10-20",
- "picks": [],
- "trap": null,
- "notes": "Week 8 upset picks are pending a sourced current line. The October 5 board is archived; no old line is presented as a current recommendation."
+  "week": 8,
+  "as_of": "2026-10-20",
+  "picks": [
+    {
+      "away_slug": "houston",
+      "home_slug": "utah",
+      "underdog_slug": "houston",
+      "line": "+6.5",
+      "line_source": "Draft Kings via ESPN",
+      "line_source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856837",
+      "line_observed_at": "2026-10-20T20:40:42.597Z",
+      "case": "Houston’s route is its passing attack: Weigman threw for 343 yards and five touchdowns in the 35–32 Oklahoma State win. That offers a concrete way to pressure Utah. Counterweight: Houston also allowed 32 points; reproducing the scoring output on the road is uncertain.",
+      "confidence": "long_fuse",
+      "race_effect": "A Houston win would add a head-to-head result against Utah to the Big 12 race; no automatic berth or elimination is asserted.",
+      "sources": [
+        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856837",
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856831"
+      ]
+    },
+    {
+      "away_slug": "indiana",
+      "home_slug": "michigan",
+      "underdog_slug": "michigan",
+      "line": "+7",
+      "line_source": "Draft Kings via ESPN",
+      "line_source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858496",
+      "line_observed_at": "2026-10-20T20:40:42.009Z",
+      "case": "Michigan just held Penn State to 18 points in a 21–18 win. A similarly restrained game creates an upset route against an Indiana offense that scored 15 at Ohio State. Counterweight: those are different opponents; one close result does not establish a predictive defensive advantage.",
+      "confidence": "long_fuse",
+      "race_effect": "A Michigan win would give Indiana a second consecutive loss and change the Big Ten head-to-head picture; postseason consequences remain conditional.",
+      "sources": [
+        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401858496",
+        "https://www.espn.com/college-football/boxscore/_/gameId/401858490",
+        "https://www.espn.com/college-football/boxscore/_/gameId/401858488"
+      ]
+    },
+    {
+      "away_slug": "texas-tech",
+      "home_slug": "cincinnati",
+      "underdog_slug": "cincinnati",
+      "line": "+10.5",
+      "line_source": "Draft Kings via ESPN",
+      "line_source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856840",
+      "line_observed_at": "2026-10-20T20:40:42.146Z",
+      "case": "Cincinnati scored 42 against West Virginia, showing a scoring route if this becomes an exchange of possessions at home. Counterweight: it still lost 45–42, while Texas Tech beat Arizona State 53–25. This is a high-risk upset case, not a claim that Cincinnati is the better team.",
+      "confidence": "long_fuse",
+      "race_effect": "A Cincinnati win would add a conference loss to Texas Tech; the Big 12 title and CFP effects depend on subsequent results.",
+      "sources": [
+        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event=401856840",
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856829",
+        "https://www.espn.com/college-football/boxscore/_/gameId/401856828"
+      ]
+    }
+  ],
+  "trap": null,
+  "notes": "Three editorial upset cases, not win probabilities or betting recommendations. Each underdog was receiving at least six published points in the October 20 ESPN/Draft Kings snapshot. Lines are copied verbatim from pointSpread.[side].close.line (the API field name does not mean the pregame market has closed). Prices can move; publication time was not supplied by the API. Observation times appear on each card in Analysis Mode. USC–Wisconsin was excluded at three points. No public betting splits were verified, so no crowd-based market-trap claim is made."
 }

@@ -87,6 +87,9 @@ export interface HeismanWatch {
   contenders: HeismanContender[];
   notes: string | null;
   source_engines?: string | null;
+  checked_at?: string | null;
+  odds_as_of?: string | null;
+  odds_source?: string | null;
 }
 
 export interface NilDealEntry {
@@ -133,6 +136,9 @@ export const heismanWatch: HeismanWatch = heismanDoc
       contenders: Array.isArray(heismanDoc.contenders) ? heismanDoc.contenders : [],
       notes: heismanDoc.notes ?? null,
       source_engines: heismanDoc.source_engines ?? null,
+      checked_at: heismanDoc.checked_at ?? null,
+      odds_as_of: heismanDoc.odds_as_of ?? null,
+      odds_source: heismanDoc.odds_source ?? null,
     }
   : { as_of: null, week: null, contenders: [], notes: null };
 
@@ -199,13 +205,14 @@ export const panelBrief: PanelBrief = panelDoc
     }
   : { as_of: null, week: null, topics: [], also_on_the_desk: [], notes: null };
 
-/** Best (shortest) reported odds as a positive-integer number, for ordering. */
+/** Signed American prices order favorites before positive-priced contenders. */
 export function oddsRank(contender: HeismanContender): number {
-  if (!contender.odds_as_reported || contender.odds_as_reported.length === 0) return 99_999;
+  if (!contender.odds_as_reported || contender.odds_as_reported.length === 0) return Number.POSITIVE_INFINITY;
   const values = contender.odds_as_reported
-    .map((entry) => Number.parseInt(entry.value.replace(/[^0-9+]/g, ""), 10))
-    .filter((value) => Number.isFinite(value) && value > 0);
-  return values.length ? Math.min(...values) : 99_999;
+    .filter((entry) => /^[+-]\d+$/.test(entry.value.trim()))
+    .map((entry) => Number(entry.value))
+    .filter((value) => Number.isSafeInteger(value) && Math.abs(value) >= 100);
+  return values.length ? Math.min(...values) : Number.POSITIVE_INFINITY;
 }
 
 /** Contenders ordered shortest reported odds first; unpriced by name. */
@@ -237,6 +244,9 @@ export interface UpsetPick {
   confidence: UpsetConfidence | null;
   race_effect: string | null;
   sources: string[];
+  underdog_slug?: string;
+  line_source_url?: string;
+  line_observed_at?: string;
 }
 
 export interface UpsetWatch {

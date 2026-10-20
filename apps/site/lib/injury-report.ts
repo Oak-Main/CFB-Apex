@@ -62,6 +62,8 @@ export interface InjuryWatchEntry {
   likelihood: Likelihood | null;
   confidence: Confidence | null;
   note: string | null;
+  sourceAsOf: string | null;
+  reportedStatus: string | null;
   sources: string[];
   social: string[];
 }
@@ -72,6 +74,7 @@ export interface InjuryResearchDoc {
   coverageNote: string | null;
   ledger: InjuryLedgerEntry[];
   watch: InjuryWatchEntry[];
+  contextNotes: Array<{ player: string; team_slug: string; source_as_of: string; title: string; note: string; sources: string[] }>;
 }
 
 /* ------------------------------------------------- editorial (vendored doc) */
@@ -82,6 +85,7 @@ interface GeneratedInjuryResearch {
   coverage_note?: string | null;
   ledger?: unknown[];
   watch?: unknown[];
+  context_notes?: InjuryResearchDoc["contextNotes"];
 }
 
 const researchDoc = ((bundle as Record<string, unknown>).injuryResearch ?? {}) as GeneratedInjuryResearch;
@@ -124,9 +128,12 @@ export const injuryResearch: InjuryResearchDoc = {
     likelihood: (row.likelihood as Likelihood | null) ?? null,
     confidence: (row.confidence as Confidence | null) ?? null,
     note: (row.note as string | null) ?? null,
+    sourceAsOf: (row.source_as_of as string | null) ?? researchDoc.as_of ?? null,
+    reportedStatus: (row.reported_status as string | null) ?? null,
     sources: (row.sources as string[]) ?? [],
     social: (row.social as string[]) ?? [],
   })),
+  contextNotes: researchDoc.context_notes ?? [],
 };
 
 /* ----------------------------------------------------- ESPN base (snapshot) */
@@ -262,8 +269,8 @@ export function injuryCounts() {
 
 export const INJURY_METHOD = {
   ledger: "The long-term ledger lists players out for the season or expected out more than 2 weeks — game-time decisions never belong here.",
-  watch: "The tracked watch reproduces dated official game designations literally. Available is not a medical prognosis, Exempt is not Available, and missing players are unknown. Older editorial likelihoods are labeled as history rather than current game status.",
-  sentiment: "Sentiment is evidence, not vibes: a likelihood call must cite a beat report, team release, or verified-account post. Unverified aggregators and speculation accounts are never sources.",
+  watch: "Current reporting carries a source date and attribution. It stays separate from the historical official table, which reproduces designations literally. Available is not a medical prognosis, Exempt is not Available, and missing players are unknown. No practice participation is inferred.",
+  sentiment: "Public team releases and named reporters support the notes. A relay through another outlet remains one reporting chain; multiple links do not automatically raise confidence. Unconfirmed returns stay unconfirmed.",
   schedule: "Official game designations are a limited reviewed snapshot. Historical editorial notes retain their dates. ESPN rows older than 14 days or without a valid date are withheld; an empty feed is not an all-clear.",
 } as const;
 

@@ -98,7 +98,7 @@ test("critical product routes render dataset-backed content", async () => {
     ["/highlight", /Jamal Roberts|DeSean Bishop/i],
     ["/upset-watch", /Upset Watch/i],
     ["/playoff-audit", /Road to the Playoff/i],
-    ["/heisman", /Week 8 Heisman research is pending/i],
+    ["/heisman", /Jeremiah Smith/i],
     ["/watch", /TicketNetwork/],
     ["/watch", /TicketSmarter/],
     ["/api/injuries", /source/],
@@ -213,12 +213,12 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(week7, /Week 8:|No. 14 Houston at No. 10 Utah leads Week 8/);
   assert.match(pages.get("/scores?week=7"), /Final/);
   assert.match(pages.get("/scores?week=8"), /56/);
-  assert.match(pages.get("/injuries"), /Partial Week 8/);
+  assert.match(pages.get("/injuries"), /Week 8 research completed/);
   assert.match(pages.get("/injuries"), /Nico Iamaleava/);
   assert.match(pages.get("/injuries"), /rest of the season/);
-  assert.match(pages.get("/heisman"), /Week 8 Heisman research is pending/);
+  assert.match(pages.get("/heisman"), /7 contenders/);
   assert.doesNotMatch(pages.get("/heisman"), /BetMGM|FanDuel|DraftKings/);
-  assert.match(pages.get("/upset-watch"), /Week 8 upset picks are pending/);
+  assert.match(pages.get("/upset-watch"), /3 picks this week/);
   assert.match(pages.get("/highlight"), /WEEK 7 CHAMPION/);
   assert.doesNotMatch(pages.get("/highlight"), /WEEK 1 CHAMPION/);
   assert.match(pages.get("/panel"), /WEEK 8 DEBATE BRIEF/);
@@ -282,7 +282,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   assert.match(watch, /Iowa[\s\S]{0,80}Washington/);
   const injuries = await visible("/injuries");
   assert.match(injuries, /Limited official availability snapshot · 2026-10-10/);
-  assert.match(injuries, /Partial Week 8 review/);
+  assert.match(injuries, /Week 8 research completed/);
   assert.match(injuries, /Research as of 2026-10-20/);
 });
 
@@ -297,7 +297,7 @@ test("official availability containment renders literal designations and histori
   assert.match(text, /Trell Harris[\s\S]*?Out/);
   assert.match(text, /Mario Craver[\s\S]*?Game Time Decision/);
   assert.match(text, /Exempt is not Available/);
-  assert.match(text, /Other long-term entries are explicitly retained from October 5/);
+  assert.match(text, /Six October 5 long-term entries/);
   assert.match(text, /Published 2026-10-10T09:30:00-05:00; retrieved 2026-10-10T14:31/);
   assert.doesNotMatch(html, /class="db-table-wrap db-desktop-data-table"/);
   const player = withoutComments(await (await fetchRoute("/players/dante-moore")).text());
@@ -316,6 +316,29 @@ test("Available Jake Maikkula keeps explicitly dated ledger history without a cu
   assert.match(text, /Available/);
   assert.match(text, /Historical editorial note \(2026-10-05\): Knee\. Historical October 5 entry; not rechecked for Week 8\. Expected to miss multiple consecutive weeks/);
   assert.doesNotMatch(jakeRows[0], /inj-pill--out/);
+});
+
+test("Week 8 reporting stays separate from older official availability and Clean Mode hides prices", async () => {
+  const injuryHtml = withoutComments(await (await fetchRoute("/injuries")).text());
+  const injuryText = visibleText(injuryHtml);
+  assert.match(injuryText, /Current injury and quarterback updates/);
+  assert.match(injuryText, /Hollywood Smothers Reported questionable/);
+  assert.match(injuryText, /Source date 2026-10-19/);
+  assert.match(injuryText, /Hank Brown Healthy; coaching decision/);
+  assert.match(injuryText, /James Laubstein.*season-ending patellar tendon/);
+  assert.match(injuryText, /Historical official game availability/);
+  assert.match(injuryText, /official snapshot 2026-10-10/);
+  const currentSection = injuryHtml.split('id="inj-current-title"')[1]?.split('aria-labelledby="inj-watch-title"')[0] ?? "";
+  assert.ok(currentSection.includes("Hollywood Smothers"));
+  assert.doesNotMatch(visibleText(currentSection), /Official · 2026-10-10|practice.*FP/);
+  for (const path of ["/heisman", "/upset-watch"]) {
+    const text = visibleText(await (await fetchRoute(path)).text());
+    assert.match(text, /Clean Mode hides market/);
+    assert.match(text, /Review Analysis Mode disclosure/);
+    assert.doesNotMatch(text, /-125|-110|\+325|\+6\.5|\+10\.5/);
+  }
+  const heisman = visibleText(await (await fetchRoute("/heisman")).text());
+  assert.doesNotMatch(heisman, /40%|25%|Two research engines|PFF grade/);
 });
 
 
