@@ -21,6 +21,7 @@ const navigation = [
   { label: "Portal", href: "/transfer-portal" },
   { label: "Injuries", href: "/injuries" },
   { label: "Watch", href: "/watch" },
+  { label: "Command Center", href: "/gameday" },
   { label: "Fantasy", href: "/dfs" },
   { label: "No Names", href: "/no-names" },
   { label: "Heisman", href: "/heisman" },

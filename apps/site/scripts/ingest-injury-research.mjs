@@ -75,12 +75,26 @@ function validate(doc, slugs) {
   for (const entry of context) {
     if (!entry.player || !entry.title || !entry.note || !slugs.has(entry.team_slug) || !/^\d{4}-\d{2}-\d{2}$/.test(entry.source_as_of ?? "") || !Array.isArray(entry.sources) || entry.sources.length === 0) fail("invalid dated quarterback context");
   }
+  if (doc.official_reports != null && !Array.isArray(doc.official_reports)) fail("official_reports must be an array");
+  const official = doc.official_reports ?? [];
+  const seen = new Set();
+  const statuses = new Set(["Available", "Out", "Doubtful", "Questionable", "Probable", "Game Time Decision", "Exempt", "Out (1st Half)", "Out for Season"]);
+  for (const row of official) {
+    const validDate = /^\d{4}-\d{2}-\d{2}$/.test(row.game_date ?? "") && Number.isFinite(Date.parse(row.game_date)) && new Date(row.game_date).toISOString().slice(0, 10) === row.game_date;
+    const published = Date.parse(row.published_at);
+    const retrieved = Date.parse(row.retrieved_at);
+    if (!row.player || !slugs.has(row.team_slug) || !row.position || !row.conference || !statuses.has(row.status) || !validDate || !row.matchup || !row.report_id || !row.report_type || !Number.isFinite(published) || !Number.isFinite(retrieved) || published > retrieved || !/^https:\/\//.test(row.source_url ?? "")) fail("invalid dated official availability report");
+    const key = `${row.team_slug}:${row.player}:${row.game_date}`;
+    if (seen.has(key)) fail("duplicate official availability report");
+    seen.add(key);
+  }
   return {
     week: typeof doc.week === "number" ? doc.week : null,
     as_of: doc.as_of ?? new Date().toISOString().slice(0, 10),
     coverage_note: doc.coverage_note ?? null,
     checked_at: doc.checked_at ?? null,
     context_notes: context,
+    official_reports: official,
     ledger,
     watch,
   };

@@ -47,6 +47,7 @@ export function stadiumPageTitle(
 
 /** Titles for static roots that previously inherited the layout default. */
 export const STATIC_ROOT_TITLES: Record<string, string> = {
+  gameday: "GameDay Command Center: TV, Results & Availability",
   scores: "College Football Scores",
   schedule: "2026 College Football Schedule",
   "transfer-portal": "College Football Transfer Portal Board",

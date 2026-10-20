@@ -62,6 +62,7 @@ import { SourceMeta } from "./SourceMeta";
 import { StadiumDetail, StadiumDirectory } from "./stadium-pages";
 import { NoNamesPage, HeismanPage, NILWatchPage, AIPanelPage, HighlightPage } from "./feature-dashboards";
 import { UpsetWatchPage } from "./upset-watch-page";
+import { GameDayCommandCenter } from "./gameday-command-center";
 import { PlayoffAuditPage } from "./playoff-audit-page";
 import { InjuryReportPage } from "./injury-report-page";
 import { BroadcastFooter } from "./broadcast/footer";
@@ -1700,6 +1701,7 @@ export function HubApp({ path = "/", boardWeek }: { path?: string; boardWeek?: B
   else if (root === "playoff-predictor") content = <PlayoffPage />;
   else if (root === "playoff-bracket") content = <CFPBracketPage />;
   else if (root === "injuries") content = <InjuryReportPage teams={teams} />;
+  else if (root === "gameday") content = <GameDayCommandCenter selection={boardWeek} />;
 
   else if (root === "no-names") content = <NoNamesPage />;
   else if (root === "highlight") content = <HighlightPage />;

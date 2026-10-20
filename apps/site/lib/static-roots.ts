@@ -8,6 +8,7 @@ export const STATIC_ROOTS = [
   "schedule",
   "transfer-portal",
   "injuries",
+  "gameday",
   "playoff-predictor",
   "playoff-bracket",
   "no-names",

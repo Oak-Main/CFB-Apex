@@ -92,3 +92,10 @@
 - Heisman statistics are Week 7 game totals. Selection and cases are editorial, with no weighted voting model. October 20 prices are Betfirm's named-book reports, not independent sportsbook captures; sourcing confidence remains medium.
 - Upset labels are editorial risk categories, not probabilities. Only literal published underdog lines of six or more points qualify. Retrieval times are known; provider publication times are not. No betting-split claim supports a market-trap card.
 - Clean Mode hides prices and uses editorial Heisman ordering. Analysis Mode is an explicit opt-in through the existing disclosure.
+
+## October 20 official follow-up and shared feed
+
+- Singleton's official Questionable designation applies to October 22 only; source update time and retrieval remain distinct. Other pending official statuses retain their older reporting dates.
+- The public Command Center feed exposes only reviewed public facts and uses current records/poll editions even with an archived schedule, explicitly labeled. Request time does not renew freshness.
+- Lovable's public homepage consumes the production release; its preview database and old poll scheduler are not production authorities. Routine weekly releases require no Lovable AI build or code republish.
+- Follow-up is bounded to Week 8 through October 25, with sequential writers and checked exact-head merges. Source/connector failure preserves unknowns and the last verified release.
