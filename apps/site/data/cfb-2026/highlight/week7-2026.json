@@ -1,0 +1,61 @@
+{
+ "week": 7,
+ "as_of": "2026-10-20",
+ "window": "October 13–17, 2026",
+ "criteria_note": "Editorial selection: production in a consequential win; all statistics checked directly against ESPN box scores. No licensed image or video supplied.",
+ "athlete_of_the_week": {
+  "player": "DeSean Bishop",
+  "team_slug": "tennessee",
+  "position": "RB",
+  "stat_line": "32 carries, 159 rushing yards, 2 TD; 3 receptions, 16 yards",
+  "opponent_slug": "alabama",
+  "result": "W 26–10 vs pregame AP No. 6 Alabama",
+  "why": "His two rushing touchdowns and 159 yards helped Tennessee defeat a top-six opponent. Selection is editorial judgment.",
+  "video_url": null,
+  "photo": null,
+  "sources": [
+   "https://www.espn.com/college-football/boxscore/_/gameId/401856723"
+  ]
+ },
+ "runners_up": [
+  {
+   "player": "Michael Hawkins Jr.",
+   "team_slug": "west-virginia",
+   "position": "QB",
+   "stat_line": "25/33, 464 passing yards, 3 TD; 77 rushing yards, 2 TD",
+   "opponent_slug": "cincinnati",
+   "result": "W 45–42 vs Cincinnati",
+   "why": "Five total touchdowns and 541 yards of total offense in a three-point win.",
+   "sources": [
+    "https://www.espn.com/college-football/boxscore/_/gameId/401856829"
+   ]
+  },
+  {
+   "player": "Torrance Burgess Jr.",
+   "team_slug": "texas-state",
+   "position": "RB",
+   "stat_line": "24 carries, 224 rushing yards, 4 TD; 3 receptions, 52 yards",
+   "opponent_slug": "colorado-state",
+   "result": "W 66–27 vs Colorado State",
+   "why": "Four rushing scores in Thursday’s win; full name and receiving production added after checking the box score.",
+   "sources": [
+    "https://www.espn.com/college-football/boxscore/_/gameId/401860923"
+   ]
+  },
+  {
+   "player": "Malachi Toney",
+   "team_slug": "miami-fl",
+   "position": "WR",
+   "stat_line": "11 receptions, 154 receiving yards, 2 TD",
+   "opponent_slug": "florida-state",
+   "result": "W 43–35 (2OT) vs Florida State",
+   "why": "A productive receiving game as Miami remained unbeaten.",
+   "sources": [
+    "https://www.espn.com/college-football/boxscore/_/gameId/401858263"
+   ]
+  }
+ ],
+ "verified_on": "2026-10-20",
+ "verification_note": "Each stat line was checked against the completed ESPN game summary box score; scores also match NCAA.",
+ "source_engines": "Independent October 20 source verification; selection and rationale are editorial."
+}

@@ -1,0 +1,315 @@
+{
+ "polls": [
+  {
+   "poll": "ap",
+   "name": "AP Top 25",
+   "release_date": "2026-10-11",
+   "rankings": [
+    {
+     "rank": 1,
+     "team_slug": "georgia",
+     "team": "Georgia",
+     "record": "6-0",
+     "points": 1745,
+     "first_place_votes": 66,
+     "previous_rank": 2,
+     "tied": false
+    },
+    {
+     "rank": 2,
+     "team_slug": "notre-dame",
+     "team": "Notre Dame",
+     "record": "6-0",
+     "points": 1630,
+     "first_place_votes": 1,
+     "previous_rank": 3,
+     "tied": false
+    },
+    {
+     "rank": 3,
+     "team_slug": "miami-fl",
+     "team": "Miami",
+     "record": "5-0",
+     "points": 1594,
+     "first_place_votes": 2,
+     "previous_rank": 4,
+     "tied": false
+    },
+    {
+     "rank": 4,
+     "team_slug": "ohio-state",
+     "team": "Ohio State",
+     "record": "5-1",
+     "points": 1508,
+     "first_place_votes": 0,
+     "previous_rank": 5,
+     "tied": false
+    },
+    {
+     "rank": 5,
+     "team_slug": "indiana",
+     "team": "Indiana",
+     "record": "6-0",
+     "points": 1461,
+     "first_place_votes": 1,
+     "previous_rank": 7,
+     "tied": false
+    },
+    {
+     "rank": 6,
+     "team_slug": "alabama",
+     "team": "Alabama",
+     "record": "5-1",
+     "points": 1372,
+     "first_place_votes": 0,
+     "previous_rank": 6,
+     "tied": false
+    },
+    {
+     "rank": 7,
+     "team_slug": "texas",
+     "team": "Texas",
+     "record": "4-1",
+     "points": 1371,
+     "first_place_votes": 0,
+     "previous_rank": 1,
+     "tied": false
+    },
+    {
+     "rank": 8,
+     "team_slug": "byu",
+     "team": "BYU",
+     "record": "5-0",
+     "points": 1237,
+     "first_place_votes": 0,
+     "previous_rank": 8,
+     "tied": false
+    },
+    {
+     "rank": 9,
+     "team_slug": "ole-miss",
+     "team": "Ole Miss",
+     "record": "4-1",
+     "points": 1135,
+     "first_place_votes": 0,
+     "previous_rank": 9,
+     "tied": false
+    },
+    {
+     "rank": 10,
+     "team_slug": "texas-tech",
+     "team": "Texas Tech",
+     "record": "5-0",
+     "points": 1132,
+     "first_place_votes": 0,
+     "previous_rank": 11,
+     "tied": false
+    },
+    {
+     "rank": 11,
+     "team_slug": "utah",
+     "team": "Utah",
+     "record": "5-0",
+     "points": 1073,
+     "first_place_votes": 0,
+     "previous_rank": 12,
+     "tied": false
+    },
+    {
+     "rank": 12,
+     "team_slug": "ucla",
+     "team": "UCLA",
+     "record": "5-0",
+     "points": 951,
+     "first_place_votes": 0,
+     "previous_rank": 21,
+     "tied": false
+    },
+    {
+     "rank": 13,
+     "team_slug": "missouri",
+     "team": "Missouri",
+     "record": "5-1",
+     "points": 882,
+     "first_place_votes": 0,
+     "previous_rank": 14,
+     "tied": false
+    },
+    {
+     "rank": 14,
+     "team_slug": "tennessee",
+     "team": "Tennessee",
+     "record": "5-1",
+     "points": 706,
+     "first_place_votes": 0,
+     "previous_rank": 15,
+     "tied": false
+    },
+    {
+     "rank": 15,
+     "team_slug": "kentucky",
+     "team": "Kentucky",
+     "record": "5-1",
+     "points": 655,
+     "first_place_votes": 0,
+     "previous_rank": null,
+     "tied": false
+    },
+    {
+     "rank": 16,
+     "team_slug": "mississippi-state",
+     "team": "Mississippi State",
+     "record": "4-1",
+     "points": 650,
+     "first_place_votes": 0,
+     "previous_rank": 17,
+     "tied": false
+    },
+    {
+     "rank": 17,
+     "team_slug": "iowa",
+     "team": "Iowa",
+     "record": "5-1",
+     "points": 621,
+     "first_place_votes": 0,
+     "previous_rank": 20,
+     "tied": false
+    },
+    {
+     "rank": 18,
+     "team_slug": "oklahoma-state",
+     "team": "Oklahoma State",
+     "record": "4-1",
+     "points": 604,
+     "first_place_votes": 0,
+     "previous_rank": 18,
+     "tied": false
+    },
+    {
+     "rank": 19,
+     "team_slug": "usc",
+     "team": "USC",
+     "record": "6-1",
+     "points": 505,
+     "first_place_votes": 0,
+     "previous_rank": 19,
+     "tied": false
+    },
+    {
+     "rank": 20,
+     "team_slug": "houston",
+     "team": "Houston",
+     "record": "5-1",
+     "points": 380,
+     "first_place_votes": 0,
+     "previous_rank": 22,
+     "tied": false
+    },
+    {
+     "rank": 21,
+     "team_slug": "wake-forest",
+     "team": "Wake Forest",
+     "record": "5-1",
+     "points": 326,
+     "first_place_votes": 0,
+     "previous_rank": null,
+     "tied": false
+    },
+    {
+     "rank": 22,
+     "team_slug": "lsu",
+     "team": "LSU",
+     "record": "4-2",
+     "points": 274,
+     "first_place_votes": 0,
+     "previous_rank": 10,
+     "tied": false
+    },
+    {
+     "rank": 23,
+     "team_slug": "boise-state",
+     "team": "Boise State",
+     "record": "5-1",
+     "points": 268,
+     "first_place_votes": 0,
+     "previous_rank": 23,
+     "tied": false
+    },
+    {
+     "rank": 24,
+     "team_slug": "smu",
+     "team": "SMU",
+     "record": "4-1",
+     "points": 142,
+     "first_place_votes": 0,
+     "previous_rank": 24,
+     "tied": false
+    },
+    {
+     "rank": 25,
+     "team_slug": "northwestern",
+     "team": "Northwestern",
+     "record": "4-1",
+     "points": 112,
+     "first_place_votes": 0,
+     "previous_rank": null,
+     "tied": false
+    }
+   ],
+   "others": [
+    {
+     "team": "Wisconsin",
+     "team_slug": "wisconsin",
+     "points": 92
+    },
+    {
+     "team": "Oregon",
+     "team_slug": "oregon",
+     "points": 86
+    },
+    {
+     "team": "Arizona",
+     "team_slug": "arizona",
+     "points": 82
+    },
+    {
+     "team": "Nebraska",
+     "team_slug": "nebraska",
+     "points": 65
+    },
+    {
+     "team": "Oklahoma",
+     "team_slug": "oklahoma",
+     "points": 44
+    },
+    {
+     "team": "James Madison",
+     "team_slug": "james-madison",
+     "points": 29
+    },
+    {
+     "team": "Florida",
+     "team_slug": "florida",
+     "points": 9
+    },
+    {
+     "team": "Duke",
+     "team_slug": "duke",
+     "points": 5
+    },
+    {
+     "team": "New Mexico",
+     "team_slug": "new-mexico",
+     "points": 3
+    },
+    {
+     "team": "Oregon State",
+     "team_slug": "oregon-state",
+     "points": 1
+    }
+   ]
+  }
+ ],
+ "source_url": "https://www.espn.com/college-football/rankings/_/week/7/year/2026/seasontype/2",
+ "verified_at": "2026-10-20T18:52:20.131Z"
+}

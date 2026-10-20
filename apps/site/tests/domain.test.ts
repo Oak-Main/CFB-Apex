@@ -334,6 +334,11 @@ test("travel affiliates: config integrity and fail-closed placement", async () =
 });
 test("Heisman watch: every contender maps to a dataset team, odds carry outlets, sources exist", async () => {
   const { heismanWatch, heismanBoard, oddsRank } = await import("../lib/awards-watch.ts");
+  if (heismanWatch.contenders.length === 0) {
+    assert.match(heismanWatch.notes ?? "", /pending/i);
+    assert.deepEqual(heismanBoard(), []);
+    return;
+  }
   assert.ok(heismanWatch.contenders.length >= 15, `expected a real watch board, got ${heismanWatch.contenders.length}`);
   const slugs = new Set(teams.map((team) => team.slug));
   for (const contender of heismanWatch.contenders) {

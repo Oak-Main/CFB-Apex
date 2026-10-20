@@ -86,7 +86,7 @@ export function BroadcastHomepage({
       ).length
     : 0;
   const featured =
-    slate.find((game) => game.id === board?.marquee_game_id && game.status !== "final") ??
+    slate.find((game) => game.id === board?.marquee_game_id) ??
     featuredGame(slate, data.teams);
   const away = data.teams.find((team) => team.slug === featured?.awayTeamId);
   const home = data.teams.find((team) => team.slug === featured?.homeTeamId);

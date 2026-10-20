@@ -181,7 +181,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       const historicalNote = prior?.note ?? [priorLedger?.injury, priorLedger?.detail].filter(Boolean).join(". ");
       return { kind: "research" as const, player: official.player, teamSlug: official.team_slug,
         position: official.position, injury: null, practice: null, likelihood: null, confidence: null,
-        note: `${officialAvailabilityNote(official)}${historicalNote ? ` Historical editorial note (${injuryResearch.asOf}): ${historicalNote}` : ""}`,
+        note: `${officialAvailabilityNote(official)}${historicalNote ? ` Historical editorial note (${priorLedger?.sourceAsOf ?? injuryResearch.asOf}): ${historicalNote}` : ""}`,
         sources: [official.source_url], social: [] as string[], official };
     });
     const rows = [...officialRows, ...priorRows.filter((row) => !officialAvailabilityFor(row.player, row.teamSlug))];
@@ -215,6 +215,10 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
           { label: "Teams covered", value: new Set([...ledgerRows, ...watchRows].map((row) => row.teamSlug)).size },
         ]}
       />
+
+      {injuryResearch.coverageNote ? (
+        <p className="apex-container inj-stale-banner" role="status">{injuryResearch.coverageNote}</p>
+      ) : null}
 
       {verifiedRefresh?.availability_review ? (
         <div className="apex-container inj-stale-banner" role="status">

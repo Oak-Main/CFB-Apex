@@ -1,0 +1,48 @@
+{
+ "week": 8,
+ "as_of": "2026-10-20",
+ "source_engines": "Current AP poll, verified Week 7 finals, school-confirmed Week 8 slate and reported availability. Persona arguments are editorial analysis; no odds or model probabilities.",
+ "topics": [
+  {
+   "id": "houston-utah-week8",
+   "question": "No. 14 Houston at No. 10 Utah: which Big 12 contender takes the next step?",
+   "traditionalist": "Utah is 6–0 and hosts this one. Winning another conference game would strengthen its position.",
+   "analyst": "Houston is 6–1 after a 35–32 win over Oklahoma State. Utah beat Colorado 27–24. Those results establish the stakes; they do not provide a win probability.",
+   "evaluator": "Watch how Houston’s passing game handles the road setting. There is no verified current-week injury clearance for either roster in this release.",
+   "what_settles_it": "Saturday October 24, 10:15 PM ET on ESPN. College GameDay airs from Utah at 9 AM–noon ET.",
+   "sources": [
+    "https://utahutes.com/news/2026/10/18/football-espns-college-gameday-coming-back-to-salt-lake-city",
+    "https://www.ncaa.com/scoreboard/football/fbs/2026/07/all-conf",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8"
+   ]
+  },
+  {
+   "id": "poll-reset-week8",
+   "question": "Miami is No. 1 after both Georgia and Notre Dame lost. How much has the national picture changed?",
+   "traditionalist": "Miami is 6–0 after beating Florida State 43–35 in two overtimes. Protecting that record starts with Pittsburgh on Saturday.",
+   "analyst": "Eight of the 22 pregame AP-ranked teams that played lost. The October 18 AP poll moves Miami to first and BYU to second. AP ranks are not CFP committee ranks.",
+   "evaluator": "BYU’s 28–24 win over Notre Dame supplies a concrete result to review. The first CFP rankings are November 3.",
+   "what_settles_it": "Pittsburgh at Miami, Saturday noon ET on ESPN; BYU at UCF, 3:30 PM ET on FOX.",
+   "sources": [
+    "https://www.ncaa.com/scoreboard/football/fbs/2026/07/all-conf",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://collegefootballplayoff.com/news/2026/8/6/sc-aug-2627"
+   ]
+  },
+  {
+   "id": "ucla-quarterback-week8",
+   "question": "What does Iamaleava’s season-ending injury mean for unbeaten UCLA?",
+   "traditionalist": "UCLA is 6–0 and ninth in the AP poll. The record still gives the Bruins a strong starting position.",
+   "analyst": "Chesney’s October 19 statement supersedes the earlier indefinite absence: AP/ESPN reports that knee surgery ends Iamaleava’s season.",
+   "evaluator": "The injury changes the quarterback context. This release does not infer practice participation or an official game-day designation for any replacement.",
+   "what_settles_it": "Michigan State at UCLA, Saturday 3:30 PM ET on CBS; follow official team and conference reports for further availability.",
+   "sources": [
+    "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://uclabruins.com/sports/football/schedule"
+   ]
+  }
+ ],
+ "also_on_the_desk": [],
+ "notes": "Reported facts and editorial argument are distinguished. Current market lines, weather and unverified policy claims are omitted."
+}

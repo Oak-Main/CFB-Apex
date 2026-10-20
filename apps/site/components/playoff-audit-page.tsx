@@ -31,7 +31,7 @@ function ContenderCard({ c }: { c: PlayoffContender }) {
           </h3>
           <div style={{ marginTop: 3, fontSize: 12.5, color: "var(--muted-foreground)" }}>
             Composite #{c.composite_rank ?? "—"} · {c.remaining_sos ?? "rem. SOS n/p"} ·{" "}
-            {c.losses_that_end_case === 0 ? "zero losses survivable" : `${c.losses_that_end_case} loss${c.losses_that_end_case === 1 ? "" : "es"} ends the case`}
+            {c.losses_that_end_case == null ? "At-large margin not projected" : c.losses_that_end_case === 0 ? "zero losses survivable" : `${c.losses_that_end_case} loss${c.losses_that_end_case === 1 ? "" : "es"} ends the case`}
           </div>
         </div>
         {c.tag ? (
@@ -69,12 +69,14 @@ export function PlayoffAuditPage() {
             <h1>The weekly 12-team resume audit</h1>
             <p>
               {has
-                ? `Week ${playoffAudit.week ?? "?"} audit through Saturday's games — ${playoffAudit.contenders.length} contenders with records, composite rank, remaining schedule strength, and the loss count that ends each at-large case. Five highest-ranked conference champions plus seven at-larges. Compiled ${playoffAudit.as_of ?? ""}.`
+                ? `Week ${playoffAudit.week ?? "?"} resume check — ${playoffAudit.contenders.length} teams with verified records and an editorial AP/Coaches composite. Remaining schedule strength and at-large loss thresholds are not projected. Compiled ${playoffAudit.as_of ?? ""}. First CFP rankings: November 3.`
                 : "The Sunday audit ranks the realistic 12-team field: record, composite rank, remaining SOS, and resume state with every number sourced. Publishes Sundays once Week 3 begins."}
             </p>
           </div>
           <span className="apex-season-label"><span /><span className="apex-season-word">2026</span> SEASON</span>
         </div>
+
+        <p className="apex-data-note">The 2026 CFP has 12 teams: the ACC, Big Ten, Big 12 and SEC champions, the highest-ranked team from the other six FBS conferences, and seven at-large teams. Notre Dame qualifies if ranked in the final CFP top 12. <a href="https://collegefootballplayoff.com/news/2026/8/6/sc-aug-2627" target="_blank" rel="noopener noreferrer">Official CFP format and ranking dates</a>.</p>
 
         {has ? (
           <>

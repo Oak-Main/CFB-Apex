@@ -178,7 +178,7 @@ export function HeismanPage() {
             <p>
               {hasBoard
                 ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} contenders, every stat line sourced, every odds figure as reported by the named book. Compiled ${heismanWatch.as_of ?? ""} from a sourced research pass (see compilation note).`
-                : "Our top-10 ranking debuts after Week 3. Until then, here's the methodology."}
+                : heismanWatch.notes ?? "The current Heisman watch is pending source verification."}
             </p>
           </div>
           <span className="apex-season-label"><span /><span className="apex-season-word">2026</span> SEASON</span>
@@ -305,8 +305,7 @@ export function HeismanPage() {
             <Trophy size={48} style={{ color: "var(--primary)", marginBottom: 16 }} aria-hidden />
             <h2 style={{ fontSize: 28, textTransform: "uppercase", marginBottom: 8 }}>Watch List Pending</h2>
             <p style={{ color: "var(--muted-foreground)", maxWidth: 480, margin: "0 auto" }}>
-              The first data-driven Heisman Watch ranking publishes after Week 3 concludes (September 19).
-              Three weeks of film, stats, and results give every candidate a real sample size.
+              {heismanWatch.notes ?? "The current watch list publishes after its player statistics and source dates have been verified."}
             </p>
           </div>
         )}
@@ -418,7 +417,7 @@ export function HighlightPage() {
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(480px, 100%), 1fr))", gap: 14 }}>
-                <HighlightCard entry={winner} rank="WEEK 1 CHAMPION" emphasis />
+                <HighlightCard entry={winner} rank={`WEEK ${athleteHighlight.week} CHAMPION`} emphasis />
               </div>
             </div>
 

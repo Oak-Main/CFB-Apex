@@ -877,13 +877,14 @@ console.log(`Playoff audit: ${playoffAudit ? "week " + playoffAudit.week + " —
 // data/injury-research/current.json is written by scripts/ingest-injury-research.mjs
 // from the weekly research run. Absent file = nothing published.
 const RESEARCH_PATH = join(projectRoot, "data", "injury-research", "current.json");
-let injuryResearch = { week: null, as_of: null, ledger: [], watch: [] };
+let injuryResearch = { week: null, as_of: null, coverage_note: null, ledger: [], watch: [] };
 if (existsSync(RESEARCH_PATH)) {
   try {
     const raw = JSON.parse(readFileSync(RESEARCH_PATH, "utf8"));
     injuryResearch = {
       week: typeof raw.week === "number" ? raw.week : null,
       as_of: raw.as_of ?? null,
+      coverage_note: raw.coverage_note ?? null,
       ledger: Array.isArray(raw.ledger) ? raw.ledger : [],
       watch: Array.isArray(raw.watch) ? raw.watch : [],
     };
