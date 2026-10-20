@@ -46,6 +46,7 @@ export interface InjuryLedgerEntry {
   /** Expected weeks remaining out; must be > 2 for a non-season entry. */
   weeksOut: number | null;
   detail: string | null;
+  sourceAsOf?: string | null;
   sources: string[];
   social: string[];
   confidence: Confidence | null;
@@ -68,6 +69,7 @@ export interface InjuryWatchEntry {
 export interface InjuryResearchDoc {
   week: number | null;
   asOf: string | null;
+  coverageNote: string | null;
   ledger: InjuryLedgerEntry[];
   watch: InjuryWatchEntry[];
 }
@@ -77,6 +79,7 @@ export interface InjuryResearchDoc {
 interface GeneratedInjuryResearch {
   week?: number | null;
   as_of?: string | null;
+  coverage_note?: string | null;
   ledger?: unknown[];
   watch?: unknown[];
 }
@@ -98,6 +101,7 @@ function mapPractice(row: Record<string, unknown>): InjuryWatchEntry["practice"]
 export const injuryResearch: InjuryResearchDoc = {
   week: researchDoc.week ?? null,
   asOf: researchDoc.as_of ?? null,
+  coverageNote: researchDoc.coverage_note ?? null,
   ledger: ((researchDoc.ledger ?? []) as Array<Record<string, unknown>>).map((row) => ({
     player: String(row.player ?? ""),
     teamSlug: String(row.team_slug ?? ""),
@@ -106,6 +110,7 @@ export const injuryResearch: InjuryResearchDoc = {
     status: row.status === "IR" ? ("IR" as const) : ("OUT" as const),
     weeksOut: typeof row.weeks_out === "number" ? row.weeks_out : null,
     detail: (row.detail as string | null) ?? null,
+    sourceAsOf: (row.source_as_of as string | null) ?? researchDoc.as_of ?? null,
     sources: (row.sources as string[]) ?? [],
     social: (row.social as string[]) ?? [],
     confidence: (row.confidence as Confidence | null) ?? null,

@@ -1,722 +1,110 @@
 {
-  "week": 6,
-  "as_of": "2026-10-05",
-  "ledger": [
-    {
-      "player": "Mason Heintschel",
-      "team_slug": "pittsburgh",
-      "position": "QB",
-      "injury": "Torn right ACL (Oct 2 at Virginia Tech)",
-      "status": "IR",
-      "weeks_out": null,
-      "detail": "Season-ending reconstructive surgery confirmed by HC Pat Narduzzi Oct 4; completed 67.7% for 1,191 yards, 13 TD, 1 INT in guiding Pitt to 5-0 and No. 25 AP.",
-      "sources": [
-        "https://www.altoonamirror.com/sports/2026/10/pitt-loses-qb-heintschel-for-season/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Amaris Williams",
-      "team_slug": "georgia",
-      "position": "OLB",
-      "injury": "Knee (spring)",
-      "status": "IR",
-      "weeks_out": null,
-      "detail": "Spring knee injury; confirmed sidelined for the entire 2026 campaign.",
-      "sources": [
-        "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jayden Gibson",
-      "team_slug": "south-carolina",
-      "position": "WR",
-      "injury": "Lower body",
-      "status": "IR",
-      "weeks_out": null,
-      "detail": "Ruled out for remainder of the season.",
-      "sources": [
-        "https://gamecocksonline.com/sports/football/roster/player/jayden-gibson/",
-        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
-        "https://www.dailygamecock.com/article/2026/08/receivers-jayden-sellers-jayden-gibson-out-for-the-season-sports-davis"
-      ],
-      "social": []
-    },
-    {
-      "player": "Zahir Mathis",
-      "team_slug": "maryland",
-      "position": "LB",
-      "injury": "Knee",
-      "status": "IR",
-      "weeks_out": null,
-      "detail": "Confirmed out for the season.",
-      "sources": [
-        "https://umterps.com/sports/football/roster/zahir-mathis/15629",
-        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
-        "https://www.testudotimes.com/maryland-terps-football/92288/maryland-de-zahir-mathis-reportedly-suffers-season-ending-injury"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jayden Sellers",
-      "team_slug": "south-carolina",
-      "position": "WR",
-      "injury": "Lower body",
-      "status": "IR",
-      "weeks_out": null,
-      "detail": "Confirmed out for the season.",
-      "sources": [
-        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jake Maikkula",
-      "team_slug": "oklahoma",
-      "position": "C",
-      "injury": "Knee",
-      "status": "OUT",
-      "weeks_out": 3,
-      "detail": "Expected to miss multiple consecutive weeks; out for the Red River Rivalry.",
-      "sources": [
-        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
-      ],
-      "social": []
-    }
-  ],
-  "watch": [
-    {
-      "player": "Dante Moore",
-      "team_slug": "oregon",
-      "position": "QB",
-      "injury": "Concussion (targeting hit at USC, Sep 26)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "out",
-      "confidence": "high",
-      "note": "AP reported October 8 that Dante Moore is out against UCLA and Dylan Raiola will start. Checked October 10. This is a reported designation, not an independently retrieved official conference availability filing; practice participation remains unpublished.",
-      "sources": [
-        "https://apnews.com/article/dante-moore-dylan-raiola-5d7a6ffbbb9eb92e5c09268b2232b6c2",
-        "https://goducks.com/news/2026/10/6/football-ducks-host-bruins-in-top-25-battle"
-      ],
-      "social": [],
-      "verified_at": "2026-10-10T09:08:00Z"
-    },
-    {
-      "player": "AK Dear",
-      "team_slug": "alabama",
-      "position": "RB",
-      "injury": "Ankle (preseason)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Preseason ankle injury approaching the end of a six-week recovery protocol. JP Productions Sports, Oct 1, 2026.",
-      "sources": [
-        "https://www.facebook.com/jpproductionssports/posts/7215ee9c/122187490322891135/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Michael Carroll",
-      "team_slug": "alabama",
-      "position": "OL",
-      "injury": "Lower body",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "doubtful",
-      "confidence": "medium",
-      "note": "Designated doubtful on league availability filings (carried since the Sep 9 designation). Tide 100.9.",
-      "sources": [
-        "https://tide1009.com/wednesday-availability-report-alabama-kentucky-2026/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Tyriq Green",
-      "team_slug": "georgia",
-      "position": "DB",
-      "injury": "Ankle",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Inactive for the Vanderbilt game and designated out for Alabama. DawgNation, Oct 3, 2026.",
-      "sources": [
-        "https://www.dawgnation.com/gameday/georgia-football-injury-update-wr-room-suffers-another-blow-while-nate-frazier-returns/7GMG5R7V35AGNHWTU2HTBYAQUQ/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Marcus Harrison",
-      "team_slug": "georgia",
-      "position": "OL",
-      "injury": "Undisclosed",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "medium",
-      "note": "Ruled out of the active rotation. The Atlanta Journal-Constitution, Oct 1, 2026.",
-      "sources": [
-        "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Isiah Canion",
-      "team_slug": "georgia",
-      "position": "WR",
-      "injury": "Right leg (Arkansas game)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "high",
-      "note": "Held out against Vanderbilt after suffering the injury against Arkansas. DawgNation, Oct 3, 2026.",
-      "sources": [
-        "https://www.dawgnation.com/gameday/georgia-football-injury-update-wr-room-suffers-another-blow-while-nate-frazier-returns/7GMG5R7V35AGNHWTU2HTBYAQUQ/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Chase Linton",
-      "team_slug": "georgia",
-      "position": "OLB",
-      "injury": "Ankle",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Upgraded to questionable ahead of Week 6. The Atlanta Journal-Constitution, Oct 1, 2026.",
-      "sources": [
-        "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Thomas Blackshear",
-      "team_slug": "georgia",
-      "position": "WR",
-      "injury": "Shoulder",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "high",
-      "note": "Exited early during the Week 5 contest. DawgNation, Oct 3, 2026.",
-      "sources": [
-        "https://www.dawgnation.com/gameday/georgia-football-injury-update-wr-room-suffers-another-blow-while-nate-frazier-returns/7GMG5R7V35AGNHWTU2HTBYAQUQ/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Nate Frazier",
-      "team_slug": "georgia",
-      "position": "RB",
-      "injury": "Rib",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "high",
-      "note": "Cleared and active for full competition against Vanderbilt. DawgNation, Oct 3, 2026.",
-      "sources": [
-        "https://www.dawgnation.com/gameday/georgia-football-injury-update-wr-room-suffers-another-blow-while-nate-frazier-returns/7GMG5R7V35AGNHWTU2HTBYAQUQ/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jay Clark",
-      "team_slug": "kentucky",
-      "position": "OL",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Ruled out on the conference availability filing (carried since Sep 18). On3.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Lincoln Watkins",
-      "team_slug": "kentucky",
-      "position": "TE",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Ruled out on the conference availability filing. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Andre Clarke Jr.",
-      "team_slug": "kentucky",
-      "position": "CB",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Sidelined in the secondary rotation per the SEC availability report. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Grant Grayton",
-      "team_slug": "kentucky",
-      "position": "CB",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Downgraded from questionable to out on the availability report. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jamarrion Harkless",
-      "team_slug": "kentucky",
-      "position": "DT",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Nose tackle downgraded to out on the conference report. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Alex VanSumeren",
-      "team_slug": "usc",
-      "position": "DL",
-      "injury": "Lower body (Oregon game)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "high",
-      "note": "Sustained against Oregon; evaluation ongoing. Sports Illustrated, Oct 2, 2026.",
-      "sources": [
-        "https://www.si.com/college/usc/football/usc-trojans-injury-report-washington-huskies"
-      ],
-      "social": []
-    },
-    {
-      "player": "Alex Graham",
-      "team_slug": "usc",
-      "position": "DB",
-      "injury": "Hamstring",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "high",
-      "note": "Held out against Washington. Sports Illustrated, Oct 2, 2026.",
-      "sources": [
-        "https://www.si.com/college/usc/football/usc-trojans-injury-report-washington-huskies"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jahkeem Stewart",
-      "team_slug": "usc",
-      "position": "DL",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "high",
-      "note": "Conditioned and cleared; played 36 defensive snaps against Washington. Sports Illustrated, Oct 2, 2026.",
-      "sources": [
-        "https://www.si.com/college/usc/football/usc-trojans-injury-report-washington-huskies"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jamarion Morrow",
-      "team_slug": "texas-am",
-      "position": "RB",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "doubtful",
-      "confidence": "medium",
-      "note": "Sidelined in the offensive backfield rotation on the SEC availability disclosure. On3, Sep 18, 2026.",
-      "sources": [
-        "https://12thman.com/sports/football/roster/season/2026/player/jamarion-morrow",
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Ashton Bethel-Roman",
-      "team_slug": "texas-am",
-      "position": "WR",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "doubtful",
-      "confidence": "medium",
-      "note": "Inactive on the conference availability disclosure. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Anto Saka",
-      "team_slug": "texas-am",
-      "position": "DE",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "medium",
-      "note": "Upgraded to probable following practice evaluation. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "TK Norman",
-      "team_slug": "texas-am",
-      "position": "WR",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "medium",
-      "note": "Rotational receiver upgraded to probable. On3, Sep 18, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/kentucky-wildcats/news/sec-availability-report-kentucky-without-jamarrion-harkless-texas-am/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Daymion Sanford",
-      "team_slug": "texas-am",
-      "position": "LB",
-      "injury": "Lower body",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Status listed as undetermined. CBS Sports, Sep 15, 2026.",
-      "sources": [
-        "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Cam Coleman",
-      "team_slug": "texas",
-      "position": "WR",
-      "injury": "Bruised tailbone (Tennessee game)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "high",
-      "note": "Cleared for full action. Sports Illustrated, Sep 29, 2026.",
-      "sources": [
-        "https://www.si.com/college/texas/football/texas-longhorns-injury-update-on-cam-coleman-hollywood-smothers"
-      ],
-      "social": []
-    },
-    {
-      "player": "Hollywood Smothers",
-      "team_slug": "texas",
-      "position": "RB",
-      "injury": "Ankle",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "high",
-      "note": "Rested against Tennessee as a strategic precaution; expected available. Sports Illustrated, Sep 29, 2026.",
-      "sources": [
-        "https://www.si.com/college/texas/football/texas-longhorns-injury-update-on-cam-coleman-hollywood-smothers"
-      ],
-      "social": []
-    },
-    {
-      "player": "Trevor Goosby",
-      "team_slug": "texas",
-      "position": "OT",
-      "injury": "Knee bone bruise (practice)",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Limited in team work. Covers.com, Oct 3, 2026.",
-      "sources": [
-        "https://www.covers.com/sport/football/ncaaf/injuries"
-      ],
-      "social": []
-    },
-    {
-      "player": "Michael Fasusi",
-      "team_slug": "oklahoma",
-      "position": "OT",
-      "injury": "Shoulder",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Officially ruled out for the Red River Rivalry. Sports Illustrated, Oct 1, 2026.",
-      "sources": [
-        "https://www.si.com/college/texas/football/red-river-rivalry-5-early-texas-vs-oklahoma-storylines-to-watch"
-      ],
-      "social": []
-    },
-    {
-      "player": "Trell Harris",
-      "team_slug": "oklahoma",
-      "position": "WR",
-      "injury": "Back",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "medium",
-      "note": "Out with no return timetable established. Covers.com, Sep 15, 2026.",
-      "sources": [
-        "https://soonersports.com/sports/football/roster/trell-harris/20196",
-        "https://www.covers.com/sport/football/ncaaf/teams/main/oklahoma-sooners/injuries"
-      ],
-      "social": []
-    },
-    {
-      "player": "Kip Lewis",
-      "team_slug": "oklahoma",
-      "position": "LB",
-      "injury": "Knee",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Active status in question. Covers.com, Sep 20, 2026.",
-      "sources": [
-        "https://www.covers.com/sport/football/ncaaf/teams/main/oklahoma-sooners/injuries"
-      ],
-      "social": []
-    },
-    {
-      "player": "Dylan Stewart",
-      "team_slug": "south-carolina",
-      "position": "EDGE",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "questionable",
-      "confidence": "medium",
-      "note": "Post-suspension status unclear; Shane Beamer issued no formal update. Saturday Down South, Oct 4, 2026.",
-      "sources": [
-        "https://www.saturdaydownsouth.com/news/college-football/shane-beamer-asked-about-dylan-stewarts-status-entering-week-6/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Josiah Thompson",
-      "team_slug": "south-carolina",
-      "position": "OT",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "medium",
-      "note": "Sidelined; missed consecutive SEC contests. Sports Illustrated, Sep 17, 2026.",
-      "sources": [
-        "https://www.si.com/fannation/college/cfb-hq/news/sam-leavitt-college-football-injury-report-week-3"
-      ],
-      "social": []
-    },
-    {
-      "player": "Jacarrius Peak",
-      "team_slug": "south-carolina",
-      "position": "OT",
-      "injury": "Knee",
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "medium",
-      "note": "Knee rehab complete; returned to the offensive line rotation. 247Sports, Sep 19, 2026.",
-      "sources": [
-        "https://247sports.com/article/south-carolina-mississippi-state-football-2026-sec-availability-report-290033039/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Phillip Daniels",
-      "team_slug": "ohio-state",
-      "position": "OT",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "unlikely",
-      "confidence": "high",
-      "note": "Downgraded from questionable to out. On3, Oct 2, 2026.",
-      "sources": [
-        "https://www.on3.com/teams/penn-state-nittany-lions/news/the-big-ten-will-now-require-midweek-availability-reports-heres-what-it-means-for-penn-state-football-and-others/"
-      ],
-      "social": []
-    },
-    {
-      "player": "Holden Geriner",
-      "team_slug": "pittsburgh",
-      "position": "QB",
-      "injury": null,
-      "practice": {
-        "wed": null,
-        "thu": null,
-        "fri": null,
-        "sat": null
-      },
-      "likelihood": "likely",
-      "confidence": "high",
-      "note": "Named the Week 6 starter vs North Carolina (first Pitt start): relief line 8/12, 78 yds, 1 TD vs Virginia Tech. Altoona Mirror / 247Sports, Oct 4, 2026.",
-      "sources": [
-        "https://247sports.com/college/pittsburgh/article/mason-heintschel-pitt-quarterback-injury-holden-geriner-north-carolina-290853502/"
-      ],
-      "social": []
-    }
-  ],
-  "partial_update_note": "Historical editorial notes retain October 5 cutoff (Dante Moore checked October 10). Current game designations are a separate, limited official-report snapshot; they do not imply injury diagnoses or duration."
+ "week": 8,
+ "as_of": "2026-10-20",
+ "coverage_note": "Partial Week 8 review: Nico Iamaleava’s season-ending surgery is newly verified. Other long-term entries are explicitly retained from October 5 and have not been rechecked for Week 8. No status is inferred for a player absent from this list. The October 10 official availability reports remain historical.",
+ "ledger": [
+  {
+   "player": "Mason Heintschel",
+   "team_slug": "pittsburgh",
+   "position": "QB",
+   "injury": "Torn right ACL (Oct 2 at Virginia Tech)",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Season-ending reconstructive surgery confirmed by HC Pat Narduzzi Oct 4; completed 67.7% for 1,191 yards, 13 TD, 1 INT in guiding Pitt to 5-0 and No. 25 AP.",
+   "sources": [
+    "https://www.altoonamirror.com/sports/2026/10/pitt-loses-qb-heintschel-for-season/"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Amaris Williams",
+   "team_slug": "georgia",
+   "position": "OLB",
+   "injury": "Knee (spring)",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Spring knee injury; confirmed sidelined for the entire 2026 campaign.",
+   "sources": [
+    "https://www.ajc.com/sports/2026/10/how-the-georgia-injury-situation-looks-heading-into-vanderbilt-game/"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Jayden Gibson",
+   "team_slug": "south-carolina",
+   "position": "WR",
+   "injury": "Lower body",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Ruled out for remainder of the season.",
+   "sources": [
+    "https://gamecocksonline.com/sports/football/roster/player/jayden-gibson/",
+    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
+    "https://www.dailygamecock.com/article/2026/08/receivers-jayden-sellers-jayden-gibson-out-for-the-season-sports-davis"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Zahir Mathis",
+   "team_slug": "maryland",
+   "position": "LB",
+   "injury": "Knee",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
+   "sources": [
+    "https://umterps.com/sports/football/roster/zahir-mathis/15629",
+    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/",
+    "https://www.testudotimes.com/maryland-terps-football/92288/maryland-de-zahir-mathis-reportedly-suffers-season-ending-injury"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Jayden Sellers",
+   "team_slug": "south-carolina",
+   "position": "WR",
+   "injury": "Lower body",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Confirmed out for the season.",
+   "sources": [
+    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Jake Maikkula",
+   "team_slug": "oklahoma",
+   "position": "C",
+   "injury": "Knee",
+   "status": "OUT",
+   "weeks_out": 3,
+   "detail": "Historical October 5 entry; not rechecked for Week 8. Expected to miss multiple consecutive weeks; out for the Red River Rivalry.",
+   "sources": [
+    "https://www.cbssports.com/college-football/news/college-football-injury-tracker-2026-season/"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-05"
+  },
+  {
+   "player": "Nico Iamaleava",
+   "team_slug": "ucla",
+   "position": "QB",
+   "injury": "Knee; season-ending surgery",
+   "status": "IR",
+   "weeks_out": null,
+   "detail": "Coach Bob Chesney said October 19 that Iamaleava will miss the rest of the season and undergo knee surgery, according to AP/ESPN. Reported availability; no Week 8 conference filing retrieved.",
+   "sources": [
+    "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery"
+   ],
+   "social": [],
+   "source_as_of": "2026-10-19"
+  }
+ ],
+ "watch": []
 }

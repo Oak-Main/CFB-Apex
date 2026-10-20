@@ -49,12 +49,12 @@ test("official overlay has 39 tracked players plus 48 changed players with dated
 });
 
 test("historical cutoffs and long-term classifications are preserved, corrected identities are not duplicated", () => {
-  assert.equal(injuryResearch.asOf, "2026-10-05");
+  assert.equal(injuryResearch.asOf, "2026-10-20");
   assert.equal(fantasyNotesAsOf, "2026-09-07");
   // Week 6 keeps its base snapshot time; the Week 7 release carries its own.
   assert.equal(boardWeeks.find((row) => row.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
-  assert.equal(verifiedRefresh?.retrieved_at, "2026-10-11T10:30:00Z");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-03");
+  assert.equal(boardWeeks.find((row) => row.week === 7)?.retrieved_at, "2026-10-11T10:30:00Z");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Mason Heintschel")?.status, "IR");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Zahir Mathis")?.teamSlug, "maryland");
   assert.ok(!injuryResearch.watch.some((row) => row.player === "Tre Harris" || row.player === "Jamariun Morrow"));

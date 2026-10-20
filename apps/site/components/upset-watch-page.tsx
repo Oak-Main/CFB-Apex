@@ -73,7 +73,7 @@ export function UpsetWatchPage() {
             <p>
               {has
                 ? `Week ${upsetWatch.week ?? "?"} board — eligibility requires an underdog getting 6+ points per a published, cited line plus a concrete on-field reason. Lines as carried by ESPN (provider-labeled), never computed. Compiled ${upsetWatch.as_of ?? ""}.`
-                : "The Thursday board picks 3-5 genuine upset spots: an underdog getting 6+ per a published line, plus the on-field reason the number is beatable. No line, no pick."}
+                : upsetWatch.notes ?? "The current upset board is pending a sourced line. No line, no pick."}
             </p>
           </div>
           <span className="apex-season-label"><span /><span className="apex-season-word">2026</span> SEASON</span>

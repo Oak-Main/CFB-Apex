@@ -69,3 +69,12 @@
 
 - ESPN's `timeValid` flag separates a placeholder from a set time. A visiting school's listing is adopted once ESPN shows the same instant with `timeValid: true`.
 - A host schedule that lists two alternative networks ("ABC or ESPN") is unresolved, not conflicting. A participating school's single network that ESPN also shows resolves it.
+
+## October 20 Week 8 verification
+
+- Scope is the October 20 package and the weekly site surfaces. Scores are final only when completed ESPN data agrees with NCAA; a passed kickoff is insufficient.
+- School-local times convert to the same ESPN UTC instant. A named participating school’s network can resolve a missing/ambiguous host listing when ESPN agrees; Sacramento State–Ball State remains unresolved.
+- Current overall records reconcile from the previously reviewed October 11 baseline, including three FCS opponents. AP movement uses October 11, not the older October 4 snapshot.
+- NCAA totals are through October 17; polls are October 18. Ratings, portal, fantasy and historical official availability retain their own dates.
+- Missing Week 8 availability is unknown. The ESPN injuries endpoint returned historical rows (including 2020); it cannot support a general current injury feed. No all-clear or universal no-firing finding is published.
+- Unretrieved policy/eligibility/transfer-window claims, hot-seat rankings, weather, streak discrepancies and timestamped odds remain unverified. The CFP format/calendar is separately verified from its official August 6 release.

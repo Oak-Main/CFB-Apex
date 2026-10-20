@@ -1,0 +1,356 @@
+{
+ "week": 8,
+ "as_of": "2026-10-20",
+ "source_engines": "Factual pre-CFP resume check: October 18 AP/Coaches editorial composite, October 20 records, verified Week 7 results and official CFP format. No at-large loss thresholds, remaining-SOS ranking, odds or CFP committee ranks are inferred.",
+ "contenders": [
+  {
+   "team_slug": "miami-fl",
+   "record": "6-0",
+   "composite_rank": 1,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: florida-state 35, miami-fl 43. AP No. 1 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603967"
+   ]
+  },
+  {
+   "team_slug": "byu",
+   "record": "6-0",
+   "composite_rank": 2,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: notre-dame 24, byu 28. AP No. 2 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604142"
+   ]
+  },
+  {
+   "team_slug": "ohio-state",
+   "record": "6-1",
+   "composite_rank": 3,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: ohio-state 19, indiana 15. AP No. 3 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603951"
+   ]
+  },
+  {
+   "team_slug": "georgia",
+   "record": "6-1",
+   "composite_rank": 4,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: auburn 27, georgia 24. AP No. 5 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6640745"
+   ]
+  },
+  {
+   "team_slug": "notre-dame",
+   "record": "6-1",
+   "composite_rank": 5,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: notre-dame 24, byu 28. AP No. 4 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604142"
+   ]
+  },
+  {
+   "team_slug": "indiana",
+   "record": "6-1",
+   "composite_rank": 6,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: ohio-state 19, indiana 15. AP No. 6 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603951"
+   ]
+  },
+  {
+   "team_slug": "texas-tech",
+   "record": "6-0",
+   "composite_rank": 7,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: arizona-state 25, texas-tech 53. AP No. 8 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6640768"
+   ]
+  },
+  {
+   "team_slug": "ole-miss",
+   "record": "5-1",
+   "composite_rank": 8,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: missouri 3, ole-miss 31. AP No. 7 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6640615"
+   ]
+  },
+  {
+   "team_slug": "ucla",
+   "record": "6-0",
+   "composite_rank": 9,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: wisconsin 7, ucla 17. AP No. 9 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604121"
+   ]
+  },
+  {
+   "team_slug": "utah",
+   "record": "6-0",
+   "composite_rank": 10,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: utah 27, colorado 24. AP No. 10 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604100"
+   ]
+  },
+  {
+   "team_slug": "tennessee",
+   "record": "6-1",
+   "composite_rank": 11,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: alabama 10, tennessee 26. AP No. 11 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604027"
+   ]
+  },
+  {
+   "team_slug": "kentucky",
+   "record": "6-1",
+   "composite_rank": 12,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: kentucky 21, oklahoma 13. AP No. 12 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604095"
+   ]
+  },
+  {
+   "team_slug": "alabama",
+   "record": "5-2",
+   "composite_rank": 13,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: alabama 10, tennessee 26. AP No. 13 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604027"
+   ]
+  },
+  {
+   "team_slug": "iowa",
+   "record": "5-1",
+   "composite_rank": 14,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "No Week 7 FBS-vs-FBS game; latest record and composite shown.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8"
+   ]
+  },
+  {
+   "team_slug": "houston",
+   "record": "6-1",
+   "composite_rank": 15,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: oklahoma-state 32, houston 35. AP No. 14 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603838"
+   ]
+  },
+  {
+   "team_slug": "usc",
+   "record": "6-1",
+   "composite_rank": 16,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "No Week 7 FBS-vs-FBS game; latest record and composite shown.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8"
+   ]
+  },
+  {
+   "team_slug": "lsu",
+   "record": "5-2",
+   "composite_rank": 17,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: mississippi-state 0, lsu 31. AP No. 18 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603818"
+   ]
+  },
+  {
+   "team_slug": "wake-forest",
+   "record": "6-1",
+   "composite_rank": 18,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: wake-forest 41, california 7. AP No. 17 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6604355"
+   ]
+  },
+  {
+   "team_slug": "texas",
+   "record": "4-2",
+   "composite_rank": 19,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: florida 27, texas 24. AP No. 19 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603649"
+   ]
+  },
+  {
+   "team_slug": "boise-state",
+   "record": "5-1",
+   "composite_rank": 20,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "No Week 7 FBS-vs-FBS game; latest record and composite shown.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8"
+   ]
+  },
+  {
+   "team_slug": "missouri",
+   "record": "5-2",
+   "composite_rank": 21,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: missouri 3, ole-miss 31. AP No. 22 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6640615"
+   ]
+  },
+  {
+   "team_slug": "smu",
+   "record": "5-1",
+   "composite_rank": 22,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: virginia 13, smu 23. AP No. 23 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603996"
+   ]
+  },
+  {
+   "team_slug": "florida",
+   "record": "5-2",
+   "composite_rank": 23,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: florida 27, texas 24. AP No. 20 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6603649"
+   ]
+  },
+  {
+   "team_slug": "northwestern",
+   "record": "5-1",
+   "composite_rank": 24,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "Week 7: northwestern 24, michigan-state 21. AP No. 24 in the October 18 edition.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261017&groups=80&limit=200",
+    "https://www.ncaa.com/game/6640653"
+   ]
+  },
+  {
+   "team_slug": "arizona",
+   "record": "5-1",
+   "composite_rank": 25,
+   "remaining_sos": null,
+   "losses_that_end_case": null,
+   "tag": null,
+   "resume_state": "No Week 7 FBS-vs-FBS game; latest record and composite shown.",
+   "sources": [
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?season=2026&seasontype=2&week=8"
+   ]
+  }
+ ],
+ "storylines": {
+  "mover": "Miami leads AP at 6–0; BYU moves to second after beating Notre Dame 28–24.",
+  "watch_next_week": "Houston at Utah and Ole Miss at Texas are the two Week 8 AP-ranked matchups.",
+  "weaker_than_record": "First CFP rankings: November 3, 7–8 PM ET on ESPN. This page uses an editorial composite, not CFP rankings."
+ },
+ "format_note": "The 2026 CFP has 12 teams: ACC, Big Ten, Big 12 and SEC champions, the highest-ranked team from the six other FBS conferences, and seven at-large teams. Notre Dame is included if it finishes in the top 12 of the final CFP rankings.",
+ "format_source": "https://collegefootballplayoff.com/news/2026/8/6/sc-aug-2627"
+}

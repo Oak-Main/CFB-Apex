@@ -97,3 +97,15 @@
 |---|---|---|
 | No TBA filled without a school source and a valid ESPN time | `scripts/apply-week7-kickoff-updates.mjs`, `data/cfb-2026/refresh/evidence/2026-10-11-week7-kickoffs.json` | school time in its own zone = ESPN instant with `timeValid: true`; official-host check; `tests/week7.test.ts` |
 | Every Week 7 game shows one published kickoff and network | all 59 rows `confirmed` with a single `tv` | apply assertions; rendered `/?week=7` board assertions |
+
+## October 20 Week 8 release
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Week 7 finals and archived board | refresh/verified-refresh.json, scripts/apply-week8-release.mjs | All 59 ESPN finals/quarter sums equal NCAA; 3 excluded FCS finals also match; stable game IDs |
+| Complete Week 8 board and marquee | 56 rows, school source evidence, Houston–Utah marquee, Utah GameDay badge | Daily counts 3/1/3/5/44; 56 school-supported kickoffs, 55 networks; one explicit pending network |
+| Polls, movement, records and leaders | October 18 polls, October 11 AP archive, 138 records, October 17 NCAA totals | Prior records plus Week 7 results equal ESPN standings; composite mean/AP tie-break regression |
+| Current editorial and partial availability | Week 7 highlight; Week 8 panel/resume; Iamaleava amendment; Heisman/upset pending | tests/week8.test.ts, rendered-page tests; historical availability dates retained |
+| Historical consistency | Week 6 metadata and played-game data preserved; Week 7 final archive | Existing archive/source/score regressions and explicit week 6/7/8 render checks |
+
+Detailed accepted claims, amendments, withheld items and owner handoff: docs/WEEK8_RELEASE_VERIFICATION.md.

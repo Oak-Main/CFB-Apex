@@ -7,6 +7,7 @@ import { kickoffTime, weekGames } from "../lib/homepage.ts";
 import { gamesForWeek, kickoffTimeLabel } from "../lib/scoreboard.ts";
 import { nextCutoverMs, parseWeekParam, pickBoardWeek, selectBoardWeek } from "../lib/week-cutover.ts";
 
+const archiveWeeks = boardWeeks.filter((row) => row.week <= 7);
 const CUTOVER = Date.UTC(2026, 9, 11, 13, 0, 0);
 const week7 = () => gamesForWeek(games, 7);
 const game = (id: string) => {
@@ -19,26 +20,26 @@ test("Week 7 replaces Week 6 at 06:00 America/Los_Angeles (13:00 UTC) on October
   assert.equal(boardWeeks.find((row) => row.week === 7)?.cutover_utc, "2026-10-11T13:00:00Z");
   const pacific = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", minute: "2-digit", hour12: true }).format(CUTOVER);
   assert.equal(pacific, "6:00 AM");
-  assert.equal(pickBoardWeek(boardWeeks, Date.parse("2026-10-11T12:59:59.999Z")), 6);
-  assert.equal(pickBoardWeek(boardWeeks, Date.parse("2026-10-11T13:00:00.000Z")), 7);
-  assert.equal(pickBoardWeek(boardWeeks, Date.parse("2026-10-11T13:00:00.001Z")), 7);
+  assert.equal(pickBoardWeek(archiveWeeks, Date.parse("2026-10-11T12:59:59.999Z")), 6);
+  assert.equal(pickBoardWeek(archiveWeeks, Date.parse("2026-10-11T13:00:00.000Z")), 7);
+  assert.equal(pickBoardWeek(archiveWeeks, Date.parse("2026-10-11T13:00:00.001Z")), 7);
   // Not 06:00 UTC.
-  assert.equal(pickBoardWeek(boardWeeks, Date.parse("2026-10-11T06:00:00Z")), 6);
+  assert.equal(pickBoardWeek(archiveWeeks, Date.parse("2026-10-11T06:00:00Z")), 6);
   // After the latest reviewed week, the board stays on it rather than inventing one.
-  assert.equal(pickBoardWeek(boardWeeks, Date.parse("2026-11-01T00:00:00Z")), 7);
-  assert.equal(nextCutoverMs(boardWeeks, CUTOVER - 1), CUTOVER);
-  assert.equal(nextCutoverMs(boardWeeks, CUTOVER), null);
+  assert.equal(pickBoardWeek(archiveWeeks, Date.parse("2026-11-01T00:00:00Z")), 7);
+  assert.equal(nextCutoverMs(archiveWeeks, CUTOVER - 1), CUTOVER);
+  assert.equal(nextCutoverMs(archiveWeeks, CUTOVER), null);
 });
 
 test("?week= previews only reviewed weeks and never reads the browser clock", () => {
-  assert.equal(parseWeekParam("6", boardWeeks), 6);
-  assert.equal(parseWeekParam(["7", "6"], boardWeeks), 7);
+  assert.equal(parseWeekParam("6", archiveWeeks), 6);
+  assert.equal(parseWeekParam(["7", "6"], archiveWeeks), 7);
   for (const bad of ["8", "0", "6x", " 6", "-6", "", undefined, null]) {
-    assert.equal(parseWeekParam(bad, boardWeeks), null, String(bad));
+    assert.equal(parseWeekParam(bad, archiveWeeks), null, String(bad));
   }
-  assert.deepEqual(selectBoardWeek(boardWeeks, CUTOVER + 1, "6"), { week: 6, serverNow: CUTOVER + 1, explicit: true });
-  assert.deepEqual(selectBoardWeek(boardWeeks, CUTOVER - 1, "7"), { week: 7, serverNow: CUTOVER - 1, explicit: true });
-  assert.deepEqual(selectBoardWeek(boardWeeks, CUTOVER - 1, "9"), { week: 6, serverNow: CUTOVER - 1, explicit: false });
+  assert.deepEqual(selectBoardWeek(archiveWeeks, CUTOVER + 1, "6"), { week: 6, serverNow: CUTOVER + 1, explicit: true });
+  assert.deepEqual(selectBoardWeek(archiveWeeks, CUTOVER - 1, "7"), { week: 7, serverNow: CUTOVER - 1, explicit: true });
+  assert.deepEqual(selectBoardWeek(archiveWeeks, CUTOVER - 1, "9"), { week: 6, serverNow: CUTOVER - 1, explicit: false });
 });
 
 test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
@@ -46,15 +47,15 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
   assert.equal(slate.length, 59);
   // The calendar-week window and the week number agree exactly.
   assert.deepEqual(weekGames(games, boardWeekStart(7)).map((row) => row.id).sort(), slate.map((row) => row.id).sort());
-  assert.ok(slate.every((row) => row.status === "scheduled" && row.week === 7));
+  assert.ok(slate.every((row) => row.status === "final" && row.week === 7));
   const perDay: Record<string, number> = {};
   for (const row of slate) perDay[easternDate(row.date)] = (perDay[easternDate(row.date)] ?? 0) + 1;
   assert.deepEqual(perDay, { "2026-10-13": 2, "2026-10-14": 2, "2026-10-15": 3, "2026-10-16": 3, "2026-10-17": 49 });
   assert.equal(new Set(slate.map((row) => [row.awayTeamId, row.homeTeamId].sort().join(":"))).size, 59);
   const ids = new Set(teams.map((team) => team.id));
   assert.ok(slate.every((row) => ids.has(row.awayTeamId) && ids.has(row.homeTeamId)));
-  assert.equal(verifiedRefresh?.week, 7);
-  assert.equal(verifiedRefresh?.reference_date, "2026-10-12");
+  assert.equal(verifiedRefresh?.week, 8);
+  assert.equal(verifiedRefresh?.reference_date, "2026-10-19");
 });
 
 test("every Week 7 kickoff is published after the October 11 rechecks, with no midnight placeholder", () => {
@@ -92,9 +93,8 @@ test("October 11 recheck adopts a visiting school's kickoff only when ESPN agree
   assert.equal(easternDate(nebraska.date), "2026-10-17", "an 8 PM Pacific kickoff stays on Saturday");
   assert.equal(nebraska.week, 7);
   for (const id of ["401862803", "401871091", "401858492"]) {
-    const row = verifiedRefresh?.scheduledGames.find((candidate) => candidate.provider_id === id);
-    assert.equal(row?.kickoff_status, "confirmed");
-    assert.match(row?.timing_note ?? "", /ESPN agrees; .* still listed TB[AD]/);
+    const row = ((verifiedRefresh?.playedGames ?? []) as Array<{ provider_id: string; meta?: { originally_scheduled_kickoff_utc?: string } }>).find((candidate) => candidate.provider_id === id);
+    assert.ok(row?.meta?.originally_scheduled_kickoff_utc, "verified final retains its reviewed pregame kickoff");
   }
 });
 
@@ -122,8 +122,8 @@ test("Ohio State at Indiana is the Week 7 marquee with verified records", () => 
   assert.equal(kickoffTime(marquee), "12:00 PM ET");
   assert.equal(marquee?.broadcast, "FOX");
   assert.equal(marquee?.venue, "Memorial Stadium (Bloomington, IN)");
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "5–1");
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–0");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–1");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–1");
   for (const [id, away, home] of [["2026-10-10-maryland-at-ohio-state", 16, 45], ["2026-10-10-indiana-at-nebraska", 20, 17]] as const) {
     const final = game(id);
     assert.equal(final?.status, "final");
@@ -139,20 +139,20 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   assert.deepEqual(review?.withheld, []);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
   // Texas lost to Oklahoma on October 10: 4–0 became 4–1.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "4–1");
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "4–2");
   // Records the Week 7 release verified are unchanged.
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "5–1");
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–0");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–1");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "6–1");
   // Every team's record equals its conference table's overall column.
   for (const conf of verifiedRefresh?.retainedBaseline?.conferenceStandings ?? []) {
     for (const row of conf.rows) assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, row.team);
   }
 });
 
-test("polls keep their October 4 editions on the Week 7 board", () => {
-  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-10-04", "2026-10-04"]);
-  assert.match(pollsStatusNote ?? "", /October 4/);
-  assert.match(pollsStatusNote ?? "", /does not relabel/);
+test("current polls advance to October 18 and explain historical source dates", () => {
+  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-10-18", "2026-10-18"]);
+  assert.match(pollsStatusNote ?? "", /October 18/);
+  assert.match(pollsStatusNote ?? "", /October 11/);
 });
 
 test("Week 7 FBS–FCS exclusions carry ESPN conference evidence", () => {
@@ -161,20 +161,20 @@ test("Week 7 FBS–FCS exclusions carry ESPN conference evidence", () => {
   for (const row of excluded) assert.ok(row.espn_conference_ids && ![1, 4, 5, 8, 9, 12, 15, 17, 18, 37, 151].includes(row.espn_conference_ids.away));
 });
 
-test("the Week 7 ticker leads with the latest verified finals, then the new slate", () => {
+test("the Week 7 archive ticker contains Week 7 finals and no upcoming games", () => {
   const ticker = tickerGamesFor(7);
   const finals = ticker.filter((row) => row.status === "final");
   assert.equal(finals.length, 8);
   // Latest kickoff first: Saturday's late-night Pacific finals.
-  assert.equal(easternDate(finals[0].date), "2026-10-10");
-  assert.equal(finals[0].date, "2026-10-11T02:30Z");
+  assert.equal(easternDate(finals[0].date), "2026-10-17");
+  assert.equal(finals[0].date, "2026-10-18T03:00Z");
   const upcoming = ticker.filter((row) => row.status !== "final");
-  assert.equal(upcoming.length, 8);
+  assert.equal(upcoming.length, 0);
   assert.ok(upcoming.every((row) => easternDate(row.date) >= "2026-10-13" && easternDate(row.date) <= "2026-10-17"));
 });
 
 test("stories stay on their own board week", () => {
   const stories = verifiedRefresh?.storylines ?? [];
-  assert.ok(stories.every((story) => story.week === 6 || story.week === 7));
-  assert.deepEqual(stories.filter((story) => story.week === 7).map((story) => story.id), ["week7-schedule-notes"]);
+  assert.ok(stories.every((story) => [6, 7, 8].includes(story.week ?? 0)));
+  assert.deepEqual(stories.filter((story) => story.week === 7).map((story) => story.id), ["week7-verified-finals"]);
 });
