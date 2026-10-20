@@ -183,7 +183,7 @@ test("weekly release renders current data, truthful pending states and both arch
     const response = await fetchRoute(path);
     assert.equal(response.status, 200, path);
     const text = (await response.text()).replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-    assert.doesNotMatch(text, /Demonstration records|fictional|Pending 2026 season data|Live standings from ESPN, refreshed on every build/i, path);
+    assert.doesNotMatch(text, /Demonstration records|fictional|Pending 2026 season data|Live standings from ESPN, refreshed on every build|\b0\s+others receiving votes|No change published|\bmiami fl\b|refreshes live on every page load/i, path);
     return [path, text];
   })));
   const current = pages.get("/");
