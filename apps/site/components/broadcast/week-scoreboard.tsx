@@ -18,6 +18,7 @@ import {
   useGameActionSheet,
 } from "@/components/polish/game-actions";
 
+/** Renders one scoreboard game card, including its civil-date label and kickoff/status detail. */
 function WeekGameCard({
   game,
   away,
@@ -108,6 +109,7 @@ function WeekGameCard({
   );
 }
 
+/** This-week scoreboard lane: filters games by Eastern civil date/rank and labels the published week using `referenceDate`. */
 export function WeekScoreboard({
   games,
   teams,

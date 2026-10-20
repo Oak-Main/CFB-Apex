@@ -41,6 +41,7 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "America/New_York",
 });
 
+/** Derives an event's Eastern day label and status/kickoff-time detail for display. */
 function eventTiming(event: NcaafGameEvent): { day: string; detail: string } {
   // A date-only value is an official TBD kickoff: name the day, never a time.
   if (/^\d{4}-\d{2}-\d{2}$/.test(event.utc)) {
@@ -89,6 +90,7 @@ function WeekGameRow({ event, highlight }: { event: NcaafGameEvent; highlight?: 
   );
 }
 
+/** Renders the team's verified-snapshot week card, labeling it with the reconciled schedule/finals check timestamps. */
 export function WeekGames({ school, displayName }: { school: string; displayName?: string }) {
   const [payload, setPayload] = useState<NcaafScoreboardPayload | null>(null);
 

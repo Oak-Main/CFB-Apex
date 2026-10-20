@@ -16,6 +16,7 @@ const canonical: NcaafGameEvent[] = games.filter((game) => reviewedWeeks.has(gam
   awayScore: game.awayScore ?? null, state: game.status === "final" ? "final" : "scheduled",
   statusLabel: game.status === "final" ? game.statusDetail : null, venue: game.venue,
 }));
+/** Builds the empty-events fallback payload, stamping its snapshot labels (canonicalAsOf/finalsAsOf) from the reviewed dataset, not from this request's fetch time. */
 function envelope(nowMs: number): NcaafScoreboardPayload {
   return { events: [], asOf: null, fetchedAt: new Date(nowMs).toISOString(), upstreamFetchedAt: [],
     canonicalAsOf: verifiedRefresh?.schedule_verified_at ?? verifiedRefresh?.retrieved_at ?? null,
@@ -40,6 +41,7 @@ async function resolveFeed(key: string, endpoint: string): Promise<Feed | null> 
   if (ingest && ingest.events.length > 0) return ingest;
   return fetchFeed(`https://www.thesportsdb.com/api/v1/json/${key}${endpoint}`, false);
 }
+/** Serves the cached, reconciled NCAAF scoreboard snapshot, refetching upstream feeds at most once per CACHE_TTL_MS. */
 export async function GET() {
   const nowMs = Date.now();
   if (cached && nowMs - cached.at < CACHE_TTL_MS) return Response.json(cached.payload, { headers: { "Cache-Control": "public, max-age=30" } });

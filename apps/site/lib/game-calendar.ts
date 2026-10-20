@@ -9,6 +9,7 @@ const offsetFormatter = new Intl.DateTimeFormat("en-US", {
 });
 const dateCache = new Map<string, string>();
 
+/** Converts a UTC instant (or passes through an already-civil `YYYY-MM-DD` date) to its Eastern civil date. */
 export function easternDate(value: string): string {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
   const cached = dateCache.get(value);
@@ -24,6 +25,7 @@ export function easternDate(value: string): string {
   return result;
 }
 
+/** Returns the Monday (as a civil date) that starts the Eastern week containing `value`. */
 export function weekStart(value: string): string {
   const date = easternDate(value);
   if (!date) return "";
@@ -32,6 +34,7 @@ export function weekStart(value: string): string {
   return start.toISOString().slice(0, 10);
 }
 
+/** Derives the 2026 season week number from a date's Eastern week start. */
 export function seasonWeek(value: string): number {
   const start = weekStart(value);
   // Week 1 spans the opening holiday weekend; Week 2 starts Sept. 7.
@@ -42,6 +45,7 @@ export function seasonWeek(value: string): number {
   );
 }
 
+/** Builds a dedupe key from a game's Eastern civil date and its two team names (order-independent). */
 export function gameKey(date: string, away: string, home: string): string {
   return `${easternDate(date)}:${[away, home].sort().join(":")}`;
 }

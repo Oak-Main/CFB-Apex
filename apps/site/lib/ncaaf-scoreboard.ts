@@ -111,6 +111,7 @@ export function eventInvolvesSchool(
   return schoolVariants.some((variant) => participants.includes(variant));
 }
 
+/** Maps a raw provider status (and postponed flag) to this module's game state and display status label. */
 export function mapTsdbStatus(
   status: string | null | undefined,
   postponed: string | null | undefined,
@@ -145,6 +146,7 @@ function parseScore(value: string | number | null | undefined): number | null {
   return Number.isInteger(parsed) && parsed >= 0 ? parsed : null;
 }
 
+/** Resolves a raw provider event's kickoff to an ISO-8601 UTC instant, preferring the timestamp field over date/time parts. */
 function eventUtc(event: TsdbRawEvent): string | null {
   const stamp = (event.strTimestamp ?? "").trim();
   const time = (event.strTime ?? "").trim();
