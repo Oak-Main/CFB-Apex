@@ -17811,21 +17811,25 @@
    "away": "sacramento-state",
    "home": "ball-state",
    "site": "Scheumann Stadium",
-   "tv": null,
-   "tv_status": "unpublished",
+   "tv": "ESPN+",
+   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:23.152Z",
+   "verified_at": "2026-10-20T20:10:39.257Z",
    "time_et": "15:30",
    "status": "announced",
    "game_status": "scheduled",
    "timing_sources": [
-    "https://ballstatesports.com/sports/football/schedule"
+    "https://ballstatesports.com/sports/football/schedule",
+    "https://ballstatesports.com/news/2026/10/19/football-cardinals-carry-renewed-confidence-into-homecoming-matchup"
    ],
    "source_urls": [
     "https://www.espn.com/college-football/game/_/gameId/401866447",
-    "https://ballstatesports.com/sports/football/schedule"
+    "https://ballstatesports.com/sports/football/schedule",
+    "https://ballstatesports.com/news/2026/10/19/football-cardinals-carry-renewed-confidence-into-homecoming-matchup",
+    "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200"
    ],
-   "timing_note": "Network pending school confirmation. Provider lists ESPN+; not adopted."
+   "timing_note": "ESPN+ confirmed by Ball State’s October 19 game-week announcement; checked October 20.",
+   "rechecked_at": "2026-10-20T20:10:39.257Z"
   },
   {
    "provider_id": "401866448",
@@ -19343,14 +19347,15 @@
   "https://www.ncaa.com/stats/football/fbs/current/team/27",
   "https://www.ncaa.com/stats/football/fbs/current/team/28",
   "https://utahutes.com/news/2026/10/18/football-espns-college-gameday-coming-back-to-salt-lake-city",
-  "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery"
+  "https://www.espn.com/college-football/story/_/id/50222886/ucla-qb-nico-iamaleava-undergoes-season-ending-knee-surgery",
+  "https://ballstatesports.com/news/2026/10/19/football-cardinals-carry-renewed-confidence-into-homecoming-matchup"
  ],
  "holds": [
   "SP+ and FPI retain their own September 27 rating snapshot; current-week updates are not independently verified.",
   "Timestamped current-week odds and line movement not verified. No new market claims published.",
   "Week 8 availability coverage is partial: Nico Iamaleava season-ending surgery reported October 19. Other supplied statuses require direct-source verification. October 10 official filings are historical, not Week 8 clearance.",
   "No continuous live in-season scores feed is wired. All 59 Week 7 FBS-vs-FBS games are verified finals; Week 8 results require a further refresh.",
-  "Week 8 kickoffs: all 56 school-confirmed. Sacramento State–Ball State TV remains pending; ESPN+ is provider-only and withheld.",
+  "Week 8 kickoffs and networks: all 56 school-confirmed. Sacramento State–Ball State ESPN+ confirmed by Ball State’s October 19 game-week announcement, checked October 20. Both school schedule grids still omit the network.",
   "All 138 overall and conference records rechecked October 20; AP and Coaches records are October 18 publication values."
  ],
  "retainedBaseline": {
@@ -22231,6 +22236,18 @@
     "portal": "2026-09-07",
     "fantasy": "2026-09-07"
    }
+  },
+  {
+   "script": "scripts/apply-oct20-tv-followup.mjs",
+   "applied_at": "2026-10-20T20:10:39.257Z",
+   "evidence_checked_at": "2026-10-20T20:10:39.257Z",
+   "evidence": "data/cfb-2026/refresh/evidence/2026-10-20-tv-followup.json",
+   "scope": "Resolve the last Week 8 TV assignment from the host school game-week announcement, with ESPN agreeing. Other games, scores, records, polls and source cutoffs are unchanged.",
+   "tv_changes": [
+    "401866447:tv"
+   ],
+   "school_confirmed_networks": 56,
+   "pending_networks": []
   }
  ],
  "schedule_verified_at": "2026-10-20T18:45:20.351Z",
@@ -22288,7 +22305,7 @@
    "retrieved_at": "2026-10-20T19:12:17.807Z",
    "schedule_verified_at": "2026-10-20T18:45:20.351Z",
    "records_verified_at": "2026-10-20T19:12:17.807Z",
-   "note": "56 FBS-vs-FBS games; all kickoffs school-confirmed. Sacramento State–Ball State network remains pending school confirmation; 55 other networks confirmed."
+   "note": "56 FBS-vs-FBS games; all kickoffs and networks school-confirmed. Ball State’s October 19 announcement confirms ESPN+ for Sacramento State at Ball State, Saturday at 3:30 PM ET."
   }
  ]
 }

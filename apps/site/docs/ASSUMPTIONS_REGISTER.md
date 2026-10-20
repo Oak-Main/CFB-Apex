@@ -78,3 +78,9 @@
 - NCAA totals are through October 17; polls are October 18. Ratings, portal, fantasy and historical official availability retain their own dates.
 - Missing Week 8 availability is unknown. The ESPN injuries endpoint returned historical rows (including 2020); it cannot support a general current injury feed. No all-clear or universal no-firing finding is published.
 - Unretrieved policy/eligibility/transfer-window claims, hot-seat rankings, weather, streak discrepancies and timestamped odds remain unverified. The CFP format/calendar is separately verified from its official August 6 release.
+
+## October 20 Travelpayouts and TV follow-up
+
+- A host school's explicit game-week announcement can resolve a blank schedule-grid network when the matchup, date, time and ESPN assignment agree. Ball State's October 19 announcement now confirms ESPN+; this supersedes the earlier unresolved-TV finding without rewriting its historical evidence.
+- Travelpayouts' public configuration identifies cfbapex.com, marker 775855 and project 572310. The existing account configuration is valid; only the missing exact-origin connection permission changes. Its disabled feature settings stay disabled, so this fix does not enable automatic link switching or offers.
+- The single-game recheck advances that row's verification time and adds a refresh-log entry. Whole-slate, poll, result and record cutoffs keep their own dates.

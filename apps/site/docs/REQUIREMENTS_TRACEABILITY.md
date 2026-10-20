@@ -109,3 +109,11 @@
 | Historical consistency | Week 6 metadata and played-game data preserved; Week 7 final archive | Existing archive/source/score regressions and explicit week 6/7/8 render checks |
 
 Detailed accepted claims, amendments, withheld items and owner handoff: docs/WEEK8_RELEASE_VERIFICATION.md.
+
+## October 20 Travelpayouts and TV follow-up
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Installed Drive loader can obtain its project configuration | Exact `https://tpembars.com` origin added to Worker `connect-src`; no feature or project changes | Rendered-response CSP regression; public configuration identifies cfbapex.com; post-deploy browser console check |
+| Resolve the last Week 8 TV assignment from a school source | `scripts/apply-oct20-tv-followup.mjs`, `refresh/evidence/2026-10-20-tv-followup.json`; ESPN+ on game 401866447 | Host school announcement and fresh ESPN valid time/network; all 56 networks published; rendered homepage and game-page checks |
+| Keep the scope limited to one network and one connection permission | Prior release evidence retained; other source timestamps and data preserved | Offline dry-run/replay/idempotence and untouched-data assertions; full `npm run verify` |

@@ -130,3 +130,9 @@ Iamaleava is out for the season, superseding the supplied indefinite absence. Av
 
 This PR implements the verified weekly data release. The supplied broader SEO, legal/privacy/affiliate, scheduling-automation and live-feed recommendations are not represented as completed. No production deploy or merge is performed by this change.
 Security/review follow-up: rendered assertions use the parse5 HTML parser (test-only dependency) and retain the full stale-copy guard list. Poll movement uses the established to-minus-from convention (negative means a rise), ordered by magnitude. Offline application additionally validates source team, both opponents, date and unique game IDs.
+
+## D-2026-10-20 — Travelpayouts connection and final Week 8 TV assignment
+
+The existing Drive loader runs from `https://tpembars.com`, but `connect-src` omitted that origin. Its runtime requests `/entrypoint_config`; a missing configuration produces `config is not valid`. A direct provider check returned HTTP 200 with marker 775855, project 572310 and domain cfbapex.com. All four configured Drive services remain disabled. Permit that exact origin in `connect-src` so the installed integration can load its configuration and send its existing collection requests. Keep the project, features, script and all other policy directives unchanged; do not suppress console errors.
+
+The host school's October 19 game-week announcement explicitly names ESPN+ for Sacramento State at Ball State, October 24 at 3:30 PM ET. A fresh ESPN scoreboard agrees with a valid kickoff. Adopt it through `scripts/apply-oct20-tv-followup.mjs` and separate immutable evidence. Both schedule grids still omit TV; the explicit school announcement resolves that omission. All 56 Week 8 networks are now school-confirmed. Preserve scores, records, polls, other games and source cutoffs. See `docs/TRAVELPAYOUTS_TV_FOLLOWUP.md` for the production handoff.
