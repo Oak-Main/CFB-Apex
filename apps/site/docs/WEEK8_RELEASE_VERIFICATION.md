@@ -12,7 +12,7 @@ Primary evidence: ESPN daily scoreboards (October 13–25), ESPN completed-game 
 
 - All 59 FBS-vs-FBS finals match ESPN and NCAA. The 3 FBS-vs-FCS finals also agree and remain excluded. Ten midweek games and 49 Saturday games; 14 within three points; four overtime games; 26 road winners. Twenty-two pregame AP teams played, eight lost; the supplied upset rule yields five upsets. Pregame ranks use October 11.
 - All 56 Week 8 FBS matchups, all kickoffs and the 3/1/3/5/44 daily split agree. Seventeen games involve AP teams; two match ranked teams. There are 26 idle teams. All 55 published networks have school support; one is withheld.
-- All 138 overall and conference records were re-read. Every overall record also equals the October 11 baseline plus Week 7 results (or remains unchanged on a bye). Poll records match the October 18 release.
+- All 138 overall and conference records were re-read. Every overall and conference record also equals the October 11 baseline plus the applicable Week 7 results (or remains unchanged on a bye). Poll records match the October 18 release. Movement uses the existing to-minus-from convention: negative means a rise.
 - Current AP/Coaches editions, receiving-votes rows and movement; archived October 4 data and the October 11 AP edition. Composite preserves mean-rank ordering, AP tie-break and its full team union.
 - NCAA leaders through October 17: passing (top five), rushing (top three), scoring offense/defense (top three). Braden Atkinson now leads passing at 2,604 yards; Jamal Roberts leads rushing at 867.
 - All twelve supplied standout players checked against ESPN box scores. Add Hawkins’s 77 rushing yards/two rushing scores; expand Burgess to Torrance Burgess Jr. (24 carries, 224 rushing yards/four TD plus 52 receiving yards).
@@ -35,7 +35,7 @@ Current SP+/FPI, timestamped Heisman/market odds, NIL, fantasy and portal resear
 - apps/site/data/cfb-2026/{highlight,panel,playoff-audit,heisman,upset,polls} weekly/current and archive files
 - apps/site/data/injury-research/current.json and inbox/week6-archived-2026-10-20.json
 - apps/site/lib/cfb-2026.generated.ts plus the small display/source-date changes
-- apps/site/tests/week8.test.ts and updated archive/render regressions
+- apps/site/tests/week8.test.ts, tests/html-text.mjs (parse5-backed rendered assertions) and updated archive/render regressions
 - docs/DECISION_LOG.md, docs/ASSUMPTIONS_REGISTER.md, docs/REQUIREMENTS_TRACEABILITY.md
 
 Owner: repository maintainer reviews/merges the PR into main through the existing deployment lane. Editorial/data owner resolves the pending network and remaining sourced research. Historical data, null/pending states and current source cutoffs are deliberate acceptance conditions.

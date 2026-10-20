@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { visibleText, withoutComments } from "./html-text.mjs";
 
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -41,7 +42,7 @@ test("server-renders the finished home utility", async () => {
 
 test("the reviewed Week 6 archive renders its games and sourced metrics", async () => {
   const response = await fetchRoute("/?week=6");
-  const html = (await response.text()).replace(/<!--[\s\S]*?-->/g, "");
+  const html = withoutComments(await response.text());
   assert.match(html, /Georgia/);
   assert.match(html, /Alabama/);
   assert.match(html, /Week of Mon, Oct 5/);
@@ -178,11 +179,12 @@ test("simulation API rejects invalid scenario participants and caps work", async
 });
 
 test("weekly release renders current data, truthful pending states and both archived weeks", async () => {
+  assert.equal(visibleText("<section>Before<ScRiPt>hidden</script >After<!-- invisible --></section>"), "Before After");
   const paths = ["/", "/?week=6", "/?week=7", "/scores?week=7", "/scores?week=8", "/watch?week=8", "/rankings", "/injuries", "/heisman", "/upset-watch", "/highlight", "/panel", "/playoff-audit", "/data-sources"];
   const pages = new Map(await Promise.all(paths.map(async path => {
     const response = await fetchRoute(path);
     assert.equal(response.status, 200, path);
-    const text = (await response.text()).replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+    const text = visibleText(await response.text());
     assert.doesNotMatch(text, /Demonstration records|fictional|Pending 2026 season data|Live standings from ESPN, refreshed on every build|\b0\s+others receiving votes|No change published|\bmiami fl\b|refreshes live on every page load/i, path);
     return [path, text];
   })));
@@ -215,11 +217,7 @@ test("weekly release renders current data, truthful pending states and both arch
 });
 
 test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", async () => {
-  const visible = async (path) =>
-    (await (await fetchRoute(path)).text())
-      .replace(/<script[\s\S]*?<\/script>/gi, " ")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\s+/g, " ");
+  const visible = async (path) => visibleText(await (await fetchRoute(path)).text());
   // Week 6 is the archive board after the Oct 11 cutover; `?week=6` pins it.
   const home = await visible("/?week=6");
   // Homepage week board: Tue-Thu rows are finals with scores, no kickoff times.
@@ -244,7 +242,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
 });
 
 test("October 10 pregame corrections and partial availability caveat render", async () => {
-  const visible = async (path) => (await (await fetchRoute(path)).text()).replace(/<!--[\s\S]*?-->/g, "").replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const visible = async (path) => visibleText(await (await fetchRoute(path)).text());
   const home = await visible("/?week=6");
   assert.match(home, /SCHEDULE CHECKED 2026-10-10/);
   assert.match(home, /Friday finals: Louisville, Iowa, Utah State, Wyoming and BYU win/);
@@ -259,7 +257,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   assert.match(byu, /Fri · 2026-10-09 · 10:30 PM ET/);
   assert.match(byu, /Fri, Oct 9/);
   // The watch board opens on the server-clock board week.
-  const watchHtml = (await (await fetchRoute("/watch")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const watchHtml = withoutComments(await (await fetchRoute("/watch")).text());
   const boardWeek = Date.now() >= Date.parse("2026-10-18T13:00:00Z") ? 8 : Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
   assert.match(watchHtml, new RegExp(`aria-pressed="true">W(?:eek|K|k) ?${boardWeek}</button>`));
   const watch = await visible("/watch?week=6");
@@ -272,8 +270,8 @@ test("October 10 pregame corrections and partial availability caveat render", as
 });
 
 test("official availability containment renders literal designations and historical context", async () => {
-  const html = (await (await fetchRoute("/injuries")).text()).replace(/<!--[\s\S]*?-->/g, "");
-  const text = html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const html = withoutComments(await (await fetchRoute("/injuries")).text());
+  const text = visibleText(html);
   assert.doesNotMatch(text, /Kahleil Jackson|Jamariun Morrow|Tre Harris/);
   assert.match(text, /87 tracked players from 19 teams/);
   assert.match(text, /Jayden Gibson[\s\S]*?South Carolina/);
@@ -285,7 +283,7 @@ test("official availability containment renders literal designations and histori
   assert.match(text, /Other long-term entries are explicitly retained from October 5/);
   assert.match(text, /Published 2026-10-10T09:30:00-05:00; retrieved 2026-10-10T14:31/);
   assert.doesNotMatch(html, /class="db-table-wrap db-desktop-data-table"/);
-  const player = (await (await fetchRoute("/players/dante-moore")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const player = withoutComments(await (await fetchRoute("/players/dante-moore")).text());
   assert.match(player, /Historical Week 1 availability/);
   assert.match(player, /This Week 1 note retains its original date/);
   assert.match(player, /UCLA vs Oregon: Out|Oregon vs UCLA: Out/);
@@ -293,11 +291,11 @@ test("official availability containment renders literal designations and histori
 
 
 test("Available Jake Maikkula keeps explicitly dated ledger history without a current OUT row", async () => {
-  const html = (await (await fetchRoute("/injuries")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const html = withoutComments(await (await fetchRoute("/injuries")).text());
   const tableRows = [...html.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((match) => match[0]);
   const jakeRows = tableRows.filter((row) => row.includes("Jake Maikkula"));
   assert.equal(jakeRows.length, 1, "Available removes the current long-term absence row");
-  const text = jakeRows[0].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const text = visibleText(jakeRows[0]);
   assert.match(text, /Available/);
   assert.match(text, /Historical editorial note \(2026-10-05\): Knee\. Historical October 5 entry; not rechecked for Week 8\. Expected to miss multiple consecutive weeks/);
   assert.doesNotMatch(jakeRows[0], /inj-pill--out/);
@@ -305,22 +303,22 @@ test("Available Jake Maikkula keeps explicitly dated ledger history without a cu
 
 
 test("scores metadata and hero disclose the current verified snapshot without restamping history", async () => {
-  const html = (await (await fetchRoute("/scores?week=6")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const html = withoutComments(await (await fetchRoute("/scores?week=6")).text());
   assert.match(html, /<title>College Football Scores \| CFB Apex<\/title>/);
   assert.doesNotMatch(html, /Live College Football Scores/);
   const hero = html.match(/<header class="page-heading">[\s\S]*?<\/header>/)?.[0] ?? "";
-  const text = hero.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const text = visibleText(hero);
   assert.match(text, /Verified snapshot/);
   assert.match(text, /schedule checked 2026-10-10 09:09 UTC; finals verified 2026-10-11 \d\d:\d\d UTC/);
   assert.doesNotMatch(text, /Dataset.*Sep 5|is current/);
-  const week7 = (await (await fetchRoute("/scores?week=7")).text()).replace(/<!--[\s\S]*?-->/g, "");
-  const week7Hero = (week7.match(/<header class="page-heading">[\s\S]*?<\/header>/)?.[0] ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const week7 = withoutComments(await (await fetchRoute("/scores?week=7")).text());
+  const week7Hero = visibleText(week7.match(/<header class="page-heading">[\s\S]*?<\/header>/)?.[0] ?? "");
   assert.match(week7Hero, /Week 7 schedule checked 2026-10-11 \d\d:\d\d UTC; finals verified 2026-10-20 \d\d:\d\d UTC/);
-  const game = (await (await fetchRoute("/games/2026-10-10-north-dakota-state-at-unlv")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const game = withoutComments(await (await fetchRoute("/games/2026-10-10-north-dakota-state-at-unlv")).text());
   assert.match(game, /Verified Sep 7, 2026/);
   assert.doesNotMatch(game, /Verified Sep 6, 2026/);
   // Now final: the result replaces the pregame slot/announced-kickoff note.
-  const gameText = game.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const gameText = visibleText(game);
   assert.match(gameText, /North Dakota State Bison at UNLV Rebels final/);
   assert.match(gameText, /UNLV Rebels 4–3 13/);
 });
@@ -333,13 +331,13 @@ test("injury search metadata states limited tracked-player coverage", async () =
 });
 
 test("scoreboard keeps week navigation without a pretend refresh affordance", async () => {
-  const html = (await (await fetchRoute("/scores?week=6")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const html = withoutComments(await (await fetchRoute("/scores?week=6")).text());
   assert.doesNotMatch(html, /Pull to refresh|Release to check|scoreboard-pull-cue/);
   assert.match(html, /Select scoreboard week/);
   assert.match(html, /aria-label="View week 5"/);
   assert.match(html, /aria-label="View week 7"/);
   assert.match(html, /Week 6\. 58 games shown\./);
-  const week7 = (await (await fetchRoute("/scores?week=7")).text()).replace(/<!--[\s\S]*?-->/g, "");
+  const week7 = withoutComments(await (await fetchRoute("/scores?week=7")).text());
   assert.match(week7, /Week 7\. 59 games shown\./);
   assert.match(week7, /aria-current="page"[^>]*>[\s\S]*?Week 7/);
   assert.match(html, /Status changes require a newer verified release/);

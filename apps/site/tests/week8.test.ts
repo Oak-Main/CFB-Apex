@@ -41,12 +41,20 @@ test("all 59 Week 7 finals match completed ESPN and NCAA scores with stable iden
 test("Week 8 is complete, uses Eastern dates and has school support for every kickoff", () => {
   const slate = games.filter(g => g.week === 8);
   assert.equal(slate.length, 56);
+  assert.equal(new Set(evidence.schedule.map((g: { id: string }) => g.id)).size, 56);
   assert.ok(slate.every(g => g.status === "scheduled" && g.homeScore == null && g.awayScore == null));
   const counts: Record<string, number> = {};
   for (const game of slate) counts[easternDate(game.date)] = (counts[easternDate(game.date)] ?? 0) + 1;
   assert.deepEqual(counts, { "2026-10-20": 3, "2026-10-21": 1, "2026-10-22": 3, "2026-10-23": 5, "2026-10-24": 44 });
   const hosts = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/official-school-hosts.json", import.meta.url), "utf8")).hosts;
   for (const row of evidence.schedule) {
+    assert.equal(row.school_source.team, row.home);
+    for (const source of [row.school_source, ...row.additional_school_sources]) {
+      assert.ok([row.home, row.away].includes(source.team));
+      assert.equal(source.home, row.home);
+      assert.equal(source.away, row.away);
+      assert.equal(source.date, row.date);
+    }
     assert.equal(new URL(row.school_source.url).hostname, hosts[row.school_source.team]);
     assert.equal(row.school_source.kickoff_utc, row.kickoff_utc);
     assert.equal(row.timeValid, true);
@@ -71,6 +79,9 @@ test("source cutoffs advance separately and all 138 records reconcile", () => {
   assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17");
   assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-10-18", "2026-10-18"]);
   assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "miami-fl");
+  for (const move of verifiedRefresh?.poll_notes?.movers_ap ?? []) assert.equal(move.move, move.to - move.from);
+  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "byu")?.move, -6);
+  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "texas")?.move, 12);
   assert.equal(evidence.reconciliation.overall_records_checked, 138);
   assert.equal(evidence.reconciliation.disagreements, 0);
   assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 2604);

@@ -20837,165 +20837,165 @@
   "as_of": "2026-10-18",
   "movers_ap": [
    {
-    "team": "Miami",
-    "team_slug": "miami-fl",
-    "from": 3,
-    "to": 1,
-    "move": 2
-   },
-   {
-    "team": "BYU",
-    "team_slug": "byu",
-    "from": 8,
-    "to": 2,
-    "move": 6
-   },
-   {
-    "team": "Ohio State",
-    "team_slug": "ohio-state",
-    "from": 4,
-    "to": 3,
-    "move": 1
-   },
-   {
-    "team": "Notre Dame",
-    "team_slug": "notre-dame",
-    "from": 2,
-    "to": 4,
-    "move": -2
-   },
-   {
-    "team": "Georgia",
-    "team_slug": "georgia",
-    "from": 1,
-    "to": 5,
-    "move": -4
-   },
-   {
-    "team": "Indiana",
-    "team_slug": "indiana",
-    "from": 5,
-    "to": 6,
-    "move": -1
-   },
-   {
-    "team": "Ole Miss",
-    "team_slug": "ole-miss",
-    "from": 9,
-    "to": 7,
-    "move": 2
-   },
-   {
-    "team": "Texas Tech",
-    "team_slug": "texas-tech",
-    "from": 10,
-    "to": 8,
-    "move": 2
-   },
-   {
-    "team": "UCLA",
-    "team_slug": "ucla",
-    "from": 12,
-    "to": 9,
-    "move": 3
-   },
-   {
-    "team": "Utah",
-    "team_slug": "utah",
-    "from": 11,
-    "to": 10,
-    "move": 1
-   },
-   {
-    "team": "Tennessee",
-    "team_slug": "tennessee",
-    "from": 14,
-    "to": 11,
-    "move": 3
-   },
-   {
-    "team": "Kentucky",
-    "team_slug": "kentucky",
-    "from": 15,
-    "to": 12,
-    "move": 3
-   },
-   {
-    "team": "Alabama",
-    "team_slug": "alabama",
-    "from": 6,
-    "to": 13,
-    "move": -7
-   },
-   {
-    "team": "Houston",
-    "team_slug": "houston",
-    "from": 20,
-    "to": 14,
-    "move": 6
-   },
-   {
-    "team": "Iowa",
-    "team_slug": "iowa",
-    "from": 17,
-    "to": 15,
-    "move": 2
-   },
-   {
-    "team": "USC",
-    "team_slug": "usc",
-    "from": 19,
-    "to": 16,
-    "move": 3
-   },
-   {
-    "team": "Wake Forest",
-    "team_slug": "wake-forest",
-    "from": 21,
-    "to": 17,
-    "move": 4
-   },
-   {
-    "team": "LSU",
-    "team_slug": "lsu",
-    "from": 22,
-    "to": 18,
-    "move": 4
-   },
-   {
     "team": "Texas",
     "team_slug": "texas",
     "from": 7,
     "to": 19,
-    "move": -12
-   },
-   {
-    "team": "Boise State",
-    "team_slug": "boise-state",
-    "from": 23,
-    "to": 21,
-    "move": 2
+    "move": 12
    },
    {
     "team": "Missouri",
     "team_slug": "missouri",
     "from": 13,
     "to": 22,
-    "move": -9
+    "move": 9
+   },
+   {
+    "team": "Alabama",
+    "team_slug": "alabama",
+    "from": 6,
+    "to": 13,
+    "move": 7
+   },
+   {
+    "team": "BYU",
+    "team_slug": "byu",
+    "from": 8,
+    "to": 2,
+    "move": -6
+   },
+   {
+    "team": "Houston",
+    "team_slug": "houston",
+    "from": 20,
+    "to": 14,
+    "move": -6
+   },
+   {
+    "team": "Georgia",
+    "team_slug": "georgia",
+    "from": 1,
+    "to": 5,
+    "move": 4
+   },
+   {
+    "team": "Wake Forest",
+    "team_slug": "wake-forest",
+    "from": 21,
+    "to": 17,
+    "move": -4
+   },
+   {
+    "team": "LSU",
+    "team_slug": "lsu",
+    "from": 22,
+    "to": 18,
+    "move": -4
+   },
+   {
+    "team": "UCLA",
+    "team_slug": "ucla",
+    "from": 12,
+    "to": 9,
+    "move": -3
+   },
+   {
+    "team": "Tennessee",
+    "team_slug": "tennessee",
+    "from": 14,
+    "to": 11,
+    "move": -3
+   },
+   {
+    "team": "Kentucky",
+    "team_slug": "kentucky",
+    "from": 15,
+    "to": 12,
+    "move": -3
+   },
+   {
+    "team": "USC",
+    "team_slug": "usc",
+    "from": 19,
+    "to": 16,
+    "move": -3
+   },
+   {
+    "team": "Miami",
+    "team_slug": "miami-fl",
+    "from": 3,
+    "to": 1,
+    "move": -2
+   },
+   {
+    "team": "Notre Dame",
+    "team_slug": "notre-dame",
+    "from": 2,
+    "to": 4,
+    "move": 2
+   },
+   {
+    "team": "Ole Miss",
+    "team_slug": "ole-miss",
+    "from": 9,
+    "to": 7,
+    "move": -2
+   },
+   {
+    "team": "Texas Tech",
+    "team_slug": "texas-tech",
+    "from": 10,
+    "to": 8,
+    "move": -2
+   },
+   {
+    "team": "Iowa",
+    "team_slug": "iowa",
+    "from": 17,
+    "to": 15,
+    "move": -2
+   },
+   {
+    "team": "Boise State",
+    "team_slug": "boise-state",
+    "from": 23,
+    "to": 21,
+    "move": -2
+   },
+   {
+    "team": "Ohio State",
+    "team_slug": "ohio-state",
+    "from": 4,
+    "to": 3,
+    "move": -1
+   },
+   {
+    "team": "Indiana",
+    "team_slug": "indiana",
+    "from": 5,
+    "to": 6,
+    "move": 1
+   },
+   {
+    "team": "Utah",
+    "team_slug": "utah",
+    "from": 11,
+    "to": 10,
+    "move": -1
    },
    {
     "team": "SMU",
     "team_slug": "smu",
     "from": 24,
     "to": 23,
-    "move": 1
+    "move": -1
    },
    {
     "team": "Northwestern",
     "team_slug": "northwestern",
     "from": 25,
     "to": 24,
-    "move": 1
+    "move": -1
    }
   ],
   "debuts_ap": [

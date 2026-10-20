@@ -3728,7 +3728,10 @@
     "sha256": "a62b056e4b63fed191f07e684754d4a4b85a7fcb098f26c5718c374a0323a85b",
     "kickoff_utc": "2026-10-20T23:00Z",
     "tv": "CBSSN",
-    "finding": "middle-tennessee at fiu, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "middle-tennessee at fiu, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "fiu",
+    "away": "middle-tennessee",
+    "date": "2026-10-20"
    },
    "additional_school_sources": []
   },
@@ -3783,7 +3786,10 @@
     "sha256": "ef59d401b95f0ad6294da4d095fc724a3c8e478dc8ff45065ca3e162bd0712ca",
     "kickoff_utc": "2026-10-20T23:00Z",
     "tv": "ESPNU",
-    "finding": "missouri-state at delaware, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "missouri-state at delaware, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "delaware",
+    "away": "missouri-state",
+    "date": "2026-10-20"
    },
    "additional_school_sources": []
   },
@@ -3838,7 +3844,10 @@
     "sha256": "f6a2e292907f1731939bc72eb059ca82326bc42eb043b05328d79bd04cf6b51c",
     "kickoff_utc": "2026-10-20T23:30Z",
     "tv": "ESPN2",
-    "finding": "south-alabama at marshall, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "south-alabama at marshall, 2026-10-20: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "marshall",
+    "away": "south-alabama",
+    "date": "2026-10-20"
    },
    "additional_school_sources": []
   },
@@ -3893,7 +3902,10 @@
     "sha256": "19ddb871303307d2752aa11e4f0dccf3a6534ddf2c3b30fbb066c32194c74887",
     "kickoff_utc": "2026-10-22T00:00Z",
     "tv": "ESPN2",
-    "finding": "new-mexico-state at sam-houston, 2026-10-21: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "new-mexico-state at sam-houston, 2026-10-21: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "sam-houston",
+    "away": "new-mexico-state",
+    "date": "2026-10-21"
    },
    "additional_school_sources": []
   },
@@ -3948,7 +3960,10 @@
     "sha256": "1b67f50f2331536bbcd751a7c6f3464357d6fbed45d15f50175af31413f38609",
     "kickoff_utc": "2026-10-22T23:00Z",
     "tv": "ESPNU",
-    "finding": "james-madison at appalachian-state, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "james-madison at appalachian-state, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "appalachian-state",
+    "away": "james-madison",
+    "date": "2026-10-22"
    },
    "additional_school_sources": []
   },
@@ -4003,7 +4018,10 @@
     "sha256": "753bda8dc1d63a851854d4f3d2df30a49526b7a6687e7921b8852c0e4fa668d9",
     "kickoff_utc": "2026-10-22T23:00Z",
     "tv": "CBSSN",
-    "finding": "liberty at kennesaw-state, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "liberty at kennesaw-state, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "kennesaw-state",
+    "away": "liberty",
+    "date": "2026-10-22"
    },
    "additional_school_sources": [
     {
@@ -4014,7 +4032,10 @@
      "tv": "CBSSN",
      "finding": "Visiting school confirms Thursday October 22, 7 PM ET on CBS Sports Network; agrees with ESPN.",
      "verification_date": "2026-10-20",
-     "retrieval_note": "Exact retrieval time was not retained; source reviewed during this release."
+     "retrieval_note": "Exact retrieval time was not retained; source reviewed during this release.",
+     "home": "kennesaw-state",
+     "away": "liberty",
+     "date": "2026-10-22"
     }
    ]
   },
@@ -4069,7 +4090,10 @@
     "sha256": "bb1c03ec4999b8b2a84a2ae5f96ff195ebfaf4334dcba935b3678f3992b27cd1",
     "kickoff_utc": "2026-10-22T23:30Z",
     "tv": "ESPN2",
-    "finding": "east-carolina at memphis, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "east-carolina at memphis, 2026-10-22: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "memphis",
+    "away": "east-carolina",
+    "date": "2026-10-22"
    },
    "additional_school_sources": []
   },
@@ -4124,7 +4148,10 @@
     "sha256": "b3ed2a2957abed84ffacfa87ad675efed07e6aaaa649021d5455336f0b7977be",
     "kickoff_utc": "2026-10-23T23:00Z",
     "tv": "ESPN",
-    "finding": "duke at virginia, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "duke at virginia, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "virginia",
+    "away": "duke",
+    "date": "2026-10-23"
    },
    "additional_school_sources": []
   },
@@ -4179,7 +4206,10 @@
     "sha256": "fcff16fdd6c7526a61163a574dd8c98ba35fdf542ccb05b5df4b96f9974ae433",
     "kickoff_utc": "2026-10-23T23:00Z",
     "tv": "CBSSN",
-    "finding": "umass at uconn, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "umass at uconn, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "uconn",
+    "away": "umass",
+    "date": "2026-10-23"
    },
    "additional_school_sources": []
   },
@@ -4234,7 +4264,10 @@
     "sha256": "7477135a4f6d6b1fdf815cb2e087da536b0806ee57aa479b93c09ea1e19d03cf",
     "kickoff_utc": "2026-10-24T00:30Z",
     "tv": "ESPN2",
-    "finding": "army at tulsa, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "army at tulsa, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "tulsa",
+    "away": "army",
+    "date": "2026-10-23"
    },
    "additional_school_sources": []
   },
@@ -4289,7 +4322,10 @@
     "sha256": "78eb547337e1e226009910a0c9af2a7d29c613241971fa622af38cf99804b361",
     "kickoff_utc": "2026-10-24T01:00Z",
     "tv": "The CW",
-    "finding": "air-force at wyoming, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "air-force at wyoming, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "wyoming",
+    "away": "air-force",
+    "date": "2026-10-23"
    },
    "additional_school_sources": []
   },
@@ -4344,7 +4380,10 @@
     "sha256": "bd3170f4d59ac60481c1450a795d4229681fd02bd87f2a0bc1d42ae2acc080c5",
     "kickoff_utc": "2026-10-24T02:30Z",
     "tv": "ESPN",
-    "finding": "nc-state at stanford, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "nc-state at stanford, 2026-10-23: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "stanford",
+    "away": "nc-state",
+    "date": "2026-10-23"
    },
    "additional_school_sources": []
   },
@@ -4399,7 +4438,10 @@
     "sha256": "2a052abc7e8df17595a93c4abd08f2d6b2e4da2b3e99b3ad6a2e50baa68a80d9",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "ESPN",
-    "finding": "pittsburgh at miami-fl, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "pittsburgh at miami-fl, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "miami-fl",
+    "away": "pittsburgh",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4454,7 +4496,10 @@
     "sha256": "6b8f01ce208a89ed7e202cb1a31b6b67ce1a199b959206ee49bc2d88c8a702b3",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "FOX",
-    "finding": "indiana at michigan, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "indiana at michigan, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "michigan",
+    "away": "indiana",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4509,7 +4554,10 @@
     "sha256": "b9923514f44a187270076f392f6c78fac320eea8305cce879208f362baeaf437",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "FS1",
-    "finding": "texas-tech at cincinnati, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "texas-tech at cincinnati, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "cincinnati",
+    "away": "texas-tech",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4564,7 +4612,10 @@
     "sha256": "a3e38e649c0c034f294537b31ebbcd008168e88316269f24ca4fbb023fc31893",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "ABC",
-    "finding": "lsu at auburn, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "lsu at auburn, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "auburn",
+    "away": "lsu",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4619,7 +4670,10 @@
     "sha256": "69ba51d527b27289b84dcacdd7a0a60f4a3809ef7673c9f579d8cb836aa68ae1",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "The CW",
-    "finding": "california at smu, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "california at smu, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "smu",
+    "away": "california",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4674,7 +4728,10 @@
     "sha256": "58b63d7fa15be0aade03cc27ab3da87a5d23151a78b00403d3651c2303d124f7",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "Peacock",
-    "finding": "rutgers at northwestern, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "rutgers at northwestern, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "northwestern",
+    "away": "rutgers",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4729,7 +4786,10 @@
     "sha256": "77b6744a13ca08f3ec23d1067eec1d2b37feac0a0213194def9e9d857c8e537f",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "ESPN2",
-    "finding": "west-virginia at tcu, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "west-virginia at tcu, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "tcu",
+    "away": "west-virginia",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4784,7 +4844,10 @@
     "sha256": "e65ba44869d036b54ed3a1ec8f75ff2c2d3e4c693b9acf6f45be3a6290bb5c03",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "ESPNU",
-    "finding": "rice at florida-atlantic, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "rice at florida-atlantic, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "florida-atlantic",
+    "away": "rice",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4839,7 +4902,10 @@
     "sha256": "20b99f64f6f3df382183044ff5854977392c81f9f81318f950e5485104f95371",
     "kickoff_utc": "2026-10-24T16:00Z",
     "tv": "CBSSN",
-    "finding": "western-michigan at toledo, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "western-michigan at toledo, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "toledo",
+    "away": "western-michigan",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4894,7 +4960,10 @@
     "sha256": "2797e70cc66d98b72a55aac01cd76643872062958138d07d03a91ee6208a1a2c",
     "kickoff_utc": "2026-10-24T17:00Z",
     "tv": "TNT",
-    "finding": "baylor at kansas, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "baylor at kansas, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "kansas",
+    "away": "baylor",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -4949,7 +5018,10 @@
     "sha256": "c69c51574e800fa4d8f85546fe937fdf0f9869d197a184734c59335a642235f7",
     "kickoff_utc": "2026-10-24T17:00Z",
     "tv": "ESPN+",
-    "finding": "akron at kent-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "akron at kent-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "kent-state",
+    "away": "akron",
+    "date": "2026-10-24"
    },
    "additional_school_sources": [
     {
@@ -4960,7 +5032,10 @@
      "tv": "ESPN+",
      "finding": "Visiting school confirms 1 PM ET on ESPN+; agrees with ESPN.",
      "verification_date": "2026-10-20",
-     "retrieval_note": "Exact retrieval time was not retained; source reviewed during this release."
+     "retrieval_note": "Exact retrieval time was not retained; source reviewed during this release.",
+     "home": "kent-state",
+     "away": "akron",
+     "date": "2026-10-24"
     }
    ]
   },
@@ -5015,7 +5090,10 @@
     "sha256": "1baa49a2c58c748fcfcfdcb4a76a68d002e5bb65372d387adcd2f5980a45617c",
     "kickoff_utc": "2026-10-24T17:00Z",
     "tv": "ESPN+",
-    "finding": "miami-oh at central-michigan, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "miami-oh at central-michigan, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "central-michigan",
+    "away": "miami-oh",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5070,7 +5148,10 @@
     "sha256": "119f63d8243c04bfb3252d2d66909f75d5f3a7697dbb1290c2a7014146515f3e",
     "kickoff_utc": "2026-10-24T19:00Z",
     "tv": "BTN",
-    "finding": "oregon at illinois, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "oregon at illinois, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "illinois",
+    "away": "oregon",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5125,7 +5206,10 @@
     "sha256": "e4bec60ff447afc3d2df7411290aa8e26d9a37f8b3a3c8d3b1f0b75a077ffb2c",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "FOX",
-    "finding": "byu at ucf, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "byu at ucf, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "ucf",
+    "away": "byu",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5180,7 +5264,10 @@
     "sha256": "a948ecb862224bb83b0d0665e2867507931d01a79cd680fb9103c9e66f5ff80b",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "CBS",
-    "finding": "michigan-state at ucla, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "michigan-state at ucla, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "ucla",
+    "away": "michigan-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5235,7 +5322,10 @@
     "sha256": "a44d51fabcc746023eb423121eedebc783eba6525fbe9d8ba309fbda8a00a12e",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "ESPN",
-    "finding": "tennessee at south-carolina, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "tennessee at south-carolina, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "south-carolina",
+    "away": "tennessee",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5290,7 +5380,10 @@
     "sha256": "6f3c7f6e38563c72df221496b389300081365d889a6c917e277d51c8e37df9be",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "ABC",
-    "finding": "texas-am at alabama, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "texas-am at alabama, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "alabama",
+    "away": "texas-am",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5345,7 +5438,10 @@
     "sha256": "3825f43e09dcd58cc8ad64068a3c1135ba468c120b28e9ee33e6f969d09cff3c",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "FS1",
-    "finding": "iowa at minnesota, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "iowa at minnesota, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "minnesota",
+    "away": "iowa",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5400,7 +5496,10 @@
     "sha256": "15402e5d5ad8e6008c4d49214534d5c448572d2fd83113ee9adb2b034eee7e00",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "SEC Network",
-    "finding": "oklahoma at mississippi-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "oklahoma at mississippi-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "mississippi-state",
+    "away": "oklahoma",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5455,7 +5554,10 @@
     "sha256": "c4afa528ef113b9a71bd64d9de805043385d1f69bb9314625058c9834631fc8b",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "ACC Network",
-    "finding": "boston-college at georgia-tech, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "boston-college at georgia-tech, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "georgia-tech",
+    "away": "boston-college",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5510,7 +5612,10 @@
     "sha256": "ca6ea3a1fe32dd31fe53c9f9a79a73606d4655e6b46dd801f20f2b8046f8f14e",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "CBSSN",
-    "finding": "north-texas at navy, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "north-texas at navy, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "navy",
+    "away": "north-texas",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5565,7 +5670,10 @@
     "sha256": "d0686b6169b9596b589efa9c23cb1aa8653c3f291e938e8fe9eb2fa1d420ef37",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "MW+",
-    "finding": "hawaii at northern-illinois, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "hawaii at northern-illinois, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "northern-illinois",
+    "away": "hawaii",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5620,7 +5728,10 @@
     "sha256": "ec7fb0b17941ac8085514cd8bd04fb39f4748aeb7a2a0c779bf217513b18716d",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": null,
-    "finding": "sacramento-state at ball-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Neither school publishes a network; ESPN lists ESPN+, which is withheld pending a school confirmation."
+    "finding": "sacramento-state at ball-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Neither school publishes a network; ESPN lists ESPN+, which is withheld pending a school confirmation.",
+    "home": "ball-state",
+    "away": "sacramento-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5675,7 +5786,10 @@
     "sha256": "c4e2371d0cef9d74267cfbaf66e15fba3bb65b72942c892d54b7a8f5eb1b5885",
     "kickoff_utc": "2026-10-24T19:30Z",
     "tv": "ESPN+",
-    "finding": "bowling-green at buffalo, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "bowling-green at buffalo, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "buffalo",
+    "away": "bowling-green",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5730,7 +5844,10 @@
     "sha256": "fc8baa45472a2ccd3151475b9c2a6176c91bfe0da9f73c55f07b1f2c234377e8",
     "kickoff_utc": "2026-10-24T19:45Z",
     "tv": "ESPN2",
-    "finding": "kansas-state at arizona-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "kansas-state at arizona-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "arizona-state",
+    "away": "kansas-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5785,7 +5902,10 @@
     "sha256": "fef2fcfa926e538bd110cdff15dead71dcd22013454f5369f8a88cefb04e7a33",
     "kickoff_utc": "2026-10-24T20:00Z",
     "tv": "ESPNU",
-    "finding": "eastern-michigan at ohio, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "eastern-michigan at ohio, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "ohio",
+    "away": "eastern-michigan",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5840,7 +5960,10 @@
     "sha256": "70039e3281e617d8cb3266e7882e498017cc19cd145f75b3380add6b8dcf3033",
     "kickoff_utc": "2026-10-24T20:00Z",
     "tv": "ESPN+",
-    "finding": "ulm at troy, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "ulm at troy, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "troy",
+    "away": "ulm",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5895,7 +6018,10 @@
     "sha256": "ef2d5a29a713b0ff260b380cbd2a76ef62852b5dd5a2c9afbfbec9a08d3ab97f",
     "kickoff_utc": "2026-10-24T21:00Z",
     "tv": "MW+",
-    "finding": "san-jose-state at nevada, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "san-jose-state at nevada, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "nevada",
+    "away": "san-jose-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -5950,7 +6076,10 @@
     "sha256": "0a1c0082ee12522004ccc8a62f92296cde26fd3714da242e56f90d25dac4bacf",
     "kickoff_utc": "2026-10-24T21:00Z",
     "tv": "ESPN+",
-    "finding": "louisiana at southern-miss, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "louisiana at southern-miss, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "southern-miss",
+    "away": "louisiana",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6005,7 +6134,10 @@
     "sha256": "108dcb3d72728a94120de112c05ace423769ad3829453dba3de0bce9f226914d",
     "kickoff_utc": "2026-10-24T21:00Z",
     "tv": "ESPN+",
-    "finding": "old-dominion at louisiana-tech, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "old-dominion at louisiana-tech, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "louisiana-tech",
+    "away": "old-dominion",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6060,7 +6192,10 @@
     "sha256": "98b3b67021895e1bcf2ef5750c71329e5185bbf9a838f68861fd0af2b967928d",
     "kickoff_utc": "2026-10-24T22:00Z",
     "tv": "USA Network",
-    "finding": "boise-state at washington-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "boise-state at washington-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "washington-state",
+    "away": "boise-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6115,7 +6250,10 @@
     "sha256": "deeb7fe004491c45163a8f5ffef3c61ed05d5f2cb2398c834cea4b9f8628d4d8",
     "kickoff_utc": "2026-10-24T22:30Z",
     "tv": "The CW",
-    "finding": "san-diego-state at colorado-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "san-diego-state at colorado-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "colorado-state",
+    "away": "san-diego-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6170,7 +6308,10 @@
     "sha256": "ae3e6bb57ecd024b82d2cc88add621bfb3f1370ee8ac8835ee9d3b25343f82a9",
     "kickoff_utc": "2026-10-24T23:00Z",
     "tv": "FS1",
-    "finding": "colorado at oklahoma-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "colorado at oklahoma-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "oklahoma-state",
+    "away": "colorado",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6225,7 +6366,10 @@
     "sha256": "404b1a8d7a8fb37ae71c78522a44c84a6869911f810ee6ee6a92b36891f3c13f",
     "kickoff_utc": "2026-10-24T23:00Z",
     "tv": "ESPN",
-    "finding": "virginia-tech at clemson, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "virginia-tech at clemson, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "clemson",
+    "away": "virginia-tech",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6280,7 +6424,10 @@
     "sha256": "dd17e2bea7324d0678932fb6bda681619d39b9a358d9b8da4a72c765fa688ecf",
     "kickoff_utc": "2026-10-24T23:00Z",
     "tv": "ESPN+",
-    "finding": "georgia-state at arkansas-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "georgia-state at arkansas-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "arkansas-state",
+    "away": "georgia-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6335,7 +6482,10 @@
     "sha256": "f75133fb517f96ab9c597e1b326f2d4b4b430febbf4a80e15e7074d357e8e148",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "ABC",
-    "finding": "ole-miss at texas, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "ole-miss at texas, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "texas",
+    "away": "ole-miss",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6390,7 +6540,10 @@
     "sha256": "57d9ee64c303d83d1a90a02eb2f5382386851bf445eb0ea2327ab10a2c0bd78d",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "SEC Network",
-    "finding": "vanderbilt at kentucky, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "vanderbilt at kentucky, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "kentucky",
+    "away": "vanderbilt",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6445,7 +6598,10 @@
     "sha256": "d2cbd040d87ba82461b1b6f1c3f4f3133a038e9b38b68026691c4bed259f7827",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "NBC",
-    "finding": "usc at wisconsin, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "usc at wisconsin, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "wisconsin",
+    "away": "usc",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6500,7 +6656,10 @@
     "sha256": "cc2dbe2cc459b62f10e15372760d18cb3c81d3495662effb32e9ccab409abcc5",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "ESPN2",
-    "finding": "iowa-state at arizona, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "iowa-state at arizona, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "arizona",
+    "away": "iowa-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6555,7 +6714,10 @@
     "sha256": "897a19ff7abd577b6107ea6b784571830d8f7f6a7a321d2b3154c110516008ed",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "ACC Network",
-    "finding": "syracuse at north-carolina, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "syracuse at north-carolina, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "north-carolina",
+    "away": "syracuse",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6610,7 +6772,10 @@
     "sha256": "3aa21611184909f511baa4a218016f6e824480c7054d9f193a5894ba89b65800",
     "kickoff_utc": "2026-10-24T23:30Z",
     "tv": "CBSSN",
-    "finding": "utah-state at texas-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "utah-state at texas-state, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "texas-state",
+    "away": "utah-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6665,7 +6830,10 @@
     "sha256": "1fc989d71deb370b42bf413b2a1a66a5f493fca5fd0e3348946313eee93c1815",
     "kickoff_utc": "2026-10-25T00:00Z",
     "tv": "ESPNU",
-    "finding": "utsa at tulane, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "utsa at tulane, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "tulane",
+    "away": "utsa",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6720,7 +6888,10 @@
     "sha256": "646386cdeace46bac08681ac4109c1d760882a7a8fe015c162c767d5da618ea5",
     "kickoff_utc": "2026-10-25T02:00Z",
     "tv": "The CW",
-    "finding": "north-dakota-state at new-mexico, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "north-dakota-state at new-mexico, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "new-mexico",
+    "away": "north-dakota-state",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   },
@@ -6775,7 +6946,10 @@
     "sha256": "a237663d1f551ec8ee1411569ca6da2cfd111ac5d905d02d2a68e3e1a4e31fc6",
     "kickoff_utc": "2026-10-25T02:15Z",
     "tv": "ESPN",
-    "finding": "houston at utah, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo)."
+    "finding": "houston at utah, 2026-10-24: kickoff agrees with ESPN after conversion from the school's local time. Network agrees with the school schedule (text or labelled network logo).",
+    "home": "utah",
+    "away": "houston",
+    "date": "2026-10-24"
    },
    "additional_school_sources": []
   }
@@ -10005,165 +10179,165 @@
   "as_of": "2026-10-18",
   "movers_ap": [
    {
-    "team": "Miami",
-    "team_slug": "miami-fl",
-    "from": 3,
-    "to": 1,
-    "move": 2
-   },
-   {
-    "team": "BYU",
-    "team_slug": "byu",
-    "from": 8,
-    "to": 2,
-    "move": 6
-   },
-   {
-    "team": "Ohio State",
-    "team_slug": "ohio-state",
-    "from": 4,
-    "to": 3,
-    "move": 1
-   },
-   {
-    "team": "Notre Dame",
-    "team_slug": "notre-dame",
-    "from": 2,
-    "to": 4,
-    "move": -2
-   },
-   {
-    "team": "Georgia",
-    "team_slug": "georgia",
-    "from": 1,
-    "to": 5,
-    "move": -4
-   },
-   {
-    "team": "Indiana",
-    "team_slug": "indiana",
-    "from": 5,
-    "to": 6,
-    "move": -1
-   },
-   {
-    "team": "Ole Miss",
-    "team_slug": "ole-miss",
-    "from": 9,
-    "to": 7,
-    "move": 2
-   },
-   {
-    "team": "Texas Tech",
-    "team_slug": "texas-tech",
-    "from": 10,
-    "to": 8,
-    "move": 2
-   },
-   {
-    "team": "UCLA",
-    "team_slug": "ucla",
-    "from": 12,
-    "to": 9,
-    "move": 3
-   },
-   {
-    "team": "Utah",
-    "team_slug": "utah",
-    "from": 11,
-    "to": 10,
-    "move": 1
-   },
-   {
-    "team": "Tennessee",
-    "team_slug": "tennessee",
-    "from": 14,
-    "to": 11,
-    "move": 3
-   },
-   {
-    "team": "Kentucky",
-    "team_slug": "kentucky",
-    "from": 15,
-    "to": 12,
-    "move": 3
-   },
-   {
-    "team": "Alabama",
-    "team_slug": "alabama",
-    "from": 6,
-    "to": 13,
-    "move": -7
-   },
-   {
-    "team": "Houston",
-    "team_slug": "houston",
-    "from": 20,
-    "to": 14,
-    "move": 6
-   },
-   {
-    "team": "Iowa",
-    "team_slug": "iowa",
-    "from": 17,
-    "to": 15,
-    "move": 2
-   },
-   {
-    "team": "USC",
-    "team_slug": "usc",
-    "from": 19,
-    "to": 16,
-    "move": 3
-   },
-   {
-    "team": "Wake Forest",
-    "team_slug": "wake-forest",
-    "from": 21,
-    "to": 17,
-    "move": 4
-   },
-   {
-    "team": "LSU",
-    "team_slug": "lsu",
-    "from": 22,
-    "to": 18,
-    "move": 4
-   },
-   {
     "team": "Texas",
     "team_slug": "texas",
     "from": 7,
     "to": 19,
-    "move": -12
-   },
-   {
-    "team": "Boise State",
-    "team_slug": "boise-state",
-    "from": 23,
-    "to": 21,
-    "move": 2
+    "move": 12
    },
    {
     "team": "Missouri",
     "team_slug": "missouri",
     "from": 13,
     "to": 22,
-    "move": -9
+    "move": 9
+   },
+   {
+    "team": "Alabama",
+    "team_slug": "alabama",
+    "from": 6,
+    "to": 13,
+    "move": 7
+   },
+   {
+    "team": "BYU",
+    "team_slug": "byu",
+    "from": 8,
+    "to": 2,
+    "move": -6
+   },
+   {
+    "team": "Houston",
+    "team_slug": "houston",
+    "from": 20,
+    "to": 14,
+    "move": -6
+   },
+   {
+    "team": "Georgia",
+    "team_slug": "georgia",
+    "from": 1,
+    "to": 5,
+    "move": 4
+   },
+   {
+    "team": "Wake Forest",
+    "team_slug": "wake-forest",
+    "from": 21,
+    "to": 17,
+    "move": -4
+   },
+   {
+    "team": "LSU",
+    "team_slug": "lsu",
+    "from": 22,
+    "to": 18,
+    "move": -4
+   },
+   {
+    "team": "UCLA",
+    "team_slug": "ucla",
+    "from": 12,
+    "to": 9,
+    "move": -3
+   },
+   {
+    "team": "Tennessee",
+    "team_slug": "tennessee",
+    "from": 14,
+    "to": 11,
+    "move": -3
+   },
+   {
+    "team": "Kentucky",
+    "team_slug": "kentucky",
+    "from": 15,
+    "to": 12,
+    "move": -3
+   },
+   {
+    "team": "USC",
+    "team_slug": "usc",
+    "from": 19,
+    "to": 16,
+    "move": -3
+   },
+   {
+    "team": "Miami",
+    "team_slug": "miami-fl",
+    "from": 3,
+    "to": 1,
+    "move": -2
+   },
+   {
+    "team": "Notre Dame",
+    "team_slug": "notre-dame",
+    "from": 2,
+    "to": 4,
+    "move": 2
+   },
+   {
+    "team": "Ole Miss",
+    "team_slug": "ole-miss",
+    "from": 9,
+    "to": 7,
+    "move": -2
+   },
+   {
+    "team": "Texas Tech",
+    "team_slug": "texas-tech",
+    "from": 10,
+    "to": 8,
+    "move": -2
+   },
+   {
+    "team": "Iowa",
+    "team_slug": "iowa",
+    "from": 17,
+    "to": 15,
+    "move": -2
+   },
+   {
+    "team": "Boise State",
+    "team_slug": "boise-state",
+    "from": 23,
+    "to": 21,
+    "move": -2
+   },
+   {
+    "team": "Ohio State",
+    "team_slug": "ohio-state",
+    "from": 4,
+    "to": 3,
+    "move": -1
+   },
+   {
+    "team": "Indiana",
+    "team_slug": "indiana",
+    "from": 5,
+    "to": 6,
+    "move": 1
+   },
+   {
+    "team": "Utah",
+    "team_slug": "utah",
+    "from": 11,
+    "to": 10,
+    "move": -1
    },
    {
     "team": "SMU",
     "team_slug": "smu",
     "from": 24,
     "to": 23,
-    "move": 1
+    "move": -1
    },
    {
     "team": "Northwestern",
     "team_slug": "northwestern",
     "from": 25,
     "to": 24,
-    "move": 1
+    "move": -1
    }
   ],
   "debuts_ap": [

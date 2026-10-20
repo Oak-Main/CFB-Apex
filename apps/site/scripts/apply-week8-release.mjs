@@ -22,10 +22,27 @@ const etTime = iso => new Intl.DateTimeFormat('en-GB', { timeZone: 'America/New_
 const sourceUrl = id => `https://www.espn.com/college-football/game/_/gameId/${id}`;
 const records = Object.fromEntries(evidence.conferences.flatMap(c => c.rows).map(r => [r.slug, r.overall]));
 const schoolNames = new Map(previous.retainedBaseline.conferenceStandings.flatMap(c => c.rows).map(r => [r.team_slug, r.team]));
+const expectedRecords = { ...previous.teamRecords };
+const expectedConference = Object.fromEntries(previous.retainedBaseline.conferenceStandings.flatMap(c => c.rows).map(r => [r.team_slug, `${r.w}-${r.l}`]));
+for (const g of [...evidence.finals, ...evidence.excluded_finals]) {
+  for (const side of ['home', 'away']) {
+    const slug = g[side];
+    if (!slug || !expectedRecords[slug]) continue;
+    const other = side === 'home' ? 'away' : 'home';
+    const win = g[`${side}_score`] > g[`${other}_score`];
+    assert.notEqual(g[`${side}_score`], g[`${other}_score`]);
+    const increment = record => { const [w, l] = record.split('-').map(Number); return `${w + Number(win)}-${l + Number(!win)}`; };
+    expectedRecords[slug] = increment(expectedRecords[slug]);
+    if (g.conference_game) expectedConference[slug] = increment(expectedConference[slug]);
+  }
+}
+assert.deepEqual(records, expectedRecords, 'All 138 overall records must reconcile from the prior snapshot and Week 7 results');
+assert.deepEqual(Object.fromEntries(evidence.conferences.flatMap(c => c.rows).map(r => [r.slug, r.conference])), expectedConference, 'All 138 conference records must reconcile from the prior snapshot and conference results');
 assert.equal(Object.keys(records).length, 138);
 assert.equal(evidence.finals.length, 59);
 assert.equal(new Set(evidence.finals.map(g => g.id)).size, 59);
 assert.equal(evidence.schedule.length, 56);
+assert.equal(new Set(evidence.schedule.map(g => g.id)).size, 56);
 assert.equal(new Set(evidence.schedule.flatMap(g => [g.home, g.away])).size, 112);
 for (const g of evidence.finals) {
   const old = snapshot.scheduledGames.find(row => row.provider_id === g.id);
@@ -60,8 +77,15 @@ for (const g of evidence.schedule) {
   assert.equal(g.status.type.state, 'pre');
   assert.equal(g.timeValid, true);
   assert.equal(etDate(g.kickoff_utc), g.date);
+  assert.ok(g.date >= '2026-10-19' && g.date <= '2026-10-25');
+  assert.notEqual(g.home, g.away);
+  assert.equal(g.school_source.team, g.home);
   for (const school of [g.school_source, ...g.additional_school_sources]) {
+    assert.ok([g.home, g.away].includes(school.team));
     assert.equal(new URL(school.url).hostname, hosts[school.team]);
+    assert.equal(school.home, g.home);
+    assert.equal(school.away, g.away);
+    assert.equal(school.date, g.date);
     assert.equal(school.kickoff_utc, g.kickoff_utc);
   }
   assert.equal(g.tv, g.school_source.tv);
@@ -96,13 +120,14 @@ const ap = snapshot.polls.find(p => p.poll === 'ap');
 const coaches = snapshot.polls.find(p => p.poll === 'coaches');
 snapshot.poll_notes = {
   as_of: '2026-10-18',
-  movers_ap: ap.rankings.filter(r => r.previous_rank && r.previous_rank !== r.rank).map(r => ({ team: r.team, team_slug: r.team_slug, from: r.previous_rank, to: r.rank, move: r.previous_rank - r.rank })),
+  movers_ap: ap.rankings.filter(r => r.previous_rank && r.previous_rank !== r.rank).map(r => ({ team: r.team, team_slug: r.team_slug, from: r.previous_rank, to: r.rank, move: r.rank - r.previous_rank })).sort((a, b) => Math.abs(b.move) - Math.abs(a.move)),
   debuts_ap: ap.rankings.filter(r => !r.previous_rank).map(r => ({ team: r.team, team_slug: r.team_slug, rank: r.rank })),
   dropped_out: { ap: evidence.previous_ap.rankings.filter(r => !ap.rankings.some(x => x.team_slug === r.team_slug)).map(r => ({ team: r.team, team_slug: r.team_slug, others_points: ap.others.find(x => x.team_slug === r.team_slug)?.points ?? null })), coaches: [] },
   poll_gaps: { ap_only: ap.rankings.filter(r => !coaches.rankings.some(c => c.team_slug === r.team_slug)).map(r => ({ team: r.team, team_slug: r.team_slug, ap: r.rank, coaches: null })), coaches_only: coaches.rankings.filter(r => !ap.rankings.some(a => a.team_slug === r.team_slug)).map(r => ({ team: r.team, team_slug: r.team_slug, ap: null, coaches: r.rank })), biggest_splits: [] },
   sources: evidence.raw_sources.filter(r => r.name === 'polls-8.json').map(r => r.url),
 };
 snapshot.metrics = evidence.metrics;
+assert.deepEqual(evidence.poll_notes.movers_ap, snapshot.poll_notes.movers_ap, 'Movement deltas must use the existing to-minus-from convention');
 snapshot.poll_notes = evidence.poll_notes;
 snapshot.week = 8;
 snapshot.week_start = '2026-10-19';
