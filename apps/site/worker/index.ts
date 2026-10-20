@@ -25,7 +25,7 @@ function secureResponse(response: Response, url: URL, launchReady: boolean) {
   const secured = new Response(response.body, response);
   secured.headers.set(
     "Content-Security-Policy",
-    "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com https://tpembars.com https://scripts.stay22.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://tpembars.com https://*.stay22.com; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://cloudflareinsights.com; media-src 'none'; worker-src 'self';",
+    "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com https://tpembars.com https://scripts.stay22.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com https://tpembars.com https://*.stay22.com; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://cloudflareinsights.com https://tpembars.com; media-src 'none'; worker-src 'self';",
   );
   secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   secured.headers.set("X-Content-Type-Options", "nosniff");

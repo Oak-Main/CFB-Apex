@@ -37,6 +37,15 @@ test("server-renders the finished home utility", async () => {
   assert.match(html, /138/);
   assert.match(html, /FBS programs/);
   assert.match(html, /Clean Mode/);
+  // The Drive loader connects to configuration/collection on its own origin.
+  // A script-src allowance alone loads the JS but leaves Drive without config.
+  const directives = new Map((response.headers.get("content-security-policy") ?? "").split(";").map(part => {
+    const [name, ...sources] = part.trim().split(/\s+/);
+    return [name, sources];
+  }));
+  assert.ok(directives.get("script-src")?.includes("https://tpembars.com"));
+  assert.ok(directives.get("connect-src")?.includes("https://tpembars.com"));
+  assert.ok(!directives.get("connect-src")?.some(source => ["*", "https:", "http:"].includes(source)));
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
@@ -191,6 +200,8 @@ test("weekly release renders current data, truthful pending states and both arch
   const current = pages.get("/");
   assert.match(current, /WEEK 8 · OCT 20–24/);
   assert.match(current, /Houston at Utah/);
+  assert.match(current, /all kickoffs and networks school-confirmed/);
+  assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(current, /College GameDay · Salt Lake City/);
   assert.match(current, /AP TOP 25 2026-10-18/);
   assert.match(current, /2,604/);
@@ -214,6 +225,12 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.match(pages.get("/playoff-audit"), /First CFP rankings: November 3/);
   assert.doesNotMatch(pages.get("/playoff-audit"), /null losses|Five highest-ranked conference champions/);
   assert.match(pages.get("/data-sources"), /VERIFIED SNAPSHOT/);
+  const resolvedGame = await fetchRoute("/games/2026-10-24-sacramento-state-at-ball-state");
+  assert.equal(resolvedGame.status, 200);
+  const resolvedText = visibleText(await resolvedGame.text());
+  assert.match(resolvedText, /3:30 PM ET/);
+  assert.match(resolvedText, /ESPN\+/);
+  assert.doesNotMatch(resolvedText, /pending school confirmation|TV: Not published/);
 });
 
 test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", async () => {

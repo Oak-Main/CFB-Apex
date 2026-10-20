@@ -9,6 +9,7 @@ import { athleteHighlight, heismanWatch, panelBrief, playoffAudit, upsetWatch } 
 import { injuryResearch } from "../lib/injury-report.ts";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-week8-release.json", import.meta.url), "utf8"));
+const tvFollowup = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-tv-followup.json", import.meta.url), "utf8"));
 
 test("Week 8 selects on the server and Week 7 remains an explicit archive", () => {
   assert.equal(selectBoardWeek(boardWeeks, Date.parse("2026-10-18T12:59:59Z")).week, 7);
@@ -60,8 +61,18 @@ test("Week 8 is complete, uses Eastern dates and has school support for every ki
     assert.equal(row.timeValid, true);
   }
   const pending = slate.filter(g => !g.broadcast);
-  assert.deepEqual(pending.map(g => g.id), ["2026-10-24-sacramento-state-at-ball-state"]);
-  assert.match(pending[0].statusDetail, /pending school confirmation/i);
+  assert.deepEqual(pending, []);
+  const resolved = slate.find(g => g.id === tvFollowup.game_id);
+  assert.ok(resolved);
+  assert.equal(resolved.broadcast, "ESPN+");
+  assert.equal(tvFollowup.school.team, resolved.homeTeamId);
+  assert.equal(new URL(tvFollowup.school.url).hostname, hosts[tvFollowup.school.team]);
+  assert.deepEqual(tvFollowup.school.matchup, { home: "ball-state", away: "sacramento-state", date: "2026-10-24" });
+  assert.equal(Date.parse(tvFollowup.kickoff_utc), Date.parse(tvFollowup.espn.kickoff_utc));
+  assert.equal(tvFollowup.espn.time_valid, true);
+  assert.ok(tvFollowup.espn.broadcasts.includes(resolved.broadcast));
+  assert.match(resolved.statusDetail, /confirmed by Ball State/);
+  assert.doesNotMatch(resolved.statusDetail, /pending|not adopted/i);
   assert.equal(slate.find(g => g.id.includes("rutgers-at-northwestern"))?.broadcast, "Peacock");
   assert.equal(easternDate(slate.find(g => g.id.includes("liberty-at-kennesaw-state"))?.date ?? ""), "2026-10-22");
   const ap = new Set(pollTables.find(p => p.poll === "ap")?.rankings.map(r => r.team_slug));

@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-20T20:10:39.257Z",
+  "provider_id": "401866447",
+  "game_id": "2026-10-24-sacramento-state-at-ball-state",
+  "kickoff_utc": "2026-10-24T19:30Z",
+  "tv": "ESPN+",
+  "school": {
+    "team": "ball-state",
+    "url": "https://ballstatesports.com/news/2026/10/19/football-cardinals-carry-renewed-confidence-into-homecoming-matchup",
+    "title": "Cardinals Carry Renewed Confidence into Homecoming Matchup",
+    "published_date": "2026-10-19",
+    "checked_at": "2026-10-20T20:10:39.257Z",
+    "retrieved_at": null,
+    "retrieval_method": "Web reader returned the official school article; direct HTML fetch timed out. Exact reader retrieval time is not available.",
+    "matchup": {
+      "home": "ball-state",
+      "away": "sacramento-state",
+      "date": "2026-10-24"
+    },
+    "kickoff_utc": "2026-10-24T19:30Z",
+    "local_time": "3:30 p.m. ET",
+    "tv": "ESPN+",
+    "excerpt": "The broadcast is available on ESPN+ and WLBC 104.1 FM.",
+    "excerpt_sha256": "1a45cdb660ef0f461c48d230fd691a160fa8cbab087587fa3fbd569bce8cc7ce"
+  },
+  "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+    "checked_at": "2026-10-20T20:10:39.257Z",
+    "status": 200,
+    "sha256": "c568aa0cf41c1d9fbb042e8b6f93963bd44fbf296d899911b3da4d4b8d603b27",
+    "kickoff_utc": "2026-10-24T19:30Z",
+    "time_valid": true,
+    "broadcasts": [
+      "ESPN+"
+    ],
+    "state": "pre"
+  },
+  "schedule_rechecks": [
+    {
+      "name": "ball-state-schedule",
+      "url": "https://ballstatesports.com/sports/football/schedule",
+      "status": 200,
+      "checkedAt": "2026-10-20T20:06:44.004Z",
+      "bytes": 1080830,
+      "sha256": "d2cc2a9161f23e7d084d4420dcd32b1a939324eb9c0798422800e2dd6362f8e0"
+    },
+    {
+      "name": "sacramento-schedule",
+      "url": "https://hornetsports.com/sports/football/schedule/2026",
+      "status": 200,
+      "checkedAt": "2026-10-20T20:06:43.618Z",
+      "bytes": 809749,
+      "sha256": "4f71c9d7f182e82088cef64e6c4c4a34c7830f63e45c6ee92da34eba9fc0f71c"
+    }
+  ],
+  "decision": "Adopt ESPN+ from the host school’s explicit game-week announcement, which confirms both the pairing and October 24 3:30 PM ET kickoff and agrees with ESPN. The school schedule grids still omit the network; omission does not contradict the announcement. Initial release evidence remains an immutable record of the earlier check."
+}

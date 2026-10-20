@@ -1,6 +1,6 @@
 # Week 8 release verification — October 20, 2026
 
-Acceptance: PASS WITH CONDITIONS. The verified weekly release is suitable for PR review. One network and the research gaps below remain visibly pending; this is not a claim that the entire supplied memo is independently confirmed.
+Acceptance: PASS WITH CONDITIONS. The verified weekly release is suitable for PR review. The research gaps below remain visibly pending; this is not a claim that the entire supplied memo is independently confirmed. October 20 follow-up: Ball State's October 19 game-week announcement explicitly confirms ESPN+ for Sacramento State at Ball State at 3:30 PM ET. All 56 networks are now school-confirmed. The original 55-network findings below describe the initial release and are superseded for this one assignment by `docs/TRAVELPAYOUTS_TV_FOLLOWUP.md`.
 
 ## Mission, inputs and decisions
 
@@ -22,7 +22,7 @@ Primary evidence: ESPN daily scoreboards (October 13–25), ESPN completed-game 
 
 ## Conditions and withheld claims
 
-Sacramento State–Ball State: ESPN lists ESPN+, but neither school schedule lists a network. Its kickoff is confirmed; TV is null with a pending-school-confirmation note. This is the only unpublished Week 8 network.
+Initial check: Sacramento State–Ball State had ESPN+ only in provider data, with both school schedule grids blank. Follow-up resolved it from the host school's explicit October 19 announcement. ESPN+ is now published; the prior null/pending finding remains in the initial evidence for audit history.
 
 The other twelve supplied availability stories, staff changes, hot-seat list, no-head-coach-firing assertion, unresolved streak/first/record narratives, officiating statement, weather forecasts and most policy/eligibility/transfer-calendar claims have not been independently established in this release. They are not promoted as current facts. Source-coverage gaps cannot establish a universal negative. ESPN’s injury endpoint also contains historical rows, so no broad current feed is inferred from it.
 
