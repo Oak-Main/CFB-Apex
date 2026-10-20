@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { isCurrentEspnInjury, editorialResearchIsHistorical } from "../lib/injury-freshness.mjs";
@@ -72,6 +74,14 @@ test("ingestion accepts the out designation already present in the historical re
   const declaration = script.match(/const LIKELIHOODS = new Set\((\[[^;]+\])\);/)?.[1];
   assert.ok(declaration);
   assert.ok((JSON.parse(declaration) as string[]).includes("out"));
+});
+
+test("ingestion rejects a context source string before it can break the injury route", () => {
+  const script = fileURLToPath(new URL("../scripts/ingest-injury-research.mjs", import.meta.url));
+  const fixture = fileURLToPath(new URL("./fixtures/invalid-injury-context.json", import.meta.url));
+  const result = spawnSync(process.execPath, [script, fixture, "--check"], { encoding: "utf8" });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /invalid dated quarterback context/);
 });
 
 

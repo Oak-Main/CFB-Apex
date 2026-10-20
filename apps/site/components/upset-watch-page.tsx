@@ -19,6 +19,7 @@ const CONFIDENCE_LABEL: Record<string, string> = {
 function PickCard({ pick, cleanMode }: { pick: UpsetPick; cleanMode: boolean }) {
   const away = getTeamBySlug(pick.away_slug);
   const home = getTeamBySlug(pick.home_slug);
+  const boxscoreSources = pick.sources.filter(source => source !== pick.line_source_url);
   return (
     <article
       className="apex-portal-card"
@@ -60,7 +61,8 @@ function PickCard({ pick, cleanMode }: { pick: UpsetPick; cleanMode: boolean }) 
         </p>
       ) : null}
       <footer style={{ display: "flex", flexWrap: "wrap", gap: 12, fontSize: 12 }}>
-        {pick.sources.filter(source => !cleanMode || source !== pick.line_source_url).map((source, index) => <a key={source} href={source} target="_blank" rel="noopener noreferrer">{source === pick.line_source_url ? "Provider snapshot" : `Box score ${index + 1}`}</a>)}
+        {!cleanMode && pick.line_source_url ? <a href={pick.line_source_url} target="_blank" rel="noopener noreferrer">Provider snapshot</a> : null}
+        {boxscoreSources.map((source, index) => <a key={source} href={source} target="_blank" rel="noopener noreferrer">Box score {index + 1}</a>)}
       </footer>
     </article>
   );

@@ -1,0 +1,14 @@
+{
+  "week": 8,
+  "as_of": "2026-10-20",
+  "ledger": [],
+  "watch": [],
+  "context_notes": [{
+    "player": "Example Player",
+    "team_slug": "texas",
+    "title": "Test fixture",
+    "note": "Malformed source data must fail before publication.",
+    "source_as_of": "2026-10-20",
+    "sources": "not-a-list"
+  }]
+}

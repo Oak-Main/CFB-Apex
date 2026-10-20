@@ -73,7 +73,7 @@ function validate(doc, slugs) {
   });
   const context = Array.isArray(doc.context_notes) ? doc.context_notes : [];
   for (const entry of context) {
-    if (!entry.player || !entry.title || !entry.note || !slugs.has(entry.team_slug) || !/^\d{4}-\d{2}-\d{2}$/.test(entry.source_as_of ?? "") || !entry.sources?.length) fail("invalid dated quarterback context");
+    if (!entry.player || !entry.title || !entry.note || !slugs.has(entry.team_slug) || !/^\d{4}-\d{2}-\d{2}$/.test(entry.source_as_of ?? "") || !Array.isArray(entry.sources) || entry.sources.length === 0) fail("invalid dated quarterback context");
   }
   return {
     week: typeof doc.week === "number" ? doc.week : null,
