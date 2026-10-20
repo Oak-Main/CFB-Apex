@@ -200,7 +200,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
           { label: "Tracked game designations", value: officialAvailability?.entries.length ?? 0 },
           { label: "Research entries", value: injuryResearch.ledger.length + injuryResearch.watch.length + injuryResearch.contextNotes.length },
           { label: "Research as of", value: injuryResearch.asOf ?? "Not published" },
-          { label: "Teams covered", value: new Set([...ledgerRows.map(row => row.teamSlug), ...watchRows.map(row => row.teamSlug), ...injuryResearch.watch.map(row => row.teamSlug), ...injuryResearch.contextNotes.map(row => row.team_slug)].filter(Boolean)).size },
+          { label: "Teams covered", value: new Set([...ledgerRows.map(row => row.teamSlug), ...watchRows.map(row => row.teamSlug), ...injuryResearch.watch.filter(row => !teamFilter || row.teamSlug === teamFilter).map(row => row.teamSlug), ...injuryResearch.contextNotes.filter(row => !teamFilter || row.team_slug === teamFilter).map(row => row.team_slug)].filter(Boolean)).size },
         ]}
       />
 
