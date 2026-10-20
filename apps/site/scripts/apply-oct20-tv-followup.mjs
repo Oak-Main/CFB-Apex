@@ -17,10 +17,13 @@ const row = snapshot.scheduledGames.find(game => game.provider_id === evidence.p
 assert.ok(row && row.week === 8);
 assert.equal(`${row.date}-${row.away}-at-${row.home}`, evidence.game_id);
 assert.equal(row.home, evidence.school.team);
+assert.deepEqual(evidence.school.matchup, { home: row.home, away: row.away, date: row.date });
 assert.equal(new URL(evidence.school.url).hostname, hosts[row.home]);
 assert.equal(createHash('sha256').update(evidence.school.excerpt).digest('hex'), evidence.school.excerpt_sha256);
 assert.equal(row.kickoff_utc, evidence.kickoff_utc);
 assert.equal(evidence.school.kickoff_utc, evidence.espn.kickoff_utc);
+assert.equal(evidence.espn.status, 200);
+assert.equal(evidence.espn.state, 'pre');
 assert.equal(evidence.espn.time_valid, true);
 assert.equal(evidence.school.tv, evidence.tv);
 assert.ok(evidence.espn.broadcasts.includes(evidence.tv));
