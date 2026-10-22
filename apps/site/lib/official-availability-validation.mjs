@@ -1,6 +1,8 @@
 /** Shared publication gate for ingestion AND every dataset build. */
 export function validateOfficialReports(value, { teams, games, weeks, week }) {
   const fail = detail => { throw new Error(`Invalid official availability report: ${detail}`); };
+  const calendarDate = value => typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
+  const timestamp = value => typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?(?:Z|[+-]\d{2}:\d{2})$/.test(value) && calendarDate(value.slice(0, 10)) && Number.isFinite(Date.parse(value));
   if (value == null) return [];
   if (!Array.isArray(value)) fail("official_reports must be an array");
   const bySlug = new Map(teams.map(team => [team.slug, team]));
@@ -13,10 +15,10 @@ export function validateOfficialReports(value, { teams, games, weeks, week }) {
     // Some official public boards publish only a calendar date. Require an
     // explicit precision marker rather than inventing a midnight timestamp.
     const dateOnly = row.publication_precision === "date";
-    const validPublicationDate = typeof row.published_at === "string" && /^\d{4}-\d{2}-\d{2}$/.test(row.published_at) && Number.isFinite(Date.parse(row.published_at)) && new Date(row.published_at).toISOString().slice(0, 10) === row.published_at;
+    const validPublicationDate = calendarDate(row.published_at);
     const validPrecision = row.publication_precision == null || row.publication_precision === "timestamp" || dateOnly;
-    const published = validPrecision && (dateOnly ? validPublicationDate : typeof row.published_at === "string" && row.published_at.includes("T")) ? Date.parse(row.published_at) : NaN;
-    const retrieved = typeof row.retrieved_at === "string" && row.retrieved_at.includes("T") ? Date.parse(row.retrieved_at) : NaN;
+    const published = validPrecision && (dateOnly ? validPublicationDate : timestamp(row.published_at)) ? Date.parse(row.published_at) : NaN;
+    const retrieved = timestamp(row.retrieved_at) && row.retrieved_at.endsWith("Z") ? Date.parse(row.retrieved_at) : NaN;
     let source;
     try { source = new URL(row.source_url); } catch { fail("source URL is malformed"); }
     if (!row.player || !bySlug.has(row.team_slug) || !row.position || !row.conference || !statuses.has(row.status) || !validDate || !row.report_id || !row.report_type || !Number.isFinite(published) || !Number.isFinite(retrieved) || published > retrieved || source.protocol !== "https:" || !source.hostname || source.username || source.password) fail("missing or invalid dated source fields");

@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -83,7 +84,8 @@ test("October 22 official updates match retained sources while prior Singleton h
   const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-22-week8-official-followup.json", import.meta.url), "utf8"));
   assert.equal(injuryResearch.officialReports.length, 6);
   assert.equal(evidence.previous_official_reports[0].status, "Questionable");
-  for (const source of evidence.source_json) assert.match(source.sha256, /^[a-f0-9]{64}$/);
+  for (const source of evidence.source_json) assert.equal(createHash("sha256").update(source.raw).digest("hex"), source.sha256);
+  for (const source of evidence.public_boards) assert.equal(createHash("sha256").update(source.ax).digest("hex"), source.sha256);
   for (const official of injuryResearch.officialReports) {
     assert.deepEqual(official, evidence.verified_updates.find((row: {player: string}) => row.player === official.player));
     assert.ok(games.some(g => g.id === official.game_id && g.week === 8 && easternDate(g.date) === official.game_date && [g.homeTeamId,g.awayTeamId].includes(official.team_slug)));
@@ -95,6 +97,27 @@ test("October 22 official updates match retained sources while prior Singleton h
       assert.equal(player.status,official.status);assert.equal(player.position,official.position);
       assert.equal(game.dateISO,official.game_date);assert.equal(game.updatedAtUTC,official.published_at);
       assert.equal(game.notes,official.report_type);assert.equal(jsonSource.retrieved_at,official.retrieved_at);
+    } else {
+      const board=evidence.public_boards.find((row: {url: string})=>row.url===official.source_url);
+      assert.ok(board, `Missing public board for ${official.player}`);
+      const blocks=board.ax.split(official.conference==="Big Ten" ? /\d+ text AVAILABILITY REPORT/ : /\d+ heading Initial Report/).slice(1);
+      const block=blocks.find((text: string)=>text.includes(official.player));
+      assert.ok(block, `Missing matching report block for ${official.player}`);
+      for(const team of official.matchup.split(" at ")) assert.ok(block.includes(`image ${team}\n`) || block.includes(`heading ${team}, Value: 3`), `Missing matchup team ${team}`);
+      assert.match(block,/October 24|Oct\. 24/);
+      const line=block.split("\n").find((text: string)=>text.includes(`${official.position} #${official.jersey} ${official.player}`));
+      assert.ok(line, `Missing source player/position/jersey for ${official.player}`);
+      const beforePlayer=line.slice(0,line.indexOf(`${official.position} #${official.jersey} ${official.player}`));
+      const groups=[...beforePlayer.matchAll(/\b(Out|Doubtful|Questionable|Probable|Available)\b/gi)];
+      assert.equal(groups.at(-1)?.[1].toLowerCase(),official.status.toLowerCase());
+      assert.equal(board.retrieved_at,official.retrieved_at);
+      if(official.conference==="Big Ten") {
+        assert.match(block,/INITIAL REPORT 10\/21\/26/);
+        assert.equal(official.published_at,"2026-10-21");
+      } else {
+        assert.match(block,/posted\s+7:10pm CT\s+on\s+Wednesday, Oct\. 21/);
+        assert.equal(official.published_at,"2026-10-22T00:10:00Z");
+      }
     }
     const watch=injuryResearch.watch.find(r=>r.player===official.player);
     assert.ok(watch?.reportedStatus?.includes(`Official ${official.status}`));
@@ -116,7 +139,7 @@ test("ingestion rejects invalid, undated, duplicate and unknown-team official ro
   const script = fileURLToPath(new URL("../scripts/ingest-injury-research.mjs", import.meta.url));
   const scratch = mkdtempSync(join(tmpdir(), "cfb-official-"));
   try {
-    for (const patch of [{status:"Likely cleared"}, {game_date:"2026-02-30"}, {published_at:null}, {published_at:"2026-10-21"}, {publication_precision:"date"}, {publication_precision:"unknown"}, {published_at:"2026-02-30",publication_precision:"date"}, {published_at:"2026-10-23",publication_precision:"date"}, {retrieved_at:"2026-10-22"}, {team_slug:"unverified-team"}, {team_slug:"texas"}, {game_id:"wrong-game"}, {game_date:"2026-10-17"}, {matchup:"Appalachian State at James Madison"}, {source_url:"http://example.com"}, {source_url:"https://"}]) {
+    for (const patch of [{status:"Likely cleared"}, {game_date:"2026-02-30"}, {published_at:null}, {published_at:"2026-10-22T14:37:43"}, {retrieved_at:"2026-10-22T18:58:29"}, {retrieved_at:"2026-10-22T11:58:29-07:00"}, {published_at:"2026-02-30T12:00:00Z"}, {published_at:"2026-10-21"}, {publication_precision:"date"}, {publication_precision:"unknown"}, {published_at:"2026-02-30",publication_precision:"date"}, {published_at:"2026-10-23",publication_precision:"date"}, {retrieved_at:"2026-10-22"}, {team_slug:"unverified-team"}, {team_slug:"texas"}, {game_id:"wrong-game"}, {game_date:"2026-10-17"}, {matchup:"Appalachian State at James Madison"}, {source_url:"http://example.com"}, {source_url:"https://"}]) {
       const path = join(scratch, "invalid.json");
       writeFileSync(path, JSON.stringify({...doc, official_reports:[{...doc.official_reports[0], ...patch}]}));
       const result = spawnSync(process.execPath, [script, path, "--check"], {encoding:"utf8"});
