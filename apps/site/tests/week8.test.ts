@@ -124,7 +124,8 @@ test("Week 8 research keeps unknown returns, reported statuses and medical conte
   assert.equal(injuryResearch.contextNotes.length, 2);
   assert.ok(injuryResearch.watch.every(r => Object.values(r.practice).every(v => v == null) && r.likelihood == null && r.sourceAsOf && r.sources.length));
   assert.equal(injuryResearch.watch.find(r => r.player === "Khobie Martin")?.reportedStatus, "Week 8 return unconfirmed");
-  assert.match(injuryResearch.watch.find(r => r.player === "Kamario Taylor")?.note ?? "", /remains uncertain/);
+  assert.equal(injuryResearch.watch.find(r => r.player === "Kamario Taylor")?.reportedStatus, "Official Questionable · October 24");
+  assert.match(injuryResearch.watch.find(r => r.player === "Kamario Taylor")?.note ?? "", /No medical clearance or practice participation is inferred/);
   assert.match(injuryResearch.contextNotes.find(r => r.player === "Hank Brown")?.note ?? "", /reported healthy/);
   assert.ok(!injuryResearch.watch.some(r => ["Hank Brown", "Brock Thomas", "Dylan Raiola"].includes(r.player)));
   assert.equal(injuryResearch.ledger.find(r => r.player === "James Laubstein")?.status, "IR");

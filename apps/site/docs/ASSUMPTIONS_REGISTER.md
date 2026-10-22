@@ -100,3 +100,10 @@
 - Lovable's public homepage consumes the production release; its preview database and old poll scheduler are not production authorities. Routine weekly releases require no Lovable AI build or code republish.
 - Follow-up is bounded to Week 8 through October 25, with sequential writers and checked exact-head merges. Source/connector failure preserves unknowns and the last verified release.
 - Direct JSON edits receive the same official game/source validation as ingestion. Interrupted locks can be recovered only after confirming the recorded owner stopped; uncertain ownership blocks recovery.
+
+## October 22 official publication precision
+
+- The Big Ten public board supplies an Initial Report date, not an exact publication time. Preserve the literal date with an explicit date-only precision marker; policy update times cannot fill the gap. UTC retrieval remains a full timestamp.
+- SEC's displayed October 21 7:10 p.m. Central converts to October 22 00:10 UTC. Sun Belt and Pac-12 `updatedAtUTC` values describe source updates, not newly inferred publication times.
+- Available is the literal Singleton game designation, not a prognosis or a guarantee of participation. Unlisted names, unreadable reports and byes do not establish clearance. Historical ledger/report dates and unrelated research cutoffs stay unchanged.
+- The hourly watcher is off. The final authorized scheduled check is October 24 at 3 a.m. Pacific; there is no unscheduled Sunday reconciliation.

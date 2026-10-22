@@ -154,3 +154,11 @@ Keep CFB Apex's reviewed generated release as the single authority. Add a versio
 Live browser follow-up: the existing display-family token resolves empty on production, invalidating a whole font shorthand. Use separate font-size/weight/line-height declarations with a monospace family fallback for Command Center headings so typography remains legible independently of the font token.
 
 Review follow-up: the same official-row validator gates ingestion and the earliest stage of every build, including direct edits. Require canonical reviewed game ID/date/team/matchup/research-week agreement and a parsed HTTPS URL. Add owner-verified interrupted-lock recovery with exact token/owner matching and an archived recovery reason; do not expire locks based on age. These safeguards protect subsequent automatic releases; they do not alter Singleton's source status or source dates.
+
+## D-2026-10-22 — Six official Week 8 designations and honest publication precision
+
+Publish Singleton Available for October 22 and Denegal, Smothers, Taylor and Bowman Questionable plus Moore Out for October 24 from matching public conference reports. Preserve the prior Singleton observation and all historical official/ledger rows. Do not promote an omitted Indiana name, empty Mountain West embed, pending MAC report or Ohio State bye to clearance. Other module and row source cutoffs remain unchanged.
+
+Permit a real calendar publication date only when `publication_precision: "date"` explicitly records the Big Ten public board's missing clock time. Require full UTC retrieval timestamps and preserve canonical game/source validation in ingestion and every build. Date-only evidence must not become an invented midnight timestamp. The existing published Lovable schema accepts the unchanged string fields; an additive precision marker needs no companion build, credits or republication. The user-approved remaining schedule is Saturday October 24 at 3 a.m. Pacific, then stop.
+
+PR review follow-up: reject timezone-less publication timestamps and require `Z` for UTC retrievals. Verify browser-captured rows against the hashed report block, both matchup teams, player/position/jersey, literal status group and displayed publication date/time, alongside the existing JSON-source assertions.

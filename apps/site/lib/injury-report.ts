@@ -285,6 +285,8 @@ export interface OfficialAvailabilityEntry {
   status: OfficialAvailabilityStatus; exempt_status: string; conference: string;
   game_date: string; matchup: string; report_id: string; report_type: string;
   published_at: string; retrieved_at: string; source_url: string;
+  /** A date-only official label must never imply an unpublished clock time. */
+  publication_precision?: "date" | "timestamp";
 }
 export interface OfficialAvailabilitySnapshot {
   as_of: string; checked_at: string; scope: string; note: string;
@@ -295,5 +297,5 @@ export function officialAvailabilityFor(player: string, teamSlug: string | null)
   return officialAvailability?.entries.find((row) => row.player === player && row.team_slug === teamSlug) ?? null;
 }
 export function officialAvailabilityNote(row: OfficialAvailabilityEntry): string {
-  return `${row.game_date} ${row.matchup}: ${row.status}. ${row.conference} ${row.report_type}, report ${row.report_id}. Published ${row.published_at}; retrieved ${row.retrieved_at}.`;
+  return `${row.game_date} ${row.matchup}: ${row.status}. ${row.conference} ${row.report_type}, report ${row.report_id}. Published ${row.published_at}${row.publication_precision === "date" ? " (date only; exact time not published)" : ""}; retrieved ${row.retrieved_at}.`;
 }
