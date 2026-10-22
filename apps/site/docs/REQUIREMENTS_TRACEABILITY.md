@@ -140,3 +140,11 @@ Detailed source decisions, exact paths and ownership: `docs/WEEK8_RESEARCH_COMPL
 Scope, source portals, integration contract and future ownership: `docs/WEEK8_OFFICIAL_FOLLOWUP.md`.
 
 Review safeguards: `lib/official-availability-validation.mjs` gates direct builds and ingestion with canonical game/week/source checks; `tests/gameday.test.ts` exercises wrong-team/week/matchup/URL rejection and an actual malformed-input build. Owner-verified lock recovery is tested for exact identity/token matching and preservation of the recovered audit record.
+
+## October 22 official amendments
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Publish six matching official statuses without clearance inference | Current official rows/watch notes plus immutable October 22 source observations; previous Singleton report retained | Source/game/status/timestamp regressions and current/archive rendered labels |
+| Preserve date-only source precision | Explicit `publication_precision: date`, real calendar date validation and unknown-clock wording | Valid date-only ingestion; missing/invalid precision, impossible/future dates and undated retrieval rejection |
+| Update both published experiences without routine Lovable builds | Existing shared schema version 1 string fields and additive precision metadata | Published companion contract inspected; live API/current/archive comparison required after deployment |

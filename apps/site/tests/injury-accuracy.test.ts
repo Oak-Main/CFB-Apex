@@ -51,7 +51,7 @@ test("official overlay has 39 tracked players plus 48 changed players with dated
 });
 
 test("historical cutoffs and long-term classifications are preserved, corrected identities are not duplicated", () => {
-  assert.equal(injuryResearch.asOf, "2026-10-20");
+  assert.equal(injuryResearch.asOf, "2026-10-22");
   assert.equal(fantasyNotesAsOf, "2026-09-07");
   // Week 6 keeps its base snapshot time; the Week 7 release carries its own.
   assert.equal(boardWeeks.find((row) => row.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");

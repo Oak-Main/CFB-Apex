@@ -58,7 +58,9 @@ test("Command Center serves the same dated public snapshot and reviewed archives
   assert.equal(snapshot.schemaVersion, 1);
   assert.match(snapshot.revision, /^[a-f0-9]{64}$/);
   assert.equal(snapshot.teams.length, 138);
-  assert.equal(snapshot.injuries.officialReports.find(r => r.player === "Malachi Singleton")?.status, "Questionable");
+  assert.equal(snapshot.injuries.officialReports.find(r => r.player === "Malachi Singleton")?.status, "Available");
+  assert.equal(snapshot.injuries.officialReports.find(r => r.player === "Dante Moore")?.status, "Out");
+  assert.equal(snapshot.injuries.officialReports.find(r => r.player === "Mark Bowman")?.published_at, "2026-10-21");
   for (const week of snapshot.weeks) {
     const feed = await fetchRoute(`/api/gameday?week=${week.week}`);
     const doc = await feed.json();
@@ -68,7 +70,10 @@ test("Command Center serves the same dated public snapshot and reviewed archives
     assert.ok(text.includes("GameDay Command Center"));
     assert.match(text, new RegExp(`WEEK ${week.week}`));
     assert.ok(text.includes(`${doc.games.length} matching games`));
+    assert.ok(text.includes("Official Available"));
     assert.ok(text.includes("Official Questionable"));
+    assert.ok(text.includes("Official Out"));
+    assert.ok(text.includes("exact publication time is not displayed"));
     assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
     assert.equal(doc.revision, snapshot.revision);
   }
@@ -312,7 +317,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   const injuries = await visible("/injuries");
   assert.match(injuries, /Limited official availability snapshot · 2026-10-10/);
   assert.match(injuries, /Week 8 research completed/);
-  assert.match(injuries, /Research as of 2026-10-20/);
+  assert.match(injuries, /Research as of 2026-10-22/);
 });
 
 test("official availability containment renders literal designations and historical context", async () => {
@@ -326,7 +331,7 @@ test("official availability containment renders literal designations and histori
   assert.match(text, /Trell Harris[\s\S]*?Out/);
   assert.match(text, /Mario Craver[\s\S]*?Game Time Decision/);
   assert.match(text, /Exempt is not Available/);
-  assert.match(text, /Six October 5 long-term entries/);
+  assert.match(text, /Six October 5 ledger entries/);
   assert.match(text, /Published 2026-10-10T09:30:00-05:00; retrieved 2026-10-10T14:31/);
   assert.doesNotMatch(html, /class="db-table-wrap db-desktop-data-table"/);
   const player = withoutComments(await (await fetchRoute("/players/dante-moore")).text());
@@ -351,7 +356,7 @@ test("Week 8 reporting stays separate from older official availability and Clean
   const injuryHtml = withoutComments(await (await fetchRoute("/injuries")).text());
   const injuryText = visibleText(injuryHtml);
   assert.match(injuryText, /Current injury and quarterback updates/);
-  assert.match(injuryText, /Hollywood Smothers Reported questionable/);
+  assert.match(injuryText, /Hollywood Smothers Official Questionable · October 24/);
   assert.match(injuryText, /Source date 2026-10-19/);
   assert.match(injuryText, /Hank Brown Healthy; coaching decision/);
   assert.match(injuryText, /James Laubstein.*season-ending patellar tendon/);
