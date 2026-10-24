@@ -9,6 +9,8 @@ import { athleteHighlight, heismanWatch, heismanBoard, oddsRank, panelBrief, pla
 import { injuryResearch } from "../lib/injury-report.ts";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-week8-release.json", import.meta.url), "utf8"));
+const resultsSnapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
+const resultsEvidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-23-week8-results.json", import.meta.url), "utf8"));
 const tvFollowup = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-20-tv-followup.json", import.meta.url), "utf8"));
 
 test("Week 8 selects on the server and Week 7 remains an explicit archive", () => {
@@ -43,7 +45,14 @@ test("Week 8 is complete, uses Eastern dates and has school support for every ki
   const slate = games.filter(g => g.week === 8);
   assert.equal(slate.length, 56);
   assert.equal(new Set(evidence.schedule.map((g: { id: string }) => g.id)).size, 56);
-  assert.ok(slate.every(g => g.status === "scheduled" && g.homeScore == null && g.awayScore == null));
+  for (const game of slate) {
+    const final = resultsEvidence.finals.find((row: { game_id: string }) => row.game_id === game.id);
+    assert.equal(game.status, final ? "final" : "scheduled");
+    assert.equal(game.homeScore ?? null, final?.home_score ?? null);
+    assert.equal(game.awayScore ?? null, final?.away_score ?? null);
+  }
+  assert.equal(slate.filter(g => g.status === "final").length, 7);
+  assert.equal(slate.filter(g => g.status === "scheduled").length, 49);
   const counts: Record<string, number> = {};
   for (const game of slate) counts[easternDate(game.date)] = (counts[easternDate(game.date)] ?? 0) + 1;
   assert.deepEqual(counts, { "2026-10-20": 3, "2026-10-21": 1, "2026-10-22": 3, "2026-10-23": 5, "2026-10-24": 44 });
@@ -80,10 +89,12 @@ test("Week 8 is complete, uses Eastern dates and has school support for every ki
   assert.equal(slate.filter(g => ap.has(g.homeTeamId) && ap.has(g.awayTeamId)).length, 2);
 });
 
-test("the current ticker leads with Week 7 finals and Week 8 games", () => {
+test("the current ticker leads with verified Week 8 finals and non-final games", () => {
   const ticker = tickerGamesFor(8);
-  assert.ok(ticker.slice(0, 8).every(g => easternDate(g.date) === "2026-10-17" && g.status === "final"));
-  assert.ok(ticker.slice(8).every(g => easternDate(g.date) >= "2026-10-20" && g.status === "scheduled"));
+  assert.deepEqual(new Set(ticker.slice(0, 7).map(g => g.id)), new Set(resultsEvidence.finals.map((g: { game_id: string }) => g.game_id)));
+  assert.ok(ticker.slice(0, 8).every(g => g.status === "final"));
+  assert.equal(easternDate(ticker[7].date), "2026-10-17");
+  assert.ok(ticker.slice(8).every(g => easternDate(g.date) >= "2026-10-23" && g.status === "scheduled"));
 });
 
 test("source cutoffs advance separately and all 138 records reconcile", () => {
@@ -97,8 +108,9 @@ test("source cutoffs advance separately and all 138 records reconcile", () => {
   assert.equal(evidence.reconciliation.disagreements, 0);
   assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 2604);
   assert.equal(boardWeeks.find(w => w.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
-  for (const row of evidence.conferences.flatMap((c: { rows: unknown[] }) => c.rows)) {
-    assert.equal(verifiedRefresh?.teamRecords[row.slug], row.overall);
+  assert.equal(Object.keys(resultsEvidence.records).length, 138);
+  for (const [slug, record] of Object.entries(resultsEvidence.records)) {
+    assert.equal(verifiedRefresh?.teamRecords[slug], record);
   }
 });
 
@@ -157,4 +169,32 @@ test("upset entries match literal provider lines, eligible dogs, and Week 8 iden
     assert.ok(pick.sources.length >= 2);
   }
   assert.ok(!upsetWatch.picks.some(r => r.home_slug === "wisconsin"));
+});
+
+test("seven Week 8 finals preserve source identities, quarter sums and overtime winners", () => {
+  for (const row of resultsEvidence.finals) {
+    const game = games.find(g => g.id === row.game_id);
+    assert.ok(game);
+    assert.equal(game.status, "final");
+    assert.equal(game.homeTeamId, row.home);
+    assert.equal(game.awayTeamId, row.away);
+    assert.equal(Date.parse(game.date), Date.parse(row.kickoff_utc));
+    assert.equal(row.espn.completed, true);
+    assert.equal(row.ncaa.state, "F");
+    assert.equal(game.homeScore, row.ncaa.home);
+    assert.equal(game.awayScore, row.ncaa.away);
+    assert.equal(row.home_lines.reduce((a: number, b: number) => a + b, 0), game.homeScore);
+    assert.equal(row.away_lines.reduce((a: number, b: number) => a + b, 0), game.awayScore);
+    const raw = resultsSnapshot.playedGames.find((g: { game_id: string; provider_id: string; meta: { line_score: Record<string, number[]> } }) => g.game_id === row.game_id);
+    assert.equal(raw?.provider_id, row.id);
+    assert.deepEqual(raw?.meta?.line_score[row.home], row.home_lines);
+    assert.deepEqual(raw?.meta?.line_score[row.away], row.away_lines);
+  }
+  const appState = games.find(g => g.id === "2026-10-22-james-madison-at-appalachian-state");
+  assert.equal(appState?.homeScore, 34);
+  assert.equal(appState?.awayScore, 31);
+  assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "appalachian-state").periods, 5);
+  assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "memphis").periods, 5);
+  assert.equal(verifiedRefresh?.scheduledGames.length, 49);
+  assert.equal(resultsSnapshot.playedGames.length, 380);
 });
