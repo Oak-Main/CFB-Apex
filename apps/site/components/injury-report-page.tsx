@@ -190,7 +190,7 @@ export function InjuryReportPage({ teams }: { teams: readonly BroadcastTeam[] })
       <DataBoardHero
         eyebrow="Injury desk · Verified weekly"
         title="The injury report, on the record."
-        description="Dated Week 8 reporting, quarterback context and long-term injury updates, alongside clearly separate official game history. Missing players and teams are unknown; this is not a complete college-football injury list."
+        description={`Dated ${injuryResearch.week ? `Week ${injuryResearch.week}` : "weekly"} reporting, quarterback context and long-term injury updates, alongside clearly separate official game history. Missing players and teams are unknown; this is not a complete college-football injury list.`}
       />
       <DataBoardSummary
         label="Injury desk summary"

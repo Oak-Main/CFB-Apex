@@ -170,7 +170,7 @@ export function HeismanPage({ cleanMode = true, onModeRequest }: { cleanMode?: b
             <h1>The most outstanding player in college football</h1>
             <p>
               {hasBoard
-                ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} selected contenders with verified Week 7 box scores and dated sources. Reviewed ${heismanWatch.as_of ?? ""}. Cases for and against are editorial analysis.`
+                ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} selected contenders with verified Week ${(heismanWatch.week ?? 3) - 1} box scores and dated sources. Reviewed ${heismanWatch.as_of ?? ""}. Cases for and against are editorial analysis.`
                 : heismanWatch.notes ?? "The current Heisman watch is pending source verification."}
             </p>
           </div>
