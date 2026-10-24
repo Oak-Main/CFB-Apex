@@ -51,8 +51,8 @@ test("Week 8 is complete, uses Eastern dates and has school support for every ki
     assert.equal(game.homeScore ?? null, final?.home_score ?? null);
     assert.equal(game.awayScore ?? null, final?.away_score ?? null);
   }
-  assert.equal(slate.filter(g => g.status === "final").length, 12);
-  assert.equal(slate.filter(g => g.status === "scheduled").length, 44);
+  assert.equal(slate.filter(g => g.status === "final").length, 24);
+  assert.equal(slate.filter(g => g.status === "scheduled").length, 32);
   const counts: Record<string, number> = {};
   for (const game of slate) counts[easternDate(game.date)] = (counts[easternDate(game.date)] ?? 0) + 1;
   assert.deepEqual(counts, { "2026-10-20": 3, "2026-10-21": 1, "2026-10-22": 3, "2026-10-23": 5, "2026-10-24": 44 });
@@ -171,7 +171,7 @@ test("upset entries match literal provider lines, eligible dogs, and Week 8 iden
   assert.ok(!upsetWatch.picks.some(r => r.home_slug === "wisconsin"));
 });
 
-test("twelve Week 8 finals preserve source identities, quarter sums and overtime winners", () => {
+test("twenty-four Week 8 finals preserve source identities, quarter sums and overtime winners", () => {
   for (const row of resultsEvidence.finals) {
     const game = games.find(g => g.id === row.game_id);
     assert.ok(game);
@@ -197,6 +197,6 @@ test("twelve Week 8 finals preserve source identities, quarter sums and overtime
   assert.equal(appState?.awayScore, 31);
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "appalachian-state").periods, 5);
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "memphis").periods, 5);
-  assert.equal(verifiedRefresh?.scheduledGames.length, 44);
-  assert.equal(resultsSnapshot.playedGames.length, 385);
+  assert.equal(verifiedRefresh?.scheduledGames.length, 32);
+  assert.equal(resultsSnapshot.playedGames.length, 397);
 });

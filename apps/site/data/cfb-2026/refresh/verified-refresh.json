@@ -1,11 +1,11 @@
 {
  "schema_version": 1,
- "requested_cutoff": "2026-10-24T09:19:42.880Z",
- "retrieved_at": "2026-10-24T09:19:42.880Z",
+ "requested_cutoff": "2026-10-24T22:04:15.187Z",
+ "retrieved_at": "2026-10-24T22:04:15.187Z",
  "week": 8,
  "week_start": "2026-10-19",
  "reference_date": "2026-10-19",
- "baseline_note": "Week 8 results and all 138 records reviewed 2026-10-24 after 12 ESPN plus NCAA or official school-confirmed finals. In-progress games are not final. Schedule, polls, injuries, leaders and editorial modules retain separate source dates; no continuous live feed.",
+ "baseline_note": "Week 8 results and all 138 records reviewed 2026-10-24 after 24 ESPN plus NCAA or official school-confirmed finals. In-progress games are not final. Schedule, polls, injuries, leaders and editorial modules retain separate source dates; no continuous live feed.",
  "polls": [
   {
    "poll": "ap",
@@ -17276,7 +17276,7 @@
    "site": "Scott Stadium",
    "tv": "ESPN",
    "neutral_site": false,
-   "verified_at": "2026-10-24T09:19:41.997Z",
+   "verified_at": "2026-10-24T22:00:46.668Z",
    "title": "Final",
    "teams": [
     {
@@ -17294,7 +17294,7 @@
     "as_of": "2026-10-24",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
-     "https://goduke.com/news/2026/10/23/football-sheppard-throws-winning-touchdown-defense-shines-in-19-16-win-at-virginia"
+     "https://www.ncaa.com/game/6603672"
     ],
     "conference_game": true,
     "line_score": {
@@ -17331,7 +17331,7 @@
    "site": "Pratt & Whitney Stadium",
    "tv": "CBSSN",
    "neutral_site": false,
-   "verified_at": "2026-10-24T09:19:41.843Z",
+   "verified_at": "2026-10-24T22:00:46.668Z",
    "title": "Final",
    "teams": [
     {
@@ -17349,7 +17349,7 @@
     "as_of": "2026-10-24",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
-     "https://uconnhuskies.com/news/2026/10/23/football-huskies-roll-past-umass"
+     "https://www.ncaa.com/game/6603873"
     ],
     "conference_game": false,
     "line_score": {
@@ -17386,7 +17386,7 @@
    "site": "H. A. Chapman Stadium",
    "tv": "ESPN2",
    "neutral_site": false,
-   "verified_at": "2026-10-24T09:19:41.949Z",
+   "verified_at": "2026-10-24T22:00:46.668Z",
    "title": "Final",
    "teams": [
     {
@@ -17404,7 +17404,7 @@
     "as_of": "2026-10-24",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
-     "https://goarmywestpoint.com/news/2026/10/24/jones-50-yard-field-goal-lifts-football-past-tulsa-38-35"
+     "https://www.ncaa.com/game/6603619"
     ],
     "conference_game": true,
     "line_score": {
@@ -17441,7 +17441,7 @@
    "site": "War Memorial Stadium",
    "tv": "The CW",
    "neutral_site": false,
-   "verified_at": "2026-10-24T09:19:42.880Z",
+   "verified_at": "2026-10-24T22:00:46.668Z",
    "title": "Final",
    "teams": [
     {
@@ -17459,7 +17459,7 @@
     "as_of": "2026-10-24",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
-     "https://gowyo.com/news/2026/10/23/football-cowboys-push-win-streak-to-three-with-28-14-victory-over-air-force.aspx"
+     "https://www.ncaa.com/game/6604052"
     ],
     "conference_game": true,
     "line_score": {
@@ -17496,7 +17496,7 @@
    "site": "Stanford Stadium",
    "tv": "ESPN",
    "neutral_site": false,
-   "verified_at": "2026-10-24T09:19:41.900Z",
+   "verified_at": "2026-10-24T22:00:46.668Z",
    "title": "Final",
    "teams": [
     {
@@ -17514,7 +17514,7 @@
     "as_of": "2026-10-24",
     "sources": [
      "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
-     "https://gostanford.com/boxscore/27050"
+     "https://www.ncaa.com/game/6604111"
     ],
     "conference_game": true,
     "line_score": {
@@ -17538,335 +17538,671 @@
     "pregame_timing_note": null,
     "originally_scheduled_kickoff_utc": "2026-10-24T02:30Z"
    }
-  }
- ],
- "scheduledGames": [
+  },
   {
    "provider_id": "401858274",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858274",
+   "game_id": "2026-10-24-pittsburgh-at-miami-fl",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "miami-fl",
    "away_slug": "pittsburgh",
-   "away": "pittsburgh",
-   "home": "miami-fl",
    "site": "Hard Rock Stadium",
    "tv": "ESPN",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.461Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://miamihurricanes.com/sports/football/schedule/"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "miami-fl",
+     "name": "Miami (FL)",
+     "points": 52
+    },
+    {
+     "slug": "pittsburgh",
+     "name": "Pittsburgh",
+     "points": 23
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401858274",
-    "https://miamihurricanes.com/sports/football/schedule/"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604312"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "miami-fl": [
+      10,
+      21,
+      14,
+      7
+     ],
+     "pittsburgh": [
+      0,
+      7,
+      7,
+      9
+     ]
+    },
+    "pregame_ap_ranks": {
+     "miami-fl": 1,
+     "pittsburgh": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401858496",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858496",
+   "game_id": "2026-10-24-indiana-at-michigan",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "michigan",
    "away_slug": "indiana",
-   "away": "indiana",
-   "home": "michigan",
    "site": "Michigan Stadium",
    "tv": "FOX",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.884Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://mgoblue.com/sports/football/schedule/2026"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final/OT",
+   "teams": [
+    {
+     "slug": "michigan",
+     "name": "Michigan",
+     "points": 6
+    },
+    {
+     "slug": "indiana",
+     "name": "Indiana",
+     "points": 13
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401858496",
-    "https://mgoblue.com/sports/football/schedule/2026"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603952"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "michigan": [
+      0,
+      0,
+      3,
+      3,
+      0
+     ],
+     "indiana": [
+      3,
+      3,
+      0,
+      0,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "michigan": null,
+     "indiana": 6
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401856840",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856840",
+   "game_id": "2026-10-24-texas-tech-at-cincinnati",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "cincinnati",
    "away_slug": "texas-tech",
-   "away": "texas-tech",
-   "home": "cincinnati",
    "site": "Nippert Stadium",
    "tv": "FS1",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.590Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://gobearcats.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "cincinnati",
+     "name": "Cincinnati",
+     "points": 37
+    },
+    {
+     "slug": "texas-tech",
+     "name": "Texas Tech",
+     "points": 24
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401856840",
-    "https://gobearcats.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604256"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "cincinnati": [
+      3,
+      21,
+      7,
+      6
+     ],
+     "texas-tech": [
+      6,
+      0,
+      9,
+      9
+     ]
+    },
+    "pregame_ap_ranks": {
+     "cincinnati": null,
+     "texas-tech": 8
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401856728",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856728",
+   "game_id": "2026-10-24-lsu-at-auburn",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "auburn",
    "away_slug": "lsu",
-   "away": "lsu",
-   "home": "auburn",
    "site": "Jordan-Hare Stadium",
    "tv": "ABC",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.537Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://auburntigers.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "auburn",
+     "name": "Auburn",
+     "points": 17
+    },
+    {
+     "slug": "lsu",
+     "name": "LSU",
+     "points": 38
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401856728",
-    "https://auburntigers.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603819"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "auburn": [
+      3,
+      7,
+      0,
+      7
+     ],
+     "lsu": [
+      10,
+      21,
+      0,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "auburn": null,
+     "lsu": 18
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401858270",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858270",
+   "game_id": "2026-10-24-california-at-smu",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "smu",
    "away_slug": "california",
-   "away": "california",
-   "home": "smu",
    "site": "Gerald J. Ford Stadium",
    "tv": "The CW",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.943Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://smumustangs.com/sports/football/schedule/2026"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "smu",
+     "name": "SMU",
+     "points": 59
+    },
+    {
+     "slug": "california",
+     "name": "California",
+     "points": 20
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401858270",
-    "https://smumustangs.com/sports/football/schedule/2026"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604157"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "smu": [
+      10,
+      7,
+      21,
+      21
+     ],
+     "california": [
+      7,
+      13,
+      0,
+      0
+     ]
+    },
+    "pregame_ap_ranks": {
+     "smu": 23,
+     "california": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401858498",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858498",
+   "game_id": "2026-10-24-rutgers-at-northwestern",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "northwestern",
    "away_slug": "rutgers",
-   "away": "rutgers",
-   "home": "northwestern",
    "site": "Ryan Field",
    "tv": "Peacock",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:19.614Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://nusports.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "northwestern",
+     "name": "Northwestern",
+     "points": 42
+    },
+    {
+     "slug": "rutgers",
+     "name": "Rutgers",
+     "points": 14
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401858498",
-    "https://nusports.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6640599"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "northwestern": [
+      21,
+      7,
+      0,
+      14
+     ],
+     "rutgers": [
+      3,
+      3,
+      8,
+      0
+     ]
+    },
+    "pregame_ap_ranks": {
+     "northwestern": 24,
+     "rutgers": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401856841",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856841",
+   "game_id": "2026-10-24-west-virginia-at-tcu",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "tcu",
    "away_slug": "west-virginia",
-   "away": "west-virginia",
-   "home": "tcu",
    "site": "Amon G. Carter Stadium",
    "tv": "ESPN2",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:21.080Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://gofrogs.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "tcu",
+     "name": "TCU",
+     "points": 20
+    },
+    {
+     "slug": "west-virginia",
+     "name": "West Virginia",
+     "points": 24
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401856841",
-    "https://gofrogs.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604320"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "tcu": [
+      7,
+      3,
+      10,
+      0
+     ],
+     "west-virginia": [
+      3,
+      7,
+      7,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "tcu": null,
+     "west-virginia": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401862809",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862809",
+   "game_id": "2026-10-24-rice-at-florida-atlantic",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "florida-atlantic",
    "away_slug": "rice",
-   "away": "rice",
-   "home": "florida-atlantic",
    "site": "Flagler Credit Union Stadium",
    "tv": "ESPNU",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:20.745Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://fausports.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "florida-atlantic",
+     "name": "Florida Atlantic",
+     "points": 51
+    },
+    {
+     "slug": "rice",
+     "name": "Rice",
+     "points": 49
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401862809",
-    "https://fausports.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6640767"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "florida-atlantic": [
+      7,
+      16,
+      21,
+      7
+     ],
+     "rice": [
+      14,
+      7,
+      21,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "florida-atlantic": null,
+     "rice": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401866450",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866450",
+   "game_id": "2026-10-24-western-michigan-at-toledo",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T16:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "toledo",
    "away_slug": "western-michigan",
-   "away": "western-michigan",
-   "home": "toledo",
    "site": "Glass Bowl",
    "tv": "CBSSN",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:20.811Z",
-   "time_et": "12:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://utrockets.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "toledo",
+     "name": "Toledo",
+     "points": 45
+    },
+    {
+     "slug": "western-michigan",
+     "name": "Western Michigan",
+     "points": 38
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401866450",
-    "https://utrockets.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603830"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "toledo": [
+      14,
+      17,
+      7,
+      7
+     ],
+     "western-michigan": [
+      0,
+      14,
+      21,
+      3
+     ]
+    },
+    "pregame_ap_ranks": {
+     "toledo": null,
+     "western-michigan": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T16:00Z"
+   }
   },
   {
    "provider_id": "401856834",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401856834",
+   "game_id": "2026-10-24-baylor-at-kansas",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T17:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "kansas",
    "away_slug": "baylor",
-   "away": "baylor",
-   "home": "kansas",
    "site": "David Booth Kansas Memorial Stadium",
    "tv": "TNT",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:20.765Z",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://kuathletics.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "kansas",
+     "name": "Kansas",
+     "points": 25
+    },
+    {
+     "slug": "baylor",
+     "name": "Baylor",
+     "points": 24
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401856834",
-    "https://kuathletics.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604042"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "kansas": [
+      7,
+      0,
+      3,
+      15
+     ],
+     "baylor": [
+      7,
+      0,
+      14,
+      3
+     ]
+    },
+    "pregame_ap_ranks": {
+     "kansas": null,
+     "baylor": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T17:00Z"
+   }
   },
   {
    "provider_id": "401866446",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866446",
+   "game_id": "2026-10-24-akron-at-kent-state",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T17:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "kent-state",
    "away_slug": "akron",
-   "away": "akron",
-   "home": "kent-state",
    "site": "Zoeller Field at Dix Stadium",
    "tv": "ESPN+",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:21.273Z",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://kentstatesports.com/sports/football/schedule",
-    "https://gozips.com/sports/football/schedule"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "kent-state",
+     "name": "Kent State",
+     "points": 35
+    },
+    {
+     "slug": "akron",
+     "name": "Akron",
+     "points": 20
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401866446",
-    "https://kentstatesports.com/sports/football/schedule",
-    "https://gozips.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6640608"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "kent-state": [
+      0,
+      7,
+      14,
+      14
+     ],
+     "akron": [
+      7,
+      0,
+      10,
+      3
+     ]
+    },
+    "pregame_ap_ranks": {
+     "kent-state": null,
+     "akron": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T17:00Z"
+   }
   },
   {
    "provider_id": "401866476",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401866476",
+   "game_id": "2026-10-24-miami-oh-at-central-michigan",
    "date": "2026-10-24",
    "kickoff_utc": "2026-10-24T17:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "central-michigan",
    "away_slug": "miami-oh",
-   "away": "miami-oh",
-   "home": "central-michigan",
    "site": "Kelly/Shorts Stadium",
    "tv": "ESPN+",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:20.827Z",
-   "time_et": "13:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://cmuchippewas.com/sports/football/schedule/2026"
+   "verified_at": "2026-10-24T22:00:46.668Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "central-michigan",
+     "name": "Central Michigan",
+     "points": 27
+    },
+    {
+     "slug": "miami-oh",
+     "name": "Miami (OH)",
+     "points": 28
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401866476",
-    "https://cmuchippewas.com/sports/football/schedule/2026"
-   ]
-  },
+   "meta": {
+    "as_of": "2026-10-24",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603896"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "central-michigan": [
+      3,
+      7,
+      14,
+      3
+     ],
+     "miami-oh": [
+      7,
+      7,
+      7,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "central-michigan": null,
+     "miami-oh": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-24T17:00Z"
+   }
+  }
+ ],
+ "scheduledGames": [
   {
    "provider_id": "401858495",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858495",
@@ -18857,9 +19193,9 @@
   "utsa": "6-1",
   "memphis": "6-2",
   "army": "5-2",
+  "florida-atlantic": "5-2",
   "south-florida": "5-2",
   "north-texas": "4-2",
-  "florida-atlantic": "4-2",
   "uab": "4-3",
   "tulane": "3-3",
   "tulsa": "4-4",
@@ -18867,56 +19203,56 @@
   "navy": "2-4",
   "temple": "2-5",
   "charlotte": "1-6",
-  "rice": "1-6",
-  "miami-fl": "6-0",
+  "rice": "1-7",
+  "miami-fl": "7-0",
+  "smu": "6-1",
   "wake-forest": "6-1",
-  "smu": "5-1",
-  "pittsburgh": "5-2",
   "duke": "5-2",
   "virginia-tech": "5-2",
   "clemson": "4-2",
   "north-carolina": "4-2",
+  "pittsburgh": "5-3",
   "louisville": "4-3",
   "stanford": "4-4",
   "virginia": "4-4",
   "boston-college": "3-3",
-  "california": "3-4",
   "florida-state": "3-4",
   "nc-state": "3-4",
+  "california": "3-5",
   "georgia-tech": "2-4",
   "syracuse": "2-4",
   "byu": "6-0",
-  "texas-tech": "6-0",
   "utah": "6-0",
+  "texas-tech": "6-1",
   "houston": "6-1",
   "arizona": "5-1",
-  "baylor": "4-2",
+  "cincinnati": "5-2",
   "oklahoma-state": "4-2",
-  "cincinnati": "4-2",
   "kansas-state": "4-2",
-  "west-virginia": "4-3",
-  "ucf": "3-3",
+  "west-virginia": "5-3",
+  "baylor": "4-3",
   "arizona-state": "3-3",
   "iowa-state": "3-3",
-  "tcu": "3-3",
+  "ucf": "3-3",
+  "kansas": "3-4",
+  "tcu": "3-4",
   "colorado": "2-4",
-  "kansas": "2-4",
   "ucla": "6-0",
+  "indiana": "7-1",
   "ohio-state": "6-1",
-  "indiana": "6-1",
+  "northwestern": "6-1",
   "usc": "6-1",
   "iowa": "5-1",
-  "northwestern": "5-1",
   "nebraska": "5-2",
   "minnesota": "4-2",
   "oregon": "4-2",
   "wisconsin": "4-2",
-  "michigan": "4-2",
+  "michigan": "4-3",
   "washington": "4-3",
   "illinois": "3-3",
   "purdue": "3-4",
   "penn-state": "3-4",
-  "rutgers": "2-4",
+  "rutgers": "2-5",
   "maryland": "2-5",
   "michigan-state": "2-5",
   "liberty": "6-1",
@@ -18931,19 +19267,19 @@
   "sam-houston": "1-6",
   "notre-dame": "6-1",
   "uconn": "4-3",
+  "toledo": "6-2",
   "ohio": "5-2",
-  "western-michigan": "5-2",
-  "toledo": "5-2",
+  "miami-oh": "5-3",
+  "western-michigan": "5-3",
   "buffalo": "4-3",
-  "miami-oh": "4-3",
   "eastern-michigan": "4-4",
   "umass": "4-4",
-  "central-michigan": "3-4",
+  "kent-state": "3-5",
+  "central-michigan": "3-5",
   "bowling-green": "2-5",
-  "kent-state": "2-5",
   "ball-state": "2-5",
-  "akron": "1-6",
   "sacramento-state": "1-6",
+  "akron": "1-7",
   "north-dakota-state": "6-1",
   "new-mexico": "5-1",
   "air-force": "5-2",
@@ -18966,13 +19302,13 @@
   "kentucky": "6-1",
   "tennessee": "6-1",
   "ole-miss": "5-1",
+  "lsu": "6-2",
   "alabama": "5-2",
   "florida": "5-2",
-  "lsu": "5-2",
   "missouri": "5-2",
   "mississippi-state": "4-2",
-  "auburn": "4-2",
   "texas": "4-2",
+  "auburn": "4-3",
   "texas-am": "4-3",
   "oklahoma": "3-3",
   "south-carolina": "3-3",
@@ -19751,11 +20087,11 @@
      {
       "team": "Florida Atlantic",
       "team_slug": "florida-atlantic",
-      "w": "1",
+      "w": "2",
       "l": "1",
       "t": "0",
-      "pct": "0.500",
-      "overall": "4-2"
+      "pct": "0.667",
+      "overall": "5-2"
      },
      {
       "team": "UAB",
@@ -19824,10 +20160,10 @@
       "team": "Rice",
       "team_slug": "rice",
       "w": "0",
-      "l": "3",
+      "l": "4",
       "t": "0",
       "pct": "0.000",
-      "overall": "1-6"
+      "overall": "1-7"
      }
     ]
    },
@@ -19839,11 +20175,11 @@
      {
       "team": "Miami (FL)",
       "team_slug": "miami-fl",
-      "w": "4",
+      "w": "5",
       "l": "0",
       "t": "0",
       "pct": "1.000",
-      "overall": "6-0"
+      "overall": "7-0"
      },
      {
       "team": "Wake Forest",
@@ -19857,20 +20193,20 @@
      {
       "team": "SMU",
       "team_slug": "smu",
-      "w": "3",
+      "w": "4",
       "l": "1",
       "t": "0",
-      "pct": "0.750",
-      "overall": "5-1"
+      "pct": "0.800",
+      "overall": "6-1"
      },
      {
       "team": "Pittsburgh",
       "team_slug": "pittsburgh",
       "w": "2",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.500",
-      "overall": "5-2"
+      "pct": "0.400",
+      "overall": "5-3"
      },
      {
       "team": "Virginia Tech",
@@ -19948,10 +20284,10 @@
       "team": "California",
       "team_slug": "california",
       "w": "2",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.500",
-      "overall": "3-4"
+      "pct": "0.400",
+      "overall": "3-5"
      },
      {
       "team": "Florida State",
@@ -20009,10 +20345,10 @@
       "team": "Texas Tech",
       "team_slug": "texas-tech",
       "w": "3",
-      "l": "0",
+      "l": "1",
       "t": "0",
-      "pct": "1.000",
-      "overall": "6-0"
+      "pct": "0.750",
+      "overall": "6-1"
      },
      {
       "team": "Utah",
@@ -20045,10 +20381,10 @@
       "team": "Baylor",
       "team_slug": "baylor",
       "w": "2",
-      "l": "1",
+      "l": "2",
       "t": "0",
-      "pct": "0.667",
-      "overall": "4-2"
+      "pct": "0.500",
+      "overall": "4-3"
      },
      {
       "team": "Oklahoma State",
@@ -20062,11 +20398,11 @@
      {
       "team": "Cincinnati",
       "team_slug": "cincinnati",
-      "w": "1",
+      "w": "2",
       "l": "2",
       "t": "0",
-      "pct": "0.333",
-      "overall": "4-2"
+      "pct": "0.500",
+      "overall": "5-2"
      },
      {
       "team": "Kansas State",
@@ -20080,11 +20416,11 @@
      {
       "team": "West Virginia",
       "team_slug": "west-virginia",
-      "w": "1",
+      "w": "2",
       "l": "3",
       "t": "0",
-      "pct": "0.250",
-      "overall": "4-3"
+      "pct": "0.400",
+      "overall": "5-3"
      },
      {
       "team": "UCF",
@@ -20117,10 +20453,10 @@
       "team": "TCU",
       "team_slug": "tcu",
       "w": "1",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.333",
-      "overall": "3-3"
+      "pct": "0.250",
+      "overall": "3-4"
      },
      {
       "team": "Colorado",
@@ -20134,11 +20470,11 @@
      {
       "team": "Kansas",
       "team_slug": "kansas",
-      "w": "0",
+      "w": "1",
       "l": "3",
       "t": "0",
-      "pct": "0.000",
-      "overall": "2-4"
+      "pct": "0.250",
+      "overall": "3-4"
      }
     ]
    },
@@ -20168,11 +20504,11 @@
      {
       "team": "Indiana",
       "team_slug": "indiana",
-      "w": "3",
+      "w": "4",
       "l": "1",
       "t": "0",
-      "pct": "0.750",
-      "overall": "6-1"
+      "pct": "0.800",
+      "overall": "7-1"
      },
      {
       "team": "USC",
@@ -20195,11 +20531,11 @@
      {
       "team": "Northwestern",
       "team_slug": "northwestern",
-      "w": "2",
+      "w": "3",
       "l": "1",
       "t": "0",
-      "pct": "0.667",
-      "overall": "5-1"
+      "pct": "0.750",
+      "overall": "6-1"
      },
      {
       "team": "Nebraska",
@@ -20241,10 +20577,10 @@
       "team": "Michigan",
       "team_slug": "michigan",
       "w": "1",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.333",
-      "overall": "4-2"
+      "pct": "0.250",
+      "overall": "4-3"
      },
      {
       "team": "Washington",
@@ -20286,10 +20622,10 @@
       "team": "Rutgers",
       "team_slug": "rutgers",
       "w": "1",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.333",
-      "overall": "2-4"
+      "pct": "0.250",
+      "overall": "2-5"
      },
      {
       "team": "Maryland",
@@ -20451,19 +20787,19 @@
       "team": "Western Michigan",
       "team_slug": "western-michigan",
       "w": "3",
-      "l": "0",
+      "l": "1",
       "t": "0",
-      "pct": "1.000",
-      "overall": "5-2"
+      "pct": "0.750",
+      "overall": "5-3"
      },
      {
       "team": "Toledo",
       "team_slug": "toledo",
-      "w": "2",
+      "w": "3",
       "l": "1",
       "t": "0",
-      "pct": "0.667",
-      "overall": "5-2"
+      "pct": "0.750",
+      "overall": "6-2"
      },
      {
       "team": "Buffalo",
@@ -20477,11 +20813,11 @@
      {
       "team": "Miami (OH)",
       "team_slug": "miami-oh",
-      "w": "2",
+      "w": "3",
       "l": "1",
       "t": "0",
-      "pct": "0.667",
-      "overall": "4-3"
+      "pct": "0.750",
+      "overall": "5-3"
      },
      {
       "team": "UMass",
@@ -20505,10 +20841,10 @@
       "team": "Central Michigan",
       "team_slug": "central-michigan",
       "w": "1",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.333",
-      "overall": "3-4"
+      "pct": "0.250",
+      "overall": "3-5"
      },
      {
       "team": "Bowling Green",
@@ -20522,11 +20858,11 @@
      {
       "team": "Kent State",
       "team_slug": "kent-state",
-      "w": "1",
+      "w": "2",
       "l": "2",
       "t": "0",
-      "pct": "0.333",
-      "overall": "2-5"
+      "pct": "0.500",
+      "overall": "3-5"
      },
      {
       "team": "Ball State",
@@ -20541,10 +20877,10 @@
       "team": "Akron",
       "team_slug": "akron",
       "w": "0",
-      "l": "3",
+      "l": "4",
       "t": "0",
       "pct": "0.000",
-      "overall": "1-6"
+      "overall": "1-7"
      },
      {
       "team": "Sacramento State",
@@ -20795,11 +21131,11 @@
      {
       "team": "LSU",
       "team_slug": "lsu",
-      "w": "2",
+      "w": "3",
       "l": "2",
       "t": "0",
-      "pct": "0.500",
-      "overall": "5-2"
+      "pct": "0.600",
+      "overall": "6-2"
      },
      {
       "team": "Missouri",
@@ -20823,10 +21159,10 @@
       "team": "Auburn",
       "team_slug": "auburn",
       "w": "2",
-      "l": "2",
+      "l": "3",
       "t": "0",
-      "pct": "0.500",
-      "overall": "4-2"
+      "pct": "0.400",
+      "overall": "4-3"
      },
      {
       "team": "Texas",
@@ -21032,15 +21368,15 @@
    ]
   },
   "as_of": "2026-10-24",
-  "note": "All 138 overall and conference records reconciled against the prior release plus five verified Friday finals. Polls, availability and editorial modules retain separate source dates.",
-  "verified_at": "2026-10-24T09:13:28.101Z",
+  "note": "All 138 overall and conference records reconcile with the prior release plus 17 verified Friday/Saturday finals. Unrelated modules retain their own source dates.",
+  "verified_at": "2026-10-24T22:00:46.603Z",
   "overall_records": {
    "utsa": "6-1",
    "memphis": "6-2",
    "army": "5-2",
+   "florida-atlantic": "5-2",
    "south-florida": "5-2",
    "north-texas": "4-2",
-   "florida-atlantic": "4-2",
    "uab": "4-3",
    "tulane": "3-3",
    "tulsa": "4-4",
@@ -21048,56 +21384,56 @@
    "navy": "2-4",
    "temple": "2-5",
    "charlotte": "1-6",
-   "rice": "1-6",
-   "miami-fl": "6-0",
+   "rice": "1-7",
+   "miami-fl": "7-0",
+   "smu": "6-1",
    "wake-forest": "6-1",
-   "smu": "5-1",
-   "pittsburgh": "5-2",
    "duke": "5-2",
    "virginia-tech": "5-2",
    "clemson": "4-2",
    "north-carolina": "4-2",
+   "pittsburgh": "5-3",
    "louisville": "4-3",
    "stanford": "4-4",
    "virginia": "4-4",
    "boston-college": "3-3",
-   "california": "3-4",
    "florida-state": "3-4",
    "nc-state": "3-4",
+   "california": "3-5",
    "georgia-tech": "2-4",
    "syracuse": "2-4",
    "byu": "6-0",
-   "texas-tech": "6-0",
    "utah": "6-0",
+   "texas-tech": "6-1",
    "houston": "6-1",
    "arizona": "5-1",
-   "baylor": "4-2",
+   "cincinnati": "5-2",
    "oklahoma-state": "4-2",
-   "cincinnati": "4-2",
    "kansas-state": "4-2",
-   "west-virginia": "4-3",
-   "ucf": "3-3",
+   "west-virginia": "5-3",
+   "baylor": "4-3",
    "arizona-state": "3-3",
    "iowa-state": "3-3",
-   "tcu": "3-3",
+   "ucf": "3-3",
+   "kansas": "3-4",
+   "tcu": "3-4",
    "colorado": "2-4",
-   "kansas": "2-4",
    "ucla": "6-0",
+   "indiana": "7-1",
    "ohio-state": "6-1",
-   "indiana": "6-1",
+   "northwestern": "6-1",
    "usc": "6-1",
    "iowa": "5-1",
-   "northwestern": "5-1",
    "nebraska": "5-2",
    "minnesota": "4-2",
    "oregon": "4-2",
    "wisconsin": "4-2",
-   "michigan": "4-2",
+   "michigan": "4-3",
    "washington": "4-3",
    "illinois": "3-3",
    "purdue": "3-4",
    "penn-state": "3-4",
-   "rutgers": "2-4",
+   "rutgers": "2-5",
    "maryland": "2-5",
    "michigan-state": "2-5",
    "liberty": "6-1",
@@ -21112,19 +21448,19 @@
    "sam-houston": "1-6",
    "notre-dame": "6-1",
    "uconn": "4-3",
+   "toledo": "6-2",
    "ohio": "5-2",
-   "western-michigan": "5-2",
-   "toledo": "5-2",
+   "miami-oh": "5-3",
+   "western-michigan": "5-3",
    "buffalo": "4-3",
-   "miami-oh": "4-3",
    "eastern-michigan": "4-4",
    "umass": "4-4",
-   "central-michigan": "3-4",
+   "kent-state": "3-5",
+   "central-michigan": "3-5",
    "bowling-green": "2-5",
-   "kent-state": "2-5",
    "ball-state": "2-5",
-   "akron": "1-6",
    "sacramento-state": "1-6",
+   "akron": "1-7",
    "north-dakota-state": "6-1",
    "new-mexico": "5-1",
    "air-force": "5-2",
@@ -21147,13 +21483,13 @@
    "kentucky": "6-1",
    "tennessee": "6-1",
    "ole-miss": "5-1",
+   "lsu": "6-2",
    "alabama": "5-2",
    "florida": "5-2",
-   "lsu": "5-2",
    "missouri": "5-2",
    "mississippi-state": "4-2",
-   "auburn": "4-2",
    "texas": "4-2",
+   "auburn": "4-3",
    "texas-am": "4-3",
    "oklahoma": "3-3",
    "south-carolina": "3-3",
@@ -21174,7 +21510,7 @@
    "southern-miss": "1-5",
    "ulm": "0-6"
   },
-  "overall_records_note": "All 138 ESPN standings rows checked 2026-10-24; changes reconcile with 12 ESPN plus NCAA or official school Week 8 finals."
+  "overall_records_note": "All 138 ESPN standings rows checked 2026-10-24; changes reconcile with 24 ESPN plus NCAA or official school Week 8 finals."
  },
  "poll_notes": {
   "as_of": "2026-10-18",
@@ -21801,7 +22137,7 @@
   }
  ],
  "research_ingested_at": "2026-10-05T11:55:00Z",
- "results_verified_at": "2026-10-24T09:19:42.880Z",
+ "results_verified_at": "2026-10-24T22:00:46.668Z",
  "refresh_log": [
   {
    "applied_at": "2026-10-09T11:07:58.049Z",
@@ -22606,16 +22942,28 @@
   },
   {
    "script": "reviewed-week8-gameday-results-2026-10-24",
-   "applied_at": "2026-10-24T09:19:42.880Z",
-   "evidence_checked_at": "2026-10-24T09:19:42.880Z",
+   "applied_at": "2026-10-24T22:04:15.187Z",
+   "evidence_checked_at": "2026-10-24T22:04:15.187Z",
    "evidence": "data/cfb-2026/refresh/evidence/2026-10-24-week8-gameday-results.json",
-   "scope": "12 completed Week 8 results (5 new Friday finals), quarter scores, stable event identities and all 138 reconciled overall/conference records. Other module source dates are preserved.",
+   "scope": "24 completed Week 8 results (17 new Friday finals), quarter scores, stable event identities and all 138 reconciled overall/conference records. Other module source dates are preserved.",
    "finals": [
     "2026-10-23-duke-at-virginia",
     "2026-10-23-umass-at-uconn",
     "2026-10-23-army-at-tulsa",
     "2026-10-23-air-force-at-wyoming",
     "2026-10-23-nc-state-at-stanford",
+    "2026-10-24-pittsburgh-at-miami-fl",
+    "2026-10-24-indiana-at-michigan",
+    "2026-10-24-texas-tech-at-cincinnati",
+    "2026-10-24-lsu-at-auburn",
+    "2026-10-24-california-at-smu",
+    "2026-10-24-rutgers-at-northwestern",
+    "2026-10-24-west-virginia-at-tcu",
+    "2026-10-24-rice-at-florida-atlantic",
+    "2026-10-24-western-michigan-at-toledo",
+    "2026-10-24-baylor-at-kansas",
+    "2026-10-24-akron-at-kent-state",
+    "2026-10-24-miami-oh-at-central-michigan",
     "2026-10-20-middle-tennessee-at-fiu",
     "2026-10-20-missouri-state-at-delaware",
     "2026-10-20-south-alabama-at-marshall",
@@ -22679,12 +23027,12 @@
    "cutover_utc": "2026-10-18T13:00:00Z",
    "snapshot_id": "week8-gameday-results-2026-10-24",
    "marquee_game_id": "2026-10-24-houston-at-utah",
-   "retrieved_at": "2026-10-24T09:19:42.880Z",
+   "retrieved_at": "2026-10-24T22:04:15.187Z",
    "schedule_verified_at": "2026-10-20T18:45:20.351Z",
-   "records_verified_at": "2026-10-24T09:13:28.101Z",
-   "note": "56 FBS-vs-FBS games; all kickoffs and networks school-confirmed October 20. Twelve finals verified against ESPN plus NCAA or official school reports; 44 games remain non-final. NCAA returned pregame/null for Friday games, so five official school reports supply the second final-score source. Elapsed kickoff does not imply a final result.",
-   "results_verified_at": "2026-10-24T09:19:42.880Z"
+   "records_verified_at": "2026-10-24T22:00:46.603Z",
+   "note": "56 reviewed FBS games; all kickoffs and networks school-confirmed October 20. 24 ESPN/NCAA-confirmed finals and 32 without an accepted final result at the source checks. Elapsed kickoff is not proof of a result.",
+   "results_verified_at": "2026-10-24T22:00:46.668Z"
   }
  ],
- "records_verified_at": "2026-10-24T09:13:28.101Z"
+ "records_verified_at": "2026-10-24T22:00:46.603Z"
 }

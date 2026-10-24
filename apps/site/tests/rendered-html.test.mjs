@@ -418,14 +418,14 @@ test("scoreboard keeps week navigation without a pretend refresh affordance", as
   assert.match(html, /Status changes require a newer verified release/);
 });
 
-test("Friday finals and current records agree across the Command Center, API, scores and game files", async () => {
+test("Friday and Saturday finals and current records agree across the Command Center, API, scores and game files", async () => {
   const expected = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-24-week8-gameday-results.json", import.meta.url), "utf8"));
   const feed = await (await fetchRoute("/api/gameday?week=8")).json();
   const command = visibleText(await (await fetchRoute("/gameday?week=8")).text());
   const scores = visibleText(await (await fetchRoute("/scores?week=8")).text());
   assert.equal(feed.season, 2026);
   assert.equal(feed.selectedWeek, 8);
-  assert.equal(feed.games.filter(game => game.status === "final").length, 12);
+  assert.equal(feed.games.filter(game => game.status === "final").length, 24);
   assert.match(command, /2026/);
   assert.ok(command.includes(feed.sourceDates.previousResults));
   assert.notEqual(feed.sourceDates.previousResults, feed.sourceDates.results);
