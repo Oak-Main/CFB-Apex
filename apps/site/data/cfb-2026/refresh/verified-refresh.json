@@ -1,11 +1,11 @@
 {
  "schema_version": 1,
- "requested_cutoff": "2026-10-20T19:12:17.807Z",
- "retrieved_at": "2026-10-20T19:12:17.807Z",
+ "requested_cutoff": "2026-10-24T00:38:57.189Z",
+ "retrieved_at": "2026-10-24T00:38:57.189Z",
  "week": 8,
  "week_start": "2026-10-19",
  "reference_date": "2026-10-19",
- "baseline_note": "Week 8 reviewed October 20; Week 7 has 59 verified finals. Historical weeks and unrelated research retain their own source dates. No continuous live feed.",
+ "baseline_note": "Week 8 results and all 138 records reviewed October 23 after seven ESPN/NCAA-confirmed finals. Friday in-progress games are not final. Schedule, polls, injuries, leaders and editorial modules retain separate source dates; no continuous live feed.",
  "polls": [
   {
    "poll": "ap",
@@ -16874,200 +16874,398 @@
     "pregame_timing_note": "Nebraska schedule lists 10:00 PM CDT (Central) and ESPN agrees; Oregon schedule still listed TBD at the October 11 afternoon recheck.",
     "originally_scheduled_kickoff_utc": "2026-10-18T03:00Z"
    }
-  }
- ],
- "scheduledGames": [
+  },
   {
    "provider_id": "401871055",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871055",
+   "game_id": "2026-10-20-middle-tennessee-at-fiu",
    "date": "2026-10-20",
    "kickoff_utc": "2026-10-20T23:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "fiu",
    "away_slug": "middle-tennessee",
-   "away": "middle-tennessee",
-   "home": "fiu",
    "site": "Pitbull Stadium",
    "tv": "CBSSN",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:15.636Z",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://fiusports.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "fiu",
+     "name": "FIU",
+     "points": 23
+    },
+    {
+     "slug": "middle-tennessee",
+     "name": "Middle Tennessee",
+     "points": 26
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871055",
-    "https://fiusports.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603850"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "fiu": [
+      8,
+      0,
+      8,
+      7
+     ],
+     "middle-tennessee": [
+      7,
+      6,
+      10,
+      3
+     ]
+    },
+    "pregame_ap_ranks": {
+     "fiu": null,
+     "middle-tennessee": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-20T23:00Z"
+   }
   },
   {
    "provider_id": "401871069",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871069",
+   "game_id": "2026-10-20-missouri-state-at-delaware",
    "date": "2026-10-20",
    "kickoff_utc": "2026-10-20T23:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "delaware",
    "away_slug": "missouri-state",
-   "away": "missouri-state",
-   "home": "delaware",
    "site": "Delaware Stadium",
    "tv": "ESPNU",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:15.930Z",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://bluehens.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "delaware",
+     "name": "Delaware",
+     "points": 61
+    },
+    {
+     "slug": "missouri-state",
+     "name": "Missouri State",
+     "points": 38
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871069",
-    "https://bluehens.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604078"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "delaware": [
+      7,
+      17,
+      21,
+      16
+     ],
+     "missouri-state": [
+      14,
+      14,
+      7,
+      3
+     ]
+    },
+    "pregame_ap_ranks": {
+     "delaware": null,
+     "missouri-state": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-20T23:00Z"
+   }
   },
   {
    "provider_id": "401871092",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871092",
+   "game_id": "2026-10-20-south-alabama-at-marshall",
    "date": "2026-10-20",
    "kickoff_utc": "2026-10-20T23:30Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "marshall",
    "away_slug": "south-alabama",
-   "away": "south-alabama",
-   "home": "marshall",
    "site": "Joan C. Edwards Stadium",
    "tv": "ESPN2",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:15.813Z",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://herdzone.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "marshall",
+     "name": "Marshall",
+     "points": 20
+    },
+    {
+     "slug": "south-alabama",
+     "name": "South Alabama",
+     "points": 13
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871092",
-    "https://herdzone.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604345"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "marshall": [
+      0,
+      6,
+      7,
+      7
+     ],
+     "south-alabama": [
+      3,
+      3,
+      0,
+      7
+     ]
+    },
+    "pregame_ap_ranks": {
+     "marshall": null,
+     "south-alabama": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-20T23:30Z"
+   }
   },
   {
    "provider_id": "401871070",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871070",
+   "game_id": "2026-10-21-new-mexico-state-at-sam-houston",
    "date": "2026-10-21",
    "kickoff_utc": "2026-10-22T00:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "sam-houston",
    "away_slug": "new-mexico-state",
-   "away": "new-mexico-state",
-   "home": "sam-houston",
    "site": "Elliott T. Bowers Stadium",
    "tv": "ESPN2",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:16.215Z",
-   "time_et": "20:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://gobearkats.com/sports/football/schedule/2026"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "sam-houston",
+     "name": "Sam Houston",
+     "points": 24
+    },
+    {
+     "slug": "new-mexico-state",
+     "name": "New Mexico State",
+     "points": 30
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871070",
-    "https://gobearkats.com/sports/football/schedule/2026"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603883"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "sam-houston": [
+      7,
+      3,
+      7,
+      7
+     ],
+     "new-mexico-state": [
+      0,
+      14,
+      16,
+      0
+     ]
+    },
+    "pregame_ap_ranks": {
+     "sam-houston": null,
+     "new-mexico-state": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-22T00:00Z"
+   }
   },
   {
    "provider_id": "401869845",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401869845",
+   "game_id": "2026-10-22-james-madison-at-appalachian-state",
    "date": "2026-10-22",
    "kickoff_utc": "2026-10-22T23:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "appalachian-state",
    "away_slug": "james-madison",
-   "away": "james-madison",
-   "home": "appalachian-state",
    "site": "Kidd Brewer Stadium",
    "tv": "ESPNU",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:15.545Z",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://appstatesports.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final/OT",
+   "teams": [
+    {
+     "slug": "appalachian-state",
+     "name": "Appalachian State",
+     "points": 34
+    },
+    {
+     "slug": "james-madison",
+     "name": "James Madison",
+     "points": 31
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401869845",
-    "https://appstatesports.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603939"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "appalachian-state": [
+      0,
+      10,
+      3,
+      18,
+      3
+     ],
+     "james-madison": [
+      7,
+      7,
+      7,
+      10,
+      0
+     ]
+    },
+    "pregame_ap_ranks": {
+     "appalachian-state": null,
+     "james-madison": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-22T23:00Z"
+   }
   },
   {
    "provider_id": "401871056",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401871056",
+   "game_id": "2026-10-22-liberty-at-kennesaw-state",
    "date": "2026-10-22",
    "kickoff_utc": "2026-10-22T23:00Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "kennesaw-state",
    "away_slug": "liberty",
-   "away": "liberty",
-   "home": "kennesaw-state",
    "site": "Walens Family Field at Fifth Third Stadium",
    "tv": "CBSSN",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:15.603Z",
-   "time_et": "19:00",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://ksuowls.com/sports/football/schedule",
-    "https://libertyflames.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final",
+   "teams": [
+    {
+     "slug": "kennesaw-state",
+     "name": "Kennesaw State",
+     "points": 6
+    },
+    {
+     "slug": "liberty",
+     "name": "Liberty",
+     "points": 34
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401871056",
-    "https://ksuowls.com/sports/football/schedule",
-    "https://libertyflames.com/sports/football/schedule"
-   ]
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+     "https://www.ncaa.com/game/6604010"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "kennesaw-state": [
+      0,
+      3,
+      0,
+      3
+     ],
+     "liberty": [
+      14,
+      0,
+      10,
+      10
+     ]
+    },
+    "pregame_ap_ranks": {
+     "kennesaw-state": null,
+     "liberty": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-22T23:00Z"
+   }
   },
   {
    "provider_id": "401862807",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401862807",
+   "game_id": "2026-10-22-east-carolina-at-memphis",
    "date": "2026-10-22",
    "kickoff_utc": "2026-10-22T23:30Z",
-   "kickoff_status": "confirmed",
    "week": 8,
    "home_slug": "memphis",
    "away_slug": "east-carolina",
-   "away": "east-carolina",
-   "home": "memphis",
    "site": "Simmons Bank Liberty Stadium",
    "tv": "ESPN2",
-   "tv_status": "published",
    "neutral_site": false,
-   "verified_at": "2026-10-20T18:43:16.740Z",
-   "time_et": "19:30",
-   "status": "announced",
-   "game_status": "scheduled",
-   "timing_sources": [
-    "https://gotigersgo.com/sports/football/schedule"
+   "verified_at": "2026-10-24T00:38:57.189Z",
+   "title": "Final/OT",
+   "teams": [
+    {
+     "slug": "memphis",
+     "name": "Memphis",
+     "points": 41
+    },
+    {
+     "slug": "east-carolina",
+     "name": "East Carolina",
+     "points": 34
+    }
    ],
-   "source_urls": [
-    "https://www.espn.com/college-football/game/_/gameId/401862807",
-    "https://gotigersgo.com/sports/football/schedule"
-   ]
-  },
+   "meta": {
+    "as_of": "2026-10-23",
+    "sources": [
+     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+     "https://www.ncaa.com/game/6603720"
+    ],
+    "conference_game": true,
+    "line_score": {
+     "memphis": [
+      0,
+      3,
+      17,
+      14,
+      7
+     ],
+     "east-carolina": [
+      10,
+      6,
+      8,
+      10,
+      0
+     ]
+    },
+    "pregame_ap_ranks": {
+     "memphis": null,
+     "east-carolina": null
+    },
+    "pregame_timing_note": null,
+    "originally_scheduled_kickoff_utc": "2026-10-22T23:30Z"
+   }
+  }
+ ],
+ "scheduledGames": [
   {
    "provider_id": "401858271",
    "source_url": "https://www.espn.com/college-football/game/_/gameId/401858271",
@@ -18517,15 +18715,15 @@
  ],
  "teamRecords": {
   "utsa": "6-1",
-  "memphis": "5-2",
+  "memphis": "6-2",
   "south-florida": "5-2",
   "north-texas": "4-2",
   "army": "4-2",
   "florida-atlantic": "4-2",
   "uab": "4-3",
   "tulsa": "4-3",
-  "east-carolina": "3-3",
   "tulane": "3-3",
+  "east-carolina": "3-4",
   "navy": "2-4",
   "temple": "2-5",
   "charlotte": "1-6",
@@ -18581,16 +18779,16 @@
   "rutgers": "2-4",
   "maryland": "2-5",
   "michigan-state": "2-5",
-  "liberty": "5-1",
+  "liberty": "6-1",
   "jacksonville-state": "5-2",
-  "fiu": "3-3",
-  "middle-tennessee": "3-3",
+  "middle-tennessee": "4-3",
+  "new-mexico-state": "3-4",
   "western-kentucky": "3-4",
-  "missouri-state": "2-4",
-  "new-mexico-state": "2-4",
-  "delaware": "2-4",
-  "kennesaw-state": "1-5",
-  "sam-houston": "1-5",
+  "delaware": "3-4",
+  "fiu": "3-4",
+  "missouri-state": "2-5",
+  "kennesaw-state": "1-6",
+  "sam-houston": "1-6",
   "notre-dame": "6-1",
   "uconn": "3-3",
   "ohio": "5-2",
@@ -18640,16 +18838,16 @@
   "south-carolina": "3-3",
   "arkansas": "3-4",
   "vanderbilt": "3-4",
-  "james-madison": "7-0",
-  "appalachian-state": "4-2",
+  "james-madison": "7-1",
+  "appalachian-state": "5-2",
   "georgia-state": "4-2",
-  "marshall": "3-3",
+  "marshall": "4-3",
   "georgia-southern": "3-4",
   "coastal-carolina": "2-5",
   "old-dominion": "2-5",
   "louisiana": "5-2",
   "louisiana-tech": "4-2",
-  "south-alabama": "4-2",
+  "south-alabama": "4-3",
   "troy": "3-3",
   "arkansas-state": "3-4",
   "southern-miss": "1-5",
@@ -19377,11 +19575,11 @@
      {
       "team": "Memphis",
       "team_slug": "memphis",
-      "w": "2",
+      "w": "3",
       "l": "1",
       "t": "0",
-      "pct": "0.667",
-      "overall": "5-2"
+      "pct": "0.750",
+      "overall": "6-2"
      },
      {
       "team": "South Florida",
@@ -19441,10 +19639,10 @@
       "team": "East Carolina",
       "team_slug": "east-carolina",
       "w": "1",
-      "l": "1",
+      "l": "2",
       "t": "0",
-      "pct": "0.500",
-      "overall": "3-3"
+      "pct": "0.333",
+      "overall": "3-4"
      },
      {
       "team": "Tulane",
@@ -19981,11 +20179,11 @@
      {
       "team": "Liberty",
       "team_slug": "liberty",
-      "w": "2",
+      "w": "3",
       "l": "0",
       "t": "0",
       "pct": "1.000",
-      "overall": "5-1"
+      "overall": "6-1"
      },
      {
       "team": "Jacksonville State",
@@ -20000,19 +20198,19 @@
       "team": "FIU",
       "team_slug": "fiu",
       "w": "1",
-      "l": "1",
+      "l": "2",
       "t": "0",
-      "pct": "0.500",
-      "overall": "3-3"
+      "pct": "0.333",
+      "overall": "3-4"
      },
      {
       "team": "Middle Tennessee",
       "team_slug": "middle-tennessee",
-      "w": "1",
+      "w": "2",
       "l": "1",
       "t": "0",
-      "pct": "0.500",
-      "overall": "3-3"
+      "pct": "0.667",
+      "overall": "4-3"
      },
      {
       "team": "Western Kentucky",
@@ -20027,46 +20225,46 @@
       "team": "Missouri State",
       "team_slug": "missouri-state",
       "w": "1",
-      "l": "1",
+      "l": "2",
       "t": "0",
-      "pct": "0.500",
-      "overall": "2-4"
+      "pct": "0.333",
+      "overall": "2-5"
      },
      {
       "team": "New Mexico State",
       "team_slug": "new-mexico-state",
-      "w": "1",
+      "w": "2",
       "l": "1",
       "t": "0",
-      "pct": "0.500",
-      "overall": "2-4"
+      "pct": "0.667",
+      "overall": "3-4"
      },
      {
       "team": "Delaware",
       "team_slug": "delaware",
-      "w": "0",
+      "w": "1",
       "l": "2",
       "t": "0",
-      "pct": "0.000",
-      "overall": "2-4"
+      "pct": "0.333",
+      "overall": "3-4"
      },
      {
       "team": "Kennesaw State",
       "team_slug": "kennesaw-state",
       "w": "0",
-      "l": "2",
+      "l": "3",
       "t": "0",
       "pct": "0.000",
-      "overall": "1-5"
+      "overall": "1-6"
      },
      {
       "team": "Sam Houston",
       "team_slug": "sam-houston",
       "w": "0",
-      "l": "2",
+      "l": "3",
       "t": "0",
       "pct": "0.000",
-      "overall": "1-5"
+      "overall": "1-6"
      }
     ]
    },
@@ -20555,19 +20753,19 @@
       "team": "James Madison",
       "team_slug": "james-madison",
       "w": "4",
-      "l": "0",
+      "l": "1",
       "t": "0",
-      "pct": "1.000",
-      "overall": "7-0"
+      "pct": "0.800",
+      "overall": "7-1"
      },
      {
       "team": "Appalachian State",
       "team_slug": "appalachian-state",
-      "w": "1",
+      "w": "2",
       "l": "1",
       "t": "0",
-      "pct": "0.500",
-      "overall": "4-2"
+      "pct": "0.667",
+      "overall": "5-2"
      },
      {
       "team": "Georgia State",
@@ -20581,11 +20779,11 @@
      {
       "team": "Marshall",
       "team_slug": "marshall",
-      "w": "0",
+      "w": "1",
       "l": "2",
       "t": "0",
-      "pct": "0.000",
-      "overall": "3-3"
+      "pct": "0.333",
+      "overall": "4-3"
      },
      {
       "team": "Georgia Southern",
@@ -20636,10 +20834,10 @@
       "team": "South Alabama",
       "team_slug": "south-alabama",
       "w": "2",
-      "l": "0",
+      "l": "1",
       "t": "0",
-      "pct": "1.000",
-      "overall": "4-2"
+      "pct": "0.667",
+      "overall": "4-3"
      },
      {
       "team": "Troy",
@@ -20693,20 +20891,20 @@
     }
    ]
   },
-  "as_of": "2026-10-20",
-  "note": "Overall and conference standings rechecked October 20. Historical availability keeps its separate source dates.",
-  "verified_at": "2026-10-20T19:12:17.807Z",
+  "as_of": "2026-10-23",
+  "note": "Overall and conference standings rechecked October 23 against fresh ESPN standings and reconciled with seven ESPN/NCAA Week 8 finals. Historical availability keeps its separate source dates.",
+  "verified_at": "2026-10-24T00:38:57.189Z",
   "overall_records": {
    "utsa": "6-1",
-   "memphis": "5-2",
+   "memphis": "6-2",
    "south-florida": "5-2",
    "north-texas": "4-2",
    "army": "4-2",
    "florida-atlantic": "4-2",
    "uab": "4-3",
    "tulsa": "4-3",
-   "east-carolina": "3-3",
    "tulane": "3-3",
+   "east-carolina": "3-4",
    "navy": "2-4",
    "temple": "2-5",
    "charlotte": "1-6",
@@ -20762,16 +20960,16 @@
    "rutgers": "2-4",
    "maryland": "2-5",
    "michigan-state": "2-5",
-   "liberty": "5-1",
+   "liberty": "6-1",
    "jacksonville-state": "5-2",
-   "fiu": "3-3",
-   "middle-tennessee": "3-3",
+   "middle-tennessee": "4-3",
+   "new-mexico-state": "3-4",
    "western-kentucky": "3-4",
-   "missouri-state": "2-4",
-   "new-mexico-state": "2-4",
-   "delaware": "2-4",
-   "kennesaw-state": "1-5",
-   "sam-houston": "1-5",
+   "delaware": "3-4",
+   "fiu": "3-4",
+   "missouri-state": "2-5",
+   "kennesaw-state": "1-6",
+   "sam-houston": "1-6",
    "notre-dame": "6-1",
    "uconn": "3-3",
    "ohio": "5-2",
@@ -20821,22 +21019,22 @@
    "south-carolina": "3-3",
    "arkansas": "3-4",
    "vanderbilt": "3-4",
-   "james-madison": "7-0",
-   "appalachian-state": "4-2",
+   "james-madison": "7-1",
+   "appalachian-state": "5-2",
    "georgia-state": "4-2",
-   "marshall": "3-3",
+   "marshall": "4-3",
    "georgia-southern": "3-4",
    "coastal-carolina": "2-5",
    "old-dominion": "2-5",
    "louisiana": "5-2",
    "louisiana-tech": "4-2",
-   "south-alabama": "4-2",
+   "south-alabama": "4-3",
    "troy": "3-3",
    "arkansas-state": "3-4",
    "southern-miss": "1-5",
    "ulm": "0-6"
   },
-  "overall_records_note": "ESPN standings rechecked October 20 after Week 7."
+  "overall_records_note": "All 138 ESPN standings rows checked 2026-10-23; changes reconcile with seven ESPN/NCAA Week 8 finals."
  },
  "poll_notes": {
   "as_of": "2026-10-18",
@@ -21463,7 +21661,7 @@
   }
  ],
  "research_ingested_at": "2026-10-05T11:55:00Z",
- "results_verified_at": "2026-10-20T18:41:26.060Z",
+ "results_verified_at": "2026-10-24T00:38:57.189Z",
  "refresh_log": [
   {
    "applied_at": "2026-10-09T11:07:58.049Z",
@@ -22248,6 +22446,23 @@
    ],
    "school_confirmed_networks": 56,
    "pending_networks": []
+  },
+  {
+   "script": "reviewed-week8-results-2026-10-23",
+   "applied_at": "2026-10-24T00:38:57.189Z",
+   "evidence_checked_at": "2026-10-24T00:38:57.189Z",
+   "evidence": "data/cfb-2026/refresh/evidence/2026-10-23-week8-results.json",
+   "scope": "Seven completed Week 8 results, quarter scores, stable event identities and all 138 reconciled overall/conference records. Other module source dates are preserved.",
+   "finals": [
+    "2026-10-20-middle-tennessee-at-fiu",
+    "2026-10-20-missouri-state-at-delaware",
+    "2026-10-20-south-alabama-at-marshall",
+    "2026-10-21-new-mexico-state-at-sam-houston",
+    "2026-10-22-james-madison-at-appalachian-state",
+    "2026-10-22-liberty-at-kennesaw-state",
+    "2026-10-22-east-carolina-at-memphis"
+   ],
+   "records_checked": 138
   }
  ],
  "schedule_verified_at": "2026-10-20T18:45:20.351Z",
@@ -22257,12 +22472,12 @@
   "note": "87 tracked players from 19 teams, with exact game-specific designations and separate publication/retrieval times. SEC Texas A&M–Missouri, two Big 12 matchups and three earlier Big Ten/ACC matchups have Game Day updates; other included reports remain Friday Update 2. This is not complete Saturday coverage; missing players are unknown, not cleared."
  },
  "team_records_review": {
-  "as_of": "2026-10-20",
+  "as_of": "2026-10-23",
   "verified": 138,
   "carried_from_2026_10_10": [],
   "withheld": [],
-  "rule": "All overall and conference records re-read from ESPN standings; each Week 7 participant overall record also matches its completed ESPN scoreboard row.",
-  "note": "All 138 records rechecked October 20 after Week 7; poll records remain the records at poll release."
+  "rule": "All 138 current overall and conference records match fresh ESPN standings and reconcile from the prior reviewed snapshot plus seven ESPN/NCAA finals.",
+  "note": "Only results/records freshness advanced; other modules retain their own reviewed source dates."
  },
  "board_weeks": [
   {
@@ -22300,12 +22515,13 @@
    "end": "2026-10-25",
    "label": "Oct 20–24",
    "cutover_utc": "2026-10-18T13:00:00Z",
-   "snapshot_id": "week8-2026-10-20",
+   "snapshot_id": "week8-results-2026-10-23",
    "marquee_game_id": "2026-10-24-houston-at-utah",
-   "retrieved_at": "2026-10-20T19:12:17.807Z",
+   "retrieved_at": "2026-10-24T00:38:57.189Z",
    "schedule_verified_at": "2026-10-20T18:45:20.351Z",
-   "records_verified_at": "2026-10-20T19:12:17.807Z",
-   "note": "56 FBS-vs-FBS games; all kickoffs and networks school-confirmed. Ball State’s October 19 announcement confirms ESPN+ for Sacramento State at Ball State, Saturday at 3:30 PM ET."
+   "records_verified_at": "2026-10-24T00:38:57.189Z",
+   "note": "56 FBS-vs-FBS games; all kickoffs and networks school-confirmed October 20. Seven October 20–22 finals verified against ESPN and NCAA; 49 games remain non-final in this reviewed snapshot. Friday games in progress are not published as finals.",
+   "results_verified_at": "2026-10-24T00:38:57.189Z"
   }
  ]
 }

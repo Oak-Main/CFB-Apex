@@ -107,11 +107,11 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     2604,
   );
   assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "3–4");
-  assert.equal(teams.find((team) => team.slug === "fiu")?.record, "3–3");
+  assert.equal(teams.find((team) => team.slug === "fiu")?.record, "3–4");
   // App State's record was withheld until its Oct 10 loss to Old Dominion was verified.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "4–2",
+    "5–2",
   );
 });
 
@@ -291,16 +291,16 @@ test("records for the fourteen midweek teams match the verified finals", () => {
   "troy": "3–3",
   "southern-miss": "1–5",
   "jacksonville-state": "5–2",
-  "kennesaw-state": "1–5",
-  "fiu": "3–3",
-  "new-mexico-state": "2–4",
-  "liberty": "5–1",
-  "sam-houston": "1–5",
+  "kennesaw-state": "1–6",
+  "fiu": "3–4",
+  "new-mexico-state": "3–4",
+  "liberty": "6–1",
+  "sam-houston": "1–6",
   "western-kentucky": "3–4",
-  "missouri-state": "2–4",
+  "missouri-state": "2–5",
   "utsa": "6–1",
   "south-florida": "5–2",
-  "south-alabama": "4–2",
+  "south-alabama": "4–3",
   "arkansas-state": "3–4"
 };
   for (const [slug, record] of Object.entries(expected)) {
@@ -311,15 +311,15 @@ test("records for the fourteen midweek teams match the verified finals", () => {
   const conf: Record<string, string> = {
   "utsa": "3-0",
   "south-florida": "1-2",
-  "liberty": "2-0",
-  "sam-houston": "0-2",
+  "liberty": "3-0",
+  "sam-houston": "0-3",
   "western-kentucky": "2-1",
-  "missouri-state": "1-1",
+  "missouri-state": "1-2",
   "jacksonville-state": "3-0",
-  "kennesaw-state": "0-2",
-  "fiu": "1-1",
-  "new-mexico-state": "1-1",
-  "south-alabama": "2-0",
+  "kennesaw-state": "0-3",
+  "fiu": "1-2",
+  "new-mexico-state": "2-1",
+  "south-alabama": "2-1",
   "arkansas-state": "1-2",
   "troy": "1-1",
   "southern-miss": "0-2"

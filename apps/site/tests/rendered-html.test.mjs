@@ -287,7 +287,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
-  assert.match(rankings, /as of 2026-10-20/);
+  assert.match(rankings, /as of 2026-10-23/);
   assert.match(rankings, /UTSA 3 0 0 1\.000 6-1/);
   assert.match(rankings, /South Florida 1 2 0 0\.333 5-2/);
 });
