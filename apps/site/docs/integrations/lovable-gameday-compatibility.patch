@@ -1,0 +1,126 @@
+diff --git a/src/lib/gameday-feed.ts b/src/lib/gameday-feed.ts
+index cc5b41e..103337f 100644
+--- a/src/lib/gameday-feed.ts
++++ b/src/lib/gameday-feed.ts
+@@ -16,8 +16,13 @@ export const GAMEDAY_FEED_URL = `${PRODUCTION_ORIGIN}/api/gameday`;
+ export const INJURIES_URL = `${PRODUCTION_ORIGIN}/injuries`;
+ export const FEED_TIMEOUT_MS = 8000;
+ 
++export function parseReviewedWeekSearch(value: unknown): number | undefined {
++  const week = typeof value === "number" ? value : typeof value === "string" && /^\d{1,2}$/.test(value) ? Number(value) : NaN;
++  return Number.isInteger(week) && week >= 0 && week <= 53 ? week : undefined;
++}
++
+ const weekSchema = z.object({
+-  week: z.number().int().positive(),
++  week: z.number().int().nonnegative(),
+   start: z.string(),
+   end: z.string(),
+   label: z.string(),
+@@ -40,7 +45,7 @@ const teamSchema = z.object({
+ });
+ const gameSchema = z.object({
+   id: z.string(),
+-  week: z.number().int().positive(),
++  week: z.number().int().nonnegative(),
+   date: z.string(),
+   kickoffLabel: z.string(),
+   awayTeamId: z.string(),
+@@ -112,7 +117,7 @@ export const gamedayFeedSchema = z.object({
+   schemaVersion: z.literal(1),
+   revision: z.string(),
+   serverNow: z.number(),
+-  selectedWeek: z.number().int().positive(),
++  selectedWeek: z.number().int().nonnegative(),
+   explicit: z.boolean(),
+   weeks: z.array(weekSchema).min(1),
+   teams: z.array(teamSchema),
+@@ -122,6 +127,7 @@ export const gamedayFeedSchema = z.object({
+   sourceDates: z.object({
+     schedule: z.string().nullable(),
+     results: z.string().nullable(),
++    previousResults: z.string().nullable().optional(),
+     records: z.string().nullable(),
+     injuries: z.string().nullable(),
+   }),
+@@ -442,7 +448,8 @@ export function feedFinals(feed: GamedayFeed): TrackerGame[] {
+ }
+ 
+ export function feedFinalsLabel(feed: GamedayFeed): string {
+-  const date = feed.sourceDates.results;
++  const previousWeek = feed.previousFinals[0]?.week;
++  const date = feed.sourceDates.previousResults ?? feed.weeks.find(w => w.week === previousWeek)?.results_verified_at;
+   return date ? `PREVIOUS RESULTS · VERIFIED ${shortDate(date)}` : "PREVIOUS RESULTS";
+ }
+ 
+diff --git a/src/lib/gameday-feed.functions.ts b/src/lib/gameday-feed.functions.ts
+index 247d23d..2086148 100644
+--- a/src/lib/gameday-feed.functions.ts
++++ b/src/lib/gameday-feed.functions.ts
+@@ -8,7 +8,7 @@ import { loadGamedayFeed } from "./gameday-feed";
+ // clock selects the week. Failures return an honest status, never demo data.
+ export const getGamedayFeed = createServerFn({ method: "GET" })
+   .validator((input: unknown) =>
+-    z.object({ week: z.number().int().positive().max(53).optional() }).parse(input ?? {}),
++    z.object({ week: z.number().int().nonnegative().max(53).optional() }).parse(input ?? {}),
+   )
+   .handler(async ({ data }) => {
+     setResponseHeader("Cache-Control", "no-store");
+diff --git a/src/routes/index.tsx b/src/routes/index.tsx
+index 93a7c7d..437b582 100644
+--- a/src/routes/index.tsx
++++ b/src/routes/index.tsx
+@@ -14,6 +14,7 @@ import { PollsVsMachines, StandingsPanel } from "@/components/standings-panel";
+ import { getGamedayFeed } from "@/lib/gameday-feed.functions";
+ import {
+   GAMEDAY_FEED_URL,
++  parseReviewedWeekSearch,
+   apPoll,
+   feedBoard,
+   feedFinals,
+@@ -60,8 +61,7 @@ export const Route = createFileRoute("/")({
+     };
+   },
+   validateSearch: (search: Record<string, unknown>): { week?: number | undefined } => {
+-    const week = Number(search["week"]);
+-    return { week: Number.isInteger(week) && week > 0 && week <= 53 ? week : undefined };
++    return { week: parseReviewedWeekSearch(search["week"]) };
+   },
+   loaderDeps: ({ search }) => ({ week: search.week }),
+   staleTime: 0,
+diff --git a/src/test/gameday-feed.test.ts b/src/test/gameday-feed.test.ts
+index 37a4894..5024045 100644
+--- a/src/test/gameday-feed.test.ts
++++ b/src/test/gameday-feed.test.ts
+@@ -12,6 +12,8 @@ import {
+   gamedayFeedSchema,
+   loadGamedayFeed,
+   parseEtHour,
++  parseReviewedWeekSearch,
++  feedFinalsLabel,
+   resolveProductionUrl,
+   selectFeedWeek,
+   type GamedayFeed,
+@@ -495,3 +497,22 @@ describe("loadGamedayFeed failure handling", () => {
+   });
+ });
+ 
++
++describe("zero weeks and independently dated previous results", () => {
++  it("accepts Week 0 across the contract and preserves zero search values", () => {
++    const feed = makeFeed();
++    const zero = {...feed,selectedWeek:0,weeks:[{...feed.weeks[0]!,week:0}],games:feed.games.map(g=>({...g,week:0})),previousFinals:[]};
++    expect(gamedayFeedSchema.safeParse(zero).success).toBe(true);
++    expect(selectFeedWeek(gamedayFeedSchema.parse(zero),0)?.week).toBe(0);
++    expect(parseReviewedWeekSearch(0)).toBe(0);
++    expect(parseReviewedWeekSearch("0")).toBe(0);
++    for(const invalid of ["",null,undefined,"8junk",-1]) expect(parseReviewedWeekSearch(invalid)).toBeUndefined();
++  });
++  it("uses the previous archive's review date instead of the current results date", () => {
++    const feed=makeFeed();feed.sourceDates.results="2026-10-24";
++    expect(feedFinalsLabel(feed)).toBe("PREVIOUS RESULTS · VERIFIED OCT 18");
++    feed.sourceDates.previousResults="2026-10-17";
++    expect(feedFinalsLabel(feed)).toBe("PREVIOUS RESULTS · VERIFIED OCT 17");
++  });
++});
++

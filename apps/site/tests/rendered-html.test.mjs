@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { visibleText, withoutComments } from "./html-text.mjs";
 
@@ -287,7 +288,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
-  assert.match(rankings, /as of 2026-10-23/);
+  assert.match(rankings, /as of 2026-10-24/);
   assert.match(rankings, /UTSA 3 0 0 1\.000 6-1/);
   assert.match(rankings, /South Florida 1 2 0 0\.333 5-2/);
 });
@@ -415,4 +416,40 @@ test("scoreboard keeps week navigation without a pretend refresh affordance", as
   assert.match(week7, /Week 7\. 59 games shown\./);
   assert.match(week7, /aria-current="page"[^>]*>[\s\S]*?Week 7/);
   assert.match(html, /Status changes require a newer verified release/);
+});
+
+test("Friday finals and current records agree across the Command Center, API, scores and game files", async () => {
+  const expected = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-24-week8-gameday-results.json", import.meta.url), "utf8"));
+  const feed = await (await fetchRoute("/api/gameday?week=8")).json();
+  const command = visibleText(await (await fetchRoute("/gameday?week=8")).text());
+  const scores = visibleText(await (await fetchRoute("/scores?week=8")).text());
+  assert.equal(feed.season, 2026);
+  assert.equal(feed.selectedWeek, 8);
+  assert.equal(feed.games.filter(game => game.status === "final").length, 12);
+  assert.match(command, /2026/);
+  assert.ok(command.includes(feed.sourceDates.previousResults));
+  assert.notEqual(feed.sourceDates.previousResults, feed.sourceDates.results);
+  for (const id of expected.new_final_ids) {
+    const row = expected.finals.find(row => row.id === id);
+    const game = feed.games.find(game => game.id === row.game_id);
+    assert.equal(game.status, "final");
+    assert.equal(game.awayScore, row.away_score);
+    assert.equal(game.homeScore, row.home_score);
+    assert.ok(command.includes(`FINAL · ${row.away_score}–${row.home_score}`));
+    const page = visibleText(await (await fetchRoute(`/games/${row.game_id}`)).text());
+    for (const value of [row.away_score, row.home_score]) assert.ok(page.includes(String(value)));
+    assert.match(page, /FINAL|Final/);
+    assert.ok(scores.includes(String(row.away_score)));
+  }
+  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), expected.records[team.slug]);
+});
+
+test("injury and Heisman week copy retain the actual reviewed weeks and one statistics label", async () => {
+  const injuries = visibleText(await (await fetchRoute("/injuries")).text());
+  assert.match(injuries, /Dated Week 8 reporting/);
+  const heisman = visibleText(await (await fetchRoute("/heisman")).text());
+  assert.match(heisman, /Week 8 watch list/);
+  assert.match(heisman, /verified Week 7 box scores/);
+  assert.match(heisman, /displayed Week 7 statistics/);
+  assert.doesNotMatch(heisman, /Week -1/);
 });

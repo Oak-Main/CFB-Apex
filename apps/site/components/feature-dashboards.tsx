@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { Trophy, Star, GraduationCap, Brain, Users, TrendingUp, ShieldAlert, ExternalLink } from "lucide-react";
 import { noNames, noNamesByPosition, noNamesTeamCounts, type NoNamePlayer } from "@/lib/no-names";
 import { teams, getTeamBySlug } from "@/lib/cfb-dataset";
+import { heismanWeekCopy } from "@/lib/editorial-week-copy";
 import {
   heismanBoard,
   heismanWatch,
@@ -160,6 +161,7 @@ function OddsChips({ contender }: { contender: HeismanContender }) {
 export function HeismanPage({ cleanMode = true, onModeRequest }: { cleanMode?: boolean; onModeRequest?: () => void }) {
   const board = cleanMode ? heismanWatch.contenders : heismanBoard();
   const hasBoard = board.length > 0;
+  const weekCopy = heismanWeekCopy(heismanWatch.week, board.map(contender => contender.stat_line));
 
   return (
     <div className="apex-home" style={{ paddingTop: 32 }}>
@@ -170,7 +172,7 @@ export function HeismanPage({ cleanMode = true, onModeRequest }: { cleanMode?: b
             <h1>The most outstanding player in college football</h1>
             <p>
               {hasBoard
-                ? `Week ${heismanWatch.week ?? 2} watch list — ${board.length} selected contenders with verified Week 7 box scores and dated sources. Reviewed ${heismanWatch.as_of ?? ""}. Cases for and against are editorial analysis.`
+                ? `${weekCopy.watch} watch list — ${board.length} selected contenders with verified ${weekCopy.statistics} box scores and dated sources. Reviewed ${heismanWatch.as_of ?? ""}. Cases for and against are editorial analysis.`
                 : heismanWatch.notes ?? "The current Heisman watch is pending source verification."}
             </p>
           </div>
@@ -273,7 +275,7 @@ export function HeismanPage({ cleanMode = true, onModeRequest }: { cleanMode?: b
                 </div>
               </div>
               <p style={{ fontSize: 13, color: "var(--muted-foreground)", lineHeight: 1.6, marginTop: 0 }}>
-                ESPN box scores establish the displayed Week 7 statistics. USA TODAY&apos;s October 19 watch informs the
+                ESPN box scores establish the displayed {weekCopy.statistics} statistics. USA TODAY&apos;s October 19 watch informs the
                 selected field; cases and counterweights are our editorial interpretation. This board has no weighted
                 scoring model, vote projection or measured public-sentiment input. Reported prices come from one
                 market compilation, so confidence is capped at medium even when multiple book labels appear.

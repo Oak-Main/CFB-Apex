@@ -1,0 +1,17 @@
+{
+  "status": "Prepared proposal only; not applied, synced or published to Lovable",
+  "project": "87b5a164-7cf5-40fa-9d8a-fb7f3b6646f3",
+  "repository": "kevynsgrin-a11y/gametime-visuals",
+  "sourceRef": "29e6b8a37dd8d0e93dae99ec566c6fd6947d84d8",
+  "files": [
+    "src/lib/gameday-feed.ts",
+    "src/lib/gameday-feed.functions.ts",
+    "src/routes/index.tsx",
+    "src/test/gameday-feed.test.ts"
+  ],
+  "testScope": "Five focused adapter checks using the inspected source transpiled by the existing TypeScript runtime and Next bundled Zod; not a full companion Vitest/build or hosted preview acceptance",
+  "testsPassed": 5,
+  "testsFailed": 0,
+  "externalWritesPerformed": false,
+  "neededStep": "Apply/review this patch on the connected companion source, run its own test/build/preview against the candidate feed, complete supported Git synchronization and Lovable publication, then verify the actual public homepage."
+}
