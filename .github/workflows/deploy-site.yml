@@ -36,6 +36,10 @@ jobs:
         run: npm ci
       - name: Verify source snapshot and site
         run: npm run verify
+      - name: Freshly verify reviewed GameDay results and records
+        run: npm run gameday:source-gate
+      - name: Audit production site dependencies
+        run: npm audit --omit=dev --fetch-retries=0 --fetch-timeout=20000
       - name: Check production credentials
         if: github.event_name != 'pull_request'
         env:
@@ -116,3 +120,6 @@ jobs:
           assert.ok(gameHtml.includes(game.kickoff_utc.slice(0, 10)), 'game page kickoff date missing');
           console.log('Production verified across home, rankings and game page:', snapshot.retrieved_at);
           JS
+      - name: Verify exact public GameDay data revision and archive parity
+        if: github.event_name != 'pull_request'
+        run: node --experimental-strip-types scripts/smoke-gameday.mjs

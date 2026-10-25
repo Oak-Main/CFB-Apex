@@ -54,8 +54,8 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
   assert.equal(new Set(slate.map((row) => [row.awayTeamId, row.homeTeamId].sort().join(":"))).size, 59);
   const ids = new Set(teams.map((team) => team.id));
   assert.ok(slate.every((row) => ids.has(row.awayTeamId) && ids.has(row.homeTeamId)));
-  assert.equal(verifiedRefresh?.week, 8);
-  assert.equal(verifiedRefresh?.reference_date, "2026-10-19");
+  assert.equal(verifiedRefresh?.week, 9);
+  assert.equal(verifiedRefresh?.reference_date, "2026-10-26");
 });
 
 test("every Week 7 kickoff is published after the October 11 rechecks, with no midnight placeholder", () => {
@@ -140,7 +140,7 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   assert.deepEqual(review?.withheld, []);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
   // Texas lost to Oklahoma on October 10: 4–0 became 4–1.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "4–2");
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "5\u20132");
   // Current team records include independently verified later finals.
   assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–1");
   assert.equal(teams.find((team) => team.slug === "indiana")?.record, "7\u20131");
@@ -150,10 +150,10 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   }
 });
 
-test("current polls advance to October 18 and explain historical source dates", () => {
-  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-10-18", "2026-10-18"]);
+test("current polls advance to October 25 and explain historical source dates", () => {
+  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-10-25", "2026-10-25"]);
+  assert.match(pollsStatusNote ?? "", /October 25/);
   assert.match(pollsStatusNote ?? "", /October 18/);
-  assert.match(pollsStatusNote ?? "", /October 11/);
 });
 
 test("Week 7 FBS–FCS exclusions carry ESPN conference evidence", () => {

@@ -3,11 +3,12 @@ import { boardWeeks, games, pollTables, seasonRules, teams, verifiedRefresh } fr
 import { injuryResearch } from "./injury-report.ts";
 import { selectBoardWeek } from "./week-cutover.ts";
 import type { Game } from "./types.ts";
+import { compareGameDates } from "./game-calendar.ts";
 
 // Explicit projection: no model metrics, sportsbook prices, private config or
 // preview database state can enter the public Command Center contract.
 export function publicGame(game: Game, nowMs: number) {
-  const resultPending = game.status === "scheduled" && Date.parse(game.date) < nowMs;
+  const resultPending = game.status === "scheduled" && game.date.includes("T") && Date.parse(game.date) < nowMs;
   return {
     id: game.id, week: game.week, date: game.date, kickoffLabel: game.kickoffLabel,
     awayTeamId: game.awayTeamId, homeTeamId: game.homeTeamId, status: game.status,
@@ -37,12 +38,12 @@ export function gameDaySnapshot(nowMs: number, week?: string | null) {
       conference: team.conference, color: team.color, logo: team.logo ?? null,
       record: verifiedRefresh?.teamRecords[team.slug] ? team.record : null,
     })),
-    games: games.filter(game => game.week === selected).map(game => publicGame(game, nowMs)),
+    games: games.filter(game => game.week === selected).sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     previousFinals: games.filter(game => game.week === priorWeek && game.status === "final").map(game => publicGame(game, nowMs)),
     polls: pollTables.filter(poll => poll.poll !== "composite"),
     sourceDates: {
       schedule: metadata?.schedule_verified_at ?? metadata?.retrieved_at ?? null,
-      results: metadata?.results_verified_at ?? verifiedRefresh?.results_verified_at ?? null,
+      results: metadata?.results_verified_at ?? null,
       records: verifiedRefresh?.records_verified_at ?? verifiedRefresh?.retrieved_at ?? null,
       previousResults: boardWeeks.find(row => row.week === priorWeek)?.results_verified_at ?? null,
       injuries: injuryResearch.asOf,
@@ -66,7 +67,7 @@ export function isReviewedGameDayRefresh(value: unknown, explicitWeek: number | 
   return doc.schemaVersion === 1 && /^[a-f0-9]{64}$/.test(doc.revision ?? "") &&
     Number.isInteger(doc.season) && Number.isInteger(doc.selectedWeek) && (doc.selectedWeek ?? -1) >= 0 &&
     (explicitWeek == null || doc.selectedWeek === explicitWeek) &&
-    Array.isArray(doc.weeks) && doc.weeks.some(row => row.week === doc.selectedWeek) &&
-    Array.isArray(doc.games) && doc.games.every(game => game.week === doc.selectedWeek && (game.status !== "final" || (typeof game.homeScore === "number" && Number.isFinite(game.homeScore) && game.homeScore >= 0 && typeof game.awayScore === "number" && Number.isFinite(game.awayScore) && game.awayScore >= 0))) &&
+    Array.isArray(doc.weeks) && doc.weeks.some(row => row && typeof row === "object" && row.week === doc.selectedWeek) &&
+    Array.isArray(doc.games) && doc.games.every(game => game && typeof game === "object" && game.week === doc.selectedWeek && (game.status !== "final" || (typeof game.homeScore === "number" && Number.isFinite(game.homeScore) && game.homeScore >= 0 && typeof game.awayScore === "number" && Number.isFinite(game.awayScore) && game.awayScore >= 0))) &&
     Array.isArray(doc.teams) && Array.isArray(doc.polls) && Array.isArray(doc.injuries?.watch);
 }

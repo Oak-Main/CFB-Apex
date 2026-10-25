@@ -965,8 +965,9 @@ if (refreshSnapshot) {
     for (const key of Object.keys(byPair)) {
       if (rowWeek != null && boardWeekStart(key.slice(0, 10)) === rowWeek && key.slice(11) === pair) delete byPair[key];
     }
-    byPair[`${row.date}:${pair}`] = { tv: row.tv, time_et: row.time_et, status: row.status, week: row.week };
-    rows.push(row);
+    const status = row.status ?? row.game_status ?? "scheduled";
+    byPair[`${row.date}:${pair}`] = { tv: row.tv, time_et: row.time_et, status, week: row.week };
+    rows.push({ ...row, status });
     for (const [slug, opponent] of [[row.home, row.away], [row.away, row.home]]) {
       for (const entry of payload.schedules[slug] ?? []) {
         if (entry.opponent_slug !== opponent || rowWeek == null || boardWeekStart(entry.date) !== rowWeek) continue;

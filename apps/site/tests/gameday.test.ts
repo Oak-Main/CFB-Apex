@@ -10,7 +10,7 @@ import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/ga
 import { heismanWeekCopy, reportingWeekLabel } from "../lib/editorial-week-copy.ts";
 import { parseWeekParam, selectBoardWeek } from "../lib/week-cutover.ts";
 import { boardWeeks, games } from "../lib/cfb-dataset.ts";
-import { easternDate } from "../lib/game-calendar.ts";
+import { compareGameDates, easternDate } from "../lib/game-calendar.ts";
 import { injuryResearch, officialAvailabilityNote } from "../lib/injury-report.ts";
 import { acquireWriterLock, recoverWriterLock, releaseWriterLock } from "../scripts/weekly-writer-lock.mjs";
 
@@ -89,7 +89,7 @@ test("shared feed follows reviewed cutovers and preserves all archive games", ()
     assert.equal(snapshot.selectedWeek, row.week);
     assert.equal(snapshot.explicit, true);
     assert.equal(snapshot.games.length, games.filter(g => g.week === row.week).length);
-    assert.deepEqual(snapshot.games.map(g => g.id), games.filter(g => g.week === row.week).map(g => g.id));
+    assert.deepEqual(snapshot.games.map(g => g.id), games.filter(g => g.week === row.week).sort((a,b) => compareGameDates(a.date,b.date)).map(g => g.id));
     assert.ok(snapshot.previousFinals.every(g => g.week < row.week && g.status === "final"));
   }
   assert.equal(gameDaySnapshot(Date.parse("2026-10-18T12:59:59Z")).selectedWeek, 7);
@@ -107,7 +107,7 @@ test("shared revision is deterministic and module source times do not follow req
   assert.equal(first.revision, later.revision);
   assert.notEqual(first.serverNow, later.serverNow);
   assert.deepEqual(first.sourceDates, later.sourceDates);
-  assert.equal(first.polls[0].release_date, "2026-10-18");
+  assert.equal(first.polls[0].release_date, "2026-10-25");
   assert.equal(first.teams.length, 138);
   assert.ok(first.teams.every(t => t.record && t.logo));
   const ids = new Set(first.teams.map(t => t.slug));

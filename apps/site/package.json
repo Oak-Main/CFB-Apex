@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dataset:build": "node scripts/build-dataset.mjs",
+    "gameday:source-gate": "node scripts/check-gameday-sources.mjs",
     "predataset:check": "node scripts/build-dataset.mjs",
     "predev": "node scripts/build-dataset.mjs",
     "prebuild": "node scripts/build-dataset.mjs",
@@ -16,7 +17,7 @@
     "postbuild": "node scripts/fix-font-urls.mjs",
     "start": "vinext start",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/domain.test.ts tests/live-data.test.ts tests/ncaaf-scoreboard.test.ts tests/site-helpers.test.ts tests/refresh.test.ts tests/injury-accuracy.test.ts tests/week7.test.ts tests/week8.test.ts tests/gameday.test.ts",
+    "test": "node --experimental-strip-types --test tests/domain.test.ts tests/live-data.test.ts tests/ncaaf-scoreboard.test.ts tests/site-helpers.test.ts tests/refresh.test.ts tests/injury-accuracy.test.ts tests/week7.test.ts tests/week8.test.ts tests/week9.test.ts tests/gameday.test.ts",
     "test:integration": "node --test tests/rendered-html.test.mjs",
     "test:e2e": "node --test tests/rendered-html.test.mjs",
     "test:a11y": "node --test tests/a11y.test.mjs",
