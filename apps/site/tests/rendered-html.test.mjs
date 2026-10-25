@@ -84,6 +84,18 @@ test("Command Center serves the same dated public snapshot and reviewed archives
   assert.equal((await fetchRoute("/api/gameday", {method:"POST"})).status, 405);
 });
 
+test("the upcoming neutral-site marquee uses the verified event venue across native surfaces", async () => {
+  const html = withoutComments(await (await fetchRoute("/?week=9")).text());
+  const marquee = html.match(/<section[^>]*aria-labelledby="marquee-title"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(marquee);
+  assert.match(visibleText(marquee), /Florida vs Georgia/);
+  assert.match(visibleText(marquee), /Mercedes-Benz Stadium/);
+  assert.doesNotMatch(visibleText(marquee), /Sanford Stadium/);
+  const feed = await (await fetchRoute("/api/gameday?week=9")).json();
+  const game = feed.games.find(g => g.homeTeamId === "georgia" && g.awayTeamId === "florida");
+  assert.equal(game.neutralSite, true); assert.equal(game.venue, "Mercedes-Benz Stadium");
+});
+
 test("the reviewed Week 6 archive renders its games and sourced metrics", async () => {
   const response = await fetchRoute("/?week=6");
   const html = withoutComments(await response.text());
@@ -234,7 +246,7 @@ test("weekly release renders current data, truthful pending states and both arch
   })));
   const current = pages.get("/");
   assert.match(current, /WEEK 9 · OCT 27–31/);
-  assert.match(current, /Uncorroborated TV and disputed/);
+  assert.match(current, /Three kickoff listings remain uncorroborated/);
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);

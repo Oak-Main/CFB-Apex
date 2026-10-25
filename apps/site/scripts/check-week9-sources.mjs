@@ -51,7 +51,11 @@ for (const [week, days] of [[8, [20, 21, 22, 23, 24]], [9, [27, 28, 29, 30, 31]]
       const status = /postpon/i.test(c.status.type.name) ? "postponed" : /cancel/i.test(c.status.type.name) ? "canceled" : "scheduled";
       assert.equal(row.game_status, status); assert.equal(row.neutral_site, c.neutralSite === true); assert.equal(row.site, c.venue?.fullName ?? null);
       assert.equal(Date.parse(event.date), Date.parse(row.announced_kickoff_utc));
-      if (row.kickoff_utc) { assert.equal(c.timeValid, true); assert.ok(n.hasStartTime); assert.equal(n.startTimeEpoch * 1000, Date.parse(row.kickoff_utc)); }
+      if (row.kickoff_utc) {
+        assert.equal(c.timeValid, true);
+        if (n.hasStartTime) assert.equal(n.startTimeEpoch * 1000, Date.parse(row.kickoff_utc));
+        else assert.equal(row.kickoff_confirmation?.kind, "school", "An absent NCAA time requires official-school confirmation");
+      }
       else { assert.equal(row.kickoff_status, "official_tbd"); assert.ok(!n.hasStartTime, "Previously unknown NCAA kickoff was announced; reconcile the hold"); }
       if (row.tv) assert.ok(c.broadcasts.flatMap(b => b.names).includes(row.tv), "Provider TV listing changed");
       assert.ok(!("homeScore" in row) && !("awayScore" in row));
@@ -73,9 +77,22 @@ for (const p of polls) {
   p.ranks.forEach((r, i) => { const row = saved.rankings[i], official = table[i + 1]; assert.equal(ids.get(r.team.id), row.team_slug); assert.equal(r.current, row.rank); assert.equal(r.points, row.points); assert.equal(r.recordSummary, row.record); assert.equal(Number(official[0].replace(/\D/g, "")), row.rank); assert.equal(Number(official[p.id === "1" ? 2 : 3].replaceAll(",", "")), row.points); assert.equal(official[p.id === "1" ? 3 : 2], row.record); });
 }
 assert.match(docs.get("coaches"), /Published October 25, 2026/);
-await batches(evidence.schoolEvidence.filter(row => row.publishedTV), async row => {
+await batches(evidence.schoolEvidence.filter(row => row.publishedTV || row.kickoffConfirmation), async row => {
   assert.ok(Date.now() - Date.parse(row.school.checkedAt) < 7_200_000, "School evidence expired");
   const body = await fetchSource({ id: `school-${row.home}`, url: row.school.resolvedUrl }), event = evidence.schedule.find(g => g.provider_id === row.id), source = JSON.parse(docs.get(`day-${Number(event.date.slice(-2))}`)).events.find(g => g.id === row.id), away = source.competitions[0].competitors.find(t => t.homeAway === "away").team;
-  assert.ok(schoolBlocks(body, event.date.slice(-2), [away.location, away.shortDisplayName, away.abbreviation].filter(Boolean)).some(block => tvPattern(row.publishedTV).test(block)), `Official TV confirmation changed: ${row.home}`);
+  const blocks = schoolBlocks(body, event.date.slice(-2), [away.location, away.shortDisplayName, away.abbreviation].filter(Boolean));
+  if (row.publishedTV) assert.ok(blocks.some(block => tvPattern(row.publishedTV).test(block)), `Official TV confirmation changed: ${row.home}`);
+  if (row.kickoffConfirmation) {
+    const proof = row.kickoffConfirmation;
+    assert.ok(Date.now() - Date.parse(proof.checkedAt) < 7_200_000, "School kickoff evidence expired");
+    assert.deepEqual(proof, event.kickoff_confirmation);
+    assert.ok(blocks.some(block => new RegExp(proof.pattern, "i").test(block)), `School kickoff changed: ${row.home}`);
+    const literal = proof.observed_text.replaceAll(".", "").match(/(\d{1,2})(?::(\d{2}))?\s*([ap])m/i);
+    assert.ok(literal);
+    const parts = new Intl.DateTimeFormat("en-US", { timeZone:proof.timezone, hourCycle:"h23", hour:"2-digit", minute:"2-digit", year:"numeric", month:"2-digit", day:"2-digit" }).formatToParts(new Date(event.kickoff_utc));
+    const part = type => parts.find(p => p.type === type).value;
+    assert.equal(+part("hour"), +literal[1] % 12 + (literal[3].toLowerCase() === "p" ? 12 : 0));
+    assert.equal(+part("minute"), +(literal[2] ?? 0)); assert.equal(`${part("year")}-${part("month")}-${part("day")}`, event.date);
+  }
 });
 console.log(JSON.stringify({ acceptance: "PASS", checkedAt: new Date().toISOString(), inventories: evidence.inventories, counts: evidence.counts, observations }));

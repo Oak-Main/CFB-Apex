@@ -118,9 +118,7 @@ export function BroadcastHomepage({
           game={featured}
           away={away}
           home={home}
-          venue={
-            data.stadiums.find((venue) => venue.teamId === home.slug)?.name
-          }
+          venue={featured.venue}
           gameday={broadcastEventForGame(featured)}
         />
       ) : (
