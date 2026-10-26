@@ -21278,7 +21278,7 @@
     "pattern": "11\\s*a\\.?m\\.?\\s*CT",
     "timezone": "America/Chicago",
     "opponent": "Arizona",
-    "checkedAt": "2026-10-25T20:16:26.731Z",
+    "checkedAt": "2026-10-26T13:29:32.731Z",
     "sha256": "1145d7a645cdb132acdbc4bc7a2aa50f446aa59cd48b140036d1d349c592e675",
     "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
    }
@@ -22069,7 +22069,7 @@
     "pattern": "3:45\\s*PM\\s*EDT",
     "timezone": "America/New_York",
     "opponent": "Utah",
-    "checkedAt": "2026-10-25T20:16:27.407Z",
+    "checkedAt": "2026-10-26T13:29:36.903Z",
     "sha256": "44fcbe1fd9be0fbb924d5ab22b514e6fe1d2b64a104fd13d28df5eb352c081a2",
     "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
    }
@@ -22170,7 +22170,7 @@
     "pattern": "1:15\\s*PM\\s*PDT",
     "timezone": "America/Los_Angeles",
     "opponent": "Nevada",
-    "checkedAt": "2026-10-25T20:16:28.225Z",
+    "checkedAt": "2026-10-26T13:29:37.062Z",
     "sha256": "3e307b6524e6235da95e0daa68d0f4415668f784a565375742ecb707df73b646",
     "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
    }
@@ -22241,7 +22241,7 @@
     "pattern": "4:15\\s*PM\\s*EDT",
     "timezone": "America/New_York",
     "opponent": "Purdue",
-    "checkedAt": "2026-10-25T20:16:28.998Z",
+    "checkedAt": "2026-10-26T13:29:37.716Z",
     "sha256": "f60e0af7056c52cce1655f052b3b647e0f20fb156e01bdfd642736beea04b8bd",
     "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
    }
@@ -22462,7 +22462,7 @@
     "pattern": "6:30\\s*p\\.?m\\.?\\s*CT",
     "timezone": "America/Chicago",
     "opponent": "Mississippi State",
-    "checkedAt": "2026-10-25T20:16:30.020Z",
+    "checkedAt": "2026-10-26T13:29:39.014Z",
     "sha256": "ce5162bd91a9c614674bfa42c6d424cb0775dfaec8d04d3b773d998be1958b1c",
     "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
    }

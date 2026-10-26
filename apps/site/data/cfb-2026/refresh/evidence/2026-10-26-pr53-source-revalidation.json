@@ -1,0 +1,1124 @@
+{
+  "scope": "PR53 authoritative source revalidation",
+  "sourceCommit": "ebd080aa043b55e32a585e1500a89bde7c13b330",
+  "workflowRun": "https://github.com/Oak-Main/CFB-Apex/actions/runs/40330824635",
+  "receipt": {
+    "acceptance": "BLOCKED_STALE_EVIDENCE",
+    "sourceComparison": "PASS",
+    "checkedAt": "2026-10-26T13:29:41.589Z",
+    "inventories": {
+      "8": {
+        "expected": 56,
+        "verified": 56,
+        "missing": [],
+        "exceptions": [],
+        "espnWeeklyEndpointCount": 25,
+        "method": "NCAA full-week inventory matched one-to-one to union of dated ESPN schedules; weekly ESPN response is truncated"
+      },
+      "9": {
+        "expected": 56,
+        "verified": 56,
+        "missing": [],
+        "exceptions": [],
+        "espnWeeklyEndpointCount": 25,
+        "method": "NCAA full-week inventory matched one-to-one to union of dated ESPN schedules; weekly ESPN response is truncated"
+      }
+    },
+    "counts": {
+      "week8Finals": 56,
+      "week9Fixtures": 56,
+      "kickoffTBAorDisputed": 3,
+      "tvPending": 15,
+      "records": 138
+    },
+    "observations": [
+      {
+        "id": "standings",
+        "url": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
+        "checkedAt": "2026-10-26T13:29:29.043Z",
+        "sha256": "9322b9d17a0caa146622879a8d7d863f6a481cb067ec990596c4b811bb623a50"
+      },
+      {
+        "id": "rankings",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?seasons=2026",
+        "checkedAt": "2026-10-26T13:29:29.064Z",
+        "sha256": "f9f429909317b3e2f7a6aae6893b4438b90053f2efe85eec786426a5f4392dc4"
+      },
+      {
+        "id": "ncaa8",
+        "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/08",
+        "checkedAt": "2026-10-26T13:29:29.163Z",
+        "sha256": "708728e5055bfbcc8cd64d7d6256145984107778e6bbb4e33ba1d4d851507f50"
+      },
+      {
+        "id": "ncaa9",
+        "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/09",
+        "checkedAt": "2026-10-26T13:29:29.174Z",
+        "sha256": "aaf8330e7775d2f017c16e354d684b8842d6a424dbb52eabcc8a4d52997b1dfa"
+      },
+      {
+        "id": "day-20",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.230Z",
+        "sha256": "30d545b89c88f3759627ef23612dc5beff8559bf0fc70f1922796b6c58a27bda"
+      },
+      {
+        "id": "coaches",
+        "url": "https://sportsdata.usatoday.com/football/ncaaf/coaches-poll",
+        "checkedAt": "2026-10-26T13:29:29.267Z",
+        "sha256": "570a4b1a82360cf1e86e12d56ac3558e99ff61c586a9b167c5cfe53379df0258"
+      },
+      {
+        "id": "day-21",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.298Z",
+        "sha256": "3437fb7b0147843ee06f389688cc109f9c612c39077623eb43eb50aae761a9d5"
+      },
+      {
+        "id": "ap-ncaa",
+        "url": "https://www.ncaa.com/rankings/football/fbs/associated-press",
+        "checkedAt": "2026-10-26T13:29:29.345Z",
+        "sha256": "a66f6807e8d2436bfa55d3fbb9d2cbd6d6a7327a15cacd23825cc4e9b76b0374"
+      },
+      {
+        "id": "day-22",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.410Z",
+        "sha256": "6a6eb56b01b133dd8ec7c41e6d8141ca6ae28ee8cce4143589d3c329d59f6ced"
+      },
+      {
+        "id": "day-24",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.417Z",
+        "sha256": "85dd3530e7e8dfaa2057f34265825178069b1e64d6ddcc4578688c963d559904"
+      },
+      {
+        "id": "day-27",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261027&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.420Z",
+        "sha256": "1d4b8720e733ff80199f0c362cf8ab95cb438b4be6e76e76f85b38cd82c1b4e2"
+      },
+      {
+        "id": "day-23",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.490Z",
+        "sha256": "ba6340a51b25be85bf371832f39ed7d94ebd533b56f155ae5cabb320016c98a0"
+      },
+      {
+        "id": "day-30",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.541Z",
+        "sha256": "e21221596ac064a2e14d6c85008877f7f0dc90166b88dd1ab05d37fa13cfc5d4"
+      },
+      {
+        "id": "day-31",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.547Z",
+        "sha256": "358a87f532f7f1b4c8206a503579faa01eff947c75d8e8cb2cf038f776c62bfe"
+      },
+      {
+        "id": "day-28",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.552Z",
+        "sha256": "a2428b341c315cb7eef73a746e3b073d403dfb72948e378f8e443aba04d62505"
+      },
+      {
+        "id": "day-29",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+        "checkedAt": "2026-10-26T13:29:29.561Z",
+        "sha256": "5b4f3dce03fbe5b63690c6a6814112a2135eb1e2da156d65bc012de0d1abfff9"
+      },
+      {
+        "id": "school-new-mexico-state",
+        "url": "https://nmstatesports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:30.115Z",
+        "sha256": "e58b7e47f7aab404634449fc6883a27f03da29cee772c4bc11adbe6cffd6c03b"
+      },
+      {
+        "id": "school-western-kentucky",
+        "url": "https://wkusports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:30.327Z",
+        "sha256": "2739d81bf586f30a3d9d9e547d1988a0c1de7260f59b78444ce2399205e218f2"
+      },
+      {
+        "id": "school-missouri-state",
+        "url": "https://missouristatebears.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:30.420Z",
+        "sha256": "07fec8e762cdab7f013b510c6d30154c089e1f10f541ffef8208889192b398ae"
+      },
+      {
+        "id": "school-north-texas",
+        "url": "https://meangreensports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:30.532Z",
+        "sha256": "10de19d65d6c02a1e8e4af9de45b863fb2cd80f33021e2e36b834939a154109b"
+      },
+      {
+        "id": "school-sacramento-state",
+        "url": "https://hornetsports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:30.938Z",
+        "sha256": "c064515b35ab5ddfb5b13bfe226061e0d1d5e0f673a9acaf876295f2410fb2b3"
+      },
+      {
+        "id": "school-ucf",
+        "url": "https://ucfknights.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:31.211Z",
+        "sha256": "2e546d2dee013b78a5141f1a023de09fb0a878526749dddf07117731935cabec"
+      },
+      {
+        "id": "school-james-madison",
+        "url": "https://jmusports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:31.669Z",
+        "sha256": "fc826687744a9d404857192ecda1f706a92bd2e89520834e6a0b6e13360e63b1"
+      },
+      {
+        "id": "school-charlotte",
+        "url": "https://charlotte49ers.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:31.768Z",
+        "sha256": "ec5ed992dc2593b3b71960da85d7ed341cba05fbf10a3f1f4d434370c5b879de"
+      },
+      {
+        "id": "school-iowa",
+        "url": "https://hawkeyesports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:32.082Z",
+        "sha256": "3db064a4030b3231368efdef49a0121cbf114e58e604932ec06271dbc65bc448"
+      },
+      {
+        "id": "school-navy",
+        "url": "https://navysports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:32.271Z",
+        "sha256": "237eb8943982981ffee624613d334af8a45e4ee4b8d351b6b7407039baa9a0b9"
+      },
+      {
+        "id": "school-syracuse",
+        "url": "https://cuse.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:32.657Z",
+        "sha256": "7fcb9e38a4b7f05bc4f82447f20e17df121ae407b3fe64b993a3ae7e9101697f"
+      },
+      {
+        "id": "school-texas-tech",
+        "url": "https://texastech.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:32.731Z",
+        "sha256": "73de6e8cff2e863fe0e892c784447613bb1aa9921aa25d430336b97d46a06ed3"
+      },
+      {
+        "id": "school-western-michigan",
+        "url": "https://wmubroncos.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:33.300Z",
+        "sha256": "ad7bedbcf187723f092906d0639dbfbcf77c07f21eedf694569c5076092eaa91"
+      },
+      {
+        "id": "school-duke",
+        "url": "https://goduke.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:33.612Z",
+        "sha256": "bbd1663c90a6f412dbad6f35be0c97af3944ef2918e7fbcdc795783aaa6b6393"
+      },
+      {
+        "id": "school-maryland",
+        "url": "https://umterps.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:33.742Z",
+        "sha256": "c4f42c3b874e0d1ce775419e44f830ef168edf88357dc7ebb2121fb3ffa6f05a"
+      },
+      {
+        "id": "school-south-florida",
+        "url": "https://gousfbulls.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:33.864Z",
+        "sha256": "afabbca6db42ff3f9d72f194b10f1ca9e0d320e5c6c5b4c7836c8c82496a7eeb"
+      },
+      {
+        "id": "school-georgia",
+        "url": "https://georgiadogs.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:34.606Z",
+        "sha256": "8819fd0dd2937a6cd7a1c06a961d81ee257a683b9d99d8641ad9037a4d976f88"
+      },
+      {
+        "id": "school-air-force",
+        "url": "https://goairforcefalcons.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:34.706Z",
+        "sha256": "028472986b61d3e6a94a82b1b98a30cbbb79896878f08458273227335b0d4657"
+      },
+      {
+        "id": "school-colorado",
+        "url": "https://cubuffs.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:34.752Z",
+        "sha256": "fb65ac288bbdc4bee183aabb72f8e706b7e9e4b6464e22fb74748fb898b21e6d"
+      },
+      {
+        "id": "school-rutgers",
+        "url": "https://scarletknights.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:34.893Z",
+        "sha256": "d1f4794bb2c2185fd0dc428fb29ab73a6cbd2d1300e8654e1c729f6dffe2fa53"
+      },
+      {
+        "id": "school-byu",
+        "url": "https://byucougars.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:35.069Z",
+        "sha256": "b116cb175d82cbbef9df937b15a7c0f74bcdfab3276cc56bbd08088f865e000d"
+      },
+      {
+        "id": "school-indiana",
+        "url": "https://iuhoosiers.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:35.802Z",
+        "sha256": "a0c6dc095563e1eed26a4746bbf89726f9947411347a4678c5c36fca565f416b"
+      },
+      {
+        "id": "school-north-dakota-state",
+        "url": "https://gobison.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:35.927Z",
+        "sha256": "4f5dc1621ee42219461a475c9689ff8bb92db5a344082bbe905099aac36942d3"
+      },
+      {
+        "id": "school-tcu",
+        "url": "https://gofrogs.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:36.054Z",
+        "sha256": "f64b521d17d8d1d8006e8894921287e1d200e22db7be3840d97eae93fbbc1d68"
+      },
+      {
+        "id": "school-wake-forest",
+        "url": "https://godeacs.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:36.834Z",
+        "sha256": "321519c6718356a8e1e3ffa221a76465b530fdadc14c9936d5f1254820846b10"
+      },
+      {
+        "id": "school-cincinnati",
+        "url": "https://gobearcats.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:36.903Z",
+        "sha256": "f534a1e538e1f0c6b4480200f9b9cce3b0916d32b6985a7d8067f8cc785a246b"
+      },
+      {
+        "id": "school-ucla",
+        "url": "https://uclabruins.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:37.062Z",
+        "sha256": "bc5851ad8b296242c4024c77d48e190a9f36699a24c5a328543a6777f3592c9a"
+      },
+      {
+        "id": "school-san-jose-state",
+        "url": "https://sjsuspartans.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:37.246Z",
+        "sha256": "a567e0a039844c277329463708b37b1e95525b765abd56ed2dd13897f8438a73"
+      },
+      {
+        "id": "school-penn-state",
+        "url": "https://gopsusports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:37.716Z",
+        "sha256": "0163af81a8a41005a1cdc626199fddc18e7d87b49ffeeab35fcbfa4c3a844999"
+      },
+      {
+        "id": "school-iowa-state",
+        "url": "https://cyclones.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:38.040Z",
+        "sha256": "84e14b8eb8f5c86eacc67c6e37a61384713cea6d0f89a12309495e4ca8f1e3fe"
+      },
+      {
+        "id": "school-georgia-southern",
+        "url": "https://gseagles.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:38.150Z",
+        "sha256": "60c562761de8074cc7f86a060c6be417ffe773561287ec909babb966a8cf6f4e"
+      },
+      {
+        "id": "school-florida-state",
+        "url": "https://seminoles.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:38.286Z",
+        "sha256": "5093d1cc30339229cbd4a9271c176f69bb6fdd6372df3caef689151302663485"
+      },
+      {
+        "id": "school-texas",
+        "url": "https://texaslonghorns.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:39.014Z",
+        "sha256": "74a3f02b3a124671d35453bb30b18b1153fca3837f23d192d353f2c37c5ee00d"
+      },
+      {
+        "id": "school-usc",
+        "url": "https://usctrojans.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:39.171Z",
+        "sha256": "dc9b4506fa5d3a309567da7f1d6faeaf3a863aead26cf200fe426178beacd482"
+      },
+      {
+        "id": "school-north-carolina",
+        "url": "https://goheels.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:39.312Z",
+        "sha256": "c278d684fa6ef465e1fc09668ce283ec8cb305e33ff155ad50228f78299003c1"
+      },
+      {
+        "id": "school-san-diego-state",
+        "url": "https://goaztecs.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:39.800Z",
+        "sha256": "bb9eac1548e936e398493748c1bc2008bf7fd6e9d8b40fdd95e89275e3f1b26f"
+      },
+      {
+        "id": "school-nebraska",
+        "url": "https://huskers.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:40.047Z",
+        "sha256": "6ace8010eb8ff600775368f154aa9e9f7d43a46f9a2b97706a4884cca1a2d472"
+      },
+      {
+        "id": "school-memphis",
+        "url": "https://gotigersgo.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:40.417Z",
+        "sha256": "20fb8618d64a1a1d32b661ba121da8c82224ee1d48f493a5ba7d1c3126036166"
+      },
+      {
+        "id": "school-boise-state",
+        "url": "https://broncosports.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:40.594Z",
+        "sha256": "ffc80a49a2dd766fe0bcab2bf049c74abc52a61dc50463cfad9c67fb76048aa8"
+      },
+      {
+        "id": "school-pittsburgh",
+        "url": "https://pittsburghpanthers.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:40.694Z",
+        "sha256": "b287daeeff78fd205b3025a7cb9ddd6711473a4da66644e976429fe74ccabfdb"
+      },
+      {
+        "id": "school-unlv",
+        "url": "https://unlvrebels.com/sports/football/schedule",
+        "checkedAt": "2026-10-26T13:29:41.504Z",
+        "sha256": "fb1bb46058f887718a76ead205d203456f9706867ac5fbca27443575c380127e"
+      }
+    ]
+  },
+  "previousEvidence": {
+    "checked_at": "2026-10-25T19:25:46.281Z",
+    "raw_sources": [
+      {
+        "id": "week8",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=2026&seasontype=2&week=8&groups=80&limit=1000",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=2026&seasontype=2&week=8&groups=80&limit=1000",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.170Z",
+        "sha256": "a875a54ec5ff6cbae967603c41ff95de5622544aea5823265193fdcee8135cc1",
+        "bytes": 412704
+      },
+      {
+        "id": "week9",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=2026&seasontype=2&week=9&groups=80&limit=1000",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=2026&seasontype=2&week=9&groups=80&limit=1000",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.295Z",
+        "sha256": "9d71212bd1fd89f481cad53b7331a087400fe88146294e94a37dbf23fe8927b6",
+        "bytes": 475763
+      },
+      {
+        "id": "ncaa8",
+        "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/08/all-conf",
+        "resolvedUrl": "https://www.ncaa.com/scoreboard/football/fbs/2026/08",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.142Z",
+        "sha256": "dc78bf84de8106977e96949b5ed961ed6d493f909820965ff05b78baa19576b1",
+        "bytes": 167546
+      },
+      {
+        "id": "ncaa9",
+        "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
+        "resolvedUrl": "https://www.ncaa.com/scoreboard/football/fbs/2026/09",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.065Z",
+        "sha256": "2508fc9ca7a8e2dd9c48551e72a1c717efcab466e332c78f6d5962e65982fe67",
+        "bytes": 167198
+      },
+      {
+        "id": "standings",
+        "url": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
+        "resolvedUrl": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.151Z",
+        "sha256": "8d771d0dbcb6c61b5c822271898e9582dd3e50f49bc1b51ba4c5d5885dd998f1",
+        "bytes": 2588431
+      },
+      {
+        "id": "rankings",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?seasons=2026",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?seasons=2026",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.130Z",
+        "sha256": "de4373dc293734e2132e92556da3ee9254b15451172de263aeea748e796444b5",
+        "bytes": 296057
+      },
+      {
+        "id": "ap",
+        "url": "https://apnews.com/hub/ap-top-25-college-football-poll",
+        "resolvedUrl": "https://apnews.com/hub/ap-top-25-college-football-poll",
+        "status": 403,
+        "checkedAt": "2026-10-25T19:23:42.037Z",
+        "sha256": "a76d6423336c2f1426509a9c7f32cab14daab76202be58ebe56b117d4fc4d164",
+        "bytes": 5580
+      },
+      {
+        "id": "coaches",
+        "url": "https://sportsdata.usatoday.com/football/ncaaf/coaches-poll",
+        "resolvedUrl": "https://sportsdata.usatoday.com/football/ncaaf/coaches-poll",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:23:42.028Z",
+        "sha256": "3b64fc21f18d32b9fead89f56a69dbd0dead5ddc3221e2dbfa9304cbb158e7a9",
+        "bytes": 175318
+      },
+      {
+        "id": "day-20",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.227Z",
+        "sha256": "eabdaa11bdf8a513d85fec225ab838bab2597195dbe279dbdbce842c96275433",
+        "bytes": 48115
+      },
+      {
+        "id": "day-21",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.260Z",
+        "sha256": "3437fb7b0147843ee06f389688cc109f9c612c39077623eb43eb50aae761a9d5",
+        "bytes": 22200
+      },
+      {
+        "id": "day-22",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.185Z",
+        "sha256": "6a6eb56b01b133dd8ec7c41e6d8141ca6ae28ee8cce4143589d3c329d59f6ced",
+        "bytes": 49979
+      },
+      {
+        "id": "day-23",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.241Z",
+        "sha256": "de84d084220612e40e411d9d837785a998931201e96157bfd2ac7cef5f6270d5",
+        "bytes": 86067
+      },
+      {
+        "id": "day-24",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.209Z",
+        "sha256": "37187689e78f0346f7559ddc10a5dc793a3b4663c74ad670db636ddd52cfe769",
+        "bytes": 731926
+      },
+      {
+        "id": "day-27",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261027&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261027&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.203Z",
+        "sha256": "25e0c9ab5c73945692bdebbdf4117b859d7d9ee6ea2db3a5987e289bb2363fe7",
+        "bytes": 42173
+      },
+      {
+        "id": "day-28",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.204Z",
+        "sha256": "3f0a5125543914bd297b8fc0953b35fc7f4d63927e1e568ee3b3173226b26486",
+        "bytes": 41788
+      },
+      {
+        "id": "day-29",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.230Z",
+        "sha256": "8eb8bdf755e55f68c00d53098025db5ed3f49a1e6c9c26d4fb2a7e8dbe5ca113",
+        "bytes": 41811
+      },
+      {
+        "id": "day-30",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.262Z",
+        "sha256": "7a5c3516a1daf7891405f0f840adfb14ad6eb8397190bb320287ea2381c9d1f0",
+        "bytes": 60600
+      },
+      {
+        "id": "day-31",
+        "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
+        "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.281Z",
+        "sha256": "393a04aca9ea357a05e6b8685aa4a1849ae0a97b67da18f5fbdb51ed5e03406f",
+        "bytes": 889549
+      },
+      {
+        "id": "ap-ncaa",
+        "url": "https://www.ncaa.com/rankings/football/fbs/associated-press",
+        "resolvedUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
+        "status": 200,
+        "checkedAt": "2026-10-25T19:25:46.236Z",
+        "sha256": "760bce1905b7f96ebd38acbfae38177d7021f619fd68e540febe350a972d00ad",
+        "bytes": 122617
+      }
+    ],
+    "schoolEvidence": [
+      {
+        "id": "401871071",
+        "school": {
+          "eventId": "401871071",
+          "slug": "western-kentucky",
+          "url": "https://wkusports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:42.478Z",
+          "status": 200,
+          "resolvedUrl": "https://wkusports.com/sports/football/schedule",
+          "sha256": "da7b0e9da69bece3dcf1fa355aa264f9d08117f3a325883708d7747425e99e9e",
+          "title": "2026 Football Schedule - Western Kentucky University Athletics"
+        }
+      },
+      {
+        "id": "401871072",
+        "school": {
+          "eventId": "401871072",
+          "slug": "missouri-state",
+          "url": "https://missouristatebears.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:42.664Z",
+          "status": 200,
+          "resolvedUrl": "https://missouristatebears.com/sports/football/schedule",
+          "sha256": "63232a316955694dc5b865ae27d8bf8dd198b1ef5399fd1b8a9b07b3af85e032",
+          "title": "2026 Football Schedule - Missouri State "
+        }
+      },
+      {
+        "id": "401871057",
+        "school": {
+          "eventId": "401871057",
+          "slug": "new-mexico-state",
+          "url": "https://nmstatesports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:42.600Z",
+          "status": 200,
+          "resolvedUrl": "https://nmstatesports.com/sports/football/schedule",
+          "sha256": "844b36c1ad25037f4672a10c72824081534907c377fdb2935a0baf200e85d24a",
+          "title": "\r\n\t2026 Football Schedule - New Mexico State University Athletics\r\n"
+        }
+      },
+      {
+        "id": "401862812",
+        "school": {
+          "eventId": "401862812",
+          "slug": "north-texas",
+          "url": "https://meangreensports.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://meangreensports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:28:56.990Z",
+          "sha256": "972a38a56efa19219f03e5468e65032168fd4083ec7f7161972d794623c09be7"
+        }
+      },
+      {
+        "id": "401869963",
+        "school": {
+          "eventId": "401869963",
+          "slug": "james-madison",
+          "url": "https://jmusports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:43.990Z",
+          "status": 200,
+          "resolvedUrl": "https://jmusports.com/sports/football/schedule",
+          "sha256": "24bdb4f66dd54140b1bb4b03711ca989474828671e5ecbedaef37efabfa12066",
+          "title": "2026 Football Schedule - James Madison University Athletics"
+        }
+      },
+      {
+        "id": "401862813",
+        "school": {
+          "eventId": "401862813",
+          "slug": "charlotte",
+          "url": "https://charlotte49ers.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://charlotte49ers.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:28:59.037Z",
+          "sha256": "9ec2b14ccf6074e4c2f98e047f00775a65e14b3ec26e8e75e106b9e0166427b5"
+        }
+      },
+      {
+        "id": "401856844",
+        "school": {
+          "eventId": "401856844",
+          "slug": "ucf",
+          "url": "https://ucfknights.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://ucfknights.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:28:58.793Z",
+          "sha256": "6525d5b1ba1fce9ae24ed23f2b2efcde8383b58aa4db86cab11e7005817a6793"
+        }
+      },
+      {
+        "id": "401866451",
+        "school": {
+          "eventId": "401866451",
+          "slug": "sacramento-state",
+          "url": "https://hornetsports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:43.086Z",
+          "status": 200,
+          "resolvedUrl": "https://hornetsports.com/sports/football/schedule",
+          "sha256": "a307dcdb7f8263ff2d2fcfb7444ea5fab7f8131e93f39ea999c8a960094e8b01",
+          "title": "\r\n\t2026 Football Schedule - Sacramento State\r\n"
+        }
+      },
+      {
+        "id": "401859185",
+        "school": {
+          "eventId": "401859185",
+          "slug": "navy",
+          "url": "https://navysports.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://navysports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:28:59.285Z",
+          "sha256": "1fbd80e61ba4552cdf9284fb404fc746a211decd6592aef0afe965898ac27d4f"
+        }
+      },
+      {
+        "id": "401856842",
+        "school": {
+          "eventId": "401856842",
+          "slug": "texas-tech",
+          "url": "https://texastech.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:45.129Z",
+          "status": 200,
+          "resolvedUrl": "https://texastech.com/sports/football/schedule",
+          "sha256": "26891dce761cef998704a99cee900181cd109801033039ffa2d0413c66f506dd",
+          "title": "2026 Football Schedule - Texas Tech Red Raiders"
+        },
+        "kickoffConfirmation": {
+          "kind": "school",
+          "url": "https://texastech.com/sports/football/schedule",
+          "observed_text": "11 a.m. CT",
+          "pattern": "11\\s*a\\.?m\\.?\\s*CT",
+          "timezone": "America/Chicago",
+          "opponent": "Arizona",
+          "checkedAt": "2026-10-25T20:16:26.731Z",
+          "sha256": "1145d7a645cdb132acdbc4bc7a2aa50f446aa59cd48b140036d1d349c592e675",
+          "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
+        }
+      },
+      {
+        "id": "401858278",
+        "school": {
+          "eventId": "401858278",
+          "slug": "syracuse",
+          "url": "https://cuse.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:44.735Z",
+          "status": 200,
+          "resolvedUrl": "https://cuse.com/sports/football/schedule",
+          "sha256": "b4aa5610729c5d9d33a08ce6bb4e1380dc1b437f666621c854409f71258dbb4c",
+          "title": "2026 Football Schedule - Syracuse University Athletics"
+        }
+      },
+      {
+        "id": "401858502",
+        "school": {
+          "eventId": "401858502",
+          "slug": "iowa",
+          "url": "https://hawkeyesports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:44.987Z",
+          "status": 200,
+          "resolvedUrl": "https://hawkeyesports.com/sports/football/schedule",
+          "sha256": "28ce908cb37574d5c795703e31481cacc8c134926c4edfdf220f457443bffe20",
+          "title": "Football 2026-27 - Iowa Hawkeyes Athletics - Official Athletics Website"
+        }
+      },
+      {
+        "id": "401858279",
+        "school": {
+          "eventId": "401858279",
+          "slug": "duke",
+          "url": "https://goduke.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://goduke.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:04.210Z",
+          "sha256": "59e3431059e9c8ecd6e22b8f702dfb7d0f3eea6cee6fc102bce0b4cb463fd39f"
+        }
+      },
+      {
+        "id": "401858503",
+        "school": {
+          "eventId": "401858503",
+          "slug": "maryland",
+          "url": "https://umterps.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:45.554Z",
+          "status": 200,
+          "resolvedUrl": "https://umterps.com/sports/football/schedule",
+          "sha256": "a92588fddfc03cab68b98d0aa2da8d1373c48e2a43fb7fd0720d954fb33635bd",
+          "title": "2026 Football Schedule - University of Maryland Athletics"
+        }
+      },
+      {
+        "id": "401862816",
+        "school": {
+          "eventId": "401862816",
+          "slug": "south-florida",
+          "url": "https://gousfbulls.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:44.748Z",
+          "status": 200,
+          "resolvedUrl": "https://gousfbulls.com/sports/football/schedule",
+          "sha256": "068d4752f4794249102ba9b243bb3e4087af2ae0aee5d1dc0293e12a5fd9b61f",
+          "title": "2026 Football Schedule - USF Athletics"
+        }
+      },
+      {
+        "id": "401866452",
+        "school": {
+          "eventId": "401866452",
+          "slug": "western-michigan",
+          "url": "https://wmubroncos.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://wmubroncos.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:05.991Z",
+          "sha256": "95b3999152f7d2daf7a6b9a002457f55dbad229f97a8195657713400693ac29f"
+        }
+      },
+      {
+        "id": "401858507",
+        "school": {
+          "eventId": "401858507",
+          "slug": "rutgers",
+          "url": "https://scarletknights.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:45.444Z",
+          "status": 200,
+          "resolvedUrl": "https://scarletknights.com/sports/football/schedule",
+          "sha256": "0080b656f7e4abe228fc5f8a0ef59ca10a178751a9cc21ada270b682bfc8a6a6",
+          "title": "2026 Football Schedule - Rutgers University Athletics"
+        }
+      },
+      {
+        "id": "401856846",
+        "school": {
+          "eventId": "401856846",
+          "slug": "colorado",
+          "url": "https://cubuffs.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:46.583Z",
+          "status": 200,
+          "resolvedUrl": "https://cubuffs.com/sports/football/schedule",
+          "sha256": "dda10077f879264365aa44e87d816f24a49854b6ee878caaca0451c38e61300e",
+          "title": "2026 Football Schedule - University of Colorado Athletics"
+        }
+      },
+      {
+        "id": "401861966",
+        "school": {
+          "eventId": "401861966",
+          "slug": "air-force",
+          "url": "https://goairforcefalcons.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:46.852Z",
+          "status": 200,
+          "resolvedUrl": "https://goairforcefalcons.com/sports/football/schedule",
+          "sha256": "193a43167376f792eca8331c42ebd2a406f4c872ef6337316b4acc40153d8a04",
+          "title": "2026 Football Schedule - Air Force Academy Athletics"
+        }
+      },
+      {
+        "id": "401856734",
+        "school": {
+          "eventId": "401856734",
+          "slug": "georgia",
+          "url": "https://georgiadogs.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://georgiadogs.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:15.313Z",
+          "sha256": "f69aa455fdd668c2792a1539f90d86b72c7bbc1d83ccbac2d75d688d0658e188"
+        }
+      },
+      {
+        "id": "401858501",
+        "school": {
+          "eventId": "401858501",
+          "slug": "indiana",
+          "url": "https://iuhoosiers.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:46.813Z",
+          "status": 200,
+          "resolvedUrl": "https://iuhoosiers.com/sports/football/schedule",
+          "sha256": "2b3a4b1247fe5f61a82f6e9bc395bf887e9fd260ce149032600d8acfcd5fe95d",
+          "title": "2026 Football Schedule - Indiana University Athletics"
+        }
+      },
+      {
+        "id": "401856843",
+        "school": {
+          "eventId": "401856843",
+          "slug": "byu",
+          "url": "https://byucougars.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:47.090Z",
+          "status": 200,
+          "resolvedUrl": "https://byucougars.com/sports/football/schedule",
+          "sha256": "094a5d72cf01169a40faeefc850a3f79cc1e9146d0e3ec13a2ac43f000767900",
+          "title": "Football 2026 - BYU Athletics - Official Athletics Website - BYU Cougars"
+        }
+      },
+      {
+        "id": "401856845",
+        "school": {
+          "eventId": "401856845",
+          "slug": "tcu",
+          "url": "https://gofrogs.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://gofrogs.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:18.232Z",
+          "sha256": "09d422214997ff26059fa90c3457ea8f7e31f28383faccfde822c5651c873478"
+        }
+      },
+      {
+        "id": "401864531",
+        "school": {
+          "eventId": "401864531",
+          "slug": "north-dakota-state",
+          "url": "https://gobison.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:47.900Z",
+          "status": 200,
+          "resolvedUrl": "https://gobison.com/sports/football/schedule",
+          "sha256": "41705d868a1671ae231ef6c2dcc38a228d0cad986708238fb0c1bfac9f1180b3",
+          "title": "2026 Football Schedule - NDSU "
+        }
+      },
+      {
+        "id": "401856848",
+        "school": {
+          "eventId": "401856848",
+          "slug": "cincinnati",
+          "url": "https://gobearcats.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://gobearcats.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:21.241Z",
+          "sha256": "2c606a679c239b22e09a6b1d1854c06c6b1e2c85960f3e16af3773c19d8c888d"
+        },
+        "kickoffConfirmation": {
+          "kind": "school",
+          "url": "https://gobearcats.com/sports/football/schedule",
+          "observed_text": "3:45 PM EDT",
+          "pattern": "3:45\\s*PM\\s*EDT",
+          "timezone": "America/New_York",
+          "opponent": "Utah",
+          "checkedAt": "2026-10-25T20:16:27.407Z",
+          "sha256": "44fcbe1fd9be0fbb924d5ab22b514e6fe1d2b64a104fd13d28df5eb352c081a2",
+          "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
+        }
+      },
+      {
+        "id": "401858284",
+        "school": {
+          "eventId": "401858284",
+          "slug": "wake-forest",
+          "url": "https://godeacs.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:47.709Z",
+          "status": 200,
+          "resolvedUrl": "https://godeacs.com/sports/football/schedule",
+          "sha256": "28abeda5588d516fb86d5051af863a1817844af9100c2483bc180bace7fa0f80",
+          "title": "2026 Football Schedule - Wake Forest University Athletics"
+        }
+      },
+      {
+        "id": "401864529",
+        "school": {
+          "eventId": "401864529",
+          "slug": "san-jose-state",
+          "url": "https://sjsuspartans.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:49.792Z",
+          "status": 200,
+          "resolvedUrl": "https://sjsuspartans.com/sports/football/schedule",
+          "sha256": "f294b7ac0949a0267b010541e1bb8b2b683f0e2f4c5cb9ece63d0476eafdb848",
+          "title": "Football 2026 - SJSU Athletics - Official Athletics Website - San Jose State Spartans"
+        }
+      },
+      {
+        "id": "401858508",
+        "school": {
+          "eventId": "401858508",
+          "slug": "ucla",
+          "url": "https://uclabruins.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://uclabruins.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:23.429Z",
+          "sha256": "5d239072f1d942463a0c6bebdc8fb44e6854c25a9d249171893fb0fb7ab43767"
+        },
+        "kickoffConfirmation": {
+          "kind": "school",
+          "url": "https://uclabruins.com/sports/football/schedule",
+          "observed_text": "1:15 PM PDT",
+          "pattern": "1:15\\s*PM\\s*PDT",
+          "timezone": "America/Los_Angeles",
+          "opponent": "Nevada",
+          "checkedAt": "2026-10-25T20:16:28.225Z",
+          "sha256": "3e307b6524e6235da95e0daa68d0f4415668f784a565375742ecb707df73b646",
+          "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
+        }
+      },
+      {
+        "id": "401858506",
+        "school": {
+          "eventId": "401858506",
+          "slug": "penn-state",
+          "url": "https://gopsusports.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://gopsusports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:22.568Z",
+          "sha256": "c60a3fa9021d173809499cb8493e1a14112874573e55f18bad23c0cd12df1c0f"
+        },
+        "kickoffConfirmation": {
+          "kind": "school",
+          "url": "https://gopsusports.com/sports/football/schedule",
+          "observed_text": "4:15 PM EDT",
+          "pattern": "4:15\\s*PM\\s*EDT",
+          "timezone": "America/New_York",
+          "opponent": "Purdue",
+          "checkedAt": "2026-10-25T20:16:28.998Z",
+          "sha256": "f60e0af7056c52cce1655f052b3b647e0f20fb156e01bdfd642736beea04b8bd",
+          "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
+        }
+      },
+      {
+        "id": "401869846",
+        "school": {
+          "eventId": "401869846",
+          "slug": "georgia-southern",
+          "url": "https://gseagles.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://gseagles.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:25.621Z",
+          "sha256": "33d4fdf3e9af52b04692f5af46daf335a940bb2d0970945d960c70c149081144"
+        }
+      },
+      {
+        "id": "401856847",
+        "school": {
+          "eventId": "401856847",
+          "slug": "iowa-state",
+          "url": "https://cyclones.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:47.763Z",
+          "status": 200,
+          "resolvedUrl": "https://cyclones.com/sports/football/schedule",
+          "sha256": "bb7e30f0a0bfb66e3cbde59659484747726df0437918913ca39be1bb6d90ea20",
+          "title": "2026 Football Schedule - Iowa State Athletics"
+        }
+      },
+      {
+        "id": "401858280",
+        "school": {
+          "eventId": "401858280",
+          "slug": "florida-state",
+          "url": "https://seminoles.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:31:50.762Z",
+          "status": 200,
+          "resolvedUrl": "https://seminoles.com/sports/football/schedule",
+          "sha256": "f5fe9429a9169e3de9efb67e90976482856b30b0542314421fb4dc5be972b408",
+          "title": "2026 Football Schedule - Florida State University "
+        }
+      },
+      {
+        "id": "401860909",
+        "school": {
+          "eventId": "401860909",
+          "slug": "san-diego-state",
+          "url": "https://goaztecs.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://goaztecs.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:27.303Z",
+          "sha256": "045eb9ae466b0b34cc468db239b4e0860494ec121b6ca71d98c299d35249146c"
+        }
+      },
+      {
+        "id": "401858282",
+        "school": {
+          "eventId": "401858282",
+          "slug": "north-carolina",
+          "url": "https://goheels.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://goheels.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:27.192Z",
+          "sha256": "076a398eb3715b24413706629713ea2bd8fb53947ef7a9c19bf17dd94ab002c0"
+        }
+      },
+      {
+        "id": "401858509",
+        "school": {
+          "eventId": "401858509",
+          "slug": "usc",
+          "url": "https://usctrojans.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://usctrojans.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:27.599Z",
+          "sha256": "a91754714cb6cc769304dba7f379d1420e4cb0754a9d825321a78ff83b4d7555"
+        }
+      },
+      {
+        "id": "401856737",
+        "school": {
+          "eventId": "401856737",
+          "slug": "texas",
+          "url": "https://texaslonghorns.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://texaslonghorns.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:28.399Z",
+          "sha256": "62dfd40a15c70e5f5df9e3e9708c00f8606d5f8e246e119f5841b8ac3148f848"
+        },
+        "kickoffConfirmation": {
+          "kind": "school",
+          "url": "https://texaslonghorns.com/sports/football/schedule",
+          "observed_text": "6:30 p.m. CT",
+          "pattern": "6:30\\s*p\\.?m\\.?\\s*CT",
+          "timezone": "America/Chicago",
+          "opponent": "Mississippi State",
+          "checkedAt": "2026-10-25T20:16:30.020Z",
+          "sha256": "ce5162bd91a9c614674bfa42c6d424cb0775dfaec8d04d3b773d998be1958b1c",
+          "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
+        }
+      },
+      {
+        "id": "401858281",
+        "school": {
+          "eventId": "401858281",
+          "slug": "pittsburgh",
+          "url": "https://pittsburghpanthers.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://pittsburghpanthers.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:28.628Z",
+          "sha256": "3a683469baeced70f615e6b7d5c447c43d5065c4da4491966770a8686b95011c"
+        }
+      },
+      {
+        "id": "401858504",
+        "school": {
+          "eventId": "401858504",
+          "slug": "nebraska",
+          "url": "https://huskers.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://huskers.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:28.993Z",
+          "sha256": "61d02b18ba529d8aa5d3a6d75bc6c3173c0d6f38558a42cc919b86efb50d38d2"
+        }
+      },
+      {
+        "id": "401862814",
+        "school": {
+          "eventId": "401862814",
+          "slug": "memphis",
+          "url": "https://gotigersgo.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://gotigersgo.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:28.973Z",
+          "sha256": "111dac05464fca92834060d0dcfce3098d0efef324aebacf6c2b68b8cdf6e4ab"
+        }
+      },
+      {
+        "id": "401860908",
+        "school": {
+          "eventId": "401860908",
+          "slug": "boise-state",
+          "url": "https://broncosports.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://broncosports.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:29.161Z",
+          "sha256": "9cc1b64671bb83fca6493224506129f8111af2de28f1f49879a774acda33a53d"
+        }
+      },
+      {
+        "id": "401864530",
+        "school": {
+          "eventId": "401864530",
+          "slug": "unlv",
+          "url": "https://unlvrebels.com/sports/football/schedule",
+          "status": 200,
+          "resolvedUrl": "https://unlvrebels.com/sports/football/schedule",
+          "checkedAt": "2026-10-25T19:29:39.080Z",
+          "sha256": "6b5687d6f6bd0123cac2f7c92f8ec83a8821572959b17579f1bf3f190466143e"
+        }
+      }
+    ]
+  }
+}

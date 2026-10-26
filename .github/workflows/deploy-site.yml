@@ -36,6 +36,10 @@ jobs:
         run: npm ci
       - name: Verify source snapshot and site
         run: npm run verify
+      - name: Check Cloudflare types
+        run: npm run cf:types
+      - name: Validate deployment bundle without publishing
+        run: npm run deploy:dry-run
       - name: Freshly verify reviewed GameDay results and records
         run: npm run gameday:source-gate
       - name: Audit production site dependencies

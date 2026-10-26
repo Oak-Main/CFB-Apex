@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "scope": "Week 8 completion and distinct Week 9 preparation",
-  "checked_at": "2026-10-25T19:25:46.281Z",
+  "checked_at": "2026-10-26T13:29:41.589Z",
   "inventories": {
     "8": {
       "expected": 56,
@@ -3624,7 +3624,7 @@
         "pattern": "11\\s*a\\.?m\\.?\\s*CT",
         "timezone": "America/Chicago",
         "opponent": "Arizona",
-        "checkedAt": "2026-10-25T20:16:26.731Z",
+        "checkedAt": "2026-10-26T13:29:32.731Z",
         "sha256": "1145d7a645cdb132acdbc4bc7a2aa50f446aa59cd48b140036d1d349c592e675",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -4415,7 +4415,7 @@
         "pattern": "3:45\\s*PM\\s*EDT",
         "timezone": "America/New_York",
         "opponent": "Utah",
-        "checkedAt": "2026-10-25T20:16:27.407Z",
+        "checkedAt": "2026-10-26T13:29:36.903Z",
         "sha256": "44fcbe1fd9be0fbb924d5ab22b514e6fe1d2b64a104fd13d28df5eb352c081a2",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -4516,7 +4516,7 @@
         "pattern": "1:15\\s*PM\\s*PDT",
         "timezone": "America/Los_Angeles",
         "opponent": "Nevada",
-        "checkedAt": "2026-10-25T20:16:28.225Z",
+        "checkedAt": "2026-10-26T13:29:37.062Z",
         "sha256": "3e307b6524e6235da95e0daa68d0f4415668f784a565375742ecb707df73b646",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -4587,7 +4587,7 @@
         "pattern": "4:15\\s*PM\\s*EDT",
         "timezone": "America/New_York",
         "opponent": "Purdue",
-        "checkedAt": "2026-10-25T20:16:28.998Z",
+        "checkedAt": "2026-10-26T13:29:37.716Z",
         "sha256": "f60e0af7056c52cce1655f052b3b647e0f20fb156e01bdfd642736beea04b8bd",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -4808,7 +4808,7 @@
         "pattern": "6:30\\s*p\\.?m\\.?\\s*CT",
         "timezone": "America/Chicago",
         "opponent": "Mississippi State",
-        "checkedAt": "2026-10-25T20:16:30.020Z",
+        "checkedAt": "2026-10-26T13:29:39.014Z",
         "sha256": "ce5162bd91a9c614674bfa42c6d424cb0775dfaec8d04d3b773d998be1958b1c",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -5053,10 +5053,10 @@
         "eventId": "401871071",
         "slug": "western-kentucky",
         "url": "https://wkusports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:42.478Z",
+        "checkedAt": "2026-10-26T13:29:30.327Z",
         "status": 200,
         "resolvedUrl": "https://wkusports.com/sports/football/schedule",
-        "sha256": "da7b0e9da69bece3dcf1fa355aa264f9d08117f3a325883708d7747425e99e9e",
+        "sha256": "2739d81bf586f30a3d9d9e547d1988a0c1de7260f59b78444ce2399205e218f2",
         "title": "2026 Football Schedule - Western Kentucky University Athletics"
       },
       "extractedBlock": "Delaware Website Delaware https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/wkusports.com/images/logos/Delaware.png&width=84&height=84&quality=100&type=webp University of Delaware Logo vs Delaware Website Delaware Houchens Industries-L.T. Smith Stadium Bowling Green, Ky. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/wkusports.com/images/2021/5/15/8025471_cbs_logo_cbs_sports_network_png_hd_png.png&width=100&quality=100&type=webp CBS Sports Network | Radio: The Varsity Network RED OUT Oct 27 (Tue) Event Time 6 p.m. Video for Western Kentucky University vs Delaware on October 27 Watch Audio for Western Kentucky University vs Delaware on October 27 Listen Stats for Western Kentucky University vs Delaware on October 27 Live stats",
@@ -5104,10 +5104,10 @@
         "eventId": "401871072",
         "slug": "missouri-state",
         "url": "https://missouristatebears.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:42.664Z",
+        "checkedAt": "2026-10-26T13:29:30.420Z",
         "status": 200,
         "resolvedUrl": "https://missouristatebears.com/sports/football/schedule",
-        "sha256": "63232a316955694dc5b865ae27d8bf8dd198b1ef5399fd1b8a9b07b3af85e032",
+        "sha256": "07fec8e762cdab7f013b510c6d30154c089e1f10f541ffef8208889192b398ae",
         "title": "2026 Football Schedule - Missouri State "
       },
       "extractedBlock": "Video for Missouri State University vs Sam Houston on October 27 ESPN2",
@@ -5206,10 +5206,10 @@
         "eventId": "401871057",
         "slug": "new-mexico-state",
         "url": "https://nmstatesports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:42.600Z",
+        "checkedAt": "2026-10-26T13:29:30.115Z",
         "status": 200,
         "resolvedUrl": "https://nmstatesports.com/sports/football/schedule",
-        "sha256": "844b36c1ad25037f4672a10c72824081534907c377fdb2935a0baf200e85d24a",
+        "sha256": "e58b7e47f7aab404634449fc6883a27f03da29cee772c4bc11adbe6cffd6c03b",
         "title": "\r\n\t2026 Football Schedule - New Mexico State University Athletics\r\n"
       },
       "extractedBlock": "Oct 28 (Wed) 6 p.m. MT /images/2026/5/27/ESPN2_logo.svg.png ESPN2 99.5 FM KXPZ CUSA * vs Jax State on October 28 6 p.m. MT Jax State Greek Night/Military Appreciation Night Listen to live audio for Football vs Jax State on October 28, 2026 at 6 p.m. MT Listen Live stats for Football vs Jax State on October 28, 2026 at 6 p.m. MT Live Stats Tickets for Football vs Jax State on October 28, 2026 at 6 p.m. MT Tickets History vs Jax State History",
@@ -5259,8 +5259,8 @@
         "url": "https://meangreensports.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://meangreensports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:28:56.990Z",
-        "sha256": "972a38a56efa19219f03e5468e65032168fd4083ec7f7161972d794623c09be7"
+        "checkedAt": "2026-10-26T13:29:30.532Z",
+        "sha256": "10de19d65d6c02a1e8e4af9de45b863fb2cd80f33021e2e36b834939a154109b"
       },
       "extractedBlock": "Florida Atlantic Website Florida Atlantic https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/meangreensports.com/images/logos/FAU_2023.png&width=84&height=84&quality=100&type=webp Florida Atlantic University Logo vs Florida Atlantic Website Florida Atlantic DATCU Stadium Denton, TX https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/meangreensports.com/images/2020/12/13/espn_resize_copy.png&width=100&quality=100&type=webp ESPN | Radio: MGSN Halloween TX Game Oct 29 (Thu) Event Time 6:30 PM CT Video for University of North Texas vs Florida Atlantic on October 29 Watch Audio for University of North Texas vs Florida Atlantic on October 29 Listen Stats for University of North Texas vs Florida Atlantic on October 29 Live stats",
       "listedTV": "ESPN",
@@ -5307,10 +5307,10 @@
         "eventId": "401869963",
         "slug": "james-madison",
         "url": "https://jmusports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:43.990Z",
+        "checkedAt": "2026-10-26T13:29:31.669Z",
         "status": 200,
         "resolvedUrl": "https://jmusports.com/sports/football/schedule",
-        "sha256": "24bdb4f66dd54140b1bb4b03711ca989474828671e5ecbedaef37efabfa12066",
+        "sha256": "fc826687744a9d404857192ecda1f706a92bd2e89520834e6a0b6e13360e63b1",
         "title": "2026 Football Schedule - James Madison University Athletics"
       },
       "extractedBlock": "Video for James Madison University vs Troy on October 29 Watch: ESPN2",
@@ -5360,8 +5360,8 @@
         "url": "https://charlotte49ers.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://charlotte49ers.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:28:59.037Z",
-        "sha256": "9ec2b14ccf6074e4c2f98e047f00775a65e14b3ec26e8e75e106b9e0166427b5"
+        "checkedAt": "2026-10-26T13:29:31.768Z",
+        "sha256": "ec5ed992dc2593b3b71960da85d7ed341cba05fbf10a3f1f4d434370c5b879de"
       },
       "extractedBlock": "Tulane Website Tulane https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/uncc.sidearmsports.com/images/logos/Tulane-Wave.png&width=84&height=84&quality=100&type=webp Tulane University Logo vs Tulane Website Tulane Jerry Richardson Stadium Charlotte, N.C. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/uncc.sidearmsports.com/images/2020/9/1/ESPN2_logo_for_schedules_6KfF5.png&width=100&quality=100&type=webp ESPN2 Military Appreciation Oct 30 (Fri) Event Time 7 p.m. Game Center of Charlotte vs Tulane on October 30 Game Center Video for Charlotte vs Tulane on October 30 Watch Audio for Charlotte vs Tulane on October 30 Listen Stats for Charlotte vs Tulane on October 30 Live stats",
       "listedTV": "ESPN2",
@@ -5410,8 +5410,8 @@
         "url": "https://ucfknights.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://ucfknights.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:28:58.793Z",
-        "sha256": "6525d5b1ba1fce9ae24ed23f2b2efcde8383b58aa4db86cab11e7005817a6793"
+        "checkedAt": "2026-10-26T13:29:31.211Z",
+        "sha256": "2e546d2dee013b78a5141f1a023de09fb0a878526749dddf07117731935cabec"
       },
       "extractedBlock": "Fri, Oct 30 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 UCF 520x520 UCF 520x520.png vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 baylor Space Game Baylor Orlando, Fla. / Acrisure Bounce House 7:30 PM EDT Mission X - UCF vs. Baylor Mission X Opens in a new window Space Game History - UCF vs. Baylor Space Game History Opens in a new window Live Stats - UCF vs. Baylor Live Stats Opens in a new window Listen - UCF vs. Baylor Listen Opens in a new window Read more - UCF vs. Baylor data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 ESPN_wordmark ESPN_wordmark.svg.webp Opens in a new window",
       "listedTV": "ESPN",
@@ -5458,10 +5458,10 @@
         "eventId": "401866451",
         "slug": "sacramento-state",
         "url": "https://hornetsports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:43.086Z",
+        "checkedAt": "2026-10-26T13:29:30.938Z",
         "status": 200,
         "resolvedUrl": "https://hornetsports.com/sports/football/schedule",
-        "sha256": "a307dcdb7f8263ff2d2fcfb7444ea5fab7f8131e93f39ea999c8a960094e8b01",
+        "sha256": "c064515b35ab5ddfb5b13bfe226061e0d1d5e0f673a9acaf876295f2410fb2b3",
         "title": "\r\n\t2026 Football Schedule - Sacramento State\r\n"
       },
       "extractedBlock": "Oct 30 (Fri) 7:30 PM /images/2022/8/5/ESPN2.png MAC * vs Kent State on October 30 7:30 PM Kent State Healthcare Appreciation / AANHPI Heritage Night / Post-Game Fireworks Listen to live audio for Football vs Kent State on October 30, 2026 at 7:30 PM Listen Live stats for Football vs Kent State on October 30, 2026 at 7:30 PM Live Stats History vs Kent State History",
@@ -5511,8 +5511,8 @@
         "url": "https://navysports.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://navysports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:28:59.285Z",
-        "sha256": "1fbd80e61ba4552cdf9284fb404fc746a211decd6592aef0afe965898ac27d4f"
+        "checkedAt": "2026-10-26T13:29:32.271Z",
+        "sha256": "237eb8943982981ffee624613d334af8a45e4ee4b8d351b6b7407039baa9a0b9"
       },
       "extractedBlock": "Buy Tickets: Notre Dame on October 31 12 Noon Buy Tickets Foxborough, Mass. TV: ABC Radio: Navy Radio Network",
       "listedTV": "ABC",
@@ -5559,10 +5559,10 @@
         "eventId": "401856842",
         "slug": "texas-tech",
         "url": "https://texastech.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:45.129Z",
+        "checkedAt": "2026-10-26T13:29:32.731Z",
         "status": 200,
         "resolvedUrl": "https://texastech.com/sports/football/schedule",
-        "sha256": "26891dce761cef998704a99cee900181cd109801033039ffa2d0413c66f506dd",
+        "sha256": "73de6e8cff2e863fe0e892c784447613bb1aa9921aa25d430336b97d46a06ed3",
         "title": "2026 Football Schedule - Texas Tech Red Raiders"
       },
       "extractedBlock": "Oct 31 Arizona Website Arizona https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/texastech.com/images/logos/arizona_.png&width=84&height=84&quality=100&type=webp University of Arizona Logo vs Oct 31 / 11 a.m. CT vs Arizona Lubbock, Texas 11 a.m. CT https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/texastech.com/images/2022/9/18/espn_2EVA5.png&width=140&quality=100&type=webp TV Logo Buy tickets for the Arizona game. Prices start at $73 Buy From $73+ Game Center Go to the game center page",
@@ -5586,7 +5586,7 @@
         "pattern": "11\\s*a\\.?m\\.?\\s*CT",
         "timezone": "America/Chicago",
         "opponent": "Arizona",
-        "checkedAt": "2026-10-25T20:16:26.731Z",
+        "checkedAt": "2026-10-26T13:29:32.731Z",
         "sha256": "1145d7a645cdb132acdbc4bc7a2aa50f446aa59cd48b140036d1d349c592e675",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -5621,10 +5621,10 @@
         "eventId": "401858278",
         "slug": "syracuse",
         "url": "https://cuse.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:44.735Z",
+        "checkedAt": "2026-10-26T13:29:32.657Z",
         "status": 200,
         "resolvedUrl": "https://cuse.com/sports/football/schedule",
-        "sha256": "b4aa5610729c5d9d33a08ce6bb4e1380dc1b437f666621c854409f71258dbb4c",
+        "sha256": "7fcb9e38a4b7f05bc4f82447f20e17df121ae407b3fe64b993a3ae7e9101697f",
         "title": "2026 Football Schedule - Syracuse University Athletics"
       },
       "extractedBlock": "Oct 31 #19 SMU Website #19 SMU https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/suathletics.com/images/logos/SMU_Logo.png&width=84&height=84&quality=100&type=webp Southern Methodist University Logo vs Oct 31 / 12 PM vs #19 SMU Syracuse, N.Y. Sponsor Website https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/suathletics.com/images/2022/12/18/visit-syracuse-200x150.png&width=160&quality=100&type=webp Sponsor Logo 12 PM ESPN2 Buy tickets for the #19 SMU game Buy Now Game Center Go to the game center page",
@@ -5672,10 +5672,10 @@
         "eventId": "401858502",
         "slug": "iowa",
         "url": "https://hawkeyesports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:44.987Z",
+        "checkedAt": "2026-10-26T13:29:32.082Z",
         "status": 200,
         "resolvedUrl": "https://hawkeyesports.com/sports/football/schedule",
-        "sha256": "28ce908cb37574d5c795703e31481cacc8c134926c4edfdf220f457443bffe20",
+        "sha256": "3db064a4030b3231368efdef49a0121cbf114e58e604932ec06271dbc65bc448",
         "title": "Football 2026-27 - Iowa Hawkeyes Athletics - Official Athletics Website"
       },
       "extractedBlock": "Sat Oct 31 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Wisconsin Badgers logo 9d0c5bd5-wisconsin.png vs. Wisconsin Homecoming | Black Out | Heartland Trophy Game presented by Wellmark Blue Cross and Blue Shield Iowa City, Iowa 11:00 AM CDT Sold Out! Buy on SeatGeek - Iowa Hawkeyes vs. Wisconsin Sold Out! Buy on SeatGeek Opens in a new window Read more - Iowa Hawkeyes vs. Wisconsin data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 statbroadcast statbroadcast Opens in a new window Read more - Iowa Hawkeyes vs. Wisconsin data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Hawkeye Radio Network Hawkeye Radio Network Opens in a new window Read more - Iowa Hawkeyes vs. Wisconsin data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Fox One Logo FOX_ONE_Primary_Black.png Opens in a new window Read more - Iowa Hawkeyes vs. Wisconsin data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 FOX logo FOX logo Opens in a new window",
@@ -5775,8 +5775,8 @@
         "url": "https://goduke.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://goduke.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:04.210Z",
-        "sha256": "59e3431059e9c8ecd6e22b8f702dfb7d0f3eea6cee6fc102bce0b4cb463fd39f"
+        "checkedAt": "2026-10-26T13:29:33.612Z",
+        "sha256": "bbd1663c90a6f412dbad6f35be0c97af3944ef2918e7fbcdc795783aaa6b6393"
       },
       "extractedBlock": "Oct 31 Boston College Website Boston College https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/goduke.com/images/logos/Boston_College_200x200.png&width=84&height=84&quality=100&type=webp Boston College Logo vs Oct 31 / 12 p.m. vs Boston College Durham, N.C. 12 p.m. The CW Buy tickets for the Boston College game Buy Now Game Center Go to the game center page",
       "listedTV": "CW",
@@ -5823,10 +5823,10 @@
         "eventId": "401858503",
         "slug": "maryland",
         "url": "https://umterps.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:45.554Z",
+        "checkedAt": "2026-10-26T13:29:33.742Z",
         "status": 200,
         "resolvedUrl": "https://umterps.com/sports/football/schedule",
-        "sha256": "a92588fddfc03cab68b98d0aa2da8d1373c48e2a43fb7fd0720d954fb33635bd",
+        "sha256": "c4f42c3b874e0d1ce775419e44f830ef168edf88357dc7ebb2121fb3ffa6f05a",
         "title": "2026 Football Schedule - University of Maryland Athletics"
       },
       "extractedBlock": "Video for Maryland vs Illinois on October 31 Watch (FS1)",
@@ -5874,10 +5874,10 @@
         "eventId": "401862816",
         "slug": "south-florida",
         "url": "https://gousfbulls.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:44.748Z",
+        "checkedAt": "2026-10-26T13:29:33.864Z",
         "status": 200,
         "resolvedUrl": "https://gousfbulls.com/sports/football/schedule",
-        "sha256": "068d4752f4794249102ba9b243bb3e4087af2ae0aee5d1dc0293e12a5fd9b61f",
+        "sha256": "afabbca6db42ff3f9d72f194b10f1ca9e0d320e5c6c5b4c7836c8c82496a7eeb",
         "title": "2026 Football Schedule - USF Athletics"
       },
       "extractedBlock": "UAB Website UAB https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/usf.sidearmsports.com/images/logos/UAB_logo.png&width=84&height=84&quality=100&type=webp UAB Logo vs UAB Website UAB Raymond James Stadium Tampa, Fla. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/usf.sidearmsports.com/images/2021/5/20/ESPNU.png&width=100&quality=100&type=webp ESPNU | Radio: Q105 FM & Bulls Unlimited (digital) - USF Bulls App Title sponsor: LifeLink Oct 31 (Sat) Event Time 12 p.m. Audio for University of South Florida vs UAB on October 31 Listen Stats for University of South Florida vs UAB on October 31 Live stats Tailgate Packages for University of South Florida vs UAB on October 31 Tailgate Packages Tailgate Packages",
@@ -5927,8 +5927,8 @@
         "url": "https://wmubroncos.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://wmubroncos.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:05.991Z",
-        "sha256": "95b3999152f7d2daf7a6b9a002457f55dbad229f97a8195657713400693ac29f"
+        "checkedAt": "2026-10-26T13:29:33.300Z",
+        "sha256": "ad7bedbcf187723f092906d0639dbfbcf77c07f21eedf694569c5076092eaa91"
       },
       "extractedBlock": "CBS SPORTS NETWORK Bronco Sports Media Network Tickets for Football vs Bowling Green on October 31, 2026 at 12:00 PM Tickets",
       "listedTV": "CBSSN",
@@ -5975,10 +5975,10 @@
         "eventId": "401858507",
         "slug": "rutgers",
         "url": "https://scarletknights.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:45.444Z",
+        "checkedAt": "2026-10-26T13:29:34.893Z",
         "status": 200,
         "resolvedUrl": "https://scarletknights.com/sports/football/schedule",
-        "sha256": "0080b656f7e4abe228fc5f8a0ef59ca10a178751a9cc21ada270b682bfc8a6a6",
+        "sha256": "d1f4794bb2c2185fd0dc428fb29ab73a6cbd2d1300e8654e1c729f6dffe2fa53",
         "title": "2026 Football Schedule - Rutgers University Athletics"
       },
       "extractedBlock": "Oct 31 Michigan Website Michigan https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/scarletknights.com/images/logos/michigan_logo_200x200.png&width=84&height=84&quality=100&type=webp michigan vs Oct 31 / 12:30 PM vs Michigan Piscataway, N.J. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/scarletknights.com/images/2026/3/2/PNC_Full-Color_-_2025_3.png&width=160&quality=100&type=webp Sponsor Logo 12:30 PM Big Ten Network Buy tickets for the Michigan game Buy Now Game Center Go to the game center page",
@@ -6127,10 +6127,10 @@
         "eventId": "401856846",
         "slug": "colorado",
         "url": "https://cubuffs.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:46.583Z",
+        "checkedAt": "2026-10-26T13:29:34.752Z",
         "status": 200,
         "resolvedUrl": "https://cubuffs.com/sports/football/schedule",
-        "sha256": "dda10077f879264365aa44e87d816f24a49854b6ee878caaca0451c38e61300e",
+        "sha256": "fb65ac288bbdc4bee183aabb72f8e706b7e9e4b6464e22fb74748fb898b21e6d",
         "title": "2026 Football Schedule - University of Colorado Athletics"
       },
       "extractedBlock": "Kansas State Website Kansas State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/cubuffs.com/images/logos/Kansas_State.png&width=84&height=84&quality=100&type=webp Kansas State vs Kansas State Website Kansas State Folsom Field Boulder, Colo. TV: TNT | Radio: KOA 850 AM & 94.1 FM Oct 31 (Sat) Event Time 12 p.m. Game Center of Colorado vs Kansas State on October 31 Game Center Audio for Colorado vs Kansas State on October 31 Listen Stats for Colorado vs Kansas State on October 31 Live stats History for Colorado vs Kansas State on October 31 History",
@@ -6228,10 +6228,10 @@
         "eventId": "401861966",
         "slug": "air-force",
         "url": "https://goairforcefalcons.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:46.852Z",
+        "checkedAt": "2026-10-26T13:29:34.706Z",
         "status": 200,
         "resolvedUrl": "https://goairforcefalcons.com/sports/football/schedule",
-        "sha256": "193a43167376f792eca8331c42ebd2a406f4c872ef6337316b4acc40153d8a04",
+        "sha256": "028472986b61d3e6a94a82b1b98a30cbbb79896878f08458273227335b0d4657",
         "title": "2026 Football Schedule - Air Force Academy Athletics"
       },
       "extractedBlock": "Oct 31 UConn Website UConn https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/goairforcefalcons.com/images/logos/Husky_.png&width=84&height=84&quality=100&type=webp University of Connecticut Logo vs Oct 31 / 1:00 pm MT vs UConn USAFA, CO 1:00 pm MT MW+ Buy tickets for the UConn game Buy Now Game Center Go to the game center page",
@@ -6433,8 +6433,8 @@
         "url": "https://georgiadogs.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://georgiadogs.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:15.313Z",
-        "sha256": "f69aa455fdd668c2792a1539f90d86b72c7bbc1d83ccbac2d75d688d0658e188"
+        "checkedAt": "2026-10-26T13:29:34.606Z",
+        "sha256": "8819fd0dd2937a6cd7a1c06a961d81ee257a683b9d99d8641ad9037a4d976f88"
       },
       "extractedBlock": "Oct 31 Florida Website Florida https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/georgiadogs.com/images/logos/Florida.png&width=84&height=84&quality=100&type=webp University of Florida Logo vs Oct 31 / 3:30 p.m. / Sold Out vs Florida Atlanta, Ga. Sold Out 3:30 p.m. ABC Website https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/georgiadogs.com/images/2025/9/11/abc_50.png&width=140&quality=100&type=webp ABC Buy tickets for the Florida game on SeatGeek Buy on Game Center Go to the game center page",
       "listedTV": "ABC",
@@ -6481,10 +6481,10 @@
         "eventId": "401858501",
         "slug": "indiana",
         "url": "https://iuhoosiers.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:46.813Z",
+        "checkedAt": "2026-10-26T13:29:35.802Z",
         "status": 200,
         "resolvedUrl": "https://iuhoosiers.com/sports/football/schedule",
-        "sha256": "2b3a4b1247fe5f61a82f6e9bc395bf887e9fd260ce149032600d8acfcd5fe95d",
+        "sha256": "a0c6dc095563e1eed26a4746bbf89726f9947411347a4678c5c36fca565f416b",
         "title": "2026 Football Schedule - Indiana University Athletics"
       },
       "extractedBlock": "Minnesota Website Minnesota https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/iuhoosiers.com/images/logos/Minnesota-200.png&width=84&height=84&quality=100&type=webp University of Minnesota Logo Minnesota Website Minnesota Bloomington, Ind. TV: CBS | Radio: Indiana Sports Radio Network Oct 31 (Sat) Event Time 3:30 p.m. Game Center of Indiana University vs Minnesota on October 31 Game Center Audio for Indiana University vs Minnesota on October 31 Listen Stats for Indiana University vs Minnesota on October 31 Live Stats",
@@ -6532,10 +6532,10 @@
         "eventId": "401856843",
         "slug": "byu",
         "url": "https://byucougars.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:47.090Z",
+        "checkedAt": "2026-10-26T13:29:35.069Z",
         "status": 200,
         "resolvedUrl": "https://byucougars.com/sports/football/schedule",
-        "sha256": "094a5d72cf01169a40faeefc850a3f79cc1e9146d0e3ec13a2ac43f000767900",
+        "sha256": "b116cb175d82cbbef9df937b15a7c0f74bcdfab3276cc56bbd08088f865e000d",
         "title": "Football 2026 - BYU Athletics - Official Athletics Website - BYU Cougars"
       },
       "extractedBlock": "Sat., Oct. 31 1:30 PM MDT data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 BYU Schedule Logo BYU Schedule Logo.png vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 ASU Arizona State Provo, Utah / LaVell Edwards Stadium FOX - BYU Cougars vs. Arizona State FOX Opens in a new window BYUradio - BYU Cougars vs. Arizona State BYUradio Opens in a new window Buy Tickets - BYU Cougars vs. Arizona State Buy Tickets Opens in a new window",
@@ -6635,8 +6635,8 @@
         "url": "https://gofrogs.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://gofrogs.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:18.232Z",
-        "sha256": "09d422214997ff26059fa90c3457ea8f7e31f28383faccfde822c5651c873478"
+        "checkedAt": "2026-10-26T13:29:36.054Z",
+        "sha256": "f64b521d17d8d1d8006e8894921287e1d200e22db7be3840d97eae93fbbc1d68"
       },
       "extractedBlock": "Kansas Website Kansas https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/gofrogs.com/images/logos/jhwk4C_RF_OL (3).png&width=84&height=84&quality=100&type=webp University of Kansas Logo Kansas Website Kansas Fort Worth, Texas TV: FS1 Haunting at The Carter Oct 31 (Sat) Event Time 2:30 p.m. Game Center of TCU vs Kansas on October 31 Game Center Audio for TCU vs Kansas on October 31 Listen Stats for TCU vs Kansas on October 31 Live stats Book Your Tailgate! for TCU vs Kansas on October 31 Book Your Tailgate! Book Your Tailgate!",
       "listedTV": "FS1",
@@ -6734,10 +6734,10 @@
         "eventId": "401864531",
         "slug": "north-dakota-state",
         "url": "https://gobison.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:47.900Z",
+        "checkedAt": "2026-10-26T13:29:35.927Z",
         "status": 200,
         "resolvedUrl": "https://gobison.com/sports/football/schedule",
-        "sha256": "41705d868a1671ae231ef6c2dcc38a228d0cad986708238fb0c1bfac9f1180b3",
+        "sha256": "4f5dc1621ee42219461a475c9689ff8bb92db5a344082bbe905099aac36942d3",
         "title": "2026 Football Schedule - NDSU "
       },
       "extractedBlock": "UTEP Website UTEP https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/gobison.sidearmsports.com/images/logos/UTEP_logos_full_color_grayoutline_Registered (1).png&width=84&height=84&quality=100&type=webp University of Texas at El Paso Logo vs UTEP Website UTEP Fargo, N.D. TV: WDAY / MW+ | Radio: Bison Sports Network Halloween | Helmet Stripe Oct 31 (Sat) Event Time 2:30 p.m. Game Center of North Dakota State vs UTEP on October 31 Game Center Video for North Dakota State vs UTEP on October 31 Watch Audio for North Dakota State vs UTEP on October 31 Listen Stats for North Dakota State vs UTEP on October 31 Live stats",
@@ -6887,8 +6887,8 @@
         "url": "https://gobearcats.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://gobearcats.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:21.241Z",
-        "sha256": "2c606a679c239b22e09a6b1d1854c06c6b1e2c85960f3e16af3773c19d8c888d"
+        "checkedAt": "2026-10-26T13:29:36.903Z",
+        "sha256": "f534a1e538e1f0c6b4480200f9b9cce3b0916d32b6985a7d8067f8cc785a246b"
       },
       "extractedBlock": "Sat Oct 31 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Cincinnati_Bearcats_logo Cincinnati_Bearcats_logo.svg.png Cincinnati vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 utah Utah data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Big 12 Big 12.png Breast Cancer Awareness | Wear Black Cincinnati, Ohio / Nippert Stadium 3:45 PM EDT Tickets - Cincinnati vs. Utah Tickets Opens in a new window Read more - Cincinnati vs. Utah data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 ESPN_logo ESPN_logo.png Live Stats - Cincinnati vs. Utah Live Stats Listen: 700 WLW - Cincinnati vs. Utah Listen: 700 WLW Tailgate Packages - Cincinnati vs. Utah Tailgate Packages",
       "listedTV": "ESPN",
@@ -6911,7 +6911,7 @@
         "pattern": "3:45\\s*PM\\s*EDT",
         "timezone": "America/New_York",
         "opponent": "Utah",
-        "checkedAt": "2026-10-25T20:16:27.407Z",
+        "checkedAt": "2026-10-26T13:29:36.903Z",
         "sha256": "44fcbe1fd9be0fbb924d5ab22b514e6fe1d2b64a104fd13d28df5eb352c081a2",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -6946,10 +6946,10 @@
         "eventId": "401858284",
         "slug": "wake-forest",
         "url": "https://godeacs.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:47.709Z",
+        "checkedAt": "2026-10-26T13:29:36.834Z",
         "status": 200,
         "resolvedUrl": "https://godeacs.com/sports/football/schedule",
-        "sha256": "28abeda5588d516fb86d5051af863a1817844af9100c2483bc180bace7fa0f80",
+        "sha256": "321519c6718356a8e1e3ffa221a76465b530fdadc14c9936d5f1254820846b10",
         "title": "2026 Football Schedule - Wake Forest University Athletics"
       },
       "extractedBlock": "Virginia Website Virginia https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/wakeforestsports.com/images/logos/nav_logo.png&width=84&height=84&quality=100&type=webp University of Virginia Logo vs Virginia Website Virginia Allegacy Financial Stadium Winston-Salem, N.C. TV: ESPN2 Oct 31 (Sat) Event Time 3:45 p.m. Game Center of Wake Forest University vs Virginia on October 31 Game Center Video for Wake Forest University vs Virginia on October 31 Watch Audio for Wake Forest University vs Virginia on October 31 Listen Stats for Wake Forest University vs Virginia on October 31 Live Stats",
@@ -6997,10 +6997,10 @@
         "eventId": "401864529",
         "slug": "san-jose-state",
         "url": "https://sjsuspartans.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:49.792Z",
+        "checkedAt": "2026-10-26T13:29:37.246Z",
         "status": 200,
         "resolvedUrl": "https://sjsuspartans.com/sports/football/schedule",
-        "sha256": "f294b7ac0949a0267b010541e1bb8b2b683f0e2f4c5cb9ece63d0476eafdb848",
+        "sha256": "a567e0a039844c277329463708b37b1e95525b765abd56ed2dd13897f8438a73",
         "title": "Football 2026 - SJSU Athletics - Official Athletics Website - San Jose State Spartans"
       },
       "extractedBlock": "Sat, Oct 31 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 main-logo main-logo.png vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 New Lobo Shield New Lobo Shield.png Trick or Treat with the Spartans Opens in a new window New Mexico San Jose, Calif. / CEFCU Stadium 1:00 PM PDT Read more - San Jose State vs. New Mexico Opens in a new window data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 MW+ Logo Light Background MW+ Logo Light Background.png Read more - San Jose State vs. New Mexico Opens in a new window data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 NBC_Sports_Bay_Area NBC_Sports_Bay_Area.png Read more - San Jose State vs. New Mexico Opens in a new window data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Untitled-1 copy Untitled-1 copy.jpg GAMEDAY GUIDE - San Jose State vs. New Mexico Opens in a new window GAMEDAY GUIDE TICKETS - San Jose State vs. New Mexico Opens in a new window TICKETS STUDENT TICKETS - San Jose State vs. New Mexico Opens in a new window STUDENT TICKETS PARKING - San Jose State vs. New Mexico Opens in a new window PARKING LIVE STATS - San Jose State vs. New Mexico Opens in a new window LIVE STATS",
@@ -7050,8 +7050,8 @@
         "url": "https://uclabruins.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://uclabruins.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:23.429Z",
-        "sha256": "5d239072f1d942463a0c6bebdc8fb44e6854c25a9d249171893fb0fb7ab43767"
+        "checkedAt": "2026-10-26T13:29:37.062Z",
+        "sha256": "bc5851ad8b296242c4024c77d48e190a9f36699a24c5a328543a6777f3592c9a"
       },
       "extractedBlock": "Sat Oct 31 1:15 PM PDT data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 nevada Football Nevada Pasadena, CA / The Rose Bowl 1:15 PM PDT Tickets - UCLA vs. Nevada Tickets Opens in a new window Read more - UCLA vs. Nevada data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Big Ten Network logo BTN_logo.png Opens in a new window Live Stats - UCLA vs. Nevada Live Stats Listen - UCLA vs. Nevada Listen",
       "listedTV": "BTN",
@@ -7074,7 +7074,7 @@
         "pattern": "1:15\\s*PM\\s*PDT",
         "timezone": "America/Los_Angeles",
         "opponent": "Nevada",
-        "checkedAt": "2026-10-25T20:16:28.225Z",
+        "checkedAt": "2026-10-26T13:29:37.062Z",
         "sha256": "3e307b6524e6235da95e0daa68d0f4415668f784a565375742ecb707df73b646",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -7161,8 +7161,8 @@
         "url": "https://gopsusports.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://gopsusports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:22.568Z",
-        "sha256": "c60a3fa9021d173809499cb8493e1a14112874573e55f18bad23c0cd12df1c0f"
+        "checkedAt": "2026-10-26T13:29:37.716Z",
+        "sha256": "0163af81a8a41005a1cdc626199fddc18e7d87b49ffeeab35fcbfa4c3a844999"
       },
       "extractedBlock": "Saturday Oct 31 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 psu_logo psu_logo.svg vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Purdue Purdue.webp Purdue presented by data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Slaymaker Transparent Slaymaker Transparent.png Opens in a new window University Park, Pa. / West Shore Home Field at Beaver Stadium 4:15 PM EDT Stats - Penn State vs. Purdue Stats Tickets - Penn State vs. Purdue Tickets Opens in a new window Parking - Penn State vs. Purdue Parking Opens in a new window Premium Tailgating - Penn State vs. Purdue Premium Tailgating Opens in a new window Watch | Big Ten Network - Penn State vs. Purdue Watch | Big Ten Network",
       "listedTV": "BTN",
@@ -7185,7 +7185,7 @@
         "pattern": "4:15\\s*PM\\s*EDT",
         "timezone": "America/New_York",
         "opponent": "Purdue",
-        "checkedAt": "2026-10-25T20:16:28.998Z",
+        "checkedAt": "2026-10-26T13:29:37.716Z",
         "sha256": "f60e0af7056c52cce1655f052b3b647e0f20fb156e01bdfd642736beea04b8bd",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -7222,8 +7222,8 @@
         "url": "https://gseagles.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://gseagles.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:25.621Z",
-        "sha256": "33d4fdf3e9af52b04692f5af46daf335a940bb2d0970945d960c70c149081144"
+        "checkedAt": "2026-10-26T13:29:38.150Z",
+        "sha256": "60c562761de8074cc7f86a060c6be417ffe773561287ec909babb966a8cf6f4e"
       },
       "extractedBlock": "App State Website App State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/georgiasouthern.sidearmsports.com/images/logos/Appalachian-State-University.png&width=84&height=84&quality=100&type=webp Appalachian State vs App State Website App State Allen E. Paulson Stadium Statesboro, GA TV: ESPN+ | Radio: Georgia Southern Sports Network Erk 100/White Out Oct 31 (Sat) Event Time 6:30 PM Game Center of Georgia Southern University vs App State on October 31 Game Center Audio for Georgia Southern University vs App State on October 31 Listen Stats for Georgia Southern University vs App State on October 31 Live stats History for Georgia Southern University vs App State on October 31 History",
       "listedTV": "ESPN+",
@@ -7270,10 +7270,10 @@
         "eventId": "401856847",
         "slug": "iowa-state",
         "url": "https://cyclones.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:47.763Z",
+        "checkedAt": "2026-10-26T13:29:38.040Z",
         "status": 200,
         "resolvedUrl": "https://cyclones.com/sports/football/schedule",
-        "sha256": "bb7e30f0a0bfb66e3cbde59659484747726df0437918913ca39be1bb6d90ea20",
+        "sha256": "84e14b8eb8f5c86eacc67c6e37a61384713cea6d0f89a12309495e4ca8f1e3fe",
         "title": "2026 Football Schedule - Iowa State Athletics"
       },
       "extractedBlock": "Oklahoma State Website Oklahoma State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/isuni.sidearmsports.com/images/logos/ok-state.png&width=84&height=84&quality=100&type=webp Oklahoma State University Logo vs Oklahoma State Website Oklahoma State Ames, Iowa https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/isuni.sidearmsports.com/images/2021/10/5/FS1_Large_Use.png&width=100&quality=100&type=webp TV Logo Radio: Cyclone Radio Network Oct 31 (Sat) Event Time 6:00 PM Game Center of Iowa State vs Oklahoma State on October 31 Game Center Audio for Iowa State vs Oklahoma State on October 31 Listen Stats for Iowa State vs Oklahoma State on October 31 Live stats History for Iowa State vs Oklahoma State on October 31 History",
@@ -7321,10 +7321,10 @@
         "eventId": "401858280",
         "slug": "florida-state",
         "url": "https://seminoles.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:31:50.762Z",
+        "checkedAt": "2026-10-26T13:29:38.286Z",
         "status": 200,
         "resolvedUrl": "https://seminoles.com/sports/football/schedule",
-        "sha256": "f5fe9429a9169e3de9efb67e90976482856b30b0542314421fb4dc5be972b408",
+        "sha256": "5093d1cc30339229cbd4a9271c176f69bb6fdd6372df3caef689151302663485",
         "title": "2026 Football Schedule - Florida State University "
       },
       "extractedBlock": "Next Game Information https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/fsuni.sidearmsports.com/images/logos/Clemson.png&width=100&height=100&quality=100&type=webp School logo vs Clemson Sat, Oct 31 7:00 PM 0 Days 0 Hours 0 Minutes Min 0 Seconds Sec Tickets From $132 - $312 Game Center Print Schedule, opens in print dialog window Add to Calendar, opens in modal Add To Calendar Text only view, raw text file opens in new window. Text Only View Type: View Type Buttons List View not selected Table View Football Schedule. Choose a Season 2026 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004 2003 2002 2001 2000 1999-2000 1998-99 1997-98 1996-97 1995-96 1994-95 1993-94 1992-93 1991-92 1990-91 1989-90 1988-89 1987-88 1986-87 1985-86 1984-85 1983-84 1982-83 1981-82 1980-81 1979-80 1978-79 1977-78 1976-77 1975-76 1974-75 1973-74 1972-73 1971-72 1970-71 1969-70 1968-69 1967-68 1966-67 1965-66 1964-65 1963-64 1962-63 1961-62 1960-61 1959-60 1958-59 1957-58 1956-57 1955-56 1954-55 1953-54 1952-53 1951-52 1950-51 1949-50 1948-49 1947-48 Football Schedule. Choose a Location All Games All Games Home Games Away Games Conference Games Non-conference Games Hide Results View Type: View Type Buttons List View not selected Table View Date Time At Opponent Location TV Result Links 08/29/26 7:00 PM H New Mexico State Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium CW W , 34-17 Game Center 09/07/26 7:30 PM H #19 SMU Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium ESPN L , 24-27 Game Center 09/19/26 3:30 PM A #10 Alabama Tuscaloosa, Ala. ABC L , 36-50 Game Center 09/26/26 3:00 PM H Central Arkansas Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium ACC Network W , 34-7 Game Center 10/03/26 3:30 PM H Virginia Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium ESPN2 W , 38-7 Game Center 10/09/26 7:00 PM A Louisville Louisville, Ky. ESPN L , 20-44 Game Center 10/17/26 7:00 PM A #3 Miami Miami Gardens, Fla. ESPN L , 35-43 2OT Game Center 10/31/26 7:00 PM H Clemson Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium ACC Network Tickets From $132 - $312 / Game Center 11/07/26 TBA A Boston College Chestnut Hill, Mass. Game Center 11/13/26 7:00 PM A Pitt Pittsburgh, Pa. ESPN Game Center 11/21/26 TBA H NC State Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium Tickets From $48 - $105 / Game Center 11/27/26 3:30 PM H Florida Tallahassee, Fla. | Bobby Bowden Field at Doak S. Campbell Stadium ABC Tickets From $132 - $312 / Game Center Back to Top Shop View product Nike Pink Logo Shirt, opens in new tab https://images.sidearmdev.com/crop?url=https://images.footballfanatics.com/florida-state-seminoles/mens-nike-white-florida-state-seminoles-pink-logo-t-shirt_ss5_p-2001665621+pv-1+u-ixh1t8qqoadzml050bpx+v-b30ptp5pxgnp3nr2uzrk.jpg?_hv=2&w=1018&width=500&height=500&type=webp Nike Pink Logo Shirt promo image Nike Pink Logo Shirt $34.99",
@@ -7374,8 +7374,8 @@
         "url": "https://goaztecs.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://goaztecs.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:27.303Z",
-        "sha256": "045eb9ae466b0b34cc468db239b4e0860494ec121b6ca71d98c299d35249146c"
+        "checkedAt": "2026-10-26T13:29:39.800Z",
+        "sha256": "bb9eac1548e936e398493748c1bc2008bf7fd6e9d8b40fdd95e89275e3f1b26f"
       },
       "extractedBlock": "Oct 31 4:00 PM PDT data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 washington-st Sponsored by SDSU Mobile vs. Washington State data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 New Pac-12 Logo - Alt Shield - on Dark Background (No Border) New Pac-12 Logo - Alt Shield - on Dark Background (No Border).png Snapdragon Stadium CBS Sports Network",
       "listedTV": "CBSSN",
@@ -7424,8 +7424,8 @@
         "url": "https://goheels.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://goheels.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:27.192Z",
-        "sha256": "076a398eb3715b24413706629713ea2bd8fb53947ef7a9c19bf17dd94ab002c0"
+        "checkedAt": "2026-10-26T13:29:39.312Z",
+        "sha256": "c278d684fa6ef465e1fc09668ce283ec8cb305e33ff155ad50228f78299003c1"
       },
       "extractedBlock": "#1 Miami Website #1 Miami https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/unc.sidearmsports.com/images/logos/Miami.png&width=84&height=84&quality=100&type=webp University of Miami Logo vs #1 Miami Website #1 Miami Kenan Stadium Chapel Hill TV: ABC Rams Club Day Oct 31 (Sat) Event Time 7:30 P.M. Game Center of North Carolina vs #1 Miami on October 31 Game Center Video for North Carolina vs #1 Miami on October 31 Watch Audio for North Carolina vs #1 Miami on October 31 Listen Stats for North Carolina vs #1 Miami on October 31 Live stats",
       "listedTV": "ABC",
@@ -7474,8 +7474,8 @@
         "url": "https://usctrojans.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://usctrojans.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:27.599Z",
-        "sha256": "a91754714cb6cc769304dba7f379d1420e4cb0754a9d825321a78ff83b4d7555"
+        "checkedAt": "2026-10-26T13:29:39.171Z",
+        "sha256": "dc9b4506fa5d3a309567da7f1d6faeaf3a863aead26cf200fe426178beacd482"
       },
       "extractedBlock": "Ohio State Website Ohio State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/usctrojans.com/images/logos/ohio_state_logo.png&width=84&height=84&quality=100&type=webp Ohio State University Logo vs Ohio State Website Ohio State United Airlines Field at L.A. Memorial Coliseum Los Angeles, Calif. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/usctrojans.com/images/2026/8/19/nbc-logo.png&width=100&quality=100&type=webp NBC | Radio: ESPN LA 710 Trojan Family Weekend / Big Ten Football Rivalry Series presented by Venmo Oct 31 (Sat) Event Time 4:30 p.m. Game Center of USC vs Ohio State on October 31 Game Center Video for USC vs Ohio State on October 31 Watch Audio for USC vs Ohio State on October 31 Listen Stats for USC vs Ohio State on October 31 Live stats",
       "listedTV": "NBC",
@@ -7524,8 +7524,8 @@
         "url": "https://texaslonghorns.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://texaslonghorns.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:28.399Z",
-        "sha256": "62dfd40a15c70e5f5df9e3e9708c00f8606d5f8e246e119f5841b8ac3148f848"
+        "checkedAt": "2026-10-26T13:29:39.014Z",
+        "sha256": "74a3f02b3a124671d35453bb30b18b1153fca3837f23d192d353f2c37c5ee00d"
       },
       "extractedBlock": "Mississippi State Website Mississippi State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/texassports_com/images/logos/ScriptState_Maroon-GrayStroke(RGB).png&width=84&height=84&quality=100&type=webp Mississippi State University Logo vs Mississippi State Website Mississippi State DKR-Texas Memorial Stadium Austin, Texas TV: ESPN presented by State Farm Oct 31 (Sat) Event Time 6:30 p.m. CT Game Center of University of Texas vs Mississippi State on October 31 Game Center",
       "listedTV": "ESPN",
@@ -7548,7 +7548,7 @@
         "pattern": "6:30\\s*p\\.?m\\.?\\s*CT",
         "timezone": "America/Chicago",
         "opponent": "Mississippi State",
-        "checkedAt": "2026-10-25T20:16:30.020Z",
+        "checkedAt": "2026-10-26T13:29:39.014Z",
         "sha256": "ce5162bd91a9c614674bfa42c6d424cb0775dfaec8d04d3b773d998be1958b1c",
         "ncaa_observation": "Start time not yet published; absence is not a conflicting kickoff"
       }
@@ -7585,8 +7585,8 @@
         "url": "https://pittsburghpanthers.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://pittsburghpanthers.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:28.628Z",
-        "sha256": "3a683469baeced70f615e6b7d5c447c43d5065c4da4491966770a8686b95011c"
+        "checkedAt": "2026-10-26T13:29:40.694Z",
+        "sha256": "b287daeeff78fd205b3025a7cb9ddd6711473a4da66644e976429fe74ccabfdb"
       },
       "extractedBlock": "Georgia Tech Website Georgia Tech https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/pittsburghpanthers.com/images/logos/GT_WBG_200x200.png&width=84&height=84&quality=100&type=webp Georgia Tech Logo vs Georgia Tech Website Georgia Tech Acrisure Stadium Pittsburgh TV: ESPN2 | Radio: 93.7 The Fan Aldrich Foundation Hail to Heroes Oct 31 (Sat) Event Time 7:30 PM Game Center of Pitt vs Georgia Tech on October 31 Game Center Book Your Tailgate! for Pitt vs Georgia Tech on October 31 Book Your Tailgate! Book Your Tailgate! History for Pitt vs Georgia Tech on October 31 History",
       "listedTV": "ESPN2",
@@ -7683,8 +7683,8 @@
         "url": "https://huskers.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://huskers.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:28.993Z",
-        "sha256": "61d02b18ba529d8aa5d3a6d75bc6c3173c0d6f38558a42cc919b86efb50d38d2"
+        "checkedAt": "2026-10-26T13:29:40.047Z",
+        "sha256": "6ace8010eb8ff600775368f154aa9e9f7d43a46f9a2b97706a4884cca1a2d472"
       },
       "extractedBlock": "Saturday Oct 31 data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Nebraska_N_RGB Nebraska_N_RGB.png vs. data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 washington Washington Lincoln, Neb. / Memorial Stadium Lincoln, Neb. / Memorial Stadium 7:00 PM CDT Read more - Nebraska vs. Washington data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 Big Ten Network BTN_OnWhite.jpg Live Audio - Nebraska vs. Washington Live Audio Opens in a new window Live Stats - Nebraska vs. Washington Live Stats Opens in a new window",
       "listedTV": "BTN",
@@ -7733,8 +7733,8 @@
         "url": "https://gotigersgo.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://gotigersgo.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:28.973Z",
-        "sha256": "111dac05464fca92834060d0dcfce3098d0efef324aebacf6c2b68b8cdf6e4ab"
+        "checkedAt": "2026-10-26T13:29:40.417Z",
+        "sha256": "20fb8618d64a1a1d32b661ba121da8c82224ee1d48f493a5ba7d1c3126036166"
       },
       "extractedBlock": "Oct 31 Army Website Army https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/gotigersgo.com/images/logos/army_logo_R.png&width=84&height=84&quality=100&type=webp Army Logo Oct 31 / 7 p.m. Army Memphis, Tenn. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/gotigersgo.com/images/2026/8/17/FedEx_Logo.png&width=160&quality=100&type=webp Sponsor Logo 7 p.m. https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/gotigersgo.com/images/2025/10/21/ESPNU_Logo_Web_Size_nGBOM.png&width=140&quality=100&type=webp TV Logo Buy tickets for the Army game. Prices start at $30 Buy From $30+ Game Center Go to the game center page",
       "listedTV": "ESPNU",
@@ -7783,8 +7783,8 @@
         "url": "https://broncosports.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://broncosports.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:29.161Z",
-        "sha256": "9cc1b64671bb83fca6493224506129f8111af2de28f1f49879a774acda33a53d"
+        "checkedAt": "2026-10-26T13:29:40.594Z",
+        "sha256": "ffc80a49a2dd766fe0bcab2bf049c74abc52a61dc50463cfad9c67fb76048aa8"
       },
       "extractedBlock": "Texas State Website Texas State https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/broncosports.com/images/logos/texas_state_200x200.png&width=84&height=84&quality=100&type=webp Texas State University Logo vs Texas State Website Texas State Albertsons Stadium Boise, Idaho https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/broncosports.com/images/2026/5/27/The_CW_2024.png&width=100&quality=100&type=webp The CW Wear Black Oct 31 (Sat) Event Time 8 p.m. Video for Boise State vs Texas State on October 31 Watch Audio for Boise State vs Texas State on October 31 Listen Stats for Boise State vs Texas State on October 31 Live Stats",
       "listedTV": "CW",
@@ -7833,8 +7833,8 @@
         "url": "https://unlvrebels.com/sports/football/schedule",
         "status": 200,
         "resolvedUrl": "https://unlvrebels.com/sports/football/schedule",
-        "checkedAt": "2026-10-25T19:29:39.080Z",
-        "sha256": "6b5687d6f6bd0123cac2f7c92f8ec83a8821572959b17579f1bf3f190466143e"
+        "checkedAt": "2026-10-26T13:29:41.504Z",
+        "sha256": "fb1bb46058f887718a76ead205d203456f9706867ac5fbca27443575c380127e"
       },
       "extractedBlock": "NIU Website NIU https://images.sidearmdev.com/crop?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/unlvrebels.com/images/logos/NIU_Huskies.png&width=84&height=84&quality=100&type=webp NIU vs NIU Website NIU Allegiant Stadium Las Vegas, NV https://images.sidearmdev.com/resize?url=https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/unlvrebels.com/images/2024/5/30/CBS_SPORTS_NETWORK_c7u6X.png&width=100&quality=100&type=webp CBSSN Nevada Day & Halloween Oct 31 (Sat) Event Time 7:30 PM PT Audio for University of Nevada Las Vegas vs NIU on October 31 Listen",
       "listedTV": "CBSSN",
@@ -8715,36 +8715,32 @@
       "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/08/all-conf",
       "resolvedUrl": "https://www.ncaa.com/scoreboard/football/fbs/2026/08",
       "status": 200,
-      "checkedAt": "2026-10-25T19:23:42.142Z",
-      "sha256": "dc78bf84de8106977e96949b5ed961ed6d493f909820965ff05b78baa19576b1",
-      "bytes": 167546
+      "checkedAt": "2026-10-26T13:29:29.163Z",
+      "sha256": "708728e5055bfbcc8cd64d7d6256145984107778e6bbb4e33ba1d4d851507f50"
     },
     {
       "id": "ncaa9",
       "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
       "resolvedUrl": "https://www.ncaa.com/scoreboard/football/fbs/2026/09",
       "status": 200,
-      "checkedAt": "2026-10-25T19:23:42.065Z",
-      "sha256": "2508fc9ca7a8e2dd9c48551e72a1c717efcab466e332c78f6d5962e65982fe67",
-      "bytes": 167198
+      "checkedAt": "2026-10-26T13:29:29.174Z",
+      "sha256": "aaf8330e7775d2f017c16e354d684b8842d6a424dbb52eabcc8a4d52997b1dfa"
     },
     {
       "id": "standings",
       "url": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
       "resolvedUrl": "https://site.web.api.espn.com/apis/v2/sports/football/college-football/standings?season=2026&level=3&group=80",
       "status": 200,
-      "checkedAt": "2026-10-25T19:23:42.151Z",
-      "sha256": "8d771d0dbcb6c61b5c822271898e9582dd3e50f49bc1b51ba4c5d5885dd998f1",
-      "bytes": 2588431
+      "checkedAt": "2026-10-26T13:29:29.043Z",
+      "sha256": "9322b9d17a0caa146622879a8d7d863f6a481cb067ec990596c4b811bb623a50"
     },
     {
       "id": "rankings",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?seasons=2026",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/rankings?seasons=2026",
       "status": 200,
-      "checkedAt": "2026-10-25T19:23:42.130Z",
-      "sha256": "de4373dc293734e2132e92556da3ee9254b15451172de263aeea748e796444b5",
-      "bytes": 296057
+      "checkedAt": "2026-10-26T13:29:29.064Z",
+      "sha256": "f9f429909317b3e2f7a6aae6893b4438b90053f2efe85eec786426a5f4392dc4"
     },
     {
       "id": "ap",
@@ -8760,108 +8756,96 @@
       "url": "https://sportsdata.usatoday.com/football/ncaaf/coaches-poll",
       "resolvedUrl": "https://sportsdata.usatoday.com/football/ncaaf/coaches-poll",
       "status": 200,
-      "checkedAt": "2026-10-25T19:23:42.028Z",
-      "sha256": "3b64fc21f18d32b9fead89f56a69dbd0dead5ddc3221e2dbfa9304cbb158e7a9",
-      "bytes": 175318
+      "checkedAt": "2026-10-26T13:29:29.267Z",
+      "sha256": "570a4b1a82360cf1e86e12d56ac3558e99ff61c586a9b167c5cfe53379df0258"
     },
     {
       "id": "day-20",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261020&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.227Z",
-      "sha256": "eabdaa11bdf8a513d85fec225ab838bab2597195dbe279dbdbce842c96275433",
-      "bytes": 48115
+      "checkedAt": "2026-10-26T13:29:29.230Z",
+      "sha256": "30d545b89c88f3759627ef23612dc5beff8559bf0fc70f1922796b6c58a27bda"
     },
     {
       "id": "day-21",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261021&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.260Z",
-      "sha256": "3437fb7b0147843ee06f389688cc109f9c612c39077623eb43eb50aae761a9d5",
-      "bytes": 22200
+      "checkedAt": "2026-10-26T13:29:29.298Z",
+      "sha256": "3437fb7b0147843ee06f389688cc109f9c612c39077623eb43eb50aae761a9d5"
     },
     {
       "id": "day-22",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261022&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.185Z",
-      "sha256": "6a6eb56b01b133dd8ec7c41e6d8141ca6ae28ee8cce4143589d3c329d59f6ced",
-      "bytes": 49979
+      "checkedAt": "2026-10-26T13:29:29.410Z",
+      "sha256": "6a6eb56b01b133dd8ec7c41e6d8141ca6ae28ee8cce4143589d3c329d59f6ced"
     },
     {
       "id": "day-23",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261023&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.241Z",
-      "sha256": "de84d084220612e40e411d9d837785a998931201e96157bfd2ac7cef5f6270d5",
-      "bytes": 86067
+      "checkedAt": "2026-10-26T13:29:29.490Z",
+      "sha256": "ba6340a51b25be85bf371832f39ed7d94ebd533b56f155ae5cabb320016c98a0"
     },
     {
       "id": "day-24",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261024&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.209Z",
-      "sha256": "37187689e78f0346f7559ddc10a5dc793a3b4663c74ad670db636ddd52cfe769",
-      "bytes": 731926
+      "checkedAt": "2026-10-26T13:29:29.417Z",
+      "sha256": "85dd3530e7e8dfaa2057f34265825178069b1e64d6ddcc4578688c963d559904"
     },
     {
       "id": "day-27",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261027&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261027&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.203Z",
-      "sha256": "25e0c9ab5c73945692bdebbdf4117b859d7d9ee6ea2db3a5987e289bb2363fe7",
-      "bytes": 42173
+      "checkedAt": "2026-10-26T13:29:29.420Z",
+      "sha256": "1d4b8720e733ff80199f0c362cf8ab95cb438b4be6e76e76f85b38cd82c1b4e2"
     },
     {
       "id": "day-28",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.204Z",
-      "sha256": "3f0a5125543914bd297b8fc0953b35fc7f4d63927e1e568ee3b3173226b26486",
-      "bytes": 41788
+      "checkedAt": "2026-10-26T13:29:29.552Z",
+      "sha256": "a2428b341c315cb7eef73a746e3b073d403dfb72948e378f8e443aba04d62505"
     },
     {
       "id": "day-29",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.230Z",
-      "sha256": "8eb8bdf755e55f68c00d53098025db5ed3f49a1e6c9c26d4fb2a7e8dbe5ca113",
-      "bytes": 41811
+      "checkedAt": "2026-10-26T13:29:29.561Z",
+      "sha256": "5b4f3dce03fbe5b63690c6a6814112a2135eb1e2da156d65bc012de0d1abfff9"
     },
     {
       "id": "day-30",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.262Z",
-      "sha256": "7a5c3516a1daf7891405f0f840adfb14ad6eb8397190bb320287ea2381c9d1f0",
-      "bytes": 60600
+      "checkedAt": "2026-10-26T13:29:29.541Z",
+      "sha256": "e21221596ac064a2e14d6c85008877f7f0dc90166b88dd1ab05d37fa13cfc5d4"
     },
     {
       "id": "day-31",
       "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
       "resolvedUrl": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.281Z",
-      "sha256": "393a04aca9ea357a05e6b8685aa4a1849ae0a97b67da18f5fbdb51ed5e03406f",
-      "bytes": 889549
+      "checkedAt": "2026-10-26T13:29:29.547Z",
+      "sha256": "358a87f532f7f1b4c8206a503579faa01eff947c75d8e8cb2cf038f776c62bfe"
     },
     {
       "id": "ap-ncaa",
       "url": "https://www.ncaa.com/rankings/football/fbs/associated-press",
       "resolvedUrl": "https://www.ncaa.com/rankings/football/fbs/associated-press",
       "status": 200,
-      "checkedAt": "2026-10-25T19:25:46.236Z",
-      "sha256": "760bce1905b7f96ebd38acbfae38177d7021f619fd68e540febe350a972d00ad",
-      "bytes": 122617
+      "checkedAt": "2026-10-26T13:29:29.345Z",
+      "sha256": "a66f6807e8d2436bfa55d3fbb9d2cbd6d6a7327a15cacd23825cc4e9b76b0374"
     }
   ],
   "source_directory": "research-cfb-pivot-2026-10-25T192341595Z",
@@ -8871,5 +8855,13 @@
     "kickoffTBAorDisputed": 3,
     "tvPending": 15,
     "records": 138
+  },
+  "revalidation": {
+    "checked_at": "2026-10-26T13:29:41.589Z",
+    "source_comparison": "PASS",
+    "commit": "ebd080aa043b55e32a585e1500a89bde7c13b330",
+    "workflow_run": "https://github.com/Oak-Main/CFB-Apex/actions/runs/40330824635",
+    "receipt": "data/cfb-2026/refresh/evidence/2026-10-26-pr53-source-revalidation.json",
+    "note": "Authoritative responses were fetched and all inventories, final scores, fixtures, records, polls and published school confirmations compared successfully before the expired saved-evidence gate failed. Retain the three kickoff and 15 TV holds; publication dates and unrelated source clocks are unchanged."
   }
 }
