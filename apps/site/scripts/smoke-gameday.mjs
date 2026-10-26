@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { withoutHtmlComments } from "./gameday-source-validation.mjs";
 import { gameDaySnapshot } from "../lib/gameday-shared.ts";
 
 const origin = process.env.GAMEDAY_SMOKE_ORIGIN ?? "https://cfbapex.com";
@@ -28,7 +29,8 @@ for (const week of [8, 9]) {
   for (const key of ["games", "previousFinals", "teams", "polls", "sourceDates"]) assert.deepEqual(actual[key], wanted[key], `${key}: Week ${week}`);
   const page = await fetch(`${origin}/gameday?week=${week}&release=${expected.revision}`, { signal: AbortSignal.timeout(10_000) });
   assert.equal(page.status, 200);
-  const html = (await page.text()).replace(/<!--[\s\S]*?-->/g, "");
+  // Assertion-only normalization: preserve script literals and remove parsed comment nodes.
+  const html = withoutHtmlComments(await page.text());
   assert.ok(html.includes(`WEEK ${week}`)); assert.ok(html.includes(wanted.sourceDates.schedule));
   if (week === 9) assert.ok(wanted.games.every(g => g.status !== "final"));
   else assert.ok(wanted.games.every(g => g.status === "final"));

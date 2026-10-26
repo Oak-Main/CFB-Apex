@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { parse } from "parse5";
+import { parse, serialize } from "parse5";
 
 function textContent(node) {
   if (["script", "style", "noscript"].includes(node.nodeName)) return "";
@@ -62,4 +62,18 @@ export function htmlTables(html) {
 export function isSourceEvidenceFresh(checkedAt, nowMs) {
   const age = nowMs - Date.parse(checkedAt);
   return Number.isFinite(age) && age >= 0 && age < 7_200_000;
+}
+
+/** Normalize actual HTML comments for assertion matching; this is not an HTML sanitizer. */
+export function withoutHtmlComments(html) {
+  const document = parse(html);
+  function visit(node) {
+    if (node.childNodes) {
+      node.childNodes = node.childNodes.filter(child => child.nodeName !== "#comment");
+      for (const child of node.childNodes) visit(child);
+    }
+    if (node.content) visit(node.content);
+  }
+  visit(document);
+  return serialize(document);
 }

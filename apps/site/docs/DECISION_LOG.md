@@ -180,3 +180,8 @@ October 25 Week 9 pivot: complete source-derived Week 8 archive and separate upc
 ## PR53 review follow-through — October 26, 2026
 
 Reconcile main a5935c90 into PR53 with both parents retained. Keep PR53's nullish Week 0 and source-derived statistics-week implementations of PR52's week-label changes. Use the existing parse5 dependency for NCAA script extraction and school text, escape literal fallback TV labels, preserve delayed statuses and provisional scores, and reject duplicate logical inputs. Smoke-test HTML comment stripping is assertion-only, so its injection finding is a documented false positive. This review repair does not authorize deployment or companion changes.
+
+
+### Assertion-only HTML comment parsing follow-through
+
+The smoke comment-filter alert is a contextual false positive: normalized HTML feeds only string assertions, with no rendering or execution sink. Use the existing parse5 parser to remove actual comment nodes, including template comments, while preserving literal comment-like text inside scripts. A focused regression pins this distinction. No security query, scanner, gate or authentication control is suppressed or disabled.

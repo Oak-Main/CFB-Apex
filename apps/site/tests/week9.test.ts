@@ -6,7 +6,7 @@ import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
-import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "../scripts/gameday-source-validation.mjs";
+import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern, withoutHtmlComments } from "../scripts/gameday-source-validation.mjs";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-25-week9-preparation.json", import.meta.url), "utf8"));
 const now = Date.parse("2026-10-25T19:30:00Z");
@@ -187,4 +187,13 @@ test("source evidence retains the strict two-hour gate after current observation
   assert.equal(isSourceEvidenceFresh("2026-10-25T14:00:00Z", clock), false);
   assert.equal(isSourceEvidenceFresh("2026-10-26T14:00:00.001Z", clock), false);
   assert.equal(isSourceEvidenceFresh("invalid", clock), false);
+});
+
+test("smoke matching removes HTML comment nodes while preserving script text and template content", () => {
+  const normalized = withoutHtmlComments('<main>WEEK <!--react marker-->9</main><template><!--hidden marker--><p>Archive</p></template><script>const marker = "<!--literal-->";</script>');
+  assert.ok(normalized.includes("WEEK 9"));
+  assert.ok(normalized.includes("<p>Archive</p>"));
+  assert.ok(normalized.includes('const marker = "<!--literal-->";'));
+  assert.equal(normalized.includes("<!--react marker-->"), false);
+  assert.equal(normalized.includes("<!--hidden marker-->"), false);
 });
