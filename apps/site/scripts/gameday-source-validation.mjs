@@ -58,3 +58,8 @@ export function htmlTables(html) {
   const text = h => h.replace(/<[^>]*>/g, " ").replace(/&nbsp;|&#160;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
   return [...html.matchAll(/<table[^>]*>([\s\S]*?)<\/table>/gi)].map(m => [...m[1].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map(r => [...r[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(c => text(c[1]))));
 }
+
+export function isSourceEvidenceFresh(checkedAt, nowMs) {
+  const age = nowMs - Date.parse(checkedAt);
+  return Number.isFinite(age) && age >= 0 && age < 7_200_000;
+}

@@ -1,14 +1,16 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { htmlTables, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "./gameday-source-validation.mjs";
+import { htmlTables, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "./gameday-source-validation.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const snapshot = read("data/cfb-2026/refresh/verified-refresh.json"), entry = snapshot.refresh_log.at(-1);
 assert.equal(entry.script, "week9-preparation-2026-10-25", "Unreviewed release contract");
 const evidence = read(entry.evidence), required = ["ncaa8", "ncaa9", "standings", "rankings", "coaches", "ap-ncaa", ...[20, 21, 22, 23, 24, 27, 28, 29, 30, 31].map(day => `day-${day}`)];
 const sources = required.map(id => { const row = evidence.raw_sources.find(row => row.id === id); assert.equal(row?.status, 200, id); return row; });
-for (const row of sources) assert.ok(Date.now() >= Date.parse(row.checkedAt) && Date.now() - Date.parse(row.checkedAt) < 7_200_000, "Source evidence exceeded two hours; reconcile a genuinely fresh candidate");
+// Compare current authoritative responses even when the saved evidence has expired.
+// Report those observations for reconciliation, then retain the same fail-closed gate.
+const evidenceTimes = sources.map(row => row.checkedAt);
 const docs = new Map(), observations = [];
 async function fetchSource(row) {
   const response = await fetch(row.url, { signal: AbortSignal.timeout(30_000) });
@@ -78,13 +80,13 @@ for (const p of polls) {
 }
 assert.match(docs.get("coaches"), /Published October 25, 2026/);
 await batches(evidence.schoolEvidence.filter(row => row.publishedTV || row.kickoffConfirmation), async row => {
-  assert.ok(Date.now() - Date.parse(row.school.checkedAt) < 7_200_000, "School evidence expired");
+  evidenceTimes.push(row.school.checkedAt);
   const body = await fetchSource({ id: `school-${row.home}`, url: row.school.resolvedUrl }), event = evidence.schedule.find(g => g.provider_id === row.id), source = JSON.parse(docs.get(`day-${Number(event.date.slice(-2))}`)).events.find(g => g.id === row.id), away = source.competitions[0].competitors.find(t => t.homeAway === "away").team;
   const blocks = schoolBlocks(body, event.date.slice(-2), [away.location, away.shortDisplayName, away.abbreviation].filter(Boolean));
   if (row.publishedTV) assert.ok(blocks.some(block => tvPattern(row.publishedTV).test(block)), `Official TV confirmation changed: ${row.home}`);
   if (row.kickoffConfirmation) {
     const proof = row.kickoffConfirmation;
-    assert.ok(Date.now() - Date.parse(proof.checkedAt) < 7_200_000, "School kickoff evidence expired");
+    evidenceTimes.push(proof.checkedAt);
     assert.deepEqual(proof, event.kickoff_confirmation);
     assert.ok(blocks.some(block => new RegExp(proof.pattern, "i").test(block)), `School kickoff changed: ${row.home}`);
     const literal = proof.observed_text.replaceAll(".", "").match(/(\d{1,2})(?::(\d{2}))?\s*([ap])m/i);
@@ -95,4 +97,6 @@ await batches(evidence.schoolEvidence.filter(row => row.publishedTV || row.kicko
     assert.equal(+part("minute"), +(literal[2] ?? 0)); assert.equal(`${part("year")}-${part("month")}-${part("day")}`, event.date);
   }
 });
-console.log(JSON.stringify({ acceptance: "PASS", checkedAt: new Date().toISOString(), inventories: evidence.inventories, counts: evidence.counts, observations }));
+const evidenceFresh = evidenceTimes.every(checkedAt => isSourceEvidenceFresh(checkedAt, Date.now()));
+console.log(JSON.stringify({ acceptance: evidenceFresh ? "PASS" : "BLOCKED_STALE_EVIDENCE", sourceComparison: "PASS", checkedAt: new Date().toISOString(), inventories: evidence.inventories, counts: evidence.counts, observations }));
+assert.ok(evidenceFresh, "Source evidence exceeded two hours; reconcile a genuinely fresh candidate");

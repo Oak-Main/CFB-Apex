@@ -6,7 +6,7 @@ import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
-import { htmlText, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "../scripts/gameday-source-validation.mjs";
+import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "../scripts/gameday-source-validation.mjs";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-25-week9-preparation.json", import.meta.url), "utf8"));
 const now = Date.parse("2026-10-25T19:30:00Z");
@@ -178,4 +178,13 @@ test("unknown TV labels are literal regular-expression input", () => {
   assert.equal(tvPattern("A.B").test("AxB"), false);
   assert.ok(tvPattern("MW+").test("Mountain West Network"));
   assert.ok(tvPattern("ESPN+").test("ESPN Plus"));
+});
+
+test("source evidence retains the strict two-hour gate after current observations are compared", () => {
+  const clock = Date.parse("2026-10-26T14:00:00Z");
+  assert.equal(isSourceEvidenceFresh("2026-10-26T12:00:00.001Z", clock), true);
+  assert.equal(isSourceEvidenceFresh("2026-10-26T12:00:00Z", clock), false);
+  assert.equal(isSourceEvidenceFresh("2026-10-25T14:00:00Z", clock), false);
+  assert.equal(isSourceEvidenceFresh("2026-10-26T14:00:00.001Z", clock), false);
+  assert.equal(isSourceEvidenceFresh("invalid", clock), false);
 });
