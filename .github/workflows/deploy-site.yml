@@ -36,6 +36,8 @@ jobs:
         run: npm ci
       - name: Verify source snapshot and site
         run: npm run verify
+      - name: Check committed generated site dataset
+        run: git diff --exit-code --stat -- lib/cfb-2026.generated.ts
       - name: Check Cloudflare types
         run: npm run cf:types
       - name: Validate deployment bundle without publishing
