@@ -1,0 +1,32 @@
+{
+  "status": "Historical local proposal; superseded by scoped Lovable changes at 9b3f5a10a6a2450baab345d3cf02c3adf7a36e3e. Not published.",
+  "project": "87b5a164-7cf5-40fa-9d8a-fb7f3b6646f3",
+  "repository": "kevynsgrin-a11y/gametime-visuals",
+  "sourceRef": "29e6b8a37dd8d0e93dae99ec566c6fd6947d84d8",
+  "files": [
+    "src/lib/gameday-feed.ts",
+    "src/lib/gameday-feed.functions.ts",
+    "src/routes/index.tsx",
+    "src/test/gameday-feed.test.ts"
+  ],
+  "testScope": "Five focused adapter checks using the inspected source transpiled by the existing TypeScript runtime and Next bundled Zod; not a full companion Vitest/build or hosted preview acceptance",
+  "testsPassed": 5,
+  "testsFailed": 0,
+  "externalWritesPerformed": true,
+  "neededStep": "Do not reapply this historical patch. Review the actual companion revision and obtain supported resolution of its generated auth-file change, clear platform build and browser acceptance, verify parity with the released native feed, then publish and verify actual public homepage.",
+  "actualCompanionRevision": "9b3f5a10a6a2450baab345d3cf02c3adf7a36e3e",
+  "actualAgentTests": {
+    "passed": 77,
+    "failed": 0,
+    "lintErrors": 0,
+    "existingLintWarnings": 6,
+    "standaloneTypecheck": "not run: platform prohibits manual command",
+    "standaloneBuild": "not run: platform prohibits manual command",
+    "automaticBuild": "agent reports build OK; exit code unavailable"
+  },
+  "publicationBlockers": [
+    "Native and hosted browser verification unavailable; desktop/mobile acceptance incomplete",
+    "Platform startup commit 729bbc0c52796ffdfe2487a7bd97611d75333db9 modified protected src/integrations/supabase/previewAuthStorage.ts outside approved content scope; owner must obtain supported restoration or separately authorize it",
+    "Actual standalone typecheck/build exit evidence unavailable"
+  ]
+}

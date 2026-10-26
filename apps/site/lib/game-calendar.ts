@@ -25,6 +25,15 @@ export function easternDate(value: string): string {
   return result;
 }
 
+/** Civil playing-day order; a date-only TBA belongs after that day's known times. */
+export function compareGameDates(a: string, b: string): number {
+  const day = easternDate(a).localeCompare(easternDate(b));
+  if (day) return day;
+  const aTimed = a.includes("T"), bTimed = b.includes("T");
+  if (aTimed !== bTimed) return aTimed ? -1 : 1;
+  return aTimed ? Date.parse(a) - Date.parse(b) : a.localeCompare(b);
+}
+
 /** Returns the Monday (as a civil date) that starts the Eastern week containing `value`. */
 export function weekStart(value: string): string {
   const date = easternDate(value);

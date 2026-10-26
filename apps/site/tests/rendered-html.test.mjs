@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { visibleText, withoutComments } from "./html-text.mjs";
 
@@ -77,10 +78,22 @@ test("Command Center serves the same dated public snapshot and reviewed archives
     assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
     assert.equal(doc.revision, snapshot.revision);
   }
-  for (const week of ["9", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
+  for (const week of ["10", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
   const options = await fetchRoute("/api/gameday", {method:"OPTIONS"});
   assert.equal(options.status, 204);
   assert.equal((await fetchRoute("/api/gameday", {method:"POST"})).status, 405);
+});
+
+test("the upcoming neutral-site marquee uses the verified event venue across native surfaces", async () => {
+  const html = withoutComments(await (await fetchRoute("/?week=9")).text());
+  const marquee = html.match(/<section[^>]*aria-labelledby="marquee-title"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(marquee);
+  assert.match(visibleText(marquee), /Florida vs Georgia/);
+  assert.match(visibleText(marquee), /Mercedes-Benz Stadium/);
+  assert.doesNotMatch(visibleText(marquee), /Sanford Stadium/);
+  const feed = await (await fetchRoute("/api/gameday?week=9")).json();
+  const game = feed.games.find(g => g.homeTeamId === "georgia" && g.awayTeamId === "florida");
+  assert.equal(game.neutralSite, true); assert.equal(game.venue, "Mercedes-Benz Stadium");
 });
 
 test("the reviewed Week 6 archive renders its games and sourced metrics", async () => {
@@ -232,12 +245,12 @@ test("weekly release renders current data, truthful pending states and both arch
     return [path, text];
   })));
   const current = pages.get("/");
-  assert.match(current, /WEEK 8 · OCT 20–24/);
-  assert.match(current, /Houston at Utah/);
-  assert.match(current, /all kickoffs and networks school-confirmed/);
+  assert.match(current, /WEEK 9 · OCT 27–31/);
+  assert.match(current, /Three kickoff listings remain uncorroborated/);
+  assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
-  assert.match(current, /College GameDay · Salt Lake City/);
-  assert.match(current, /AP TOP 25 2026-10-18/);
+  assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);
+  assert.match(current, /AP TOP 25 2026-10-25/);
   assert.match(current, /2,604/);
   assert.match(pages.get("/?week=6"), /MARQUEE MATCHUP Georgia at Alabama Sat, Oct 10 ABC · FINAL · Georgia 20, Alabama 17/);
   const week7 = pages.get("/?week=7");
@@ -279,7 +292,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   // Saturday's late game is a verified final on its own Eastern date.
   const hawaii = await visible("/games/2026-10-10-hawaii-at-arizona-state");
   assert.match(hawaii, /Arizona State Sun Devils final Sat · 2026-10-10 · 10:30 PM ET FS1/);
-  assert.match(hawaii, /Arizona State Sun Devils 3–3 30/);
+  assert.match(hawaii, /Arizona State Sun Devils 4–3 30/);
   const game = await visible("/games/2026-10-08-south-florida-at-utsa");
   assert.match(game, /South Florida Bulls at UTSA Roadrunners final/);
   assert.doesNotMatch(game, /South Florida Bulls at UTSA Roadrunners game preview/);
@@ -287,8 +300,8 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
-  assert.match(rankings, /as of 2026-10-23/);
-  assert.match(rankings, /UTSA 3 0 0 1\.000 6-1/);
+  assert.match(rankings, /as of 2026-10-25/);
+  assert.match(rankings, /UTSA 4 0 0 1\.000 7[-–]1/);
   assert.match(rankings, /South Florida 1 2 0 0\.333 5-2/);
 });
 
@@ -309,7 +322,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   assert.match(byu, /Fri, Oct 9/);
   // The watch board opens on the server-clock board week.
   const watchHtml = withoutComments(await (await fetchRoute("/watch")).text());
-  const boardWeek = Date.now() >= Date.parse("2026-10-18T13:00:00Z") ? 8 : Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
+  const boardWeek = Date.now() >= Date.parse("2026-10-25T13:00:00Z") ? 9 : Date.now() >= Date.parse("2026-10-18T13:00:00Z") ? 8 : Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
   assert.match(watchHtml, new RegExp(`aria-pressed="true">W(?:eek|K|k) ?${boardWeek}</button>`));
   const watch = await visible("/watch?week=6");
   assert.match(watch, /ESPN App · linear network TBD/);
@@ -415,4 +428,40 @@ test("scoreboard keeps week navigation without a pretend refresh affordance", as
   assert.match(week7, /Week 7\. 59 games shown\./);
   assert.match(week7, /aria-current="page"[^>]*>[\s\S]*?Week 7/);
   assert.match(html, /Status changes require a newer verified release/);
+});
+
+test("Friday and Saturday finals and current records agree across the Command Center, API, scores and game files", async () => {
+  const expected = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-25-week8-gameday-results.json", import.meta.url), "utf8"));
+  const feed = await (await fetchRoute("/api/gameday?week=8")).json();
+  const command = visibleText(await (await fetchRoute("/gameday?week=8")).text());
+  const scores = visibleText(await (await fetchRoute("/scores?week=8")).text());
+  assert.equal(feed.season, 2026);
+  assert.equal(feed.selectedWeek, 8);
+  assert.equal(feed.games.filter(game => game.status === "final").length, 56);
+  assert.match(command, /2026/);
+  assert.ok(command.includes(feed.sourceDates.previousResults));
+  assert.notEqual(feed.sourceDates.previousResults, feed.sourceDates.results);
+  for (const id of expected.new_final_ids) {
+    const row = expected.finals.find(row => row.id === id);
+    const game = feed.games.find(game => game.id === row.game_id);
+    assert.equal(game.status, "final");
+    assert.equal(game.awayScore, row.away_score);
+    assert.equal(game.homeScore, row.home_score);
+    assert.ok(command.includes(`FINAL · ${row.away_score}–${row.home_score}`));
+    const page = visibleText(await (await fetchRoute(`/games/${row.game_id}`)).text());
+    for (const value of [row.away_score, row.home_score]) assert.ok(page.includes(String(value)));
+    assert.match(page, /FINAL|Final/);
+    assert.ok(scores.includes(String(row.away_score)));
+  }
+  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), expected.records[team.slug]);
+});
+
+test("injury and Heisman week copy retain the actual reviewed weeks and one statistics label", async () => {
+  const injuries = visibleText(await (await fetchRoute("/injuries")).text());
+  assert.match(injuries, /Dated Week 8 reporting/);
+  const heisman = visibleText(await (await fetchRoute("/heisman")).text());
+  assert.match(heisman, /Week 8 watch list/);
+  assert.match(heisman, /verified Week 7 box scores/);
+  assert.match(heisman, /displayed Week 7 statistics/);
+  assert.doesNotMatch(heisman, /Week -1/);
 });

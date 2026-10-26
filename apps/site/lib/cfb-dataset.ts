@@ -97,6 +97,7 @@ interface VerifiedRefresh {
   audit_applied_at?: string;
   /** When the latest incremental results refresh verified finals (not the base snapshot time). */
   results_verified_at?: string;
+  records_verified_at?: string;
   schedule_verified_at?: string;
   availability_review?: { checked_at: string; scope: string; note: string };
   refresh_log?: Array<{ applied_at: string; script: string; scope: string }>;
@@ -583,6 +584,10 @@ export function timeEtLabel(timeEt: string | null) {
   return `${twelve}:${String(minutes ?? 0).padStart(2, "0")} ${suffix} ET`;
 }
 
+export function reviewedScheduleStatus(status?: string): Game["status"] {
+  return status === "postponed" || status === "canceled" || status === "delayed" ? status : "scheduled";
+}
+
 function buildScheduledGames(): Game[] {
   const byKey = new Map<string, Game>();
   for (const [homeSlug, rows] of Object.entries(bundle.schedules as Record<string, ScheduleRow[]>)) {
@@ -643,11 +648,12 @@ function buildScheduledGames(): Game[] {
     for (const existingKey of scheduledByWeekPair.get(pair) ?? []) byKey.delete(existingKey);
     const id = `${row.date}-${row.away}-at-${row.home}`;
     // An earlier week's game whose kickoff has passed is not a final until verified.
-    const resultPending = row.kickoff_utc != null && Date.parse(row.kickoff_utc) < snapshotTime;
+    const status = reviewedScheduleStatus(row.game_status);
+    const resultPending = status === "scheduled" && row.kickoff_utc != null && Date.parse(row.kickoff_utc) < snapshotTime;
     byKey.set(key, {
       id, week: row.week, date: instant,
       kickoffLabel: row.kickoff_utc ? playedKickoffLabel(row.date, row.kickoff_utc) : `${kickoffLabel(row.date)} · Kickoff TBA`,
-      status: "scheduled",
+      status,
       statusDetail: resultPending
         ? `Kickoff passed · final not yet verified in this release${row.timing_note ? ` · ${row.timing_note}` : ""}`
         : row.timing_note ?? "Scheduled · verified source snapshot",

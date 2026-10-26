@@ -6,13 +6,53 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { gameDaySnapshot } from "../lib/gameday-shared.ts";
+import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
+import { heismanWeekCopy, reportingWeekLabel } from "../lib/editorial-week-copy.ts";
+import { parseWeekParam, selectBoardWeek } from "../lib/week-cutover.ts";
 import { boardWeeks, games } from "../lib/cfb-dataset.ts";
-import { easternDate } from "../lib/game-calendar.ts";
+import { compareGameDates, easternDate } from "../lib/game-calendar.ts";
 import { injuryResearch, officialAvailabilityNote } from "../lib/injury-report.ts";
 import { acquireWriterLock, recoverWriterLock, releaseWriterLock } from "../scripts/weekly-writer-lock.mjs";
 
 const now = Date.parse("2026-10-20T22:00Z");
+
+test("week copy preserves zero, null fallbacks and the actual statistics week", () => {
+  assert.equal(reportingWeekLabel(0), "Week 0");
+  assert.equal(reportingWeekLabel(null), "weekly");
+  assert.deepEqual(heismanWeekCopy(0, []), {watch:"Week 0",statistics:"dated"});
+  assert.deepEqual(heismanWeekCopy(null, ["Week 1: reviewed statistics"]), {watch:"Week 2",statistics:"Week 1"});
+  assert.deepEqual(heismanWeekCopy(9, ["Week 7: reviewed statistics"]), {watch:"Week 9",statistics:"Week 7"});
+  assert.equal(heismanWeekCopy(8, ["Week 7: first", "Week 6: second"]).statistics, "dated");
+  const weeks = [{week:0,cutover_utc:"2026-08-20T00:00Z"},{week:1,cutover_utc:"2026-08-30T00:00Z"}];
+  assert.equal(parseWeekParam("0", weeks), 0);
+  assert.deepEqual(selectBoardWeek(weeks, now, "0"), {week:0,serverNow:now,explicit:true});
+});
+
+test("elapsed scheduled kickoffs stay unconfirmed and zero final scores survive projection", () => {
+  const scheduled = games.find(game => game.status === "scheduled");
+  assert.ok(scheduled);
+  const before = publicGame(scheduled, Date.parse(scheduled.date) - 1);
+  const after = publicGame(scheduled, Date.parse(scheduled.date) + 1);
+  assert.equal(before.status, "scheduled");
+  assert.equal(after.status, "scheduled");
+  assert.equal(after.homeScore, null);
+  assert.equal(after.awayScore, null);
+  assert.match(after.statusDetail ?? "", /result not yet verified/);
+  assert.equal(publicGame({...scheduled,status:"final",homeScore:0,awayScore:7}, now).homeScore, 0);
+});
+
+test("Command Center rejects malformed or wrong-archive refreshes, including Week 0 overrides", () => {
+  const snapshot = gameDaySnapshot(now);
+  assert.equal(snapshot.season, 2026);
+  assert.equal(isReviewedGameDayRefresh(snapshot, null), true);
+  assert.equal(isReviewedGameDayRefresh(snapshot, 7), false);
+  assert.equal(isReviewedGameDayRefresh({...snapshot,revision:"broken"}, null), false);
+  assert.equal(isReviewedGameDayRefresh(null, null), false);
+  const zero = {...snapshot,selectedWeek:0,weeks:[{...snapshot.weeks[0],week:0}],games:[]};
+  assert.equal(isReviewedGameDayRefresh(zero, 0), true);
+  assert.equal(isReviewedGameDayRefresh(snapshot, 0), false);
+  assert.equal(snapshot.sourceDates.previousResults, boardWeeks.find(row=>row.week===7)?.results_verified_at);
+});
 test("repository writers cannot acquire or release another owner's lock", () => {
   const scratch = mkdtempSync(join(tmpdir(), "cfb-writer-"));
   const path = join(scratch, "writer.lock");
@@ -49,7 +89,7 @@ test("shared feed follows reviewed cutovers and preserves all archive games", ()
     assert.equal(snapshot.selectedWeek, row.week);
     assert.equal(snapshot.explicit, true);
     assert.equal(snapshot.games.length, games.filter(g => g.week === row.week).length);
-    assert.deepEqual(snapshot.games.map(g => g.id), games.filter(g => g.week === row.week).map(g => g.id));
+    assert.deepEqual(snapshot.games.map(g => g.id), games.filter(g => g.week === row.week).sort((a,b) => compareGameDates(a.date,b.date)).map(g => g.id));
     assert.ok(snapshot.previousFinals.every(g => g.week < row.week && g.status === "final"));
   }
   assert.equal(gameDaySnapshot(Date.parse("2026-10-18T12:59:59Z")).selectedWeek, 7);
@@ -67,7 +107,7 @@ test("shared revision is deterministic and module source times do not follow req
   assert.equal(first.revision, later.revision);
   assert.notEqual(first.serverNow, later.serverNow);
   assert.deepEqual(first.sourceDates, later.sourceDates);
-  assert.equal(first.polls[0].release_date, "2026-10-18");
+  assert.equal(first.polls[0].release_date, "2026-10-25");
   assert.equal(first.teams.length, 138);
   assert.ok(first.teams.every(t => t.record && t.logo));
   const ids = new Set(first.teams.map(t => t.slug));
