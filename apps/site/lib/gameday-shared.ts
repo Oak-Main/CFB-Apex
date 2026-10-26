@@ -68,6 +68,6 @@ export function isReviewedGameDayRefresh(value: unknown, explicitWeek: number | 
     Number.isInteger(doc.season) && Number.isInteger(doc.selectedWeek) && (doc.selectedWeek ?? -1) >= 0 &&
     (explicitWeek == null || doc.selectedWeek === explicitWeek) &&
     Array.isArray(doc.weeks) && doc.weeks.some(row => row && typeof row === "object" && row.week === doc.selectedWeek) &&
-    Array.isArray(doc.games) && doc.games.every(game => game && typeof game === "object" && game.week === doc.selectedWeek && (game.status !== "final" || (typeof game.homeScore === "number" && Number.isFinite(game.homeScore) && game.homeScore >= 0 && typeof game.awayScore === "number" && Number.isFinite(game.awayScore) && game.awayScore >= 0))) &&
+    Array.isArray(doc.games) && doc.games.every(game => game && typeof game === "object" && game.week === doc.selectedWeek && ["scheduled", "final", "delayed", "postponed", "canceled"].includes(game.status) && [game.homeScore, game.awayScore].every(score => score === null || (typeof score === "number" && Number.isInteger(score) && score >= 0)) && (game.status !== "final" || (game.homeScore !== null && game.awayScore !== null))) &&
     Array.isArray(doc.teams) && Array.isArray(doc.polls) && Array.isArray(doc.injuries?.watch);
 }

@@ -6,7 +6,7 @@ import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
-import { schoolBlocks, tvPattern } from "../scripts/gameday-source-validation.mjs";
+import { htmlText, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "../scripts/gameday-source-validation.mjs";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-25-week9-preparation.json", import.meta.url), "utf8"));
 const now = Date.parse("2026-10-25T19:30:00Z");
@@ -112,4 +112,70 @@ test("school TV confirmation cannot borrow a network from another game card", ()
   assert.deepEqual(blocks, ["Oct 31 Arizona ESPN"]);
   assert.ok(blocks.some(b => tvPattern("ESPN").test(b)));
   assert.ok(!blocks.some(b => tvPattern("ABC").test(b)));
+});
+
+test("refresh validation rejects unsupported statuses and invalid scores while retaining provisional scores", () => {
+  const lastGood = gameDaySnapshot(now), game = lastGood.games[0];
+  assert.ok(game);
+  const refresh = (value: object) => ({...lastGood,games:[{...game,...value}]});
+  for (const status of ["live-ish", "", "FINAL", null]) {
+    const response = refresh({status});
+    assert.equal(isReviewedGameDayRefresh(response, 9), false);
+    assert.equal(isReviewedGameDayRefresh(response, 9) ? response : lastGood, lastGood);
+  }
+  for (const score of [0.5, -1, NaN, Infinity, "7", undefined]) {
+    assert.equal(isReviewedGameDayRefresh(refresh({status:"final",homeScore:score,awayScore:7}), 9), false);
+  }
+  assert.equal(isReviewedGameDayRefresh(refresh({status:"final",homeScore:null,awayScore:7}), 9), false);
+  assert.equal(isReviewedGameDayRefresh(refresh({status:"final",homeScore:0,awayScore:7}), 9), true);
+  for (const status of ["scheduled", "delayed", "postponed", "canceled"]) {
+    assert.equal(isReviewedGameDayRefresh(refresh({status,homeScore:null,awayScore:null}), 9), true);
+  }
+  const delayed = refresh({status:"delayed",homeScore:14,awayScore:0});
+  assert.equal(isReviewedGameDayRefresh(delayed, 9), true);
+  assert.equal(delayed.games[0].homeScore, 14);
+  assert.equal(delayed.games[0].awayScore, 0);
+});
+
+test("reconciliation rejects duplicate logical inputs and replaces a changed provider ID once", () => {
+  const final = {provider_id:"old",game_id:"2026-10-24-a-at-b",teams:[{slug:"a",points:7},{slug:"b",points:0}],verified_at:"2026-10-25T10:00Z"};
+  const snapshot = {playedGames:[final],scheduledGames:[],teamRecords:{a:"1-0",b:"0-1"},retainedBaseline:{conferenceStandings:[{rows:[{team_slug:"a"},{team_slug:"b"}]}]}};
+  const review = {finals:[{...final,provider_id:"new"}],scheduled:[],scheduleWeeks:[9],records:{a:"1-0",b:"0-1"},conferenceRecords:{a:"1-0",b:"0-1"},observedAt:"2026-10-25T11:00Z"};
+  const replaced = reconcileGameDay(snapshot, review);
+  assert.equal(replaced.playedGames.length, 1);
+  assert.equal(replaced.playedGames[0].provider_id, "new");
+  assert.deepEqual(reconcileGameDay(replaced, review), replaced);
+  assert.throws(() => reconcileGameDay(snapshot, {...review,finals:[final,{...final,provider_id:"other"}]}), /Duplicate logical/);
+  const scheduled = {provider_id:"fixture",date:"2026-10-31",away:"a",home:"b",game_status:"scheduled"};
+  assert.throws(() => reconcileGameDay(snapshot, {...review,finals:[],scheduled:[scheduled,{...scheduled,provider_id:"other-fixture"}]}), /Duplicate logical/);
+  const overlap = {...scheduled,date:"2026-10-24"};
+  assert.throws(() => reconcileGameDay(snapshot, {...review,scheduled:[overlap]}), /Duplicate logical/);
+  assert.equal(snapshot.playedGames[0].provider_id, "old");
+  assert.equal(snapshot.scheduledGames.length, 0);
+});
+
+test("provider schedule mapping preserves delayed and rejects an unknown state", () => {
+  for (const [name, expected] of [["STATUS_SCHEDULED","scheduled"],["STATUS_TIME_TBD","scheduled"],["Delayed","delayed"],["STATUS_DELAYED","delayed"],["STATUS_POSTPONED","postponed"],["STATUS_CANCELED","canceled"],["Cancelled","canceled"]]) {
+    assert.equal(sourceScheduleStatus(name), expected);
+  }
+  assert.throws(() => sourceScheduleStatus("STATUS_UNKNOWN"), /Unsupported source schedule status/);
+});
+
+test("NCAA JSON extraction follows HTML script parsing and ignores lookalike attributes", () => {
+  const payload = JSON.stringify({scoreboard:{seasonYear:"2026",currentDate:{week:"09"},initialGames:[{contestId:123}]}});
+  for (const tag of ["script", "SCRIPT", "ScRiPt"]) {
+    const html = `<script data-note="prefix-drupal-settings-json">invalid</script><${tag} data-drupal-selector="drupal-settings-json" type="application/json">${payload}</${tag} >`;
+    assert.deepEqual(ncaaInventory(html, 2026, 9), [{contestId:123}]);
+  }
+  assert.throws(() => ncaaInventory("<script>not settings</script>", 2026, 9), /settings missing/);
+  assert.throws(() => ncaaInventory(`<script id="drupal-settings-json">${payload}</script>`, 2026, 8));
+  assert.equal(htmlText("<SCRIPT>Oct 31 Wrong ESPN</SCRIPT ><p>Oct 31 Arizona &amp; State</p>"), "Oct 31 Arizona & State");
+});
+
+test("unknown TV labels are literal regular-expression input", () => {
+  for (const label of ["ESPN(2)", "Channel\\\\One", "A+B", "toString"]) assert.ok(tvPattern(label).test(label));
+  assert.equal(tvPattern("ESPN(2)").test("ESPN2"), false);
+  assert.equal(tvPattern("A.B").test("AxB"), false);
+  assert.ok(tvPattern("MW+").test("Mountain West Network"));
+  assert.ok(tvPattern("ESPN+").test("ESPN Plus"));
 });

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
-import { htmlTables, ncaaInventory, schoolBlocks, tvPattern } from "./gameday-source-validation.mjs";
+import { htmlTables, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern } from "./gameday-source-validation.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const snapshot = read("data/cfb-2026/refresh/verified-refresh.json"), entry = snapshot.refresh_log.at(-1);
@@ -48,7 +48,7 @@ for (const [week, days] of [[8, [20, 21, 22, 23, 24]], [9, [27, 28, 29, 30, 31]]
       assert.equal(n.startTimeEpoch * 1000, Date.parse(row.listed_times.ncaa)); assert.equal(row.listed_times.actual_start, null);
     } else {
       assert.equal(c.status.type.completed, false); assert.equal(n.gameState, "P");
-      const status = /postpon/i.test(c.status.type.name) ? "postponed" : /cancel/i.test(c.status.type.name) ? "canceled" : "scheduled";
+      const status = sourceScheduleStatus(c.status.type.name);
       assert.equal(row.game_status, status); assert.equal(row.neutral_site, c.neutralSite === true); assert.equal(row.site, c.venue?.fullName ?? null);
       assert.equal(Date.parse(event.date), Date.parse(row.announced_kickoff_utc));
       if (row.kickoff_utc) {

@@ -16,11 +16,13 @@ export function editorialComposite(polls) {
 /** Apply an independently reviewed inventory; records are replaced, never incremented. */
 export function reconcileGameDay(snapshot, review) {
   const next = structuredClone(snapshot);
-  const incoming = new Set();
+  const incoming = new Set(), incomingGameIds = new Set();
   const played = new Map(next.playedGames.map(row => [row.provider_id ?? `legacy:${row.game_id}`, row]));
   for (const row of review.finals) {
     assert.ok(row.provider_id && !incoming.has(row.provider_id), "Duplicate provider event in review");
     incoming.add(row.provider_id);
+    assert.ok(row.game_id && !incomingGameIds.has(row.game_id), "Duplicate logical game in final review");
+    incomingGameIds.add(row.game_id);
     assert.equal(row.teams.length, 2);
     assert.ok(row.teams.every(team => Number.isInteger(team.points) && team.points >= 0), "Final scores must be known nonnegative integers");
     const key = [...played.keys()].find(key => key === row.provider_id || played.get(key).game_id === row.game_id);
@@ -37,10 +39,13 @@ export function reconcileGameDay(snapshot, review) {
     played.set(row.provider_id, updated);
   }
   next.playedGames = [...played.values()];
-  const scheduleIds = new Set();
+  const scheduleIds = new Set(), scheduleGameIds = new Set();
   for (const row of review.scheduled) {
     assert.ok(row.provider_id && !scheduleIds.has(row.provider_id) && !incoming.has(row.provider_id));
     scheduleIds.add(row.provider_id);
+    const gameId = row.game_id ?? `${row.date}-${row.away}-at-${row.home}`;
+    assert.ok(!scheduleGameIds.has(gameId) && !incomingGameIds.has(gameId), "Duplicate logical game in schedule review");
+    scheduleGameIds.add(gameId);
     assert.ok(["scheduled", "postponed", "canceled", "delayed"].includes(row.game_status));
     if (row.kickoff_status === "official_tbd") assert.equal(row.kickoff_utc, null);
   }

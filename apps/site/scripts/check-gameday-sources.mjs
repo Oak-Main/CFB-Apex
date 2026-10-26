@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { htmlText, ncaaInventory } from "./gameday-source-validation.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const snapshot = read("data/cfb-2026/refresh/verified-refresh.json");
@@ -21,12 +22,7 @@ const observed = await Promise.all(evidence.raw_sources.map(async source => {
 const docs = new Map(observed.map(row => [row.id, row]));
 const events = [20, 21, 22, 23, 24].flatMap(day => JSON.parse(docs.get(`espn-${day}`).body).events);
 assert.deepEqual(new Set(events.filter(event => event.competitions[0].status.type.completed).map(event => event.id)), new Set(evidence.finals.map(row => row.id)), "A changed final requires candidate reconciliation");
-const settings = JSON.parse([...docs.get("ncaa-week8").body.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].find(match => match[1].includes("drupal-settings-json"))[2]);
-let ncaa;
-function visit(value) { if (!value || typeof value !== "object") return; if (value.initialGames) ncaa = value; Object.values(value).forEach(visit); }
-visit(settings);
-assert.equal(ncaa.seasonYear, "2026");
-assert.equal(ncaa.currentDate.week, "08");
+const ncaa = { initialGames: ncaaInventory(docs.get("ncaa-week8").body, 2026, 8) };
 assert.equal(ncaa.initialGames.length, 56);
 for (const row of evidence.finals) {
   const event = events.find(value => value.id === row.id);
@@ -53,7 +49,7 @@ for (const row of evidence.finals) {
     assert.ok(["I", "P"].includes(other.gameState));
   }
   if (row.corroborator.kind === "school") {
-    const body = docs.get(row.corroborator.id).body.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ");
+    const body = htmlText(docs.get(row.corroborator.id).body);
     if (row.id === "401856837") assert.match(body, /Completed Event:\s*Football versus No\. 14 Houston on October 24, 2026\s*,\s*Win\s*,\s*21\s*,?\s*to\s*,?\s*13/i);
     else if (row.id === "401864527") assert.match(body, /New Mexico Defeats North Dakota State,\s*21\s*[-–]\s*16/i);
     else assert.fail("Unreviewed school corroborator");

@@ -175,3 +175,8 @@ October 25 continuation: current main remains 156c893; PR53 stays on its existin
 
 
 October 25 Week 9 pivot: complete source-derived Week 8 archive and separate upcoming Week 9 cutover. Full NCAA/daily ESPN inventories match 56/56 in each week; all 138 records reread; October 25 published AP/Coaches editions retain date precision and prior editions. Eight kickoff fields and 15 TV fields remain held, not invented. Native/API/Lovable share one feed and content revision; preserve explicit archives, valid Week 0, source dates, correction history and last-good refresh behavior. Prior status entries above are historical. Current contract and acceptance gates: WEEK9_GAMEDAY_RELEASE.md. DukeFantasy, authentication and unrelated dependency versions unchanged.
+
+
+## PR53 review follow-through — October 26, 2026
+
+Reconcile main a5935c90 into PR53 with both parents retained. Keep PR53's nullish Week 0 and source-derived statistics-week implementations of PR52's week-label changes. Use the existing parse5 dependency for NCAA script extraction and school text, escape literal fallback TV labels, preserve delayed statuses and provisional scores, and reject duplicate logical inputs. Smoke-test HTML comment stripping is assertion-only, so its injection finding is a documented false positive. This review repair does not authorize deployment or companion changes.

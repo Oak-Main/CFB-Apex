@@ -1,15 +1,38 @@
 import assert from "node:assert/strict";
 import { parse } from "parse5";
 
+function textContent(node) {
+  if (["script", "style", "noscript"].includes(node.nodeName)) return "";
+  return node.nodeName === "#text" ? node.value : (node.childNodes ?? []).map(textContent).join(" ");
+}
+
+export function htmlText(html) {
+  return textContent(parse(html)).replace(/\s+/g, " ").trim();
+}
+
 export function ncaaInventory(html, season, week) {
-  const script = [...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].find(row => row[1].includes("drupal-settings-json"));
+  let script;
+  function find(node) {
+    if (node.nodeName === "script" && node.attrs.some(attr => attr.value === "drupal-settings-json")) script ??= node;
+    for (const child of node.childNodes ?? []) find(child);
+  }
+  find(parse(html));
   assert.ok(script, "NCAA scoreboard settings missing");
   let board;
   function visit(value) { if (!value || typeof value !== "object") return; if (value.initialGames) board = value; Object.values(value).forEach(visit); }
-  visit(JSON.parse(script[2]));
+  visit(JSON.parse(script.childNodes.map(node => node.value ?? "").join("")));
   assert.equal(Number(board?.seasonYear), season);
   assert.equal(Number(board.currentDate.week), week);
   return board.initialGames;
+}
+
+export function sourceScheduleStatus(name) {
+  assert.equal(typeof name, "string", "Missing source schedule status");
+  if (/postpon/i.test(name)) return "postponed";
+  if (/cancel/i.test(name)) return "canceled";
+  if (/delay/i.test(name)) return "delayed";
+  assert.ok(/schedul|time_tbd/i.test(name), `Unsupported source schedule status: ${name}`);
+  return "scheduled";
 }
 
 export function schoolBlocks(html, day, opponents) {
@@ -28,7 +51,7 @@ export function schoolBlocks(html, day, opponents) {
 
 export function tvPattern(tv) {
   const names = { CBSSN: "CBS Sports Network|CBSSN", CW: "The CW|\\bCW\\b", Fox: "\\bFOX\\b", BTN: "BTN|Big Ten Network|B1G", "USA Net": "USA Network|USA_Network|USA Net", "MW+": "MW\\+|Mountain West Network|MW Network", "ESPN+": "ESPN\\+|ESPN Plus|ESPNPlus|ESPN__" };
-  return new RegExp(names[tv] ?? tv.replace(/[+]/g, "\\+"), "i");
+  return new RegExp(Object.hasOwn(names, tv) ? names[tv] : tv.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
 }
 
 export function htmlTables(html) {
