@@ -137,7 +137,7 @@ test("critical product routes render dataset-backed content", async () => {
     ["/games/2026-09-12-oklahoma-at-michigan", /12:00 PM ET/],
     ["/teams/alabama", /SP\+/],
     ["/teams/alabama", /23\.0/],
-    ["/playoff-predictor", /You call the Saturdays/],
+    ["/playoff-predictor", /Current playoff projections are withheld/],
     ["/coaching-carousel", /Separate the contract/],
     ["/dfs", /Fantasy context, when you ask for it/],
     ["/injuries", /injury/i],
@@ -209,15 +209,15 @@ test("health and readiness endpoints disclose dataset state", async () => {
   assert.ok(data.productionGates.some((gate) => gate.id === "LIVE_MODE" && gate.status === "blocked"));
 });
 
-test("simulation API rejects invalid scenario participants and caps work", async () => {
+test("simulation API withholds unvalidated projections and preserves input protections", async () => {
   // Any real scheduled game and one of its real participants.
   const board = await fetchRoute("/api/simulate", {
     method: "POST",
     headers: { accept: "application/json", "content-type": "application/json" },
     body: JSON.stringify({ iterations: 100_000 }),
   });
-  assert.equal(board.status, 200);
-  assert.equal((await board.json()).iterations, 20_000);
+  assert.equal(board.status, 503);
+  assert.equal((await board.json()).status, "unavailable");
 
   const invalid = await fetchRoute("/api/simulate", {
     method: "POST",
@@ -246,7 +246,8 @@ test("weekly release renders current data, truthful pending states and both arch
   })));
   const current = pages.get("/");
   assert.match(current, /WEEK 9 · OCT 27–31/);
-  assert.match(current, /Three kickoff listings remain uncorroborated/);
+  assert.match(current, /Two verified October 27 finals; 54 upcoming fixtures/);
+  assert.doesNotMatch(current, /kickoff listings remain uncorroborated|TV N\/A/);
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);
@@ -300,7 +301,7 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
-  assert.match(rankings, /as of 2026-10-25/);
+  assert.match(rankings, /as of 2026-10-28/);
   assert.match(rankings, /UTSA 4 0 0 1\.000 7[-–]1/);
   assert.match(rankings, /South Florida 1 2 0 0\.333 5-2/);
 });
@@ -453,7 +454,8 @@ test("Friday and Saturday finals and current records agree across the Command Ce
     assert.match(page, /FINAL|Final/);
     assert.ok(scores.includes(String(row.away_score)));
   }
-  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), expected.records[team.slug]);
+  const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-28-week9-refresh.json", import.meta.url), "utf8")).records;
+  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), records[team.slug]);
 });
 
 test("injury and Heisman week copy retain the actual reviewed weeks and one statistics label", async () => {
@@ -464,4 +466,39 @@ test("injury and Heisman week copy retain the actual reviewed weeks and one stat
   assert.match(heisman, /verified Week 7 box scores/);
   assert.match(heisman, /displayed Week 7 statistics/);
   assert.doesNotMatch(heisman, /Week -1/);
+});
+
+
+test("unverified current modules publish an accessible unavailable state and historical coverage remains dated", async () => {
+  for (const [path, expected] of [["/playoff-predictor", /Current playoff projections are withheld/], ["/playoff-bracket", /A current projected bracket is unavailable/], ["/nil", /Current NIL coverage is withheld/], ["/no-names", /Missing recruiting ratings are unknown/]]) {
+    const response = await fetchRoute(path); assert.equal(response.status, 200);
+    const text = visibleText(await response.text()); assert.match(text, expected);
+    assert.doesNotMatch(text, /Run 20,000 simulations|Projected field/);
+  }
+  const teamPage = visibleText(await (await fetchRoute("/teams")).text());
+  assert.match(teamPage, /Other FBS/);
+  assert.match(teamPage, /AP NR/);
+  assert.doesNotMatch(teamPage, /strength index derived/);
+  const ratings = visibleText(await (await fetchRoute("/rankings")).text());
+  assert.match(ratings, /derived strength index is withheld/);
+  const conference = visibleText(await (await fetchRoute("/conferences/pac12")).text());
+  assert.match(conference, /September 27 edition/);
+  const page = visibleText(await (await fetchRoute("/panel")).text());
+  assert.match(page, /Historical editorial brief: Week 8, October 20/);
+});
+
+
+test("consolidated game URLs remain reachable with one canonical scoreboard result", async () => {
+  for (const path of ["/games/2026-08-29-north-carolina-at-tcu", "/games/2026-08-30-memphis-at-unlv", "/games/2026-09-03-umass-at-rutgers"]) {
+    const response = await fetchRoute(path); assert.equal(response.status, 200);
+    const html = await response.text();
+    const text = visibleText(html);
+    assert.match(text, /final/i);
+    assert.doesNotMatch(html, /href="\/stadium\//);
+    if (path.includes("north-carolina")) {
+      assert.ok(html.includes('href="https://cfbapex.com/games/2026-08-29-north-carolina-vs-tcu"'));
+      assert.match(text, /Neutral venue parking, bags and transit guidance unavailable/);
+      assert.doesNotMatch(text, /Campus lots around the stadium are managed by TCU/);
+    }
+  }
 });

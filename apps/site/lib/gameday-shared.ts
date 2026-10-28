@@ -39,7 +39,7 @@ export function gameDaySnapshot(nowMs: number, week?: string | null) {
       record: verifiedRefresh?.teamRecords[team.slug] ? team.record : null,
     })),
     games: games.filter(game => game.week === selected).sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
-    previousFinals: games.filter(game => game.week === priorWeek && game.status === "final").map(game => publicGame(game, nowMs)),
+    previousFinals: games.filter(game => game.week === priorWeek && game.status === "final").sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     polls: pollTables.filter(poll => poll.poll !== "composite"),
     sourceDates: {
       schedule: metadata?.schedule_verified_at ?? metadata?.retrieved_at ?? null,

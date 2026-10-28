@@ -24,6 +24,9 @@ const observations = [];
 for (const week of [8, 9]) {
   const response = await fetch(`${origin}/api/gameday?week=${week}&release=${expected.revision}`, { signal: AbortSignal.timeout(10_000) });
   assert.equal(response.status, 200); assert.match(response.headers.get("cache-control") ?? "", /no-store/);
+  const age = response.headers.get("age"), serverDate = response.headers.get("date");
+  assert.ok(age === null || Number(age) === 0, `Week ${week}: a no-store response has cached age`);
+  assert.ok(serverDate && Math.abs(Date.now() - Date.parse(serverDate)) <= 300_000, `Week ${week}: HTTP Date is missing or stale`);
   const actual = await response.json(), wanted = gameDaySnapshot(Date.now(), String(week));
   assert.equal(actual.revision, wanted.revision); assert.equal(actual.season, 2026); assert.equal(actual.selectedWeek, week);
   for (const key of ["games", "previousFinals", "teams", "polls", "sourceDates"]) assert.deepEqual(actual[key], wanted[key], `${key}: Week ${week}`);
@@ -32,8 +35,8 @@ for (const week of [8, 9]) {
   // Assertion-only normalization: preserve script literals and remove parsed comment nodes.
   const html = withoutHtmlComments(await page.text());
   assert.ok(html.includes(`WEEK ${week}`)); assert.ok(html.includes(wanted.sourceDates.schedule));
-  if (week === 9) assert.ok(wanted.games.every(g => g.status !== "final"));
+  if (week === 9) { assert.equal(wanted.games.filter(g => g.status === "final").length, 2); assert.equal(wanted.games.filter(g => g.status === "scheduled").length, 54); }
   else assert.ok(wanted.games.every(g => g.status === "final"));
-  observations.push({ week, games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status") });
+  observations.push({ week, games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status"), age, serverDate });
 }
 console.log(JSON.stringify({ acceptance:"PASS", origin, revision:expected.revision, season:expected.season, defaultWeek:current.selectedWeek, startedAt, checkedAt:new Date().toISOString(), observations }));

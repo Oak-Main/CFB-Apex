@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HubApp } from "@/components/HubApp";
-import { boardWeeks, coaches, fantasyNotes, games, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
+import { boardWeeks, coaches, fantasyNotes, getGame, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
 import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
@@ -31,7 +31,7 @@ function isKnownPath(parts: string[]) {
     if (root === "conferences") return getConferenceHub(id) != null;
     return false;
   }
-  if (root === "games") return games.some((game) => game.id === id);
+  if (root === "games") return getGame(id) != null;
   if (root === "players") {
     return (
       portalEvents.some((event) => event.playerSlug === id) ||
@@ -55,7 +55,8 @@ export async function generateMetadata({
   // http://, https:// and leading-space variants of the same pages as
   // separate rows because nothing declared the canonical form. metadataBase
   // in the root layout resolves these relative paths to absolute URLs.
-  const selfCanonical = { alternates: { canonical: `/${slug.join("/")}` } };
+  const canonicalGame = slug[0] === "games" && slug[1] ? getGame(slug[1]) : null;
+  const selfCanonical = { alternates: { canonical: canonicalGame ? `/games/${canonicalGame.id}` : `/${slug.join("/")}` } };
   const buildMeta = async (): Promise<Metadata> => {
   const [root, detail] = slug;
   if (root === "stadiums") {
@@ -138,9 +139,9 @@ export async function generateMetadata({
   }
   if (root === "upset-watch") {
     return {
-      title: "Upset Watch — Week 5 Board",
+      title: "Upset Watch — Historical Week 8 Board",
       description:
-        "Three-to-five sourced upset picks with live betting lines, the trap game the public will chase, and the honest counter-argument for every pick.",
+        "Historical October 20 editorial board. Current Week 9 picks and market lines are unavailable.",
     };
   }
   if (root === "playoff-audit") {

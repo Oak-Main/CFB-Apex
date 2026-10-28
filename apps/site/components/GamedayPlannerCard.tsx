@@ -31,6 +31,8 @@ export interface Game {
   };
   venue: string;
   city: string;
+  neutralSite?: boolean;
+  venueGuideHref?: string;
 }
 
 export interface Weather {
@@ -206,7 +208,7 @@ export default function GamedayPlannerCard({
                 {game.awayTeam.name}
               </div>
               <div className="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">
-                Away
+                {game.neutralSite ? "Neutral site" : "Away"}
               </div>
             </div>
           </div>
@@ -217,7 +219,7 @@ export default function GamedayPlannerCard({
               className="text-xs font-bold italic"
               style={{ color: GOLD }}
             >
-              AT
+              {game.neutralSite ? "VS" : "AT"}
             </span>
           </div>
 
@@ -229,7 +231,7 @@ export default function GamedayPlannerCard({
                 {game.homeTeam.name}
               </div>
               <div className="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">
-                Home
+                {game.neutralSite ? "Neutral site" : "Home"}
               </div>
             </div>
           </div>
@@ -379,13 +381,13 @@ export default function GamedayPlannerCard({
           borderTop: "1px solid rgba(255,255,255,0.06)",
         }}
       >
-        <a
-          href={`/stadium/${encodeURIComponent(game.venue)}`}
+        {game.venueGuideHref ? <a
+          href={game.venueGuideHref}
           className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white transition-colors"
         >
           Gameday guide
           <ArrowRight className="h-3 w-3" />
-        </a>
+        </a> : <span className="text-xs text-slate-500">Venue guide unavailable</span>}
         <a
           href="/watch"
           className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white transition-colors"
