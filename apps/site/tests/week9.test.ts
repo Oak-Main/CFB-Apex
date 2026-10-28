@@ -4,6 +4,7 @@ import test from "node:test";
 import { games, getGame, getConferenceHub, teams, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
 import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "../lib/game-calendar.ts";
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
+import { reviewedProductionVersion, verifyProductionTarget } from "../scripts/verify-production-target.mjs";
 import { verifyFullSeason } from "../scripts/full-season-validation.mjs";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
@@ -246,4 +247,16 @@ test("complete season inventory includes FCS records, restores omitted finals an
   assert.throws(() => verifyFullSeason(duplicate, audit), /row count/);
   const replacement = structuredClone(snapshot); replacement.playedGames[1].provider_id = replacement.playedGames[0].provider_id;
   assert.throws(() => verifyFullSeason(replacement, audit), /Duplicate provider identity/);
+});
+
+
+test("production guard refuses newer versions, split traffic and invalid provider evidence", () => {
+  const old = { id: "older", created_on: "2026-10-20T00:00:00Z", versions: [{ version_id: "607ca0f2-0000-4000-8000-000000000000", percentage: 100 }] };
+  const reviewed = { id: "reviewed", created_on: "2026-10-25T20:00:00Z", versions: [{ version_id: reviewedProductionVersion, percentage: 100 }] };
+  assert.equal(verifyProductionTarget([old, reviewed], reviewedProductionVersion).deploymentId, "reviewed");
+  const newer = { ...old, id: "newer", created_on: "2026-10-28T22:00:00Z" };
+  assert.throws(() => verifyProductionTarget([reviewed, newer], reviewedProductionVersion), /differs/);
+  assert.throws(() => verifyProductionTarget([{ ...reviewed, versions: [{ version_id: reviewedProductionVersion, percentage: 50 }] }], reviewedProductionVersion), /differs/);
+  assert.throws(() => verifyProductionTarget([], reviewedProductionVersion), /No provider/);
+  assert.throws(() => verifyProductionTarget([{ ...reviewed, created_on: "unknown" }], reviewedProductionVersion), /timestamp/);
 });
