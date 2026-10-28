@@ -271,7 +271,7 @@ interface DatasetTeam {
 
 const datasetTeams = bundle.teams as DatasetTeam[];
 
-const p4Conferences = new Set(["sec", "acc", "big-ten", "big12", "pac12"]);
+const p4Conferences = new Set(["sec", "acc", "big-ten", "big12"]);
 
 function abbreviationFor(school: string) {
   const words = school

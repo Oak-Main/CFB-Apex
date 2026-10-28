@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { games, getGame, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
+import { games, getGame, teams, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
 import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "../lib/game-calendar.ts";
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
 import { verifyFullSeason } from "../scripts/full-season-validation.mjs";
@@ -232,6 +232,8 @@ test("complete season inventory includes FCS records, restores omitted finals an
   const result = verifyFullSeason(snapshot, audit);
   assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [568, 446, 122, 138]);
   assert.equal(audit.additions.length, 17);
+  assert.equal(teams.filter(t => t.subdivision === "P4").length, 67);
+  assert.equal(teams.find(t => t.slug === "boise-state")?.subdivision, "G5", "legacy internal non-P4 category renders Other FBS, including the Pac-12");
   for (const id of audit.additions) assert.equal(getGame(id)?.status, "final");
   assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.sourceAsOf, "2026-09-03");
   assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.verifiedAt, audit.verification_completed_at);

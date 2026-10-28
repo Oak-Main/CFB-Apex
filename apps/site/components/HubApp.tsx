@@ -462,7 +462,7 @@ function ScoresPage({ mode, favorites, onFavorite, selection }: HomeProps & { se
               aria-pressed={filter === item}
               onClick={() => startTransition(() => setFilter(item))}
             >
-              {item}
+              {item === "G5" ? "Other FBS" : item}
             </button>
           ))}
         </fieldset>
@@ -752,7 +752,7 @@ function TeamsPage({ teamSlug }: { teamSlug?: string }) {
         {teams.map((item) => (
           <a href={`/teams/${item.slug}`} key={item.id}>
             <Monogram team={item} />
-            <span><small>{item.conference} · {item.subdivision}</small><strong>{item.name}</strong><em>{item.record}</em></span>
+            <span><small>{item.conference} · {item.subdivision === "G5" ? "Other FBS" : item.subdivision}</small><strong>{item.name}</strong><em>{item.record}</em></span>
             <b>{item.strength}</b>
           </a>
         ))}

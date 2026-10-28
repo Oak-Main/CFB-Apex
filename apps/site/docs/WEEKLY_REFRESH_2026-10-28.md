@@ -88,3 +88,5 @@ Production GET verification is limited to the explicit October 28 native release
 Final component review also found home-campus parking links on neutral-site game pages. Those pages now withhold home-campus venue/travel guidance, label neutral sides, and retain separate radio/guide dates. The two duplicate URLs use the original curated canonical metadata. No Names summary cards now say qualification unverified and award not selected, consistent with the research-pool disclosure.
 
 Browser follow-through: the planner footer now uses the actual `/stadiums/<slug>` route only where a venue guide exists; neutral venue guides remain unavailable. Result provenance uses each game’s Eastern playing date as its through-games date and displays the later verification time separately. Recovered September results cannot inherit the old September 5 fallback date.
+
+The current four Power Four conferences contain 67 programs. The rebuilt Pac-12 is outside that group; public cards/filters say Other FBS rather than the obsolete Group of Five count. The legacy internal G5 enum is retained for compatibility and is not a CFP qualification rule.

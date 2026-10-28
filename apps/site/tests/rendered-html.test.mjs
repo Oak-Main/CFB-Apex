@@ -475,6 +475,8 @@ test("unverified current modules publish an accessible unavailable state and his
     const text = visibleText(await response.text()); assert.match(text, expected);
     assert.doesNotMatch(text, /Run 20,000 simulations|Projected field/);
   }
+  const teamPage = visibleText(await (await fetchRoute("/teams")).text());
+  assert.match(teamPage, /Other FBS/);
   const page = visibleText(await (await fetchRoute("/panel")).text());
   assert.match(page, /Historical editorial brief: Week 8, October 20/);
 });
