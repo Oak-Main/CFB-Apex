@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+import { stripVTControlCharacters } from "node:util";
 
 export const reviewedProductionVersion = "980dc3cc-1034-4da5-a7a1-73a3d0c9ad84";
 
@@ -21,7 +22,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const rows = JSON.parse(readFileSync(process.argv[2], "utf8"));
   let expected = reviewedProductionVersion;
   if (process.argv[3]) {
-    const output = readFileSync(process.argv[3], "utf8").replace(/\u001b\[[0-9;]*m/g, "");
+    const output = stripVTControlCharacters(readFileSync(process.argv[3], "utf8"));
     expected = output.match(/Current Version ID:\s*([a-f0-9-]{36})/)?.[1];
     assert.ok(expected, "Wrangler did not identify the deployed version");
   }
