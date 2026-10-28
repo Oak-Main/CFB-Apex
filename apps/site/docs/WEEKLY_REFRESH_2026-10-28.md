@@ -86,3 +86,5 @@ Production GET verification is limited to the explicit October 28 native release
 - Full-season regression covers 568 finals, all 138 official record cross-checks including FCS, the 17 recovered rows, absence of duplicate Memphis–UNLV, both preserved aliases and rejection of a missing row. Network source gate independently re-fetches every daily and primary weekly inventory.
 
 Final component review also found home-campus parking links on neutral-site game pages. Those pages now withhold home-campus venue/travel guidance, label neutral sides, and retain separate radio/guide dates. The two duplicate URLs use the original curated canonical metadata. No Names summary cards now say qualification unverified and award not selected, consistent with the research-pool disclosure.
+
+Browser follow-through: the planner footer now uses the actual `/stadiums/<slug>` route only where a venue guide exists; neutral venue guides remain unavailable. Result provenance uses each game’s Eastern playing date as its through-games date and displays the later verification time separately. Recovered September results cannot inherit the old September 5 fallback date.

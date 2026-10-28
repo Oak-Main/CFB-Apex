@@ -233,6 +233,8 @@ test("complete season inventory includes FCS records, restores omitted finals an
   assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [568, 446, 122, 138]);
   assert.equal(audit.additions.length, 17);
   for (const id of audit.additions) assert.equal(getGame(id)?.status, "final");
+  assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.sourceAsOf, "2026-09-03");
+  assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.verifiedAt, audit.verification_completed_at);
   for (const [alias, canonical] of Object.entries(snapshot.gameAliases)) assert.equal(getGame(alias)?.id, canonical);
   assert.equal(games.filter(g => g.status === "final" && [g.homeTeamId, g.awayTeamId].includes("memphis") && [g.homeTeamId, g.awayTeamId].includes("unlv")).length, 1);
   const missing = structuredClone(snapshot); missing.playedGames.pop();

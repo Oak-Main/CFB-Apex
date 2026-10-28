@@ -486,6 +486,7 @@ test("consolidated game URLs remain reachable with one canonical scoreboard resu
     const html = await response.text();
     const text = visibleText(html);
     assert.match(text, /final/i);
+    assert.doesNotMatch(html, /href="\/stadium\//);
     if (path.includes("north-carolina")) {
       assert.ok(html.includes('href="https://cfbapex.com/games/2026-08-29-north-carolina-vs-tcu"'));
       assert.match(text, /Neutral venue parking, bags and transit guidance unavailable/);

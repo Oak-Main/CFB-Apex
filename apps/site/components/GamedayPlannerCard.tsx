@@ -32,6 +32,7 @@ export interface Game {
   venue: string;
   city: string;
   neutralSite?: boolean;
+  venueGuideHref?: string;
 }
 
 export interface Weather {
@@ -380,13 +381,13 @@ export default function GamedayPlannerCard({
           borderTop: "1px solid rgba(255,255,255,0.06)",
         }}
       >
-        <a
-          href={`/stadium/${encodeURIComponent(game.venue)}`}
+        {game.venueGuideHref ? <a
+          href={game.venueGuideHref}
           className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white transition-colors"
         >
           Gameday guide
           <ArrowRight className="h-3 w-3" />
-        </a>
+        </a> : <span className="text-xs text-slate-500">Venue guide unavailable</span>}
         <a
           href="/watch"
           className="flex items-center gap-1 text-xs font-medium text-slate-400 hover:text-white transition-colors"

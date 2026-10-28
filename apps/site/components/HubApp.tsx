@@ -564,6 +564,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
             </span>
           ) : null}
           <Freshness provenance={game.provenance} />
+          {game.status === "final" ? <span>Result verified {game.provenance.verifiedAt} · game date {easternDate(game.date)}</span> : null}
         </div>
         <div className="game-hero__matchup">
           <TeamHero team={away} score={game.awayScore} />
@@ -599,6 +600,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
             venue: game.venue,
             city: game.city || "",
             neutralSite: game.neutralSite,
+            venueGuideHref: game.neutralSite ? undefined : `/stadiums/${game.venueSlug}`,
           }}
           weather={game.weather ? { temperature: game.weather.temperature, summary: game.weather.summary, windMph: game.weather.windMph } : null}
           radio={(() => {

@@ -308,7 +308,7 @@ interface PlayedGame {
   week?: number | null;
   source_url?: string;
   verified_at?: string;
-  meta?: { as_of?: string };
+  meta?: { as_of?: string; full_season_review?: { checked_at: string } };
 }
 
 const playedGames = bundle.playedGames as PlayedGame[];
@@ -707,7 +707,7 @@ export const games: Game[] = [
       provenance: {
         ...derivedProvenance(id),
         sourceUrl: game.source_url,
-        sourceAsOf: game.meta?.as_of ?? asOf,
+        sourceAsOf: game.meta?.full_season_review ? game.date : game.meta?.as_of ?? asOf,
         fetchedAt: game.verified_at ?? game.meta?.as_of ?? asOf,
         verifiedAt: game.verified_at ?? game.meta?.as_of ?? asOf,
       },
