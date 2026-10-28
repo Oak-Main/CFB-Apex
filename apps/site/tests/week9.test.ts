@@ -241,4 +241,8 @@ test("complete season inventory includes FCS records, restores omitted finals an
   assert.equal(games.filter(g => g.status === "final" && [g.homeTeamId, g.awayTeamId].includes("memphis") && [g.homeTeamId, g.awayTeamId].includes("unlv")).length, 1);
   const missing = structuredClone(snapshot); missing.playedGames.pop();
   assert.throws(() => verifyFullSeason(missing, audit));
+  const duplicate = structuredClone(snapshot); duplicate.playedGames.push(duplicate.playedGames[0]);
+  assert.throws(() => verifyFullSeason(duplicate, audit), /row count/);
+  const replacement = structuredClone(snapshot); replacement.playedGames[1].provider_id = replacement.playedGames[0].provider_id;
+  assert.throws(() => verifyFullSeason(replacement, audit), /Duplicate provider identity/);
 });

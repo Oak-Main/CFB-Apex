@@ -1,10 +1,8 @@
 /**
- * Battle of the No Names — tracks unrated and low-star recruits who are
- * contributing at the FBS level. "No name" = unrated (walk-on, international,
- * JUCO, or from an unrated pipeline) or 2-star rated out of high school.
- *
- * The qualifying pool is derived from the roster dataset at build time.
- * Performance tracking enriches when the research compilation lands.
+ * Roster research pool for the Battle of the No Names.
+ * A missing recruiting rating is unknown. It does not establish an unrated
+ * recruit, acquisition history, contribution, breakout status or qualification.
+ * Published two-star roster values also require individual recruiting review.
  */
 import { getRoster, teams } from "./cfb-dataset.ts";
 
@@ -15,7 +13,7 @@ export interface NoNamePlayer {
   position: string | null;
   class: string | null;
   stars: number | null;
-  howAcquired: "unrated" | "two_star" | "unknown";
+  howAcquired: "two_star" | "unknown";
   jersey: number | null;
   height: string | null;
   weight: string | null;
