@@ -1,4 +1,4 @@
-import { runPlayoffSimulation } from "@/lib/simulation";
+import { playoffUnavailable } from "@/lib/module-coverage";
 import { scenarioGames } from "@/lib/cfb-dataset";
 
 export async function POST(request: Request) {
@@ -23,13 +23,6 @@ export async function POST(request: Request) {
   }
 
   const record = body as Record<string, unknown>;
-  const seed = typeof record.seed === "string" ? record.seed.slice(0, 80) : "api-demo";
-  const iterations = Math.min(
-    20_000,
-    typeof record.iterations === "number" && Number.isFinite(record.iterations)
-      ? Math.trunc(record.iterations)
-      : 20_000,
-  );
   const forcedInput =
     record.forced && typeof record.forced === "object"
       ? Object.entries(record.forced as Record<string, unknown>)
@@ -48,9 +41,8 @@ export async function POST(request: Request) {
     forced[gameId] = teamId;
   }
 
-  return Response.json(runPlayoffSimulation(seed, forced, iterations), {
-    headers: {
-      "Cache-Control": "private, no-store",
-    },
+  return Response.json({ status: "unavailable", reason: playoffUnavailable }, {
+    status: 503,
+    headers: { "Cache-Control": "private, no-store" },
   });
 }

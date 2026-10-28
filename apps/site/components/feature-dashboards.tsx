@@ -43,17 +43,17 @@ export function NoNamesPage() {
         <div className="apex-home-intro">
           <div>
             <span className="apex-eyebrow">THE BATTLE OF THE NO NAMES</span>
-            <h1>Unrated. Under-recruited. Overdelivering.</h1>
-            <p>Tracking every unrated and 2-star recruit on FBS rosters. At season's end, one player lifts the Breakout Star Award.</p>
+            <h1>The recruiting research pool</h1>
+            <p>Roster research pool from 92 programs. Missing recruiting ratings are unknown, not evidence of being unrated. No verified breakout candidates or award qualifiers have been established.</p>
           </div>
           <span className="apex-season-label"><span /><span className="apex-season-word">2026</span> SEASON</span>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 14, marginBottom: 28 }}>
-          <StatCard icon={<Users size={20} />} label="Qualifying players" value={noNames.length.toLocaleString()} />
-          <StatCard icon={<Trophy size={20} />} label="Programs with no-names" value={noNamesTeamCounts().length.toString()} />
-          <StatCard icon={<Star size={20} />} label="Highest rated qualifier" value="2-star" />
-          <StatCard icon={<TrendingUp size={20} />} label="Award" value="Breakout Star" gold />
+          <StatCard icon={<Users size={20} />} label="Research candidates" value={noNames.length.toLocaleString()} />
+          <StatCard icon={<Trophy size={20} />} label="Programs in pool" value={noNamesTeamCounts().length.toString()} />
+          <StatCard icon={<Star size={20} />} label="Qualification" value="Unverified" />
+          <StatCard icon={<TrendingUp size={20} />} label="Award" value="Not selected" gold />
         </div>
 
         <div className="apex-lane">
@@ -93,7 +93,7 @@ export function NoNamesPage() {
         <div className="apex-lane">
           <div className="apex-lane-heading">
             <div>
-              <span className="apex-eyebrow">QUALIFYING PLAYERS</span>
+              <span className="apex-eyebrow">ROSTER RESEARCH CANDIDATES</span>
               <h2>Browse the pool</h2>
             </div>
           </div>
@@ -115,7 +115,7 @@ export function NoNamesPage() {
                   </div>
                 </div>
                 <span style={{ fontSize: 12, padding: "2px 8px", borderRadius: 6, background: p.stars === 2 ? "rgba(245,185,66,.12)" : "var(--secondary)", color: p.stars === 2 ? "var(--primary)" : "var(--muted-foreground)", fontWeight: 600 }}>
-                  {p.stars === 2 ? "2★" : "Unrated"}
+                  {p.stars === 2 ? "2★ · roster value" : "Rating unknown"}
                 </span>
               </div>
             ))}

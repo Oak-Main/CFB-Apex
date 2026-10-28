@@ -185,3 +185,10 @@ Reconcile main a5935c90 into PR53 with both parents retained. Keep PR53's nullis
 ### Assertion-only HTML comment parsing follow-through
 
 The smoke comment-filter alert is a contextual false positive: normalized HTML feeds only string assertions, with no rendering or execution sink. Use the existing parse5 parser to remove actual comment nodes, including template comments, while preserving literal comment-like text inside scripts. A focused regression pins this distinction. No security query, scanner, gate or authentication control is suppressed or disabled.
+
+
+## October 28 native weekly refresh
+
+Owner-approved native-only release from main 50afe3d5. Reconcile 56 Week 8 finals, two October 27 Week 9 finals, 54 upcoming games and 138 whole-team records. Four displayed national leader categories are independently updated through October 27. Keep all other module dates; explicitly label historical coverage and withhold unsupported current NIL and playoff output. Null recruiting stars are unknown, not unrated. Preserve companion applications, unrelated PR54 and existing gates. Exact source/field mapping, indexed-source limitation, cutoff, deployment target and rollback: [WEEKLY_REFRESH_2026-10-28.md](WEEKLY_REFRESH_2026-10-28.md). Candidate, synthetic-merge, merged-main, deployment and live verdicts must remain separate.
+
+Full-season final accuracy amendment: all 568 completed FBS-involving games reconciled, including 122 FCS opponents. Restore 17 omitted September finals, consolidate two duplicates with stable URL aliases, and correct Eastern dates without renaming original IDs. All 138 official records are independently corroborated and also reproduced by the complete inventory. See the linked release evidence for retrieval times, source fields and browser-runtime limitations.

@@ -84,6 +84,7 @@ interface VerifiedRefresh {
   requested_cutoff: string;
   retrieved_at: string;
   teamRecords: Record<string, string>;
+  gameAliases?: Record<string, string>;
   metrics: CurrentMetrics;
   playedGames?: unknown[];
   /** `kickoff_utc`/`time_et` are null only for an official TBD (`kickoff_status: "official_tbd"`). */
@@ -1199,7 +1200,8 @@ export function getTeamBySlug(slug: string) {
 }
 
 export function getGame(gameId: string) {
-  return games.find((game) => game.id === gameId);
+  const canonicalId = verifiedRefresh?.gameAliases?.[gameId] ?? gameId;
+  return games.find((game) => game.id === canonicalId);
 }
 
 export function getCoachBySlug(slug: string) {

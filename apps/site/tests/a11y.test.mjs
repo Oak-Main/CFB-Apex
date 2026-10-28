@@ -28,6 +28,5 @@ test("global shell includes accessibility foundations", () => {
 test("visual metrics have accessible names or text equivalents", () => {
   assert.match(component, /role="img"/);
   assert.match(component, /aria-label=\{`/);
-  assert.match(component, /Playoff <strong>/);
   assert.match(component, /Line movement from/);
 });

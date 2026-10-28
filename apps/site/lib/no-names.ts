@@ -38,7 +38,7 @@ for (const team of teams) {
     for (const p of group.players) {
       if (!p.name) continue;
       const stars = p.stars ?? null;
-      if (stars !== null && stars > 2) continue; // only unrated or ≤2-star
+      if (stars !== null && stars > 2) continue; // research pool only; null is not proof of an unrated recruit
       noNames.push({
         id: `${team.slug}-${p.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}`,
         player: p.name,
@@ -46,7 +46,7 @@ for (const team of teams) {
         position: p.position ?? null,
         class: p.class ?? null,
         stars,
-        howAcquired: stars === 2 ? "two_star" : "unrated",
+        howAcquired: stars === 2 ? "two_star" : "unknown",
         jersey: p.jersey ?? null,
         height: p.height ?? null,
         weight: p.weight ?? null,

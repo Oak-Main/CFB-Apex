@@ -5,6 +5,10 @@ import { htmlText, ncaaInventory } from "./gameday-source-validation.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const snapshot = read("data/cfb-2026/refresh/verified-refresh.json");
+if (snapshot.refresh_log.at(-1)?.script === "weekly-refresh-2026-10-28") {
+  await import("./check-oct28-sources.mjs");
+  process.exit(0);
+}
 if (snapshot.refresh_log.at(-1)?.script === "week9-preparation-2026-10-25") {
   await import("./check-week9-sources.mjs");
   process.exit(0);

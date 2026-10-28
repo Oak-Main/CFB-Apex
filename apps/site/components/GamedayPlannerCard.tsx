@@ -31,6 +31,7 @@ export interface Game {
   };
   venue: string;
   city: string;
+  neutralSite?: boolean;
 }
 
 export interface Weather {
@@ -206,7 +207,7 @@ export default function GamedayPlannerCard({
                 {game.awayTeam.name}
               </div>
               <div className="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">
-                Away
+                {game.neutralSite ? "Neutral site" : "Away"}
               </div>
             </div>
           </div>
@@ -217,7 +218,7 @@ export default function GamedayPlannerCard({
               className="text-xs font-bold italic"
               style={{ color: GOLD }}
             >
-              AT
+              {game.neutralSite ? "VS" : "AT"}
             </span>
           </div>
 
@@ -229,7 +230,7 @@ export default function GamedayPlannerCard({
                 {game.homeTeam.name}
               </div>
               <div className="text-[11px] text-slate-500 uppercase tracking-wider mt-0.5">
-                Home
+                {game.neutralSite ? "Neutral site" : "Home"}
               </div>
             </div>
           </div>

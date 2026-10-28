@@ -30,9 +30,7 @@ import {
   providerHealth,
   radioAsOf,
   radioForTeam,
-  scenarioGames,
   searchPlayers,
-  seasonRules,
   sosAsOf,
   stadiums,
   teams,
@@ -53,14 +51,14 @@ import {
   scoreboardSourceLabel,
   scoreboardSwipeDirection,
 } from "@/lib/scoreboard";
-import { normalizeForcedOutcomes, runPlayoffSimulation, type ForcedOutcomes } from "@/lib/simulation";
+import { moduleCoverage, playoffUnavailable } from "@/lib/module-coverage";
 import { getTeamHubData } from "@/lib/team-hub";
 import type { Game, Provenance, Team } from "@/lib/types";
 import { PlayerRecordPage } from "./player-record-page";
 import { SiteSearchPage } from "./site-search-page";
 import { SourceMeta } from "./SourceMeta";
 import { StadiumDetail, StadiumDirectory } from "./stadium-pages";
-import { NoNamesPage, HeismanPage, NILWatchPage, AIPanelPage, HighlightPage } from "./feature-dashboards";
+import { NoNamesPage, HeismanPage, AIPanelPage, HighlightPage } from "./feature-dashboards";
 import { UpsetWatchPage } from "./upset-watch-page";
 import { GameDayCommandCenter } from "./gameday-command-center";
 import { PlayoffAuditPage } from "./playoff-audit-page";
@@ -82,7 +80,6 @@ import {
 } from "./polish/game-actions";
 import { BoardSkeleton } from "./polish/skeletons";
 import { MobileDataCard, MobileDataCardStack } from "./polish/mobile-data-card";
-import CFPBracket from "./CFPBracket";
 import GamedayPlannerCard from "./GamedayPlannerCard";
 
 type Mode = "clean" | "analysis";
@@ -572,7 +569,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
           <TeamHero team={away} score={game.awayScore} />
           <div className="game-hero__center">
             <h1 className="sr-only">
-              {away.name} at {home.name} {game.status === "final" ? "final" : "game preview"}
+              {away.name} {game.neutralSite ? "vs" : "at"} {home.name} {game.status === "final" ? "final" : "game preview"}
             </h1>
             <span>{game.kickoffLabel}</span>
             <strong>{game.broadcast ?? "Broadcast provider not configured"}</strong>
@@ -583,7 +580,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
         <div className="game-action-row">
           <a href="/watch">Watch status</a>
           <a href="/watch#radio">Audio status</a>
-          <a href={`/stadiums/${game.venueSlug}`}>Venue guide</a>
+          {game.neutralSite ? <span>Neutral venue guide unavailable</span> : <a href={`/stadiums/${game.venueSlug}`}>Venue guide</a>}
           <a href="/playoff-bracket">Bracket</a>
           <button type="button" onClick={() => onFavorite(home.id)} aria-pressed={favorites.has(home.id)}>
             {favorites.has(home.id) ? "★ Favorited" : "☆ Favorite"}
@@ -601,6 +598,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
             broadcast: game.broadcast ? { network: game.broadcast, kickoffTime: game.kickoffLabel } : undefined,
             venue: game.venue,
             city: game.city || "",
+            neutralSite: game.neutralSite,
           }}
           weather={game.weather ? { temperature: game.weather.temperature, summary: game.weather.summary, windMph: game.weather.windMph } : null}
           radio={(() => {
@@ -608,11 +606,13 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
             return station?.station ? { station: station.station, frequency: station.frequency ?? "", market: station.market ?? "" } : null;
           })()}
           parking={(() => {
+            if (game.neutralSite) return null;
             const stadium = getStadiumBySlug(game.venueSlug);
             return stadium ? { summary: stadium.parking.slice(0, 200), lastVerified: stadium.lastVerified } : null;
           })()}
           ticketUrl={null}
         />
+        <p className="panel-note">Radio listings and venue guides retain independent source dates. A station listing does not verify carriage of this game. Neutral venue parking and travel guidance are unavailable unless individually sourced.</p>
       </section>
 
       <section className="content-section game-layout">
@@ -639,7 +639,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
           ) : (
             <p className="panel-note">
               No matchup model yet this season — win probabilities resume once in-season results
-              accumulate. Everything below is the verified {verifiedRefresh ? `snapshot of ${verifiedRefresh.retrieved_at.slice(0, 10)}` : "2026 dataset"}.
+              accumulate. Game facts and supporting guides retain their individual source dates.
             </p>
           )}
 
@@ -693,7 +693,7 @@ function GamePage({ gameId, mode, favorites, onFavorite }: HomeProps & { gameId:
             <span className="eyebrow">GAMEDAY</span>
             <h2>{game.weather ? `${game.weather.temperature}° · ${game.weather.summary}` : "Weather unavailable"}</h2>
             <p>{game.weather ? `Wind ${game.weather.windMph} mph. Weather is not part of this dataset release.` : "A live weather provider is not configured."}</p>
-            <a href={`/stadiums/${game.venueSlug}`}>Parking, bags & transit →</a>
+            {game.neutralSite ? <p>Neutral venue parking, bags and transit guidance unavailable.</p> : <a href={`/stadiums/${game.venueSlug}`}>Parking, bags & transit →</a>}
           </article>
           {mode === "analysis" && game.line ? (
             <article className="sidebar-card sidebar-card--gold">
@@ -732,115 +732,7 @@ function TeamHero({ team, score }: { team: Team; score?: number }) {
 }
 
 function PlayoffPage() {
-  const [forced, setForced] = useState<ForcedOutcomes>({});
-  const [result, setResult] = useState(() => runPlayoffSimulation("saturday-2026", {}, 2_000));
-  const [message, setMessage] = useState("Initial quick run · precision target not guaranteed");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const restored = normalizeForcedOutcomes(Object.fromEntries(params.entries()));
-    if (Object.keys(restored).length === 0) return;
-    setForced(restored);
-    setResult(runPlayoffSimulation("saturday-2026", restored, 2_000));
-    setMessage("Scenario restored from this URL · run the full simulation when ready");
-  }, []);
-
-  const run = () => {
-    const next = runPlayoffSimulation("saturday-2026", forced, 20_000);
-    setResult(next);
-    setMessage(next.converged ? "Precision target reached" : `Bounded at ${next.iterations.toLocaleString()} runs · ±${(next.maxHalfWidth * 100).toFixed(2)} pts max sampling half-width`);
-  };
-
-  const share = async () => {
-    const query = new URLSearchParams(Object.entries(forced)).toString();
-    const url = `${window.location.origin}/playoff-predictor${query ? `?${query}` : ""}`;
-    window.history.replaceState(null, "", url);
-    if (!navigator.clipboard) {
-      setMessage("Reproducible scenario URL is ready in the address bar");
-      return;
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      setMessage("Reproducible scenario URL copied");
-    } catch {
-      setMessage("Reproducible scenario URL is ready in the address bar");
-    }
-  };
-
-  return (
-    <>
-      <PageHeading
-        eyebrow="PRIORITY 03 · SEEDED SIMULATION"
-        title="You call the Saturdays. The field moves."
-        description={`${seasonRules.label}. Committee order is a clearly labeled approximation, never a claim about the real committee.`}
-        actions={<Freshness provenance={teams[0].provenance} />}
-      />
-      <section className="simulator-layout content-section">
-        <div className="scenario-builder">
-          <div className="scenario-builder__header">
-            <span className="eyebrow">FORCE OUTCOMES</span>
-            <button type="button" onClick={() => setForced({})}>Clear all</button>
-          </div>
-          {scenarioGames.map((game) => {
-            const away = teamFor(game.awayTeamId);
-            const home = teamFor(game.homeTeamId);
-            return (
-              <fieldset className="scenario-game" key={game.id}>
-                <legend>Week {game.week}</legend>
-                {[away, home].map((team) => (
-                  <label key={team.id}>
-                    <input
-                      type="radio"
-                      name={game.id}
-                      checked={forced[game.id] === team.id}
-                      onChange={() => setForced((current) => ({ ...current, [game.id]: team.id }))}
-                    />
-                    <Monogram team={team} size="sm" />
-                    <span><strong>{team.shortName}</strong><small>{team.record}</small></span>
-                  </label>
-                ))}
-              </fieldset>
-            );
-          })}
-          <button className="button button--gold button--full" type="button" onClick={run}>Run 20,000 simulations</button>
-          <button className="button button--ghost button--full" type="button" onClick={share}>Copy scenario link</button>
-          <p className="sim-message" role="status">{message}</p>
-        </div>
-        <div className="simulation-results">
-          <div className="simulation-results__header">
-            <div><span className="eyebrow">SIMULATION OUTPUT</span><h2>Projected field</h2></div>
-            <span>{result.iterations.toLocaleString()} runs · seed {result.seed}</span>
-          </div>
-          <div className="field-list">
-            {result.results.slice(0, 12).map((teamResult, index) => {
-              const team = teamFor(teamResult.teamId);
-              return (
-                <div className="field-row" key={team.id}>
-                  <b>{index + 1}</b>
-                  <Monogram team={team} size="sm" />
-                  <span><strong>{team.shortName}</strong><small>{team.conference}</small></span>
-                  <div>
-                    <span>Playoff <strong>{percent(teamResult.playoff)}</strong></span>
-                    <span>Bye <strong>{percent(teamResult.bye)}</strong></span>
-                    <span>Title <strong>{percent(teamResult.title)}</strong></span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="bracket" role="img" aria-label="Accessible playoff bracket">
-            <span className="eyebrow">BRACKET SNAPSHOT</span>
-            <div>
-              {result.results.slice(4, 12).map((entry, index) => (
-                <div key={entry.teamId}><small>Seed {index + 5}</small><strong>{teamFor(entry.teamId).abbreviation}</strong></div>
-              ))}
-            </div>
-            <p>Top four seeds receive byes under the 2026 twelve-team format. Full probabilities appear in the table above.</p>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+  return <><PageHeading eyebrow="PLAYOFF MODEL · UNAVAILABLE" title="Current playoff projections are withheld." description={playoffUnavailable} /><section className="content-section"><a href="https://collegefootballplayoff.com/sports/2026/8/9/bracket-place-holder">Official 2026 CFP qualification and seeding rules</a></section></>;
 }
 
 function TeamsPage({ teamSlug }: { teamSlug?: string }) {
@@ -1147,7 +1039,7 @@ function RankingsPage() {
         <section className="content-section">
           <SectionHeading eyebrow="CONFERENCE RACES" title="Who leads every league" />
           <p className="panel-note">
-            Conference records from ESPN{verifiedRefresh?.retainedBaseline?.as_of ? `, as of ${verifiedRefresh.retainedBaseline.as_of}` : ""} — the overall record sits beside each league mark. Conference leaders lead each table; rows link to team hubs.
+            Conference records from ESPN{verifiedRefresh?.retainedBaseline?.as_of ? `, as of ${verifiedRefresh.retainedBaseline.as_of}` : ""} — the overall record sits beside each league mark. Ordered by conference win percentage; equal percentages remain tied here. Championship tiebreak procedures are not applied. Rows link to team hubs.
           </p>
           <div className="conf-race-grid">
             {conferenceStandings.map((conf) => (
@@ -1258,7 +1150,7 @@ function MethodologyPage() {
   const cards = [
     ["Matchup concept", "A future production model would combine play value, pace, continuity, context, and uncertainty; no such trained model or validation artifact ships here."],
     ["Portal concept", "The 2026 portal ledger lists verified FBS-to-FBS transfers with dates, positions, and source confidence. Destinations are never inferred, impact scores are not modeled, and NIL estimates are excluded."],
-    ["Playoff simulation", "The implemented seeded Monte Carlo uses the 138-team field, bounded runs, validated ±6 forced-game adjustments, explicit precision, and an approximate committee order. It is not a season results engine."],
+    ["Playoff simulation", "Current public projections are withheld. The retained demonstration does not implement the full 2026 qualification rules or a calibrated season model; sampling precision cannot establish predictive accuracy."],
     ["Coaching concept", "Contract terms come from the 2026 head-coach contract compilation (dual-sourced where possible; private-school gaps stay null). Hot-seat context is not published and is never treated as a firing probability; buyout math runs only on user-supplied guarantee inputs."],
     ["DFS concept", "Floor, median, ceiling, volume, and availability projections would power the gated interface; none ship in this release. No trained projection model or backtest ships in this preview."],
   ];
@@ -1477,35 +1369,7 @@ function CommercialPage({ kind }: { kind: "advertise" | "partnerships" | "media-
 }
 
 function CFPBracketPage() {
-  const seeds = [...teams]
-    .map((team) => {
-      const rating = getPreseasonRating(team.slug);
-      return rating?.sp ? { team, rank: rating.sp.rank } : null;
-    })
-    .filter((row): row is { team: Team; rank: number } => row !== null)
-    .sort((a, b) => a.rank - b.rank)
-    .slice(0, 12)
-    .map(({ team }, index) => ({
-      seed: index + 1,
-      name: team.name,
-      abbreviation: team.abbreviation,
-      color: team.color,
-      record: team.record,
-    }));
-  return (
-    <div className="apex-home" style={{ paddingTop: 32 }}>
-      <div className="apex-container">
-        <div className="apex-home-intro">
-          <div>
-            <span className="apex-eyebrow">INTERACTIVE · 12-TEAM BRACKET</span>
-            <h1>Playoff bracket</h1>
-            <p>Click any team to advance them. Seeds are derived from preseason SP+ rankings.</p>
-          </div>
-        </div>
-        <CFPBracket teams={seeds} />
-      </div>
-    </div>
-  );
+  return <><PageHeading eyebrow="12-TEAM BRACKET · UNAVAILABLE" title="A current projected bracket is unavailable." description={playoffUnavailable} /><section className="content-section"><a href="/rankings">Read the dated AP and Coaches polls</a></section></>;
 }
 
 function ConferenceHubPage({ slug }: { slug: string }) {
@@ -1708,7 +1572,7 @@ export function HubApp({ path = "/", boardWeek }: { path?: string; boardWeek?: B
   else if (root === "heisman") content = <HeismanPage cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} />;
   else if (root === "upset-watch") content = <UpsetWatchPage cleanMode={mode === "clean"} onModeRequest={() => setModeDialogOpen(true)} />;
   else if (root === "playoff-audit") content = <PlayoffAuditPage />;
-  else if (root === "nil") content = <NILWatchPage />;
+  else if (root === "nil") content = <PageHeading eyebrow="NIL · UNAVAILABLE" title="Current NIL coverage is withheld." description="No new athlete deal, valuation or current policy interpretation has been verified for this release. The October 5 source compilation remains historical and is not presented as current legal guidance." />;
   else if (root === "panel") content = <AIPanelPage />;
   else if (root === "coaching-carousel") content = <CoachingLedger coaches={coaches} teams={teams} />;
   else if (root === "coaches") {
@@ -1790,7 +1654,7 @@ export function HubApp({ path = "/", boardWeek }: { path?: string; boardWeek?: B
           onCleanModeChange={(enabled) => enabled ? enableClean() : setModeDialogOpen(true)}
         />
         <ScoreTicker games={tickerGamesFor(boardWeek?.week)} teams={teams} />
-        <main id="main-content" className="route-frame" key={normalizedPath}>{content}</main>
+        <main id="main-content" className="route-frame" key={normalizedPath}>{moduleCoverage[root] ? <aside className="apex-container apex-data-note" aria-label="Data coverage">{moduleCoverage[root]}</aside> : null}{content}</main>
         <BroadcastFooter />
         <ModeDialog open={modeDialogOpen} onClose={() => setModeDialogOpen(false)} onConfirm={enableAnalysis} />
       </div>

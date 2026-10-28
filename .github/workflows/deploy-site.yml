@@ -56,6 +56,10 @@ jobs:
             echo '::error::Production was not deployed: set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets.'
             exit 1
           fi
+          if [ "$CLOUDFLARE_ACCOUNT_ID" != "820e7cee61fccc60d14c8e20bc686942" ]; then
+            echo '::error::Production account does not match the verified CFB Apex account.'
+            exit 1
+          fi
       - name: Deploy verified build to CFBAPEX.COM
         if: github.event_name != 'pull_request'
         env:

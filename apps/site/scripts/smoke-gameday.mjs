@@ -32,7 +32,7 @@ for (const week of [8, 9]) {
   // Assertion-only normalization: preserve script literals and remove parsed comment nodes.
   const html = withoutHtmlComments(await page.text());
   assert.ok(html.includes(`WEEK ${week}`)); assert.ok(html.includes(wanted.sourceDates.schedule));
-  if (week === 9) assert.ok(wanted.games.every(g => g.status !== "final"));
+  if (week === 9) { assert.equal(wanted.games.filter(g => g.status === "final").length, 2); assert.equal(wanted.games.filter(g => g.status === "scheduled").length, 54); }
   else assert.ok(wanted.games.every(g => g.status === "final"));
   observations.push({ week, games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status") });
 }
