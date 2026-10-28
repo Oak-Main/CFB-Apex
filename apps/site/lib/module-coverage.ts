@@ -6,6 +6,7 @@ export const moduleCoverage: Record<string, string> = {
   "upset-watch": "Historical board: Week 8, October 20. Week 9 picks and current market lines are unavailable.",
   "playoff-audit": "Historical resume audit: Week 8, October 20. Its records and composite are publication values. Use Rankings for the October 25 polls and current team records. No official CFP rankings have been released as of October 28; first release November 3.",
   teams: "Coverage limits: 92 of 138 programs have roster/depth files; 136 have coaching files in the October 3 inventory. Those files have not received a complete Week 9 audit. Detailed season statistics remain an early-season sample dated September 5; national leader cards have their own through-games date.",
+  conferences: "Conference membership and whole-team records use the reviewed release. SP+ and reported playoff odds retain the September 27 edition; current values are unavailable. Later-week schedule listings retain baseline dates. No new rating or probability is inferred.",
   players: "Roster, portal and fantasy evidence retain independent dates. Current participation, recruiting history and complete season totals are unavailable unless individually sourced.",
   "transfer-portal": "Dated transfer ledger: a complete Week 9 portal audit is unavailable. A missing event does not establish that no change occurred.",
   coaches: "Dated coaching and contract coverage: a complete Week 9 coaching audit is unavailable. Calculations using supplied contract inputs are estimates.",

@@ -746,14 +746,14 @@ function TeamsPage({ teamSlug }: { teamSlug?: string }) {
       <PageHeading
         eyebrow="SEASON-AWARE MEMBERSHIP"
         title="All 138 FBS programs for 2026."
-        description="Conference affiliation, AP rank, record, and a strength index derived from published SOS ratings."
+        description={`Conference affiliation, whole-team records and published AP ranks${verifiedRefresh?.polls?.find(p => p.poll === "ap")?.release_date ? ` from ${verifiedRefresh.polls.find(p => p.poll === "ap")?.release_date}` : ""}. Missing rating inputs are not assigned a public strength value.`}
       />
       <section className="team-directory content-section">
         {teams.map((item) => (
           <a href={`/teams/${item.slug}`} key={item.id}>
             <Monogram team={item} />
             <span><small>{item.conference} · {item.subdivision === "G5" ? "Other FBS" : item.subdivision}</small><strong>{item.name}</strong><em>{item.record}</em></span>
-            <b>{item.strength}</b>
+            <b>{item.rank ? `AP ${item.rank}` : "AP NR"}</b>
           </a>
         ))}
       </section>
@@ -1069,20 +1069,10 @@ function RankingsPage() {
           </div>
         </section>
       ) : null}
-        <SectionHeading eyebrow="STRENGTH OF SCHEDULE" title="Published SOS ratings" />
+        <SectionHeading eyebrow="STRENGTH OF SCHEDULE · LIMITED" title="Current SOS rankings are unavailable" />
         <p className="panel-note">
-          Composite strength index derived from Phil Steele and ESPN FPI SOS ratings{sosAsOf ? `, as published ${sosAsOf}` : ""} — not SP+, FPI, or a committee ranking, and not refreshed weekly.
+          Historical SOS inputs retain their source date{sosAsOf ? `, ${sosAsOf}` : ""}. A current complete update is unverified. The retained demonstration's derived strength index is withheld; missing inputs do not establish a rating. The AP/Coaches composite above retains its separate published formula.
         </p>
-        <div className="rankings-list">
-          {[...teams].sort((a, b) => b.strength - a.strength).slice(0, 25).map((team, index) => (
-            <a href={`/teams/${team.slug}`} key={team.id}>
-              <b>{index + 1}</b><Monogram team={team} size="sm" />
-              <span><strong>{team.name}</strong><small>{team.conference} · {team.record}</small></span>
-              <div className="rank-bar"><span style={{ width: `${team.strength}%` }} /></div>
-              <em>{team.strength}</em>
-            </a>
-          ))}
-        </div>
       </section>
     </>
   );
@@ -1391,7 +1381,7 @@ function ConferenceHubPage({ slug }: { slug: string }) {
         {hub.topSPPlus.length > 0 ? (
           <div className="apex-lane">
             <div className="apex-lane-heading">
-              <div><span className="apex-eyebrow">PRESEASON RATINGS</span><h2>Top SP+ in the {hub.shortName}</h2></div>
+              <div><span className="apex-eyebrow">RETAINED SEPTEMBER 27 RATINGS</span><h2>Top SP+ in the {hub.shortName}</h2></div>
               <a className="apex-text-link" href="/rankings">Full board →</a>
             </div>
             <div className="apex-rating-strip">

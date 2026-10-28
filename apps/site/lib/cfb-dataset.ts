@@ -420,7 +420,8 @@ export function getConferenceHub(slug: string): ConferenceHub | null {
     .filter(
       (game) =>
         game.broadcast &&
-        Date.parse(game.date) >= now - 86400000 * 3 &&
+        game.status === "scheduled" &&
+        Date.parse(game.date) >= now &&
         Date.parse(game.date) <= now + 86400000 * 10,
     )
     .map((game) => ({ game, network: game.broadcast ?? "" }))

@@ -477,6 +477,12 @@ test("unverified current modules publish an accessible unavailable state and his
   }
   const teamPage = visibleText(await (await fetchRoute("/teams")).text());
   assert.match(teamPage, /Other FBS/);
+  assert.match(teamPage, /AP NR/);
+  assert.doesNotMatch(teamPage, /strength index derived/);
+  const ratings = visibleText(await (await fetchRoute("/rankings")).text());
+  assert.match(ratings, /derived strength index is withheld/);
+  const conference = visibleText(await (await fetchRoute("/conferences/pac12")).text());
+  assert.match(conference, /September 27 edition/);
   const page = visibleText(await (await fetchRoute("/panel")).text());
   assert.match(page, /Historical editorial brief: Week 8, October 20/);
 });
