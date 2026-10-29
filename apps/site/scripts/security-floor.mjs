@@ -26,7 +26,7 @@
  * reached only through the links that point into them.
  */
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from "node:fs";
-import { basename, dirname, join, relative as relativePath } from "node:path";
+import { basename, dirname, isAbsolute, join, relative as relativePath } from "node:path";
 
 const REACT_FLOOR = "19.2.9";
 const PLUGIN_RSC_FLOOR = "0.5.38";
@@ -85,18 +85,29 @@ function floorProblem(version, floor) {
 /**
  * Every package directory reachable from <root>/node_modules, with its manifest name and
  * version, however deeply nested. Symlinked directories (and Windows junctions) are followed.
- * A linked package is also looked up from the node_modules directory that holds its real
- * path, so dependencies stored as siblings (npm's linked install strategy, a .store or .pnpm
- * directory) are reached. Each real node_modules directory is listed once, so link cycles
- * terminate; a directory reached under several install names is recorded under each name.
+ * From each package's real path, every node_modules directory Node would search for its
+ * imports is listed too (each ancestor's node_modules, as Module._nodeModulePaths does), up to
+ * <root> for packages inside it and up to the filesystem root for packages linked from
+ * elsewhere (npm link, file: dependencies). That reaches dependencies stored as siblings (npm's
+ * linked install strategy, a .store or .pnpm directory) and those hoisted above a linked
+ * package. node_modules directories above <root> are not listed for packages inside <root>.
+ * Each real node_modules directory is listed once, so link cycles terminate; a directory
+ * reached under several install names is recorded under each name.
  * Directories that exist but cannot be read are returned as problems.
  */
-function installedPackages(root) {
+function installedPackages(root, rootReal) {
   const packages = [];
   const problems = [];
   const recorded = new Set();
   const listed = new Set();
-  const pending = [join(root, "node_modules")];
+  const queued = new Set();
+  const pending = [];
+  const queue = (dir) => {
+    if (queued.has(dir)) return;
+    queued.add(dir);
+    pending.push(dir);
+  };
+  queue(join(root, "node_modules"));
   const missing = (error) => error.code === "ENOENT" || error.code === "ENOTDIR";
   const isDirectory = (path, entry) => {
     if (entry.isDirectory()) return true;
@@ -136,10 +147,11 @@ function installedPackages(root) {
         packages.push({ path: dir, dirName, error: `package.json could not be read (${error.message})` });
       }
     }
-    pending.push(join(dir, "node_modules"));
-    let holder = dirname(real);
-    if (basename(holder).startsWith("@")) holder = dirname(holder);
-    if (basename(holder) === "node_modules") pending.push(holder);
+    queue(join(dir, "node_modules"));
+    for (let ancestor = real; ; ancestor = dirname(ancestor)) {
+      if (basename(ancestor) !== "node_modules") queue(join(ancestor, "node_modules"));
+      if (ancestor === rootReal || dirname(ancestor) === ancestor) break;
+    }
   };
   while (pending.length) {
     const nodeModules = pending.pop();
@@ -172,10 +184,16 @@ function installedPackages(root) {
 export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   const failures = [];
   const notes = [];
-  const { packages, problems } = installedPackages(root);
+  let rootReal = root;
+  try {
+    rootReal = realpathSync(root);
+  } catch {
+    // A missing root is reported below as missing packages.
+  }
+  const { packages, problems } = installedPackages(root, rootReal);
   const relative = (path) => {
-    const from = relativePath(root, path);
-    return (from.startsWith("..") ? path : from).replaceAll("\\", "/");
+    const from = [root, rootReal].map((base) => relativePath(base, path)).find((candidate) => !candidate.startsWith("..") && !isAbsolute(candidate));
+    return (from ?? path).replaceAll("\\", "/");
   };
   const topLevel = (name) => join(root, "node_modules", ...name.split("/"));
   // A copy of `name` is any directory installed as `name` or whose manifest is `name` (an npm alias).

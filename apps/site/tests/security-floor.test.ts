@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { chmodSync, copyFileSync, mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { chmodSync, copyFileSync, mkdirSync, mkdtempSync, realpathSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
@@ -19,7 +19,8 @@ const patched: Record<string, string> = {
 /** Synthetic install: each key is a package directory relative to the fixture root; the value is its
  *  version, or "name@version" for a directory whose manifest has another name (an npm alias). */
 function fixture(packages: Record<string, string>) {
-  const root = mkdtempSync(join(tmpdir(), "security-floor-"));
+  // The real path, so paths reached through links match it (macOS tmpdir is itself a link).
+  const root = realpathSync(mkdtempSync(join(tmpdir(), "security-floor-")));
   for (const [dir, spec] of Object.entries(packages)) {
     const at = spec.lastIndexOf("@");
     const [name, version] = at > 0 ? [spec.slice(0, at), spec.slice(at + 1)] : [dir.split("node_modules/").at(-1), spec];
@@ -156,6 +157,35 @@ test("security floor: dependencies stored as siblings in a .store directory are 
     symlinkSync(join(root, store, "tool-1/node_modules/tool"), join(root, "node_modules/tool"), "junction");
     symlinkSync(join(root, store, "rsdw-old/node_modules/react-server-dom-webpack"), join(root, store, "tool-1/node_modules/react-server-dom-webpack"), "junction");
     assert.match(checkSecurityFloor(root).failures.join("\n"), /react-server-dom-webpack@19\.2\.8 at node_modules\/\.store\/tool-1\/node_modules\/react-server-dom-webpack is below/);
+  });
+});
+
+test("security floor: a linked package's imports hoisted above its real path are checked", () => {
+  // app depends on "ui": "file:../lib/packages/ui"; lib hoisted ui's dependencies into lib/node_modules,
+  // which is where Node resolves them from at runtime.
+  const app = Object.fromEntries(Object.entries(patched).map(([dir, version]) => [`app/${dir}`, version]));
+  withFixture({ ...app, "lib/packages/ui": "1.0.0", "lib/node_modules/react-server-dom-webpack": "19.2.8", "lib/node_modules/next": "16.3.0" }, (root) => {
+    symlinkSync(join(root, "lib/packages/ui"), join(root, "app/node_modules/ui"), "junction");
+    const failures = checkSecurityFloor(join(root, "app")).failures.join("\n");
+    assert.match(failures, /react-server-dom-webpack@19\.2\.8 at .*lib\/node_modules\/react-server-dom-webpack is below/);
+    assert.match(failures, /next@16\.3\.0 at .*lib\/node_modules\/next is below/);
+  });
+  // Without the link, node_modules directories above the root are not inspected.
+  withFixture({ ...app, "node_modules/next": "16.3.0" }, (root) => assert.deepEqual(checkSecurityFloor(join(root, "app")).failures, []));
+});
+
+test("security floor: paths stay relative when the root is reached through a link", () => {
+  const store = "node_modules/.store";
+  withFixture({ ...patched, [`${store}/tool-1/node_modules/tool`]: "1.0.0", [`${store}/rsdw-old/node_modules/react-server-dom-webpack`]: "19.2.8" }, (root) => {
+    symlinkSync(join(root, store, "tool-1/node_modules/tool"), join(root, "node_modules/tool"), "junction");
+    symlinkSync(join(root, store, "rsdw-old/node_modules/react-server-dom-webpack"), join(root, store, "tool-1/node_modules/react-server-dom-webpack"), "junction");
+    const alias = `${root}-link`;
+    symlinkSync(root, alias, "junction");
+    try {
+      assert.match(checkSecurityFloor(alias).failures.join("\n"), /react-server-dom-webpack@19\.2\.8 at node_modules\/\.store\/tool-1\/node_modules\/react-server-dom-webpack is below/);
+    } finally {
+      rmSync(alias, { force: true });
+    }
   });
 });
 
