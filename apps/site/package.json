@@ -18,7 +18,7 @@
     "start": "vinext start",
     "typecheck": "tsc --noEmit",
     "check:security-floor": "node scripts/check-security-floor.mjs",
-    "test": "node --experimental-strip-types --test tests/domain.test.ts tests/live-data.test.ts tests/ncaaf-scoreboard.test.ts tests/site-helpers.test.ts tests/refresh.test.ts tests/injury-accuracy.test.ts tests/week7.test.ts tests/week8.test.ts tests/week9.test.ts tests/gameday.test.ts",
+    "test": "node --experimental-strip-types --test tests/domain.test.ts tests/live-data.test.ts tests/ncaaf-scoreboard.test.ts tests/site-helpers.test.ts tests/refresh.test.ts tests/injury-accuracy.test.ts tests/week7.test.ts tests/week8.test.ts tests/week9.test.ts tests/gameday.test.ts tests/security-floor.test.ts",
     "test:integration": "node --test tests/rendered-html.test.mjs",
     "test:e2e": "node --test tests/rendered-html.test.mjs",
     "test:a11y": "node --test tests/a11y.test.mjs",

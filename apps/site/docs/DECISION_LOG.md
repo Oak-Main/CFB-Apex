@@ -206,3 +206,7 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 ## PR54 dependency security release
 
 Dependency-only release of `apps/site`: React, React DOM and `react-server-dom-webpack` 19.2.9 and `@vitejs/plugin-rsc` 0.5.38, with `check:security-floor` asserting those floors. No source, data or route change. The production concurrency guard is advanced deliberately to the reviewed prior version e68bf76c-9dbe-4d89-aac8-ea82bf2a5f7b, which the October 28 refresh (main `bac60635`, Actions run 40775743317) published and which provider deployment history shows at 100% traffic with no later deployment. Rollback target for this release is that version.
+
+## Security-floor check follow-through
+
+The PR54 review found that `check:security-floor` skipped the react and react-dom checks unless react-server-dom-webpack was on 19.2.x, accepted react and react-dom 19.3.0, and stopped searching six directory levels deep. react and react-dom (top level) are now checked unconditionally; 19.3.0 and pre-release builds are refused for react, react-dom and every react-server-dom-* copy; the installed-tree walk has no depth limit and follows each symlinked directory once. Fixture tests cover each case and run in `npm test`. The check itself is still not a CI or deploy gate.
