@@ -84,6 +84,7 @@ interface VerifiedRefresh {
   requested_cutoff: string;
   retrieved_at: string;
   teamRecords: Record<string, string>;
+  gameAliases?: Record<string, string>;
   metrics: CurrentMetrics;
   playedGames?: unknown[];
   /** `kickoff_utc`/`time_et` are null only for an official TBD (`kickoff_status: "official_tbd"`). */
@@ -270,7 +271,7 @@ interface DatasetTeam {
 
 const datasetTeams = bundle.teams as DatasetTeam[];
 
-const p4Conferences = new Set(["sec", "acc", "big-ten", "big12", "pac12"]);
+const p4Conferences = new Set(["sec", "acc", "big-ten", "big12"]);
 
 function abbreviationFor(school: string) {
   const words = school
@@ -307,7 +308,7 @@ interface PlayedGame {
   week?: number | null;
   source_url?: string;
   verified_at?: string;
-  meta?: { as_of?: string };
+  meta?: { as_of?: string; full_season_review?: { checked_at: string } };
 }
 
 const playedGames = bundle.playedGames as PlayedGame[];
@@ -419,7 +420,8 @@ export function getConferenceHub(slug: string): ConferenceHub | null {
     .filter(
       (game) =>
         game.broadcast &&
-        Date.parse(game.date) >= now - 86400000 * 3 &&
+        game.status === "scheduled" &&
+        Date.parse(game.date) >= now &&
         Date.parse(game.date) <= now + 86400000 * 10,
     )
     .map((game) => ({ game, network: game.broadcast ?? "" }))
@@ -706,7 +708,7 @@ export const games: Game[] = [
       provenance: {
         ...derivedProvenance(id),
         sourceUrl: game.source_url,
-        sourceAsOf: game.meta?.as_of ?? asOf,
+        sourceAsOf: game.meta?.full_season_review ? game.date : game.meta?.as_of ?? asOf,
         fetchedAt: game.verified_at ?? game.meta?.as_of ?? asOf,
         verifiedAt: game.verified_at ?? game.meta?.as_of ?? asOf,
       },
@@ -1199,7 +1201,8 @@ export function getTeamBySlug(slug: string) {
 }
 
 export function getGame(gameId: string) {
-  return games.find((game) => game.id === gameId);
+  const canonicalId = verifiedRefresh?.gameAliases?.[gameId] ?? gameId;
+  return games.find((game) => game.id === canonicalId);
 }
 
 export function getCoachBySlug(slug: string) {

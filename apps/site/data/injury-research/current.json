@@ -1,7 +1,7 @@
 {
   "week": 8,
   "as_of": "2026-10-22",
-  "coverage_note": "Week 8 research completed October 20 for the supplied injury/quarterback items, plus Dante Moore and Julian Sayin. October 22 official follow-up verifies six game-specific designations: Singleton Available for October 22; Denegal, Smothers, Taylor and Bowman Questionable and Moore Out for October 24. Big Ten report dates are preserved without inventing an unpublished clock time. Other watch rows keep their independently dated reporting; omitted names are not clearance. Practice and return likelihood remain unknown. Six October 5 ledger entries and the October 10 official table remain historical. Coverage is limited, not an all-FBS clearance report.",
+  "coverage_note": "Week 8 research completed October 20 for the supplied injury/quarterback items, plus Dante Moore and Julian Sayin. October 22 official follow-up verifies six game-specific designations: Singleton Available for October 22; Denegal, Smothers, Taylor and Bowman Questionable and Moore Out for October 24. Big Ten report dates are preserved without inventing an unpublished clock time. Other watch rows keep their independently dated reporting; omitted names are not clearance. Practice and return likelihood remain unknown. Six October 5 ledger entries and the October 10 official table remain historical. Coverage is limited, not an all-FBS clearance report. October 28 release adds one independently dated October 27 USC preview context note for Julian Sayin. The Week 8 document and official game reports retain their historical dates. Week 9 filings are not yet verified; Wednesday preliminary reports are not final game-day designations.",
   "ledger": [
     {
       "player": "Mason Heintschel",
@@ -401,6 +401,16 @@
       "sources": [
         "https://goducks.com/news/2026/10/18/football-raiola-sparks-ducks-to-comeback-victory",
         "https://sports.yahoo.com/articles/dan-lannings-dylan-raiola-comments-142000495.html"
+      ]
+    },
+    {
+      "player": "Julian Sayin",
+      "team_slug": "ohio-state",
+      "source_as_of": "2026-10-27",
+      "title": "USC opponent preview: out indefinitely",
+      "note": "USC’s October 27 official preview reports a throwing-arm injury and says Sayin is out indefinitely. Luke Fahey is expected to start; Tavien St. Clair also took first-team repetitions. This is attributed reporting, not an official Week 9 game-day designation or a season-ending diagnosis.",
+      "sources": [
+        "https://usctrojans.com/news/2026/10/27/usc-trojans-football-game-preview-notes-ohio-state-buckeyes-nbc-sports-halloween-lincoln-riley"
       ]
     }
   ],

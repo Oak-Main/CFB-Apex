@@ -98,7 +98,7 @@ test("the current ticker leads with verified Week 8 finals and non-final games",
 });
 
 test("source cutoffs advance separately and all 138 records reconcile", () => {
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
   assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-10-25", "2026-10-25"]);
   assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "miami-fl");
   for (const move of verifiedRefresh?.poll_notes?.movers_ap ?? []) assert.equal(move.move, move.to - move.from);
@@ -109,7 +109,8 @@ test("source cutoffs advance separately and all 138 records reconcile", () => {
   assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 2604);
   assert.equal(boardWeeks.find(w => w.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(Object.keys(resultsEvidence.records).length, 138);
-  for (const [slug, record] of Object.entries(resultsEvidence.records)) {
+  const currentRecords = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-28-week9-refresh.json", import.meta.url), "utf8")).records;
+  for (const [slug, record] of Object.entries(currentRecords)) {
     assert.equal(verifiedRefresh?.teamRecords[slug], record);
   }
 });
@@ -133,7 +134,7 @@ test("current editorial modules retain their independently dated facts", () => {
 
 test("Week 8 research keeps unknown returns, reported statuses and medical context distinct", () => {
   assert.equal(injuryResearch.watch.length, 11);
-  assert.equal(injuryResearch.contextNotes.length, 2);
+  assert.equal(injuryResearch.contextNotes.length, 3);
   assert.ok(injuryResearch.watch.every(r => Object.values(r.practice).every(v => v == null) && r.likelihood == null && r.sourceAsOf && r.sources.length));
   assert.equal(injuryResearch.watch.find(r => r.player === "Khobie Martin")?.reportedStatus, "Week 8 return unconfirmed");
   assert.equal(injuryResearch.watch.find(r => r.player === "Kamario Taylor")?.reportedStatus, "Official Questionable · October 24");
@@ -198,7 +199,7 @@ test("all fifty-six Week 8 finals preserve source identities, quarter sums and o
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "appalachian-state").periods, 5);
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "memphis").periods, 5);
   assert.equal(verifiedRefresh?.scheduledGames.filter(g => g.week === 8).length, 0);
-  assert.equal(resultsSnapshot.playedGames.length, 429);
+  assert.equal(resultsSnapshot.playedGames.length, 446);
 });
 
 test("late finals require school agreement and retain conflicting NCAA states and kickoff claims", () => {

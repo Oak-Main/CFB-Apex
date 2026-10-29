@@ -56,12 +56,34 @@ jobs:
             echo '::error::Production was not deployed: set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets.'
             exit 1
           fi
+          if [ "$CLOUDFLARE_ACCOUNT_ID" != "820e7cee61fccc60d14c8e20bc686942" ]; then
+            echo '::error::Production account does not match the verified CFB Apex account.'
+            exit 1
+          fi
+      - name: Verify the reviewed production version is still active
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler deployments list --config wrangler.deploy.jsonc --json > .wrangler/deployments-before.json
+          node scripts/verify-production-target.mjs .wrangler/deployments-before.json
       - name: Deploy verified build to CFBAPEX.COM
         if: github.event_name != 'pull_request'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy --config wrangler.deploy.jsonc
+        run: |
+          set -o pipefail
+          npx wrangler deploy --config wrangler.deploy.jsonc | tee .wrangler/deployment-output.log
+      - name: Verify the deployed version receives all production traffic
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler deployments list --config wrangler.deploy.jsonc --json > .wrangler/deployments-after.json
+          node scripts/verify-production-target.mjs .wrangler/deployments-after.json .wrangler/deployment-output.log
       - name: Check production snapshot across surfaces
         if: github.event_name != 'pull_request'
         run: |

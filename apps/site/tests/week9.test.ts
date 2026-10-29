@@ -1,28 +1,31 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { games, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
+import { games, getGame, getConferenceHub, teams, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
 import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "../lib/game-calendar.ts";
 import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
+import { reviewedProductionVersion, verifyProductionTarget } from "../scripts/verify-production-target.mjs";
+import { verifyFullSeason } from "../scripts/full-season-validation.mjs";
 import { selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
 import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern, withoutHtmlComments } from "../scripts/gameday-source-validation.mjs";
 
-const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-25-week9-preparation.json", import.meta.url), "utf8"));
-const now = Date.parse("2026-10-25T19:30:00Z");
+const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-28-week9-refresh.json", import.meta.url), "utf8"));
+const now = Date.parse("2026-10-28T20:32:04.954Z");
 
 test("Week 9 cutover selects the upcoming slate while Week 8 remains a complete explicit archive", () => {
   const upcoming = gameDaySnapshot(now), archive = gameDaySnapshot(now, "8");
   assert.equal(gameDaySnapshot(Date.parse("2026-10-25T12:59:59Z")).selectedWeek, 8);
   assert.equal(gameDaySnapshot(Date.parse("2026-10-25T13:00:00Z")).selectedWeek, 9);
   assert.equal(upcoming.selectedWeek, 9); assert.equal(upcoming.games.length, evidence.inventories[9].expected);
-  assert.ok(upcoming.games.every(g => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
+  assert.equal(upcoming.games.filter(g => g.status === "final").length, 2);
+  assert.equal(upcoming.games.filter(g => g.status === "scheduled" && g.homeScore === null && g.awayScore === null).length, 54);
   assert.equal(archive.selectedWeek, 8); assert.ok(archive.explicit);
   assert.equal(archive.games.length, evidence.inventories[8].expected);
   assert.ok(archive.games.every(g => g.status === "final"));
   assert.deepEqual(upcoming.previousFinals, archive.games);
   assert.equal(upcoming.revision, archive.revision);
-  assert.equal(upcoming.sourceDates.results, null);
+  assert.ok(upcoming.sourceDates.results);
   assert.equal(upcoming.sourceDates.previousResults, archive.sourceDates.results);
   assert.equal(upcoming.weeks.find(w => w.week === 9)?.marquee_game_id, undefined);
 });
@@ -63,7 +66,7 @@ test("corrected finals replace one stable event, reconcile records idempotently 
 });
 
 test("postponed, canceled and delayed games never become scheduled or inferred finals", () => {
-  const game = games.find(g => g.week === 9); assert.ok(game);
+  const game = games.find(g => g.week === 9 && g.status === "scheduled"); assert.ok(game);
   for (const status of ["postponed", "canceled", "delayed"] as const) {
     assert.equal(reviewedScheduleStatus(status), status);
     const projected = publicGame({...game,status,date:"2026-10-01T00:00Z"}, now);
@@ -87,7 +90,7 @@ test("poll publication and per-module source dates do not follow build or reques
   assert.deepEqual(first.sourceDates, later.sourceDates); assert.equal(first.revision, later.revision);
   assert.ok(first.polls.every(p => p.release_date === "2026-10-25"));
   assert.equal(sourceDateLabel("2026-10-25"), "Oct 25, 2026");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
   assert.equal(first.injuries.week, 8); assert.notEqual(first.sourceDates.injuries, first.sourceDates.schedule);
 });
 
@@ -196,4 +199,64 @@ test("smoke matching removes HTML comment nodes while preserving script text and
   assert.ok(normalized.includes('const marker = "<!--literal-->";'));
   assert.equal(normalized.includes("<!--react marker-->"), false);
   assert.equal(normalized.includes("<!--hidden marker-->"), false);
+});
+
+test("October 28 release separates two finals, 54 upcoming games and 138 whole-team records", async () => {
+  const snapshot = gameDaySnapshot(now, "9");
+  assert.equal(snapshot.games.length, 56);
+  assert.equal(snapshot.games.filter(g => g.status === "final").length, 2);
+  assert.equal(snapshot.games.filter(g => g.status === "scheduled").length, 54);
+  for (const [id, away, home] of [["2026-10-27-delaware-at-western-kentucky",35,21],["2026-10-27-sam-houston-at-missouri-state",3,24]] as const) {
+    const game = snapshot.games.find(g => g.id === id); assert.ok(game);
+    assert.equal(game.awayScore, away); assert.equal(game.homeScore, home); assert.equal(game.status, "final");
+  }
+  const keys = snapshot.games.map(g => `${easternDate(g.date)}:${g.awayTeamId}:${g.homeTeamId}`);
+  assert.equal(new Set(keys).size, 56);
+  assert.equal(new Set(evidence.primaryRecords.map((r: {slug:string}) => r.slug)).size, 138);
+  assert.equal(verifiedRefresh?.teamRecords.lsu, "6-2", "includes LSU's FCS win");
+  assert.equal(verifiedRefresh?.teamRecords.delaware, "4-4");
+  const ap = snapshot.polls.find(p => p.poll === "ap"); assert.ok(ap);
+  assert.equal(ap.rankings.filter(r => r.rank === 20).length, 2);
+  assert.equal(ap.rankings.filter(r => r.rank === 21).length, 0);
+  const { noNames } = await import("../lib/no-names.ts");
+  assert.ok(noNames.filter(p => p.stars == null).every(p => p.howAcquired === "unknown"));
+  const injury = snapshot.injuries.contextNotes.find(r => r.player === "Julian Sayin" && r.source_as_of === "2026-10-27");
+  assert.ok(injury); assert.match(injury.note, /not an official Week 9 game-day designation/);
+  assert.equal(snapshot.injuries.asOf, "2026-10-22");
+  assert.ok(!snapshot.injuries.officialReports.some(r => r.game_date === "2026-10-31"));
+});
+
+
+test("complete season inventory includes FCS records, restores omitted finals and preserves duplicate URLs", () => {
+  const snapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
+  const audit = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-28-full-season-audit.json", import.meta.url), "utf8"));
+  const result = verifyFullSeason(snapshot, audit);
+  assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [568, 446, 122, 138]);
+  assert.equal(audit.additions.length, 17);
+  assert.ok(getConferenceHub("cusa")?.tvGamesThisWeek.every(({game}) => game.status === "scheduled" && Date.parse(game.date) >= Date.now()));
+  assert.equal(teams.filter(t => t.subdivision === "P4").length, 67);
+  assert.equal(teams.find(t => t.slug === "boise-state")?.subdivision, "G5", "legacy internal non-P4 category renders Other FBS, including the Pac-12");
+  for (const id of audit.additions) assert.equal(getGame(id)?.status, "final");
+  assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.sourceAsOf, "2026-09-03");
+  assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.verifiedAt, audit.verification_completed_at);
+  for (const [alias, canonical] of Object.entries(snapshot.gameAliases)) assert.equal(getGame(alias)?.id, canonical);
+  assert.equal(games.filter(g => g.status === "final" && [g.homeTeamId, g.awayTeamId].includes("memphis") && [g.homeTeamId, g.awayTeamId].includes("unlv")).length, 1);
+  const missing = structuredClone(snapshot); missing.playedGames.pop();
+  assert.throws(() => verifyFullSeason(missing, audit));
+  const duplicate = structuredClone(snapshot); duplicate.playedGames.push(duplicate.playedGames[0]);
+  assert.throws(() => verifyFullSeason(duplicate, audit), /row count/);
+  const replacement = structuredClone(snapshot); replacement.playedGames[1].provider_id = replacement.playedGames[0].provider_id;
+  assert.throws(() => verifyFullSeason(replacement, audit), /Duplicate provider identity/);
+});
+
+
+test("production guard refuses newer versions, split traffic and invalid provider evidence", () => {
+  const old = { id: "older", created_on: "2026-10-20T00:00:00Z", versions: [{ version_id: "607ca0f2-0000-4000-8000-000000000000", percentage: 100 }] };
+  const reviewed = { id: "reviewed", created_on: "2026-10-25T20:00:00Z", versions: [{ version_id: reviewedProductionVersion, percentage: 100 }] };
+  assert.equal(verifyProductionTarget([old, reviewed], reviewedProductionVersion).deploymentId, "reviewed");
+  const newer = { ...old, id: "newer", created_on: "2026-10-28T22:00:00Z" };
+  assert.throws(() => verifyProductionTarget([reviewed, newer], reviewedProductionVersion), /differs/);
+  assert.throws(() => verifyProductionTarget([{ ...reviewed, versions: [{ version_id: reviewedProductionVersion, percentage: 50 }] }], reviewedProductionVersion), /differs/);
+  assert.throws(() => verifyProductionTarget([], reviewedProductionVersion), /No provider/);
+  assert.throws(() => verifyProductionTarget([{ ...reviewed, created_on: "unknown" }], reviewedProductionVersion), /timestamp/);
 });

@@ -185,3 +185,20 @@ Reconcile main a5935c90 into PR53 with both parents retained. Keep PR53's nullis
 ### Assertion-only HTML comment parsing follow-through
 
 The smoke comment-filter alert is a contextual false positive: normalized HTML feeds only string assertions, with no rendering or execution sink. Use the existing parse5 parser to remove actual comment nodes, including template comments, while preserving literal comment-like text inside scripts. A focused regression pins this distinction. No security query, scanner, gate or authentication control is suppressed or disabled.
+
+
+## October 28 native weekly refresh
+
+Owner-approved native-only release from main 50afe3d5. Reconcile 56 Week 8 finals, two October 27 Week 9 finals, 54 upcoming games and 138 whole-team records. Four displayed national leader categories are independently updated through October 27. Keep all other module dates; explicitly label historical coverage and withhold unsupported current NIL and playoff output. Null recruiting stars are unknown, not unrated. Preserve companion applications, unrelated PR54 and existing gates. Exact source/field mapping, indexed-source limitation, cutoff, deployment target and rollback: [WEEKLY_REFRESH_2026-10-28.md](WEEKLY_REFRESH_2026-10-28.md). Candidate, synthetic-merge, merged-main, deployment and live verdicts must remain separate.
+
+Full-season final accuracy amendment: all 568 completed FBS-involving games reconciled, including 122 FCS opponents. Restore 17 omitted September finals, consolidate two duplicates with stable URL aliases, and correct Eastern dates without renaming original IDs. All 138 official records are independently corroborated and also reproduced by the complete inventory. See the linked release evidence for retrieval times, source fields and browser-runtime limitations.
+
+Browser follow-through: the planner footer now uses the actual `/stadiums/<slug>` route only where a venue guide exists; neutral venue guides remain unavailable. Result provenance uses each game’s Eastern playing date as its through-games date and displays the later verification time separately. Recovered September results cannot inherit the old September 5 fallback date.
+
+The current four Power Four conferences contain 67 programs. The rebuilt Pac-12 is outside that group; public cards/filters say Other FBS rather than the obsolete Group of Five count. The legacy internal G5 enum is retained for compatibility and is not a CFP qualification rule.
+
+PR55 review follow-through: reject duplicate published provider rows before Map conversion and assert the full NCAA array count plus unique contest identities. Regressions cover an appended duplicate and a replaced provider ID. Align the No Names interface/header with unknown rather than asserting an unrated/qualifying status. The planner-footer finding is addressed by the supported-route and neutral-unavailable changes.
+
+Final ratings inspection: replace the directory’s unlabeled derived/fallback strength values with published AP rank. Withhold the unverified derived SOS index, preserve the historical inputs and exact AP/Coaches composite formula, date conference SP+/reported-odds cards to September 27, and exclude completed games from upcoming-TV lists. No new rating or probability is invented.
+
+Production concurrency guard: immediately before deployment, read Wrangler’s actual deployment history and require the reviewed prior version 980dc3cc-1034-4da5-a7a1-73a3d0c9ad84 at 100% traffic. Refuse a newer or split deployment. After publication, parse Wrangler’s returned version ID and require that exact version at 100% traffic from provider evidence. Tests cover oldest-first history, newer work, split traffic and missing/invalid evidence. A future release must deliberately review and advance the expected prior version; automatic reruns cannot overwrite newer production work.

@@ -99,7 +99,7 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     "Atlantic Coast Conference",
   );
   assert.equal(homepageData.portalAsOf, "2026-09-07");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
   assert.equal(
     verifiedRefresh?.metrics.categories[0].rows.find(
       (row) => row.name === "Braden Atkinson",
@@ -134,8 +134,8 @@ test("the two wrongly excluded FBS games are restored with records and TV", () =
   for (const row of verifiedRefresh?.excludedGames ?? []) {
     assert.ok(row.espn_conference_ids, `${row.name} carries exclusion evidence`);
   }
-  assert.equal(verifiedRefresh?.excludedGames?.length, 6);
-  assert.equal(verifiedRefresh?.excludedGames?.filter((row) => row.date < "2026-10-12").length, 3);
+  assert.equal(verifiedRefresh?.excludedGames?.length, 122);
+  assert.equal(verifiedRefresh?.excludedGames?.filter((row) => row.date < "2026-10-12").length, 119);
 });
 
 test("October 25 poll notes use October 18 movement and retain others receiving votes", () => {
@@ -295,9 +295,9 @@ test("current records for tracked midweek teams include all later verified final
   "fiu": "3–4",
   "new-mexico-state": "3–4",
   "liberty": "6–1",
-  "sam-houston": "1–6",
-  "western-kentucky": "3–4",
-  "missouri-state": "2–5",
+  "sam-houston": "1–7",
+  "western-kentucky": "3–5",
+  "missouri-state": "3–5",
   "utsa": "7–1",
   "south-florida": "5–2",
   "south-alabama": "4–3",
@@ -312,9 +312,9 @@ test("current records for tracked midweek teams include all later verified final
   "utsa": "4-0",
   "south-florida": "1-2",
   "liberty": "3-0",
-  "sam-houston": "0-3",
-  "western-kentucky": "2-1",
-  "missouri-state": "1-2",
+  "sam-houston": "0-4",
+  "western-kentucky": "2-2",
+  "missouri-state": "2-2",
   "jacksonville-state": "3-0",
   "kennesaw-state": "0-3",
   "fiu": "1-2",
@@ -330,7 +330,7 @@ test("current records for tracked midweek teams include all later verified final
 });
 
 test("freshness stays per source: polls and stats keep their own cutoffs", () => {
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-17", "stats cutoff not advanced by new finals");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27", "stats cutoff follows the independently retrieved NCAA table");
   assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-10-25");
   const week6 = boardWeeks.find((row) => row.week === 6);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z", "Week 6 base snapshot time unchanged");
