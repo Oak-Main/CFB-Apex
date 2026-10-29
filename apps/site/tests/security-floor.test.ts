@@ -86,6 +86,11 @@ test("security floor: missing packages and unreadable manifests fail", () => {
     const unreadable = checkSecurityFloor(root).failures.join("\n");
     assert.match(unreadable, /next@undefined at node_modules\/next has no valid version/);
     assert.match(unreadable, /node_modules\/broken: package\.json could not be read/);
+    // A checked package with an unreadable manifest is reported once, not also as a bad version.
+    writeFileSync(join(root, "node_modules/@vitejs/plugin-rsc/package.json"), "{ not json");
+    const reported = checkSecurityFloor(root).failures.filter((failure) => failure.includes("plugin-rsc"));
+    assert.equal(reported.length, 1, reported.join("\n"));
+    assert.match(reported[0], /^node_modules\/@vitejs\/plugin-rsc: package\.json could not be read/);
   });
 });
 

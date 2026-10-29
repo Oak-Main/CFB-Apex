@@ -201,7 +201,6 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
     packages.filter((pkg) => (pkg.dirName === name || pkg.name === name) && (!topLevelOnly || pkg.path === topLevel(name)));
   const describe = (name, pkg) => `${name}@${pkg.version} at ${relative(pkg.path)}${pkg.dirName === name ? "" : ` (installed as ${pkg.dirName})`}`;
   const problemOf = (pkg, rule) => {
-    if (pkg.error) return pkg.error;
     try {
       return rule(pkg.version);
     } catch {
@@ -212,7 +211,8 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   function assertCopies(name, rule, floor, { required = true, topLevelOnly = false } = {}) {
     const copies = copiesOf(name, { topLevelOnly });
     if (!copies.length && required) failures.push(`${name}: not installed (run npm ci); floor is ${floor}`);
-    for (const pkg of copies) {
+    // A copy whose manifest could not be read is already a failure (below); it still counts as installed.
+    for (const pkg of copies.filter((copy) => !copy.error)) {
       const problem = problemOf(pkg, rule);
       if (problem) failures.push(`${describe(name, pkg)} ${problem}`);
       else notes.push(`${describe(name, pkg)} >= ${floor}`);
@@ -220,7 +220,7 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   }
 
   function reportCopies(name, rule, explanation) {
-    for (const pkg of copiesOf(name)) {
+    for (const pkg of copiesOf(name).filter((copy) => !copy.error)) {
       const problem = problemOf(pkg, rule);
       notes.push(`${describe(name, pkg)} ${problem ?? "meets the floor"}; ${explanation}`);
     }
@@ -237,7 +237,7 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   // whatever react-server-dom-webpack version is installed.
   for (const name of ["react", "react-dom"]) {
     assertCopies(name, reactVersionProblem, REACT_FLOOR, { topLevelOnly: true });
-    for (const pkg of copiesOf(name).filter((copy) => copy.path !== topLevel(name))) {
+    for (const pkg of copiesOf(name).filter((copy) => copy.path !== topLevel(name) && !copy.error)) {
       notes.push(`${describe(name, pkg)} is nested and ${problemOf(pkg, reactVersionProblem) ?? "meets the floor"}; informational, not asserted`);
     }
   }
