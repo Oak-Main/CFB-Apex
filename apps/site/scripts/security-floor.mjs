@@ -20,10 +20,13 @@
  * Every installed copy of react-server-dom-*, @vitejs/plugin-rsc and next is
  * checked, however deeply nested, and whether it is installed under its own name
  * or an npm alias. react and react-dom are not themselves named in the advisories;
- * the copies the application resolves (top level) are checked so they match the
- * patched react-server-dom-webpack, and nested copies are listed. The walk follows
- * the node_modules layout as Node resolves it; dot-directories (.bin, .cache, .store, .pnpm) are
- * reached only through the links that point into them.
+ * they must match the patched react-server-dom-* (react-server-dom-webpack 19.2.9
+ * peer-requires ^19.2.9), so the copies the application resolves (top level) and the
+ * copies each react-server-dom-* copy resolves are checked; other copies are listed.
+ * The walk covers the node_modules directories npm creates (see installedPackages);
+ * dot-directories (.bin, .cache, .store, .pnpm) are reached only through the links that
+ * point into them, and node_modules directories inside a package's own subdirectories,
+ * which npm does not create, are not searched.
  */
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from "node:fs";
 import { basename, dirname, isAbsolute, join, relative as relativePath } from "node:path";
@@ -75,6 +78,18 @@ export function reactVersionProblem(version) {
   if (core[0] === 19 && core[1] === 3 && core[2] === 0) return "is vulnerable (19.3.0; fixed in 19.3.1)";
   if (pre.length) return "is a pre-release build; use a stable patched release";
   return null;
+}
+
+/** The package installed in `dir` as `dirName`, with its manifest name and version or why they are unavailable. */
+function readPackage(dir, dirName, real) {
+  const manifest = join(dir, "package.json");
+  if (!existsSync(manifest)) return { path: dir, real, dirName, missing: true };
+  try {
+    const { name, version } = JSON.parse(readFileSync(manifest, "utf8").trimStart());
+    return { path: dir, real, dirName, name, version };
+  } catch (error) {
+    return { path: dir, real, dirName, error: `package.json could not be read (${error.message})` };
+  }
 }
 
 /** Why `version` is below `floor`, or null when it is at or above it. */
@@ -138,15 +153,7 @@ function installedPackages(root, rootReal) {
     const key = JSON.stringify([real, dirName]);
     if (recorded.has(key)) return;
     recorded.add(key);
-    const manifest = join(dir, "package.json");
-    if (existsSync(manifest)) {
-      try {
-        const { name, version } = JSON.parse(readFileSync(manifest, "utf8").trimStart());
-        packages.push({ path: dir, dirName, name, version });
-      } catch (error) {
-        packages.push({ path: dir, dirName, error: `package.json could not be read (${error.message})` });
-      }
-    }
+    packages.push(readPackage(dir, dirName, real));
     queue(join(dir, "node_modules"));
     for (let ancestor = real; ; ancestor = dirname(ancestor)) {
       if (basename(ancestor) !== "node_modules") queue(join(ancestor, "node_modules"));
@@ -197,8 +204,7 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   };
   const topLevel = (name) => join(root, "node_modules", ...name.split("/"));
   // A copy of `name` is any directory installed as `name` or whose manifest is `name` (an npm alias).
-  const copiesOf = (name, { topLevelOnly = false } = {}) =>
-    packages.filter((pkg) => (pkg.dirName === name || pkg.name === name) && (!topLevelOnly || pkg.path === topLevel(name)));
+  const copiesOf = (name) => packages.filter((pkg) => pkg.dirName === name || pkg.name === name);
   const describe = (name, pkg) => `${name}@${pkg.version} at ${relative(pkg.path)}${pkg.dirName === name ? "" : ` (installed as ${pkg.dirName})`}`;
   const problemOf = (pkg, rule) => {
     try {
@@ -207,20 +213,44 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
       return `has no valid version (${JSON.stringify(pkg.version)})`;
     }
   };
+  // The directory Node loads `name` from for a package whose real directory is `from`: the nearest
+  // ancestor's node_modules/<name>, up to <root> for packages inside it.
+  const resolveFrom = (from, name) => {
+    for (let ancestor = from; ; ancestor = dirname(ancestor)) {
+      if (basename(ancestor) !== "node_modules") {
+        const candidate = join(ancestor, "node_modules", ...name.split("/"));
+        if (existsSync(candidate)) return candidate;
+      }
+      if (ancestor === rootReal || dirname(ancestor) === ancestor) return null;
+    }
+  };
+  const packageAt = (dir, name) => {
+    const real = realpathSync(dir);
+    return packages.find((pkg) => pkg.real === real && pkg.dirName === name) ?? readPackage(dir, name, real);
+  };
 
-  function assertCopies(name, rule, floor, { required = true, topLevelOnly = false } = {}) {
-    const copies = copiesOf(name, { topLevelOnly });
-    if (!copies.length && required) failures.push(`${name}: not installed (run npm ci); floor is ${floor}`);
-    // A copy whose manifest could not be read is already a failure (below); it still counts as installed.
-    for (const pkg of copies.filter((copy) => !copy.error)) {
+  // A walked copy whose manifest could not be read is already a failure (below); it still counts as installed.
+  function assertCopy(name, pkg, rule, floor) {
+    if (pkg.error) {
+      if (!packages.includes(pkg)) failures.push(`${relative(pkg.path)}: ${pkg.error}`);
+      return;
+    }
+    if (pkg.missing) failures.push(`${relative(pkg.path)}: installed as ${name} but has no package.json`);
+    else {
       const problem = problemOf(pkg, rule);
       if (problem) failures.push(`${describe(name, pkg)} ${problem}`);
       else notes.push(`${describe(name, pkg)} >= ${floor}`);
     }
   }
 
+  function assertCopies(name, rule, floor, { required = true } = {}) {
+    const copies = copiesOf(name);
+    if (!copies.length && required) failures.push(`${name}: not installed (run npm ci); floor is ${floor}`);
+    for (const pkg of copies) assertCopy(name, pkg, rule, floor);
+  }
+
   function reportCopies(name, rule, explanation) {
-    for (const pkg of copiesOf(name).filter((copy) => !copy.error)) {
+    for (const pkg of copiesOf(name).filter((copy) => !copy.error && !copy.missing)) {
       const problem = problemOf(pkg, rule);
       notes.push(`${describe(name, pkg)} ${problem ?? "meets the floor"}; ${explanation}`);
     }
@@ -233,12 +263,25 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   assertCopies("react-server-dom-webpack", reactVersionProblem, REACT_FLOOR);
   for (const name of RSDW_PACKAGES.slice(1)) assertCopies(name, reactVersionProblem, REACT_FLOOR, { required: false });
 
-  // react and react-dom must move with react-server-dom-webpack (its peer range is ^19.2.9),
-  // whatever react-server-dom-webpack version is installed.
+  // react and react-dom: the copies the application resolves (top level) and the copies each
+  // react-server-dom-* copy resolves, whatever react-server-dom-* version is installed.
+  const flightCopies = RSDW_PACKAGES.flatMap((name) => copiesOf(name).map((pkg) => ({ name, pkg }))).filter(({ pkg }) => !pkg.error && !pkg.missing);
   for (const name of ["react", "react-dom"]) {
-    assertCopies(name, reactVersionProblem, REACT_FLOOR, { topLevelOnly: true });
-    for (const pkg of copiesOf(name).filter((copy) => copy.path !== topLevel(name) && !copy.error)) {
-      notes.push(`${describe(name, pkg)} is nested and ${problemOf(pkg, reactVersionProblem) ?? "meets the floor"}; informational, not asserted`);
+    const resolved = new Map();
+    const app = existsSync(topLevel(name)) ? packageAt(topLevel(name), name) : null;
+    if (app) resolved.set(app.real, app);
+    else failures.push(`${name}: not installed (run npm ci); floor is ${REACT_FLOOR}`);
+    for (const { name: flight, pkg } of flightCopies) {
+      const dir = resolveFrom(pkg.real, name);
+      if (!dir) failures.push(`${describe(flight, pkg)} cannot resolve ${name}`);
+      else {
+        const copy = packageAt(dir, name);
+        if (!resolved.has(copy.real)) resolved.set(copy.real, copy);
+      }
+    }
+    for (const pkg of resolved.values()) assertCopy(name, pkg, reactVersionProblem, REACT_FLOOR);
+    for (const pkg of copiesOf(name).filter((copy) => !resolved.has(copy.real) && !copy.error && !copy.missing)) {
+      notes.push(`${describe(name, pkg)} ${problemOf(pkg, reactVersionProblem) ?? "meets the floor"}; not resolved by the app or by react-server-dom-*, informational, not asserted`);
     }
   }
 

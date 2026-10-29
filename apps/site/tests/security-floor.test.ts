@@ -118,10 +118,34 @@ test("security floor: copies installed under an npm alias are checked", () => {
   assert.match(failures, /next@16\.3\.8 at node_modules\/next-old \(installed as next-old\) is below/);
 });
 
-test("security floor: nested react copies are reported but not asserted", () => {
-  const { failures, notes } = check({ ...patched, "node_modules/dev-tool/node_modules/react": "18.3.1" });
+test("security floor: react copies no react-server-dom-* copy resolves are reported but not asserted", () => {
+  const { failures, notes } = check({ ...patched, "node_modules/dev-tool/node_modules/react": "18.3.1", "node_modules/react-old": "react@19.2.8" });
   assert.deepEqual(failures, []);
-  assert.ok(notes.some((note) => /react@18\.3\.1 at node_modules\/dev-tool\/node_modules\/react is nested and is below/.test(note)), notes.join("\n"));
+  assert.ok(notes.some((note) => /react@18\.3\.1 at node_modules\/dev-tool\/node_modules\/react is below the security floor 19\.2\.9; not resolved by the app/.test(note)), notes.join("\n"));
+  assert.ok(notes.some((note) => /react@19\.2\.8 at node_modules\/react-old \(installed as react-old\) is below .*; not resolved by the app/.test(note)), notes.join("\n"));
+});
+
+test("security floor: the react and react-dom each react-server-dom-* copy resolves are checked", () => {
+  const failures = check({
+    ...patched,
+    "node_modules/tool/node_modules/react-server-dom-webpack": "19.2.9",
+    "node_modules/tool/node_modules/react": "19.2.8",
+    "node_modules/other/node_modules/react-server-dom-turbopack": "19.3.1",
+    "node_modules/other/node_modules/react-dom": "19.3.0",
+  }).failures.join("\n");
+  assert.match(failures, /react@19\.2\.8 at node_modules\/tool\/node_modules\/react is below/);
+  assert.match(failures, /react-dom@19\.3\.0 at node_modules\/other\/node_modules\/react-dom is vulnerable/);
+});
+
+test("security floor: a checked package directory without package.json fails", () => {
+  withFixture({ ...patched, "node_modules/stray/node_modules/placeholder": "1.0.0" }, (root) => {
+    for (const dir of ["node_modules/tool/node_modules/react-server-dom-webpack", "node_modules/stray/assets"]) {
+      mkdirSync(join(root, dir), { recursive: true });
+      writeFileSync(join(root, dir, "index.js"), "module.exports = {};\n");
+    }
+    const failures = checkSecurityFloor(root).failures;
+    assert.deepEqual(failures, ["node_modules/tool/node_modules/react-server-dom-webpack: installed as react-server-dom-webpack but has no package.json"]);
+  });
 });
 
 test("security floor: link cycles terminate and each real package is checked once", () => {
