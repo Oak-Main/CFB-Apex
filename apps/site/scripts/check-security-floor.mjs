@@ -20,8 +20,12 @@ function usageError(message) {
   process.exit(2);
 }
 
-let root = fileURLToPath(new URL("..", import.meta.url));
+let root;
 let requireVinext = false;
+const setRoot = (value) => {
+  if (root !== undefined) usageError("--root given more than once");
+  root = value;
+};
 const args = process.argv.slice(2);
 for (let i = 0; i < args.length; i++) {
   const arg = args[i];
@@ -29,13 +33,13 @@ for (let i = 0; i < args.length; i++) {
   else if (arg === "--root") {
     const value = args[++i];
     if (!value || value.startsWith("--")) usageError("--root needs a directory");
-    root = value;
+    setRoot(value);
   } else if (arg.startsWith("--root=")) {
     if (arg.length === "--root=".length) usageError("--root needs a directory");
-    root = arg.slice("--root=".length);
+    setRoot(arg.slice("--root=".length));
   } else usageError(`unknown argument ${arg}`);
 }
-root = resolve(root);
+root = resolve(root ?? fileURLToPath(new URL("..", import.meta.url)));
 
 let result;
 try {

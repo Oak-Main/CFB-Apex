@@ -22,11 +22,11 @@
  * or an npm alias. react and react-dom are not themselves named in the advisories;
  * the copies the application resolves (top level) are checked so they match the
  * patched react-server-dom-webpack, and nested copies are listed. The walk follows
- * npm's node_modules layout; dot-directories (.bin, .cache, a pnpm .pnpm store) are
- * not walked.
+ * the node_modules layout as Node resolves it; dot-directories (.bin, .cache, .store, .pnpm) are
+ * reached only through the links that point into them.
  */
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { basename, dirname, join, relative as relativePath } from "node:path";
 
 const REACT_FLOOR = "19.2.9";
 const PLUGIN_RSC_FLOOR = "0.5.38";
@@ -83,22 +83,37 @@ function floorProblem(version, floor) {
 }
 
 /**
- * Every package directory under <root>/node_modules with its manifest name and version,
- * however deeply nested. Symlinked directories (and Windows junctions) are followed, and
- * each real directory is read once, so link cycles terminate.
+ * Every package directory reachable from <root>/node_modules, with its manifest name and
+ * version, however deeply nested. Symlinked directories (and Windows junctions) are followed.
+ * A linked package is also looked up from the node_modules directory that holds its real
+ * path, so dependencies stored as siblings (npm's linked install strategy, a .store or .pnpm
+ * directory) are reached. Each real node_modules directory is listed once, so link cycles
+ * terminate; a directory reached under several install names is recorded under each name.
+ * Directories that exist but cannot be read are returned as problems.
  */
 function installedPackages(root) {
   const packages = [];
-  const seenPackages = new Set();
-  const visited = new Set();
+  const problems = [];
+  const recorded = new Set();
+  const listed = new Set();
   const pending = [join(root, "node_modules")];
+  const missing = (error) => error.code === "ENOENT" || error.code === "ENOTDIR";
   const isDirectory = (path, entry) => {
     if (entry.isDirectory()) return true;
     if (!entry.isSymbolicLink()) return false;
     try {
       return statSync(path).isDirectory();
-    } catch {
+    } catch (error) {
+      if (!missing(error)) problems.push({ path, message: `could not be read (${error.code})` });
       return false;
+    }
+  };
+  const list = (dir) => {
+    try {
+      return readdirSync(dir, { withFileTypes: true });
+    } catch (error) {
+      if (!missing(error)) problems.push({ path: dir, message: `could not be listed (${error.code})` });
+      return [];
     }
   };
   const addPackage = (dir, dirName) => {
@@ -106,55 +121,62 @@ function installedPackages(root) {
     try {
       real = realpathSync(dir);
     } catch (error) {
-      packages.push({ path: dir, dirName, error: `could not be resolved (${error.message})` });
+      packages.push({ path: dir, dirName, error: `could not be resolved (${error.code ?? error.message})` });
       return;
     }
-    if (seenPackages.has(real)) return;
-    seenPackages.add(real);
+    const key = JSON.stringify([real, dirName]);
+    if (recorded.has(key)) return;
+    recorded.add(key);
     const manifest = join(dir, "package.json");
     if (existsSync(manifest)) {
       try {
-        const { name, version } = JSON.parse(readFileSync(manifest, "utf8").replace(/^﻿/, ""));
+        const { name, version } = JSON.parse(readFileSync(manifest, "utf8").trimStart());
         packages.push({ path: dir, dirName, name, version });
       } catch (error) {
         packages.push({ path: dir, dirName, error: `package.json could not be read (${error.message})` });
       }
     }
     pending.push(join(dir, "node_modules"));
+    let holder = dirname(real);
+    if (basename(holder).startsWith("@")) holder = dirname(holder);
+    if (basename(holder) === "node_modules") pending.push(holder);
   };
   while (pending.length) {
     const nodeModules = pending.pop();
-    let entries;
+    let real;
     try {
-      const real = realpathSync(nodeModules);
-      if (visited.has(real)) continue;
-      visited.add(real);
-      entries = readdirSync(nodeModules, { withFileTypes: true });
-    } catch {
+      real = realpathSync(nodeModules);
+    } catch (error) {
+      if (!missing(error)) problems.push({ path: nodeModules, message: `could not be resolved (${error.code})` });
       continue;
     }
-    for (const entry of entries) {
+    if (listed.has(real)) continue;
+    listed.add(real);
+    for (const entry of list(nodeModules)) {
       const path = join(nodeModules, entry.name);
       if (entry.name.startsWith(".") || !isDirectory(path, entry)) continue;
       if (!entry.name.startsWith("@")) {
         addPackage(path, entry.name);
         continue;
       }
-      for (const scoped of readdirSync(path, { withFileTypes: true })) {
+      for (const scoped of list(path)) {
         const scopedPath = join(path, scoped.name);
         if (isDirectory(scopedPath, scoped)) addPackage(scopedPath, `${entry.name}/${scoped.name}`);
       }
     }
   }
-  return packages;
+  return { packages, problems };
 }
 
 /** Check the installed tree under <root>/node_modules; returns failures and informational notes. */
 export function checkSecurityFloor(root, { requireVinext = false } = {}) {
   const failures = [];
   const notes = [];
-  const packages = installedPackages(root);
-  const relative = (path) => path.slice(root.length + 1).replaceAll("\\", "/");
+  const { packages, problems } = installedPackages(root);
+  const relative = (path) => {
+    const from = relativePath(root, path);
+    return (from.startsWith("..") ? path : from).replaceAll("\\", "/");
+  };
   const topLevel = (name) => join(root, "node_modules", ...name.split("/"));
   // A copy of `name` is any directory installed as `name` or whose manifest is `name` (an npm alias).
   const copiesOf = (name, { topLevelOnly = false } = {}) =>
@@ -186,7 +208,8 @@ export function checkSecurityFloor(root, { requireVinext = false } = {}) {
     }
   }
 
-  // A manifest that cannot be read cannot be ruled out as a copy of a checked package.
+  // A directory or manifest that cannot be read cannot be ruled out as a copy of a checked package.
+  for (const problem of problems) failures.push(`${relative(problem.path)}: ${problem.message}`);
   for (const pkg of packages) if (pkg.error) failures.push(`${relative(pkg.path)}: ${pkg.error}`);
 
   assertCopies("react-server-dom-webpack", reactVersionProblem, REACT_FLOOR);

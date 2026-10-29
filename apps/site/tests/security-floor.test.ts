@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { copyFileSync, mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { chmodSync, copyFileSync, mkdirSync, mkdtempSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import test from "node:test";
@@ -118,7 +118,7 @@ test("security floor: nested react copies are reported but not asserted", () => 
   assert.ok(notes.some((note) => /react@18\.3\.1 at node_modules\/dev-tool\/node_modules\/react is nested and is below/.test(note)), notes.join("\n"));
 });
 
-test("security floor: link cycles terminate and each real package is checked once", { timeout: 10_000 }, () => {
+test("security floor: link cycles terminate and each real package is checked once", () => {
   withFixture({ ...patched, "node_modules/linked": "1.0.0" }, (root) => {
     // Two back-links make node_modules/linked/node_modules/a/node_modules/b/... loop forever without a visited set.
     mkdirSync(join(root, "node_modules/linked/node_modules"));
@@ -127,9 +127,48 @@ test("security floor: link cycles terminate and each real package is checked onc
     symlinkSync(join(root, "node_modules/react-server-dom-webpack"), join(root, "node_modules/linked/node_modules/react-server-dom-webpack"), "junction");
     mkdirSync(join(root, "node_modules/other"));
     symlinkSync(join(root, "node_modules"), join(root, "node_modules/other/node_modules"), "junction");
-    const { failures, notes } = checkSecurityFloor(root);
-    assert.deepEqual(failures, []);
-    assert.equal(notes.filter((note) => note.startsWith("react-server-dom-webpack@")).length, 1);
+    // A child process with a hard limit, so a regression that loops fails instead of hanging the suite.
+    const result = spawnSync(process.execPath, [script, "--root", root], { encoding: "utf8", timeout: 10_000 });
+    assert.equal(result.signal, null, "the check did not finish within 10 s");
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(result.stdout.split("\n").filter((line) => line.startsWith("ok    react-server-dom-webpack@")).length, 1);
+  });
+});
+
+test("security floor: a directory linked under several install names is checked under each", () => {
+  // npm links both file: dependencies to vendor/flight; the unrelated name sorts first.
+  withFixture({ ...patched, "vendor/flight": "flight@19.2.8" }, (root) => {
+    for (const name of ["flight", "react-server-dom-turbopack"]) symlinkSync(join(root, "vendor/flight"), join(root, "node_modules", name), "junction");
+    assert.match(checkSecurityFloor(root).failures.join("\n"), /react-server-dom-turbopack@19\.2\.8 at node_modules\/react-server-dom-turbopack is below/);
+  });
+  const withoutWebpack = Object.fromEntries(Object.entries(patched).filter(([dir]) => dir !== "node_modules/react-server-dom-webpack"));
+  withFixture({ ...withoutWebpack, "vendor/wp": "wp-flight@19.2.9" }, (root) => {
+    for (const name of ["aaa-wp", "react-server-dom-webpack"]) symlinkSync(join(root, "vendor/wp"), join(root, "node_modules", name), "junction");
+    assert.deepEqual(checkSecurityFloor(root).failures, []);
+  });
+});
+
+test("security floor: dependencies stored as siblings in a .store directory are checked", () => {
+  // npm --install-strategy=linked: packages live in node_modules/.store/<key>/node_modules/<name>,
+  // and a package's dependencies are sibling links in that node_modules directory.
+  const store = "node_modules/.store";
+  withFixture({ ...patched, [`${store}/tool-1/node_modules/tool`]: "1.0.0", [`${store}/rsdw-old/node_modules/react-server-dom-webpack`]: "19.2.8" }, (root) => {
+    symlinkSync(join(root, store, "tool-1/node_modules/tool"), join(root, "node_modules/tool"), "junction");
+    symlinkSync(join(root, store, "rsdw-old/node_modules/react-server-dom-webpack"), join(root, store, "tool-1/node_modules/react-server-dom-webpack"), "junction");
+    assert.match(checkSecurityFloor(root).failures.join("\n"), /react-server-dom-webpack@19\.2\.8 at node_modules\/\.store\/tool-1\/node_modules\/react-server-dom-webpack is below/);
+  });
+});
+
+const cannotRestrict = process.platform === "win32" || process.getuid?.() === 0;
+test("security floor: a node_modules directory that cannot be listed fails", { skip: cannotRestrict && "needs POSIX permissions and a non-root user" }, () => {
+  withFixture({ ...patched, "node_modules/tool/node_modules/react-server-dom-webpack": "19.2.8" }, (root) => {
+    const hidden = join(root, "node_modules/tool/node_modules");
+    chmodSync(hidden, 0o000);
+    try {
+      assert.match(checkSecurityFloor(root).failures.join("\n"), /node_modules\/tool\/node_modules: could not be listed \(EACCES\)/);
+    } finally {
+      chmodSync(hidden, 0o755);
+    }
   });
 });
 
@@ -157,14 +196,23 @@ test("security floor: command line exit codes and arguments", () => {
       const bad = cli(["--root", fail]);
       assert.equal(bad.status, 1, bad.stdout);
       assert.match(bad.stderr, /FAIL {2}react@19\.3\.0 at node_modules\/react is vulnerable/);
+      const equals = cli([`--root=${pass}`]);
+      assert.equal(equals.status, 0, equals.stderr);
+      assert.ok(equals.stdout.includes(`Security floor: PASS in ${pass}`), equals.stdout);
       assert.equal(cli([`--root=${fail}`]).status, 1);
-      for (const args of [["--roots", fail], ["--root"], ["--root="], ["--require-vinext", "--root", "--require-vinext"]]) {
+      for (const args of [["--roots", fail], ["--root"], ["--root="], ["--require-vinext", "--root", "--require-vinext"], ["--root", fail, `--root=${pass}`]]) {
         const usage = cli(args);
         assert.equal(usage.status, 2, `${args.join(" ")}: ${usage.stdout}`);
         assert.match(usage.stderr, /Usage:/);
       }
     }),
   );
+  withFixture({ ...patched, "node_modules/vinext": "0.0.50" }, (root) => {
+    assert.equal(cli(["--root", root]).status, 0);
+    const strict = cli(["--require-vinext", "--root", root]);
+    assert.equal(strict.status, 1, strict.stdout);
+    assert.match(strict.stderr, /FAIL {2}vinext@0\.0\.50 at node_modules\/vinext is below the security floor 1\.2\.0/);
+  });
 });
 
 test("security floor: the command line also runs when started through a linked path", () => {
