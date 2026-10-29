@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-export const reviewedProductionVersion = "980dc3cc-1034-4da5-a7a1-73a3d0c9ad84";
+export const reviewedProductionVersion = "e68bf76c-9dbe-4d89-aac8-ea82bf2a5f7b";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {
