@@ -34,6 +34,8 @@ jobs:
           cache-dependency-path: apps/site/package-lock.json
       - name: Install site dependencies
         run: npm ci
+      - name: Check React Server Components security floor
+        run: npm run check:security-floor
       - name: Verify source snapshot and site
         run: npm run verify
       - name: Check committed generated site dataset
