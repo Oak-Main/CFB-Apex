@@ -9,7 +9,7 @@ import { editorialComposite } from "./reconcile-gameday.mjs";
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const snapshot = read("data/cfb-2026/refresh/verified-refresh.json");
 const entry = snapshot.refresh_log.at(-1);
-assert.equal(entry.script, "weekly-refresh-2026-10-28");
+assert.ok(["weekly-refresh-2026-10-28", "weekly-refresh-2026-10-29"].includes(entry.script));
 const evidence = read(entry.evidence);
 const fullSeason = read(snapshot.full_season_review.evidence);
 const observations = [], docs = new Map();
@@ -82,7 +82,15 @@ for (const row of published) {
     assert.equal(Date.parse(event.date), Date.parse(saved.meta.listed_kickoff_observations.espn));
     assert.equal(ncaa.startTimeEpoch * 1000, Date.parse(saved.meta.listed_kickoff_observations.ncaa));
   } else {
-    assert.equal(c.status.type.completed, false); assert.equal(ncaa.gameState, "P");
+    assert.equal(c.status.type.completed, false);
+    if (row.result_pending_review) {
+      assert.ok(["pre", "in"].includes(c.status.type.state), "A new final requires reconciliation");
+      assert.ok(["P", "I"].includes(ncaa.gameState), "A new official final requires reconciliation");
+      assert.ok(Date.parse(row.kickoff_utc) < Date.now(), "Only a past kickoff can be result-pending");
+      assert.ok(row.teams == null && row.homeScore == null && row.awayScore == null, "Pending observations must not publish provisional scores");
+    } else {
+      assert.equal(c.status.type.state, "pre"); assert.equal(ncaa.gameState, "P");
+    }
     const saved = snapshot.scheduledGames.find(r => r.provider_id === event.id);
     assert.ok(saved);
     assert.equal(Date.parse(event.date), Date.parse(row.announced_kickoff_utc));
@@ -145,11 +153,11 @@ for (const poll of JSON.parse(docs.get("rankings")).rankings.filter(p => ["1", "
 }
 assert.deepEqual(editorialComposite(snapshot.polls).rankings, snapshot.polls.find(p => p.poll === "composite").rankings);
 for (const [id, column, category] of [["stat-passing", "Pass Yds", 0], ["stat-rushing", "Rush Yds", 1], ["stat-scoring", "PPG", 2], ["stat-defense", "Avg", 3]]) {
-  const html = docs.get(id); assert.match(htmlText(html), /Through games Tuesday, October 27, 2026/);
+  const html = docs.get(id); assert.ok(htmlText(html).includes(snapshot.metrics.categories[category].through_games_label), "Statistical through-games date differs");
   const table = htmlTables(html)[0], header = table[0];
   snapshot.metrics.categories[category].rows.forEach((r, i) => { const s = table[i + 1]; assert.equal(s[header.indexOf("Name")] ?? s[header.indexOf("Team")], r.name); assert.equal(s[header.indexOf("Team")], r.team); assert.equal(Number(s[header.indexOf(column)]), r.value); });
 }
 assert.match(htmlText(docs.get("usc-preview")), /out indefinitely/);
 assert.match(htmlText(docs.get("espn-week9")), /College GameDay Built by The Home Depot in Bloomington/);
 const seasonAcceptance = verifyFullSeason(snapshot, fullSeason, ids, docs);
-console.log(JSON.stringify({ fullSeason: seasonAcceptance, acceptance: "PASS", cutoff: evidence.cutoff_utc, checkedAt: new Date().toISOString(), finals: 58, upcoming: 54, records: 138, primaryRecordRetrieval: { direct: 137, indexedDated: 1 }, daysFetched: "12/12", observations }));
+console.log(JSON.stringify({ fullSeason: seasonAcceptance, acceptance: "PASS", cutoff: evidence.cutoff_utc, checkedAt: new Date().toISOString(), finals: evidence.finals.length, pendingOrUpcoming: evidence.schedule.length, records: 138, primaryRecordRetrieval: { direct: 137, indexedDated: 1 }, daysFetched: "12/12", observations }));

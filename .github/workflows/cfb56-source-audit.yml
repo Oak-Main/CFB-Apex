@@ -18,54 +18,21 @@ jobs:
           cache: npm
           cache-dependency-path: apps/site/package-lock.json
       - run: npm ci
-      - name: Observe current sources without publishing or changing reviewed values
+      - name: Stage and reconcile only reviewed source changes
+        run: node scripts/apply-oct29-refresh.mjs
+      - name: Verify the complete refreshed inventory against live sources
+        run: npm run gameday:source-gate
+      - name: Generate the candidate dataset
+        run: npm run dataset:build
+      - name: Run full candidate acceptance
+        run: npm run verify && npm run check:security-floor && npm run cf:types && npm run deploy:dry-run && npm audit --omit=dev --fetch-retries=0 --fetch-timeout=20000
+      - name: Export reviewable source and generated candidate without publication
+        if: always()
         run: |
           node --input-type=module <<'JS'
-          import { readFileSync, writeFileSync } from 'node:fs';
-          import { createHash } from 'node:crypto';
-          import { htmlText, htmlTables, ncaaInventory, isSourceEvidenceFresh } from './scripts/gameday-source-validation.mjs';
-          const read = p => JSON.parse(readFileSync(p, 'utf8'));
-          const snapshot = read('data/cfb-2026/refresh/verified-refresh.json');
-          const evidencePath = snapshot.refresh_log.at(-1).evidence;
-          const auditPath = snapshot.full_season_review.evidence;
-          const evidence = read(evidencePath), audit = read(auditPath);
-          const sources = [...evidence.raw_sources, ...audit.raw_sources];
-          const docs = new Map(), receipts = [];
-          for (let offset=0; offset<sources.length; offset+=6) {
-            await Promise.all(sources.slice(offset,offset+6).map(async row => {
-              try {
-                const response = await fetch(row.url, { signal: AbortSignal.timeout(45000), headers: { 'Cache-Control': 'no-cache' } });
-                const body = await response.text();
-                const checkedAt = new Date().toISOString(), serverDate = response.headers.get('date'), age = response.headers.get('age');
-                docs.set(row.id,body);
-                receipts.push({id:row.id,url:response.url,status:response.status,checkedAt,serverDate,age,sha256:createHash('sha256').update(body).digest('hex'),fresh:response.status===200 && isSourceEvidenceFresh(serverDate,Date.now()) && Number(age??0)<7200});
-              } catch(error) { receipts.push({id:row.id,url:row.url,error:error.message,fresh:false}); }
-            }));
-          }
-          const original = read('data/cfb-2026/refresh/evidence/2026-10-20-week8-release.json');
-          const ids = new Map(original.conferences.flatMap(c=>c.rows).map(r=>[r.id,r.slug]));
-          const report = { checkedAt:new Date().toISOString(),receipts,events:[],records:[],ncaa9:[],officialStandings:[] };
-          for (let day=20;day<=31;day++) {
-            const body=docs.get('day-'+day); if(!body)continue;
-            for(const e of JSON.parse(body).events) {
-              const c=e.competitions[0];
-              report.events.push({id:e.id,date:e.date,week:e.week.number,name:e.name,status:c.status,neutral:c.neutralSite===true,venue:c.venue?.fullName,teams:c.competitors.map(t=>({side:t.homeAway,id:t.team.id,slug:ids.get(t.team.id),name:t.team.location,score:t.score,lines:t.linescores,records:t.records})),broadcasts:c.broadcasts});
-            }
-          }
-          const standings = JSON.parse(docs.get('espn-standings'));
-          for(const r of standings.children.flatMap(c=>c.standings?.entries??c.children?.flatMap(x=>x.standings?.entries??[])??[])) {
-            const slug=ids.get(r.team.id), overall=r.stats.find(s=>s.type==='total').summary, conf=r.stats.find(s=>s.type==='vsconf').summary;
-            const old=evidence.primaryRecords.find(x=>x.slug===slug);
-            if(overall!==snapshot.teamRecords[slug] || conf!==old?.conference) report.records.push({slug,overall,conf,previous:old});
-          }
-          try {report.ncaa9=ncaaInventory(docs.get('ncaa9'),2026,9);} catch(error){report.ncaaError=error.message;}
-          for(const id of ['standing-cusa','standing-american','official-sunbelt']) {try{report.officialStandings.push({id,tables:htmlTables(docs.get(id)),text:htmlText(docs.get(id)).slice(0,22000)});}catch(error){report.officialStandings.push({id,error:error.message});}}
-          console.log('CFB56_AUDIT_JSON='+JSON.stringify(report));
-          // Prove the existing gate against actual freshly collected receipts in
-          // this disposable checkout. No values, cutoff, or repository refs change.
-          for(const obj of [evidence,audit])for(const row of obj.raw_sources){const current=receipts.find(x=>x.id===row.id);if(current?.fresh)Object.assign(row,current);}
-          writeFileSync(evidencePath,JSON.stringify(evidence));
-          writeFileSync(auditPath,JSON.stringify(audit));
+          import { readFileSync, existsSync } from 'node:fs';
+          import { gzipSync } from 'node:zlib';
+          const paths=['data/cfb-2026/refresh/verified-refresh.json','data/cfb-2026/refresh/evidence/2026-10-29-week9-refresh.json','data/cfb-2026/refresh/evidence/2026-10-29-full-season-audit.json','lib/cfb-2026.generated.ts'];
+          const files=Object.fromEntries(paths.filter(existsSync).map(p=>['apps/site/'+p,readFileSync(p,'utf8')]));
+          console.log('CFB56_PATCH_GZIP='+gzipSync(JSON.stringify(files)).toString('base64'));
           JS
-      - name: Diagnose semantic drift with the existing gate
-        run: npm run gameday:source-gate

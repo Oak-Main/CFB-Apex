@@ -5,8 +5,8 @@ const etDate = value => new Intl.DateTimeFormat("en-CA", { timeZone: "America/Ne
 
 /** Reconcile the complete season, including games intentionally outside the FBS-only interface. */
 export function verifyFullSeason(snapshot, audit, idToSlug, docs) {
-  assert.equal(audit.finals.length, 568);
-  assert.equal(snapshot.playedGames.length, 446, "Unexpected published final row count");
+  assert.equal(audit.finals.length, audit.counts.completed);
+  assert.equal(snapshot.playedGames.length, audit.counts.fbs_finals, "Unexpected published final row count");
   const games = new Map(snapshot.playedGames.map(game => [game.provider_id, game]));
   assert.equal(games.size, snapshot.playedGames.length, "Duplicate provider identity in published finals");
   const logical = new Set(), records = new Map(Object.keys(snapshot.teamRecords).map(slug => [slug, [0, 0]]));
@@ -15,11 +15,11 @@ export function verifyFullSeason(snapshot, audit, idToSlug, docs) {
     const dayIds = [...audit.raw_sources.filter(row => row.id.startsWith("history-")).map(row => row.id), ...Array.from({ length: 12 }, (_, i) => `day-${i + 20}`)];
     assert.equal(dayIds.length, 71);
     const rows = dayIds.flatMap(id => JSON.parse(docs.get(id)).events);
-    assert.equal(rows.length, 622); events = new Map(rows.map(row => [row.id, row]));
-    assert.equal(events.size, 622, "Repeated event or overlapping calendar day");
-    assert.equal(rows.filter(row => row.competitions[0].status.type.completed).length, 568);
+    assert.equal(rows.length, audit.counts.all_events); events = new Map(rows.map(row => [row.id, row]));
+    assert.equal(events.size, audit.counts.all_events, "Repeated event or overlapping calendar day");
+    assert.equal(rows.filter(row => row.competitions[0].status.type.completed).length, audit.counts.completed);
     const inventories = Array.from({ length: 9 }, (_, i) => i + 1).flatMap(week => ncaaInventory(docs.get(week < 8 ? `ncaa-history-${week}` : `ncaa${week}`), 2026, week));
-    assert.equal(inventories.length, 622, "Unexpected NCAA inventory row count");
+    assert.equal(inventories.length, audit.counts.all_events, "Unexpected NCAA inventory row count");
     ncaa = new Map(inventories.map(row => [row.contestId, row])); assert.equal(ncaa.size, inventories.length, "Duplicate NCAA contest identity");
   }
   const seenNcaa = new Set();
@@ -58,10 +58,10 @@ export function verifyFullSeason(snapshot, audit, idToSlug, docs) {
       assert.equal(primary.startTimeEpoch * 1000, Date.parse(row.ncaa_listed_kickoff_utc));
     }
   }
-  assert.equal(snapshot.excludedGames.length, 122);
+  assert.equal(snapshot.excludedGames.length, audit.counts.fcs_finals);
   assert.deepEqual(Object.fromEntries([...records].map(([slug, totals]) => [slug, totals.join("-")])), snapshot.teamRecords, "Whole-team totals differ from independently verified official records");
   for (const [alias, canonical] of Object.entries(snapshot.gameAliases)) {
     assert.ok(!snapshot.playedGames.some(game => game.game_id === alias)); assert.ok(snapshot.playedGames.some(game => game.game_id === canonical));
   }
-  return { completed: 568, fbsFinals: 446, fcsFinals: 122, records: records.size, calendarDays: docs ? 71 : null, ncaaWeeks: docs ? 9 : null };
+  return { completed: audit.counts.completed, fbsFinals: audit.counts.fbs_finals, fcsFinals: audit.counts.fcs_finals, records: records.size, calendarDays: docs ? 71 : null, ncaaWeeks: docs ? 9 : null };
 }
