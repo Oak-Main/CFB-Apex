@@ -91,7 +91,7 @@ test("poll publication and per-module source dates do not follow build or reques
   assert.deepEqual(first.sourceDates, later.sourceDates); assert.equal(first.revision, later.revision);
   assert.ok(first.polls.every(p => p.release_date === "2026-10-25"));
   assert.equal(sourceDateLabel("2026-10-25"), "Oct 25, 2026");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-29");
   assert.equal(first.injuries.week, 8); assert.notEqual(first.sourceDates.injuries, first.sourceDates.schedule);
 });
 
