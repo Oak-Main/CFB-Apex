@@ -1,0 +1,67 @@
+name: Capture CFB Apex Week 9 evidence
+on:
+  push:
+    branches:
+      - codex/week9-fresh-capture-20261030-1555
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: apps/site
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/site/package-lock.json
+      - name: Install the existing release dependencies
+        run: npm ci
+      - name: Restore the reviewed October 28 baseline
+        run: git show 35c4441d54a0128fd61d96ebb820010103932e49:apps/site/data/cfb-2026/refresh/verified-refresh.json > data/cfb-2026/refresh/verified-refresh.json
+      - name: Capture and reconcile final evidence
+        run: |
+          set -o pipefail
+          mkdir -p "$RUNNER_TEMP/cfb-week9-raw"
+          node scripts/capture-oct30-gameday.mjs "$RUNNER_TEMP/cfb-week9-raw" --apply | tee "$RUNNER_TEMP/cfb-week9-capture-report.json"
+      - name: Rebuild the generated dataset
+        run: npm run dataset:build
+      - name: Recheck every release source
+        run: |
+          set -o pipefail
+          npm run gameday:source-gate | tee "$RUNNER_TEMP/cfb-week9-source-gate.txt"
+      - name: Check the security floor and site
+        run: |
+          npm run check:security-floor -- --require-vinext
+          npm run verify
+          npm run cf:types
+          npm run deploy:dry-run
+      - name: Assemble reviewable candidate
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/capture-output"
+          cp data/cfb-2026/refresh/verified-refresh.json "$GITHUB_WORKSPACE/capture-output/verified-refresh.json"
+          cp data/cfb-2026/refresh/evidence/2026-10-30-gameday-results.json "$GITHUB_WORKSPACE/capture-output/2026-10-30-gameday-results.json"
+          cp data/cfb-2026/refresh/evidence/2026-10-30-full-season-audit.json "$GITHUB_WORKSPACE/capture-output/2026-10-30-full-season-audit.json"
+          cp lib/cfb-2026.generated.ts "$GITHUB_WORKSPACE/capture-output/cfb-2026.generated.ts"
+          cp "$RUNNER_TEMP/cfb-week9-capture-report.json" "$GITHUB_WORKSPACE/capture-output/capture-report.json"
+          cp "$RUNNER_TEMP/cfb-week9-source-gate.txt" "$GITHUB_WORKSPACE/capture-output/source-gate.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: week9-final-candidate
+          path: capture-output
+          retention-days: 7
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: week9-source-bodies
+          path: ${{ runner.temp }}/cfb-week9-raw
+          retention-days: 7
+          if-no-files-found: ignore
