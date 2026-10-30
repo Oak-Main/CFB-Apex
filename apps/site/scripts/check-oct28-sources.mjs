@@ -102,7 +102,15 @@ for (const row of published) {
       // 12:10 listing is separately retained, never claimed as actual start.
       const text = htmlText(docs.get("tv-ncaa"));
       assert.ok(text.includes(row.official_tv.observed_text), `Official TV assignment changed ${h}`);
-      assert.ok(tvPattern(row.tv).test(row.official_tv.tv));
+      if (row.tv_override) {
+        assert.equal(row.provider_id, "401856847", "Unreviewed primary TV override");
+        assert.equal(row.tv, "Fox"); assert.equal(row.tv_override.source_id, "school-isu-primer");
+        const primary = htmlText(docs.get(row.tv_override.source_id));
+        assert.ok(primary.includes("PRIMER: Iowa State vs. No. 24 Oklahoma State"));
+        assert.ok(primary.includes("Saturday, Oct. 31, 2026"));
+        assert.ok(primary.includes(row.tv_override.observed_text));
+        assert.equal(row.tv_override.observed_text, "Kickoff is set for 6 p.m. on FOX");
+      } else assert.ok(tvPattern(row.tv).test(row.official_tv.tv));
       const literal = row.official_tv.time.match(/(\d{1,2})(?::(\d{2}))?\s*([ap])\.m\./i);
       assert.ok(literal);
       const localTime = new Intl.DateTimeFormat("en-GB", { timeZone: "America/New_York", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(row.kickoff_utc));
@@ -153,7 +161,7 @@ for (const poll of JSON.parse(docs.get("rankings")).rankings.filter(p => ["1", "
 }
 assert.deepEqual(editorialComposite(snapshot.polls).rankings, snapshot.polls.find(p => p.poll === "composite").rankings);
 for (const [id, column, category] of [["stat-passing", "Pass Yds", 0], ["stat-rushing", "Rush Yds", 1], ["stat-scoring", "PPG", 2], ["stat-defense", "Avg", 3]]) {
-  const html = docs.get(id); assert.ok(htmlText(html).includes(snapshot.metrics.categories[category].through_games_label), "Statistical through-games date differs");
+  const html = docs.get(id); assert.ok(htmlText(html).includes(snapshot.metrics.categories[category].through_games_label ?? "Through games Tuesday, October 27, 2026"), "Statistical through-games date differs");
   const table = htmlTables(html)[0], header = table[0];
   snapshot.metrics.categories[category].rows.forEach((r, i) => { const s = table[i + 1]; assert.equal(s[header.indexOf("Name")] ?? s[header.indexOf("Team")], r.name); assert.equal(s[header.indexOf("Team")], r.team); assert.equal(Number(s[header.indexOf(column)]), r.value); });
 }

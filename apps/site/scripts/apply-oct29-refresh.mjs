@@ -9,6 +9,7 @@ const basePath="data/cfb-2026/refresh/verified-refresh.json";
 const snapshot=read(basePath);
 assert.equal(snapshot.refresh_log.at(-1).script,"weekly-refresh-2026-10-28","Apply only to the reviewed October 28 baseline");
 const evidence=read(snapshot.refresh_log.at(-1).evidence), audit=read(snapshot.full_season_review.evidence);
+evidence.raw_sources.push({id:"school-isu-primer",url:"https://cyclones.com/news/2026/10/27/football-primer-iowa-state-vs-no-24-oklahoma-state"});
 const docs=new Map(), receipts=new Map();
 const sources=[...evidence.raw_sources,...audit.raw_sources];
 for(let offset=0;offset<sources.length;offset+=6)await Promise.all(sources.slice(offset,offset+6).map(async row=>{
@@ -17,7 +18,7 @@ for(let offset=0;offset<sources.length;offset+=6)await Promise.all(sources.slice
  const serverDate=response.headers.get("date"), age=response.headers.get("age"),body=await response.text();
  assert.ok(isSourceEvidenceFresh(serverDate,Date.now()),row.id+": stale HTTP Date");
  assert.ok(Number(age??0)<7200,row.id+": stale cache");
- docs.set(row.id,body);receipts.set(row.id,{...row,url:response.url,status:200,checkedAt:new Date().toISOString(),serverDate,age,sha256:createHash("sha256").update(body).digest("hex")});
+ docs.set(row.id,body);receipts.set(row.id,{...row,url:response.url,resolvedUrl:response.url,bytes:Buffer.byteLength(body),headers:Object.fromEntries([...response.headers].filter(([key])=>["date","age","content-type","etag","last-modified","cache-control"].includes(key))),status:200,checkedAt:new Date().toISOString(),serverDate,age,sha256:createHash("sha256").update(body).digest("hex")});
 }));
 const checkedAt=new Date().toISOString();
 const original=read("data/cfb-2026/refresh/evidence/2026-10-20-week8-release.json");
@@ -58,6 +59,14 @@ for(const row of evidence.schedule){
   row.result_note="Kickoff passed; result not yet verified. No provisional score is published.";
  }
 }
+const isu=evidence.schedule.find(r=>r.provider_id==="401856847");
+const isuText=htmlText(docs.get("school-isu-primer"));
+assert.ok(isuText.includes("PRIMER: Iowa State vs. No. 24 Oklahoma State"));
+assert.ok(isuText.includes("Kickoff is set for 6 p.m. on FOX"));
+assert.ok(isuText.includes("Saturday, Oct. 31, 2026"));
+isu.tv="Fox";
+isu.tv_override={source_id:"school-isu-primer",published_at:"2026-10-27",observed_text:"Kickoff is set for 6 p.m. on FOX",prior_tv:"FS1",note:"Newer school primer and current provider say FOX; older NCAA TV article and October 19 school announcement still say FS1. Preserve this conflict rather than silently rewriting the earlier evidence."};
+isu.source_urls.push(receipts.get("school-isu-primer").url);
 const records={},conferenceRecords={};
 const entries=JSON.parse(docs.get("espn-standings")).children.flatMap(c=>c.standings?.entries??c.children?.flatMap(x=>x.standings?.entries??[])??[]);
 for(const row of entries){const slug=ids.get(row.team.id);assert.ok(slug);records[slug]=row.stats.find(s=>s.type==="total").summary;conferenceRecords[slug]=row.stats.find(s=>s.type==="vsconf").summary;}
@@ -69,6 +78,7 @@ evidence.raw_sources=evidence.raw_sources.map(r=>receipts.get(r.id));
 evidence.cutoff_utc=checkedAt;
 evidence.scope="October 29 revalidation: four Week 9 finals, two result-pending fixtures, 50 future fixtures; no live scores inferred";
 evidence.counts={...evidence.counts,week9Finals:4,week9Upcoming:52,week9ResultPending:2};
+evidence.inventories[9]={...evidence.inventories[9],finals:4,upcoming:52,result_pending:2};
 for(const [index,id,column] of [[0,"stat-passing","Pass Yds"],[1,"stat-rushing","Rush Yds"],[2,"stat-scoring","PPG"],[3,"stat-defense","Avg"]]){
  const html=docs.get(id),text=htmlText(html),label=text.match(/Through games [A-Za-z]+, [A-Za-z]+ \d{1,2}, 2026/)?.[0];assert.ok(label);
  const through=new Date(label.slice("Through games ".length)+" 12:00:00 UTC").toISOString().slice(0,10);

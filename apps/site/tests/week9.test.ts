@@ -90,7 +90,7 @@ test("poll publication and per-module source dates do not follow build or reques
   assert.deepEqual(first.sourceDates, later.sourceDates); assert.equal(first.revision, later.revision);
   assert.ok(first.polls.every(p => p.release_date === "2026-10-25"));
   assert.equal(sourceDateLabel("2026-10-25"), "Oct 25, 2026");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
   assert.equal(first.injuries.week, 8); assert.notEqual(first.sourceDates.injuries, first.sourceDates.schedule);
 });
 
@@ -259,4 +259,24 @@ test("production guard refuses newer versions, split traffic and invalid provide
   assert.throws(() => verifyProductionTarget([{ ...reviewed, versions: [{ version_id: reviewedProductionVersion, percentage: 50 }] }], reviewedProductionVersion), /differs/);
   assert.throws(() => verifyProductionTarget([], reviewedProductionVersion), /No provider/);
   assert.throws(() => verifyProductionTarget([{ ...reviewed, created_on: "unknown" }], reviewedProductionVersion), /timestamp/);
+});
+
+
+test("October 29 refresh withholds pending scores and records the newer official broadcast assignment", () => {
+  const pending = evidence.schedule.filter((r: {result_pending_review?:boolean}) => r.result_pending_review);
+  assert.deepEqual(pending.map((r: {provider_id:string}) => r.provider_id).sort(), ["401862812", "401869963"]);
+  const board=gameDaySnapshot(now,"9");
+  for(const row of pending) {
+    const game=board.games.find(g=>g.homeTeamId===row.home&&g.awayTeamId===row.away); assert.ok(game);
+    assert.equal(game.status,"scheduled");assert.equal(game.homeScore,null);assert.equal(game.awayScore,null);
+    assert.match(game.statusDetail??"",/result not yet verified/);
+  }
+  const isu=evidence.schedule.find((r:{provider_id:string})=>r.provider_id==="401856847");
+  assert.equal(isu.tv,"Fox");assert.equal(isu.official_tv.tv,"FS1");
+  assert.equal(isu.tv_override.source_id,"school-isu-primer");
+  assert.equal(games.find(g=>g.week===9&&g.homeTeamId==="iowa-state")?.broadcast,"Fox");
+  assert.equal(verifiedRefresh?.teamRecords["jacksonville-state"],"6-2");
+  assert.equal(verifiedRefresh?.teamRecords["kennesaw-state"],"2-6");
+  assert.equal(verifiedRefresh?.teamRecords["middle-tennessee"],"4-4");
+  assert.equal(verifiedRefresh?.teamRecords["new-mexico-state"],"3-5");
 });
