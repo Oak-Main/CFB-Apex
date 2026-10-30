@@ -183,13 +183,16 @@ export function GamedaySection({
           {travelAffiliatesConfigured && stadium ? (
             <div className="hub-tickets hub-travel">
               <span className="hub-eyebrow">PLAN THE TRIP</span>
+              <p>Some links may be affiliate links. CFB Apex may earn a commission if you book through them. See the{" "}
+                <a href="/affiliate-disclosure">affiliate disclosure</a>.
+              </p>
               {travelLinksForQuery(`hotels near ${stadium.name} ${stadium.city}`, "hotels")
                 .concat(travelLinksForQuery(`${stadium.city} car rental`, "cars"))
                 .concat(travelLinksForQuery(`flights to ${stadium.city}`, "flights"))
                 .map((link) => (
                   <a key={`travel-${link.partner}`} href={link.url} target="_blank" rel="sponsored nofollow noreferrer noopener">
                     {link.category === "hotels" ? "Hotels" : link.category === "cars" ? "Car rental" : "Flights"} · {link.partner}
-                    <span>{link.tracked ? "Official partner" : "Partner · approval pending"}</span>
+                    <span>{link.tracked ? "Affiliate link" : "Direct link"}</span>
                   </a>
                 ))}
             </div>
@@ -197,6 +200,9 @@ export function GamedaySection({
           {ticketLinks.length ? (
             <div className="hub-tickets">
               <span className="hub-eyebrow">TICKETS</span>
+              <p>Some links may be affiliate links. CFB Apex may earn a commission if you buy through them. See the{" "}
+                <a href="/affiliate-disclosure">affiliate disclosure</a>.
+              </p>
               {ticketLinks.map((link) => (
                 <a
                   key={link.partner}
@@ -205,7 +211,7 @@ export function GamedaySection({
                   rel="sponsored nofollow noreferrer noopener"
                 >
                   {link.partner}
-                  <span>{link.tracked ? "Official partner" : "Partner · approval pending"}</span>
+                  <span>{link.tracked ? "Affiliate link" : "Direct link"}</span>
                 </a>
               ))}
             </div>

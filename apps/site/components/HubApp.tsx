@@ -1315,8 +1315,8 @@ function PolicyPage({ kind }: { kind: string }) {
     "affiliate-disclosure": {
       eyebrow: "COMMERCIAL TRANSPARENCY",
       title: "Affiliate disclosure",
-      intro: "TicketNetwork links are TRACKED AND EARNING — every click carries our Impact campaign attribution (12.5-14.5% per sale). TicketSmarter's approval is still pending: its links go directly to its public ticket searches until activated, then convert to tracked referrals automatically.",
-      sections: [["How links are labeled", "Partner links carry sponsored/nofollow attributes and are labeled near the action. Tracked and pending states are labeled honestly — a pending link is marked as such."], ["Editorial firewall", "Commercial compensation will never determine model probabilities, editorial ranking, source verification, or correction outcomes."], ["Partner swaps", "If a partner is denied or retired, its links are removed or swapped without touching editorial content — the affiliate layer is a single configuration module."]],
+      intro: "Some ticket and travel links use affiliate tracking. CFB Apex may earn a commission if you make an eligible purchase or booking through them. Whether a transaction qualifies depends on the partner's terms and approval.",
+      sections: [["How links are labeled", "Some partner links use affiliate tracking. Look for a commission notice near ticket and travel links; direct links do not necessarily earn commissions."], ["Editorial firewall", "Commercial compensation will never determine model probabilities, editorial ranking, source verification, or correction outcomes."], ["Partner swaps", "If a partner is denied or retired, its links are removed or swapped without touching editorial content — the affiliate layer is a single configuration module."]],
     },
     "responsible-gaming": {
       eyebrow: "INFORMATIONAL MODELS ONLY",

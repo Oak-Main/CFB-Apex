@@ -81,7 +81,7 @@ export function ticketLinksForTeam(displayName: string): TicketLink[] {
   });
 }
 
-/** True once any partner's commission tracking is live. */
+/** True when at least one tracking URL is configured; not evidence of approval, clicks or commissions. */
 export const ticketAffiliatesConfigured = ticketPartners.some(
   (partner) => partner.trackedUrl != null,
 );
