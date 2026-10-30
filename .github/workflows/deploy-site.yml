@@ -34,6 +34,8 @@ jobs:
           cache-dependency-path: apps/site/package-lock.json
       - name: Install site dependencies
         run: npm ci
+      - name: Check React Server Components security floor
+        run: npm run check:security-floor
       - name: Verify source snapshot and site
         run: npm run verify
       - name: Check committed generated site dataset
@@ -42,7 +44,26 @@ jobs:
         run: npm run cf:types
       - name: Validate deployment bundle without publishing
         run: npm run deploy:dry-run
+      # The freshness gate guards every build that publishes GameDay data.
+      # A build whose data revision is byte-identical to the one production
+      # already serves publishes no data (for example a dependency security
+      # release), so the two-hour gate does not apply to it. Fail closed: an
+      # unreadable or unreachable revision, or any difference, runs the gate.
+      - name: Decide whether this build publishes new GameDay data
+        id: gameday-scope
+        run: |
+          candidate=$(grep -oE '"sharedDataRevision":"[a-f0-9]{64}"' lib/cfb-2026.generated.ts | head -n 1 | cut -d'"' -f4 || true)
+          live=$(curl -fsS --max-time 20 "https://cfbapex.com/api/gameday?scope=${GITHUB_SHA}" | node -e 'let s="";process.stdin.on("data",c=>s+=c).on("end",()=>{let r="";try{r=JSON.parse(s).revision??""}catch{}process.stdout.write(/^[a-f0-9]{64}$/.test(r)?r:"")})' || true)
+          echo "Candidate data revision: ${candidate:-unreadable}"
+          echo "Live data revision: ${live:-unreadable}"
+          if [ -n "$candidate" ] && [ "$candidate" = "$live" ]; then
+            echo "publishes_data=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=GameDay freshness gate not applicable::Data revision $candidate is already live on cfbapex.com. This build publishes no GameDay data."
+          else
+            echo "publishes_data=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Freshly verify reviewed GameDay results and records
+        if: steps.gameday-scope.outputs.publishes_data != 'false'
         run: npm run gameday:source-gate
       - name: Audit production site dependencies
         run: npm audit --omit=dev --fetch-retries=0 --fetch-timeout=20000
