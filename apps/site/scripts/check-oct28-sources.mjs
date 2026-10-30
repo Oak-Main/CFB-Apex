@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { parse } from "parse5";
 import { htmlTables, htmlText, isSourceEvidenceFresh, ncaaInventory, tvPattern } from "./gameday-source-validation.mjs";
-import { verifyFullSeason } from "./full-season-validation.mjs";
+import { OCT28_SEASON, verifyFullSeason } from "./full-season-validation.mjs";
 import { editorialComposite } from "./reconcile-gameday.mjs";
 
 const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
@@ -151,5 +151,5 @@ for (const [id, column, category] of [["stat-passing", "Pass Yds", 0], ["stat-ru
 }
 assert.match(htmlText(docs.get("usc-preview")), /out indefinitely/);
 assert.match(htmlText(docs.get("espn-week9")), /College GameDay Built by The Home Depot in Bloomington/);
-const seasonAcceptance = verifyFullSeason(snapshot, fullSeason, ids, docs);
+const seasonAcceptance = verifyFullSeason(snapshot, fullSeason, ids, docs, OCT28_SEASON);
 console.log(JSON.stringify({ fullSeason: seasonAcceptance, acceptance: "PASS", cutoff: evidence.cutoff_utc, checkedAt: new Date().toISOString(), finals: 58, upcoming: 54, records: 138, primaryRecordRetrieval: { direct: 137, indexedDated: 1 }, daysFetched: "12/12", observations }));

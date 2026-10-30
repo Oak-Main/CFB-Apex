@@ -246,7 +246,7 @@ test("weekly release renders current data, truthful pending states and both arch
   })));
   const current = pages.get("/");
   assert.match(current, /WEEK 9 · OCT 27–31/);
-  assert.match(current, /Two verified October 27 finals; 54 upcoming fixtures/);
+  assert.match(current, /Six verified finals \(October 27–29\); 50 upcoming fixtures/);
   assert.doesNotMatch(current, /kickoff listings remain uncorroborated|TV N\/A/);
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
@@ -454,7 +454,7 @@ test("Friday and Saturday finals and current records agree across the Command Ce
     assert.match(page, /FINAL|Final/);
     assert.ok(scores.includes(String(row.away_score)));
   }
-  const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-28-week9-refresh.json", import.meta.url), "utf8")).records;
+  const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-10-30-gameday-results.json", import.meta.url), "utf8")).records;
   for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), records[team.slug]);
 });
 

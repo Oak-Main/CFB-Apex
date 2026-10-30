@@ -56,7 +56,7 @@ test("historical cutoffs and long-term classifications are preserved, corrected 
   // Week 6 keeps its base snapshot time; the Week 7 release carries its own.
   assert.equal(boardWeeks.find((row) => row.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(boardWeeks.find((row) => row.week === 7)?.retrieved_at, "2026-10-11T10:30:00Z");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Mason Heintschel")?.status, "IR");
   assert.equal(injuryResearch.ledger.find((row) => row.player === "Zahir Mathis")?.teamSlug, "maryland");
   assert.ok(!injuryResearch.watch.some((row) => row.player === "Tre Harris" || row.player === "Jamariun Morrow"));
