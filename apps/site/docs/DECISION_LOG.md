@@ -1,5 +1,9 @@
 # Decision log
 
+## D-2026-10-30 — Truthful affiliate disclosure and guarded release
+
+Affiliate URLs being configured does not prove partner approval, tracked transactions, earnings or payout. Replace the earnings claim with conditional commission disclosure, place notices before ticket and travel links on stadium, team and watch surfaces, and label configured links without asserting official-partner status. Keep existing URLs and network settings unchanged. The previous production run for #58 verified Worker version `28d602a4-9150-4f72-87ba-b50e84359637` at 100%; the release guard checks this expected version against the current provider deployment before any publish, and must stop if another deployment has superseded it.
+
 ## D-001 — Preserve the Sites Vinext foundation
 
 The empty workspace was initialized with the bundled Cloudflare-compatible Vinext/Next.js starter. This satisfies the preview-hosting constraint without introducing a second framework.

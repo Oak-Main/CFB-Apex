@@ -214,6 +214,10 @@ export function StadiumDetail({ stadium, team }: StadiumDetailProps) {
         {travelAffiliatesConfigured ? (
           <aside className="lt-tickets lt-trip" aria-label="Plan your trip">
             <span className="lt-eyebrow">PLAN YOUR TRIP</span>
+            <p>
+              Some links may be affiliate links. CFB Apex may earn a commission if you buy or book through them. See the{" "}
+              <a href="/affiliate-disclosure">affiliate disclosure</a>.
+            </p>
             {[
               { category: "hotels" as const, label: "Hotels near the stadium", query: `hotels near ${stadium.name} ${stadium.address}` },
               { category: "cars" as const, label: "Rental cars", query: `${stadium.city} car rental` },
@@ -231,14 +235,14 @@ export function StadiumDetail({ stadium, team }: StadiumDetailProps) {
                 </a>
               )),
             )}
-            <p>
-              Travel partner links for the gameday trip. See the{" "}
-              <a href="/affiliate-disclosure">affiliate disclosure</a>.
-            </p>
           </aside>
         ) : null}
         <aside className="lt-tickets" aria-label="Ticket partner links">
           <span className="lt-eyebrow">TICKETS</span>
+          <p>
+            Some links may be affiliate links. CFB Apex may earn a commission if you buy through them. See the{" "}
+            <a href="/affiliate-disclosure">affiliate disclosure</a>.
+          </p>
           {ticketLinksForTeam(team.name).map((link) => (
             <a
               key={link.partner}
@@ -247,14 +251,9 @@ export function StadiumDetail({ stadium, team }: StadiumDetailProps) {
               rel="sponsored nofollow noreferrer noopener"
             >
               <strong>{link.partner}</strong>
-              <span>{link.tracked ? "Official partner" : "Partner · approval pending"}</span>
+              <span>{link.tracked ? "Affiliate link" : "Direct link"}</span>
             </a>
           ))}
-          <p>
-            Links point to our ticket partners searches. Commissions activate
-            once partnerships are approved — see the{" "}
-            <a href="/affiliate-disclosure">affiliate disclosure</a>.
-          </p>
         </aside>
         </div>
       </header>

@@ -1,5 +1,7 @@
 # Requirements traceability
 
+Affiliate disclosure correction: the disclosure page and each stadium, team and watch ticket/travel module must state the potential commission before sponsored links. Rendered Worker tests check these surfaces and the absence of the unsupported earnings claim. Partner approval and network-side receipts remain separate acceptance gates.
+
 | Requirement group | Implementation | Evidence | Status |
 |---|---|---|---|
 | Agent operating system | `AGENTS.md`, `.codex/`, `docs/AGENT_ROSTER.md`, `docs/HANDOFF_PROTOCOL.md` | Repository inspection | Complete |

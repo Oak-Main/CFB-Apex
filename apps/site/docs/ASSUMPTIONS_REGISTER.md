@@ -1,5 +1,7 @@
 # Assumptions register
 
+Affiliate link configuration is evidence of a URL only; network approval, attributed clicks, commissions and payouts remain unknown until confirmed by the partner dashboard. Notices use conditional language and do not certify legal review.
+
 | ID | Assumption | Rationale | Risk/mitigation |
 |---|---|---|---|
 | A-001 | The repository is a new project. | It contained no project files or Git history before initialization. | Preserve the generated Vinext foundation and document all migration choices. |

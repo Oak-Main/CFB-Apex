@@ -535,6 +535,9 @@ export function WatchPage({
 						{travelAffiliatesConfigured && selectedStadium ? (
 							<div className="watch-sponsored-links watch-travel">
 								<span>TRAVEL FOR THE GAME</span>
+								<p>Some links may be affiliate links. CFB Apex may earn a commission if you book through them. See the{" "}
+									<a href="/affiliate-disclosure">affiliate disclosure</a>.
+								</p>
 								<div>
 									{travelLinksForQuery(`hotels near ${selectedStadium.name} ${selectedStadium.city}`, "hotels")
 										.concat(travelLinksForQuery(`${selectedStadium.city} car rental`, "cars"))
@@ -556,11 +559,11 @@ export function WatchPage({
 							<div className="watch-card-topline">
 								<span
 									className="watch-verification"
-									data-verified={ticketAffiliatesConfigured}
+									data-verified={false}
 								>
 									{ticketAffiliatesConfigured
-										? "PARTNER ACTIVE"
-										: "LINKS LIVE · COMMISSION PENDING"}
+										? "AFFILIATE LINK CONFIGURED"
+										: "DIRECT LINKS"}
 								</span>
 							</div>
 
@@ -609,6 +612,9 @@ export function WatchPage({
 							{affiliateLinks.length ? (
 								<div className="watch-sponsored-links">
 									<span>{affiliateLinks.some((link) => link.tracked) ? "SPONSORED OPTIONS" : "TICKET PARTNERS"}</span>
+									<p>Some links may be affiliate links. CFB Apex may earn a commission if you buy through them. See the{" "}
+										<a href="/affiliate-disclosure">affiliate disclosure</a>.
+									</p>
 									<div>
 										{affiliateLinks.map((link) => (
 											<a
@@ -622,12 +628,6 @@ export function WatchPage({
 											</a>
 										))}
 									</div>
-									<p>
-										{affiliateLinks.some((link) => link.tracked)
-							? "CFB Apex may earn a commission. See the "
-							: "Affiliate approval pending — these links go straight to our ticket partners searches; commissions activate once partnerships are approved. See the "}
-										<a href="/affiliate-disclosure">affiliate disclosure</a>.
-									</p>
 								</div>
 							) : (
 								<p className="watch-no-partner-note">
