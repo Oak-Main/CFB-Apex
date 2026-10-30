@@ -98,7 +98,7 @@ test("the current ticker leads with verified Week 8 finals and non-final games",
 });
 
 test("source cutoffs advance separately and all 138 records reconcile", () => {
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-29");
   assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-10-25", "2026-10-25"]);
   assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "miami-fl");
   for (const move of verifiedRefresh?.poll_notes?.movers_ap ?? []) assert.equal(move.move, move.to - move.from);

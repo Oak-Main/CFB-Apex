@@ -99,7 +99,7 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     "Atlantic Coast Conference",
   );
   assert.equal(homepageData.portalAsOf, "2026-09-07");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-29");
   assert.equal(
     verifiedRefresh?.metrics.categories[0].rows.find(
       (row) => row.name === "Braden Atkinson",
@@ -330,7 +330,7 @@ test("current records for tracked midweek teams include all later verified final
 });
 
 test("freshness stays per source: polls and stats keep their own cutoffs", () => {
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28", "stats cutoff follows the independently retrieved NCAA table");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-29", "stats cutoff follows the independently retrieved NCAA table");
   assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-10-25");
   const week6 = boardWeeks.find((row) => row.week === 6);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z", "Week 6 base snapshot time unchanged");
