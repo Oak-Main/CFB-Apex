@@ -4,10 +4,10 @@ This is a content release. It publishes the four Week 9 games played October 28�
 
 ## Revision and production target
 
-- Base main: `9c67fcf9606856206ae35434a7e603d08f710a74`, in a clean isolated clone.
-- Production before this release: Worker `cfb-apex`, version **847cb462-c7e7-473c-9974-dc59a0167584** at 100% traffic (deployment `86c113ee-ad22-4cec-b731-c10a249f9b24`, 2026-10-30T04:00:46Z, main run 41000322673 for #56). This was confirmed read-only through the Cloudflare API for account `820e7cee61fccc60d14c8e20bc686942` at 04:13Z on October 30. The previous version was e68bf76c-9dbe-4d89-aac8-ea82bf2a5f7b.
-- `reviewedProductionVersion` in `scripts/verify-production-target.mjs` advances from e68bf76c to 847cb462. The guard still refuses a newer or split deployment, and it still requires the version this deploy publishes to take 100% of traffic.
-- Rollback target for this release: 847cb462-c7e7-473c-9974-dc59a0167584.
+- Base main: `35c4441d54a0128fd61d96ebb820010103932e49` (#58, vinext 1.2.0), in a clean isolated clone. The branch was prepared on `9c67fcf9` and merged with #58 after the owner merged it first; the only conflict was this release's decision log entry, and both entries are kept.
+- Production before this release: Worker `cfb-apex`, version **28d602a4-9150-4f72-87ba-b50e84359637** at 100% traffic (deployment `c90b9ba8-d643-4517-a549-94e471629734`, 2026-10-30T05:57:43Z, main run 41011129553 for #58, every step passed). This was confirmed read-only through the Cloudflare API for account `820e7cee61fccc60d14c8e20bc686942` at 07:48Z on October 30. The previous version was 847cb462-c7e7-473c-9974-dc59a0167584 (#56).
+- `reviewedProductionVersion` in `scripts/verify-production-target.mjs` advances from 847cb462 to 28d602a4. The guard still refuses a newer or split deployment, and it still requires the version this deploy publishes to take 100% of traffic.
+- Rollback target for this release: 28d602a4-9150-4f72-87ba-b50e84359637.
 
 ## Results
 
@@ -20,7 +20,7 @@ The reviewed finals all match primary sources. No score, status or overtime peri
 | Florida Atlantic at North Texas (Oct 29) | North Texas 48–41 | FAU 10-14-7-10, UNT 3-21-17-7 | Final | FINAL_CAPTURE | FINAL_CAPTURE |
 | Troy at James Madison (Oct 29) | Troy 24–21 (OT) | Troy 0-7-14-0-3, JMU 14-7-0-0-0 | Final/OT | FINAL_CAPTURE | James Madison |
 
-Each new final needs an ESPN final, an NCAA final with the same score, and at least one official school box score with the same quarter-by-quarter line, including overtime. A school box score that disagrees stops the capture. Middle Tennessee's site has no comparable box score; New Mexico State's returned HTTP 500 during preparation.
+Each new final needs an ESPN final, an NCAA final with the same score, and at least one official school box score with the same quarter-by-quarter line, including overtime. A school box score that disagrees stops the capture. Middle Tennessee's site has no comparable box score. New Mexico State's box score is not used: its site returned HTTP 500 for hours during preparation, and a failed refetch would fail the gate at deploy time.
 
 ## Records
 
@@ -68,6 +68,6 @@ FINAL_CAPTURE
 
 Scoped to the same account and Worker. First verify the latest active version and any newer unrelated work. Then, only with the owner's specific decision:
 
-`CLOUDFLARE_ACCOUNT_ID=820e7cee61fccc60d14c8e20bc686942 npx wrangler rollback 847cb462-c7e7-473c-9974-dc59a0167584 --config wrangler.deploy.jsonc`
+`CLOUDFLARE_ACCOUNT_ID=820e7cee61fccc60d14c8e20bc686942 npx wrangler rollback 28d602a4-9150-4f72-87ba-b50e84359637 --config wrangler.deploy.jsonc`
 
 Recheck the provider's active version and the served data revision afterwards. An upload alone proves nothing.
