@@ -37,12 +37,14 @@ const ids = new Map(original.conferences.flatMap(c => c.rows).map(r => [r.id, r.
 const etDate = iso => new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(iso));
 const monthDay = date => new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "long", day: "numeric" }).format(new Date(`${date}T12:00:00Z`));
 
-// Official athletics sites for both schools in each new final, with the
+// Official athletics sites for the schools in each new final, with the
 // opponent slug each site uses. Middle Tennessee's site has no Sidearm box
-// score. A box score counts only once posted; a posted line that differs stops.
+// score; New Mexico State's returned HTTP 500 for hours, and the deploy gate
+// refetches every source. A box score counts only once posted; a posted line
+// that differs stops.
 const SCHOOLS = {
   "401871058": [["https://ksuowls.com", ["middle-tennessee"]]],
-  "401871057": [["https://jaxstatesports.com", ["nm-state", "new-mexico-state"]], ["https://nmstatesports.com", ["jax-state", "jacksonville-state"]]],
+  "401871057": [["https://jaxstatesports.com", ["nm-state", "new-mexico-state"]]],
   "401862812": [["https://meangreensports.com", ["florida-atlantic", "fau"]], ["https://fausports.com", ["north-texas", "unt"]]],
   "401869963": [["https://jmusports.com", ["troy"]], ["https://troytrojans.com", ["james-madison", "jmu"]]],
 };
