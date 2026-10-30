@@ -19,13 +19,14 @@ jobs:
           cache-dependency-path: apps/site/package-lock.json
       - run: npm ci
       - name: Stage and reconcile only reviewed source changes
-        run: node scripts/apply-oct29-refresh.mjs
+        run: |
+          node --input-type=module -e "import{readFileSync}from'node:fs';import{execFileSync}from'node:child_process';let s=JSON.parse(readFileSync('data/cfb-2026/refresh/verified-refresh.json'));if(s.refresh_log.at(-1).script==='weekly-refresh-2026-10-28')execFileSync(process.execPath,['scripts/apply-oct29-refresh.mjs'],{stdio:'inherit'});else if(s.refresh_log.at(-1).script!=='weekly-refresh-2026-10-29')process.exit(1);"
       - name: Verify the complete refreshed inventory against live sources
         run: npm run gameday:source-gate
       - name: Generate the candidate dataset
         run: npm run dataset:build
       - name: Run full candidate acceptance
-        run: npm run verify && npm run check:security-floor && npm run cf:types && npm run deploy:dry-run && npm audit --omit=dev --fetch-retries=0 --fetch-timeout=20000
+        run: npm run verify && npm run check:security-floor && npm run cf:types && npm run deploy:dry-run && npm audit --omit=dev --fetch-retries=0 --fetch-timeout=20000 && git diff --exit-code -- lib/cfb-2026.generated.ts
       - name: Export reviewable source and generated candidate without publication
         if: always()
         run: |

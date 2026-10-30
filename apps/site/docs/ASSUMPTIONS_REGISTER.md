@@ -142,3 +142,19 @@ PR55 review follow-through: reject duplicate published provider rows before Map 
 Final ratings inspection: replace the directory’s unlabeled derived/fallback strength values with published AP rank. Withhold the unverified derived SOS index, preserve the historical inputs and exact AP/Coaches composite formula, date conference SP+/reported-odds cards to September 27, and exclude completed games from upcoming-TV lists. No new rating or probability is invented.
 
 Production concurrency guard: immediately before deployment, read Wrangler’s actual deployment history and require the reviewed prior version 980dc3cc-1034-4da5-a7a1-73a3d0c9ad84 at 100% traffic. Refuse a newer or split deployment. After publication, parse Wrangler’s returned version ID and require that exact version at 100% traffic from provider evidence. Tests cover oldest-first history, newer work, split traffic and missing/invalid evidence. A future release must deliberately review and advance the expected prior version; automatic reruns cannot overwrite newer production work.
+
+
+## October 29 PR56 source refresh
+
+The PR56 security-floor fix is retained and enforced in the site workflow. Its blocked GameDay check required a real data reconciliation, not a new timestamp on the October 28 values.
+
+- Reconcile Kennesaw State 44–28 Middle Tennessee and Jacksonville State 24–0 New Mexico State from complete provider events and independent NCAA final rows. Stable logical game IDs replace their scheduled entries exactly once.
+- Replace, rather than increment, all 138 overall/conference records from fresh standings and verify them against the full season. The changed teams are Jacksonville State 6–2 (4–0 conference), Kennesaw State 2–6 (1–3), Middle Tennessee 4–4 (2–2), and New Mexico State 3–5 (2–2); all four are corroborated by Conference USA.
+- Full-season inventory is 570 completed games involving FBS, comprising 448 FBS-vs-FBS finals and 122 retained FBS-vs-FCS finals. The 622-event inventory is still matched across nine NCAA weeks and 71 provider calendar days. Week 9 has four finals and 52 nonfinal fixtures, including two result-pending games at retrieval.
+- In-progress scores for Florida Atlantic–North Texas and Troy–James Madison are withheld. The existing past-kickoff “result not yet verified” public state is preserved. If either source becomes final, the gate requires a new reconciliation.
+- Iowa State's newer game primer and ESPN say FOX for Oklahoma State–Iowa State. The older NCAA TV article and October 19 school announcement say FS1. Use FOX and retain the older observation plus the exact newer game-specific source as an explicit override.
+- National leader tables are updated through October 28. Their publication/through-games dates remain distinct from retrieval time. Historical editorial and availability coverage remains separately dated.
+- All 111 current source receipts carry actual new HTTP/retrieval metadata and body hashes. The strict two-hour saved-receipt/HTTP-date/cache-age checks and all current semantic source comparisons remain enforced.
+- Generated dataset output comes only from `scripts/build-dataset.mjs`. The reviewed, baseline-specific transform is `scripts/apply-oct29-refresh.mjs`; it refuses any unreviewed final or record change.
+
+Validation is recorded by the matching PR56 hosted checks. A source-only staging branch collected and tested the candidate with read-only repository permissions and no deployment step. Merging/publishing remains subject to the separate production concurrency guard and the actual checks for the candidate commit.

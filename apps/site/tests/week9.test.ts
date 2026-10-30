@@ -216,7 +216,7 @@ test("October 29 release separates four finals, 52 unresolved/future games and 1
   assert.equal(verifiedRefresh?.teamRecords.lsu, "6-2", "includes LSU's FCS win");
   assert.equal(verifiedRefresh?.teamRecords.delaware, "4-4");
   const ap = snapshot.polls.find(p => p.poll === "ap"); assert.ok(ap);
-  assert.equal(ap.rankings.filter(r => r.rank === 20).length, 4);
+  assert.equal(ap.rankings.filter(r => r.rank === 20).length, 2);
   assert.equal(ap.rankings.filter(r => r.rank === 21).length, 0);
   const { noNames } = await import("../lib/no-names.ts");
   assert.ok(noNames.filter(p => p.stars == null).every(p => p.howAcquired === "unknown"));

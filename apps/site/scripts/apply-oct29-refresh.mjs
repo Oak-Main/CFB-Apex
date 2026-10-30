@@ -92,6 +92,7 @@ let next=reconcileGameDay(snapshot,{finals:freshFinals,scheduled:evidence.schedu
 for(const row of next.playedGames){row.verified_at=checkedAt;if(row.meta?.full_season_review)row.meta.full_season_review.checked_at=checkedAt;}
 for(const row of evidence.finals)row.verified_at=checkedAt;
 const evidencePath="data/cfb-2026/refresh/evidence/2026-10-29-week9-refresh.json",auditPath="data/cfb-2026/refresh/evidence/2026-10-29-full-season-audit.json";
+audit.scope="Every completed 2026 game involving a current FBS member through the October 29 revalidation cutoff, including FCS opponents. Week 9 result-pending and future fixtures are in the separate current release evidence.";
 audit.raw_sources=audit.raw_sources.map(r=>receipts.get(r.id));audit.data_cutoff_utc=checkedAt;audit.verification_completed_at=checkedAt;
 Object.assign(audit.counts,{completed:570,upcoming:52,fbs_finals:448});
 audit.record_reconciliation="All 138 whole-team records reconcile against 570 independently matched finals; in-progress scores are withheld.";
