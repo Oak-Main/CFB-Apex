@@ -1,6 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import { isUnknownCatchAllPage } from "../lib/known-paths";
 import { isProductionLaunchReady } from "../lib/release-readiness";
 
 interface Env {
@@ -143,6 +144,11 @@ const worker = {
     }
 
     const response = await handler.fetch(stripSpoofableAuthHeaders(request), env, ctx);
+    // The page streams its not-found UI with a 200 already chosen; nothing has
+    // been sent yet, so give unknown paths their 404 here.
+    if (response.status === 200 && isUnknownCatchAllPage(request, url)) {
+      return secureResponse(new Response(response.body, { status: 404, statusText: "Not Found", headers: response.headers }), url, launchReady);
+    }
     return secureResponse(response, url, launchReady);
   },
 };

@@ -1,11 +1,41 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import test from "node:test";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import test, { after } from "node:test";
+import { fileURLToPath } from "node:url";
+import { Miniflare } from "miniflare";
 import { visibleText, withoutComments } from "./html-text.mjs";
 
-const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-const { default: worker } = await import(workerUrl.href);
+// vinext 1.2 emits a native `cloudflare:workers` import that Node cannot load.
+// Run the built Worker in workerd, with the Miniflare version Wrangler pins,
+// instead of stubbing that production runtime API.
+const config = readFileSync(new URL("../wrangler.deploy.jsonc", import.meta.url), "utf8");
+const compatibilityDate = config.match(/"compatibility_date":\s*"([\d-]+)"/)[1];
+const compatibilityFlags = JSON.parse(config.match(/"compatibility_flags":\s*(\[[^\]]*\])/)[1]);
+const modulesRoot = fileURLToPath(new URL("../dist/server", import.meta.url));
+const scripts = readdirSync(modulesRoot, { recursive: true }).filter((path) => /\.m?js$/.test(path) && path !== "index.js");
+const runtime = new Miniflare({
+  modulesRoot,
+  modules: ["index.js", ...scripts].map((path) => ({ type: "ESModule", path: join(modulesRoot, path) })),
+  compatibilityDate,
+  compatibilityFlags,
+  // Rendered routes must not depend on a live provider: every outbound
+  // request gets a deterministic upstream failure.
+  outboundService: () => new Response("Outbound requests are disabled in rendered tests", { status: 503 }),
+  serviceBindings: { ASSETS: () => new Response("Not found", { status: 404 }) },
+});
+after(() => runtime.dispose());
+// Miniflare's loopback transport sets Host to 127.0.0.1:<port>, which the root
+// layout would use as metadataBase. Send the host cfbapex.com requests carry;
+// the earlier in-process harness sent no Host and so fell back to it as well.
+const worker = {
+  fetch(request) {
+    const forwarded = new Request(request, { redirect: "manual" });
+    forwarded.headers.set("x-forwarded-host", "cfbapex.com");
+    forwarded.headers.set("x-forwarded-proto", "https");
+    return runtime.dispatchFetch(request.url, forwarded);
+  },
+};
 
 async function fetchRoute(path, init) {
   return worker.fetch(
@@ -13,13 +43,6 @@ async function fetchRoute(path, init) {
       headers: { accept: "text/html", ...(init?.headers ?? {}) },
       ...init,
     }),
-    {
-      ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
   );
 }
 
@@ -501,4 +524,41 @@ test("consolidated game URLs remain reachable with one canonical scoreboard resu
       assert.doesNotMatch(text, /Campus lots around the stadium are managed by TCU/);
     }
   }
+});
+
+test("metadata stays in the document head for browsers and crawlers", async () => {
+  const userAgents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36",
+    "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+  ];
+  for (const userAgent of userAgents) {
+    for (const path of ["/", "/scores", "/teams/alabama"]) {
+      const html = await (await fetchRoute(path, { headers: { accept: "text/html", "user-agent": userAgent } })).text();
+      const head = html.slice(0, html.indexOf("</head>"));
+      assert.match(head, /<title>[^<]+<\/title>/, path);
+      assert.match(head, /<meta name="description"/, path);
+      assert.match(head, /<link rel="canonical" href="https:\/\/cfbapex\.com/, path);
+    }
+  }
+});
+
+test("unknown catch-all paths return 404 with the not-found page", async () => {
+  for (const path of ["/no-such-page-xyz", "/teams/not-a-team", "/games/999", "/players/not-a-player", "/stadiums/not-a-stadium", "/coaches/not-a-coach", "/conferences/not-a-conference"]) {
+    const response = await fetchRoute(path);
+    assert.equal(response.status, 404, path);
+    // The not-found UI streams into the page's Suspense boundary.
+    assert.match(withoutComments(await response.text()), /That route is not in the field/, path);
+  }
+});
+
+test("explicit app routes are never turned into 404s", async () => {
+  const appDir = fileURLToPath(new URL("../app", import.meta.url));
+  const entries = readdirSync(appDir, { recursive: true }).map((path) => path.replaceAll("\\", "/"));
+  const routes = entries
+    .filter((path) => /(^|\/)(page|route)\.tsx?$/.test(path) && !path.includes("["))
+    .map((path) => `/${path.replace(/\/?(page|route)\.tsx?$/, "")}`);
+  if (entries.includes("robots.ts")) routes.push("/robots.txt");
+  if (entries.includes("sitemap.ts")) routes.push("/sitemap.xml");
+  assert.ok(routes.includes("/") && routes.includes("/admin") && routes.includes("/api/health"), routes.join(" "));
+  for (const path of routes) assert.notEqual((await fetchRoute(path)).status, 404, path);
 });

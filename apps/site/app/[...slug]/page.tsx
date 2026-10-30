@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HubApp } from "@/components/HubApp";
-import { boardWeeks, coaches, fantasyNotes, getGame, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
+import { boardWeeks, coaches, fantasyNotes, getGame, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
+import { isKnownPath } from "@/lib/known-paths";
 import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
-import { STATIC_ROOTS } from "@/lib/static-roots";
 import { selectBoardWeek } from "@/lib/week-cutover";
 
 // The scoreboard and ticker follow the request's server clock; never cache.
@@ -17,30 +17,6 @@ const sharedStadiumNames = new Set(
     .map((stadium) => stadium.name)
     .filter((name, index, all) => all.indexOf(name) !== index),
 );
-
-
-const staticRoots: ReadonlySet<string> = new Set(STATIC_ROOTS);
-
-function isKnownPath(parts: string[]) {
-  const [root, id] = parts;
-  if (staticRoots.has(root)) {
-    if (!id) return true;
-    if (root === "teams" || root === "transfer-portal") return teams.some((team) => team.slug === id);
-    if (root === "coaches") return coaches.some((coach) => coach.slug === id);
-    if (root === "stadiums") return stadiums.some((stadium) => stadium.slug === id);
-    if (root === "conferences") return getConferenceHub(id) != null;
-    return false;
-  }
-  if (root === "games") return getGame(id) != null;
-  if (root === "players") {
-    return (
-      portalEvents.some((event) => event.playerSlug === id) ||
-      fantasyNotes.some((note) => playerSlugForName(note.player) === id) ||
-      Boolean(getRosterPlayerBySlug(id))
-    );
-  }
-  return false;
-}
 
 interface RoutePageProps {
   params: Promise<{ slug: string[] }>;
