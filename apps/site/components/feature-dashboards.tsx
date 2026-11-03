@@ -98,10 +98,10 @@ export function NoNamesPage() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
-            <select value={position} onChange={(e) => setPosition(e.target.value)} style={{ background: "var(--card)", color: "var(--foreground)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: 14 }}>
+            <select aria-label="Filter research candidates by position" value={position} onChange={(e) => setPosition(e.target.value)} style={{ background: "var(--card)", color: "var(--foreground)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: 14 }}>
               {positions.map((p) => <option key={p} value={p}>{p}</option>)}
             </select>
-            <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search player or team…" style={{ background: "var(--card)", color: "var(--foreground)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: 14, flex: 1, minWidth: 200 }} />
+            <input aria-label="Search research candidates by player or team" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search player or team…" style={{ background: "var(--card)", color: "var(--foreground)", border: "1px solid var(--border)", borderRadius: 8, padding: "8px 12px", fontSize: 14, flex: 1, minWidth: 200 }} />
             <span style={{ color: "var(--muted-foreground)", fontSize: 14, alignSelf: "center" }}>{filtered.length} shown</span>
           </div>
           <div style={{ maxHeight: 400, overflowY: "auto", border: "1px solid var(--border)", borderRadius: 12 }}>
