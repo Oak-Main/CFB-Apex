@@ -29,7 +29,7 @@ export function TransferPortalGuide() {
           </div>
           <p>Dates stated by the existing 2026-cycle transfer compilation.</p>
         </div>
-        <section className="db-table-wrap db-desktop-data-table" tabIndex={0} aria-label="2026 transfer portal cycle dates">
+        <section className="db-table-wrap" tabIndex={0} aria-label="2026 transfer portal cycle dates">
           <table className="db-table">
             <caption>
               Cycle and timing facts from the CFB Apex transfer dataset, compiled September 7, 2026.

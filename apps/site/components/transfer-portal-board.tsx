@@ -278,7 +278,7 @@ export function TransferPortalBoard({
       <DataBoardHero
         eyebrow="CFB transfers · 2026 cycle"
         title="CFB Transfer Portal: 2026 Window Dates"
-        description="The college football transfer portal is the roster-movement process behind a player changing programs. CFB Apex tracks verified 2026 FBS transfers; the current dataset records a January 2–16, 2026 winter window."
+        description="Explore the dated 2026 FBS transfer compilation by player, position, origin, destination, status and source confidence."
         action={
           <a className="db-hero-link" href="/methodology#portal">
             Portal methodology
