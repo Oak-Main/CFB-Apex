@@ -99,7 +99,7 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     "Atlantic Coast Conference",
   );
   assert.equal(homepageData.portalAsOf, "2026-09-07");
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28");
   assert.equal(
     verifiedRefresh?.metrics.categories[0].rows.find(
       (row) => row.name === "Braden Atkinson",
@@ -288,12 +288,12 @@ test("team schedules show the result and link the final, including the UTC-rollo
 
 test("current records for tracked midweek teams include all later verified finals", () => {
   const expected: Record<string, string> = {
-  "troy": "3–4",
+  "troy": "4–4",
   "southern-miss": "2–5",
-  "jacksonville-state": "5–2",
-  "kennesaw-state": "1–6",
+  "jacksonville-state": "6–2",
+  "kennesaw-state": "2–6",
   "fiu": "3–4",
-  "new-mexico-state": "3–4",
+  "new-mexico-state": "3–5",
   "liberty": "6–1",
   "sam-houston": "1–7",
   "western-kentucky": "3–5",
@@ -315,13 +315,13 @@ test("current records for tracked midweek teams include all later verified final
   "sam-houston": "0-4",
   "western-kentucky": "2-2",
   "missouri-state": "2-2",
-  "jacksonville-state": "3-0",
-  "kennesaw-state": "0-3",
+  "jacksonville-state": "4-0",
+  "kennesaw-state": "1-3",
   "fiu": "1-2",
-  "new-mexico-state": "2-1",
+  "new-mexico-state": "2-2",
   "south-alabama": "2-1",
   "arkansas-state": "2-2",
-  "troy": "1-2",
+  "troy": "2-2",
   "southern-miss": "1-2"
 };
   for (const [slug, record] of Object.entries(conf)) {
@@ -330,7 +330,7 @@ test("current records for tracked midweek teams include all later verified final
 });
 
 test("freshness stays per source: polls and stats keep their own cutoffs", () => {
-  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-27", "stats cutoff follows the independently retrieved NCAA table");
+  assert.equal(verifiedRefresh?.metrics.through_games, "2026-10-28", "stats cutoff follows the independently retrieved NCAA table");
   assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-10-25");
   const week6 = boardWeeks.find((row) => row.week === 6);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z", "Week 6 base snapshot time unchanged");

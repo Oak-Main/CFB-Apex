@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "requested_cutoff": "2026-10-28T20:32:04.954Z",
-  "retrieved_at": "2026-10-28T20:32:04.954Z",
+  "requested_cutoff": "2026-10-30T04:33:50.434Z",
+  "retrieved_at": "2026-10-30T04:33:50.434Z",
   "week": 9,
   "week_start": "2026-10-26",
   "reference_date": "2026-10-26",
-  "baseline_note": "Week 9 partial completion: two October 27 finals and 54 upcoming fixtures. Week 8 retains 56 verified finals. Source facts, historical editorial modules and unavailable projections keep separate dates.",
+  "baseline_note": "Week 9 partial completion: six finals (October 27–29) and 50 upcoming fixtures. Week 8 retains 56 verified finals. Source facts, historical editorial modules and unavailable projections keep separate dates.",
   "polls": [
     {
       "poll": "ap",
@@ -39327,129 +39327,435 @@
           }
         }
       }
-    }
-  ],
-  "scheduledGames": [
+    },
     {
       "provider_id": "401871058",
       "source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+      "game_id": "2026-10-28-kennesaw-state-at-middle-tennessee",
       "date": "2026-10-28",
-      "kickoff_utc": "2026-10-28T23:00:00.000Z",
-      "kickoff_status": "confirmed",
+      "kickoff_utc": "2026-10-28T23:00Z",
       "week": 9,
       "home_slug": "middle-tennessee",
       "away_slug": "kennesaw-state",
-      "home": "middle-tennessee",
-      "away": "kennesaw-state",
-      "tv": "CBSSN",
-      "tv_status": "published",
-      "time_et": "19:00",
       "site": "Johnny \"Red\" Floyd Stadium",
+      "tv": "CBSSN",
       "neutral_site": false,
-      "verified_at": "2026-10-28T20:23:51.514656+00:00",
-      "game_status": "scheduled",
-      "announced_kickoff_utc": "2026-10-28T23:00Z",
-      "timing_sources": [
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
+      "verified_at": "2026-10-30T04:33:50.434Z",
+      "title": "Final",
+      "teams": [
+        {
+          "slug": "middle-tennessee",
+          "points": 28,
+          "name": "Middle Tennessee Blue Raiders"
+        },
+        {
+          "slug": "kennesaw-state",
+          "points": 44,
+          "name": "Kennesaw State Owls"
+        }
       ],
-      "timing_note": "NCAA Week 9 schedule and ESPN agree; official school evidence retained separately. Listed schedule time, not actual start.",
-      "source_urls": [
-        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
-      ]
+      "meta": {
+        "as_of": "2026-10-28",
+        "sources": [
+          "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+          "https://www.ncaa.com/game/6640613",
+          "https://ksuowls.com/sports/football/stats/2026/middle-tennessee/boxscore/15434"
+        ],
+        "conference_game": true,
+        "line_score": {
+          "middle-tennessee": [
+            7,
+            10,
+            3,
+            8
+          ],
+          "kennesaw-state": [
+            7,
+            12,
+            8,
+            17
+          ]
+        },
+        "reviewed_status": {
+          "espn": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa": "F"
+        },
+        "listed_kickoff_observations": {
+          "espn": "2026-10-28T23:00Z",
+          "ncaa": "2026-10-28T23:00:00.000Z",
+          "actual_start": null
+        },
+        "full_season_review": {
+          "checked_at": "2026-10-30T04:33:50.434Z",
+          "provider_id": "401871058",
+          "ncaa_contest_id": 6640613,
+          "source_urls": [
+            "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+            "https://www.ncaa.com/game/6640613"
+          ],
+          "line_score": {
+            "middle-tennessee": [
+              7,
+              10,
+              3,
+              8
+            ],
+            "kennesaw-state": [
+              7,
+              12,
+              8,
+              17
+            ]
+          },
+          "state": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa_status": "F",
+          "listed_kickoff_observations": {
+            "espn": "2026-10-28T23:00Z",
+            "ncaa": "2026-10-28T23:00:00.000Z",
+            "actual_start": null
+          }
+        }
+      }
     },
     {
       "provider_id": "401871057",
       "source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+      "game_id": "2026-10-28-jacksonville-state-at-new-mexico-state",
       "date": "2026-10-28",
-      "kickoff_utc": "2026-10-29T00:00:00.000Z",
-      "kickoff_status": "confirmed",
+      "kickoff_utc": "2026-10-29T00:00Z",
       "week": 9,
       "home_slug": "new-mexico-state",
       "away_slug": "jacksonville-state",
-      "home": "new-mexico-state",
-      "away": "jacksonville-state",
-      "tv": "ESPN2",
-      "tv_status": "published",
-      "time_et": "20:00",
       "site": "Aggie Memorial Stadium",
+      "tv": "ESPN2",
       "neutral_site": false,
-      "verified_at": "2026-10-28T20:23:51.514656+00:00",
-      "game_status": "scheduled",
-      "announced_kickoff_utc": "2026-10-29T00:00Z",
-      "timing_sources": [
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
+      "verified_at": "2026-10-30T04:33:50.434Z",
+      "title": "Final",
+      "teams": [
+        {
+          "slug": "new-mexico-state",
+          "points": 0,
+          "name": "New Mexico State Aggies"
+        },
+        {
+          "slug": "jacksonville-state",
+          "points": 24,
+          "name": "Jacksonville State Gamecocks"
+        }
       ],
-      "timing_note": "NCAA Week 9 schedule and ESPN agree; official school evidence retained separately. Listed schedule time, not actual start.",
-      "source_urls": [
-        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
-      ]
+      "meta": {
+        "as_of": "2026-10-28",
+        "sources": [
+          "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+          "https://www.ncaa.com/game/6604178",
+          "https://jaxstatesports.com/sports/football/stats/2026/nm-state/boxscore/8714"
+        ],
+        "conference_game": true,
+        "line_score": {
+          "new-mexico-state": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "jacksonville-state": [
+            0,
+            7,
+            10,
+            7
+          ]
+        },
+        "reviewed_status": {
+          "espn": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa": "F"
+        },
+        "listed_kickoff_observations": {
+          "espn": "2026-10-29T00:00Z",
+          "ncaa": "2026-10-29T00:00:00.000Z",
+          "actual_start": null
+        },
+        "full_season_review": {
+          "checked_at": "2026-10-30T04:33:50.434Z",
+          "provider_id": "401871057",
+          "ncaa_contest_id": 6604178,
+          "source_urls": [
+            "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261028&groups=80&limit=200",
+            "https://www.ncaa.com/game/6604178"
+          ],
+          "line_score": {
+            "new-mexico-state": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "jacksonville-state": [
+              0,
+              7,
+              10,
+              7
+            ]
+          },
+          "state": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa_status": "F",
+          "listed_kickoff_observations": {
+            "espn": "2026-10-29T00:00Z",
+            "ncaa": "2026-10-29T00:00:00.000Z",
+            "actual_start": null
+          }
+        }
+      }
     },
     {
       "provider_id": "401862812",
       "source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+      "game_id": "2026-10-29-florida-atlantic-at-north-texas",
       "date": "2026-10-29",
-      "kickoff_utc": "2026-10-29T23:30:00.000Z",
-      "kickoff_status": "confirmed",
+      "kickoff_utc": "2026-10-29T23:30Z",
       "week": 9,
       "home_slug": "north-texas",
       "away_slug": "florida-atlantic",
-      "home": "north-texas",
-      "away": "florida-atlantic",
-      "tv": "ESPN",
-      "tv_status": "published",
-      "time_et": "19:30",
       "site": "DATCU Stadium",
+      "tv": "ESPN",
       "neutral_site": false,
-      "verified_at": "2026-10-28T20:23:51.514656+00:00",
-      "game_status": "scheduled",
-      "announced_kickoff_utc": "2026-10-29T23:30Z",
-      "timing_sources": [
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
+      "verified_at": "2026-10-30T04:33:50.434Z",
+      "title": "Final",
+      "teams": [
+        {
+          "slug": "north-texas",
+          "points": 48,
+          "name": "North Texas Mean Green"
+        },
+        {
+          "slug": "florida-atlantic",
+          "points": 41,
+          "name": "Florida Atlantic Owls"
+        }
       ],
-      "timing_note": "NCAA Week 9 schedule and ESPN agree; official school evidence retained separately. Listed schedule time, not actual start.",
-      "source_urls": [
-        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
-      ]
+      "meta": {
+        "as_of": "2026-10-29",
+        "sources": [
+          "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+          "https://www.ncaa.com/game/6604136",
+          "https://fausports.com/sports/football/stats/2026/north-texas/boxscore/24607"
+        ],
+        "conference_game": true,
+        "line_score": {
+          "north-texas": [
+            3,
+            21,
+            17,
+            7
+          ],
+          "florida-atlantic": [
+            10,
+            14,
+            7,
+            10
+          ]
+        },
+        "reviewed_status": {
+          "espn": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa": "P"
+        },
+        "listed_kickoff_observations": {
+          "espn": "2026-10-29T23:30Z",
+          "ncaa": "2026-10-29T23:30:00.000Z",
+          "actual_start": null
+        },
+        "full_season_review": {
+          "checked_at": "2026-10-30T04:33:50.434Z",
+          "provider_id": "401862812",
+          "ncaa_contest_id": 6604136,
+          "source_urls": [
+            "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+            "https://www.ncaa.com/game/6604136"
+          ],
+          "line_score": {
+            "north-texas": [
+              3,
+              21,
+              17,
+              7
+            ],
+            "florida-atlantic": [
+              10,
+              14,
+              7,
+              10
+            ]
+          },
+          "state": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "ncaa_status": "P",
+          "listed_kickoff_observations": {
+            "espn": "2026-10-29T23:30Z",
+            "ncaa": "2026-10-29T23:30:00.000Z",
+            "actual_start": null
+          }
+        }
+      }
     },
     {
       "provider_id": "401869963",
       "source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+      "game_id": "2026-10-29-troy-at-james-madison",
       "date": "2026-10-29",
-      "kickoff_utc": "2026-10-29T23:30:00.000Z",
-      "kickoff_status": "confirmed",
+      "kickoff_utc": "2026-10-29T23:30Z",
       "week": 9,
       "home_slug": "james-madison",
       "away_slug": "troy",
-      "home": "james-madison",
-      "away": "troy",
-      "tv": "ESPN2",
-      "tv_status": "published",
-      "time_et": "19:30",
       "site": "Bridgeforth Stadium",
+      "tv": "ESPN2",
       "neutral_site": false,
-      "verified_at": "2026-10-28T20:23:51.514656+00:00",
-      "game_status": "scheduled",
-      "announced_kickoff_utc": "2026-10-29T23:30Z",
-      "timing_sources": [
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
+      "verified_at": "2026-10-30T04:33:50.434Z",
+      "title": "Final/OT",
+      "teams": [
+        {
+          "slug": "james-madison",
+          "points": 21,
+          "name": "James Madison Dukes"
+        },
+        {
+          "slug": "troy",
+          "points": 24,
+          "name": "Troy Trojans"
+        }
       ],
-      "timing_note": "NCAA Week 9 schedule and ESPN agree; official school evidence retained separately. Listed schedule time, not actual start.",
-      "source_urls": [
-        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
-        "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
-      ]
-    },
+      "meta": {
+        "as_of": "2026-10-29",
+        "sources": [
+          "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+          "https://www.ncaa.com/game/6603940",
+          "https://jmusports.com/sports/football/stats/2026/troy/boxscore/20919"
+        ],
+        "conference_game": true,
+        "line_score": {
+          "james-madison": [
+            14,
+            7,
+            0,
+            0,
+            0
+          ],
+          "troy": [
+            0,
+            7,
+            14,
+            0,
+            3
+          ]
+        },
+        "reviewed_status": {
+          "espn": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final/OT",
+            "shortDetail": "Final/OT",
+            "altDetail": "OT"
+          },
+          "ncaa": "P"
+        },
+        "listed_kickoff_observations": {
+          "espn": "2026-10-29T23:30Z",
+          "ncaa": "2026-10-29T23:30:00.000Z",
+          "actual_start": null
+        },
+        "full_season_review": {
+          "checked_at": "2026-10-30T04:33:50.434Z",
+          "provider_id": "401869963",
+          "ncaa_contest_id": 6603940,
+          "source_urls": [
+            "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261029&groups=80&limit=200",
+            "https://www.ncaa.com/game/6603940"
+          ],
+          "line_score": {
+            "james-madison": [
+              14,
+              7,
+              0,
+              0,
+              0
+            ],
+            "troy": [
+              0,
+              7,
+              14,
+              0,
+              3
+            ]
+          },
+          "state": {
+            "id": "3",
+            "name": "STATUS_FINAL",
+            "state": "post",
+            "completed": true,
+            "description": "Final",
+            "detail": "Final/OT",
+            "shortDetail": "Final/OT",
+            "altDetail": "OT"
+          },
+          "ncaa_status": "P",
+          "listed_kickoff_observations": {
+            "espn": "2026-10-29T23:30Z",
+            "ncaa": "2026-10-29T23:30:00.000Z",
+            "actual_start": null
+          }
+        }
+      }
+    }
+  ],
+  "scheduledGames": [
     {
       "provider_id": "401862813",
       "source_url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
@@ -40615,23 +40921,24 @@
       "away_slug": "oklahoma-state",
       "home": "iowa-state",
       "away": "oklahoma-state",
-      "tv": "FS1",
+      "tv": "Fox",
       "tv_status": "published",
       "time_et": "19:00",
       "site": "Jack Trice Stadium",
       "neutral_site": false,
-      "verified_at": "2026-10-28T20:23:51.514656+00:00",
+      "verified_at": "2026-10-30T04:33:46.484Z",
       "game_status": "scheduled",
       "announced_kickoff_utc": "2026-10-31T23:00Z",
       "timing_sources": [
         "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
         "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
       ],
-      "timing_note": "NCAA Week 9 schedule and ESPN agree; official school evidence retained separately. Listed schedule time, not actual start.",
+      "timing_note": "NCAA Week 9 schedule and ESPN agree on the listed time. Network moved from FS1 to FOX on Iowa State's official schedule and ESPN; NCAA's TV article still listed FS1 when checked. Listed schedule time, not actual start.",
       "source_urls": [
         "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
         "https://www.ncaa.com/scoreboard/football/fbs/2026/09/all-conf",
-        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview"
+        "https://www.ncaa.com/news/football/article/college-football-tv-schedule-game-times-preview",
+        "https://cyclones.com/sports/football/schedule/2026"
       ]
     },
     {
@@ -44793,11 +45100,11 @@
   ],
   "teamRecords": {
     "utsa": "7-1",
+    "north-texas": "6-2",
     "memphis": "6-2",
-    "north-texas": "5-2",
     "army": "5-2",
-    "florida-atlantic": "5-2",
     "south-florida": "5-2",
+    "florida-atlantic": "5-3",
     "uab": "4-3",
     "tulsa": "4-4",
     "east-carolina": "3-4",
@@ -44858,14 +45165,14 @@
     "maryland": "2-5",
     "michigan-state": "2-6",
     "liberty": "6-1",
-    "jacksonville-state": "5-2",
-    "middle-tennessee": "4-3",
+    "jacksonville-state": "6-2",
     "delaware": "4-4",
-    "new-mexico-state": "3-4",
+    "middle-tennessee": "4-4",
     "fiu": "3-4",
+    "new-mexico-state": "3-5",
     "western-kentucky": "3-5",
     "missouri-state": "3-5",
-    "kennesaw-state": "1-6",
+    "kennesaw-state": "2-6",
     "sam-houston": "1-7",
     "notre-dame": "6-1",
     "uconn": "4-3",
@@ -44916,7 +45223,7 @@
     "texas-am": "4-4",
     "arkansas": "3-4",
     "vanderbilt": "3-5",
-    "james-madison": "7-1",
+    "james-madison": "7-2",
     "appalachian-state": "5-2",
     "georgia-state": "4-3",
     "marshall": "4-3",
@@ -44927,21 +45234,21 @@
     "louisiana": "5-3",
     "south-alabama": "4-3",
     "arkansas-state": "4-4",
-    "troy": "3-4",
+    "troy": "4-4",
     "southern-miss": "2-5",
     "ulm": "1-6"
   },
   "metrics": {
     "source_url": "https://www.ncaa.com/stats/football/fbs",
-    "through_games": "2026-10-27",
-    "verified_at": "2026-10-28T20:24:00.089103+00:00",
+    "through_games": "2026-10-28",
+    "verified_at": "2026-10-30T04:33:42.630Z",
     "categories": [
       {
         "name": "Passing yards",
         "unit": "yards",
         "source_url": "https://www.ncaa.com/stats/football/fbs/current/individual/453",
-        "through_games": "2026-10-27",
-        "verified_at": "2026-10-28T20:24:00.089103+00:00",
+        "through_games": "2026-10-28",
+        "verified_at": "2026-10-30T04:33:42.492Z",
         "rows": [
           {
             "name": "Braden Atkinson",
@@ -44974,8 +45281,8 @@
         "name": "Rushing yards",
         "unit": "yards",
         "source_url": "https://www.ncaa.com/stats/football/fbs/current/individual/469",
-        "through_games": "2026-10-27",
-        "verified_at": "2026-10-28T20:23:59.811917+00:00",
+        "through_games": "2026-10-28",
+        "verified_at": "2026-10-30T04:33:42.433Z",
         "rows": [
           {
             "name": "Dylan Riley",
@@ -44998,9 +45305,9 @@
             "value": 889
           },
           {
-            "name": "Nate Sheppard",
-            "team": "Duke",
-            "value": 875
+            "name": "James Jones",
+            "team": "New Mexico St.",
+            "value": 889
           }
         ]
       },
@@ -45008,8 +45315,8 @@
         "name": "Scoring offense",
         "unit": "points/game",
         "source_url": "https://www.ncaa.com/stats/football/fbs/current/team/27",
-        "through_games": "2026-10-27",
-        "verified_at": "2026-10-28T20:24:00.000086+00:00",
+        "through_games": "2026-10-28",
+        "verified_at": "2026-10-30T04:33:42.630Z",
         "rows": [
           {
             "name": "Miami (FL)",
@@ -45042,8 +45349,8 @@
         "name": "Scoring defense",
         "unit": "points allowed/game",
         "source_url": "https://www.ncaa.com/stats/football/fbs/current/team/28",
-        "through_games": "2026-10-27",
-        "verified_at": "2026-10-28T20:24:00.000321+00:00",
+        "through_games": "2026-10-28",
+        "verified_at": "2026-10-30T04:33:42.450Z",
         "rows": [
           {
             "name": "New Mexico",
@@ -45699,13 +46006,22 @@
     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261030&groups=80&limit=200",
     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261031&groups=80&limit=200",
     "https://navysports.com/news/2026/10/26/football-navy-and-5-6-notre-dame-set-for-99th-meeting-saturday-at-gillette-stadium.aspx",
-    "https://espnpressroom.com/press-release/twelve-ranked-teams-in-action-on-espn-networks-in-week-9-led-by-no-17-florida-and-no-3-georgia-in-the-invesco-qqq-atlanta-gridiron-classic-on-abc/"
+    "https://espnpressroom.com/press-release/twelve-ranked-teams-in-action-on-espn-networks-in-week-9-led-by-no-17-florida-and-no-3-georgia-in-the-invesco-qqq-atlanta-gridiron-classic-on-abc/",
+    "https://www.ncaa.com/game/6640613",
+    "https://ksuowls.com/sports/football/stats/2026/middle-tennessee/boxscore/15434",
+    "https://www.ncaa.com/game/6604178",
+    "https://jaxstatesports.com/sports/football/stats/2026/nm-state/boxscore/8714",
+    "https://www.ncaa.com/game/6604136",
+    "https://fausports.com/sports/football/stats/2026/north-texas/boxscore/24607",
+    "https://www.ncaa.com/game/6603940",
+    "https://jmusports.com/sports/football/stats/2026/troy/boxscore/20919",
+    "https://cyclones.com/sports/football/schedule/2026"
   ],
   "holds": [
     "Ratings retain their September 27 snapshot and SOS its independent source date; current licensed SP+/FPI/FEI updates are unavailable.",
-    "National leader cards use NCAA tables through October 27; detailed team/player season tables remain the September 5 sample. A complete current statistical warehouse is unavailable.",
+    "National leader cards use NCAA tables through October 28; detailed team/player season tables remain the September 5 sample. A complete current statistical warehouse is unavailable.",
     "Availability is partial: October 27 USC preview reports Julian Sayin out indefinitely. No Week 9 final game-day designation is inferred; prior official reports remain historical.",
-    "No continuous live scoring feed is asserted. Week 8 has 56 finals; Week 9 has two finals and 54 upcoming games at the October 28 cutoff.",
+    "No continuous live scoring feed is asserted. Week 8 has 56 finals; Week 9 has six finals and 50 upcoming games at the October 30 cutoff.",
     "Heisman, highlight, panel, upset watch, fantasy and resume audit retain clearly labeled historical editions. Current NIL policy/valuation content and uncalibrated playoff projections are withheld.",
     "Roster/depth coverage is 92/138 and coaching 136/138 in the October 3 inventory, not a full current audit. No new portal/coaching event is inferred.",
     "The 26 programs absent from the complete Week 9 inventory are not asserted to have independently verified official bye designations. Later-week schedules retain baseline source dates."
@@ -45729,11 +46045,11 @@
           {
             "team": "North Texas",
             "team_slug": "north-texas",
-            "w": "3",
+            "w": "4",
             "l": "0",
             "t": "0",
             "pct": "1.000",
-            "overall": "5-2"
+            "overall": "6-2"
           },
           {
             "team": "Army",
@@ -45757,10 +46073,10 @@
             "team": "Florida Atlantic",
             "team_slug": "florida-atlantic",
             "w": "2",
-            "l": "1",
+            "l": "2",
             "t": "0",
-            "pct": "0.667",
-            "overall": "5-2"
+            "pct": "0.500",
+            "overall": "5-3"
           },
           {
             "team": "UAB",
@@ -46342,29 +46658,29 @@
           {
             "team": "Jacksonville State",
             "team_slug": "jacksonville-state",
-            "w": "3",
+            "w": "4",
             "l": "0",
             "t": "0",
             "pct": "1.000",
-            "overall": "5-2"
+            "overall": "6-2"
           },
           {
             "team": "Middle Tennessee",
             "team_slug": "middle-tennessee",
             "w": "2",
-            "l": "1",
+            "l": "2",
             "t": "0",
-            "pct": "0.667",
-            "overall": "4-3"
+            "pct": "0.500",
+            "overall": "4-4"
           },
           {
             "team": "New Mexico State",
             "team_slug": "new-mexico-state",
             "w": "2",
-            "l": "1",
+            "l": "2",
             "t": "0",
-            "pct": "0.667",
-            "overall": "3-4"
+            "pct": "0.500",
+            "overall": "3-5"
           },
           {
             "team": "Western Kentucky",
@@ -46405,11 +46721,11 @@
           {
             "team": "Kennesaw State",
             "team_slug": "kennesaw-state",
-            "w": "0",
+            "w": "1",
             "l": "3",
             "t": "0",
-            "pct": "0.000",
-            "overall": "1-6"
+            "pct": "0.250",
+            "overall": "2-6"
           },
           {
             "team": "Sam Houston",
@@ -46916,10 +47232,10 @@
             "team": "James Madison",
             "team_slug": "james-madison",
             "w": "4",
-            "l": "1",
+            "l": "2",
             "t": "0",
-            "pct": "0.800",
-            "overall": "7-1"
+            "pct": "0.667",
+            "overall": "7-2"
           },
           {
             "team": "Appalachian State",
@@ -46996,11 +47312,11 @@
           {
             "team": "Troy",
             "team_slug": "troy",
-            "w": "1",
+            "w": "2",
             "l": "2",
             "t": "0",
-            "pct": "0.333",
-            "overall": "3-4"
+            "pct": "0.500",
+            "overall": "4-4"
           },
           {
             "team": "Southern Miss",
@@ -47050,11 +47366,11 @@
     "verified_at": "2026-10-28T20:32:04.954Z",
     "overall_records": {
       "utsa": "7-1",
+      "north-texas": "6-2",
       "memphis": "6-2",
-      "north-texas": "5-2",
       "army": "5-2",
-      "florida-atlantic": "5-2",
       "south-florida": "5-2",
+      "florida-atlantic": "5-3",
       "uab": "4-3",
       "tulsa": "4-4",
       "east-carolina": "3-4",
@@ -47115,14 +47431,14 @@
       "maryland": "2-5",
       "michigan-state": "2-6",
       "liberty": "6-1",
-      "jacksonville-state": "5-2",
-      "middle-tennessee": "4-3",
+      "jacksonville-state": "6-2",
       "delaware": "4-4",
-      "new-mexico-state": "3-4",
+      "middle-tennessee": "4-4",
       "fiu": "3-4",
+      "new-mexico-state": "3-5",
       "western-kentucky": "3-5",
       "missouri-state": "3-5",
-      "kennesaw-state": "1-6",
+      "kennesaw-state": "2-6",
       "sam-houston": "1-7",
       "notre-dame": "6-1",
       "uconn": "4-3",
@@ -47173,7 +47489,7 @@
       "texas-am": "4-4",
       "arkansas": "3-4",
       "vanderbilt": "3-5",
-      "james-madison": "7-1",
+      "james-madison": "7-2",
       "appalachian-state": "5-2",
       "georgia-state": "4-3",
       "marshall": "4-3",
@@ -47184,7 +47500,7 @@
       "louisiana": "5-3",
       "south-alabama": "4-3",
       "arkansas-state": "4-4",
-      "troy": "3-4",
+      "troy": "4-4",
       "southern-miss": "2-5",
       "ulm": "1-6"
     },
@@ -47722,7 +48038,7 @@
     }
   ],
   "research_ingested_at": "2026-10-28T20:32:04.954Z",
-  "results_verified_at": "2026-10-28T20:32:04.954Z",
+  "results_verified_at": "2026-10-30T04:33:50.434Z",
   "refresh_log": [
     {
       "applied_at": "2026-10-09T11:07:58.049Z",
@@ -48604,21 +48920,35 @@
       "evidence_checked_at": "2026-10-28T20:32:04.954Z",
       "evidence": "data/cfb-2026/refresh/evidence/2026-10-28-week9-refresh.json",
       "scope": "Week 8 final revalidation and Week 9 October 27 finals, 54 remaining fixtures, 138 primary-source whole-team records, independent dated module coverage"
+    },
+    {
+      "script": "gameday-results-2026-10-30",
+      "applied_at": "2026-10-30T04:33:55.382Z",
+      "evidence_checked_at": "2026-10-30T04:33:50.434Z",
+      "evidence": "data/cfb-2026/refresh/evidence/2026-10-30-gameday-results.json",
+      "scope": "Four October 28–29 Week 9 finals, 50 remaining fixtures, 138 primary-source whole-team records (eight changed) and NCAA national leaders; Week 8 and October 27 finals revalidated. Other module source dates are preserved.",
+      "finals": [
+        "2026-10-28-kennesaw-state-at-middle-tennessee",
+        "2026-10-28-jacksonville-state-at-new-mexico-state",
+        "2026-10-29-florida-atlantic-at-north-texas",
+        "2026-10-29-troy-at-james-madison"
+      ],
+      "records_checked": 138
     }
   ],
-  "schedule_verified_at": "2026-10-28T20:32:04.954Z",
+  "schedule_verified_at": "2026-10-30T04:33:50.434Z",
   "availability_review": {
     "checked_at": "2026-10-10T14:31:21.972853+00:00",
     "scope": "Limited official availability snapshot",
     "note": "87 tracked players from 19 teams, with exact game-specific designations and separate publication/retrieval times. SEC Texas A&M–Missouri, two Big 12 matchups and three earlier Big Ten/ACC matchups have Game Day updates; other included reports remain Friday Update 2. This is not complete Saturday coverage; missing players are unknown, not cleared."
   },
   "team_records_review": {
-    "as_of": "2026-10-28T20:32:04.954Z",
+    "as_of": "2026-10-30T04:33:50.434Z",
     "verified": 138,
     "carried_from_2026_10_10": [],
     "withheld": [],
     "rule": "All 138 current overall and conference records match fresh ESPN standings and reconcile from the prior reviewed snapshot plus the corroborated ESPN plus NCAA or official school finals.",
-    "note": "All 138 overall and conference records matched current ESPN standings. 137 corroborated with directly retrieved official conference/team pages; Notre Dame 6-1 corroborated with Navy’s October 26 official preview via indexed text. The stale Notre Dame home-page record is not used. Full totals include FCS opponents; never derived from the filtered board."
+    "note": "All 138 overall and conference records matched current ESPN standings. 137 corroborated with directly retrieved official conference/team pages, including the eight records changed by the October 28–29 finals; Notre Dame 6-1 corroborated with Navy’s October 26 official preview via indexed text. The stale Notre Dame home-page record is not used. Full totals include FCS opponents; never derived from the filtered board."
   },
   "board_weeks": [
     {
@@ -48660,9 +48990,9 @@
       "marquee_game_id": "2026-10-24-houston-at-utah",
       "retrieved_at": "2026-10-25T09:30:41.132Z",
       "schedule_verified_at": "2026-10-20T18:45:20.351Z",
-      "records_verified_at": "2026-10-28T20:32:04.954Z",
+      "records_verified_at": "2026-10-30T04:33:50.434Z",
       "note": "Completed Week 8 archive; every event matched against current ESPN and NCAA inventories and final scores. Original schedule and held listed-time disagreement remain distinct.",
-      "results_verified_at": "2026-10-28T20:32:04.954Z"
+      "results_verified_at": "2026-10-30T04:33:50.434Z"
     },
     {
       "week": 9,
@@ -48670,15 +49000,15 @@
       "end": "2026-11-01",
       "label": "Oct 27–31",
       "cutover_utc": "2026-10-25T13:00:00Z",
-      "schedule_verified_at": "2026-10-28T20:32:04.954Z",
-      "records_verified_at": "2026-10-28T20:32:04.954Z",
-      "retrieved_at": "2026-10-28T20:32:04.954Z",
+      "schedule_verified_at": "2026-10-30T04:33:50.434Z",
+      "records_verified_at": "2026-10-30T04:33:50.434Z",
+      "retrieved_at": "2026-10-30T04:33:50.434Z",
       "snapshot_id": "week9-preparation-2026-10-25",
-      "note": "Two verified October 27 finals; 54 upcoming fixtures. All kickoff times and TV corroborated with official NCAA schedule; dates use Eastern calendar. No live-score inference.",
-      "results_verified_at": "2026-10-28T20:32:04.954Z"
+      "note": "Six verified finals (October 27–29); 50 upcoming fixtures. All kickoff times and TV corroborated with official NCAA schedule; dates use Eastern calendar. No live-score inference.",
+      "results_verified_at": "2026-10-30T04:33:50.434Z"
     }
   ],
-  "records_verified_at": "2026-10-28T20:32:04.954Z",
+  "records_verified_at": "2026-10-30T04:33:50.434Z",
   "poll_history": [
     {
       "release_date": "2026-10-18",
@@ -49623,12 +49953,12 @@
     "2026-08-30-memphis-at-unlv": "2026-08-29-memphis-at-unlv"
   },
   "full_season_review": {
-    "checked_at": "2026-10-28T21:03:08.200Z",
-    "through_games": "2026-10-28T20:32:04.954Z",
-    "completed": 568,
-    "fbs_finals": 446,
+    "checked_at": "2026-10-30T04:33:50.434Z",
+    "through_games": "2026-10-30T04:33:50.434Z",
+    "completed": 572,
+    "fbs_finals": 450,
     "fcs_finals": 122,
-    "evidence": "data/cfb-2026/refresh/evidence/2026-10-28-full-season-audit.json",
-    "note": "All nine NCAA weekly inventories and 71 provider calendar days reconciled. Added 17 omitted September FBS games and consolidated two duplicate rows; full-team totals reproduce all 138 independently verified records. Source cutoff is unchanged; this is a later accuracy verification of games completed before cutoff."
+    "evidence": "data/cfb-2026/refresh/evidence/2026-10-30-full-season-audit.json",
+    "note": "All nine NCAA weekly inventories and 71 provider calendar days reconciled again at the October 30 cutoff, including the four October 28–29 finals. Full-team totals reproduce all 138 independently verified records. The 17 September rows restored on October 28 and both duplicate aliases are retained."
   }
 }
