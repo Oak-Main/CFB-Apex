@@ -110,10 +110,10 @@ export async function generateMetadata({
   if (root === "transfer-portal") {
     const team = detail ? teams.find((candidate) => candidate.slug === detail) : null;
     return {
-      title: team ? `${team.shortName} Transfer Portal Ledger` : "College Football Transfer Portal Board",
+      title: team ? `${team.shortName} Transfer Portal Ledger` : "CFB Transfer Portal: 2026 Window Dates",
       description: team
         ? `Verified incoming and outgoing transfer movement for ${team.name}.`
-        : "Track verified college football transfers by player, position, program, status, date, and source confidence.",
+        : "The college football transfer portal is the roster-movement process behind a player changing programs. Track verified 2026 CFB transfers; the current dataset records a January 2–16, 2026 winter window.",
     };
   }
   if (root === "injuries") {

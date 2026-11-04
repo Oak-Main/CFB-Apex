@@ -353,7 +353,7 @@ test("every served root has a fallback title unless the router titles it inline"
   // These roots return their own metadata from app/[...slug]/page.tsx before
   // the staticRootTitle fallback is reached, so they legitimately have no
   // entry here. Pinning the set keeps a new root from silently losing its title.
-  const routerTitled = new Set(["highlight", "panel", "upset-watch", "playoff-audit"]);
+  const routerTitled = new Set(["highlight", "panel", "upset-watch", "playoff-audit", "transfer-portal"]);
   for (const root of STATIC_ROOTS) {
     if (routerTitled.has(root)) continue;
     assert.ok(staticRootTitle(root), `static root /${root} lost its title`);

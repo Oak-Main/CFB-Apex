@@ -148,6 +148,8 @@ test("critical product routes render dataset-backed content", async () => {
     ["/scores", /Select scoreboard week/],
     ["/rankings", /AP and Coaches, straight from the release/],
     ["/transfer-portal", /Cole Adams/],
+    ["/transfer-portal", /CFB Transfer Portal: 2026 Window Dates/],
+    ["/transfer-portal", /January 2/],
     ["/transfer-portal/alabama", /portal ledger/],
     ["/transfer-portal/alabama", /vanderbilt/i],
     ["/coaches/kalen-deboer", /\$12,500,000/],

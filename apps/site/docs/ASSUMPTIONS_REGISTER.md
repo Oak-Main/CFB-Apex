@@ -144,3 +144,9 @@ PR55 review follow-through: reject duplicate published provider rows before Map 
 Final ratings inspection: replace the directory’s unlabeled derived/fallback strength values with published AP rank. Withhold the unverified derived SOS index, preserve the historical inputs and exact AP/Coaches composite formula, date conference SP+/reported-odds cards to September 27, and exclude completed games from upcoming-TV lists. No new rating or probability is invented.
 
 Production concurrency guard: immediately before deployment, read Wrangler’s actual deployment history and require the reviewed prior version 980dc3cc-1034-4da5-a7a1-73a3d0c9ad84 at 100% traffic. Refuse a newer or split deployment. After publication, parse Wrangler’s returned version ID and require that exact version at 100% traffic from provider evidence. Tests cover oldest-first history, newer work, split traffic and missing/invalid evidence. A future release must deliberately review and advance the expected prior version; automatic reruns cannot overwrite newer production work.
+
+## November 3 transfer portal explainer
+
+- “Current cycle” means the repository’s current 2026-cycle transfer compilation, not an unsupported 2027 cycle. The January 2–16, 2026 winter window is explicit; the championship extra window has no separately sourced dates.
+- No 2027 portal-window dates are present in the repository, so none are inferred or published. A future content update requires an authoritative dated source before adding them.
+- The transfer board remains a dated, incomplete working subset. The explainer does not imply live movement, full-census coverage, new eligibility rules, or new player destinations.

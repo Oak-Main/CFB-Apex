@@ -18,6 +18,7 @@ import {
 } from "./data-board-primitives";
 import { MobileDataCard, MobileDataCardStack } from "./polish/mobile-data-card";
 import { BoardSkeleton } from "./polish/skeletons";
+import { TransferPortalGuide } from "./transfer-portal-guide";
 
 interface PortalCounts {
   incoming: number;
@@ -275,9 +276,9 @@ export function TransferPortalBoard({
   return (
     <div className="db-page db-page--portal">
       <DataBoardHero
-        eyebrow="Data board · Roster volatility"
-        title="The transfer wire, verified."
-        description="Track every sourced FBS move by player, position, program, date, status, and confidence—without NIL speculation or inferred destinations."
+        eyebrow="CFB transfers · 2026 cycle"
+        title="CFB Transfer Portal: 2026 Window Dates"
+        description="Explore the dated 2026 FBS transfer compilation by player, position, origin, destination, status and source confidence."
         action={
           <a className="db-hero-link" href="/methodology#portal">
             Portal methodology
@@ -294,6 +295,7 @@ export function TransferPortalBoard({
           { label: "Compilation date", value: formatDataDate(asOf) },
         ]}
       />
+      <TransferPortalGuide />
 
       {events.length ? (
         <>
