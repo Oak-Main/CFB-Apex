@@ -132,6 +132,7 @@ function ModeDialog({
         <label className="check-row">
           <input
             type="checkbox"
+            aria-label="I confirm I am at least 21 years old"
             checked={ageConfirmed}
             onChange={(event) => setAgeConfirmed(event.target.checked)}
           />
@@ -139,7 +140,7 @@ function ModeDialog({
         </label>
         <label>
           Coarse jurisdiction
-          <select value={jurisdiction} onChange={(event) => setJurisdiction(event.target.value)}>
+          <select aria-label="Coarse jurisdiction" value={jurisdiction} onChange={(event) => setJurisdiction(event.target.value)}>
             <option value="">Choose a region</option>
             <option value="us-general">United States — general preview</option>
             <option value="outside-us">Outside the United States</option>
