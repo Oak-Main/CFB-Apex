@@ -3,7 +3,10 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-export const reviewedProductionVersion = "28d602a4-9150-4f72-87ba-b50e84359637";
+// PR59 main c844d26f deployed this version at 100% traffic in run 41088748169.
+// Reconfirmed by provider history in run 41813592660 on 2026-11-04.
+// A newer or split deployment still fails closed before this release writes.
+export const reviewedProductionVersion = "c1341244-a98c-490e-b881-18f02fa1b109";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {
