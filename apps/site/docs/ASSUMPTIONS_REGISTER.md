@@ -153,7 +153,7 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 
 ## November 8 weekly refresh
 
-- The cutoff 2026-11-08T11:35:20.506Z precedes the Week 11 cutover (13:00 UTC) and the November 1 poll editions predate every Week 11 kickoff; poll records are edition records, not current standings.
+- The cutoff 2026-11-08T13:54:26.690Z sits after the 13:00 UTC Week 11 cutover, so the board default is the Week 11 preview; the November 1 poll editions predate every Week 11 kickoff; poll records are edition records, not current standings.
 - NCAA's week-10 scoreboard still listed five late finals as in-progress at the cutoff; official school pages carry their finals, and NCAA's later catch-up (F) is compatible with the per-row gate.
 - Texas Tech's home venue is published as "Galaxy Stadium" because the school's own schedule page uses that name.
 - Week 11 marquee (Missouri at Georgia) has an announced network but no announced time; the board keeps kickoff official-TBD rather than deriving a window.

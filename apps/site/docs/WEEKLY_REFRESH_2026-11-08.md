@@ -6,7 +6,7 @@ The native site refresh reconciles the complete Week 9 results, the full Week 10
 
 - Base main reverified: `f02e9e2a3babc2851faa89a346ee63224f585337`; clean checkout of `https://github.com/Oak-Main/CFB-Apex.git`, branch `refresh/weekly-2026-11-08`.
 - Superseded work: draft PR 57 ("Publish the October 28–29 Week 9 finals", Oct 30) is closed as superseded — its finals are included in this release's complete Week 9 reconciliation, and its base (`35c4441`) predates PRs 58–61. Nothing from PR 57 is merged blind.
-- Data cutoff: **2026-11-08T11:35:20.506Z / November 8 04:35:20 PDT** (Sunday, before the 13:00 UTC Week 11 cutover). Source retrieval times, HTTP Date/Age, publication dates and through-games dates are distinct. The board therefore selects Week 10 until 13:00 UTC on November 8 and Week 11 afterwards.
+- Data cutoff: **2026-11-08T13:54:26.690Z / November 8 06:54:26 PDT** (Sunday, after the 13:00 UTC Week 11 cutover had already switched the board to its Week 11 preview). Source retrieval times, HTTP Date/Age, publication dates and through-games dates are distinct. The board therefore selects Week 10 until 13:00 UTC on November 8 and Week 11 afterwards.
 - Active pipeline: `apps/site/data/cfb-2026` → `apps/site/scripts/build-dataset.mjs` → `apps/site/lib/cfb-2026.generated.ts`. Generated output is never edited by hand.
 - Evidence: `data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json` (weekly review) and `data/cfb-2026/refresh/evidence/2026-11-08-full-season-audit.json` (complete-season audit). They record event/provider IDs, source URLs, hashes, retrieval/server times, individual records and complete slate inventories.
 

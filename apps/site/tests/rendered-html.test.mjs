@@ -278,6 +278,17 @@ test("weekly release renders current data, truthful pending states and both arch
   // Week 10's TV is fully resolved; the Week 11 preview keeps "TV N/A" as its
   // honest pending state for the 14 unpublished networks.
   if (clockWeek === 10) assert.doesNotMatch(current, /kickoff listings remain uncorroborated|TV N\/A/);
+  // Reset/default and manual switching in the board-week nav: the clock week's
+  // own link is the bare route (reset to the default), other weeks carry
+  // ?week=, and an explicit archive marks aria-current while the reset link
+  // stays on the clock week.
+  const resetHtml = withoutComments(await (await fetchRoute("/")).text());
+  assert.match(resetHtml, new RegExp(`href="/"[^>]*>\\s*<strong>Week ${clockWeek}</strong>`), "clock-week reset link");
+  const archiveWeek = clockWeek - 1;
+  assert.match(resetHtml, new RegExp(`href="/\\?week=${archiveWeek}"[^>]*>\\s*<strong>Week ${archiveWeek}</strong>`), "archive switch link");
+  const archiveNav = withoutComments(await (await fetchRoute(`/?week=${archiveWeek}`)).text());
+  assert.match(archiveNav, new RegExp(`<a [^>]*href="/\\?week=${archiveWeek}"[^>]*aria-current="page"[^>]*>\\s*<strong>Week ${archiveWeek}</strong>`), "explicit archive selection");
+  assert.match(archiveNav, new RegExp(`href="/"[^>]*>\\s*<strong>Week ${clockWeek}</strong>`), "reset link survives an explicit archive");
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);

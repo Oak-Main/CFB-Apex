@@ -3,15 +3,15 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import { games, getGame, getConferenceHub, teams, reviewedScheduleStatus, verifiedRefresh } from "../lib/cfb-dataset.ts";
 import { compareGameDates, easternDate, easternKickoff, sourceDateLabel } from "../lib/game-calendar.ts";
-import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame } from "../lib/gameday-shared.ts";
+import { gameDaySnapshot, isReviewedGameDayRefresh, publicGame, reviewedWeekContractViolation } from "../lib/gameday-shared.ts";
 import { reviewedProductionVersion, verifyProductionTarget } from "../scripts/verify-production-target.mjs";
 import { verifyFullSeason } from "../scripts/full-season-validation.mjs";
-import { selectBoardWeek } from "../lib/week-cutover.ts";
+import { clockWeek, parseWeekParam, selectBoardWeek } from "../lib/week-cutover.ts";
 import { reconcileGameDay } from "../scripts/reconcile-gameday.mjs";
 import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceScheduleStatus, tvPattern, withoutHtmlComments } from "../scripts/gameday-source-validation.mjs";
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", import.meta.url), "utf8"));
-const now = Date.parse("2026-11-08T11:35:20.506Z");
+const now = Date.parse("2026-11-08T13:54:26.690Z");
 
 test("completed Week 9 and 10 archives precede the Week 11 slate at the November cutover", () => {
   const archive9 = gameDaySnapshot(now, "9"), archive10 = gameDaySnapshot(now, "10"), upcoming = gameDaySnapshot(now, "11");
@@ -218,6 +218,68 @@ test("smoke matching removes HTML comment nodes while preserving script text and
   assert.ok(normalized.includes('const marker = "<!--literal-->";'));
   assert.equal(normalized.includes("<!--react marker-->"), false);
   assert.equal(normalized.includes("<!--hidden marker-->"), false);
+});
+
+test("the smoke contract accepts the refreshed weeks and rejects the stale two-final contract", () => {
+  // Regression: the pre-release smoke asserted Week 9 = 2 finals + 54
+  // scheduled and everything else all-final. Against the refreshed release
+  // those predicates are false — they would have rejected a correct release.
+  const week9 = gameDaySnapshot(now, "9"), week10 = gameDaySnapshot(now, "10"), week11 = gameDaySnapshot(now, "11");
+  const oldWeek9 = week9.games.filter(g => g.status === "final").length === 2 && week9.games.filter(g => g.status === "scheduled").length === 54;
+  const oldElse = week11.games.every(g => g.status === "final");
+  assert.equal(oldWeek9, false, "stale Week 9 two-final contract must fail against the refreshed release");
+  assert.equal(oldElse, false, "stale all-final contract must fail against the Week 11 preview");
+  // The derived contract accepts the reviewed states of all three weeks.
+  for (const [week, snapshot] of [[9, week9], [10, week10], [11, week11]] as const) {
+    assert.equal(reviewedWeekContractViolation(week, snapshot.weeks.find(row => row.week === week), snapshot.games), null, `Week ${week}`);
+  }
+  // And rejects states that would breach it, in either direction.
+  const flippedArchive = structuredClone(week9);
+  (flippedArchive.games[0] as { status: string }).status = "scheduled";
+  assert.match(reviewedWeekContractViolation(9, flippedArchive.weeks.find(row => row.week === 9), flippedArchive.games) ?? "", /Archive week 9/);
+  const flippedPreview = structuredClone(week11);
+  (flippedPreview.games[0] as { status: string }).status = "final";
+  (flippedPreview.games[0] as { homeScore: number | null }).homeScore = 7;
+  assert.match(reviewedWeekContractViolation(11, flippedPreview.weeks.find(row => row.week === 11), flippedPreview.games) ?? "", /Preview week 11/);
+  const unreviewed = structuredClone(week9);
+  unreviewed.weeks = unreviewed.weeks.filter(row => row.week !== 9);
+  assert.match(reviewedWeekContractViolation(9, unreviewed.weeks.find(row => row.week === 9), unreviewed.games) ?? "", /not a reviewed board week/);
+});
+
+test("both sides of the November 8 13:00Z cutover: Week 11 default, Weeks 9-10 accessible, reset restores the clock week", () => {
+  const preCutover = Date.parse("2026-11-08T12:59:59Z");
+  const atCutover = Date.parse("2026-11-08T13:00:00Z");
+  const postCutover = Date.parse("2026-11-09T12:00:00Z");
+  // Default follows the server clock on both sides.
+  assert.equal(gameDaySnapshot(preCutover).selectedWeek, 10);
+  assert.equal(gameDaySnapshot(atCutover).selectedWeek, 11);
+  assert.equal(gameDaySnapshot(postCutover).selectedWeek, 11);
+  assert.equal(gameDaySnapshot(postCutover).explicit, false, "the default is not an explicit choice");
+  // After the cutover, the archived weeks stay reachable by explicit request.
+  for (const week of ["9", "10"] as const) {
+    const archive = gameDaySnapshot(postCutover, week);
+    assert.equal(archive.selectedWeek, Number(week));
+    assert.equal(archive.explicit, true);
+    assert.ok(archive.games.every(g => g.status === "final"), `Week ${week} archive after cutover`);
+  }
+  const preview = gameDaySnapshot(postCutover, "11");
+  assert.ok(preview.games.every(g => g.status === "scheduled"), "Week 11 preview after cutover");
+  // Reset/default restoration: with an explicit archive selected, the clock
+  // week the reset link points at is the post-cutover default (Week 11);
+  // without an explicit choice the selection already is the clock week.
+  const weeks = gameDaySnapshot(postCutover).weeks;
+  assert.equal(clockWeek(weeks, { week: 9, serverNow: postCutover, explicit: true }), 11);
+  assert.equal(clockWeek(weeks, { week: 11, serverNow: postCutover, explicit: false }), 11);
+  assert.equal(clockWeek(weeks, selectBoardWeek(weeks, preCutover)), 10);
+  // Manual week switching: reviewed weeks resolve, unreviewed or malformed
+  // parameters are rejected so the API answers 400 rather than guessing.
+  assert.equal(parseWeekParam("9", weeks), 9);
+  assert.equal(parseWeekParam("10", weeks), 10);
+  assert.equal(parseWeekParam("11", weeks), 11);
+  assert.equal(parseWeekParam("12", weeks), null);
+  assert.equal(parseWeekParam("8junk", weeks), null);
+  assert.equal(parseWeekParam("", weeks), null);
+  assert.equal(parseWeekParam("-1", weeks), null);
 });
 
 test("November 8 release separates verified week 9/10 finals, the week 11 slate and 138 whole-team records", async () => {

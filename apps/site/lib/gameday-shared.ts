@@ -60,6 +60,32 @@ export function gameDaySnapshot(nowMs: number, week?: string | null) {
 
 export type GameDaySnapshot = ReturnType<typeof gameDaySnapshot>;
 
+/**
+ * Reviewed week contract, derived from the release itself rather than pinned
+ * counts: a board week whose own `results_verified_at` is set is an archive
+ * and must be entirely finals with complete scores; a week without it is a
+ * preview and must be entirely scheduled with no scores. Returns null when
+ * the shape satisfies the contract, else the reason it does not.
+ */
+export function reviewedWeekContractViolation(
+  week: number,
+  meta: { results_verified_at?: string | null } | undefined,
+  games: ReadonlyArray<{ status: string; homeScore: number | null; awayScore: number | null }>,
+): string | null {
+  if (!meta) return `Week ${week} is not a reviewed board week`;
+  if (games.length === 0) return `Week ${week} has no reviewed games`;
+  if (meta.results_verified_at != null) {
+    const pending = games.find(game => game.status !== "final" || game.homeScore == null || game.awayScore == null);
+    return pending
+      ? `Archive week ${week} carries a non-final or unscored game (status ${pending.status})`
+      : null;
+  }
+  const started = games.find(game => game.status !== "scheduled" || game.homeScore != null || game.awayScore != null);
+  return started
+    ? `Preview week ${week} carries a started or scored game (status ${started.status})`
+    : null;
+}
+
 /** Reject a broken or wrong-archive refresh; the caller retains its dated snapshot. */
 export function isReviewedGameDayRefresh(value: unknown, explicitWeek: number | null): value is GameDaySnapshot {
   if (!value || typeof value !== "object") return false;
