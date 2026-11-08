@@ -6,7 +6,7 @@ import { stripVTControlCharacters } from "node:util";
 // PR59 main c844d26f deployed this version at 100% traffic in run 41088748169.
 // Reconfirmed by provider history in run 41813592660 on 2026-11-04.
 // A newer or split deployment still fails closed before this release writes.
-export const reviewedProductionVersion = "c1341244-a98c-490e-b881-18f02fa1b109";
+export const reviewedProductionVersion = "cb5df1f4-74b9-4d75-9fa6-150cad85e8be";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {

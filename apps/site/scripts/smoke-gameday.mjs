@@ -21,7 +21,7 @@ for (let attempt = 0; attempt < 12 && Date.now() < deadline; attempt++) {
 }
 assert.ok(current, `Exact GameDay revision did not propagate: ${lastError?.message}`);
 const observations = [];
-for (const week of [8, 9]) {
+for (const week of [9, 10, 11]) {
   const response = await fetch(`${origin}/api/gameday?week=${week}&release=${expected.revision}`, { signal: AbortSignal.timeout(10_000) });
   assert.equal(response.status, 200); assert.match(response.headers.get("cache-control") ?? "", /no-store/);
   const age = response.headers.get("age"), serverDate = response.headers.get("date");
