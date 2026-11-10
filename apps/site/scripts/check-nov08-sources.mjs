@@ -179,11 +179,14 @@ for (const row of scheduled) {
     if (ncaa.hasStartTime) assert.equal(ncaa.startTimeEpoch * 1000, Date.parse(row.ncaa_listed_kickoff_utc ?? row.kickoff_utc));
   }
   if (row.tv) assert.ok(competition.broadcasts.flatMap(b => b.names).some(name => tvPattern(row.tv).test(name) || tvPattern(name).test(row.tv)), `provider TV listing changed ${row.home_slug}`);
+  else assert.deepEqual(competition.broadcasts.flatMap(b => b.names), [], `network announced for ${row.provider_id}; reconcile the hold`);
 }
+// Unannounced kickoffs and unpublished networks equal the counts the reviewed
+// evidence records; each such row is re-checked against its live listing above.
 const tbaRows = scheduled.filter(row => row.kickoff_status === "official_tbd");
-assert.ok(tbaRows.length >= 10 && tbaRows.length <= 16, `official TBD kickoffs ${tbaRows.length}`);
+assert.equal(tbaRows.length, evidence.counts.kickoffTBAorDisputed, `official TBD kickoffs ${tbaRows.length}`);
 const unpublishedTv = scheduled.filter(row => !row.tv);
-assert.ok(unpublishedTv.length >= 8 && unpublishedTv.length <= 20, `unpublished networks ${unpublishedTv.length}`);
+assert.equal(unpublishedTv.length, evidence.counts.tvPending, `unpublished networks ${unpublishedTv.length}`);
 
 // Whole-team records: current provider standings, the official NCAA standings
 // row for every team, and the nine conference standings pages.
