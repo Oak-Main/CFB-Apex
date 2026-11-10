@@ -435,7 +435,7 @@ for (const event of weekEvents(11)) {
     date: etDate(event.date),
     kickoff_utc, kickoff_status, week: 11,
     home_slug: homeSlug, away_slug: awaySlug,
-    home: awaySlug, away: homeSlug,
+    home: homeSlug, away: awaySlug,
     tv, tv_status,
     time_et: timeValid ? etTime(event.date) : (kickoff_utc ? etTime(kickoff_utc) : null),
     site: competition.venue?.fullName ?? null,
