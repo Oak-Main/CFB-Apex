@@ -804,6 +804,13 @@ for (const row of next.playedGames) {
 
 // Board weeks 10 and 11.
 const boardWeeks = [...snapshot.board_weeks];
+// Week 9's archive keeps the marquee it was published with (the neutral-site
+// Florida-Georgia final) instead of re-deriving one from the current AP poll.
+const WEEK9_MARQUEE = "2026-10-31-florida-at-georgia";
+const week9Board = boardWeeks.findIndex(w => w.week === 9);
+assert.ok(week9Board >= 0 && !boardWeeks[week9Board].marquee_game_id, "week 9 board entry without a pinned marquee");
+assert.ok(next.playedGames.some(g => g.game_id === WEEK9_MARQUEE && g.week === 9), `week 9 marquee final present ${WEEK9_MARQUEE}`);
+boardWeeks[week9Board] = { ...boardWeeks[week9Board], marquee_game_id: WEEK9_MARQUEE };
 boardWeeks.push({
   week: 10, start: "2026-11-02", end: "2026-11-08", label: "Nov 3–7", cutover_utc: "2026-11-01T13:00:00Z",
   snapshot_id: "week10-" + createHash("sha256").update(JSON.stringify(finals.filter(g => g.week === 10))).digest("hex").slice(0, 12),
