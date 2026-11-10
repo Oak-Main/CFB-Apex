@@ -65,7 +65,11 @@ assert.equal(new Set(inventories.get(10).map(row => row.gameState)).difference(n
 // Week 9: the two already-published October 27 finals keep every gameplay
 // fact identical to the reviewed October 28 snapshot; only the whole-season
 // review stamp advances (the same re-stamp that release applied).
-const priorSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1") }));
+// A shallow pull-request checkout has no origin/main; fetch just that ref.
+const repoRoot = new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1");
+try { execSync("git rev-parse --verify --quiet refs/remotes/origin/main", { cwd: repoRoot, stdio: "ignore" }); }
+catch { execSync("git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main", { cwd: repoRoot, stdio: "inherit" }); }
+const priorSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: repoRoot }));
 const publishedWeek9Finals = snapshot.playedGames.filter(g => g.week === 9);
 assert.equal(publishedWeek9Finals.length, 56, "week 9 published finals");
 const withoutReview = row => { const copy = structuredClone(row); delete copy.meta.full_season_review; return copy; };
@@ -179,11 +183,14 @@ for (const row of scheduled) {
     if (ncaa.hasStartTime) assert.equal(ncaa.startTimeEpoch * 1000, Date.parse(row.ncaa_listed_kickoff_utc ?? row.kickoff_utc));
   }
   if (row.tv) assert.ok(competition.broadcasts.flatMap(b => b.names).some(name => tvPattern(row.tv).test(name) || tvPattern(name).test(row.tv)), `provider TV listing changed ${row.home_slug}`);
+  else assert.deepEqual(competition.broadcasts.flatMap(b => b.names), [], `network announced for ${row.provider_id}; reconcile the hold`);
 }
+// Unannounced kickoffs and unpublished networks equal the counts the reviewed
+// evidence records; each such row is re-checked against its live listing above.
 const tbaRows = scheduled.filter(row => row.kickoff_status === "official_tbd");
-assert.ok(tbaRows.length >= 10 && tbaRows.length <= 16, `official TBD kickoffs ${tbaRows.length}`);
+assert.equal(tbaRows.length, evidence.counts.kickoffTBAorDisputed, `official TBD kickoffs ${tbaRows.length}`);
 const unpublishedTv = scheduled.filter(row => !row.tv);
-assert.ok(unpublishedTv.length >= 8 && unpublishedTv.length <= 20, `unpublished networks ${unpublishedTv.length}`);
+assert.equal(unpublishedTv.length, evidence.counts.tvPending, `unpublished networks ${unpublishedTv.length}`);
 
 // Whole-team records: current provider standings, the official NCAA standings
 // row for every team, and the nine conference standings pages.

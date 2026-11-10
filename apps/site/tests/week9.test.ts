@@ -107,9 +107,9 @@ test("poll publication and per-module source dates do not follow build or reques
   const week10Clock = Date.parse("2026-11-07T07:00:00Z");
   const first = gameDaySnapshot(week10Clock), later = gameDaySnapshot(week10Clock + 86400000);
   assert.deepEqual(first.sourceDates, later.sourceDates); assert.equal(first.revision, later.revision);
-  assert.ok(first.polls.every(p => p.release_date === "2026-11-01"));
+  assert.ok(first.polls.every(p => p.release_date === "2026-11-08"));
   assert.equal(sourceDateLabel("2026-10-25"), "Oct 25, 2026");
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Friday, November 06, 2026/);
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 07, 2026/);
   assert.equal(first.injuries.week, 8); assert.notEqual(first.sourceDates.injuries, first.sourceDates.schedule);
 });
 
@@ -300,9 +300,9 @@ test("November 8 release separates verified week 9/10 finals, the week 11 slate 
   assert.equal(verifiedRefresh?.teamRecords.lsu, "6-3", "includes LSU's FCS win");
   assert.equal(verifiedRefresh?.teamRecords.delaware, "4-5");
   const ap = snapshot.polls.find(p => p.poll === "ap"); assert.ok(ap);
-  assert.equal(ap.release_date, "2026-11-01");
+  assert.equal(ap.release_date, "2026-11-08");
   assert.deepEqual([...new Set(ap.rankings.map(r => r.rank))].sort((a, b) => a - b), Array.from({ length: 25 }, (_, i) => i + 1));
-  assert.equal(ap.rankings.find(r => r.rank === 1)?.team_slug, "miami-fl");
+  assert.equal(ap.rankings.find(r => r.rank === 1)?.team_slug, "georgia");
   const { noNames } = await import("../lib/no-names.ts");
   assert.ok(noNames.filter(p => p.stars == null).every(p => p.howAcquired === "unknown"));
   const injury = snapshot.injuries.contextNotes.find(r => r.player === "Julian Sayin" && r.source_as_of === "2026-10-27");

@@ -107,7 +107,7 @@ test("shared revision is deterministic and module source times do not follow req
   assert.equal(first.revision, later.revision);
   assert.notEqual(first.serverNow, later.serverNow);
   assert.deepEqual(first.sourceDates, later.sourceDates);
-  assert.equal(first.polls[0].release_date, "2026-11-01");
+  assert.equal(first.polls[0].release_date, "2026-11-08");
   assert.equal(first.teams.length, 138);
   assert.ok(first.teams.every(t => t.record && t.logo));
   const ids = new Set(first.teams.map(t => t.slug));

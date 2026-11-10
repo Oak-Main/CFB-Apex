@@ -11,6 +11,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { execSync } from "node:child_process";
 import { join } from "node:path";
 import { reconcileGameDay, editorialComposite } from "./reconcile-gameday.mjs";
 import { htmlTables, htmlText, ncaaInventory, tvPattern } from "./gameday-source-validation.mjs";
@@ -347,6 +348,21 @@ for (const game of finals) {
   game.meta.conference_game = conferences[0] === conferences[1] && conferences[0] !== "fcs";
 }
 
+// Finals origin/main already publishes keep their published verification stamp
+// and the pregame AP ranks they were published with (the poll that preceded the
+// game); only finals main does not yet publish take this cutoff and edition.
+const publishedSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1") }));
+const publishedFinals = new Map(publishedSnapshot.playedGames.map(row => [row.provider_id, row]));
+let carriedForward = 0;
+for (const game of finals) {
+  const published = publishedFinals.get(game.provider_id);
+  if (!published) continue;
+  game.verified_at = published.verified_at;
+  game.meta.pregame_ap_ranks = structuredClone(published.meta.pregame_ap_ranks);
+  carriedForward++;
+}
+console.log("finals carried forward from origin/main:", carriedForward, "of", finals.length);
+
 // ------------------------------------------------------------ week 11 slate
 const tvText = htmlText(docs.get("tv-ncaa"));
 function tvArticleRow(awayName, homeName) {
@@ -572,7 +588,7 @@ coachesPoll.rankings.forEach((row, i) => {
   assert.equal(Number(official[3].replaceAll(",", "")), row.points, `coaches points ${row.team_slug}`);
   assert.equal(official[2], row.record, `coaches record ${row.team_slug}`);
 });
-assert.match(htmlText(docs.get("coaches")), /November 8|Nov\.?\s*8/, "coaches page edition date");
+assert.match(htmlText(docs.get("coaches")), /November 0?8|Nov\.?\s*0?8/, "coaches page edition date");
 
 const composite = editorialComposite([apPoll, coachesPoll]);
 const polls = [apPoll, coachesPoll, composite];
@@ -788,6 +804,13 @@ for (const row of next.playedGames) {
 
 // Board weeks 10 and 11.
 const boardWeeks = [...snapshot.board_weeks];
+// Week 9's archive keeps the marquee it was published with (the neutral-site
+// Florida-Georgia final) instead of re-deriving one from the current AP poll.
+const WEEK9_MARQUEE = "2026-10-31-florida-at-georgia";
+const week9Board = boardWeeks.findIndex(w => w.week === 9);
+assert.ok(week9Board >= 0 && !boardWeeks[week9Board].marquee_game_id, "week 9 board entry without a pinned marquee");
+assert.ok(next.playedGames.some(g => g.game_id === WEEK9_MARQUEE && g.week === 9), `week 9 marquee final present ${WEEK9_MARQUEE}`);
+boardWeeks[week9Board] = { ...boardWeeks[week9Board], marquee_game_id: WEEK9_MARQUEE };
 boardWeeks.push({
   week: 10, start: "2026-11-02", end: "2026-11-08", label: "Nov 3–7", cutover_utc: "2026-11-01T13:00:00Z",
   snapshot_id: "week10-" + createHash("sha256").update(JSON.stringify(finals.filter(g => g.week === 10))).digest("hex").slice(0, 12),

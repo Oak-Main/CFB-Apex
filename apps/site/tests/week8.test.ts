@@ -85,7 +85,7 @@ test("Week 8 is complete, uses Eastern dates and has school support for every ki
   assert.equal(slate.find(g => g.id.includes("rutgers-at-northwestern"))?.broadcast, "Peacock");
   assert.equal(easternDate(slate.find(g => g.id.includes("liberty-at-kennesaw-state"))?.date ?? ""), "2026-10-22");
   const ap = new Set(pollTables.find(p => p.poll === "ap")?.rankings.map(r => r.team_slug));
-  assert.equal(slate.filter(g => ap.has(g.homeTeamId) || ap.has(g.awayTeamId)).length, 16);
+  assert.equal(slate.filter(g => ap.has(g.homeTeamId) || ap.has(g.awayTeamId)).length, 18);
   assert.equal(slate.filter(g => ap.has(g.homeTeamId) && ap.has(g.awayTeamId)).length, 3);
 });
 
@@ -98,15 +98,15 @@ test("the current ticker leads with verified Week 8 finals and non-final games",
 });
 
 test("source cutoffs advance separately and all 138 records reconcile", () => {
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Friday, November 06, 2026/);
-  assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-11-01", "2026-11-01"]);
-  assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "miami-fl");
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 07, 2026/);
+  assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-11-08", "2026-11-08"]);
+  assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "georgia");
   for (const move of verifiedRefresh?.poll_notes?.movers_ap ?? []) assert.equal(move.move, move.to - move.from);
-  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "byu")?.move, -1);
-  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "ohio-state")?.move, 9);
+  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "utah")?.move, -4);
+  assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "miami-fl")?.move, 4);
   assert.equal(evidence.reconciliation.overall_records_checked, 138);
   assert.equal(evidence.reconciliation.disagreements, 0);
-  assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 2977);
+  assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 3169);
   assert.equal(boardWeeks.find(w => w.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(Object.keys(resultsEvidence.records).length, 138);
   const currentRecords = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", import.meta.url), "utf8")).records;
