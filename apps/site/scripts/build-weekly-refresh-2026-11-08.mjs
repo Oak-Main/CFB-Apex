@@ -11,6 +11,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { execSync } from "node:child_process";
 import { join } from "node:path";
 import { reconcileGameDay, editorialComposite } from "./reconcile-gameday.mjs";
 import { htmlTables, htmlText, ncaaInventory, tvPattern } from "./gameday-source-validation.mjs";
@@ -346,6 +347,21 @@ for (const game of finals) {
   const conferences = contest.teams.map(t => t.conferenceSeo);
   game.meta.conference_game = conferences[0] === conferences[1] && conferences[0] !== "fcs";
 }
+
+// Finals origin/main already publishes keep their published verification stamp
+// and the pregame AP ranks they were published with (the poll that preceded the
+// game); only finals main does not yet publish take this cutoff and edition.
+const publishedSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1") }));
+const publishedFinals = new Map(publishedSnapshot.playedGames.map(row => [row.provider_id, row]));
+let carriedForward = 0;
+for (const game of finals) {
+  const published = publishedFinals.get(game.provider_id);
+  if (!published) continue;
+  game.verified_at = published.verified_at;
+  game.meta.pregame_ap_ranks = structuredClone(published.meta.pregame_ap_ranks);
+  carriedForward++;
+}
+console.log("finals carried forward from origin/main:", carriedForward, "of", finals.length);
 
 // ------------------------------------------------------------ week 11 slate
 const tvText = htmlText(docs.get("tv-ncaa"));
