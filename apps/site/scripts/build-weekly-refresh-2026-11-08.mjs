@@ -572,7 +572,7 @@ coachesPoll.rankings.forEach((row, i) => {
   assert.equal(Number(official[3].replaceAll(",", "")), row.points, `coaches points ${row.team_slug}`);
   assert.equal(official[2], row.record, `coaches record ${row.team_slug}`);
 });
-assert.match(htmlText(docs.get("coaches")), /November 8|Nov\.?\s*8/, "coaches page edition date");
+assert.match(htmlText(docs.get("coaches")), /November 0?8|Nov\.?\s*0?8/, "coaches page edition date");
 
 const composite = editorialComposite([apPoll, coachesPoll]);
 const polls = [apPoll, coachesPoll, composite];
