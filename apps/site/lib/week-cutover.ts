@@ -34,6 +34,20 @@ export function pickBoardWeek(
   return selected;
 }
 
+/** The week the server clock would show without an explicit `?week=`: the
+ * selection itself when implicit, else the latest cutover that has passed.
+ * This is the week the reset/default link points at. */
+export function clockWeek(
+  weeks: readonly CutoverWeek[],
+  selection: Pick<BoardWeekSelection, "week" | "serverNow" | "explicit">,
+): number | null {
+  if (!selection.explicit) return selection.week;
+  const passed = weeks
+    .filter((entry) => selection.serverNow >= Date.parse(entry.cutover_utc))
+    .sort((a, b) => Date.parse(a.cutover_utc) - Date.parse(b.cutover_utc));
+  return (passed.at(-1) ?? weeks[0])?.week ?? null;
+}
+
 /** The next cutover after `nowMs`, or null when the latest week is showing. */
 export function nextCutoverMs(weeks: readonly CutoverWeek[], nowMs: number): number | null {
   const upcoming = weeks

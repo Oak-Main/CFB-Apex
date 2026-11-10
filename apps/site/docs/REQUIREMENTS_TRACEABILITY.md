@@ -193,3 +193,10 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 | Explain CFB transfers and the transfer portal on the existing board | `components/transfer-portal-guide.tsx`, rendered only on the root `/transfer-portal` board | Typecheck, lint, rendered route inspection, and site build |
 | Publish current dataset window dates without inventing a future cycle | Existing January 2–16, 2026 winter window, championship-window limitation, September 5 season context, and September 7 compilation date | Copy checked against `data/cfb-2026/portal/transfers-2026.json` metadata |
 | Keep program ledgers and transfer records unchanged | Guide inserted only in the unscoped board branch; no event, team, or provider data edits | Diff scope and existing transfer/domain tests |
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Reconcile Week 9 completion, Week 10 finals and the Week 11 slate from official sources | `scripts/build-weekly-refresh-2026-11-08.mjs` → evidence JSONs → `verified-refresh.json` → generated bundle | `npm run gameday:source-gate` (`check-nov08-sources.mjs`), `npm test`, integration/a11y/SEO/links suites |
+| Keep finals final, live games live, unknowns unknown | Five school corroborations for NCAA in-progress rows; 13 official TBD kickoffs; 14 unpublished networks; no inferred results | Gate asserts per-row states, TBD holds and school receipts |
+| Verify whole-team records against official pages | NCAA standings page row-for-row plus nine conference pages | Gate asserts all 138 rows; full-season audit reproduces records from 685 finals |
+| Publish honest board freshness | Board weeks 6–11 with separate schedule/results/records stamps; Week 11 carries no results date | Homepage renders WEEK 10 (pre-cutover) / WEEK 11 (post-cutover) from the server clock; smoke covers weeks 9–11 |

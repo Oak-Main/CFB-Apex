@@ -2,14 +2,11 @@
 
 import { useEffect } from "react";
 import type { BoardWeekRow } from "@/lib/cfb-dataset";
-import { nextCutoverMs, type BoardWeekSelection } from "@/lib/week-cutover";
+import { clockWeek, nextCutoverMs, type BoardWeekSelection } from "@/lib/week-cutover";
 
-/** The week the server clock would show without an explicit `?week=`. */
-export function clockWeek(weeks: readonly BoardWeekRow[], selection: BoardWeekSelection): number | null {
-  if (!selection.explicit) return selection.week;
-  const passed = weeks.filter((entry) => selection.serverNow >= Date.parse(entry.cutover_utc));
-  return (passed.at(-1) ?? weeks[0])?.week ?? null;
-}
+// Pure clock-week logic lives in lib/week-cutover.ts; re-exported here so
+// existing component imports keep working.
+export { clockWeek };
 
 /**
  * Reload once the server's next cutover passes so an open page picks up the

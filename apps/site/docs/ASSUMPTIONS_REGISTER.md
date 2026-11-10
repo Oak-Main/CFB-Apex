@@ -150,3 +150,11 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 - “Current cycle” means the repository’s current 2026-cycle transfer compilation, not an unsupported 2027 cycle. The January 2–16, 2026 winter window is explicit; the championship extra window has no separately sourced dates.
 - No 2027 portal-window dates are present in the repository, so none are inferred or published. A future content update requires an authoritative dated source before adding them.
 - The transfer board remains a dated, incomplete working subset. The explainer does not imply live movement, full-census coverage, new eligibility rules, or new player destinations.
+
+## November 8 weekly refresh
+
+- The cutoff 2026-11-08T13:54:26.690Z sits after the 13:00 UTC Week 11 cutover, so the board default is the Week 11 preview; the November 1 poll editions predate every Week 11 kickoff; poll records are edition records, not current standings.
+- NCAA's week-10 scoreboard still listed five late finals as in-progress at the cutoff; official school pages carry their finals, and NCAA's later catch-up (F) is compatible with the per-row gate.
+- Texas Tech's home venue is published as "Galaxy Stadium" because the school's own schedule page uses that name.
+- Week 11 marquee (Missouri at Georgia) has an announced network but no announced time; the board keeps kickoff official-TBD rather than deriving a window.
+- Leader categories keep NCAA's own through-games statement (Friday, November 06); Saturday's games are not yet in NCAA's published totals.

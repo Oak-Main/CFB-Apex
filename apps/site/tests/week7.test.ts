@@ -54,8 +54,8 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
   assert.equal(new Set(slate.map((row) => [row.awayTeamId, row.homeTeamId].sort().join(":"))).size, 59);
   const ids = new Set(teams.map((team) => team.id));
   assert.ok(slate.every((row) => ids.has(row.awayTeamId) && ids.has(row.homeTeamId)));
-  assert.equal(verifiedRefresh?.week, 9);
-  assert.equal(verifiedRefresh?.reference_date, "2026-10-26");
+  assert.equal(verifiedRefresh?.week, 11);
+  assert.equal(verifiedRefresh?.reference_date, "2026-11-08");
 });
 
 test("every Week 7 kickoff is published after the October 11 rechecks, with no midnight placeholder", () => {
@@ -122,9 +122,9 @@ test("Ohio State at Indiana is the Week 7 marquee with verified records", () => 
   assert.equal(kickoffTime(marquee), "12:00 PM ET");
   assert.equal(marquee?.broadcast, "FOX");
   assert.equal(marquee?.venue, "Memorial Stadium (Bloomington, IN)");
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–1");
-  // Archive game facts stay fixed; shared team records include the verified Week 8 win at Michigan.
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "7\u20131");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–3");
+  // Archive game facts stay fixed; shared team records include later verified finals.
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "8\u20131");
   for (const [id, away, home] of [["2026-10-10-maryland-at-ohio-state", 16, 45], ["2026-10-10-indiana-at-nebraska", 20, 17]] as const) {
     const final = game(id);
     assert.equal(final?.status, "final");
@@ -139,11 +139,11 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   assert.deepEqual(review?.carried_from_2026_10_10, []);
   assert.deepEqual(review?.withheld, []);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
-  // Texas lost to Oklahoma on October 10: 4–0 became 4–1.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "5\u20132");
+  // Texas lost to Oklahoma on October 10; later verified finals advanced the record.
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "7\u20132");
   // Current team records include independently verified later finals.
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–1");
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "7\u20131");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "6–3");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "8\u20131");
   // Every team's record equals its conference table's overall column.
   for (const conf of verifiedRefresh?.retainedBaseline?.conferenceStandings ?? []) {
     for (const row of conf.rows) assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, row.team);
@@ -151,14 +151,14 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
 });
 
 test("current polls advance to October 25 and explain historical source dates", () => {
-  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-10-25", "2026-10-25"]);
+  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-11-01", "2026-11-01"]);
   assert.match(pollsStatusNote ?? "", /October 25/);
-  assert.match(pollsStatusNote ?? "", /October 18/);
+  assert.match(pollsStatusNote ?? "", /October 25 editions are archived/);
 });
 
 test("Week 7 FBS–FCS exclusions carry ESPN conference evidence", () => {
   const excluded = (verifiedRefresh?.excludedGames ?? []).filter((row) => row.date >= "2026-10-12");
-  assert.deepEqual(excluded.map((row) => row.provider_id).sort(), ["401856725", "401858261", "401858262"]);
+  assert.deepEqual(excluded.map((row) => row.provider_id).sort(), ["401856725", "401858261", "401858262", "401858290"]);
   for (const row of excluded) assert.ok(row.espn_conference_ids && ![1, 4, 5, 8, 9, 12, 15, 17, 18, 37, 151].includes(row.espn_conference_ids.away));
 });
 

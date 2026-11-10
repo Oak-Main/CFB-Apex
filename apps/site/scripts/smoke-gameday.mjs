@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { withoutHtmlComments } from "./gameday-source-validation.mjs";
-import { gameDaySnapshot } from "../lib/gameday-shared.ts";
+import { gameDaySnapshot, reviewedWeekContractViolation } from "../lib/gameday-shared.ts";
 
 const origin = process.env.GAMEDAY_SMOKE_ORIGIN ?? "https://cfbapex.com";
 const expected = gameDaySnapshot(Date.now()), startedAt = new Date().toISOString(), deadline = Date.now() + 120_000;
@@ -21,7 +21,7 @@ for (let attempt = 0; attempt < 12 && Date.now() < deadline; attempt++) {
 }
 assert.ok(current, `Exact GameDay revision did not propagate: ${lastError?.message}`);
 const observations = [];
-for (const week of [8, 9]) {
+for (const week of [9, 10, 11]) {
   const response = await fetch(`${origin}/api/gameday?week=${week}&release=${expected.revision}`, { signal: AbortSignal.timeout(10_000) });
   assert.equal(response.status, 200); assert.match(response.headers.get("cache-control") ?? "", /no-store/);
   const age = response.headers.get("age"), serverDate = response.headers.get("date");
@@ -35,8 +35,11 @@ for (const week of [8, 9]) {
   // Assertion-only normalization: preserve script literals and remove parsed comment nodes.
   const html = withoutHtmlComments(await page.text());
   assert.ok(html.includes(`WEEK ${week}`)); assert.ok(html.includes(wanted.sourceDates.schedule));
-  if (week === 9) { assert.equal(wanted.games.filter(g => g.status === "final").length, 2); assert.equal(wanted.games.filter(g => g.status === "scheduled").length, 54); }
-  else assert.ok(wanted.games.every(g => g.status === "final"));
-  observations.push({ week, games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status"), age, serverDate });
+  // Acceptance derives from the reviewed release contract (the week's own
+  // results_verified_at decides archive vs preview), not from pinned counts
+  // that go stale the moment a later release reconciles more finals.
+  const violation = reviewedWeekContractViolation(week, expected.weeks.find(row => row.week === week), wanted.games);
+  assert.equal(violation, null, `Week ${week}: ${violation ?? "contract"}`);
+  observations.push({ week, state: wanted.weeks.find(row => row.week === week)?.results_verified_at != null ? "archive" : "preview", games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status"), age, serverDate });
 }
 console.log(JSON.stringify({ acceptance:"PASS", origin, revision:expected.revision, season:expected.season, defaultWeek:current.selectedWeek, startedAt, checkedAt:new Date().toISOString(), observations }));
