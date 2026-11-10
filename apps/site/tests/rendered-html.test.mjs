@@ -292,7 +292,7 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);
-  assert.match(current, /AP TOP 25 2026-11-01/);
+  assert.match(current, /AP TOP 25 2026-11-08/);
   assert.match(current, /2,977/);
   assert.match(pages.get("/?week=6"), /MARQUEE MATCHUP Georgia at Alabama Sat, Oct 10 ABC · FINAL · Georgia 20, Alabama 17/);
   const week7 = pages.get("/?week=7");

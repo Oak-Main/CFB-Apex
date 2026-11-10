@@ -151,7 +151,7 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
 });
 
 test("current polls advance to October 25 and explain historical source dates", () => {
-  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-11-01", "2026-11-01"]);
+  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-11-08", "2026-11-08"]);
   assert.match(pollsStatusNote ?? "", /October 25/);
   assert.match(pollsStatusNote ?? "", /October 25 editions are archived/);
 });
