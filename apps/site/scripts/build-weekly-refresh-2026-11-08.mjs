@@ -15,6 +15,12 @@ import { join } from "node:path";
 import { reconcileGameDay, editorialComposite } from "./reconcile-gameday.mjs";
 import { htmlTables, htmlText, ncaaInventory, tvPattern } from "./gameday-source-validation.mjs";
 
+// The AP and AFCA Coaches poll edition this release publishes (provider date,
+// YYYY-MM-DD). Every poll-date assertion and label below derives from it.
+const POLL_EDITION_DATE = "2026-11-08";
+const POLL_EDITION_LABEL = new Intl.DateTimeFormat("en-US", { timeZone: "UTC", month: "long", day: "numeric" }).format(new Date(`${POLL_EDITION_DATE}T12:00:00Z`));
+const POLL_EDITION_YEAR = POLL_EDITION_DATE.slice(0, 4);
+
 const SCRATCH = process.argv[2];
 assert.ok(SCRATCH && !SCRATCH.includes("CFB-Apex"), "Pass a scratch directory outside the repository");
 mkdirSync(SCRATCH, { recursive: true });
@@ -232,8 +238,8 @@ const weekEvents = week => WEEK_DAYS[week].flatMap(d => eventsByDay.get(d) ?? []
 const rankingsDoc = JSON.parse(docs.get("rankings"));
 const apEdition = rankingsDoc.rankings.find(p => p.id === "1");
 const coachesEdition = rankingsDoc.rankings.find(p => p.id === "2");
-assert.equal(apEdition.date.slice(0, 10), "2026-11-01", "AP edition");
-assert.equal(coachesEdition.date.slice(0, 10), "2026-11-01", "Coaches edition");
+assert.equal(apEdition.date.slice(0, 10), POLL_EDITION_DATE, "AP edition");
+assert.equal(coachesEdition.date.slice(0, 10), POLL_EDITION_DATE, "Coaches edition");
 const apRanks = new Map(apEdition.ranks.map(r => [slugOf(r.team.id), r.current]));
 
 function playedRow(event) {
@@ -578,7 +584,7 @@ const movers = (poll, prior) => poll.rankings.filter(r => prior.has(r.team_slug)
 const debuts = poll => poll.rankings.filter(r => !priorApRanks.has(r.team_slug) && !priorCoachesRanks.has(r.team_slug)).map(r => ({ team: r.team, team_slug: r.team_slug, rank: r.rank }));
 const dropped = (poll, prior, name) => [...prior.entries()].filter(([slug]) => !poll.rankings.some(r => r.team_slug === slug)).map(([slug, rank]) => ({ team: prior.find(r => r.team_slug === slug)?.team ?? slug, team_slug: slug, [name === "ap" ? "others_points" : "others_points"]: null }));
 const pollNotes = {
-  as_of: "2026-11-01",
+  as_of: POLL_EDITION_DATE,
   movers_ap: movers(apPoll, priorApRanks),
   debuts_ap: debuts(apPoll),
   dropped_out: { ap: [...priorApRanks.entries()].filter(([slug]) => !apPoll.rankings.some(r => r.team_slug === slug)).map(([slug, rank]) => ({ team: priorAp.rankings.find(r => r.team_slug === slug)?.team ?? slug, team_slug: slug, others_points: priorAp.rankings.find(r => r.team_slug === slug)?.others_points ?? null })), coaches: [...priorCoachesRanks.entries()].filter(([slug]) => !coachesPoll.rankings.some(r => r.team_slug === slug)).map(([slug]) => ({ team: priorCoaches.rankings.find(r => r.team_slug === slug)?.team ?? slug, team_slug: slug, others_points: priorCoaches.rankings.find(r => r.team_slug === slug)?.others_points ?? null })) },
@@ -687,7 +693,7 @@ const auditRawSources = [...receipts.filter(r => /^(history-|ncaa-history-)/.tes
 // ------------------------------------------------------------ evidence files
 const evidence = {
   schema_version: 1,
-  scope: "Week 9 completion (October 28-31 finals), complete Week 10 finals, full Week 11 slate, current whole-team records, November 1 poll editions, NCAA leaders; full-season review in the companion audit file",
+  scope: `Week 9 completion (October 28-31 finals), complete Week 10 finals, full Week 11 slate, current whole-team records, ${POLL_EDITION_LABEL} poll editions, NCAA leaders; full-season review in the companion audit file`,
   cutoff_utc: CUT,
   inventories: { 9: { expected: 56, finals: 56 }, 10: { expected: 63, finals: 63, fbs: 62, fcs: 1 }, 11: { expected: 67, upcoming: 67 } },
   records, conferenceRecords, primaryRecords,
@@ -794,13 +800,13 @@ boardWeeks.push({
   snapshot_id: "week11-" + createHash("sha256").update(JSON.stringify(scheduled)).digest("hex").slice(0, 12),
   marquee_game_id: "2026-11-14-missouri-at-georgia",
   retrieved_at: CUT, schedule_verified_at: CUT,
-  note: "Week 11 full slate retrieved before any kickoff. Unannounced kickoffs and unpublished networks stay explicit; the November 1 poll editions predate the slate and keep their own dates.",
+  note: `Week 11 full slate retrieved before any kickoff. Unannounced kickoffs and unpublished networks stay explicit; the ${POLL_EDITION_LABEL} poll editions predate the slate and keep their own dates.`,
 });
 next.board_weeks = boardWeeks;
 
 // Polls and history.
 next.polls = polls;
-next.pollsStatus = "AP and AFCA Coaches editions published November 1, 2026, checked against NCAA/USA Today and ESPN. Prior October 25 editions are archived. Composite remains an editorial average (unranked = 26); build time is not source freshness.";
+next.pollsStatus = `AP and AFCA Coaches editions published ${POLL_EDITION_LABEL}, ${POLL_EDITION_YEAR}, checked against NCAA/USA Today and ESPN. Prior October 25 editions are archived. Composite remains an editorial average (unranked = 26); build time is not source freshness.`;
 next.poll_history = [...snapshot.poll_history, { release_date: priorAp.release_date, polls: priorPolls }];
 next.poll_notes = pollNotes;
 
@@ -815,7 +821,7 @@ next.baseline_note = "Week 10 complete: 62 verified finals plus one FCS result o
 next.results_verified_at = CUT;
 next.schedule_verified_at = CUT;
 next.records_verified_at = CUT;
-next.refresh_log = [...snapshot.refresh_log, { applied_at: new Date().toISOString(), evidence_checked_at: CUT, script: "weekly-refresh-2026-11-08", evidence: "data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", scope: "Week 9 completion (54 new finals), complete Week 10 finals (62), full Week 11 slate (67), 138 primary-source whole-team records, November 1 poll editions, NCAA leaders" }];
+next.refresh_log = [...snapshot.refresh_log, { applied_at: new Date().toISOString(), evidence_checked_at: CUT, script: "weekly-refresh-2026-11-08", evidence: "data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", scope: `Week 9 completion (54 new finals), complete Week 10 finals (62), full Week 11 slate (67), 138 primary-source whole-team records, ${POLL_EDITION_LABEL} poll editions, NCAA leaders` }];
 next.full_season_review = { checked_at: audit.verification_completed_at, through_games: CUT, completed: 685, fbs_finals: 562, fcs_finals: 123, evidence: "data/cfb-2026/refresh/evidence/2026-11-08-full-season-audit.json", note: "All ten NCAA weekly inventories and the full provider calendar reconciled through November 8; whole-team totals reproduce all 138 independently verified official records. Week 9's October 28-31 finals and Week 10 complete the board; source cutoff is unchanged by later verification." };
 next.team_records_review = {
   as_of: CUT,
