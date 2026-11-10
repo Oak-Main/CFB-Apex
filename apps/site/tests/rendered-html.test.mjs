@@ -126,7 +126,7 @@ test("the reviewed Week 6 archive renders its games and sourced metrics", async 
   assert.match(html, /Alabama/);
   assert.match(html, /Week of Mon, Oct 5/);
   assert.match(html, /Season leaders/);
-  assert.match(html, /2,977/);
+  assert.match(html, /3,169/);
   assert.doesNotMatch(html, /Rankings: AP preseason|reflect the AP preseason poll|Preseason · Points/);
 });
 
@@ -293,7 +293,7 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);
   assert.match(current, /AP TOP 25 2026-11-08/);
-  assert.match(current, /2,977/);
+  assert.match(current, /3,169/);
   assert.match(pages.get("/?week=6"), /MARQUEE MATCHUP Georgia at Alabama Sat, Oct 10 ABC · FINAL · Georgia 20, Alabama 17/);
   const week7 = pages.get("/?week=7");
   assert.match(week7, /WEEK 7 · OCT 13–17 · ARCHIVE/);
