@@ -909,7 +909,7 @@ const evidence = {
   bye_status: `${byes.length} programs are absent from the complete official Week 12 slate; no individual official bye designation asserted`,
   byes,
   counts: { week11Finals: finals.length, week11FcsFinals: 0, week11Rescheduled: rescheduled.length, week12Fixtures: scheduled.length, week12FcsFixtures: excludedUpcoming.length, kickoffTBAorDisputed: tbdCount, tvPending: tvPendingCount, records: 138, seasonCompleted: auditFinals.length, seasonFbsFinals: fbsFinals, seasonFcsFinals: fcsFinals },
-  primary_records_note: `All 138 whole-team records match current provider standings and reproduce from the complete verified finals. ${138 - ncaaStandingsLag.length} equal their rows on the official NCAA standings page (${ncaaStandingsStamp ?? "no update stamp"}); ${ncaaStandingsLag.length} rows there had not yet counted a verified Week 11 final (${ncaaStandingsLag.map(r => r.slug).join(", ") || "none"}) and are recorded as lagging observations, each with separate official corroboration. Nine conference groups are also corroborated from their official standings pages. Whole-team totals include FCS opponents.`,
+  primary_records_note: `All 138 whole-team records match current provider standings and reproduce from the complete verified finals. ${138 - ncaaStandingsLag.length} equal their rows on the official NCAA standings page (${ncaaStandingsStamp ?? "no update stamp"}); ${ncaaStandingsLag.length} rows there had not yet counted a verified Week 11 final (${ncaaStandingsLag.map(r => r.slug).join(", ") || "none"}) and are recorded as lagging observations, each with separate official corroboration (${ncaaStandingsLag.map(r => `${r.slug}: ${r.corroborated_by}`).join(", ") || "none"}). No other conference standings page is asserted in this release. Whole-team totals include FCS opponents.`,
   broadcast_evidence: null,
   poll_editions: { ap: apPoll, coaches: coachesPoll },
   ap_edition_status: apStatus,
@@ -1063,7 +1063,7 @@ next.team_records_review = {
   carried_from_2026_10_10: [],
   withheld: [],
   rule: "All 138 current overall and conference records match fresh provider standings and reconcile from the prior reviewed snapshot plus the corroborated finals.",
-  note: `${138 - ncaaStandingsLag.length} records equal their rows on the official NCAA standings page; ${ncaaStandingsLag.length} rows there had not yet counted a verified Week 11 final at the cutoff and those records rest on provider standings, the verified final and a conference or host-school page. Nine conference groups are also corroborated from their official standings pages. Whole-team totals include FCS opponents; never derived from the filtered board.`,
+  note: `${138 - ncaaStandingsLag.length} records equal their rows on the official NCAA standings page; ${ncaaStandingsLag.length} rows there had not yet counted a verified Week 11 final at the cutoff and those records rest on provider standings, the verified final and a conference or host-school page. Whole-team totals include FCS opponents; never derived from the filtered board.`,
 };
 next.holds = [
   "Ratings retain their September 27 snapshot and SOS its independent source date; current licensed SP+/FPI/FEI updates are unavailable.",
