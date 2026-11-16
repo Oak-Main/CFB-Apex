@@ -200,3 +200,12 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 | Keep finals final, live games live, unknowns unknown | Five school corroborations for NCAA in-progress rows; 13 official TBD kickoffs; 14 unpublished networks; no inferred results | Gate asserts per-row states, TBD holds and school receipts |
 | Verify whole-team records against official pages | NCAA standings page row-for-row plus nine conference pages | Gate asserts all 138 rows; full-season audit reproduces records from 685 finals |
 | Publish honest board freshness | Board weeks 6–11 with separate schedule/results/records stamps; Week 11 carries no results date | Homepage renders WEEK 10 (pre-cutover) / WEEK 11 (post-cutover) from the server clock; smoke covers weeks 9–11 |
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Publish Week 11 finals and the Week 12 slate from official sources | `scripts/build-weekly-refresh-2026-11-15.mjs` → evidence JSONs → `verified-refresh.json` → generated bundle | `npm run gameday:source-gate` (`check-nov15-sources.mjs`), `npm test` (`tests/week12.test.ts`), integration/a11y/SEO/links suites |
+| Never promote a game because its kickoff passed | Builder requires ESPN completed/post, quarter sums and NCAA F with the same score for all 67 | Gate re-asserts each final against both live boards |
+| Game ids never change | Finals take their id from the published scheduled row; the Sunday Ole Miss at Oklahoma final keeps its Saturday id | Gate compares every Week 11 id with `origin/main`; `tests/week12.test.ts` |
+| Each poll keeps its own release date | Coaches November 15; AP and composite November 8 while no newer AP edition is published | Gate fails on a newer AP edition; tests assert both dates and the archived Coaches edition |
+| A source disagreement never becomes a guess | Three kickoff disagreements settled by host-school schedules; four lagging NCAA standings rows recorded with separate corroboration | Gate re-asserts the literal school text, the settlements and the lagging rows |
+| Publish honest board freshness | Board weeks 6–12; Week 12 carries no results date; conference tables carry their reconciliation date | Rendered tests pin `?week=11` and `?week=12`; smoke covers weeks 10–12 |

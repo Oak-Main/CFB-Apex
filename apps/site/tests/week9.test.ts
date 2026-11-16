@@ -12,8 +12,12 @@ import { htmlText, isSourceEvidenceFresh, ncaaInventory, schoolBlocks, sourceSch
 
 const evidence = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", import.meta.url), "utf8"));
 const now = Date.parse("2026-11-08T13:54:26.690Z");
+const evidence15 = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-15-week11-refresh.json", import.meta.url), "utf8"));
 
-test("completed Week 9 and 10 archives precede the Week 11 slate at the November cutover", () => {
+// The November 15 release reviewed every Week 11 game as a final and brought
+// in the Week 12 slate. Week 11 is therefore an archive in these tests; the
+// preview-state checks moved to Week 12 (see also tests/week12.test.ts).
+test("completed Week 9 and 10 archives precede Week 11 at the November cutover", () => {
   const archive9 = gameDaySnapshot(now, "9"), archive10 = gameDaySnapshot(now, "10"), upcoming = gameDaySnapshot(now, "11");
   assert.equal(gameDaySnapshot(Date.parse("2026-11-01T12:59:59Z")).selectedWeek, 9);
   assert.equal(gameDaySnapshot(Date.parse("2026-11-01T13:00:00Z")).selectedWeek, 10);
@@ -26,22 +30,32 @@ test("completed Week 9 and 10 archives precede the Week 11 slate at the November
   assert.ok(archive10.games.every(g => g.status === "final"));
   assert.equal(upcoming.selectedWeek, 11); assert.ok(upcoming.explicit);
   assert.equal(upcoming.games.length, evidence.inventories[11].expected);
-  assert.ok(upcoming.games.every(g => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
+  assert.ok(upcoming.games.every(g => g.status === "final" && g.homeScore !== null && g.awayScore !== null));
   assert.deepEqual(upcoming.previousFinals, archive10.games);
   assert.equal(upcoming.revision, archive10.revision);
-  assert.equal(upcoming.sourceDates.results, null, "the Week 11 slate has no results yet");
+  assert.ok(upcoming.sourceDates.results, "Week 11 carries its own results verification time");
+  assert.equal(upcoming.sourceDates.results, verifiedRefresh?.results_verified_at);
   assert.equal(upcoming.sourceDates.previousResults, archive10.sourceDates.results);
 });
 
-test("every Week 11 fixture has a stable event and truthful TBA, venue, neutral flag and TV projection", () => {
+test("every Week 11 fixture keeps its stable event as a final; the Week 12 slate has truthful TBA, venue, neutral flag and TV projection", () => {
+  // Game ids never change: each fixture the November 8 release published is
+  // the same event today, now a verified final, on its published venue.
   for (const row of evidence.schedule) {
-    const game = games.find(g => g.week === 11 && g.homeTeamId === row.home && g.awayTeamId === row.away);
+    const game = games.find(g => g.id === `${row.date}-${row.away}-at-${row.home}`);
+    assert.ok(game, `${row.date}-${row.away}-at-${row.home}`);
+    assert.equal(game.week, 11); assert.equal(game.status, "final");
+    assert.equal(game.homeTeamId, row.home); assert.equal(game.awayTeamId, row.away);
+    assert.equal(game.venue, row.site); assert.equal(game.neutralSite, row.neutral_site);
+  }
+  for (const row of evidence15.schedule) {
+    const game = games.find(g => g.week === 12 && g.homeTeamId === row.home && g.awayTeamId === row.away);
     assert.ok(game); assert.equal(game.venue, row.site); assert.equal(game.neutralSite, row.neutral_site);
     assert.equal(easternDate(game.date), row.date); assert.equal(game.broadcast, row.tv);
-    if (row.kickoff_utc === null) { assert.equal(game.date, row.date); assert.match(game.kickoffLabel, /TBA/); assert.doesNotMatch(publicGame(game, now + 14 * 86400000).statusDetail ?? "", /Kickoff passed/); }
+    if (row.kickoff_utc === null) { assert.equal(game.date, row.date); assert.match(game.kickoffLabel, /TBA/); assert.doesNotMatch(publicGame(game, now + 21 * 86400000).statusDetail ?? "", /Kickoff passed/); }
     else assert.equal(Date.parse(game.date), Date.parse(row.kickoff_utc));
   }
-  assert.equal(games.filter(g => g.week === 11 && !g.date.includes("T")).length, evidence.counts.kickoffTBAorDisputed);
+  assert.equal(games.filter(g => g.week === 12 && !g.date.includes("T")).length, evidence15.counts.kickoffTBAorDisputed);
 });
 
 test("week 9 and week 10 finals keep stable events, scores and Eastern playing dates", () => {
@@ -82,7 +96,7 @@ test("corrected finals replace one stable event, reconcile records idempotently 
 });
 
 test("postponed, canceled and delayed games never become scheduled or inferred finals", () => {
-  const game = games.find(g => g.week === 11 && g.status === "scheduled"); assert.ok(game);
+  const game = games.find(g => g.week === 12 && g.status === "scheduled"); assert.ok(game);
   for (const status of ["postponed", "canceled", "delayed"] as const) {
     assert.equal(reviewedScheduleStatus(status), status);
     const projected = publicGame({...game,status,date:"2026-10-01T00:00Z"}, now);
@@ -107,9 +121,10 @@ test("poll publication and per-module source dates do not follow build or reques
   const week10Clock = Date.parse("2026-11-07T07:00:00Z");
   const first = gameDaySnapshot(week10Clock), later = gameDaySnapshot(week10Clock + 86400000);
   assert.deepEqual(first.sourceDates, later.sourceDates); assert.equal(first.revision, later.revision);
-  assert.ok(first.polls.every(p => p.release_date === "2026-11-08"));
+  // Each edition keeps its own release date: AP November 8, Coaches November 15.
+  assert.deepEqual(first.polls.map(p => [p.poll, p.release_date]), [["ap", "2026-11-08"], ["coaches", "2026-11-15"]]);
   assert.equal(sourceDateLabel("2026-10-25"), "Oct 25, 2026");
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 07, 2026/);
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Sunday, November 15, 2026/);
   assert.equal(first.injuries.week, 8); assert.notEqual(first.sourceDates.injuries, first.sourceDates.schedule);
 });
 
@@ -224,23 +239,23 @@ test("the smoke contract accepts the refreshed weeks and rejects the stale two-f
   // Regression: the pre-release smoke asserted Week 9 = 2 finals + 54
   // scheduled and everything else all-final. Against the refreshed release
   // those predicates are false — they would have rejected a correct release.
-  const week9 = gameDaySnapshot(now, "9"), week10 = gameDaySnapshot(now, "10"), week11 = gameDaySnapshot(now, "11");
+  const week9 = gameDaySnapshot(now, "9"), week10 = gameDaySnapshot(now, "10"), week11 = gameDaySnapshot(now, "11"), week12 = gameDaySnapshot(now, "12");
   const oldWeek9 = week9.games.filter(g => g.status === "final").length === 2 && week9.games.filter(g => g.status === "scheduled").length === 54;
-  const oldElse = week11.games.every(g => g.status === "final");
+  const oldElse = week12.games.every(g => g.status === "final");
   assert.equal(oldWeek9, false, "stale Week 9 two-final contract must fail against the refreshed release");
-  assert.equal(oldElse, false, "stale all-final contract must fail against the Week 11 preview");
-  // The derived contract accepts the reviewed states of all three weeks.
-  for (const [week, snapshot] of [[9, week9], [10, week10], [11, week11]] as const) {
+  assert.equal(oldElse, false, "stale all-final contract must fail against the Week 12 preview");
+  // The derived contract accepts the reviewed states of all four weeks.
+  for (const [week, snapshot] of [[9, week9], [10, week10], [11, week11], [12, week12]] as const) {
     assert.equal(reviewedWeekContractViolation(week, snapshot.weeks.find(row => row.week === week), snapshot.games), null, `Week ${week}`);
   }
   // And rejects states that would breach it, in either direction.
   const flippedArchive = structuredClone(week9);
   (flippedArchive.games[0] as { status: string }).status = "scheduled";
   assert.match(reviewedWeekContractViolation(9, flippedArchive.weeks.find(row => row.week === 9), flippedArchive.games) ?? "", /Archive week 9/);
-  const flippedPreview = structuredClone(week11);
+  const flippedPreview = structuredClone(week12);
   (flippedPreview.games[0] as { status: string }).status = "final";
   (flippedPreview.games[0] as { homeScore: number | null }).homeScore = 7;
-  assert.match(reviewedWeekContractViolation(11, flippedPreview.weeks.find(row => row.week === 11), flippedPreview.games) ?? "", /Preview week 11/);
+  assert.match(reviewedWeekContractViolation(12, flippedPreview.weeks.find(row => row.week === 12), flippedPreview.games) ?? "", /Preview week 12/);
   const unreviewed = structuredClone(week9);
   unreviewed.weeks = unreviewed.weeks.filter(row => row.week !== 9);
   assert.match(reviewedWeekContractViolation(9, unreviewed.weeks.find(row => row.week === 9), unreviewed.games) ?? "", /not a reviewed board week/);
@@ -262,8 +277,10 @@ test("both sides of the November 8 13:00Z cutover: Week 11 default, Weeks 9-10 a
     assert.equal(archive.explicit, true);
     assert.ok(archive.games.every(g => g.status === "final"), `Week ${week} archive after cutover`);
   }
-  const preview = gameDaySnapshot(postCutover, "11");
-  assert.ok(preview.games.every(g => g.status === "scheduled"), "Week 11 preview after cutover");
+  // Week 11 was the preview at this cutover; the November 15 release reviewed
+  // all of it, so the explicit Week 11 board is now an archive of finals.
+  const week11 = gameDaySnapshot(postCutover, "11");
+  assert.ok(week11.games.every(g => g.status === "final"), "Week 11 reviewed finals");
   // Reset/default restoration: with an explicit archive selected, the clock
   // week the reset link points at is the post-cutover default (Week 11);
   // without an explicit choice the selection already is the clock week.
@@ -276,7 +293,8 @@ test("both sides of the November 8 13:00Z cutover: Week 11 default, Weeks 9-10 a
   assert.equal(parseWeekParam("9", weeks), 9);
   assert.equal(parseWeekParam("10", weeks), 10);
   assert.equal(parseWeekParam("11", weeks), 11);
-  assert.equal(parseWeekParam("12", weeks), null);
+  assert.equal(parseWeekParam("12", weeks), 12);
+  assert.equal(parseWeekParam("13", weeks), null);
   assert.equal(parseWeekParam("8junk", weeks), null);
   assert.equal(parseWeekParam("", weeks), null);
   assert.equal(parseWeekParam("-1", weeks), null);
@@ -289,7 +307,7 @@ test("November 8 release separates verified week 9/10 finals, the week 11 slate 
   assert.equal(snapshot.games.filter(g => g.status === "scheduled").length, 0);
   const week10 = gameDaySnapshot(now, "10"), week11 = gameDaySnapshot(now, "11");
   assert.equal(week10.games.length, 62); assert.ok(week10.games.every(g => g.status === "final"));
-  assert.equal(week11.games.length, 67); assert.ok(week11.games.every(g => g.status === "scheduled"));
+  assert.equal(week11.games.length, 67); assert.ok(week11.games.every(g => g.status === "final"));
   for (const [id, away, home] of [["2026-10-27-delaware-at-western-kentucky",35,21],["2026-10-27-sam-houston-at-missouri-state",3,24],["2026-11-07-miami-fl-at-notre-dame",24,31]] as const) {
     const game = week10.games.find(g => g.id === id) ?? snapshot.games.find(g => g.id === id); assert.ok(game, id);
     assert.equal(game.awayScore, away); assert.equal(game.homeScore, home); assert.equal(game.status, "final");
@@ -297,8 +315,8 @@ test("November 8 release separates verified week 9/10 finals, the week 11 slate 
   const keys = [...snapshot.games, ...week10.games].map(g => `${easternDate(g.date)}:${g.awayTeamId}:${g.homeTeamId}`);
   assert.equal(new Set(keys).size, 118);
   assert.equal(new Set(evidence.primaryRecords.map((r: {slug:string}) => r.slug)).size, 138);
-  assert.equal(verifiedRefresh?.teamRecords.lsu, "6-3", "includes LSU's FCS win");
-  assert.equal(verifiedRefresh?.teamRecords.delaware, "4-5");
+  assert.equal(verifiedRefresh?.teamRecords.lsu, "6-4", "includes LSU's FCS win");
+  assert.equal(verifiedRefresh?.teamRecords.delaware, "5-5");
   const ap = snapshot.polls.find(p => p.poll === "ap"); assert.ok(ap);
   assert.equal(ap.release_date, "2026-11-08");
   assert.deepEqual([...new Set(ap.rankings.map(r => r.rank))].sort((a, b) => a - b), Array.from({ length: 25 }, (_, i) => i + 1));
@@ -314,9 +332,9 @@ test("November 8 release separates verified week 9/10 finals, the week 11 slate 
 
 test("complete season inventory includes FCS records, restores omitted finals and preserves duplicate URLs", () => {
   const snapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
-  const audit = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-08-full-season-audit.json", import.meta.url), "utf8"));
+  const audit = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-15-full-season-audit.json", import.meta.url), "utf8"));
   const result = verifyFullSeason(snapshot, audit);
-  assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [685, 562, 123, 138]);
+  assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [752, 629, 123, 138]);
   assert.ok(getConferenceHub("cusa")?.tvGamesThisWeek.every(({game}) => game.status === "scheduled" && Date.parse(game.date) >= Date.now()));
   assert.equal(teams.filter(t => t.subdivision === "P4").length, 67);
   assert.equal(teams.find(t => t.slug === "boise-state")?.subdivision, "G5", "legacy internal non-P4 category renders Other FBS, including the Pac-12");
