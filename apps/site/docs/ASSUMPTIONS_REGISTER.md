@@ -158,3 +158,14 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 - Texas Tech's home venue is published as "Galaxy Stadium" because the school's own schedule page uses that name.
 - Week 11 marquee (Missouri at Georgia) has an announced network but no announced time; the board keeps kickoff official-TBD rather than deriving a window.
 - Leader categories keep NCAA's own through-games statement (Friday, November 06); Saturday's games are not yet in NCAA's published totals.
+
+## November 15 weekly refresh
+
+- The release is captured November 16, after the 14:00 UTC Week 12 cutover, so the board default is the Week 12 preview and Week 11 is an explicit archive.
+- Week 11 includes Sunday, November 15: Ole Miss at Oklahoma was played that day. Its id keeps the published Saturday date; its playing date and kickoff are the Sunday ones.
+- "Not published" for the AP Top 25 means: ESPN's current rankings document has no AP poll, and ESPN's Week 11 document and the NCAA AP table both still show the November 8 edition. The site does not guess why or when a newer edition will appear.
+- The composite is an average of two editions of one date. With editions of two dates current, it stays on the last date both exist for.
+- A host school's official schedule settles its own home kickoff when ESPN and the NCAA scoreboard differ. In all three cases the host agrees with ESPN. A later NCAA correction to the host's time is compatible with the gate; a move to a third time is not.
+- The NCAA standings page states its own update time (November 15, 08:29 AM EDT). A row there that misses a verified final is a lagging observation. It is accepted only when it equals the last verified record and the gap is exactly that final.
+- Week 12 ranked pairings and the marquee use the AP edition the site publishes (November 8). They change only when a later release reconciles a newer AP edition.
+- Leader categories keep NCAA's own through-games statement (Sunday, November 15).

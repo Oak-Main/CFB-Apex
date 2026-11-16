@@ -17,7 +17,7 @@ test("Week 8 selects on the server and Week 7 remains an explicit archive", () =
   assert.equal(selectBoardWeek(boardWeeks, Date.parse("2026-10-18T12:59:59Z")).week, 7);
   assert.equal(selectBoardWeek(boardWeeks, Date.parse("2026-10-18T13:00:00Z")).week, 8);
   assert.equal(selectBoardWeek(boardWeeks, Date.parse("2026-10-20T19:00:00Z"), "7").week, 7);
-  assert.equal(verifiedRefresh?.week, 11);
+  assert.equal(verifiedRefresh?.week, 12);
   assert.equal(boardWeeks.find(w => w.week === 8)?.marquee_game_id, "2026-10-24-houston-at-utah");
 });
 
@@ -98,18 +98,18 @@ test("the current ticker leads with verified Week 8 finals and non-final games",
 });
 
 test("source cutoffs advance separately and all 138 records reconcile", () => {
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 07, 2026/);
-  assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-11-08", "2026-11-08"]);
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Sunday, November 15, 2026/);
+  assert.deepEqual(pollTables.filter(p => p.poll !== "composite").map(p => p.release_date), ["2026-11-08", "2026-11-15"]);
   assert.equal(pollTables.find(p => p.poll === "ap")?.rankings[0].team_slug, "georgia");
   for (const move of verifiedRefresh?.poll_notes?.movers_ap ?? []) assert.equal(move.move, move.to - move.from);
   assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "utah")?.move, -4);
   assert.equal(verifiedRefresh?.poll_notes?.movers_ap.find(r => r.team_slug === "miami-fl")?.move, 4);
   assert.equal(evidence.reconciliation.overall_records_checked, 138);
   assert.equal(evidence.reconciliation.disagreements, 0);
-  assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 3169);
+  assert.equal(verifiedRefresh?.metrics.categories[0].rows[0].value, 3239);
   assert.equal(boardWeeks.find(w => w.week === 6)?.retrieved_at, "2026-10-05T07:24:21.400874Z");
   assert.equal(Object.keys(resultsEvidence.records).length, 138);
-  const currentRecords = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-08-week10-refresh.json", import.meta.url), "utf8")).records;
+  const currentRecords = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-15-week11-refresh.json", import.meta.url), "utf8")).records;
   for (const [slug, record] of Object.entries(currentRecords)) {
     assert.equal(verifiedRefresh?.teamRecords[slug], record);
   }
@@ -199,7 +199,7 @@ test("all fifty-six Week 8 finals preserve source identities, quarter sums and o
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "appalachian-state").periods, 5);
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "memphis").periods, 5);
   assert.equal(verifiedRefresh?.scheduledGames.filter(g => g.week === 8).length, 0);
-  assert.equal(resultsSnapshot.playedGames.length, 562);
+  assert.equal(resultsSnapshot.playedGames.length, 629);
 });
 
 test("late finals require school agreement and retain conflicting NCAA states and kickoff claims", () => {
