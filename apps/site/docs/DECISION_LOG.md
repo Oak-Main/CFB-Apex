@@ -241,7 +241,7 @@ Ole Miss at Oklahoma moved from Saturday to Sunday, November 15. It keeps its pu
 
 Polls keep their own dates. The November 15 AFCA Coaches edition is published; no November 15 AP edition existed on ESPN or NCAA, so the November 8 AP edition is kept unrelabeled and the gate fails when a newer one appears. The editorial composite stays the November 8 average rather than mixing editions of two dates; the composite test now pairs editions of the composite's own date.
 
-Three ESPN/NCAA kickoff disagreements are settled only by the host school's official schedule (Western Michigan, Buffalo, Air Force), each agreeing with ESPN; the NCAA instant stays a recorded observation. Four hosts were added to `official-school-hosts.json` after confirming each official site.
+Three ESPN/NCAA kickoff disagreements are settled only by the host school's official schedule (Western Michigan, Buffalo, Air Force), each agreeing with ESPN; the NCAA instant stays a recorded observation. Air Force's host (`goairforcefalcons.com`) was added to `official-school-hosts.json` after confirming the official site; the other three hosts were already listed.
 
 Records: all 138 equal ESPN standings and reproduce from the finals. NCAA standings rows are now resolved by exact school name. Four rows there had not yet counted a verified Week 11 final (Clemson, California, Oklahoma, Ole Miss); they are recorded as lagging observations with separate corroboration (ACC standings page, host-school receipt), not trusted. The November 8 builder's nine-conference-page corroboration never ran (its conference ids did not match), so this release states only the corroboration it actually asserts. The conference tables' date label now follows their reconciliation instead of staying on October 28.
 

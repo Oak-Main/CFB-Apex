@@ -40,7 +40,14 @@ test("all 67 Week 11 games are verified finals with stable ids, scores and quart
   assert.equal(archive.games.length, 67);
   assert.equal(evidence.finals.length, 67);
   assert.equal(reviewedWeekContractViolation(11, archive.weeks.find((row) => row.week === 11), archive.games), null);
+  assert.equal(new Set(evidence.finals.map((row: { provider_id: string }) => row.provider_id)).size, 67);
+  assert.equal(new Set(evidence.finals.map((row: { game_id: string }) => row.game_id)).size, 67);
   for (const row of evidence.finals) {
+    // Each provider event maps to exactly one published final with the same id.
+    const published = raw.playedGames.filter((g: { provider_id?: string }) => g.provider_id === row.provider_id);
+    assert.equal(published.length, 1, `${row.provider_id} published once`);
+    assert.equal(published[0].game_id, row.game_id);
+    assert.deepEqual(published[0].teams.map((t: { slug: string; points: number }) => [t.slug, t.points]), row.teams.map((t: { slug: string; points: number }) => [t.slug, t.points]));
     const game = games.find((g) => g.id === row.game_id);
     assert.ok(game, row.game_id);
     assert.equal(game.week, 11);
@@ -160,7 +167,9 @@ test("the Week 11 finals story is generated from the verified finals and the pre
     const [a, b] = row.teams; const loser = a.points > b.points ? b : a;
     return ranked.has(loser.slug);
   });
-  assert.match(story.headline, new RegExp(`^Week 11 finals: ${losses.length} of \\d+ AP-ranked teams lost$`));
+  // The denominator is the number of distinct AP-ranked teams that played.
+  assert.equal(story.headline, `Week 11 finals: ${losses.length} of ${ranked.size} AP-ranked teams lost`);
+  assert.ok(story.body.includes(`${ranked.size} AP teams played and ${losses.length} lost`));
   for (const row of losses) {
     const [a, b] = row.teams; const winner = a.points > b.points ? a : b, loser = winner === a ? b : a;
     assert.ok(story.body.includes(`${winner.points}–${loser.points} over No. ${ranked.get(loser.slug)} `), `${row.game_id} result line`);

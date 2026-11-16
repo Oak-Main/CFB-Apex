@@ -40,6 +40,11 @@ const read = path => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.u
 // two-hour receipt window therefore rebuilds from main, never on top of an
 // earlier run of this same script.
 const repoRoot = new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1");
+// Refresh origin/main before reading it, so the base is what main publishes
+// now. A shallow checkout without the ref fetches just that ref.
+let hasMainRef = true;
+try { execSync("git rev-parse --verify --quiet refs/remotes/origin/main", { cwd: repoRoot, stdio: "ignore" }); } catch { hasMainRef = false; }
+execSync(`git fetch --no-tags ${hasMainRef ? "" : "--depth=1 "}origin +main:refs/remotes/origin/main`, { cwd: repoRoot, stdio: "inherit" });
 const publishedSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: repoRoot }));
 const workingSnapshot = read("data/cfb-2026/refresh/verified-refresh.json");
 const snapshot = workingSnapshot.refresh_log.at(-1).script === SCRIPT_ID ? structuredClone(publishedSnapshot) : workingSnapshot;
@@ -69,18 +74,24 @@ function persistReceipt(receipt) {
 }
 async function grab(id, url) {
   const cached = join(SCRATCH, `${id}.body`);
+  // A cached body is reused only while its receipt is a 200 inside the
+  // two-hour window for the same URL and the body still has the receipt's
+  // hash. Anything else is fetched again, so an old scratch directory can
+  // never feed stale sources into a release.
   if (existsSync(cached)) {
-    const body = readFileSync(cached, "utf8");
-    docs.set(id, body);
     const saved = loadReceipts().find(r => r.id === id);
-    assert.ok(saved, `cached body without receipt: ${id}`);
-    receipts.push(saved);
-    return saved;
+    const age = saved ? Date.now() - Date.parse(saved.checkedAt) : Number.NaN;
+    const body = readFileSync(cached, "utf8");
+    if (saved?.status === 200 && saved.url === url && age >= 0 && age < 7_200_000 && createHash("sha256").update(body).digest("hex") === saved.sha256) {
+      docs.set(id, body);
+      receipts.push(saved);
+      return saved;
+    }
   }
   // Some official sites answer an occasional 403 from their bot filter. A
   // receipt is only ever a 200; a non-200 or a dropped connection is retried
   // twice, a few seconds apart, before the build stops.
-  let response, lastError;
+  let response, body, lastError;
   for (let attempt = 0; attempt < 3; attempt++) {
     if (attempt) await new Promise(resolve => setTimeout(resolve, 4_000 * attempt));
     try {
@@ -88,13 +99,14 @@ async function grab(id, url) {
         headers: { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 CFB-Apex-verification/1.0", accept: "text/html,application/json;q=0.9,*/*;q=0.8" },
         signal: AbortSignal.timeout(30_000),
       });
+      // The body is read inside the loop: a connection that drops after the
+      // headers is retried like any other failed attempt.
+      body = await response.text();
       if (response.status === 200) break;
-      await response.arrayBuffer().catch(() => {});
-    } catch (error) { lastError = error; response = undefined; }
+    } catch (error) { lastError = error; response = undefined; body = undefined; }
   }
-  assert.ok(response, `${id}: ${url} ${lastError?.message ?? ""}`);
+  assert.ok(response && body !== undefined, `${id}: ${url} ${lastError?.message ?? ""}`);
   assert.equal(response.status, 200, `${id}: ${url}`);
-  const body = await response.text();
   writeFileSync(cached, body);
   const receipt = { id, url, resolvedUrl: response.url, status: response.status, checkedAt: new Date().toISOString(), sha256: createHash("sha256").update(body).digest("hex"), bytes: body.length, serverDate: response.headers.get("date"), age: response.headers.get("age") };
   persistReceipt(receipt);

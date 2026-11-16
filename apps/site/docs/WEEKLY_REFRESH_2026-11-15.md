@@ -23,7 +23,7 @@ The native site refresh publishes every Week 11 result as a verified final, brin
 
 ## Finals
 
-Every Week 11 final satisfies the finals rule: the ESPN event is completed with state `post`, each side's quarter scores sum to its final, and the NCAA FBS scoreboard lists the same contest as `F` with the same score for the same home and away sides. All 67 are final on both boards at the cutoff, so no result rests on a school page alone and none is promoted because its kickoff time passed.
+Every Week 11 final satisfies the finals rule: the ESPN event is completed with state `post`, each side's period scores (including overtime) sum to its final, and the NCAA FBS scoreboard lists the same contest as `F` with the same score for the same home and away sides. All 67 are final on both boards at the cutoff, so no result rests on a school page alone and none is promoted because its kickoff time passed.
 
 Game ids never change. Each final keeps the id its scheduled row published on November 8/10. Ten finals were played at a different listed instant than the published kickoff; each keeps the published kickoff as `originally_scheduled_kickoff_utc` and both boards' listed instants as separate observations.
 
@@ -53,7 +53,7 @@ All 66 kickoffs and networks are announced. Three kickoffs differ between ESPN a
 | Central Michigan at Buffalo, Wed Nov 18 | ubbulls.com: "Wed, Nov 18, 7:30 pm" | 00:30 UTC (Nov 19) | 00:00 UTC |
 | UTEP at Air Force, Fri Nov 20 | goairforcefalcons.com: "Nov 20 / 6:00 PM MT" | 01:00 UTC (Nov 21) | 13:00 UTC (Nov 20) |
 
-Four hosts were added to `official-school-hosts.json` after confirming each is the school's official athletics site: `wmubroncos.com` (linked from wmich.edu), `goairforcefalcons.com` (linked from usafa.edu), `soonersports.com` (linked from ou.edu) and `ubbulls.com` (linked from the Mid-American Conference's football page; buffalo.edu answered 403 to the retrieval and is recorded as not loaded).
+School sources count only from the host listed in `official-school-hosts.json`. `wmubroncos.com`, `ubbulls.com` and `soonersports.com` were already listed. One host was added after confirming it is the school's official athletics site: `goairforcefalcons.com` (linked from usafa.edu).
 
 The Week 12 marquee is Georgia at South Carolina, chosen by the board's own rule (`lib/homepage.ts` `featuredGame`: lowest combined AP rank, earlier date first) on the AP edition the site publishes.
 
@@ -92,7 +92,7 @@ Paths below are relative to `apps/site`.
 
 ## Engineering and release gates
 
-Run `npm run verify`, `npm run cf:types`, `npm run deploy:dry-run`, `npm run gameday:source-gate`, production dependency audit and generated parity. The source gate (`scripts/check-nov15-sources.mjs`) re-fetches every receipt, requires every saved receipt and live HTTP Date within two hours, checks Age separately, and asserts: the 67/70 week inventories, every final main already publishes unchanged, every Week 11 final's identity, score, quarter sum and kickoff observations against ESPN and NCAA, the Sunday final's school receipt, every Week 12 row against the live listing, the three host-school settlements, the four FCS exclusions, all 138 records, both poll tables, leader totals, and the 752-final full-season audit through `verifyFullSeason`. The builder and the gate retry a non-200 answer twice, a few seconds apart, because some official sites answer an occasional bot-filter 403; only a 200 with a fresh Date is accepted.
+Run `npm run verify`, `npm run cf:types`, `npm run deploy:dry-run`, `npm run gameday:source-gate`, production dependency audit and generated parity. The source gate (`scripts/check-nov15-sources.mjs`) re-fetches every receipt, requires every saved receipt and live HTTP Date within two hours, checks Age separately, and asserts: the 67/70 week inventories, every final main already publishes unchanged, every Week 11 final's identity, score, period-score sum and kickoff observations against ESPN and NCAA, the Sunday final's school receipt, every Week 12 row against the live listing, the three host-school settlements, the four FCS exclusions, all 138 records, both poll tables, leader totals, and the 752-final full-season audit through `verifyFullSeason`. The builder and the gate retry a non-200 answer twice, a few seconds apart, because some official sites answer an occasional bot-filter 403; the gate accepts only a 200 with a fresh Date. The builder reuses a cached body only while its receipt is inside the two-hour window and its hash still matches.
 
 `verify-production-target.mjs` advances deliberately to the reviewed version `57cd109c-5604-4d04-9d2b-7dbccc093b28` (PR 63 main `29b1caa` deployment `8650d9bd-aa9d-4adf-b245-c19f7ba7d67d`, 2026-11-10T13:54:47Z), read from provider deployment history on November 16 as the newest deployment at 100% traffic. A newer or split deployment fails closed before this release writes. Rollback is scoped to the same account and Worker and requires an explicit owner decision if it would revert newer unrelated work.
 

@@ -22,32 +22,46 @@ const officialHosts = read("data/cfb-2026/refresh/official-school-hosts.json").h
 // Some official sites answer an occasional 403 from their bot filter: a
 // non-200 or a dropped connection is retried twice, a few seconds apart. Only
 // a 200 with a fresh Date is ever accepted.
-const requiredSources = [...evidence.raw_sources, ...fullSeason.raw_sources];
+// The audit's receipts are the same fetches the weekly evidence records, so
+// each source id is retrieved once. Both saved copies must describe the same
+// receipt, and both are held to the two-hour window.
+const savedReceipts = [...evidence.raw_sources, ...fullSeason.raw_sources];
+const requiredSources = [...new Map(savedReceipts.map(row => [row.id, row])).values()];
+for (const row of savedReceipts) {
+  const kept = requiredSources.find(other => other.id === row.id);
+  assert.equal(row.url, kept.url, `${row.id}: one id, two URLs`);
+  assert.equal(row.sha256, kept.sha256, `${row.id}: one id, two receipts`);
+  assert.equal(row.checkedAt, kept.checkedAt, `${row.id}: one id, two retrieval times`);
+}
 const observations = [], docs = new Map();
 const SERVER_DATE_SKEW_MS = 60_000;
 async function observe(row) {
-  let response;
+  let response, body;
   let lastError;
   for (let attempt = 0; attempt < 3; attempt++) {
     if (attempt) await new Promise(resolve => setTimeout(resolve, 4_000 * attempt));
     try {
       response = await fetch(row.url, { signal: AbortSignal.timeout(30_000) });
+      // The body is read inside the loop: a connection that drops after the
+      // headers is retried like any other failed attempt.
+      body = await response.text();
       if (response.status === 200) break;
-      await response.arrayBuffer().catch(() => {});
-    } catch (error) { lastError = error; response = undefined; }
+    } catch (error) { lastError = error; response = undefined; body = undefined; }
   }
-  assert.ok(response, `${row.id}: source fetch failed ${lastError?.message ?? ""}`);
+  assert.ok(response && body !== undefined, `${row.id}: source fetch failed ${lastError?.message ?? ""}`);
   assert.equal(response.status, 200, row.id);
   const serverDate = response.headers.get("date");
   assert.ok(serverDate && isSourceEvidenceFresh(serverDate, Date.now() + SERVER_DATE_SKEW_MS), `${row.id}: HTTP Date absent or stale`);
   assert.ok(Number(response.headers.get("age") ?? 0) < 7200, `${row.id}: cached response exceeded two hours`);
-  const body = await response.text();
   docs.set(row.id, body);
   observations.push({ id: row.id, url: response.url, checkedAt: new Date().toISOString(), serverDate, age: response.headers.get("age"), sha256: createHash("sha256").update(body).digest("hex") });
 }
+for (const row of savedReceipts) {
+  assert.equal(row.status, 200, row.id);
+  assert.ok(isSourceEvidenceFresh(row.checkedAt, Date.now()), `${row.id}: saved evidence exceeded two hours`);
+}
 for (let offset = 0; offset < requiredSources.length; offset += 6) {
   await Promise.all(requiredSources.slice(offset, offset + 6).map(row => {
-    assert.equal(row.status, 200, row.id);
     assert.ok(isSourceEvidenceFresh(row.checkedAt, Date.now()), `${row.id}: saved evidence exceeded two hours`);
     return observe(row);
   }));
@@ -67,10 +81,16 @@ assert.deepEqual([...new Set(inventories.get(11).map(row => row.gameState))], ["
 
 // Every final main already publishes keeps every gameplay fact and stamp;
 // only the whole-season review stamp advances.
-// A shallow pull-request checkout has no origin/main; fetch just that ref.
+// The comparison is against what main publishes now, so origin/main is
+// refreshed first. A shallow pull-request checkout has no origin/main and
+// fetches just that ref. When the ref exists and the refresh itself cannot
+// reach the remote, the existing ref is used and the gate says so; CI checks
+// out the current ref, so that path is for a local run without network.
 const repoRoot = new URL("../../..", import.meta.url).pathname.replace(/^\/([A-Z]:)/, "$1");
-try { execSync("git rev-parse --verify --quiet refs/remotes/origin/main", { cwd: repoRoot, stdio: "ignore" }); }
-catch { execSync("git fetch --no-tags --depth=1 origin main:refs/remotes/origin/main", { cwd: repoRoot, stdio: "inherit" }); }
+let hasMainRef = true;
+try { execSync("git rev-parse --verify --quiet refs/remotes/origin/main", { cwd: repoRoot, stdio: "ignore" }); } catch { hasMainRef = false; }
+try { execSync(`git fetch --no-tags ${hasMainRef ? "" : "--depth=1 "}origin +main:refs/remotes/origin/main`, { cwd: repoRoot, stdio: "inherit" }); }
+catch (error) { if (!hasMainRef) throw error; console.warn("origin/main could not be refreshed; comparing against the existing ref"); }
 const priorSnapshot = JSON.parse(execSync("git show origin/main:apps/site/data/cfb-2026/refresh/verified-refresh.json", { encoding: "utf8", maxBuffer: 1024 * 1024 * 512, cwd: repoRoot }));
 const withoutReview = row => { const copy = structuredClone(row); delete copy.meta.full_season_review; return copy; };
 const keyOf = row => row.provider_id ?? `legacy:${row.game_id}`;
@@ -97,6 +117,9 @@ const week11Finals = snapshot.playedGames.filter(g => g.week === 11);
 assert.equal(week11Finals.length, 67, "week 11 published finals");
 assert.equal(evidence.counts.week11Finals, 67);
 const priorWeek11 = new Map(priorSnapshot.scheduledGames.filter(row => row.week === 11).map(row => [row.provider_id, row]));
+const mainPublishesThisRelease = priorSnapshot.refresh_log.at(-1)?.script === entry.script;
+const priorByKey = new Map(priorSnapshot.playedGames.map(row => [keyOf(row), row]));
+assert.equal(priorWeek11.size, mainPublishesThisRelease ? 0 : 67, "Week 11 slate on main");
 for (const row of week11Finals) {
   const event = week11Events.find(e => e.id === row.provider_id);
   assert.ok(event, `week 11 final event missing ${row.provider_id}`);
@@ -109,7 +132,13 @@ for (const row of week11Finals) {
   assert.equal(competition.venue?.fullName ?? null, row.site);
   assert.equal(Date.parse(event.date), Date.parse(row.meta.listed_kickoff_observations.espn));
   // Game ids never change: a final keeps the id its scheduled row published.
+  // While main still publishes the Week 11 slate (before this release
+  // merges), every final must have its scheduled row there. Once main carries
+  // this release the slate is gone and the "prior final changed" comparison
+  // above holds every id instead.
   const scheduledBefore = priorWeek11.get(row.provider_id);
+  if (mainPublishesThisRelease) assert.ok(priorByKey.has(keyOf(row)), `final absent from main ${row.provider_id}`);
+  else assert.ok(scheduledBefore, `no published scheduled row for ${row.provider_id}`);
   if (scheduledBefore) assert.equal(row.game_id, `${scheduledBefore.date}-${scheduledBefore.away}-at-${scheduledBefore.home}`, `game id changed ${row.provider_id}`);
   const ncaa = inventories.get(11).find(n => row.meta.sources.some(url => url.endsWith(`/game/${n.contestId}`)));
   assert.ok(ncaa, `week 11 NCAA contest missing ${row.provider_id}`);
@@ -157,7 +186,12 @@ for (const row of scheduled) {
   const event = week12Events.find(e => e.id === row.provider_id);
   assert.ok(event, `week 12 event missing ${row.provider_id}`);
   const competition = event.competitions[0];
+  // Still a scheduled fixture: a postponed, canceled, delayed or started game
+  // needs reconciling before it stays on the board as scheduled.
   assert.equal(competition.status.type.completed, false);
+  assert.equal(competition.status.type.state, "pre", `week 12 fixture state ${row.provider_id}`);
+  assert.equal(competition.status.type.name, "STATUS_SCHEDULED", `week 12 fixture status ${row.provider_id}`);
+  assert.equal(row.game_status, "scheduled");
   assert.equal(event.week.number, 12);
   assert.equal(etDate(event.date), row.date);
   for (const side of ["home", "away"]) assert.equal(ids.get(competition.competitors.find(t => t.homeAway === side).team.id), row[`${side}_slug`]);
@@ -302,7 +336,8 @@ for (const [id, name] of [["stat-passing", "Passing yards"], ["stat-rushing", "R
   assert.ok(category, `metric category ${name}`);
   const table = htmlTables(docs.get(id)).find(t => t.length > 3);
   for (const row of category.rows) {
-    assert.ok(table.some(r => r.some(cell => Number.isFinite(Number(cell.replaceAll(",", ""))) && Number(cell.replaceAll(",", "")) === row.value)), `leader row ${name} ${row.name}`);
+    // The value must sit in the same source row as the leader's name.
+    assert.ok(table.some(r => r.includes(row.name) && r.some(cell => cell !== "" && Number.isFinite(Number(cell.replaceAll(",", ""))) && Number(cell.replaceAll(",", "")) === row.value)), `leader row ${name} ${row.name}`);
   }
 }
 
