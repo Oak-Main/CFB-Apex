@@ -6,7 +6,7 @@ import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
 import { selectBoardWeek } from "@/lib/week-cutover";
-import { brand } from "@/lib/config";
+import { environment } from "@/lib/config";
 import { watchUpdatedOn } from "@/lib/watch-postseason";
 
 // The scoreboard and ticker follow the request's server clock; never cache.
@@ -198,8 +198,8 @@ export default async function RoutePage({ params, searchParams }: RoutePageProps
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "@id": new URL("/watch", brand.siteUrl).href,
-              url: new URL("/watch", brand.siteUrl).href,
+              "@id": new URL("/watch", environment.siteUrl).href,
+              url: new URL("/watch", environment.siteUrl).href,
               name: "Where to Watch College Football",
               dateModified: watchUpdatedOn,
             }).replace(/</g, "\\u003c"),
