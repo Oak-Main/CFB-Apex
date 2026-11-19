@@ -244,7 +244,10 @@ export function WatchPage({
 		[tvWeeks],
 	);
 	const watchRows = useMemo(
-		() => tvRows.some((row) => row.week === championshipWeek) ? tvRows : [...tvRows, ...championshipGames],
+		() => [
+			...tvRows.filter((row) => row.week !== championshipWeek),
+			...championshipGames,
+		],
 		[tvRows],
 	);
 	// The server-clock board week leads; otherwise the next listed game's week.
