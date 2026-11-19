@@ -17,6 +17,13 @@ import {
 import { travelLinksForQuery, travelAffiliatesConfigured } from "@/lib/travel-affiliates";
 import { timeEtLabel, type RadioStation, type TvRow } from "@/lib/cfb-dataset";
 import type { Stadium, Team } from "@/lib/types";
+import {
+	championshipGames,
+	championshipWeek,
+	postseasonTables,
+	watchUpdatedOn,
+	type WatchGame,
+} from "@/lib/watch-postseason";
 import { TeamMark } from "./primitives";
 
 export interface WatchPageProps {
@@ -37,7 +44,7 @@ type NetworkTone = "red" | "blue" | "gold" | "cyan" | "neutral";
 interface NetworkGroup {
 	name: string;
 	tone: NetworkTone;
-	games: TvRow[];
+	games: WatchGame[];
 }
 
 const networkOrder = [
@@ -130,8 +137,8 @@ function networkPriority(name: string) {
 	return family >= 0 ? family : networkOrder.length;
 }
 
-function groupByNetwork(rows: readonly TvRow[]): NetworkGroup[] {
-	const groups = new Map<string, TvRow[]>();
+function groupByNetwork(rows: readonly WatchGame[]): NetworkGroup[] {
+	const groups = new Map<string, WatchGame[]>();
 	for (const row of rows) {
 		const name = row.tv ?? "unassigned";
 		const games = groups.get(name) ?? [];
@@ -160,6 +167,7 @@ function officialAthleticsUrl(
 }
 
 function TeamLine({ team, slug }: { team?: Team; slug: string }) {
+	if (slug === "tba") return <span className="watch-team-line">TBA</span>;
 	const fallback = slug
 		.replaceAll("-", " ")
 		.replace(/\b\w/g, (letter) => letter.toUpperCase());
@@ -191,17 +199,27 @@ function NetworkCard({
 			</header>
 			<ol className="watch-network-games">
 				{group.games.map((game) => (
-					<li key={`${game.date}-${game.away}-${game.home}`}>
+					<li key={game.championship?.name ?? `${game.date}-${game.away}-${game.home}`}>
 						<div className="watch-game-time">
 							<span>{formatDate(game.date, "board")}</span>
 							<strong className="font-display">
 								{timeEtLabel(game.time_et) ?? "TBD"}
 							</strong>
 						</div>
+						{game.championship && (
+							<div className="watch-source-list">
+								<a href={game.championship.source}>{game.championship.name}</a>
+							</div>
+						)}
 						<div className="watch-matchup">
 							<TeamLine team={teamsBySlug.get(game.away)} slug={game.away} />
-							<span className="watch-matchup__at">AT</span>
+							<span className="watch-matchup__at">{game.championship ? "VS" : "AT"}</span>
 							<TeamLine team={teamsBySlug.get(game.home)} slug={game.home} />
+							{game.championship?.matchupSource && (
+								<div className="watch-source-list">
+									<a href={game.championship.matchupSource}>{sourceLabel(game.championship.matchupSource)}</a>
+								</div>
+							)}
 						</div>
 					</li>
 				))}
@@ -221,12 +239,22 @@ export function WatchPage({
 	stadiums,
 	teams,
 }: WatchPageProps) {
-	const weeks = useMemo(() => tvWeeks(), [tvWeeks]);
+	const weeks = useMemo(
+		() => [...new Set([...tvWeeks(), championshipWeek])].sort((a, b) => a - b),
+		[tvWeeks],
+	);
+	const watchRows = useMemo(
+		() => [
+			...tvRows.filter((row) => row.week !== championshipWeek),
+			...championshipGames,
+		],
+		[tvRows],
+	);
 	// The server-clock board week leads; otherwise the next listed game's week.
 	const [week, setWeek] = useState(() =>
-		defaultWeek != null && tvWeeks().includes(defaultWeek)
+		defaultWeek != null && weeks.includes(defaultWeek)
 			? defaultWeek
-			: initialWeek(tvRows, tvWeeks(), broadcastAsOf),
+			: initialWeek(tvRows, weeks, broadcastAsOf),
 	);
 	const sortedTeams = useMemo(
 		() => [...teams].sort((a, b) => a.shortName.localeCompare(b.shortName)),
@@ -242,8 +270,8 @@ export function WatchPage({
 		[teams],
 	);
 	const weekRows = useMemo(
-		() => tvRows.filter((row) => row.week === week),
-		[tvRows, week],
+		() => watchRows.filter((row) => row.week === week),
+		[watchRows, week],
 	);
 	const networkGroups = useMemo(() => groupByNetwork(weekRows), [weekRows]);
 	const networkCount = useMemo(
@@ -287,10 +315,10 @@ export function WatchPage({
 						<div>
 							<span>BROADCAST BOARD</span>
 							<strong className="font-display">
-								COMPILED {formatDate(broadcastAsOf).toUpperCase()}
+								COMPILED <time dateTime={watchUpdatedOn}>{formatDate(watchUpdatedOn).toUpperCase()}</time>
 							</strong>
 							<small>
-								{tvRows.length} designations across {weeks.length} weeks
+								{watchRows.length} designations across {weeks.length} weeks
 							</small>
 						</div>
 					</div>
@@ -637,6 +665,47 @@ export function WatchPage({
 							)}
 						</article>
 					</div>
+				</section>
+
+				<section
+					className="watch-section"
+					id="postseason"
+					aria-labelledby="postseason-title"
+				>
+					<header className="watch-section-heading">
+						<div>
+							<span className="watch-kicker">03 / POSTSEASON BOARD</span>
+							<h2 id="postseason-title" className="font-display text-balance">
+								Bowls and the Playoff, every window on one board.
+							</h2>
+							<p>The postseason opens Saturday, Dec. 12, with the Celebration Bowl in Atlanta and ends Monday, Jan. 25, with the national championship at Allegiant Stadium in Las Vegas. Matchups fill in on Selection Day, Sunday, Dec. 6. The windows and networks are set now. All times Eastern.</p>
+							<p>Seeds 1 to 4 get first-round byes. Seeds 5 to 12 play the First Round at the higher seed's home stadium. The Cotton, Peach and Rose bowls host the three Jan. 1 quarterfinals; which game takes which window is set on Selection Day.</p>
+						</div>
+					</header>
+					{postseasonTables.map(({ caption, columns, rows }) => (
+						<div className="data-table-wrap" key={caption}>
+							<table className="data-table">
+								<caption className="table-caption">{caption}</caption>
+								<thead>
+									<tr>
+										{columns.map((column) => <th scope="col" key={column}>{column}</th>)}
+									</tr>
+								</thead>
+								<tbody>
+									{rows.map((row) => (
+										<tr key={row.join("|")}>
+											{columns.map((column, i) => <td key={column}>{row[i]}</td>)}
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					))}
+					<p className="watch-board-note">This board lists the Playoff and the 17 bowls ESPN Events runs. Other bowls are not on it yet. Kickoff times can move, so check the network's listing on game day.</p>
+					<p className="watch-board-note">
+						Sources: <a href="https://collegefootballplayoff.com/news/2026/6/1/26-27-broadcast-sked">College Football Playoff 2026-27 broadcast schedule</a> (June 1, 2026);{" "}
+						<a href="https://espnpressroom.com/press-release/espn-events-announces-17-game-college-football-bowl-schedule-for-2026-27-season/">ESPN Press Room 2026-27 bowl schedule</a> (June 3, 2026). Checked Nov. 18, 2026.
+					</p>
 				</section>
 			</div>
 		</div>
