@@ -6,6 +6,8 @@ import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
 import { selectBoardWeek } from "@/lib/week-cutover";
+import { brand } from "@/lib/config";
+import { watchUpdatedOn } from "@/lib/watch-postseason";
 
 // The scoreboard and ticker follow the request's server clock; never cache.
 export const dynamic = "force-dynamic";
@@ -187,5 +189,24 @@ export default async function RoutePage({ params, searchParams }: RoutePageProps
   if (!isKnownPath(slug)) notFound();
   // Reviewed board archives share the same explicit week selection.
   const week = ["scores", "watch", "gameday"].includes(slug[0]) ? (await searchParams)?.week : undefined;
-  return <HubApp path={`/${slug.join("/")}`} boardWeek={selectBoardWeek(boardWeeks, Date.now(), week)} />;
+  return (
+    <>
+      {slug[0] === "watch" && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "@id": new URL("/watch", brand.siteUrl).href,
+              url: new URL("/watch", brand.siteUrl).href,
+              name: "Where to Watch College Football",
+              dateModified: watchUpdatedOn,
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
+      <HubApp path={`/${slug.join("/")}`} boardWeek={selectBoardWeek(boardWeeks, Date.now(), week)} />
+    </>
+  );
 }
