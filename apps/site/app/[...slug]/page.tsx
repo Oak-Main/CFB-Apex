@@ -192,19 +192,16 @@ export default async function RoutePage({ params, searchParams }: RoutePageProps
   return (
     <>
       {slug[0] === "watch" && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "@id": new URL("/watch", environment.siteUrl).href,
-              url: new URL("/watch", environment.siteUrl).href,
-              name: "Where to Watch College Football",
-              dateModified: watchUpdatedOn,
-            }).replace(/</g, "\\u003c"),
-          }}
-        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": new URL("/watch", environment.siteUrl).href,
+            url: new URL("/watch", environment.siteUrl).href,
+            name: "Where to Watch College Football",
+            dateModified: watchUpdatedOn,
+          }).replace(/</g, "\\u003c")}
+        </script>
       )}
       <HubApp path={`/${slug.join("/")}`} boardWeek={selectBoardWeek(boardWeeks, Date.now(), week)} />
     </>
