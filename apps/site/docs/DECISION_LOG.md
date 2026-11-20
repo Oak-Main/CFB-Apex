@@ -246,3 +246,8 @@ Three ESPN/NCAA kickoff disagreements are settled only by the host school's offi
 Records: all 138 equal ESPN standings and reproduce from the finals. NCAA standings rows are now resolved by exact school name. Four rows there had not yet counted a verified Week 11 final (Clemson, California, Oklahoma, Ole Miss); they are recorded as lagging observations with separate corroboration (ACC standings page, host-school receipt), not trusted. The November 8 builder's nine-conference-page corroboration never ran (its conference ids did not match), so this release states only the corroboration it actually asserts. The conference tables' date label now follows their reconciliation instead of staying on October 28.
 
 The reviewed production target advances deliberately to `57cd109c-5604-4d04-9d2b-7dbccc093b28` (PR 63 deployment, verified from provider history before this release). The builder and source gate retry a non-200 source answer twice; a receipt is still only a fresh 200.
+
+
+## 2026-11-20: Production target follows the live postseason release
+
+The PR 65 main deploy (run 44538961824) stopped at the production-target guard: it still expected `57cd109c` (PR 63), but PR 64's main deploy had already moved production to `78b3ff21` on November 16. The postseason release then went live through a manual `wrangler deploy` from the owner account on November 19 at 14:08 UTC as `c96e0422-7e5b-4416-a4f0-1d263fa1cebb` (deployment `04c5ddd0`). The reviewed target advances to that version, read from provider deployment history on November 20. The Watch page fixes Copilot flagged on PR 65 (`environment.siteUrl`, Week 14 championship rows) were already in main and are unchanged here.

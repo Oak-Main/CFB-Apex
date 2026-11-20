@@ -3,11 +3,13 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-// PR63 main 29b1caa3 deployed this version at 100% traffic in run 42828541432
-// (deployment 8650d9bd-aa9d-4adf-b245-c19f7ba7d67d, 2026-11-10T13:54:47Z).
-// Reconfirmed as the newest deployment from provider history on 2026-11-16.
+// Production moved twice after the PR 63 pin without this constant following it:
+// PR 64 main e8d258d deployed 78b3ff21 (run 43883539405, deployment 2c5c54e2, 2026-11-16T14:16:07Z),
+// then a manual `wrangler deploy` from the owner account published the PR 65 postseason release as
+// c96e0422 (deployment 04c5ddd0-d382-4743-b7e8-4a943a31da92, 2026-11-19T14:08:48Z, version 136).
+// Read from provider deployment history on 2026-11-20; it is the newest deployment at 100% traffic.
 // A newer or split deployment still fails closed before this release writes.
-export const reviewedProductionVersion = "57cd109c-5604-4d04-9d2b-7dbccc093b28";
+export const reviewedProductionVersion = "c96e0422-7e5b-4416-a4f0-1d263fa1cebb";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {
