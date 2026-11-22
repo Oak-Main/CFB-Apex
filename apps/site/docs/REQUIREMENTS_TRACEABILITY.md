@@ -217,3 +217,10 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 | Recognize the official JV Gibson name on the existing canonical player URL | Page-specific dated profile in `lib/player-records.ts`; shared metadata and player rendering read the same profile | Type check, existing site verification, and rendered `/players/javonnie-gibson` inspection |
 | Keep a roster observation distinct from historical transfer and current availability | Official 2026 Cincinnati roster, checked November 22; January 16 event retained with historical label; no current statistics or participation assertion | Compare official roster facts and rendered history/source/date |
 | Preserve approval and baseline boundaries | `docs/seo/superdesk-javonnie-2026-11-22.json`; no GameDay or deployment configuration changes | Git diff, unchanged generated dataset, and required CI |
+
+### November 22 production follow-up
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Match the reviewed player's social preview to document metadata | Page-specific Open Graph/Twitter fields, original parent images and self-canonical URL | Built HTML metadata parity; hosted checks; actual live-page recheck |
+| Preserve guarded deployment from the observed production version | Pin `13f3393b-41af-4896-95fa-d7aab17d2c86` from run 45040762387; no guard bypass | Existing production-target tests and pre/post-deployment provider receipts |

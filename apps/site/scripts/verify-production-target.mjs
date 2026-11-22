@@ -3,11 +3,11 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-// Main 459fb62 (PR 66) deployed this version at 100% traffic through this workflow's manual
-// dispatch, run 44712436235 (deployment f7bea3df-5bdf-447f-9969-4855d3e6d450,
-// 2026-11-20T09:39:53Z). It replaced c96e0422, the manual postseason deploy of 2026-11-19.
+// Main 0d99ab9 (PR 68) deployed this version at 100% traffic through workflow run
+// 45040762387 (deployment 5ca1a26d-6558-4487-ab1a-690c607295aa,
+// 2026-11-22T15:55:17.240115Z). The provider receipt and production smoke passed.
 // A newer or split deployment still fails closed before this release writes.
-export const reviewedProductionVersion = "b7061c1a-b145-4777-951e-8ba5be03b151";
+export const reviewedProductionVersion = "13f3393b-41af-4896-95fa-d7aab17d2c86";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {

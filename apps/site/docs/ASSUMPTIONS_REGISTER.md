@@ -176,3 +176,9 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 - This is a dated roster observation. It does not establish game availability, participation, current season statistics, or any change after the check date.
 - The January 16, 2026 transfer record remains historical evidence and is not rewritten by this profile. No new alias URL is created.
 - Search Console measurements are the approved October 24–November 20 final-data baseline. The earlier comparison row is unreported, not zero. Refresh and freeze the baseline again before any separately approved production release.
+
+### November 22 release follow-up
+
+- Owner approval now covers production release and live verification. The same-day final-data export was frozen unchanged at 15:52:24 UTC; a fresh query was unavailable because the Dell was offline and the alternative connector subscription expired. No fresh measurement or traffic lift is claimed.
+- Live verification after PR 68 found correct document metadata but inherited generic social-preview text. The reviewed player's Open Graph and Twitter fields should use the same profile while retaining the existing site image and brand.
+- Workflow run 45040762387 verified production version `13f3393b-41af-4896-95fa-d7aab17d2c86` at 100% traffic. This is the pinned starting target for the follow-up; any newer or split deployment must still stop publication.

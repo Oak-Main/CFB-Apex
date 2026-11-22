@@ -259,3 +259,9 @@ After PR 66 merged (with `[skip ci]`), the site was redeployed from main through
 The owner approved the bounded SUPERDESK page correction and draft PR, with merge conditional on passing checks. The official Cincinnati roster uses JV Gibson while the existing page exposes only an older transfer event. A single page-specific profile supplies the alias, title, description and dated roster facts. Existing player cards and the self-canonical URL are retained; the transfer event keeps its original facts and source. The Cincinnati team link supplies the existing schedule/roster path. No GameDay data, current player statistics, other player profile, advertising or deployment setting is changed.
 
 Production deployment remains separately gated by owner approval. `.github/workflows/deploy-site.yml` deploys pushes to main, so a merge would publish and must remain held unless that production action is approved. The saved GSC record is a pre-release baseline, not a ship-time or outcome claim.
+
+### November 22: approved release and social metadata completion
+
+The owner subsequently approved the recommendations, pushes, merges, production deployment and live verification. PR 68 released as main `0d99ab9eeacf6ed142eee3f3b35dbd883c1f62a9`; run 45040762387 verified deployment `5ca1a26d-6558-4487-ab1a-690c607295aa` and version `13f3393b-41af-4896-95fa-d7aab17d2c86` at 100% traffic. The GameDay data revision was identical before and after release.
+
+The live player page had the intended title and description, but Open Graph and Twitter inherited generic site text. The follow-up explicitly sets only this reviewed player's social title, description and canonical Open Graph URL, retaining the parent images and brand. The production guard advances to the observed PR 68 version without weakening its strict traffic/version checks. Other players, generated datasets, recipes, APIs and provider settings are outside this correction.
