@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HubApp } from "@/components/HubApp";
 import { boardWeeks, coaches, fantasyNotes, getGame, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
-import { getRosterPlayerBySlug, playerSlugForName } from "@/lib/player-records";
+import { getRosterPlayerBySlug, playerSlugForName, reviewedPlayerProfile } from "@/lib/player-records";
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
 import { selectBoardWeek } from "@/lib/week-cutover";
@@ -84,6 +84,8 @@ export async function generateMetadata({
     };
   }
   if (root === "players" && detail) {
+    const profile = reviewedPlayerProfile(detail);
+    if (profile) return { title: profile.title, description: profile.description };
     const portal = portalEvents.find((event) => event.playerSlug === detail);
     const fantasy = fantasyNotes.find((note) => playerSlugForName(note.player) === detail);
     const roster = getRosterPlayerBySlug(detail);

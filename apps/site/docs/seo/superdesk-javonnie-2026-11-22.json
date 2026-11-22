@@ -1,0 +1,59 @@
+{
+  "recorded_on": "2026-11-22",
+  "status": "proposed_not_deployed",
+  "source": "Direct Search Console final web data captured 2026-11-22; approved SUPERDESK review",
+  "baseline_window": {
+    "start": "2026-10-24",
+    "end": "2026-11-20",
+    "days": 28
+  },
+  "comparison_window": {
+    "start": "2026-09-26",
+    "end": "2026-10-23",
+    "days": 28
+  },
+  "metrics": {
+    "original_rank": 1,
+    "hostname": "cfbapex.com",
+    "kind": "rank_push",
+    "query": "javonnie gibson",
+    "original_score": 85.4,
+    "url": "https://cfbapex.com/players/javonnie-gibson",
+    "current": {
+      "keys": [
+        "https://cfbapex.com/players/javonnie-gibson",
+        "javonnie gibson"
+      ],
+      "clicks": 0,
+      "impressions": 1933,
+      "ctr": 0,
+      "position": 5.929125711329539
+    },
+    "previous": null,
+    "pageCurrent": {
+      "keys": [
+        "https://cfbapex.com/players/javonnie-gibson"
+      ],
+      "clicks": 0,
+      "impressions": 1936,
+      "ctr": 0,
+      "position": 6.002582644628099
+    },
+    "pagePrevious": null
+  },
+  "query_segments": {
+    "exact_query_desktop_impressions": 1932,
+    "exact_query_mobile_impressions": 1,
+    "exact_query_us_desktop_impressions": 305
+  },
+  "hypothesis": "An accurate dated alias/roster summary may earn relevant player-query clicks; the historical zero-click distribution is not a forecast.",
+  "review": {
+    "refresh_before_ship": true,
+    "record_actual_deployment_revision_and_timestamp": true,
+    "directional_days": 14,
+    "primary_complete_days": 28,
+    "primary_cohort": "Javonnie/JV Gibson and Cincinnati variants; compare US device mix and whole-page totals separately",
+    "sparse_verdict": "inconclusive"
+  },
+  "production_deployment_authorized": false
+}
