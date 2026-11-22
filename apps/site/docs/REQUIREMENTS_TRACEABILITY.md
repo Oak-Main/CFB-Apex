@@ -209,3 +209,11 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 | Each poll keeps its own release date | Coaches November 15; AP and composite November 8 while no newer AP edition is published | Gate fails on a newer AP edition; tests assert both dates and the archived Coaches edition |
 | A source disagreement never becomes a guess | Three kickoff disagreements settled by host-school schedules; four lagging NCAA standings rows recorded with separate corroboration | Gate re-asserts the literal school text, the settlements and the lagging rows |
 | Publish honest board freshness | Board weeks 6–12; Week 12 carries no results date; conference tables carry their reconciliation date | Rendered tests pin `?week=11` and `?week=12`; smoke covers weeks 10–12 |
+
+## November 22 Javonnie Gibson page scope
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Recognize the official JV Gibson name on the existing canonical player URL | Page-specific dated profile in `lib/player-records.ts`; shared metadata and player rendering read the same profile | Type check, existing site verification, and rendered `/players/javonnie-gibson` inspection |
+| Keep a roster observation distinct from historical transfer and current availability | Official 2026 Cincinnati roster, checked November 22; January 16 event retained with historical label; no current statistics or participation assertion | Compare official roster facts and rendered history/source/date |
+| Preserve approval and baseline boundaries | `docs/seo/superdesk-javonnie-2026-11-22.json`; no GameDay or deployment configuration changes | Git diff, unchanged generated dataset, and required CI |

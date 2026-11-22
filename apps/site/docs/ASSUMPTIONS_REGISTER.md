@@ -169,3 +169,10 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 - The NCAA standings page states its own update time (November 15, 08:29 AM EDT). A row there that misses a verified final is a lagging observation. It is accepted only when it equals the last verified record and the gap is exactly that final.
 - Week 12 ranked pairings and the marquee use the AP edition the site publishes (November 8). They change only when a later release reconciles a newer AP edition.
 - Leader categories keep NCAA's own through-games statement (Sunday, November 15).
+
+## November 22 Javonnie Gibson profile
+
+- Cincinnati’s official 2026 roster lists the player as JV Gibson, No. 11, WR, fifth year, 6 ft 2 in, 208 lb, Opelousas, Louisiana, previous school Oklahoma; checked November 22, 2026 at https://gobearcats.com/sports/football/roster/player/jv-gibson.
+- This is a dated roster observation. It does not establish game availability, participation, current season statistics, or any change after the check date.
+- The January 16, 2026 transfer record remains historical evidence and is not rewritten by this profile. No new alias URL is created.
+- Search Console measurements are the approved October 24–November 20 final-data baseline. The earlier comparison row is unreported, not zero. Refresh and freeze the baseline again before any separately approved production release.
