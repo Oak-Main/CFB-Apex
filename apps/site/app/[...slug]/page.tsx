@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { HubApp } from "@/components/HubApp";
 import { boardWeeks, coaches, fantasyNotes, getGame, getConferenceHub, portalEvents, stadiums, teams } from "@/lib/cfb-dataset";
@@ -6,7 +6,7 @@ import { getRosterPlayerBySlug, playerSlugForName, reviewedPlayerProfile } from 
 import { stadiumPageTitle, staticRootTitle, teamPageTitle } from "@/lib/seo-titles";
 import { STATIC_ROOTS } from "@/lib/static-roots";
 import { selectBoardWeek } from "@/lib/week-cutover";
-import { environment } from "@/lib/config";
+import { brand, environment } from "@/lib/config";
 import { watchUpdatedOn } from "@/lib/watch-postseason";
 
 // The scoreboard and ticker follow the request's server clock; never cache.
@@ -51,7 +51,7 @@ interface RoutePageProps {
 
 export async function generateMetadata({
   params,
-}: RoutePageProps): Promise<Metadata> {
+}: RoutePageProps, parent: ResolvingMetadata): Promise<Metadata> {
   const { slug } = await params;
   // Self-canonical on every catch-all page (2026-09-22): GSC was carrying
   // http://, https:// and leading-space variants of the same pages as
@@ -85,7 +85,28 @@ export async function generateMetadata({
   }
   if (root === "players" && detail) {
     const profile = reviewedPlayerProfile(detail);
-    if (profile) return { title: profile.title, description: profile.description };
+    if (profile) {
+      const inherited = await parent;
+      const socialTitle = `${profile.title} | ${brand.name}`;
+      return {
+        title: profile.title,
+        description: profile.description,
+        openGraph: {
+          type: "website",
+          siteName: brand.name,
+          title: socialTitle,
+          description: profile.description,
+          url: selfCanonical.alternates.canonical,
+          images: inherited.openGraph?.images ?? [],
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: socialTitle,
+          description: profile.description,
+          images: inherited.twitter?.images ?? [],
+        },
+      };
+    }
     const portal = portalEvents.find((event) => event.playerSlug === detail);
     const fantasy = fantasyNotes.find((note) => playerSlugForName(note.player) === detail);
     const roster = getRosterPlayerBySlug(detail);
