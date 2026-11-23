@@ -54,8 +54,8 @@ test("the Week 7 board is the reviewed 59-game FBS-vs-FBS release", () => {
   assert.equal(new Set(slate.map((row) => [row.awayTeamId, row.homeTeamId].sort().join(":"))).size, 59);
   const ids = new Set(teams.map((team) => team.id));
   assert.ok(slate.every((row) => ids.has(row.awayTeamId) && ids.has(row.homeTeamId)));
-  assert.equal(verifiedRefresh?.week, 12);
-  assert.equal(verifiedRefresh?.reference_date, "2026-11-15");
+  assert.equal(verifiedRefresh?.week, 13);
+  assert.equal(verifiedRefresh?.reference_date, "2026-11-22");
 });
 
 test("every Week 7 kickoff is published after the October 11 rechecks, with no midnight placeholder", () => {
@@ -122,9 +122,9 @@ test("Ohio State at Indiana is the Week 7 marquee with verified records", () => 
   assert.equal(kickoffTime(marquee), "12:00 PM ET");
   assert.equal(marquee?.broadcast, "FOX");
   assert.equal(marquee?.venue, "Memorial Stadium (Bloomington, IN)");
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "7–3");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "7–4");
   // Archive game facts stay fixed; shared team records include later verified finals.
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "9\u20131");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "9\u20132");
   for (const [id, away, home] of [["2026-10-10-maryland-at-ohio-state", 16, 45], ["2026-10-10-indiana-at-nebraska", 20, 17]] as const) {
     const final = game(id);
     assert.equal(final?.status, "final");
@@ -140,10 +140,10 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   assert.deepEqual(review?.withheld, []);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
   // Texas lost to Oklahoma on October 10; later verified finals advanced the record.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "8\u20132");
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "9\u20132");
   // Current team records include independently verified later finals.
-  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "7–3");
-  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "9\u20131");
+  assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "7–4");
+  assert.equal(teams.find((team) => team.slug === "indiana")?.record, "9\u20132");
   // Every team's record equals its conference table's overall column.
   for (const conf of verifiedRefresh?.retainedBaseline?.conferenceStandings ?? []) {
     for (const row of conf.rows) assert.equal(row.overall, row.team_slug ? verifiedRefresh?.teamRecords[row.team_slug] : undefined, row.team);
@@ -151,15 +151,16 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
 });
 
 test("current polls advance to October 25 and explain historical source dates", () => {
-  // Each poll keeps its own release date: the November 15 Coaches edition is
-  // current while the AP table stays on its November 8 edition.
-  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-11-08", "2026-11-15"]);
-  assert.match(pollsStatusNote ?? "", /November 15/);
-  assert.match(pollsStatusNote ?? "", /November 8 Coaches edition is archived/);
+  // Each poll keeps its own release date: both are the November 22 editions,
+  // and the editions they replaced are archived.
+  assert.deepEqual(verifiedRefresh?.polls?.filter((poll) => poll.poll !== "composite").map((poll) => poll.release_date), ["2026-11-22", "2026-11-22"]);
+  assert.match(pollsStatusNote ?? "", /November 22/);
+  assert.match(pollsStatusNote ?? "", /November 8 AP and November 15 Coaches editions are archived/);
 });
 
 test("Week 7 FBS–FCS exclusions carry ESPN conference evidence", () => {
-  const excluded = (verifiedRefresh?.excludedGames ?? []).filter((row) => row.date >= "2026-10-12");
+  // Weeks 7-11; the four Week 12 exclusions are covered in tests/week13.test.ts.
+  const excluded = (verifiedRefresh?.excludedGames ?? []).filter((row) => row.date >= "2026-10-12" && row.date < "2026-11-16");
   assert.deepEqual(excluded.map((row) => row.provider_id).sort(), ["401856725", "401858261", "401858262", "401858290"]);
   for (const row of excluded) assert.ok(row.espn_conference_ids && ![1, 4, 5, 8, 9, 12, 15, 17, 18, 37, 151].includes(row.espn_conference_ids.away));
 });
@@ -178,7 +179,8 @@ test("the Week 7 archive ticker contains Week 7 finals and no upcoming games", (
 
 test("stories stay on their own board week", () => {
   const stories = verifiedRefresh?.storylines ?? [];
-  assert.ok(stories.every((story) => [6, 7, 8, 11].includes(story.week ?? 0)));
+  assert.ok(stories.every((story) => [6, 7, 8, 11, 12].includes(story.week ?? 0)));
+  assert.deepEqual(stories.filter((story) => story.week === 12).map((story) => story.id), ["week12-verified-finals"]);
   assert.deepEqual(stories.filter((story) => story.week === 11).map((story) => story.id), ["week11-verified-finals"]);
   assert.deepEqual(stories.filter((story) => story.week === 7).map((story) => story.id), ["week7-verified-finals"]);
 });

@@ -269,3 +269,15 @@ The live player page had the intended title and description, but Open Graph and 
 ### November 23: production target follows the PR 69 deploy
 
 PR 69 merged as main `4404b9c` and its main deploy (run 45041725857) moved production to `961d3545-84d0-4c69-8177-7e2387d5eec1` (deployment `f55fd6b6-e919-4c96-b241-172c4790a5d4`, 2026-11-22T16:06:11Z) while the guard still expected `13f3393b`. The reviewed target advances to that version, read from provider deployment history on November 23 at 100% traffic, so the Week 13 weekly refresh starts from what is live. Merged with `[skip ci]` so this bookkeeping change does not itself redeploy.
+
+## D-2026-11-22 — Weekly refresh: Week 12 finals, Week 13 slate, November 22 polls
+
+Single reviewed release advances the GameDay board to weeks 6–13. It was due Sunday, November 22 and was captured Monday, November 23, after the 14:00 UTC Week 13 cutover, under the owner's standing approval. All 66 Week 12 board games are verified finals (ESPN completed with quarter sums, NCAA scoreboard F with the same score) and four FBS-vs-FCS finals stay outside the board; Week 13 arrives as 69 FBS-vs-FBS fixtures with every kickoff and network announced. Full-season audit advances to 822 completed finals (695 interface / 127 FCS) across twelve NCAA weeks. Exact sources, counts and the two-hour receipt window: [WEEKLY_REFRESH_2026-11-22.md](WEEKLY_REFRESH_2026-11-22.md).
+
+Polls: ESPN publishes both November 22 editions, so AP, Coaches and the composite all advance to November 22. The November 16 AP edition (never carried by the site) supplies the Week 12 pregame ranks and is archived with its own date.
+
+Kickoffs: every Week 13 kickoff is the same instant on ESPN and the NCAA scoreboard, so none is settled by a school page. A first capture earlier the same morning needed sixteen host-school receipts and one hold because the NCAA scoreboard had not yet filled in its times; it was discarded unpublished once the scoreboard caught up. The builder now ignores a reviewed host rule when the NCAA scoreboard states the provider instant itself, so a scoreboard that catches up between captures no longer stops the build.
+
+`tests/week12.test.ts` becomes the archive of the November 15 release and reads that release's evidence; `tests/week13.test.ts` covers this one.
+
+The reviewed production target was advanced to `961d3545-84d0-4c69-8177-7e2387d5eec1` by PR 70 before this release and advances again by its own pull request after this release deploys.

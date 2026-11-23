@@ -166,7 +166,7 @@ export async function generateMetadata({
     return {
       title: "Upset Watch — Historical Week 8 Board",
       description:
-        "Historical October 20 editorial board. Current Week 12 picks and market lines are unavailable.",
+        "Historical October 20 editorial board. Current Week 13 picks and market lines are unavailable.",
     };
   }
   if (root === "playoff-audit") {
