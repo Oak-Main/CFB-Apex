@@ -224,3 +224,12 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 |---|---|---|
 | Match the reviewed player's social preview to document metadata | Page-specific Open Graph/Twitter fields, original parent images and self-canonical URL | Built HTML metadata parity; hosted checks; actual live-page recheck |
 | Preserve guarded deployment from the observed production version | Pin `13f3393b-41af-4896-95fa-d7aab17d2c86` from run 45040762387; no guard bypass | Existing production-target tests and pre/post-deployment provider receipts |
+
+| Requirement | Implementation | Verification |
+|---|---|---|
+| Publish Week 12 finals and the Week 13 slate from official sources | `scripts/build-weekly-refresh-2026-11-22.mjs` → evidence JSONs → `verified-refresh.json` → generated bundle | `npm run gameday:source-gate` (`check-nov22-sources.mjs`), `npm test` (`tests/week13.test.ts`), integration/a11y/SEO/links suites |
+| Never promote a game because its kickoff passed | Builder requires ESPN completed/post, period-score sums and NCAA F with the same score for all 66 board finals and the four FCS finals | Gate re-asserts each final against both live boards |
+| Game ids never change | Finals take their id from the published scheduled row; Oklahoma State at Arizona State keeps its id and published kickoff after starting 15 minutes later | Gate requires every published final unchanged against `origin/main`; `tests/week13.test.ts` |
+| Each poll keeps its own release date | AP, Coaches and composite November 22; the November 8, 15 and 16 editions archived under their own dates | Gate compares both tables with the live provider and NCAA/USA Today tables; tests assert the dates and the archive |
+| A Week 13 kickoff needs two boards or the host school | All 69 kickoffs equal on ESPN and the NCAA scoreboard; no host-school settlement or hold | Gate re-asserts each kickoff against both live listings and fails on any difference |
+| Publish honest board freshness | Board weeks 6–13; Week 13 carries no results date | Rendered tests pin `?week=12` and `?week=13`; smoke covers weeks 11–13 |

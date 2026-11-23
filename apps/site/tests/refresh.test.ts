@@ -99,19 +99,19 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
     "Southeastern Conference",
   );
   assert.equal(homepageData.portalAsOf, "2026-09-07");
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Sunday, November 15, 2026/);
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 21, 2026/);
   assert.equal(
     verifiedRefresh?.metrics.categories[0].rows.find(
-      (row) => row.name === "Braden Atkinson",
+      (row) => row.name === "Drew Mestemaker",
     )?.value,
-    3169,
+    3533,
   );
-  assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "6–4");
-  assert.equal(teams.find((team) => team.slug === "fiu")?.record, "4–6");
+  assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "6–5");
+  assert.equal(teams.find((team) => team.slug === "fiu")?.record, "4–7");
   // App State's record was withheld until its Oct 10 loss to Old Dominion was verified.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "6–4",
+    "7–4",
   );
 });
 
@@ -134,19 +134,21 @@ test("the two wrongly excluded FBS games are restored with records and TV", () =
   for (const row of verifiedRefresh?.excludedGames ?? []) {
     assert.ok(row.espn_conference_ids, `${row.name} carries exclusion evidence`);
   }
-  assert.equal(verifiedRefresh?.excludedGames?.length, 123);
+  assert.equal(verifiedRefresh?.excludedGames?.length, 127);
   assert.equal(verifiedRefresh?.excludedGames?.filter((row) => row.date < "2026-10-12").length, 119);
   assert.ok(verifiedRefresh?.excludedGames?.some((row) => row.provider_id === "401858290"), "the Week 10 Wake Forest FCS result stays outside the interface");
 });
 
 test("November 1 poll notes use October 25 movement and retain others receiving votes", () => {
   const ap = pollTables.find((poll) => poll.poll === "ap")!;
-  assert.equal(ap.release_date, "2026-11-08");
+  assert.equal(ap.release_date, "2026-11-22");
+  // Movement is measured against the AP edition that preceded it (November 16).
   const notes = verifiedRefresh?.poll_notes;
-  assert.equal(notes?.movers_ap.find((r) => r.team_slug === "georgia")?.from, 3);
-  assert.equal(notes?.movers_ap.find((r) => r.team_slug === "georgia")?.to, 1);
-  assert.deepEqual(notes?.debuts_ap.map((r) => r.team_slug), ["oregon", "south-carolina", "new-mexico"]);
-  assert.deepEqual(notes?.dropped_out.ap.map((r) => r.team_slug).sort(), ["florida", "missouri", "northwestern", "oklahoma-state", "wisconsin"]);
+  assert.equal(notes?.as_of, "2026-11-22");
+  assert.equal(notes?.movers_ap.find((r) => r.team_slug === "texas")?.from, 8);
+  assert.equal(notes?.movers_ap.find((r) => r.team_slug === "texas")?.to, 5);
+  assert.deepEqual(notes?.debuts_ap.map((r) => r.team_slug), ["oklahoma", "missouri"]);
+  assert.deepEqual(notes?.dropped_out.ap.map((r) => r.team_slug).sort(), ["kentucky", "memphis"]);
   assert.ok(notes?.dropped_out.coaches.length);
 });
 
@@ -158,8 +160,8 @@ test("verified additions: GameDay badge, ranked matchups, NDSU storyline, standi
   assert.equal(gameday?.game_provider_id, "401856712");
   assert.match(gameday?.badge ?? "", /Tuscaloosa/);
   const matchups = verifiedRefresh?.ranked_matchups ?? [];
-  assert.ok(matchups.some((row) => /georgia/.test(row.matchup) && /south-carolina/.test(row.matchup)));
-  assert.ok(matchups.some((row) => /notre-dame/.test(row.matchup) && /smu/.test(row.matchup)));
+  assert.ok(matchups.some((row) => /ucla/.test(row.matchup) && /usc/.test(row.matchup)));
+  assert.ok(matchups.some((row) => /missouri/.test(row.matchup) && /oklahoma/.test(row.matchup)));
   assert.ok(matchups.length >= 2 && matchups.length <= 6);
   assert.ok(
     verifiedRefresh?.storylines?.some((row) => row.id === "ndsu-first-fbs-season"),
@@ -170,10 +172,10 @@ test("verified additions: GameDay badge, ranked matchups, NDSU storyline, standi
   assert.ok(sunBelt.rows.length >= 10);
   assert.ok(sunBelt.rows.every((row) => row.team_slug), "every Sun Belt row links to a team hub");
   const sec = standings.find((conf) => conf.slug === "sec");
-  // W/L are conference games (Georgia 9-1 overall, 7-1 SEC after the November 7 Ole Miss win and the November 14 Missouri win), not overall wins.
+  // W/L are conference games (Georgia 10-1 overall, 8-1 SEC through the November 21 games), not overall wins.
   const georgia = sec?.rows.find((row) => row.team_slug === "georgia");
-  assert.equal(`${georgia?.w}-${georgia?.l}`, "7-1");
-  assert.equal(georgia?.overall, "9-1");
+  assert.equal(`${georgia?.w}-${georgia?.l}`, "8-1");
+  assert.equal(georgia?.overall, "10-1");
   for (const conf of standings) {
     assert.ok(conf.rows.every((row) => row.team_slug), `${conf.slug} rows all linked`);
     for (const row of conf.rows) {
@@ -303,20 +305,20 @@ test("team schedules show the result and link the final, including the UTC-rollo
 
 test("current records for tracked midweek teams include all later verified finals", () => {
   const expected: Record<string, string> = {
-  "troy": "4–6",
-  "southern-miss": "3–7",
-  "jacksonville-state": "7–3",
-  "kennesaw-state": "4–6",
-  "fiu": "4–6",
-  "new-mexico-state": "3–7",
-  "liberty": "9–1",
-  "sam-houston": "1–9",
-  "western-kentucky": "4–6",
-  "missouri-state": "4–6",
-  "utsa": "8–2",
-  "south-florida": "6–4",
-  "south-alabama": "5–5",
-  "arkansas-state": "4–6"
+  "troy": "4–7",
+  "southern-miss": "3–8",
+  "jacksonville-state": "8–3",
+  "kennesaw-state": "5–6",
+  "fiu": "4–7",
+  "new-mexico-state": "3–8",
+  "liberty": "10–1",
+  "sam-houston": "1–10",
+  "western-kentucky": "4–7",
+  "missouri-state": "4–7",
+  "utsa": "9–2",
+  "south-florida": "6–5",
+  "south-alabama": "6–5",
+  "arkansas-state": "4–7"
 };
   for (const [slug, record] of Object.entries(expected)) {
     assert.equal(teams.find((team) => team.slug === slug)?.record, record, slug);
@@ -324,20 +326,20 @@ test("current records for tracked midweek teams include all later verified final
   const standings = verifiedRefresh?.retainedBaseline?.conferenceStandings ?? [];
   const row = (slug: string) => standings.flatMap((conf) => conf.rows).find((r) => r.team_slug === slug);
   const conf: Record<string, string> = {
-  "utsa": "5-1",
-  "south-florida": "2-4",
-  "liberty": "6-0",
-  "sam-houston": "0-6",
-  "western-kentucky": "3-3",
-  "missouri-state": "3-3",
-  "jacksonville-state": "5-1",
-  "kennesaw-state": "3-3",
-  "fiu": "2-4",
-  "new-mexico-state": "2-4",
-  "south-alabama": "3-3",
-  "arkansas-state": "2-4",
-  "troy": "2-4",
-  "southern-miss": "2-4"
+  "utsa": "6-1",
+  "south-florida": "2-5",
+  "liberty": "7-0",
+  "sam-houston": "0-7",
+  "western-kentucky": "3-4",
+  "missouri-state": "3-4",
+  "jacksonville-state": "6-1",
+  "kennesaw-state": "4-3",
+  "fiu": "2-5",
+  "new-mexico-state": "2-5",
+  "south-alabama": "4-3",
+  "arkansas-state": "2-5",
+  "troy": "2-5",
+  "southern-miss": "2-5"
 };
   for (const [slug, record] of Object.entries(conf)) {
     assert.equal(`${row(slug)?.w}-${row(slug)?.l}`, record, `${slug} conference record`);
@@ -345,8 +347,8 @@ test("current records for tracked midweek teams include all later verified final
 });
 
 test("freshness stays per source: polls and stats keep their own cutoffs", () => {
-  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Sunday, November 15, 2026/, "stats cutoff follows the independently retrieved NCAA table");
-  assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-11-08");
+  assert.match(verifiedRefresh?.metrics.through_games ?? "", /Through games Saturday, November 21, 2026/, "stats cutoff follows the independently retrieved NCAA table");
+  assert.equal(verifiedRefresh?.polls?.[0]?.release_date, "2026-11-22");
   const week6 = boardWeeks.find((row) => row.week === 6);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z", "Week 6 base snapshot time unchanged");
   assert.ok(week6?.results_verified_at && week6.results_verified_at > week6.retrieved_at);
@@ -409,7 +411,7 @@ test("weather-related kickoff changes propagate to games, team schedules and bro
   assert.ok(week6?.schedule_verified_at?.startsWith("2026-10-10"));
   assert.match(verifiedRefresh?.availability_review?.note ?? "", /not complete Saturday coverage/);
   assert.equal(week6?.retrieved_at, "2026-10-05T07:24:21.400874Z");
-  assert.equal(verifiedRefresh?.polls?.[0].release_date, "2026-11-08");
+  assert.equal(verifiedRefresh?.polls?.[0].release_date, "2026-11-22");
 });
 
 test("every Saturday October 10 final also cites an official school page that agrees", () => {

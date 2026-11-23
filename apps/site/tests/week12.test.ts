@@ -19,7 +19,9 @@ test("Week 12 becomes the default at 14:00Z on November 15 and Week 11 stays an 
     { start: week12?.start, end: week12?.end, label: week12?.label, cutover: week12?.cutover_utc },
     { start: "2026-11-16", end: "2026-11-22", label: "Nov 17–21", cutover: "2026-11-15T14:00:00Z" },
   );
-  assert.equal(week12?.results_verified_at, undefined, "a preview week carries no results date");
+  // Week 12 was the preview in the November 15 release; the November 22
+  // release reviewed all of it, so it now carries a results date.
+  assert.ok(week12?.results_verified_at, "Week 12 is a reviewed archive");
   assert.equal(gameDaySnapshot(Date.parse("2026-11-15T13:59:59Z")).selectedWeek, 11);
   assert.equal(gameDaySnapshot(Date.parse("2026-11-15T14:00:00Z")).selectedWeek, 12);
   assert.equal(gameDaySnapshot(now).selectedWeek, 12);
@@ -31,8 +33,8 @@ test("Week 12 becomes the default at 14:00Z on November 15 and Week 11 stays an 
   assert.equal(clockWeek(weeks, { week: 11, serverNow: now, explicit: true }), 12);
   assert.equal(clockWeek(weeks, selectBoardWeek(weeks, Date.parse("2026-11-15T13:59:59Z"))), 11);
   assert.equal(parseWeekParam("12", weeks), 12);
-  assert.equal(parseWeekParam("13", weeks), null);
-  assert.equal(verifiedRefresh?.week, 12);
+  assert.equal(parseWeekParam("13", weeks), 13);
+  assert.equal(verifiedRefresh?.week, 13);
 });
 
 test("all 67 Week 11 games are verified finals with stable ids, scores and quarter sums", () => {
@@ -82,12 +84,12 @@ test("Ole Miss at Oklahoma keeps its published id after moving to Sunday, Novemb
   assert.ok(!games.some((g) => g.id === "2026-11-15-ole-miss-at-oklahoma"), "no second id for the same event");
 });
 
-test("the Week 12 slate is 66 FBS-vs-FBS fixtures with four FCS games outside the board", () => {
+test("the Week 12 board is 66 FBS-vs-FBS games, now finals, with four FCS games outside the board", () => {
   const preview = gameDaySnapshot(now, "12");
   assert.equal(preview.games.length, 66);
-  assert.ok(preview.games.every((g) => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
+  assert.ok(preview.games.every((g) => g.status === "final" && g.homeScore !== null && g.awayScore !== null));
   assert.equal(reviewedWeekContractViolation(12, preview.weeks.find((row) => row.week === 12), preview.games), null);
-  assert.equal(preview.sourceDates.results, null);
+  assert.ok(preview.sourceDates.results);
   assert.equal(preview.sourceDates.previousResults, gameDaySnapshot(now, "11").sourceDates.results);
   const perDay: Record<string, number> = {};
   for (const g of preview.games) perDay[easternDate(g.date)] = (perDay[easternDate(g.date)] ?? 0) + 1;
@@ -103,39 +105,36 @@ test("the Week 12 slate is 66 FBS-vs-FBS fixtures with four FCS games outside th
   assert.ok(preview.games.some((g) => g.id === marquee), "marquee is a Week 12 fixture");
 });
 
-test("kickoff disagreements are settled only by the host school's official schedule", () => {
-  const settled = raw.scheduledGames.filter((row: { kickoff_settlement?: unknown }) => row.kickoff_settlement);
-  assert.deepEqual(settled.map((row: { provider_id: string }) => row.provider_id).sort(), ["401864545", "401866465", "401866469"]);
-  for (const row of settled) {
-    const s = row.kickoff_settlement;
+test("the three Week 12 kickoff disagreements were settled only by the host school's official schedule", () => {
+  // Those games are finals now, so the settlements are read from the November 15 evidence.
+  const settled = evidence.kickoff_settlements as Array<{ provider_id: string; kind: string; url: string; host_kickoff_utc: string; espn_listed_kickoff_utc: string; ncaa_listed_kickoff_utc: string }>;
+  assert.deepEqual(settled.map((row) => row.provider_id).sort(), ["401864545", "401866465", "401866469"]);
+  for (const s of settled) {
+    const row = evidence.schedule.find((g: { provider_id: string }) => g.provider_id === s.provider_id);
     assert.equal(s.kind, "host-school");
-    assert.equal(new URL(s.url).hostname, hosts[row.home_slug], `${row.provider_id} cites the host's official site`);
+    assert.equal(new URL(s.url).hostname, hosts[row.home_slug], `${s.provider_id} cites the host's official site`);
     assert.equal(Date.parse(s.host_kickoff_utc), Date.parse(row.kickoff_utc));
     assert.equal(Date.parse(s.espn_listed_kickoff_utc), Date.parse(row.kickoff_utc));
     assert.notEqual(Date.parse(s.ncaa_listed_kickoff_utc), Date.parse(row.kickoff_utc), "the differing NCAA listing stays recorded");
-    assert.equal(row.ncaa_listed_kickoff_utc, s.ncaa_listed_kickoff_utc);
     assert.equal(row.kickoff_status, "confirmed");
   }
 });
 
-test("each poll keeps its own edition date and an unpublished AP edition is never relabeled", () => {
-  const ap = pollTables.find((poll) => poll.poll === "ap"), coaches = pollTables.find((poll) => poll.poll === "coaches"), composite = pollTables.find((poll) => poll.poll === "composite");
-  assert.equal(coaches?.release_date, "2026-11-15");
+test("the November 15 release's poll editions are archived with their own dates, never relabeled", () => {
+  // That release published the November 15 Coaches edition and kept the
+  // November 8 AP edition because no newer one was out. Both are archives now.
   assert.equal(evidence.ap_edition_status.published, false);
-  assert.equal(ap?.release_date, "2026-11-08");
-  assert.equal(composite?.release_date, "2026-11-08");
-  const archived = raw.poll_history.find((entry: { release_date: string }) => entry.release_date === "2026-11-08");
-  assert.deepEqual(archived.polls.map((poll: { poll: string; release_date: string }) => [poll.poll, poll.release_date]), [["coaches", "2026-11-08"]]);
-  assert.match(raw.pollsStatus, /No AP Top 25 edition for November 15 was published/);
-  assert.equal(verifiedRefresh?.poll_notes?.as_of, "2026-11-08");
+  const edition = (date: string) => raw.poll_history.find((entry: { release_date: string }) => entry.release_date === date).polls.map((poll: { poll: string; release_date: string }) => [poll.poll, poll.release_date]);
+  assert.deepEqual(edition("2026-11-15"), [["coaches", "2026-11-15"]]);
+  assert.deepEqual(edition("2026-11-08"), [["ap", "2026-11-08"], ["coaches", "2026-11-08"]]);
+  assert.ok(pollTables.every((poll) => (poll.release_date ?? "") > "2026-11-15"), "the current tables are later editions");
   // Pregame ranks on the Week 11 finals come from the poll that preceded them.
   const utah = evidence.finals.find((row: { game_id: string }) => row.game_id === "2026-11-14-utah-at-arizona");
   assert.deepEqual(utah.meta.pregame_ap_ranks, { arizona: 22, utah: 2 });
 });
 
-test("all 138 records reconcile; NCAA standings rows that lag are recorded, not trusted", () => {
+test("the November 15 evidence reconciled all 138 records; NCAA standings rows that lagged are recorded, not trusted", () => {
   assert.equal(Object.keys(evidence.records).length, 138);
-  assert.deepEqual(verifiedRefresh?.teamRecords, evidence.records);
   assert.equal(evidence.primaryRecords.length, 138);
   const lag = evidence.ncaa_standings_lag as Array<{ slug: string; ncaa_row: string[]; provider_overall: string; last_verified_overall: string; uncounted_finals: string[]; corroborated_by: string }>;
   assert.equal(evidence.primaryRecords.filter((row: { source_id: string }) => row.source_id === "ncaa-standings").length, 138 - lag.length);
@@ -149,9 +148,7 @@ test("all 138 records reconcile; NCAA standings rows that lag are recorded, not 
     assert.equal(row.provider_overall, won ? `${w + 1}-${l}` : `${w}-${l + 1}`, `${row.slug} last verified record plus the verified final`);
     assert.ok(row.corroborated_by.startsWith("standing-") || row.corroborated_by.startsWith("school-"));
   }
-  assert.equal(raw.full_season_review.completed, 752);
-  assert.equal(raw.playedGames.length, 629);
-  assert.equal(raw.excludedGames.length, 123);
+  assert.deepEqual([evidence.counts.seasonCompleted, evidence.counts.seasonFbsFinals, evidence.counts.seasonFcsFinals], [752, 629, 123]);
 });
 
 test("the Week 11 finals story is generated from the verified finals and the pregame poll", () => {

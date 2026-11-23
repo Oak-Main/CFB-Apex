@@ -182,3 +182,12 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 - Owner approval now covers production release and live verification. The same-day final-data export was frozen unchanged at 15:52:24 UTC; a fresh query was unavailable because the Dell was offline and the alternative connector subscription expired. No fresh measurement or traffic lift is claimed.
 - Live verification after PR 68 found correct document metadata but inherited generic social-preview text. The reviewed player's Open Graph and Twitter fields should use the same profile while retaining the existing site image and brand.
 - Workflow run 45040762387 verified production version `13f3393b-41af-4896-95fa-d7aab17d2c86` at 100% traffic. This is the pinned starting target for the follow-up; any newer or split deployment must still stop publication.
+
+## November 22 weekly refresh
+
+- The release is captured November 23, after the 14:00 UTC Week 13 cutover, so the board default is the Week 13 preview and Week 12 is an explicit archive.
+- A Week 13 kickoff is published when ESPN and the NCAA scoreboard state the same instant. All 69 do at the capture, so no host-school schedule is used. A host page that differs from two agreeing boards (Wake Forest listed 3:00 p.m. for Duke; both boards list 3:30 PM ET) is noted in the release evidence and does not hold the kickoff.
+- The AP edition that preceded the Week 12 games is November 16. It supplies those finals' pregame ranks and the week-over-week movement, and is archived with its own date.
+- With AP and Coaches both on November 22, the composite is again an average of two editions of one date.
+- ESPN's default rankings document carries a third poll (provider id 20, dated November 23). It is not published. The CFP committee rankings follow their own release.
+- Leader categories keep NCAA's own through-games statement (Saturday, November 21).

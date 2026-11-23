@@ -101,7 +101,7 @@ test("Command Center serves the same dated public snapshot and reviewed archives
     assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
     assert.equal(doc.revision, snapshot.revision);
   }
-  for (const week of ["13", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
+  for (const week of ["14", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
   const options = await fetchRoute("/api/gameday", {method:"OPTIONS"});
   assert.equal(options.status, 204);
   assert.equal((await fetchRoute("/api/gameday", {method:"POST"})).status, 405);
@@ -126,7 +126,7 @@ test("the reviewed Week 6 archive renders its games and sourced metrics", async 
   assert.match(html, /Alabama/);
   assert.match(html, /Week of Mon, Oct 5/);
   assert.match(html, /Season leaders/);
-  assert.match(html, /3,169/);
+  assert.match(html, /3,533/);
   assert.doesNotMatch(html, /Rankings: AP preseason|reflect the AP preseason poll|Preseason · Points/);
 });
 
@@ -270,16 +270,19 @@ test("weekly release renders current data, truthful pending states and both arch
     return [path, text];
   })));
   // The homepage follows the production server clock across the Sunday
-  // cutover: Week 11 before 14:00Z on November 15, Week 12 afterwards.
-  const clockWeek = Date.now() >= Date.parse("2026-11-15T14:00:00Z") ? 12 : 11;
+  // cutover: Week 12 before 14:00Z on November 22, Week 13 afterwards.
+  const clockWeek = Date.now() >= Date.parse("2026-11-22T14:00:00Z") ? 13 : 12;
   const current = pages.get("/");
-  assert.match(current, clockWeek === 12 ? /WEEK 12 · NOV 17–21/ : /WEEK 11 · NOV 10–14/);
-  if (clockWeek === 11) assert.match(current, /all 67 FBS-vs-FBS games are verified finals/);
-  // Every Week 12 kickoff and network is published, and Week 11's are final,
+  assert.match(current, clockWeek === 13 ? /WEEK 13 · NOV 24–28/ : /WEEK 12 · NOV 17–21/);
+  if (clockWeek === 12) assert.match(current, /all 66 FBS-vs-FBS games are verified finals/);
+  // Every Week 13 kickoff and network is published, and Week 12's are final,
   // so neither board shows a pending kickoff or "TV N/A".
   assert.doesNotMatch(current, /kickoff listings remain uncorroborated|TV N\/A/);
   // Pinned weeks do not depend on today's date.
-  assert.match(visibleText(await (await fetchRoute("/?week=12")).text()), /WEEK 12 · NOV 17–21/);
+  assert.match(visibleText(await (await fetchRoute("/?week=13")).text()), /WEEK 13 · NOV 24–28/);
+  const week12Archive = visibleText(await (await fetchRoute("/?week=12")).text());
+  assert.match(week12Archive, /WEEK 12 · NOV 17–21/);
+  assert.match(week12Archive, /all 66 FBS-vs-FBS games are verified finals/);
   const week11Archive = visibleText(await (await fetchRoute("/?week=11")).text());
   assert.match(week11Archive, /WEEK 11 · NOV 10–14/);
   assert.match(week11Archive, /all 67 FBS-vs-FBS games are verified finals/);
@@ -297,8 +300,8 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(current, /College GameDay · Salt Lake City/);
   assert.doesNotMatch(current, /network remains pending school confirmation/);
   assert.match(visibleText(await (await fetchRoute("/?week=8")).text()), /College GameDay · Salt Lake City/);
-  assert.match(current, /AP TOP 25 2026-11-08/);
-  assert.match(current, /3,239/);
+  assert.match(current, /AP TOP 25 2026-11-22/);
+  assert.match(current, /3,533/);
   assert.match(pages.get("/?week=6"), /MARQUEE MATCHUP Georgia at Alabama Sat, Oct 10 ABC · FINAL · Georgia 20, Alabama 17/);
   const week7 = pages.get("/?week=7");
   assert.match(week7, /WEEK 7 · OCT 13–17 · ARCHIVE/);
@@ -333,13 +336,14 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const home = await visible("/?week=6");
   // Homepage week board: Tue-Thu rows are finals with scores, no kickoff times.
   assert.match(home, /Tue, Oct 6 final Southern Miss 34 Troy 55 Final/);
-  assert.match(home, /Thu, Oct 8 final Sam Houston 3 Liberty 35 Final/);
+  // Rank badges are the current AP edition's (Liberty is No. 21 on November 22).
+  assert.match(home, /Thu, Oct 8 final Sam Houston 3 21 Liberty 35 Final/);
   // Every Tue-Thu board row is a final; no midweek row carries a kickoff/TV slot.
   assert.doesNotMatch(home, /(Tue, Oct 6|Wed, Oct 7|Thu, Oct 8) (?!final\b)/);
   // Saturday's late game is a verified final on its own Eastern date.
   const hawaii = await visible("/games/2026-10-10-hawaii-at-arizona-state");
   assert.match(hawaii, /Arizona State Sun Devils final Sat · 2026-10-10 · 10:30 PM ET FS1/);
-  assert.match(hawaii, /Arizona State Sun Devils 6–4 30/);
+  assert.match(hawaii, /Arizona State Sun Devils 6–5 30/);
   const game = await visible("/games/2026-10-08-south-florida-at-utsa");
   assert.match(game, /South Florida Bulls at UTSA Roadrunners final/);
   assert.doesNotMatch(game, /South Florida Bulls at UTSA Roadrunners game preview/);
@@ -352,8 +356,8 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   assert.match(reconciledOn, /^2026-11-\d\d$/);
   assert.ok(rankings.includes(`as of ${reconciledOn}`));
   assert.doesNotMatch(rankings, /as of 2026-10-28/);
-  assert.match(rankings, /UTSA 5 1 0 0\.833 8[-–]2/);
-  assert.match(rankings, /South Florida 2 4 0 0\.333 6-4/);
+  assert.match(rankings, /UTSA 6 1 0 0\.857 9[-–]2/);
+  assert.match(rankings, /South Florida 2 5 0 0\.286 6-5/);
 });
 
 test("October 10 pregame corrections and partial availability caveat render", async () => {
@@ -373,7 +377,7 @@ test("October 10 pregame corrections and partial availability caveat render", as
   assert.match(byu, /Fri, Oct 9/);
   // The watch board opens on the server-clock board week.
   const watchHtml = withoutComments(await (await fetchRoute("/watch")).text());
-  const boardWeek = Date.now() >= Date.parse("2026-11-15T14:00:00Z") ? 12 : Date.now() >= Date.parse("2026-11-08T13:00:00Z") ? 11 : Date.now() >= Date.parse("2026-11-01T13:00:00Z") ? 10 : Date.now() >= Date.parse("2026-10-25T13:00:00Z") ? 9 : Date.now() >= Date.parse("2026-10-18T13:00:00Z") ? 8 : Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
+  const boardWeek = Date.now() >= Date.parse("2026-11-22T14:00:00Z") ? 13 : Date.now() >= Date.parse("2026-11-15T14:00:00Z") ? 12 : Date.now() >= Date.parse("2026-11-08T13:00:00Z") ? 11 : Date.now() >= Date.parse("2026-11-01T13:00:00Z") ? 10 : Date.now() >= Date.parse("2026-10-25T13:00:00Z") ? 9 : Date.now() >= Date.parse("2026-10-18T13:00:00Z") ? 8 : Date.now() >= Date.parse("2026-10-11T13:00:00Z") ? 7 : 6;
   assert.match(watchHtml, new RegExp(`aria-pressed="true">W(?:eek|K|k) ?${boardWeek}</button>`));
   const watch = await visible("/watch?week=6");
   assert.match(watch, /ESPN App · linear network TBD/);
@@ -458,7 +462,7 @@ test("scores metadata and hero disclose the current verified snapshot without re
   // Now final: the result replaces the pregame slot/announced-kickoff note.
   const gameText = visibleText(game);
   assert.match(gameText, /North Dakota State Bison at UNLV Rebels final/);
-  assert.match(gameText, /UNLV Rebels 6–4 13/);
+  assert.match(gameText, /UNLV Rebels 7–4 13/);
 });
 
 
@@ -504,7 +508,7 @@ test("Friday and Saturday finals and current records agree across the Command Ce
     assert.match(page, /FINAL|Final/);
     assert.ok(scores.includes(String(row.away_score)));
   }
-  const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-15-week11-refresh.json", import.meta.url), "utf8")).records;
+  const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json", import.meta.url), "utf8")).records;
   for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), records[team.slug]);
 });
 
