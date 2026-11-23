@@ -265,3 +265,7 @@ Production deployment remains separately gated by owner approval. `.github/workf
 The owner subsequently approved the recommendations, pushes, merges, production deployment and live verification. PR 68 released as main `0d99ab9eeacf6ed142eee3f3b35dbd883c1f62a9`; run 45040762387 verified deployment `5ca1a26d-6558-4487-ab1a-690c607295aa` and version `13f3393b-41af-4896-95fa-d7aab17d2c86` at 100% traffic. The GameDay data revision was identical before and after release.
 
 The live player page had the intended title and description, but Open Graph and Twitter inherited generic site text. The follow-up explicitly sets only this reviewed player's social title, description and canonical Open Graph URL, retaining the parent images and brand. The production guard advances to the observed PR 68 version without weakening its strict traffic/version checks. Other players, generated datasets, recipes, APIs and provider settings are outside this correction.
+
+### November 23: production target follows the PR 69 deploy
+
+PR 69 merged as main `4404b9c` and its main deploy (run 45041725857) moved production to `961d3545-84d0-4c69-8177-7e2387d5eec1` (deployment `f55fd6b6-e919-4c96-b241-172c4790a5d4`, 2026-11-22T16:06:11Z) while the guard still expected `13f3393b`. The reviewed target advances to that version, read from provider deployment history on November 23 at 100% traffic, so the Week 13 weekly refresh starts from what is live. Merged with `[skip ci]` so this bookkeeping change does not itself redeploy.
