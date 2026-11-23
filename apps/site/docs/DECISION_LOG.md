@@ -281,3 +281,7 @@ Kickoffs: every Week 13 kickoff is the same instant on ESPN and the NCAA scorebo
 `tests/week12.test.ts` becomes the archive of the November 15 release and reads that release's evidence; `tests/week13.test.ts` covers this one.
 
 The reviewed production target was advanced to `961d3545-84d0-4c69-8177-7e2387d5eec1` by PR 70 before this release and advances again by its own pull request after this release deploys.
+
+### November 23: production target follows the PR 71 deploy
+
+PR 71 (the November 22 weekly refresh) merged as main `a803db1` and its main deploy (run 45243476952) moved production to `21117e75-ce9a-4c4f-8a6d-dc8a54fb188e` (deployment `efb0d7f7-7f9e-42fd-a60c-bab63542bcfa`, 2026-11-23T18:57:51Z). The reviewed target advances to that version, read from provider deployment history on November 23 as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.
