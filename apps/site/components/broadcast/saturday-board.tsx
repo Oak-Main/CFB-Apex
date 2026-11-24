@@ -1,3 +1,4 @@
+import { withPacific } from "@/lib/kickoff-zones";
 import { easternDate } from "@/lib/game-calendar";
 import { LaneHeading, TeamMark } from "./primitives";
 import { kickoffTime, type BroadcastGame, type BroadcastTeam } from "@/lib/homepage";
@@ -28,7 +29,7 @@ function BoardRow({
 }) {
   return (
     <li className="apex-gdc-row">
-      <span className="apex-gdc-time">{kickoffTime(game)}</span>
+      <span className="apex-gdc-time">{withPacific(kickoffTime(game))}</span>
       <div className="apex-gdc-matchup">
         <span className="apex-gdc-team">
           {away.rank != null && <em className="apex-gdc-rank">{away.rank}</em>}

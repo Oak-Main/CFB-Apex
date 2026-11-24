@@ -426,3 +426,25 @@ test("scoreboard gestures navigate horizontally and ignore vertical pulls", () =
     assert.equal(scoreboardSwipeDirection(x, y), null, `ignored gesture ${x},${y}`);
   }
 });
+
+// --- Pacific beside Eastern (display only) ---------------------------------
+
+test("withPacific puts the Pacific time beside a published Eastern kickoff", async () => {
+  const { withPacific, pacificFromEastern } = await import("../lib/kickoff-zones.ts");
+  assert.equal(withPacific("3:30 PM ET"), "3:30 PM ET / 12:30 PM PT");
+  assert.equal(withPacific("12:00 PM ET"), "12:00 PM ET / 9:00 AM PT");
+  assert.equal(withPacific("1:00 PM ET"), "1:00 PM ET / 10:00 AM PT");
+  assert.equal(withPacific("3:00 PM ET"), "3:00 PM ET / 12:00 PM PT");
+  assert.equal(withPacific("11:00 PM ET"), "11:00 PM ET / 8:00 PM PT");
+  // Before 3 AM Eastern is still the evening before in Pacific.
+  assert.equal(withPacific("12:00 AM ET"), "12:00 AM ET / 9:00 PM PT");
+  assert.equal(withPacific("2:59 AM ET"), "2:59 AM ET / 11:59 PM PT");
+  assert.equal(withPacific("Sat · 2026-11-28 · 7:30 PM ET"), "Sat · 2026-11-28 · 7:30 PM ET / 4:30 PM PT");
+  // Nothing to convert: returned unchanged, never a guessed time.
+  for (const label of ["Kickoff TBA", "Not published", "TBD", "", "7:00 PM Central", "13:00 PM ET"]) {
+    assert.equal(withPacific(label), label);
+    assert.equal(pacificFromEastern(label), null);
+  }
+  // Applying it twice changes nothing.
+  assert.equal(withPacific(withPacific("3:30 PM ET")), "3:30 PM ET / 12:30 PM PT");
+});

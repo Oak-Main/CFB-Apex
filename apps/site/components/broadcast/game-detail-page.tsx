@@ -1,5 +1,6 @@
 "use client";
 
+import { withPacific } from "@/lib/kickoff-zones";
 import { ArrowRight, MapPin, Radio, Star, Tv } from "lucide-react";
 import type { Game, Team } from "@/lib/types";
 import { broadcastLabel, kickoffTimeLabel } from "@/lib/scoreboard";
@@ -92,7 +93,7 @@ export function GameDetailPage({
                 </>
               ) : (
                 <>
-                  <span className="font-display">{kickoffTimeLabel(game)}</span>
+                  <span className="font-display">{withPacific(kickoffTimeLabel(game))}</span>
                   <strong>{broadcastLabel(game)}</strong>
                 </>
               )}

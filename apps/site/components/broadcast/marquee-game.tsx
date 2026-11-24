@@ -1,3 +1,4 @@
+import { withPacific } from "@/lib/kickoff-zones";
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays, MapPin, Radio, Tv } from "lucide-react";
 import {
@@ -74,7 +75,7 @@ export function MarqueeGame({
               {/* An archived week's marquee is a verified final: show the result, not a kickoff. */}
               {game.status === "final" && game.awayScore != null && game.homeScore != null
                 ? `FINAL · ${away.shortName} ${game.awayScore}, ${home.shortName} ${game.homeScore}`
-                : kickoffTime(game)}
+                : withPacific(kickoffTime(game))}
             </span>
           </div>
           <div className="apex-marquee-actions">

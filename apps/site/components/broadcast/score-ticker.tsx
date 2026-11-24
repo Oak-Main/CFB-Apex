@@ -1,5 +1,6 @@
 "use client";
 
+import { withPacific } from "@/lib/kickoff-zones";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
@@ -154,7 +155,7 @@ export function ScoreTicker({
                   </strong>
                 </div>
                 {!hasScore && (
-                  <span className="apex-ticker-time">{kickoffTime(game)}</span>
+                  <span className="apex-ticker-time">{withPacific(kickoffTime(game))}</span>
                 )}
               </a>
             );
