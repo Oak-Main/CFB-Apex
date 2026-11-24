@@ -285,3 +285,7 @@ The reviewed production target was advanced to `961d3545-84d0-4c69-8177-7e2387d5
 ### November 23: production target follows the PR 71 deploy
 
 PR 71 (the November 22 weekly refresh) merged as main `a803db1` and its main deploy (run 45243476952) moved production to `21117e75-ce9a-4c4f-8a6d-dc8a54fb188e` (deployment `efb0d7f7-7f9e-42fd-a60c-bab63542bcfa`, 2026-11-23T18:57:51Z). The reviewed target advances to that version, read from provider deployment history on November 23 as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.
+
+### November 24: production target follows the PR 73 deploy
+
+PR 73 (Pacific time beside Eastern on kickoff times, a display formatter with no data change) merged as main `b039a68` and its main deploy (run 45404734052) moved production to `6760d426-1d5f-4fcc-8bcc-de90a6189f31` (deployment `d2d416ae-a3c7-49b8-a87f-b60aaed88973`, 2026-11-24T13:36:20Z). The reviewed target advances to that version, read from provider deployment history on November 24 as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.
