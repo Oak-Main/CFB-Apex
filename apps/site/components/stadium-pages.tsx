@@ -102,6 +102,22 @@ export function StadiumDirectory({ stadiums, teams }: StadiumDirectoryProps) {
         </div>
       </header>
 
+      <section className="lt-section" aria-labelledby="first-round-title">
+        <div className="lt-section-heading">
+          <div>
+            <span className="lt-eyebrow">COLLEGE FOOTBALL PLAYOFF</span>
+            <h2 id="first-round-title" className="font-display">
+              First Round
+            </h2>
+          </div>
+        </div>
+        <aside className="lt-venue-note" aria-labelledby="first-round-title">
+          <p>
+            The College Football Playoff First Round is played on campus. Seeds 5 to 12 play at the higher seed&apos;s home stadium: one game on Friday, Dec. 18, and three on Saturday, Dec. 19. The four host stadiums are not known yet. The bracket is set on Selection Day, Sunday, Dec. 6. Once it is out, look up each host&apos;s guide in the directory below.
+          </p>
+        </aside>
+      </section>
+
       <section className="lt-section" aria-labelledby="stadium-directory-title">
         <div className="lt-section-heading">
           <div>
