@@ -10,6 +10,7 @@
  * renders no section at all — team pages never show an error state.
  */
 
+import { withPacific } from "@/lib/kickoff-zones";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import {
@@ -58,7 +59,7 @@ function eventTiming(event: NcaafGameEvent): { day: string; detail: string } {
   if (event.state === "postponed" || event.state === "canceled") {
     return { day, detail: event.statusLabel ?? gameStateLabel[event.state] };
   }
-  return { day, detail: `${timeFormatter.format(at)} ET` };
+  return { day, detail: withPacific(`${timeFormatter.format(at)} ET`) };
 }
 
 function WeekGameRow({ event, highlight }: { event: NcaafGameEvent; highlight?: boolean }) {

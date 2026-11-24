@@ -1,5 +1,6 @@
 "use client";
 
+import { withPacific } from "@/lib/kickoff-zones";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -87,7 +88,7 @@ function WeekGameCard({
                 ? game.statusDetail || game.status
                 : kickoffTime(game) === "Not published"
                   ? "Kickoff: Not published"
-                  : kickoffTime(game)}
+                  : withPacific(kickoffTime(game))}
             </span>
             <ChevronRight size={16} aria-hidden="true" />
           </div>
