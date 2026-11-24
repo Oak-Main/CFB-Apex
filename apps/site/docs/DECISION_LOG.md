@@ -288,4 +288,7 @@ PR 71 (the November 22 weekly refresh) merged as main `a803db1` and its main dep
 
 ### November 24: production target follows the PR 73 deploy
 
+
+### November 24: production target follows the PR 75 deploy
+PR 75 (the First Round intro on /stadiums, copy only with no data change) merged as main `c9a81ce` and its main deploy (run 45457690523) moved production to `e1c1527b-247f-4bd7-993a-617c1738e4e1` (deployment `b0b2638e-3fe9-414c-8cb5-16ab23deaa6c`, 2026-11-24T18:19:00Z). The reviewed target advances to that version, read from provider deployment history on November 24 as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.
 PR 73 (Pacific time beside Eastern on kickoff times, a display formatter with no data change) merged as main `b039a68` and its main deploy (run 45404734052) moved production to `6760d426-1d5f-4fcc-8bcc-de90a6189f31` (deployment `d2d416ae-a3c7-49b8-a87f-b60aaed88973`, 2026-11-24T13:36:20Z). The reviewed target advances to that version, read from provider deployment history on November 24 as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.

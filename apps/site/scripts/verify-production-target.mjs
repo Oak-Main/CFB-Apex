@@ -3,12 +3,12 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-// Main b039a68 (PR 73, Pacific beside Eastern on kickoff times) deployed this
-// version at 100% traffic through workflow run 45404734052 (deployment
-// d2d416ae-a3c7-49b8-a87f-b60aaed88973, 2026-11-24T13:36:20.918733Z). It replaced
-// 21117e75, the PR 71 deploy. The provider receipt and production smoke passed.
+// Main c9a81ce (PR 75, the First Round intro on /stadiums) deployed this version
+// at 100% traffic through workflow run 45457690523 (deployment
+// b0b2638e-3fe9-414c-8cb5-16ab23deaa6c, 2026-11-24T18:19:00.054859Z). It replaced
+// 6760d426, the PR 73 deploy. The provider receipt and production smoke passed.
 // Read from provider deployment history on 2026-11-24; it is the newest deployment at 100% traffic.
-export const reviewedProductionVersion = "6760d426-1d5f-4fcc-8bcc-de90a6189f31";
+export const reviewedProductionVersion = "e1c1527b-247f-4bd7-993a-617c1738e4e1";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {
