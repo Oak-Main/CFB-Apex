@@ -1,0 +1,384 @@
+{
+ "schema_version": 1,
+ "name": "CFP Selection Committee Rankings",
+ "season": 2026,
+ "source": "https://collegefootballplayoff.com/rankings",
+ "editions": [
+  {
+   "release_date": "2026-11-24",
+   "source_label": "Nov. 24",
+   "rankings": [
+    {
+     "rank": 1,
+     "team": "Georgia",
+     "team_slug": "georgia",
+     "record": "10-1",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 2,
+     "team": "Utah",
+     "team_slug": "utah",
+     "record": "11-0",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 3,
+     "team": "Texas",
+     "team_slug": "texas",
+     "record": "9-2",
+     "source_trend": "up 2"
+    },
+    {
+     "rank": 4,
+     "team": "Notre Dame",
+     "team_slug": "notre-dame",
+     "record": "10-1",
+     "source_trend": "up 2"
+    },
+    {
+     "rank": 5,
+     "team": "Tennessee",
+     "team_slug": "tennessee",
+     "record": "9-2",
+     "source_trend": "up 4"
+    },
+    {
+     "rank": 6,
+     "team": "Alabama",
+     "team_slug": "alabama",
+     "record": "9-2",
+     "source_trend": "down 3"
+    },
+    {
+     "rank": 7,
+     "team": "Miami",
+     "team_slug": "miami-fl",
+     "record": "10-1",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 8,
+     "team": "Wake Forest",
+     "team_slug": "wake-forest",
+     "record": "10-1",
+     "source_trend": "up 3"
+    },
+    {
+     "rank": 9,
+     "team": "UCLA",
+     "team_slug": "ucla",
+     "record": "10-1",
+     "source_trend": "down 5"
+    },
+    {
+     "rank": 10,
+     "team": "BYU",
+     "team_slug": "byu",
+     "record": "9-2",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 11,
+     "team": "Texas Tech",
+     "team_slug": "texas-tech",
+     "record": "10-1",
+     "source_trend": "up 1"
+    },
+    {
+     "rank": 12,
+     "team": "Oregon",
+     "team_slug": "oregon",
+     "record": "8-3",
+     "source_trend": "up 1"
+    },
+    {
+     "rank": 13,
+     "team": "Iowa",
+     "team_slug": "iowa",
+     "record": "9-2",
+     "source_trend": "up 2"
+    },
+    {
+     "rank": 14,
+     "team": "Indiana",
+     "team_slug": "indiana",
+     "record": "9-2",
+     "source_trend": "down 6"
+    },
+    {
+     "rank": 15,
+     "team": "Southern California",
+     "team_slug": "usc",
+     "record": "8-3",
+     "source_trend": "up 3"
+    },
+    {
+     "rank": 16,
+     "team": "Arizona",
+     "team_slug": "arizona",
+     "record": "8-3",
+     "source_trend": "up 3"
+    },
+    {
+     "rank": 17,
+     "team": "Oklahoma",
+     "team_slug": "oklahoma",
+     "record": "7-4",
+     "source_trend": "up 5"
+    },
+    {
+     "rank": 18,
+     "team": "Houston",
+     "team_slug": "houston",
+     "record": "8-3",
+     "source_trend": "up 2"
+    },
+    {
+     "rank": 19,
+     "team": "Louisville",
+     "team_slug": "louisville",
+     "record": "8-3",
+     "source_trend": "up 4"
+    },
+    {
+     "rank": 20,
+     "team": "Florida",
+     "team_slug": "florida",
+     "record": "7-4",
+     "source_trend": "up 4"
+    },
+    {
+     "rank": 21,
+     "team": "Ohio State",
+     "team_slug": "ohio-state",
+     "record": "7-4",
+     "source_trend": "down 7"
+    },
+    {
+     "rank": 22,
+     "team": "Ole Miss",
+     "team_slug": "ole-miss",
+     "record": "7-4",
+     "source_trend": "up 3"
+    },
+    {
+     "rank": 23,
+     "team": "Missouri",
+     "team_slug": "missouri",
+     "record": "7-4",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 24,
+     "team": "Washington",
+     "team_slug": "washington",
+     "record": "7-4",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 25,
+     "team": "Nebraska",
+     "team_slug": "nebraska",
+     "record": "7-4",
+     "source_trend": "no change"
+    }
+   ],
+   "receipt": {
+    "url": "https://collegefootballplayoff.com/rankings",
+    "method": "headless browser DOM capture (msedge --headless=new --dump-dom)",
+    "retrieved_at": "2026-11-25T01:20:09.000Z",
+    "sha256": "01c2e1764200c1ab3167cf391dfa50b08e7018fbb41e216be4059d5f4a3ea5f2",
+    "bytes": 565017
+   }
+  },
+  {
+   "release_date": "2026-11-17",
+   "source_label": "Nov. 17",
+   "rankings": [
+    {
+     "rank": 1,
+     "team": "Georgia",
+     "team_slug": "georgia",
+     "record": "9-1",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 2,
+     "team": "Utah",
+     "team_slug": "utah",
+     "record": "10-0",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 3,
+     "team": "Alabama",
+     "team_slug": "alabama",
+     "record": "8-2",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 4,
+     "team": "UCLA",
+     "team_slug": "ucla",
+     "record": "10-0",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 5,
+     "team": "Texas",
+     "team_slug": "texas",
+     "record": "8-2",
+     "source_trend": "up 1"
+    },
+    {
+     "rank": 6,
+     "team": "Notre Dame",
+     "team_slug": "notre-dame",
+     "record": "9-1",
+     "source_trend": "down 1"
+    },
+    {
+     "rank": 7,
+     "team": "Miami",
+     "team_slug": "miami-fl",
+     "record": "9-1",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 8,
+     "team": "Indiana",
+     "team_slug": "indiana",
+     "record": "9-1",
+     "source_trend": "up 1"
+    },
+    {
+     "rank": 9,
+     "team": "Tennessee",
+     "team_slug": "tennessee",
+     "record": "8-2",
+     "source_trend": "down 1"
+    },
+    {
+     "rank": 10,
+     "team": "BYU",
+     "team_slug": "byu",
+     "record": "8-2",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 11,
+     "team": "Wake Forest",
+     "team_slug": "wake-forest",
+     "record": "9-1",
+     "source_trend": "up 2"
+    },
+    {
+     "rank": 12,
+     "team": "Texas Tech",
+     "team_slug": "texas-tech",
+     "record": "9-1",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 13,
+     "team": "Oregon",
+     "team_slug": "oregon",
+     "record": "7-3",
+     "source_trend": "up 3"
+    },
+    {
+     "rank": 14,
+     "team": "Ohio State",
+     "team_slug": "ohio-state",
+     "record": "7-3",
+     "source_trend": "up 6"
+    },
+    {
+     "rank": 15,
+     "team": "Iowa",
+     "team_slug": "iowa",
+     "record": "8-2",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 16,
+     "team": "Kentucky",
+     "team_slug": "kentucky",
+     "record": "7-3",
+     "source_trend": "down 5"
+    },
+    {
+     "rank": 17,
+     "team": "Boise State",
+     "team_slug": "boise-state",
+     "record": "9-1",
+     "source_trend": "up 7"
+    },
+    {
+     "rank": 18,
+     "team": "Southern California",
+     "team_slug": "usc",
+     "record": "7-3",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 19,
+     "team": "Arizona",
+     "team_slug": "arizona",
+     "record": "7-3",
+     "source_trend": "up 4"
+    },
+    {
+     "rank": 20,
+     "team": "Houston",
+     "team_slug": "houston",
+     "record": "7-3",
+     "source_trend": "down 6"
+    },
+    {
+     "rank": 21,
+     "team": "South Carolina",
+     "team_slug": "south-carolina",
+     "record": "6-4",
+     "source_trend": "down 4"
+    },
+    {
+     "rank": 22,
+     "team": "Oklahoma",
+     "team_slug": "oklahoma",
+     "record": "6-4",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 23,
+     "team": "Louisville",
+     "team_slug": "louisville",
+     "record": "7-3",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 24,
+     "team": "Florida",
+     "team_slug": "florida",
+     "record": "6-4",
+     "source_trend": "no change"
+    },
+    {
+     "rank": 25,
+     "team": "Ole Miss",
+     "team_slug": "ole-miss",
+     "record": "6-4",
+     "source_trend": "down 6"
+    }
+   ],
+   "receipt": {
+    "url": "https://collegefootballplayoff.com/rankings",
+    "method": "headless browser DOM capture (msedge --headless=new --dump-dom)",
+    "retrieved_at": "2026-11-25T01:05:42.000Z",
+    "sha256": "486df713d953a9f9efc574d68954979dfa5074bf8a15ab102b51234ca7f3672d",
+    "bytes": 571300
+   }
+  }
+ ]
+}

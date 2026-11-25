@@ -39,6 +39,7 @@ import {
   verifiedRefresh,
   boardWeeks,
 } from "@/lib/cfb-dataset";
+import { cfpPollTable } from "@/lib/cfp-rankings";
 import { brand, disclosureVersion } from "@/lib/config";
 import { homepageData, tickerGamesFor } from "@/lib/homepage-data";
 import type { BoardWeekSelection } from "@/lib/week-cutover";
@@ -769,7 +770,10 @@ function TeamDetail({ team }: { team: Team }) {
 function RankingsPage() {
   const [pollId, setPollId] = useState("ap");
   const [isPending, startTransition] = useTransition();
-  const table = pollTables.find((poll) => poll.poll === pollId) ?? pollTables[0];
+  // The committee's rankings sit beside the polls on this page only; they
+  // are not part of the poll bundle (see lib/cfp-rankings.ts).
+  const rankingTables = [...pollTables, cfpPollTable];
+  const table = rankingTables.find((poll) => poll.poll === pollId) ?? rankingTables[0];
   const ratingsRows = [...teams]
     .map((team) => ({ team, rating: getPreseasonRating(team.slug) }))
     .filter((row) => row.rating?.sp)
@@ -883,7 +887,7 @@ function RankingsPage() {
       <div className="sticky-tools">
         <fieldset className="filter-chips">
           <legend className="sr-only">Poll</legend>
-          {pollTables.map((poll) => (
+          {rankingTables.map((poll) => (
             <button type="button" key={poll.poll} aria-pressed={poll.poll === pollId} onClick={() => startTransition(() => setPollId(poll.poll))}>
               {poll.name}
             </button>
@@ -894,8 +898,8 @@ function RankingsPage() {
       <section className="content-section">
         <div className="scoreboard-summary">
           <div><span>{table.rankings.length}</span><small>RANKED</small></div>
-          <div><span>{table.rankings[0]?.first_place_votes ?? "—"}</span><small>FIRST-PLACE VOTES (NO. 1)</small></div>
-          {table.poll === "composite" ? (
+          {table.poll === "cfp" ? null : <div><span>{table.rankings[0]?.first_place_votes ?? "—"}</span><small>FIRST-PLACE VOTES (NO. 1)</small></div>}
+          {table.poll === "cfp" ? null : table.poll === "composite" ? (
             <div><span>{new Set(table.rankings.map((row) => row.team_slug)).size}</span><small>TEAMS ACROSS BOTH POLLS</small></div>
           ) : (
             <div><span>{table.others.length}</span><small>OTHERS RECEIVING VOTES</small></div>
