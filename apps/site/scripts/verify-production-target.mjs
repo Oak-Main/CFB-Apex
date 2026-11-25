@@ -7,6 +7,7 @@ import { stripVTControlCharacters } from "node:util";
 // deployed this version at 100% traffic through workflow run 45526600363
 // (deployment 8c3612fd-c0af-4236-9653-338411eda716, 2026-11-25T01:35:33.889741Z). It replaced
 // e1c1527b, the PR 75 deploy. The provider receipt and production smoke passed.
+// Read from provider deployment history on 2026-11-24 (Pacific); it is the newest deployment at 100% traffic.
 export const reviewedProductionVersion = "0187f6f4-1bc0-429a-8660-d0ca95686571";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
