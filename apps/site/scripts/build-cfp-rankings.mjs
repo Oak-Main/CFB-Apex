@@ -36,7 +36,8 @@ const ALIASES = new Map([
   ["Texas A&M", "texas-am"],
 ]);
 const slugify = name => name.toLowerCase().replace(/&/g, "").replace(/[().']/g, "").trim().replace(/\s+/g, "-");
-const decodeEntities = text => text.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
+// The ampersand is decoded last, so an escaped entity is never decoded twice.
+const decodeEntities = text => text.replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
 const MONTHS = { "Nov.": "11", "Dec.": "12" };
 
 export function parseCapture(html) {
