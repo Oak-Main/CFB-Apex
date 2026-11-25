@@ -354,6 +354,8 @@ test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", as
   const troy = await visible("/teams/troy");
   assert.match(troy, /Oct 6 vs Southern Miss[\s\S]{0,80}W 55–34 FINAL/);
   const rankings = await visible("/rankings");
+  // The committee's rankings are offered beside the polls, under their own name.
+  assert.match(rankings, /AP Top 25[\s\S]{0,400}CFP Selection Committee Rankings[\s\S]{0,200}SP\+ \/ FPI board/);
   // The conference tables carry the date their records were last reconciled.
   const reconciledOn = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8")).retainedBaseline.as_of;
   assert.match(reconciledOn, /^2026-11-\d\d$/);
