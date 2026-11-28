@@ -9,8 +9,9 @@ import { clockWeek, parseWeekParam, selectBoardWeek } from "../lib/week-cutover.
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const evidence = read("data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json");
 const raw = read("data/cfb-2026/refresh/verified-refresh.json");
-const friday = read("data/cfb-2026/refresh/evidence/2026-11-27-friday-finals.json");
-// A fixed clock after the recorded Friday finals check.
+const friday = read("data/cfb-2026/refresh/evidence/2026-11-28-week13-finals.json");
+const latestEspnCheck = friday.espn.map((source: { checkedAt: string }) => source.checkedAt).sort().at(-1);
+// A fixed clock after the recorded Tuesday–Friday finals check.
 const now = Date.parse(friday.checkedAt) + 60_000;
 
 test("Week 13 becomes the default at 14:00Z on November 22 and Week 12 stays an explicit archive", () => {
@@ -87,21 +88,36 @@ test("four Week 12 FBS-vs-FCS finals are verified and stay outside the board", (
   assert.equal(gameDaySnapshot(now, "12").games.length, 66);
 });
 
-test("Week 13 keeps the 69-game slate and publishes only the two reviewed Friday finals", () => {
+test("Week 13 keeps the 69-game slate and publishes all 16 reviewed Tuesday–Friday finals", () => {
   const board = gameDaySnapshot(now, "13");
   assert.equal(board.games.length, 69);
   const finals = board.games.filter((g) => g.status === "final");
   const scoreline = (g: (typeof finals)[number]) => [g.id, g.awayTeamId, g.homeTeamId, g.awayScore, g.homeScore, g.broadcast];
   assert.deepEqual(finals.map(scoreline).sort(), [
+    ["2026-11-24-kent-state-at-eastern-michigan", "kent-state", "eastern-michigan", 12, 17, "ESPN+"],
+    ["2026-11-24-miami-oh-at-western-michigan", "miami-oh", "western-michigan", 28, 24, "ESPN2"],
+    ["2026-11-26-tcu-at-texas-tech", "tcu", "texas-tech", 27, 48, "ESPN"],
+    ["2026-11-27-air-force-at-new-mexico", "air-force", "new-mexico", 19, 42, "CW"],
+    ["2026-11-27-appalachian-state-at-south-alabama", "appalachian-state", "south-alabama", 13, 20, "ESPN+"],
+    ["2026-11-27-buffalo-at-akron", "buffalo", "akron", 17, 9, "CBSSN"],
+    ["2026-11-27-florida-at-florida-state", "florida", "florida-state", 26, 10, "ABC"],
+    ["2026-11-27-minnesota-at-wisconsin", "minnesota", "wisconsin", 5, 28, "NBC"],
     ["2026-11-27-mississippi-state-at-ole-miss", "mississippi-state", "ole-miss", 17, 41, "ABC"],
     ["2026-11-27-nebraska-at-iowa", "nebraska", "iowa", 7, 31, "CBS"],
+    ["2026-11-27-north-dakota-state-at-san-jose-state", "north-dakota-state", "san-jose-state", 38, 31, "CBSSN"],
+    ["2026-11-27-temple-at-memphis", "temple", "memphis", 35, 31, "ESPN"],
+    ["2026-11-27-texas-at-texas-am", "texas", "texas-am", 16, 6, "ABC"],
+    ["2026-11-27-toledo-at-ohio", "toledo", "ohio", 34, 31, "ESPNU"],
+    ["2026-11-27-tulsa-at-utsa", "tulsa", "utsa", 22, 28, "ESPN"],
+    ["2026-11-27-west-virginia-at-utah", "west-virginia", "utah", 28, 52, "Fox"],
   ]);
   for (const result of finals) {
     assert.equal(getGame(result.id)?.status, "final");
     assert.equal(result.statusDetail, "Final");
   }
   const remaining = board.games.filter((g) => g.status !== "final");
-  assert.equal(remaining.length, 67);
+  assert.equal(remaining.length, 53);
+  assert.ok(remaining.every((g) => easternDate(g.date) === "2026-11-28"), "only Saturday fixtures remain open");
   assert.ok(remaining.every((g) => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
   const control = remaining.find((g) => g.id === "2026-11-28-michigan-at-ohio-state");
   assert.ok(control);
@@ -110,14 +126,22 @@ test("Week 13 keeps the 69-game slate and publishes only the two reviewed Friday
   assert.equal(getGame(control.id)?.status, "scheduled");
   assert.equal(reviewedWeekContractViolation(13, board.weeks.find((row) => row.week === 13), board.games), null);
   assert.equal(board.sourceDates.results, friday.checkedAt);
-  const fridayRecords = Object.fromEntries(board.teams
-    .filter((team) => ["iowa", "nebraska", "ole-miss", "mississippi-state"].includes(team.slug))
+  const expectedRecords = {
+    "air-force": "9-3", akron: "2-10", "appalachian-state": "7-5", buffalo: "9-3", "eastern-michigan": "5-7",
+    florida: "8-4", "florida-state": "5-7", iowa: "10-2", "kent-state": "3-9", memphis: "8-4", "miami-oh": "8-4",
+    minnesota: "6-6", "mississippi-state": "5-7", nebraska: "7-5", "new-mexico": "10-2", "north-dakota-state": "10-2",
+    ohio: "8-4", "ole-miss": "8-4", "san-jose-state": "5-8", "south-alabama": "7-5", tcu: "5-7", temple: "3-9",
+    texas: "10-2", "texas-am": "4-8", "texas-tech": "11-1", toledo: "10-2", tulsa: "7-5", utah: "12-0", utsa: "10-2",
+    "west-virginia": "5-7", "western-michigan": "8-4", wisconsin: "8-4",
+  };
+  const reviewedRecords = Object.fromEntries(board.teams
+    .filter((team) => team.slug in expectedRecords)
     .map((team) => [team.slug, team.record?.replace("–", "-")]));
-  assert.deepEqual(fridayRecords, { iowa: "10-2", nebraska: "7-5", "ole-miss": "8-4", "mississippi-state": "5-7" });
+  assert.deepEqual(reviewedRecords, expectedRecords);
   assert.equal(board.sourceDates.records, verifiedRefresh?.team_records_review?.as_of);
   assert.deepEqual(board.partialRecordReview, {
-    checkedAt: friday.espn.checkedAt,
-    teams: ["iowa", "mississippi-state", "nebraska", "ole-miss"],
+    checkedAt: latestEspnCheck,
+    teams: Object.keys(expectedRecords),
   });
   assert.equal(board.sourceDates.previousResults, gameDaySnapshot(now, "12").sourceDates.results);
   const perDay: Record<string, number> = {};
@@ -142,7 +166,8 @@ test("the scoreboard contract accepts omitted scheduled scores and rejects omitt
 });
 
 test("every remaining Week 13 kickoff retains its reviewed source and time", () => {
-  assert.equal(raw.scheduledGames.length, 67);
+  // The 16 Tuesday–Friday games are verified finals; the 53 Saturday fixtures remain.
+  assert.equal(raw.scheduledGames.length, 53);
   assert.deepEqual(evidence.kickoff_settlements, []);
   assert.deepEqual(evidence.kickoff_holds, []);
   for (const row of raw.scheduledGames) {

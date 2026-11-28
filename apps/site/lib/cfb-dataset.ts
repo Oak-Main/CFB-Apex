@@ -99,7 +99,7 @@ interface VerifiedRefresh {
     carried_from_2026_10_10: string[];
     withheld: string[];
     note: string;
-    partial_update?: { as_of: string; source_url: string; records: Record<string, string> };
+    partial_update?: { as_of: string; source_url: string; source_urls?: string[]; records: Record<string, string> };
   };
   excludedGames?: Array<{ provider_id: string; name: string; reason: string; date: string; espn_conference_ids?: { home: number; away: number } }>;
   source_urls?: string[];

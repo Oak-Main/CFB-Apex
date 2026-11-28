@@ -1,0 +1,787 @@
+{
+  "checkedAt": "2026-11-28T17:31:03.837Z",
+  "espn": [
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261124&groups=80&limit=200",
+      "checkedAt": "2026-11-28T17:31:03.490Z",
+      "status": 200,
+      "sha256": "4f56b042afe5d77482ebe45c6b3f271a1c9e73f007cfba4b28313f01ce1a80bf",
+      "bytes": 40711
+    },
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261126&groups=80&limit=200",
+      "checkedAt": "2026-11-28T17:31:03.526Z",
+      "status": 200,
+      "sha256": "42f57ec1c658ea118b38526e6cee726aa0bc22e50648207c3a936819652f74af",
+      "bytes": 22246
+    },
+    {
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261127&groups=80&limit=200",
+      "checkedAt": "2026-11-28T17:31:03.565Z",
+      "status": 200,
+      "sha256": "30abd0eeed3b184c4cad428aca226795be795743ebf69864d87421680bb0af99",
+      "bytes": 224253
+    }
+  ],
+  "ncaa": {
+    "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/13",
+    "checkedAt": "2026-11-28T17:31:03.837Z",
+    "status": 200,
+    "sha256": "7d782894e07d474ed0233d42e82a8712336d556c8c81ce98336fa6d391f06473",
+    "bytes": 165655
+  },
+  "finals": [
+    {
+      "gameId": "2026-11-24-kent-state-at-eastern-michigan",
+      "providerId": "401866470",
+      "ncaaId": 6640471,
+      "officialRecap": "https://www.ncaa.com/game/6640471",
+      "network": "ESPN+",
+      "espnNetworks": [
+        "ESPN+"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-25T00:00Z",
+      "espnKickoff": "2026-11-25T00:00Z",
+      "ncaaKickoff": "2026-11-25T00:00:00.000Z",
+      "espnDate": "20261124",
+      "teams": [
+        {
+          "slug": "eastern-michigan",
+          "side": "home",
+          "espnId": "2199",
+          "ncaaSlug": "eastern-mich",
+          "name": "Eastern Michigan Eagles",
+          "score": 17,
+          "periods": [
+            7,
+            7,
+            0,
+            3
+          ],
+          "record": "5-7"
+        },
+        {
+          "slug": "kent-state",
+          "side": "away",
+          "espnId": "2309",
+          "ncaaSlug": "kent-st",
+          "name": "Kent State Golden Flashes",
+          "score": 12,
+          "periods": [
+            6,
+            6,
+            0,
+            0
+          ],
+          "record": "3-9"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-24-miami-oh-at-western-michigan",
+      "providerId": "401866471",
+      "ncaaId": 6603835,
+      "officialRecap": "https://www.ncaa.com/game/6603835",
+      "network": "ESPN2",
+      "espnNetworks": [
+        "ESPN2"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-25T00:00Z",
+      "espnKickoff": "2026-11-25T00:00Z",
+      "ncaaKickoff": "2026-11-25T00:00:00.000Z",
+      "espnDate": "20261124",
+      "teams": [
+        {
+          "slug": "western-michigan",
+          "side": "home",
+          "espnId": "2711",
+          "ncaaSlug": "western-mich",
+          "name": "Western Michigan Broncos",
+          "score": 24,
+          "periods": [
+            3,
+            0,
+            13,
+            8
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "miami-oh",
+          "side": "away",
+          "espnId": "193",
+          "ncaaSlug": "miami-oh",
+          "name": "Miami (OH) RedHawks",
+          "score": 28,
+          "periods": [
+            14,
+            0,
+            7,
+            7
+          ],
+          "record": "8-4"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-26-tcu-at-texas-tech",
+      "providerId": "401856879",
+      "ncaaId": 6604322,
+      "officialRecap": "https://www.ncaa.com/game/6604322",
+      "network": "ESPN",
+      "espnNetworks": [
+        "ESPN"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T01:00Z",
+      "espnKickoff": "2026-11-27T01:00Z",
+      "ncaaKickoff": "2026-11-27T01:00:00.000Z",
+      "espnDate": "20261126",
+      "teams": [
+        {
+          "slug": "texas-tech",
+          "side": "home",
+          "espnId": "2641",
+          "ncaaSlug": "texas-tech",
+          "name": "Texas Tech Red Raiders",
+          "score": 48,
+          "periods": [
+            0,
+            27,
+            14,
+            7
+          ],
+          "record": "11-1"
+        },
+        {
+          "slug": "tcu",
+          "side": "away",
+          "espnId": "2628",
+          "ncaaSlug": "tcu",
+          "name": "TCU Horned Frogs",
+          "score": 27,
+          "periods": [
+            10,
+            0,
+            3,
+            14
+          ],
+          "record": "5-7"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-buffalo-at-akron",
+      "providerId": "401866472",
+      "ncaaId": 6604359,
+      "officialRecap": "https://www.ncaa.com/game/6604359",
+      "network": "CBSSN",
+      "espnNetworks": [
+        "CBSSN"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "ncaaKickoff": "2026-11-27T17:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "akron",
+          "side": "home",
+          "espnId": "2006",
+          "ncaaSlug": "akron",
+          "name": "Akron Zips",
+          "score": 9,
+          "periods": [
+            0,
+            6,
+            3,
+            0
+          ],
+          "record": "2-10"
+        },
+        {
+          "slug": "buffalo",
+          "side": "away",
+          "espnId": "2084",
+          "ncaaSlug": "buffalo",
+          "name": "Buffalo Bulls",
+          "score": 17,
+          "periods": [
+            0,
+            7,
+            3,
+            7
+          ],
+          "record": "9-3"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-mississippi-state-at-ole-miss",
+      "providerId": "401856762",
+      "ncaaId": 6604344,
+      "officialRecap": "https://olemisssports.com/news/2026/11/27/no-22-football-defeats-mississippi-state-for-egg-bowl-victory",
+      "network": "ABC",
+      "espnNetworks": [
+        "ABC"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "ncaaKickoff": "2026-11-27T17:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "ole-miss",
+          "side": "home",
+          "espnId": "145",
+          "ncaaSlug": "ole-miss",
+          "name": "Ole Miss Rebels",
+          "score": 41,
+          "periods": [
+            3,
+            3,
+            14,
+            21
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "mississippi-state",
+          "side": "away",
+          "espnId": "344",
+          "ncaaSlug": "mississippi-st",
+          "name": "Mississippi State Bulldogs",
+          "score": 17,
+          "periods": [
+            0,
+            10,
+            0,
+            7
+          ],
+          "record": "5-7"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-nebraska-at-iowa",
+      "providerId": "401858536",
+      "ncaaId": 6603611,
+      "officialRecap": "https://hawkeyesports.com/news/2026/11/27/hawkeyes-handle-huskers-in-heroes-game",
+      "network": "CBS",
+      "espnNetworks": [
+        "CBS"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:08Z",
+      "ncaaKickoff": "2026-11-27T17:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "iowa",
+          "side": "home",
+          "espnId": "2294",
+          "ncaaSlug": "iowa",
+          "name": "Iowa Hawkeyes",
+          "score": 31,
+          "periods": [
+            7,
+            3,
+            7,
+            14
+          ],
+          "record": "10-2"
+        },
+        {
+          "slug": "nebraska",
+          "side": "away",
+          "espnId": "158",
+          "ncaaSlug": "nebraska",
+          "name": "Nebraska Cornhuskers",
+          "score": 7,
+          "periods": [
+            0,
+            7,
+            0,
+            0
+          ],
+          "record": "7-5"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-toledo-at-ohio",
+      "providerId": "401866473",
+      "ncaaId": 6604266,
+      "officialRecap": "https://www.ncaa.com/game/6604266",
+      "network": "ESPNU",
+      "espnNetworks": [
+        "ESPNU"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "ncaaKickoff": "2026-11-27T17:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "ohio",
+          "side": "home",
+          "espnId": "195",
+          "ncaaSlug": "ohio",
+          "name": "Ohio Bobcats",
+          "score": 31,
+          "periods": [
+            0,
+            10,
+            7,
+            14
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "toledo",
+          "side": "away",
+          "espnId": "2649",
+          "ncaaSlug": "toledo",
+          "name": "Toledo Rockets",
+          "score": 34,
+          "periods": [
+            14,
+            3,
+            0,
+            17
+          ],
+          "record": "10-2"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-tulsa-at-utsa",
+      "providerId": "401862840",
+      "ncaaId": 6603623,
+      "officialRecap": "https://www.ncaa.com/game/6603623",
+      "network": "ESPN",
+      "espnNetworks": [
+        "ESPN"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "ncaaKickoff": "2026-11-27T17:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "utsa",
+          "side": "home",
+          "espnId": "2636",
+          "ncaaSlug": "utsa",
+          "name": "UTSA Roadrunners",
+          "score": 28,
+          "periods": [
+            14,
+            11,
+            0,
+            3
+          ],
+          "record": "10-2"
+        },
+        {
+          "slug": "tulsa",
+          "side": "away",
+          "espnId": "202",
+          "ncaaSlug": "tulsa",
+          "name": "Tulsa Golden Hurricane",
+          "score": 22,
+          "periods": [
+            7,
+            0,
+            0,
+            15
+          ],
+          "record": "7-5"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-appalachian-state-at-south-alabama",
+      "providerId": "401869930",
+      "ncaaId": 6604349,
+      "officialRecap": "https://www.ncaa.com/game/6604349",
+      "network": "ESPN+",
+      "espnNetworks": [
+        "ESPN+"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T20:00Z",
+      "espnKickoff": "2026-11-27T20:00Z",
+      "ncaaKickoff": "2026-11-27T20:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "south-alabama",
+          "side": "home",
+          "espnId": "6",
+          "ncaaSlug": "south-ala",
+          "name": "South Alabama Jaguars",
+          "score": 20,
+          "periods": [
+            10,
+            0,
+            3,
+            7
+          ],
+          "record": "7-5"
+        },
+        {
+          "slug": "appalachian-state",
+          "side": "away",
+          "espnId": "2026",
+          "ncaaSlug": "appalachian-st",
+          "name": "App State Mountaineers",
+          "score": 13,
+          "periods": [
+            0,
+            10,
+            3,
+            0
+          ],
+          "record": "7-5"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-florida-at-florida-state",
+      "providerId": "401856759",
+      "ncaaId": 6603654,
+      "officialRecap": "https://www.ncaa.com/game/6603654",
+      "network": "ABC",
+      "espnNetworks": [
+        "ABC"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T20:30Z",
+      "espnKickoff": "2026-11-27T20:30Z",
+      "ncaaKickoff": "2026-11-27T20:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "florida-state",
+          "side": "home",
+          "espnId": "52",
+          "ncaaSlug": "florida-st",
+          "name": "Florida State Seminoles",
+          "score": 10,
+          "periods": [
+            0,
+            3,
+            7,
+            0
+          ],
+          "record": "5-7"
+        },
+        {
+          "slug": "florida",
+          "side": "away",
+          "espnId": "57",
+          "ncaaSlug": "florida",
+          "name": "Florida Gators",
+          "score": 26,
+          "periods": [
+            7,
+            3,
+            7,
+            9
+          ],
+          "record": "8-4"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-north-dakota-state-at-san-jose-state",
+      "providerId": "401864549",
+      "ncaaId": 6603642,
+      "officialRecap": "https://www.ncaa.com/game/6603642",
+      "network": "CBSSN",
+      "espnNetworks": [
+        "CBSSN"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T20:30Z",
+      "espnKickoff": "2026-11-27T20:30Z",
+      "ncaaKickoff": "2026-11-27T20:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "san-jose-state",
+          "side": "home",
+          "espnId": "23",
+          "ncaaSlug": "san-jose-st",
+          "name": "San José State Spartans",
+          "score": 31,
+          "periods": [
+            7,
+            7,
+            3,
+            14
+          ],
+          "record": "5-8"
+        },
+        {
+          "slug": "north-dakota-state",
+          "side": "away",
+          "espnId": "2449",
+          "ncaaSlug": "north-dakota-st",
+          "name": "North Dakota State Bison",
+          "score": 38,
+          "periods": [
+            14,
+            10,
+            7,
+            7
+          ],
+          "record": "10-2"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-temple-at-memphis",
+      "providerId": "401862838",
+      "ncaaId": 6603724,
+      "officialRecap": "https://www.ncaa.com/game/6603724",
+      "network": "ESPN",
+      "espnNetworks": [
+        "ESPN"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T20:30Z",
+      "espnKickoff": "2026-11-27T20:30Z",
+      "ncaaKickoff": "2026-11-27T20:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "memphis",
+          "side": "home",
+          "espnId": "235",
+          "ncaaSlug": "memphis",
+          "name": "Memphis Tigers",
+          "score": 31,
+          "periods": [
+            14,
+            3,
+            14,
+            0
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "temple",
+          "side": "away",
+          "espnId": "218",
+          "ncaaSlug": "temple",
+          "name": "Temple Owls",
+          "score": 35,
+          "periods": [
+            7,
+            0,
+            7,
+            21
+          ],
+          "record": "3-9"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-air-force-at-new-mexico",
+      "providerId": "401864546",
+      "ncaaId": 6604055,
+      "officialRecap": "https://www.ncaa.com/game/6604055",
+      "network": "CW",
+      "espnNetworks": [
+        "CW"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-27T21:30Z",
+      "espnKickoff": "2026-11-27T21:30Z",
+      "ncaaKickoff": "2026-11-27T21:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "new-mexico",
+          "side": "home",
+          "espnId": "167",
+          "ncaaSlug": "new-mexico",
+          "name": "New Mexico Lobos",
+          "score": 42,
+          "periods": [
+            14,
+            7,
+            7,
+            14
+          ],
+          "record": "10-2"
+        },
+        {
+          "slug": "air-force",
+          "side": "away",
+          "espnId": "2005",
+          "ncaaSlug": "air-force",
+          "name": "Air Force Falcons",
+          "score": 19,
+          "periods": [
+            7,
+            6,
+            6,
+            0
+          ],
+          "record": "9-3"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-minnesota-at-wisconsin",
+      "providerId": "401858544",
+      "ncaaId": 6603692,
+      "officialRecap": "https://www.ncaa.com/game/6603692",
+      "network": "NBC",
+      "espnNetworks": [
+        "NBC"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-28T00:30Z",
+      "espnKickoff": "2026-11-28T00:30Z",
+      "ncaaKickoff": "2026-11-28T00:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "wisconsin",
+          "side": "home",
+          "espnId": "275",
+          "ncaaSlug": "wisconsin",
+          "name": "Wisconsin Badgers",
+          "score": 28,
+          "periods": [
+            0,
+            21,
+            7,
+            0
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "minnesota",
+          "side": "away",
+          "espnId": "135",
+          "ncaaSlug": "minnesota",
+          "name": "Minnesota Golden Gophers",
+          "score": 5,
+          "periods": [
+            3,
+            0,
+            2,
+            0
+          ],
+          "record": "6-6"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-texas-at-texas-am",
+      "providerId": "401856756",
+      "ncaaId": 6604262,
+      "officialRecap": "https://www.ncaa.com/game/6604262",
+      "network": "ABC",
+      "espnNetworks": [
+        "ABC"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-28T00:30Z",
+      "espnKickoff": "2026-11-28T00:30Z",
+      "ncaaKickoff": "2026-11-28T00:30:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "texas-am",
+          "side": "home",
+          "espnId": "245",
+          "ncaaSlug": "texas-am",
+          "name": "Texas A&M Aggies",
+          "score": 6,
+          "periods": [
+            0,
+            3,
+            3,
+            0
+          ],
+          "record": "4-8"
+        },
+        {
+          "slug": "texas",
+          "side": "away",
+          "espnId": "251",
+          "ncaaSlug": "texas",
+          "name": "Texas Longhorns",
+          "score": 16,
+          "periods": [
+            3,
+            7,
+            3,
+            3
+          ],
+          "record": "10-2"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-west-virginia-at-utah",
+      "providerId": "401856880",
+      "ncaaId": 6604105,
+      "officialRecap": "https://www.ncaa.com/game/6604105",
+      "network": "Fox",
+      "espnNetworks": [
+        "Fox"
+      ],
+      "networkListedByEspn": true,
+      "scheduledKickoff": "2026-11-28T02:00Z",
+      "espnKickoff": "2026-11-28T02:00Z",
+      "ncaaKickoff": "2026-11-28T02:00:00.000Z",
+      "espnDate": "20261127",
+      "teams": [
+        {
+          "slug": "utah",
+          "side": "home",
+          "espnId": "254",
+          "ncaaSlug": "utah",
+          "name": "Utah Utes",
+          "score": 52,
+          "periods": [
+            10,
+            28,
+            14,
+            0
+          ],
+          "record": "12-0"
+        },
+        {
+          "slug": "west-virginia",
+          "side": "away",
+          "espnId": "277",
+          "ncaaSlug": "west-virginia",
+          "name": "West Virginia Mountaineers",
+          "score": 28,
+          "periods": [
+            0,
+            7,
+            7,
+            14
+          ],
+          "record": "5-7"
+        }
+      ]
+    }
+  ]
+}
