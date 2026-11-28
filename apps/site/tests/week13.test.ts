@@ -9,9 +9,9 @@ import { clockWeek, parseWeekParam, selectBoardWeek } from "../lib/week-cutover.
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../${path}`, import.meta.url), "utf8"));
 const evidence = read("data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json");
 const raw = read("data/cfb-2026/refresh/verified-refresh.json");
-// A fixed clock after the Week 13 cutover; no test here reads today's date.
-const now = Date.parse("2026-11-28T09:30:00Z");
 const friday = read("data/cfb-2026/refresh/evidence/2026-11-27-friday-finals.json");
+// A fixed clock after the recorded Friday finals check.
+const now = Date.parse(friday.checkedAt) + 60_000;
 
 test("Week 13 becomes the default at 14:00Z on November 22 and Week 12 stays an explicit archive", () => {
   const week13 = boardWeeks.find((row) => row.week === 13);
