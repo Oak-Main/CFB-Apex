@@ -3,12 +3,13 @@ import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { stripVTControlCharacters } from "node:util";
 
-// Main da025cd (PR 77, the CFP Selection Committee rankings on /rankings)
-// deployed this version at 100% traffic through workflow run 45526600363
-// (deployment 8c3612fd-c0af-4236-9653-338411eda716, 2026-11-25T01:35:33.889741Z). It replaced
-// e1c1527b, the PR 75 deploy. The provider receipt and production smoke passed.
-// Read from provider deployment history on 2026-11-24 (Pacific); it is the newest deployment at 100% traffic.
-export const reviewedProductionVersion = "0187f6f4-1bc0-429a-8660-d0ca95686571";
+// A manual `wrangler deploy` from the owner account (no workflow run) moved
+// production to this version at 100% traffic on 2026-11-25T21:38:47.388951Z
+// (deployment 7eacf0e4-fa8d-4a54-a23e-54390e5362a4, version #144). It replaced
+// 0187f6f4, the PR 77 deploy, and serves the same GameDay data revision
+// (a1ef2127...) with the same bindings; no unmerged branch matches it.
+// Read from provider deployment history on 2026-11-28; it is the newest deployment at 100% traffic.
+export const reviewedProductionVersion = "ff8d95b9-073d-4a8d-8794-440c196d27ae";
 
 /** Wrangler's JSON list is oldest-first. Never assume its first entry is active. */
 export function verifyProductionTarget(deployments, expectedVersion) {
