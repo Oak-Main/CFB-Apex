@@ -344,11 +344,8 @@ test("Week 13 Friday finals and a Saturday fixture render correctly on the detai
   const results = [
     ["2026-11-27-nebraska-at-iowa", "Nebraska Cornhuskers at Iowa Hawkeyes", "7", "31", "CBS"],
     ["2026-11-27-mississippi-state-at-ole-miss", "Mississippi State Bulldogs at Ole Miss Rebels", "17", "41", "ABC"],
+    ["2026-11-28-michigan-at-ohio-state", "Michigan Wolverines at Ohio State Buckeyes", null, null, "Fox"],
   ];
-  const reviewed = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
-  if (reviewed.scheduledGames.some((game) => game.date === "2026-11-28" && game.away === "michigan" && game.home === "ohio-state" && game.game_status === "scheduled")) {
-    results.push(["2026-11-28-michigan-at-ohio-state", "Michigan Wolverines at Ohio State Buckeyes", null, null, "Fox"]);
-  }
   for (const [id, matchup, awayScore, homeScore, network] of results) {
     const detail = await read("/games/" + id);
     const card = cards.find((html) => html.includes('href="/games/' + id + '"'));

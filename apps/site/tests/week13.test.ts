@@ -110,6 +110,11 @@ test("Week 13 keeps the 69-game slate and publishes only the two reviewed Friday
   assert.equal(getGame(control.id)?.status, "scheduled");
   assert.equal(reviewedWeekContractViolation(13, board.weeks.find((row) => row.week === 13), board.games), null);
   assert.equal(board.sourceDates.results, friday.checkedAt);
+  const fridayRecords = Object.fromEntries(board.teams
+    .filter((team) => ["iowa", "nebraska", "ole-miss", "mississippi-state"].includes(team.slug))
+    .map((team) => [team.slug, team.record?.replace("–", "-")]));
+  assert.deepEqual(fridayRecords, { iowa: "10-2", nebraska: "7-5", "ole-miss": "8-4", "mississippi-state": "5-7" });
+  assert.equal(board.sourceDates.records, verifiedRefresh?.records_verified_at);
   assert.equal(board.sourceDates.previousResults, gameDaySnapshot(now, "12").sourceDates.results);
   const perDay: Record<string, number> = {};
   for (const g of board.games) perDay[easternDate(g.date)] = (perDay[easternDate(g.date)] ?? 0) + 1;

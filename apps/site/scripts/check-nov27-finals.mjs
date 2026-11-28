@@ -10,6 +10,9 @@ const targetIds = ["2026-11-27-nebraska-at-iowa", "2026-11-27-mississippi-state-
 const sources = [evidence.espn, evidence.ncaa];
 const gateStarted = Date.now();
 for (const source of sources) {
+  assert.equal(source.status, 200, source.url);
+  assert.match(source.sha256, /^[a-f0-9]{64}$/, source.url);
+  assert.ok(Number.isSafeInteger(source.bytes) && source.bytes > 0, source.url);
   assert.ok(isSourceEvidenceFresh(source.checkedAt, gateStarted), `${source.url}: invalid, future or expired capture time`);
 }
 assert.equal(Date.parse(evidence.checkedAt), Math.max(...sources.map((source) => Date.parse(source.checkedAt))), "Results date must match the latest verified capture");
@@ -19,6 +22,11 @@ const week = snapshot.board_weeks.find((row) => row.week === 13);
 assert.equal(week?.results_partial, true);
 assert.equal(week.results_verified_at, evidence.checkedAt);
 assert.equal(snapshot.results_verified_at, evidence.checkedAt);
+const partialRecords = snapshot.team_records_review?.partial_update;
+assert.equal(partialRecords?.as_of, evidence.espn.checkedAt);
+assert.equal(partialRecords.source_url, evidence.espn.url);
+assert.deepEqual(partialRecords.records, Object.fromEntries(evidence.finals.flatMap((final) =>
+  final.teams.map((team) => [team.slug, team.record]))));
 
 async function fetchRecent(source) {
   let response;
@@ -77,6 +85,8 @@ for (const final of evidence.finals) {
     const corroboration = contest.teams.find((row) => row.isHome === (team.side === "home"));
     assert.equal(primary?.team.id, team.espnId, final.gameId);
     assert.equal(corroboration?.seoname, team.ncaaSlug, final.gameId);
+    assert.match(team.record, /^\d+-\d+$/, team.slug);
+    assert.equal(primary.records.find((row) => row.type === "total")?.summary, team.record, team.slug);
     assert.equal(Number(primary.score), team.score, final.gameId);
     assert.equal(corroboration.score, team.score, final.gameId);
     assert.deepEqual(primary.linescores.map((row) => row.value), team.periods, final.gameId);
