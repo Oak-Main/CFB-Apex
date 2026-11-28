@@ -120,6 +120,18 @@ test("Week 13 keeps the 69-game slate and publishes only the two reviewed Friday
   assert.ok(board.games.some((g) => g.id === marquee), "marquee is a Week 13 fixture");
 });
 
+test("the scoreboard contract accepts omitted scheduled scores and rejects omitted final scores", () => {
+  const archive = { results_verified_at: friday.checkedAt };
+  const partial = { ...archive, results_partial: true } as const;
+  const final = { status: "final", homeScore: 0, awayScore: 7 };
+  const incomplete = { status: "final", homeScore: 7 };
+  const scheduled = { status: "scheduled" };
+  assert.equal(reviewedWeekContractViolation(13, {}, [scheduled]), null);
+  assert.equal(reviewedWeekContractViolation(13, partial, [final, scheduled]), null);
+  assert.match(reviewedWeekContractViolation(13, archive, [incomplete]) ?? "", /unscored/);
+  assert.match(reviewedWeekContractViolation(13, partial, [final, scheduled, incomplete]) ?? "", /invalid game/);
+});
+
 test("every remaining Week 13 kickoff retains its reviewed source and time", () => {
   assert.equal(raw.scheduledGames.length, 67);
   assert.deepEqual(evidence.kickoff_settlements, []);

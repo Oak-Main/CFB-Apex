@@ -68,12 +68,12 @@ export type GameDaySnapshot = ReturnType<typeof gameDaySnapshot>;
 export function reviewedWeekContractViolation(
   week: number,
   meta: { results_verified_at?: string | null; results_partial?: true } | undefined,
-  games: ReadonlyArray<{ status: string; homeScore: number | null; awayScore: number | null }>,
+  games: ReadonlyArray<{ status: string; homeScore?: number | null; awayScore?: number | null }>,
 ): string | null {
   if (!meta) return `Week ${week} is not a reviewed board week`;
   if (games.length === 0) return `Week ${week} has no reviewed games`;
-  const isScoredFinal = (game: (typeof games)[number]) => game.status === "final" && game.homeScore !== null && game.awayScore !== null;
-  const isUnscoredFixture = (game: (typeof games)[number]) => game.status === "scheduled" && game.homeScore === null && game.awayScore === null;
+  const isScoredFinal = (game: (typeof games)[number]) => game.status === "final" && game.homeScore != null && game.awayScore != null;
+  const isUnscoredFixture = (game: (typeof games)[number]) => game.status === "scheduled" && game.homeScore == null && game.awayScore == null;
   if (meta.results_partial) {
     if (meta.results_verified_at == null || !games.some(isScoredFinal) || !games.some(isUnscoredFixture)) {
       return `Partial week ${week} requires a results date, a scored final and an unscored fixture`;
