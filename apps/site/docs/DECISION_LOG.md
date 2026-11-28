@@ -295,3 +295,7 @@ PR 73 (Pacific time beside Eastern on kickoff times, a display formatter with no
 
 ### November 24: production target follows the PR 77 deploy
 PR 77 (the CFP Selection Committee rankings of November 24 as a fourth table on /rankings; the GameDay snapshot and its data revision unchanged) merged as main `da025cd` and its main deploy (run 45526600363) moved production to `0187f6f4-1bc0-429a-8660-d0ca95686571` (deployment `8c3612fd-c0af-4236-9653-338411eda716`, 2026-11-25T01:35:33Z). The reviewed target advances to that version, read from provider deployment history on November 24 (Pacific) as the newest deployment at 100% traffic. This change touches the guard and this log only and merges with `[skip ci]` so it starts no deploy.
+
+## D-2026-11-28 — Scoped Week 13 results
+
+The reviewed snapshot publishes the Iowa and Ole Miss Friday finals after the school recaps, NCAA scoreboard and ESPN agree. Its Week 13 results date covers these two games. The schedule and full records review dates retain their earlier captures. The Friday capture also verifies the four teams' overall records. Preserve the 69-game slate and stable game IDs. Iowa's announced 12:00 p.m. ET kickoff stays as listed by the NCAA while the later ESPN timestamp remains in source observations.

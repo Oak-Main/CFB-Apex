@@ -199,7 +199,7 @@ test("all fifty-six Week 8 finals preserve source identities, quarter sums and o
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "appalachian-state").periods, 5);
   assert.equal(resultsEvidence.finals.find((g: { home: string }) => g.home === "memphis").periods, 5);
   assert.equal(verifiedRefresh?.scheduledGames.filter(g => g.week === 8).length, 0);
-  assert.equal(resultsSnapshot.playedGames.length, 695);
+  assert.equal(resultsSnapshot.playedGames.filter((g: { week: number }) => g.week <= 12).length, 695);
 });
 
 test("late finals require school agreement and retain conflicting NCAA states and kickoff claims", () => {

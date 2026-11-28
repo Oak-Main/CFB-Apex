@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-11-28T15:57:01.298Z",
+  "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261127&groups=80&limit=200",
+    "checkedAt": "2026-11-28T15:57:01.239Z",
+    "status": 200,
+    "sha256": "2d0dcefd36da5c25777ea47c32e1bdb2f57cb8999d321786f1b1cdc409bb8c14",
+    "bytes": 224253
+  },
+  "ncaa": {
+    "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/13/all-conf",
+    "checkedAt": "2026-11-28T15:57:01.298Z",
+    "status": 200,
+    "sha256": "80d465125566be44797134d70c2464327843e3c9b16a021a954d142245e93b8c",
+    "bytes": 165621
+  },
+  "finals": [
+    {
+      "gameId": "2026-11-27-nebraska-at-iowa",
+      "providerId": "401858536",
+      "ncaaId": 6603611,
+      "officialRecap": "https://hawkeyesports.com/news/2026/11/27/hawkeyes-handle-huskers-in-heroes-game",
+      "network": "CBS",
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:08Z",
+      "teams": [
+        {
+          "slug": "iowa",
+          "side": "home",
+          "espnId": "2294",
+          "ncaaSlug": "iowa",
+          "name": "Iowa Hawkeyes",
+          "score": 31,
+          "periods": [
+            7,
+            3,
+            7,
+            14
+          ],
+          "record": "10-2"
+        },
+        {
+          "slug": "nebraska",
+          "side": "away",
+          "espnId": "158",
+          "ncaaSlug": "nebraska",
+          "name": "Nebraska Cornhuskers",
+          "score": 7,
+          "periods": [
+            0,
+            7,
+            0,
+            0
+          ],
+          "record": "7-5"
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-mississippi-state-at-ole-miss",
+      "providerId": "401856762",
+      "ncaaId": 6604344,
+      "officialRecap": "https://olemisssports.com/news/2026/11/27/no-22-football-defeats-mississippi-state-for-egg-bowl-victory",
+      "network": "ABC",
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "teams": [
+        {
+          "slug": "ole-miss",
+          "side": "home",
+          "espnId": "145",
+          "ncaaSlug": "ole-miss",
+          "name": "Ole Miss Rebels",
+          "score": 41,
+          "periods": [
+            3,
+            3,
+            14,
+            21
+          ],
+          "record": "8-4"
+        },
+        {
+          "slug": "mississippi-state",
+          "side": "away",
+          "espnId": "344",
+          "ncaaSlug": "mississippi-st",
+          "name": "Mississippi State Bulldogs",
+          "score": 17,
+          "periods": [
+            0,
+            10,
+            0,
+            7
+          ],
+          "record": "5-7"
+        }
+      ]
+    }
+  ]
+}

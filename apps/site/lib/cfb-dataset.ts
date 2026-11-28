@@ -68,6 +68,8 @@ export interface BoardWeekRow {
   retrieved_at?: string;
   schedule_verified_at?: string;
   results_verified_at?: string;
+  /** Some games have verified finals while the reviewed slate remains open. */
+  results_partial?: true;
   records_verified_at?: string;
   audit_applied_at?: string;
   snapshot_id?: string;
@@ -91,7 +93,14 @@ interface VerifiedRefresh {
   scheduledGames: Array<{ provider_id: string; source_url: string; kickoff_utc: string | null; kickoff_status?: "confirmed" | "official_tbd"; week: number; date: string; away: string; home: string; tv: string | null; tv_status?: string; time_et: string | null; site: string | null; neutral_site: boolean; verified_at?: string; game_status?: string; announced_kickoff_utc?: string; timing_note?: string; timing_sources?: string[] }>;
   /** Weeks this release covers: the current board plus its archived predecessor. */
   board_weeks?: BoardWeekRow[];
-  team_records_review?: { as_of: string; verified: number; carried_from_2026_10_10: string[]; withheld: string[]; note: string };
+  team_records_review?: {
+    as_of: string;
+    verified: number;
+    carried_from_2026_10_10: string[];
+    withheld: string[];
+    note: string;
+    partial_update?: { as_of: string; source_url: string; records: Record<string, string> };
+  };
   excludedGames?: Array<{ provider_id: string; name: string; reason: string; date: string; espn_conference_ids?: { home: number; away: number } }>;
   source_urls?: string[];
   holds?: string[];
@@ -116,6 +125,10 @@ interface VerifiedRefresh {
   retainedBaseline?: { conferenceStandings: ConferenceStanding[]; espnInjuries: { asOf: string | null; entries: unknown[] } | null; as_of: string; note: string; verified_at?: string; overall_records?: Record<string, string>; overall_records_note?: string };
 }
 export const verifiedRefresh = (bundle as unknown as { refreshData?: VerifiedRefresh }).refreshData ?? null;
+export const fullRecordsVerifiedAt = verifiedRefresh?.records_verified_at ?? verifiedRefresh?.retrieved_at ?? null;
+const partialRecords = verifiedRefresh?.team_records_review?.partial_update;
+export const partialRecordsReview = partialRecords && fullRecordsVerifiedAt &&
+  Date.parse(partialRecords.as_of) > Date.parse(fullRecordsVerifiedAt) ? partialRecords : null;
 /** Board weeks in calendar order; a snapshot without them covers only its own week. */
 export const boardWeeks: BoardWeekRow[] = verifiedRefresh
   ? (verifiedRefresh.board_weeks ?? [{ week: verifiedRefresh.week ?? 0, start: verifiedRefresh.reference_date, end: verifiedRefresh.reference_date, label: "", cutover_utc: verifiedRefresh.reference_date }])
@@ -332,7 +345,7 @@ for (const game of playedGames) {
 }
 
 function recordFor(slug: string) {
-  if (verifiedRefresh) return verifiedRefresh.teamRecords[slug]?.replace("-", "–") ?? "Not published";
+  if (verifiedRefresh) return (partialRecordsReview?.records[slug] ?? verifiedRefresh.teamRecords[slug])?.replace("-", "–") ?? "Not published";
   const wins = winsBySlug.get(slug) ?? 0;
   const losses = lossesBySlug.get(slug) ?? 0;
   return `${wins}–${losses}`;

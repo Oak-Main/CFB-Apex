@@ -32,7 +32,7 @@ function weekChips(board: BoardWeekRow | undefined, isLatest: boolean): string[]
   const source = board ?? { retrieved_at: verifiedRefresh.retrieved_at, results_verified_at: verifiedRefresh.results_verified_at, schedule_verified_at: verifiedRefresh.schedule_verified_at };
   const chips = [
     stamp(source.retrieved_at) && `${isLatest ? "REVIEWED" : "SNAPSHOT"} ${stamp(source.retrieved_at)}`,
-    stamp(source.results_verified_at) && `FINALS VERIFIED ${stamp(source.results_verified_at)}`,
+    stamp(source.results_verified_at) && `${board?.results_partial ? "PARTIAL RESULTS" : "FINALS VERIFIED"} ${stamp(source.results_verified_at)}`,
     stamp(source.schedule_verified_at) && `SCHEDULE CHECKED ${stamp(source.schedule_verified_at)}`,
     board && stamp(board.records_verified_at) && `RECORDS CHECKED ${stamp(board.records_verified_at)}`,
     `POLLS RELEASED ${verifiedRefresh.polls?.[0]?.release_date ?? "—"}`,

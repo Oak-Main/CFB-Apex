@@ -1,5 +1,7 @@
 # Requirements traceability
 
+Week 13 supports partial results with scored finals and unscored fixtures on one reviewed slate. The source gate checks the two final scores against ESPN and NCAA, checks the four teams' overall records against ESPN, rejects future-dated captures, and requires captures and HTTP responses less than two hours old. GameDay shows the full review date and the separate four-team recheck date. The Week 13 and rendered Worker tests cover both Iowa and Ole Miss finals and the Michigan at Ohio State schedule control.
+
 Affiliate disclosure correction: the disclosure page and each stadium, team and watch ticket/travel module must state the potential commission before sponsored links. Rendered Worker tests check these surfaces and the absence of the unsupported earnings claim. Partner approval and network-side receipts remain separate acceptance gates.
 
 | Requirement group | Implementation | Evidence | Status |
@@ -232,4 +234,4 @@ Production concurrency guard: immediately before deployment, read Wrangler’s a
 | Game ids never change | Finals take their id from the published scheduled row; Oklahoma State at Arizona State keeps its id and published kickoff after starting 15 minutes later | Gate requires every published final unchanged against `origin/main`; `tests/week13.test.ts` |
 | Each poll keeps its own release date | AP, Coaches and composite November 22; the November 8, 15 and 16 editions archived under their own dates | Gate compares both tables with the live provider and NCAA/USA Today tables; tests assert the dates and the archive |
 | A Week 13 kickoff needs two boards or the host school | All 69 kickoffs equal on ESPN and the NCAA scoreboard; no host-school settlement or hold | Gate re-asserts each kickoff against both live listings and fails on any difference |
-| Publish honest board freshness | Board weeks 6–13; Week 13 carries no results date | Rendered tests pin `?week=12` and `?week=13`; smoke covers weeks 11–13 |
+| Publish honest board freshness | Board weeks 6-13. The initial Week 13 preview preceded the partial results review for the two Friday finals. | Rendered tests pin `?week=12` and `?week=13`. Smoke verifies the public metadata for weeks 11-13. |

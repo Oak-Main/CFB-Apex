@@ -98,7 +98,7 @@ test("Command Center serves the same dated public snapshot and reviewed archives
     assert.ok(text.includes("Official Questionable"));
     assert.ok(text.includes("Official Out"));
     assert.ok(text.includes("exact publication time is not displayed"));
-    assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
+    assert.ok(text.includes("Archived schedules also show the latest reviewed records."));
     assert.equal(doc.revision, snapshot.revision);
   }
   for (const week of ["14", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
@@ -333,6 +333,40 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(resolvedText, /pending school confirmation|TV: Not published/);
 });
 
+test("Week 13 Friday finals and a Saturday fixture render correctly on the detail and scoreboard", async () => {
+  const read = async (path) => {
+    const response = await fetchRoute(path);
+    assert.equal(response.status, 200, path);
+    return withoutComments(await response.text());
+  };
+  const scoreboard = await read("/scores?week=13");
+  const cards = [...scoreboard.matchAll(/<article class="game-card"[^>]*>[\s\S]*?<\/article>/g)].map(([html]) => html);
+  const results = [
+    ["2026-11-27-nebraska-at-iowa", "Nebraska Cornhuskers at Iowa Hawkeyes", "7", "31", "CBS"],
+    ["2026-11-27-mississippi-state-at-ole-miss", "Mississippi State Bulldogs at Ole Miss Rebels", "17", "41", "ABC"],
+    ["2026-11-28-michigan-at-ohio-state", "Michigan Wolverines at Ohio State Buckeyes", null, null, "Fox"],
+  ];
+  for (const [id, matchup, awayScore, homeScore, network] of results) {
+    const detail = await read("/games/" + id);
+    const card = cards.find((html) => html.includes('href="/games/' + id + '"'));
+    assert.ok(card, id);
+    assert.ok(visibleText(detail).includes(matchup + (awayScore ? " final" : " game preview")), id);
+    assert.ok(visibleText(detail).includes(network), id);
+    assert.ok(visibleText(card).includes(network), id);
+    const cardScores = [...card.matchAll(/<b>(\d+)<\/b>/g)].map((match) => match[1]);
+    assert.deepEqual(cardScores, awayScore ? [awayScore, homeScore] : [], id);
+    if (awayScore) {
+      assert.match(visibleText(card), /Final details/);
+      assert.doesNotMatch(visibleText(card), /\bPreview\b/);
+      assert.doesNotMatch(visibleText(detail), /game preview/);
+      assert.match(detail, new RegExp("<b>" + awayScore + "</b>[\\s\\S]*?<b>" + homeScore + "</b>"));
+    } else {
+      assert.match(visibleText(card), /\bPreview\b/);
+      assert.match(visibleText(detail), /12:00 PM ET Fox/);
+    }
+  }
+});
+
 test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", async () => {
   const visible = async (path) => visibleText(await (await fetchRoute(path)).text());
   // Week 6 is the archive board after the Oct 11 cutover; `?week=6` pins it.
@@ -514,7 +548,14 @@ test("Friday and Saturday finals and current records agree across the Command Ce
     assert.ok(scores.includes(String(row.away_score)));
   }
   const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json", import.meta.url), "utf8")).records;
-  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), records[team.slug]);
+  const snapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
+  const partial = snapshot.team_records_review?.partial_update;
+  const current = { ...records, ...partial?.records };
+  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), current[team.slug]);
+  if (partial) {
+    assert.deepEqual(feed.partialRecordReview, { checkedAt: partial.as_of, teams: Object.keys(partial.records) });
+    assert.ok(command.includes("Records for 4 teams rechecked " + partial.as_of));
+  }
 });
 
 test("injury and Heisman week copy retain the actual reviewed weeks and one statistics label", async () => {

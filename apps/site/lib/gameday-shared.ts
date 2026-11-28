@@ -1,5 +1,5 @@
 import bundle from "./cfb-2026.generated.ts";
-import { boardWeeks, games, pollTables, seasonRules, teams, verifiedRefresh } from "./cfb-dataset.ts";
+import { boardWeeks, fullRecordsVerifiedAt, games, partialRecordsReview, pollTables, seasonRules, teams, verifiedRefresh } from "./cfb-dataset.ts";
 import { injuryResearch } from "./injury-report.ts";
 import { selectBoardWeek } from "./week-cutover.ts";
 import type { Game } from "./types.ts";
@@ -41,10 +41,14 @@ export function gameDaySnapshot(nowMs: number, week?: string | null) {
     games: games.filter(game => game.week === selected).sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     previousFinals: games.filter(game => game.week === priorWeek && game.status === "final").sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     polls: pollTables.filter(poll => poll.poll !== "composite"),
+    partialRecordReview: partialRecordsReview ? {
+      checkedAt: partialRecordsReview.as_of,
+      teams: Object.keys(partialRecordsReview.records),
+    } : null,
     sourceDates: {
       schedule: metadata?.schedule_verified_at ?? metadata?.retrieved_at ?? null,
       results: metadata?.results_verified_at ?? null,
-      records: verifiedRefresh?.records_verified_at ?? verifiedRefresh?.retrieved_at ?? null,
+      records: fullRecordsVerifiedAt,
       previousResults: boardWeeks.find(row => row.week === priorWeek)?.results_verified_at ?? null,
       injuries: injuryResearch.asOf,
     },
@@ -62,25 +66,32 @@ export type GameDaySnapshot = ReturnType<typeof gameDaySnapshot>;
 
 /**
  * Reviewed week contract, derived from the release itself rather than pinned
- * counts: a board week whose own `results_verified_at` is set is an archive
- * and must be entirely finals with complete scores; a week without it is a
- * preview and must be entirely scheduled with no scores. Returns null when
- * the shape satisfies the contract, else the reason it does not.
+ * counts: an archive is all scored finals, a preview is all unscored fixtures,
+ * and a partial results review contains both. Returns null for a valid board.
  */
 export function reviewedWeekContractViolation(
   week: number,
-  meta: { results_verified_at?: string | null } | undefined,
-  games: ReadonlyArray<{ status: string; homeScore: number | null; awayScore: number | null }>,
+  meta: { results_verified_at?: string | null; results_partial?: true } | undefined,
+  games: ReadonlyArray<{ status: string; homeScore?: number | null; awayScore?: number | null }>,
 ): string | null {
   if (!meta) return `Week ${week} is not a reviewed board week`;
   if (games.length === 0) return `Week ${week} has no reviewed games`;
+  const isScoredFinal = (game: (typeof games)[number]) => game.status === "final" && game.homeScore != null && game.awayScore != null;
+  const isUnscoredFixture = (game: (typeof games)[number]) => game.status === "scheduled" && game.homeScore == null && game.awayScore == null;
+  if (meta.results_partial) {
+    if (meta.results_verified_at == null || !games.some(isScoredFinal) || !games.some(isUnscoredFixture)) {
+      return `Partial week ${week} requires a results date, a scored final and an unscored fixture`;
+    }
+    const invalid = games.find(game => !isScoredFinal(game) && !isUnscoredFixture(game));
+    return invalid ? `Partial week ${week} carries an invalid game (status ${invalid.status})` : null;
+  }
   if (meta.results_verified_at != null) {
-    const pending = games.find(game => game.status !== "final" || game.homeScore == null || game.awayScore == null);
+    const pending = games.find(game => !isScoredFinal(game));
     return pending
       ? `Archive week ${week} carries a non-final or unscored game (status ${pending.status})`
       : null;
   }
-  const started = games.find(game => game.status !== "scheduled" || game.homeScore != null || game.awayScore != null);
+  const started = games.find(game => !isUnscoredFixture(game));
   return started
     ? `Preview week ${week} carries a started or scored game (status ${started.status})`
     : null;

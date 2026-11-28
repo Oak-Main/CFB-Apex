@@ -258,7 +258,7 @@ test("the smoke contract accepts the refreshed weeks and rejects the stale two-f
   const oldWeek9 = week9.games.filter(g => g.status === "final").length === 2 && week9.games.filter(g => g.status === "scheduled").length === 54;
   const oldElse = week13.games.every(g => g.status === "final");
   assert.equal(oldWeek9, false, "stale Week 9 two-final contract must fail against the refreshed release");
-  assert.equal(oldElse, false, "stale all-final contract must fail against the Week 13 preview");
+  assert.equal(oldElse, false, "stale all-final contract must fail against the partial Week 13 board");
   // The derived contract accepts the reviewed states of all five weeks.
   for (const [week, snapshot] of [[9, week9], [10, week10], [11, week11], [12, week12], [13, week13]] as const) {
     assert.equal(reviewedWeekContractViolation(week, snapshot.weeks.find(row => row.week === week), snapshot.games), null, `Week ${week}`);
@@ -267,10 +267,12 @@ test("the smoke contract accepts the refreshed weeks and rejects the stale two-f
   const flippedArchive = structuredClone(week9);
   (flippedArchive.games[0] as { status: string }).status = "scheduled";
   assert.match(reviewedWeekContractViolation(9, flippedArchive.weeks.find(row => row.week === 9), flippedArchive.games) ?? "", /Archive week 9/);
-  const flippedPreview = structuredClone(week13);
-  (flippedPreview.games[0] as { status: string }).status = "final";
-  (flippedPreview.games[0] as { homeScore: number | null }).homeScore = 7;
-  assert.match(reviewedWeekContractViolation(13, flippedPreview.weeks.find(row => row.week === 13), flippedPreview.games) ?? "", /Preview week 13/);
+  const invalidPartial = structuredClone(week13);
+  const unscored = invalidPartial.games.find(row => row.status === "scheduled");
+  assert.ok(unscored);
+  (unscored as { homeScore: number | null }).homeScore = 7;
+  assert.match(reviewedWeekContractViolation(13, invalidPartial.weeks.find(row => row.week === 13), invalidPartial.games) ?? "", /Partial week 13/);
+  assert.match(reviewedWeekContractViolation(13, {}, week13.games) ?? "", /Preview week 13/);
   const unreviewed = structuredClone(week9);
   unreviewed.weeks = unreviewed.weeks.filter(row => row.week !== 9);
   assert.match(reviewedWeekContractViolation(9, unreviewed.weeks.find(row => row.week === 9), unreviewed.games) ?? "", /not a reviewed board week/);
@@ -349,7 +351,13 @@ test("November 8 release separates verified week 9/10 finals, the week 11 slate 
 test("complete season inventory includes FCS records, restores omitted finals and preserves duplicate URLs", () => {
   const snapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
   const audit = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-22-full-season-audit.json", import.meta.url), "utf8"));
-  const result = verifyFullSeason(snapshot, audit);
+  // The November 22 audit ends with Week 12. The partial Week 13 results
+  // are checked separately with their own evidence and source gate.
+  const audited = {
+    ...snapshot,
+    playedGames: snapshot.playedGames.filter((game: { week: number }) => game.week <= audit.counts.ncaa_weeks),
+  };
+  const result = verifyFullSeason(audited, audit);
   assert.deepEqual([result.completed, result.fbsFinals, result.fcsFinals, result.records], [822, 695, 127, 138]);
   assert.ok(getConferenceHub("cusa")?.tvGamesThisWeek.every(({game}) => game.status === "scheduled" && Date.parse(game.date) >= Date.now()));
   assert.equal(teams.filter(t => t.subdivision === "P4").length, 67);
@@ -360,11 +368,11 @@ test("complete season inventory includes FCS records, restores omitted finals an
   assert.equal(getGame("2026-09-03-umass-at-rutgers")?.provenance.verifiedAt, snapshot.playedGames.find((g: { game_id: string }) => g.game_id === "2026-09-03-umass-at-rutgers").verified_at);
   for (const [alias, canonical] of Object.entries(snapshot.gameAliases)) assert.equal(getGame(alias)?.id, canonical);
   assert.equal(games.filter(g => g.status === "final" && [g.homeTeamId, g.awayTeamId].includes("memphis") && [g.homeTeamId, g.awayTeamId].includes("unlv")).length, 1);
-  const missing = structuredClone(snapshot); missing.playedGames.pop();
+  const missing = structuredClone(audited); missing.playedGames.pop();
   assert.throws(() => verifyFullSeason(missing, audit));
-  const duplicate = structuredClone(snapshot); duplicate.playedGames.push(duplicate.playedGames[0]);
+  const duplicate = structuredClone(audited); duplicate.playedGames.push(duplicate.playedGames[0]);
   assert.throws(() => verifyFullSeason(duplicate, audit), /row count/);
-  const replacement = structuredClone(snapshot); replacement.playedGames[1].provider_id = replacement.playedGames[0].provider_id;
+  const replacement = structuredClone(audited); replacement.playedGames[1].provider_id = replacement.playedGames[0].provider_id;
   assert.throws(() => verifyFullSeason(replacement, audit), /Duplicate provider identity/);
 });
 
