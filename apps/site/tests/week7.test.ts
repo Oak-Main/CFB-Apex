@@ -139,8 +139,9 @@ test("records: all 138 reconcile after the verified Week 6 finals", () => {
   assert.deepEqual(review?.carried_from_2026_10_10, []);
   assert.deepEqual(review?.withheld, []);
   assert.equal(Object.keys(verifiedRefresh?.teamRecords ?? {}).length, 138);
-  // Texas lost to Oklahoma on October 10; later verified finals advanced the record.
-  assert.equal(teams.find((team) => team.slug === "texas")?.record, "9\u20132");
+  // Texas lost to Oklahoma on October 10; later verified finals (through the
+  // November 27 win at Texas A&M) advanced the record.
+  assert.equal(teams.find((team) => team.slug === "texas")?.record, "10\u20132");
   // Current team records include independently verified later finals.
   assert.equal(teams.find((team) => team.slug === "ohio-state")?.record, "7–4");
   assert.equal(teams.find((team) => team.slug === "indiana")?.record, "9\u20132");

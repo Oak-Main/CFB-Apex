@@ -333,7 +333,7 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(resolvedText, /pending school confirmation|TV: Not published/);
 });
 
-test("Week 13 Friday finals and a Saturday fixture render correctly on the detail and scoreboard", async () => {
+test("Week 13 Tuesday–Friday finals and a Saturday fixture render correctly on the detail and scoreboard", async () => {
   const read = async (path) => {
     const response = await fetchRoute(path);
     assert.equal(response.status, 200, path);
@@ -344,6 +344,9 @@ test("Week 13 Friday finals and a Saturday fixture render correctly on the detai
   const results = [
     ["2026-11-27-nebraska-at-iowa", "Nebraska Cornhuskers at Iowa Hawkeyes", "7", "31", "CBS"],
     ["2026-11-27-mississippi-state-at-ole-miss", "Mississippi State Bulldogs at Ole Miss Rebels", "17", "41", "ABC"],
+    ["2026-11-27-texas-at-texas-am", "Texas Longhorns at Texas A&M Aggies", "16", "6", "ABC"],
+    ["2026-11-27-west-virginia-at-utah", "West Virginia Mountaineers at Utah Utes", "28", "52", "Fox"],
+    ["2026-11-24-kent-state-at-eastern-michigan", "Kent State Golden Flashes at Eastern Michigan Eagles", "12", "17", "ESPN+"],
     ["2026-11-28-michigan-at-ohio-state", "Michigan Wolverines at Ohio State Buckeyes", null, null, "Fox"],
   ];
   for (const [id, matchup, awayScore, homeScore, network] of results) {
@@ -554,7 +557,7 @@ test("Friday and Saturday finals and current records agree across the Command Ce
   for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), current[team.slug]);
   if (partial) {
     assert.deepEqual(feed.partialRecordReview, { checkedAt: partial.as_of, teams: Object.keys(partial.records) });
-    assert.ok(command.includes("Records for 4 teams rechecked " + partial.as_of));
+    assert.ok(command.includes(`Records for ${Object.keys(partial.records).length} teams rechecked ${partial.as_of}`));
   }
 });
 

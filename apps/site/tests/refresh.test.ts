@@ -108,10 +108,11 @@ test("source dates and unknown records remain honest while Miami resolves to ACC
   );
   assert.equal(teams.find((team) => team.slug === "penn-state")?.record, "6–5");
   assert.equal(teams.find((team) => team.slug === "fiu")?.record, "4–7");
-  // App State's record was withheld until its Oct 10 loss to Old Dominion was verified.
+  // App State's record was withheld until its Oct 10 loss to Old Dominion was verified;
+  // it now also counts the verified November 27 loss at South Alabama.
   assert.equal(
     teams.find((team) => team.slug === "appalachian-state")?.record,
-    "7–4",
+    "7–5",
   );
 });
 
@@ -315,9 +316,9 @@ test("current records for tracked midweek teams include all later verified final
   "sam-houston": "1–10",
   "western-kentucky": "4–7",
   "missouri-state": "4–7",
-  "utsa": "9–2",
+  "utsa": "10–2",
   "south-florida": "6–5",
-  "south-alabama": "6–5",
+  "south-alabama": "7–5",
   "arkansas-state": "4–7"
 };
   for (const [slug, record] of Object.entries(expected)) {
