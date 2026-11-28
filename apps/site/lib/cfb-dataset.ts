@@ -68,6 +68,8 @@ export interface BoardWeekRow {
   retrieved_at?: string;
   schedule_verified_at?: string;
   results_verified_at?: string;
+  /** Some games have verified finals while the reviewed slate remains open. */
+  results_partial?: true;
   records_verified_at?: string;
   audit_applied_at?: string;
   snapshot_id?: string;

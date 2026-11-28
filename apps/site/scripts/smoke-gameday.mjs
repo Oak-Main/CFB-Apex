@@ -35,11 +35,11 @@ for (const week of [11, 12, 13]) {
   // Assertion-only normalization: preserve script literals and remove parsed comment nodes.
   const html = withoutHtmlComments(await page.text());
   assert.ok(html.includes(`WEEK ${week}`)); assert.ok(html.includes(wanted.sourceDates.schedule));
-  // Acceptance derives from the reviewed release contract (the week's own
-  // results_verified_at decides archive vs preview), not from pinned counts
-  // that go stale the moment a later release reconciles more finals.
-  const violation = reviewedWeekContractViolation(week, expected.weeks.find(row => row.week === week), wanted.games);
+  // Derive acceptance from the reviewed week state as more finals are added.
+  const metadata = wanted.weeks.find(row => row.week === week);
+  const violation = reviewedWeekContractViolation(week, metadata, actual.games);
   assert.equal(violation, null, `Week ${week}: ${violation ?? "contract"}`);
-  observations.push({ week, state: wanted.weeks.find(row => row.week === week)?.results_verified_at != null ? "archive" : "preview", games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status"), age, serverDate });
+  const state = metadata?.results_partial ? "partial" : metadata?.results_verified_at != null ? "archive" : "preview";
+  observations.push({ week, state, games:actual.games.length, finals:actual.games.filter(g => g.status === "final").length, cacheControl:response.headers.get("cache-control"), cacheStatus:response.headers.get("cf-cache-status"), age, serverDate });
 }
 console.log(JSON.stringify({ acceptance:"PASS", origin, revision:expected.revision, season:expected.season, defaultWeek:current.selectedWeek, startedAt, checkedAt:new Date().toISOString(), observations }));

@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-11-28T11:02:34.290Z",
+  "espn": {
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20261127&groups=80&limit=200",
+    "checkedAt": "2026-11-28T11:02:32.476Z"
+  },
+  "ncaa": {
+    "url": "https://www.ncaa.com/scoreboard/football/fbs/2026/13/all-conf",
+    "checkedAt": "2026-11-28T11:02:34.290Z"
+  },
+  "finals": [
+    {
+      "gameId": "2026-11-27-nebraska-at-iowa",
+      "providerId": "401858536",
+      "ncaaId": 6603611,
+      "officialRecap": "https://hawkeyesports.com/news/2026/11/27/hawkeyes-handle-huskers-in-heroes-game",
+      "network": "CBS",
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:08Z",
+      "teams": [
+        {
+          "slug": "iowa",
+          "side": "home",
+          "espnId": "2294",
+          "ncaaSlug": "iowa",
+          "name": "Iowa Hawkeyes",
+          "score": 31,
+          "periods": [
+            7,
+            3,
+            7,
+            14
+          ]
+        },
+        {
+          "slug": "nebraska",
+          "side": "away",
+          "espnId": "158",
+          "ncaaSlug": "nebraska",
+          "name": "Nebraska Cornhuskers",
+          "score": 7,
+          "periods": [
+            0,
+            7,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "gameId": "2026-11-27-mississippi-state-at-ole-miss",
+      "providerId": "401856762",
+      "ncaaId": 6604344,
+      "officialRecap": "https://olemisssports.com/news/2026/11/27/no-22-football-defeats-mississippi-state-for-egg-bowl-victory",
+      "network": "ABC",
+      "scheduledKickoff": "2026-11-27T17:00Z",
+      "espnKickoff": "2026-11-27T17:00Z",
+      "teams": [
+        {
+          "slug": "ole-miss",
+          "side": "home",
+          "espnId": "145",
+          "ncaaSlug": "ole-miss",
+          "name": "Ole Miss Rebels",
+          "score": 41,
+          "periods": [
+            3,
+            3,
+            14,
+            21
+          ]
+        },
+        {
+          "slug": "mississippi-state",
+          "side": "away",
+          "espnId": "344",
+          "ncaaSlug": "mississippi-st",
+          "name": "Mississippi State Bulldogs",
+          "score": 17,
+          "periods": [
+            0,
+            10,
+            0,
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}

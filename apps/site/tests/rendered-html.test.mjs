@@ -333,6 +333,43 @@ test("weekly release renders current data, truthful pending states and both arch
   assert.doesNotMatch(resolvedText, /pending school confirmation|TV: Not published/);
 });
 
+test("Week 13 Friday finals and a Saturday fixture render correctly on the detail and scoreboard", async () => {
+  const read = async (path) => {
+    const response = await fetchRoute(path);
+    assert.equal(response.status, 200, path);
+    return withoutComments(await response.text());
+  };
+  const scoreboard = await read("/scores?week=13");
+  const cards = [...scoreboard.matchAll(/<article class="game-card"[^>]*>[\s\S]*?<\/article>/g)].map(([html]) => html);
+  const results = [
+    ["2026-11-27-nebraska-at-iowa", "Nebraska Cornhuskers at Iowa Hawkeyes", "7", "31", "CBS"],
+    ["2026-11-27-mississippi-state-at-ole-miss", "Mississippi State Bulldogs at Ole Miss Rebels", "17", "41", "ABC"],
+  ];
+  const reviewed = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
+  if (reviewed.scheduledGames.some((game) => game.date === "2026-11-28" && game.away === "michigan" && game.home === "ohio-state" && game.game_status === "scheduled")) {
+    results.push(["2026-11-28-michigan-at-ohio-state", "Michigan Wolverines at Ohio State Buckeyes", null, null, "Fox"]);
+  }
+  for (const [id, matchup, awayScore, homeScore, network] of results) {
+    const detail = await read("/games/" + id);
+    const card = cards.find((html) => html.includes('href="/games/' + id + '"'));
+    assert.ok(card, id);
+    assert.ok(visibleText(detail).includes(matchup + (awayScore ? " final" : " game preview")), id);
+    assert.ok(visibleText(detail).includes(network), id);
+    assert.ok(visibleText(card).includes(network), id);
+    const cardScores = [...card.matchAll(/<b>(\d+)<\/b>/g)].map((match) => match[1]);
+    assert.deepEqual(cardScores, awayScore ? [awayScore, homeScore] : [], id);
+    if (awayScore) {
+      assert.match(visibleText(card), /Final details/);
+      assert.doesNotMatch(visibleText(card), /\bPreview\b/);
+      assert.doesNotMatch(visibleText(detail), /game preview/);
+      assert.match(detail, new RegExp("<b>" + awayScore + "</b>[\\s\\S]*?<b>" + homeScore + "</b>"));
+    } else {
+      assert.match(visibleText(card), /\bPreview\b/);
+      assert.match(visibleText(detail), /12:00 PM ET Fox/);
+    }
+  }
+});
+
 test("Oct 9 refresh: midweek finals render as finals, not as upcoming games", async () => {
   const visible = async (path) => visibleText(await (await fetchRoute(path)).text());
   // Week 6 is the archive board after the Oct 11 cutover; `?week=6` pins it.

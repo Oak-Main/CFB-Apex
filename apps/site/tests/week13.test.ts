@@ -10,7 +10,8 @@ const read = (path: string) => JSON.parse(readFileSync(new URL(`../${path}`, imp
 const evidence = read("data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json");
 const raw = read("data/cfb-2026/refresh/verified-refresh.json");
 // A fixed clock after the Week 13 cutover; no test here reads today's date.
-const now = Date.parse("2026-11-23T14:00:00Z");
+const now = Date.parse("2026-11-28T09:30:00Z");
+const friday = read("data/cfb-2026/refresh/evidence/2026-11-27-friday-finals.json");
 
 test("Week 13 becomes the default at 14:00Z on November 22 and Week 12 stays an explicit archive", () => {
   const week13 = boardWeeks.find((row) => row.week === 13);
@@ -18,7 +19,8 @@ test("Week 13 becomes the default at 14:00Z on November 22 and Week 12 stays an 
     { start: week13?.start, end: week13?.end, label: week13?.label, cutover: week13?.cutover_utc },
     { start: "2026-11-23", end: "2026-11-29", label: "Nov 24–28", cutover: "2026-11-22T14:00:00Z" },
   );
-  assert.equal(week13?.results_verified_at, undefined, "a preview week carries no results date");
+  assert.equal(week13?.results_verified_at, friday.checkedAt);
+  assert.equal(week13?.results_partial, true);
   assert.deepEqual(boardWeeks.map((row) => row.week), [6, 7, 8, 9, 10, 11, 12, 13]);
   assert.equal(gameDaySnapshot(Date.parse("2026-11-22T13:59:59Z")).selectedWeek, 12);
   assert.equal(gameDaySnapshot(Date.parse("2026-11-22T14:00:00Z")).selectedWeek, 13);
@@ -85,24 +87,41 @@ test("four Week 12 FBS-vs-FCS finals are verified and stay outside the board", (
   assert.equal(gameDaySnapshot(now, "12").games.length, 66);
 });
 
-test("the Week 13 slate is 69 FBS-vs-FBS fixtures with no FCS game", () => {
-  const preview = gameDaySnapshot(now, "13");
-  assert.equal(preview.games.length, 69);
-  assert.ok(preview.games.every((g) => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
-  assert.equal(reviewedWeekContractViolation(13, preview.weeks.find((row) => row.week === 13), preview.games), null);
-  assert.equal(preview.sourceDates.results, null);
-  assert.equal(preview.sourceDates.previousResults, gameDaySnapshot(now, "12").sourceDates.results);
+test("Week 13 keeps the 69-game slate and publishes only the two reviewed Friday finals", () => {
+  const board = gameDaySnapshot(now, "13");
+  assert.equal(board.games.length, 69);
+  const finals = board.games.filter((g) => g.status === "final");
+  const scoreline = (g: (typeof finals)[number]) => [g.id, g.awayTeamId, g.homeTeamId, g.awayScore, g.homeScore, g.broadcast];
+  assert.deepEqual(finals.map(scoreline).sort(), [
+    ["2026-11-27-mississippi-state-at-ole-miss", "mississippi-state", "ole-miss", 17, 41, "ABC"],
+    ["2026-11-27-nebraska-at-iowa", "nebraska", "iowa", 7, 31, "CBS"],
+  ]);
+  for (const result of finals) {
+    assert.equal(getGame(result.id)?.status, "final");
+    assert.equal(result.statusDetail, "Final");
+  }
+  const remaining = board.games.filter((g) => g.status !== "final");
+  assert.equal(remaining.length, 67);
+  assert.ok(remaining.every((g) => g.status === "scheduled" && g.homeScore === null && g.awayScore === null));
+  const control = remaining.find((g) => g.id === "2026-11-28-michigan-at-ohio-state");
+  assert.ok(control);
+  assert.deepEqual(scoreline(control), ["2026-11-28-michigan-at-ohio-state", "michigan", "ohio-state", null, null, "Fox"]);
+  assert.equal(control.date, "2026-11-28T17:00Z");
+  assert.equal(getGame(control.id)?.status, "scheduled");
+  assert.equal(reviewedWeekContractViolation(13, board.weeks.find((row) => row.week === 13), board.games), null);
+  assert.equal(board.sourceDates.results, friday.checkedAt);
+  assert.equal(board.sourceDates.previousResults, gameDaySnapshot(now, "12").sourceDates.results);
   const perDay: Record<string, number> = {};
-  for (const g of preview.games) perDay[easternDate(g.date)] = (perDay[easternDate(g.date)] ?? 0) + 1;
+  for (const g of board.games) perDay[easternDate(g.date)] = (perDay[easternDate(g.date)] ?? 0) + 1;
   assert.deepEqual(perDay, { "2026-11-24": 2, "2026-11-26": 1, "2026-11-27": 13, "2026-11-28": 53 });
   assert.equal(evidence.excluded_upcoming.length, 0);
   const marquee = boardWeeks.find((row) => row.week === 13)?.marquee_game_id;
   assert.equal(marquee, "2026-11-28-usc-at-ucla");
-  assert.ok(preview.games.some((g) => g.id === marquee), "marquee is a Week 13 fixture");
+  assert.ok(board.games.some((g) => g.id === marquee), "marquee is a Week 13 fixture");
 });
 
-test("every Week 13 kickoff is one both boards state; none is settled or held", () => {
-  assert.equal(raw.scheduledGames.length, 69);
+test("every remaining Week 13 kickoff retains its reviewed source and time", () => {
+  assert.equal(raw.scheduledGames.length, 67);
   assert.deepEqual(evidence.kickoff_settlements, []);
   assert.deepEqual(evidence.kickoff_holds, []);
   for (const row of raw.scheduledGames) {
@@ -148,7 +167,7 @@ test("all 138 records reconcile; NCAA standings rows that lag are recorded, not 
     assert.ok(row.corroborated_by.startsWith("standing-") || row.corroborated_by.startsWith("school-"));
   }
   assert.equal(raw.full_season_review.completed, 822);
-  assert.equal(raw.playedGames.length, 695);
+  assert.equal(raw.playedGames.filter((row: { week: number }) => row.week < 13).length, 695);
   assert.equal(raw.excludedGames.length, 127);
 });
 

@@ -163,6 +163,7 @@ interface SourceStamps {
   week?: number;
   schedule_verified_at?: string;
   results_verified_at?: string;
+  results_partial?: true;
 }
 
 /** A week-scoped source label; a fresh release never restamps other weeks.
@@ -180,7 +181,9 @@ export function scoreboardSourceLabel(
   const stamp = (value: string | undefined) => value && Number.isFinite(Date.parse(value))
     ? `${new Date(value).toISOString().slice(0, 16).replace("T", " ")} UTC`
     : "not published";
-  const finals = board && !board.results_verified_at ? "no finals verified yet" : `finals verified ${stamp(source.results_verified_at)}`;
+  const finals = board && !board.results_verified_at
+    ? "no finals verified yet"
+    : `${board?.results_partial ? "partial results checked" : "finals verified"} ${stamp(source.results_verified_at)}`;
   return {
     badge: "Verified snapshot",
     detail: `Week ${week} schedule checked ${stamp(source.schedule_verified_at)}; ${finals}. Status changes require a newer verified release.`,

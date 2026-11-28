@@ -1,5 +1,9 @@
 # Decision log
 
+## D-2026-11-28 - Scoped Week 13 results
+
+The reviewed snapshot publishes the Iowa and Ole Miss Friday finals after the school recaps, NCAA scoreboard and ESPN agree. Its Week 13 results date covers these two games. The separate schedule and records dates still refer to their earlier reviews. Preserve the 69-game slate and stable game IDs. Iowa's announced 12:00 p.m. ET kickoff stays as listed by the NCAA while the later ESPN timestamp remains in source observations.
+
 ## D-2026-10-30 — Truthful affiliate disclosure and guarded release
 
 Affiliate URLs being configured does not prove partner approval, tracked transactions, earnings or payout. Replace the earnings claim with conditional commission disclosure, place notices before ticket and travel links on stadium, team and watch surfaces, and label configured links without asserting official-partner status. Keep existing URLs and network settings unchanged. The previous production run for #58 verified Worker version `28d602a4-9150-4f72-87ba-b50e84359637` at 100%; the release guard checks this expected version against the current provider deployment before any publish, and must stop if another deployment has superseded it.

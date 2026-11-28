@@ -1,5 +1,7 @@
 # Requirements traceability
 
+Week 13 supports partial results with scored finals and unscored fixtures on one reviewed slate. The source gate independently checks the two new rows. The Week 13 and rendered Worker tests cover both Iowa and Ole Miss finals and the Michigan at Ohio State schedule control.
+
 Affiliate disclosure correction: the disclosure page and each stadium, team and watch ticket/travel module must state the potential commission before sponsored links. Rendered Worker tests check these surfaces and the absence of the unsupported earnings claim. Partner approval and network-side receipts remain separate acceptance gates.
 
 | Requirement group | Implementation | Evidence | Status |

@@ -62,25 +62,32 @@ export type GameDaySnapshot = ReturnType<typeof gameDaySnapshot>;
 
 /**
  * Reviewed week contract, derived from the release itself rather than pinned
- * counts: a board week whose own `results_verified_at` is set is an archive
- * and must be entirely finals with complete scores; a week without it is a
- * preview and must be entirely scheduled with no scores. Returns null when
- * the shape satisfies the contract, else the reason it does not.
+ * counts: an archive is all scored finals, a preview is all unscored fixtures,
+ * and a partial results review contains both. Returns null for a valid board.
  */
 export function reviewedWeekContractViolation(
   week: number,
-  meta: { results_verified_at?: string | null } | undefined,
+  meta: { results_verified_at?: string | null; results_partial?: true } | undefined,
   games: ReadonlyArray<{ status: string; homeScore: number | null; awayScore: number | null }>,
 ): string | null {
   if (!meta) return `Week ${week} is not a reviewed board week`;
   if (games.length === 0) return `Week ${week} has no reviewed games`;
+  const isScoredFinal = (game: (typeof games)[number]) => game.status === "final" && game.homeScore !== null && game.awayScore !== null;
+  const isUnscoredFixture = (game: (typeof games)[number]) => game.status === "scheduled" && game.homeScore === null && game.awayScore === null;
+  if (meta.results_partial) {
+    if (meta.results_verified_at == null || !games.some(isScoredFinal) || !games.some(isUnscoredFixture)) {
+      return `Partial week ${week} requires a results date, a scored final and an unscored fixture`;
+    }
+    const invalid = games.find(game => !isScoredFinal(game) && !isUnscoredFixture(game));
+    return invalid ? `Partial week ${week} carries an invalid game (status ${invalid.status})` : null;
+  }
   if (meta.results_verified_at != null) {
-    const pending = games.find(game => game.status !== "final" || game.homeScore == null || game.awayScore == null);
+    const pending = games.find(game => !isScoredFinal(game));
     return pending
       ? `Archive week ${week} carries a non-final or unscored game (status ${pending.status})`
       : null;
   }
-  const started = games.find(game => game.status !== "scheduled" || game.homeScore != null || game.awayScore != null);
+  const started = games.find(game => !isUnscoredFixture(game));
   return started
     ? `Preview week ${week} carries a started or scored game (status ${started.status})`
     : null;
