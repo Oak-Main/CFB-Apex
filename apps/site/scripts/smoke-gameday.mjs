@@ -29,7 +29,7 @@ for (const week of [11, 12, 13]) {
   assert.ok(serverDate && Math.abs(Date.now() - Date.parse(serverDate)) <= 300_000, `Week ${week}: HTTP Date is missing or stale`);
   const actual = await response.json(), wanted = gameDaySnapshot(Date.now(), String(week));
   assert.equal(actual.revision, wanted.revision); assert.equal(actual.season, 2026); assert.equal(actual.selectedWeek, week);
-  for (const key of ["weeks", "games", "previousFinals", "teams", "polls", "sourceDates"]) assert.deepEqual(actual[key], wanted[key], `${key}: Week ${week}`);
+  for (const key of ["weeks", "games", "previousFinals", "teams", "polls", "sourceDates", "partialRecordReview"]) assert.deepEqual(actual[key], wanted[key], `${key}: Week ${week}`);
   const page = await fetch(`${origin}/gameday?week=${week}&release=${expected.revision}`, { signal: AbortSignal.timeout(10_000) });
   assert.equal(page.status, 200);
   // Assertion-only normalization: preserve script literals and remove parsed comment nodes.

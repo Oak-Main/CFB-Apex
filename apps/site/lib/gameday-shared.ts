@@ -1,5 +1,5 @@
 import bundle from "./cfb-2026.generated.ts";
-import { boardWeeks, games, pollTables, seasonRules, teams, verifiedRefresh } from "./cfb-dataset.ts";
+import { boardWeeks, fullRecordsVerifiedAt, games, partialRecordsReview, pollTables, seasonRules, teams, verifiedRefresh } from "./cfb-dataset.ts";
 import { injuryResearch } from "./injury-report.ts";
 import { selectBoardWeek } from "./week-cutover.ts";
 import type { Game } from "./types.ts";
@@ -41,10 +41,14 @@ export function gameDaySnapshot(nowMs: number, week?: string | null) {
     games: games.filter(game => game.week === selected).sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     previousFinals: games.filter(game => game.week === priorWeek && game.status === "final").sort((a, b) => compareGameDates(a.date, b.date)).map(game => publicGame(game, nowMs)),
     polls: pollTables.filter(poll => poll.poll !== "composite"),
+    partialRecordReview: partialRecordsReview ? {
+      checkedAt: partialRecordsReview.as_of,
+      teams: Object.keys(partialRecordsReview.records),
+    } : null,
     sourceDates: {
       schedule: metadata?.schedule_verified_at ?? metadata?.retrieved_at ?? null,
       results: metadata?.results_verified_at ?? null,
-      records: verifiedRefresh?.records_verified_at ?? verifiedRefresh?.retrieved_at ?? null,
+      records: fullRecordsVerifiedAt,
       previousResults: boardWeeks.find(row => row.week === priorWeek)?.results_verified_at ?? null,
       injuries: injuryResearch.asOf,
     },

@@ -98,7 +98,7 @@ test("Command Center serves the same dated public snapshot and reviewed archives
     assert.ok(text.includes("Official Questionable"));
     assert.ok(text.includes("Official Out"));
     assert.ok(text.includes("exact publication time is not displayed"));
-    assert.ok(text.includes("these are current records, including when viewing an archived schedule"));
+    assert.ok(text.includes("Archived schedules also show the latest reviewed records."));
     assert.equal(doc.revision, snapshot.revision);
   }
   for (const week of ["14", "8junk", "", "-1"]) assert.equal((await fetchRoute(`/api/gameday?week=${week}`)).status, 400);
@@ -548,7 +548,14 @@ test("Friday and Saturday finals and current records agree across the Command Ce
     assert.ok(scores.includes(String(row.away_score)));
   }
   const records = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/evidence/2026-11-22-week12-refresh.json", import.meta.url), "utf8")).records;
-  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), records[team.slug]);
+  const snapshot = JSON.parse(readFileSync(new URL("../data/cfb-2026/refresh/verified-refresh.json", import.meta.url), "utf8"));
+  const partial = snapshot.team_records_review?.partial_update;
+  const current = { ...records, ...partial?.records };
+  for (const team of feed.teams) assert.equal(team.record.replace("–", "-"), current[team.slug]);
+  if (partial) {
+    assert.deepEqual(feed.partialRecordReview, { checkedAt: partial.as_of, teams: Object.keys(partial.records) });
+    assert.ok(command.includes("Records for 4 teams rechecked " + partial.as_of));
+  }
 });
 
 test("injury and Heisman week copy retain the actual reviewed weeks and one statistics label", async () => {

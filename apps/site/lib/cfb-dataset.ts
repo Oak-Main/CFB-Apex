@@ -125,6 +125,10 @@ interface VerifiedRefresh {
   retainedBaseline?: { conferenceStandings: ConferenceStanding[]; espnInjuries: { asOf: string | null; entries: unknown[] } | null; as_of: string; note: string; verified_at?: string; overall_records?: Record<string, string>; overall_records_note?: string };
 }
 export const verifiedRefresh = (bundle as unknown as { refreshData?: VerifiedRefresh }).refreshData ?? null;
+export const fullRecordsVerifiedAt = verifiedRefresh?.records_verified_at ?? verifiedRefresh?.retrieved_at ?? null;
+const partialRecords = verifiedRefresh?.team_records_review?.partial_update;
+export const partialRecordsReview = partialRecords && fullRecordsVerifiedAt &&
+  Date.parse(partialRecords.as_of) > Date.parse(fullRecordsVerifiedAt) ? partialRecords : null;
 /** Board weeks in calendar order; a snapshot without them covers only its own week. */
 export const boardWeeks: BoardWeekRow[] = verifiedRefresh
   ? (verifiedRefresh.board_weeks ?? [{ week: verifiedRefresh.week ?? 0, start: verifiedRefresh.reference_date, end: verifiedRefresh.reference_date, label: "", cutover_utc: verifiedRefresh.reference_date }])
@@ -341,12 +345,7 @@ for (const game of playedGames) {
 }
 
 function recordFor(slug: string) {
-  if (verifiedRefresh) {
-    const partial = verifiedRefresh.team_records_review?.partial_update;
-    const fullReview = verifiedRefresh.records_verified_at ?? verifiedRefresh.retrieved_at;
-    const updated = partial && Date.parse(partial.as_of) > Date.parse(fullReview) ? partial.records[slug] : undefined;
-    return (updated ?? verifiedRefresh.teamRecords[slug])?.replace("-", "–") ?? "Not published";
-  }
+  if (verifiedRefresh) return (partialRecordsReview?.records[slug] ?? verifiedRefresh.teamRecords[slug])?.replace("-", "–") ?? "Not published";
   const wins = winsBySlug.get(slug) ?? 0;
   const losses = lossesBySlug.get(slug) ?? 0;
   return `${wins}–${losses}`;

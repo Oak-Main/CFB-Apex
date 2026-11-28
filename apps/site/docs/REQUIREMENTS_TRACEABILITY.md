@@ -1,6 +1,6 @@
 # Requirements traceability
 
-Week 13 supports partial results with scored finals and unscored fixtures on one reviewed slate. The source gate checks the two final scores against ESPN and NCAA, checks the four teams' overall records against ESPN, rejects future-dated captures, and requires captures and HTTP responses less than two hours old. The Week 13 and rendered Worker tests cover both Iowa and Ole Miss finals and the Michigan at Ohio State schedule control.
+Week 13 supports partial results with scored finals and unscored fixtures on one reviewed slate. The source gate checks the two final scores against ESPN and NCAA, checks the four teams' overall records against ESPN, rejects future-dated captures, and requires captures and HTTP responses less than two hours old. GameDay shows the full review date and the separate four-team recheck date. The Week 13 and rendered Worker tests cover both Iowa and Ole Miss finals and the Michigan at Ohio State schedule control.
 
 Affiliate disclosure correction: the disclosure page and each stadium, team and watch ticket/travel module must state the potential commission before sponsored links. Rendered Worker tests check these surfaces and the absence of the unsupported earnings claim. Partner approval and network-side receipts remain separate acceptance gates.
 
